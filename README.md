@@ -1,2 +1,0 @@
-# Capitalintelligence
-ai web builder
