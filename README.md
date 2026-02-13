@@ -174,6 +174,66 @@ Update static data in `lib/data.ts` for:
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
 
+## 🚀 Deployment
+
+### Deploy to Vercel (Recommended)
+
+#### First Time Setup:
+1. Go to [Vercel](https://vercel.com)
+2. Click "Import Project"
+3. Select your GitHub repository: `disantobusinesses-blip/capitalintelligenceai`
+4. Configure:
+   - Framework Preset: **Next.js**
+   - Build Command: `npm run build`
+   - Output Directory: `.next`
+5. Click "Deploy"
+
+#### Deploying Updates:
+
+**Option 1: Merge Pull Request (Automatic)**
+1. Go to GitHub → Pull Requests
+2. Find your PR (e.g., `copilot/build-website-for-capital-intelligence`)
+3. Click "Merge Pull Request"
+4. Vercel automatically deploys to production within 1-2 minutes
+
+**Option 2: Push to Main Branch**
+```bash
+git checkout main
+git merge your-feature-branch
+git push origin main
+```
+
+### Where to Find Your Deployment
+
+**Vercel Dashboard:**
+- URL: https://vercel.com/dashboard
+- Project: "capitalintelligenceai"
+- View deployments by branch:
+  - **Production**: Deployments from `main` branch
+  - **Preview**: Deployments from feature branches
+
+**Your Website URLs:**
+- Production: `https://capitalintelligenceai.vercel.app`
+- Custom domain: Configure in Vercel project settings
+- Preview: Each PR gets a unique preview URL
+
+### Troubleshooting Deployments
+
+**Issue: "Changes not showing in deployment"**
+- ✅ Check you merged to `main` branch (not just pushed to feature branch)
+- ✅ Wait 1-2 minutes for build to complete
+- ✅ Clear browser cache (Ctrl+Shift+R or Cmd+Shift+R)
+- ✅ Check Vercel dashboard for build logs
+
+**Issue: "Build failed"**
+- Check Vercel build logs for errors
+- Verify `npm run build` works locally
+- Ensure all dependencies are in `package.json`
+
+**Issue: "404 on deployment"**
+- This is expected for invalid URLs - custom 404 page is working!
+- Visit root URL: `https://your-domain.com/` not `/some-page`
+
 ## 📝 License
 
 Copyright © 2026 Capital Intelligence Group. All rights reserved.
