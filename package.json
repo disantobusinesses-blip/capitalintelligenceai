@@ -16,7 +16,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/disantobusinesses-blip/capitalintelligenceai/issues"
   },
@@ -39,7 +39,7 @@
     "react-dom": "^19.2.4",
     "react-hook-form": "^7.71.1",
     "react-hot-toast": "^2.6.0",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^3.4.19",
     "typescript": "^5.9.3",
     "zod": "^4.3.6"
   }

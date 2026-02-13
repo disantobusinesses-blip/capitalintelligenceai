@@ -153,7 +153,7 @@ const SEOMockup = () => (
 );
 
 export default function FeaturesPage() {
-  const mockups: Record<string, JSX.Element> = {
+  const mockups: Record<string, React.ReactElement> = {
     'ai-chat': <AIChatMockup />,
     'email-capture': <EmailCaptureMockup />,
     'cta-blocks': <CTABlockMockup />,
