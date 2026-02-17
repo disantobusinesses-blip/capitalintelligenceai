@@ -24,7 +24,7 @@ const config: Config = {
         'gradient-silver': 'linear-gradient(135deg, #E8E8E8 0%, #C0C0C0 100%)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
     },
   },
