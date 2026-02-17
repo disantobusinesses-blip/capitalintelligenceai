@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 
 const projects = [
@@ -43,6 +43,17 @@ const projects = [
 
 export default function ProjectsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+
+  // Auto-rotate carousel every 5 seconds
+  useEffect(() => {
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % projects.length)
+      }, 5000)
+      return () => clearInterval(interval)
+    }
+  }, [isPaused])
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length)
@@ -53,48 +64,64 @@ export default function ProjectsCarousel() {
   }
 
   return (
-    <section id="projects" className="py-24 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section 
+      id="projects" 
+      className="py-24 px-6 bg-tech-gray relative overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Background effects */}
+      <div className="absolute inset-0 tech-grid opacity-10" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-5" />
+      
+      <div className="max-w-7xl mx-auto relative">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-luxury-charcoal mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-tech-white mb-4">
             Our Projects
           </h2>
-          <p className="text-xl text-luxury-silver-dark max-w-2xl mx-auto">
+          <p className="text-xl text-tech-platinum max-w-2xl mx-auto">
             Intelligent systems implemented across diverse industries
           </p>
+          <div className="mt-4 flex items-center justify-center gap-2 text-sm text-tech-baby-blue">
+            <div className="w-2 h-2 bg-tech-baby-blue rounded-full animate-pulse" />
+            Auto-rotating • Hover to pause
+          </div>
         </div>
 
         {/* Carousel Container */}
         <div className="relative">
           {/* Main Carousel */}
-          <div className="overflow-hidden">
+          <div className="overflow-hidden rounded-2xl">
             <div
-              className="flex transition-transform duration-500 ease-out"
+              className="flex transition-transform duration-700 ease-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {projects.map((project) => (
                 <div key={project.id} className="min-w-full px-4">
-                  <div className="max-w-4xl mx-auto bg-luxury-off-white rounded-2xl overflow-hidden luxury-shadow smooth-transition hover:scale-105">
+                  <div className="max-w-4xl mx-auto bg-tech-black border border-tech-baby-blue/20 rounded-2xl overflow-hidden tech-shadow smooth-transition hover:border-tech-baby-blue hover:shadow-glow">
                     {/* Project Image */}
-                    <div className="aspect-video bg-gradient-silver flex items-center justify-center text-white text-2xl font-semibold">
-                      {project.title}
+                    <div className="aspect-video bg-gradient-tech flex items-center justify-center text-tech-white text-2xl font-semibold relative overflow-hidden">
+                      <div className="absolute inset-0 bg-tech-baby-blue/10" />
+                      <span className="relative z-10">{project.title}</span>
+                      {/* Animated lines */}
+                      <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-tech-baby-blue to-transparent animate-pulse" />
                     </div>
 
                     {/* Project Info */}
                     <div className="p-8">
                       <div className="mb-4">
-                        <span className="inline-block px-4 py-1 bg-luxury-silver-light text-luxury-charcoal rounded-full text-sm font-semibold">
+                        <span className="inline-block px-4 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-baby-blue rounded-full text-sm font-semibold">
                           {project.industry}
                         </span>
                       </div>
-                      <h3 className="text-2xl font-bold text-luxury-charcoal mb-3">
+                      <h3 className="text-2xl font-bold text-tech-white mb-3">
                         {project.title}
                       </h3>
-                      <p className="text-luxury-silver-dark mb-6 leading-relaxed">
+                      <p className="text-tech-platinum mb-6 leading-relaxed">
                         {project.description}
                       </p>
-                      <button className="inline-flex items-center gap-2 px-6 py-2 bg-luxury-charcoal text-white rounded-lg font-semibold smooth-transition hover:bg-luxury-silver-dark">
+                      <button className="inline-flex items-center gap-2 px-6 py-3 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-sm">
                         View Project
                         <ExternalLink className="w-4 h-4" />
                       </button>
@@ -108,18 +135,18 @@ export default function ProjectsCarousel() {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white border border-luxury-silver rounded-full p-3 luxury-shadow smooth-transition hover:bg-luxury-off-white"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-tech-black/80 border border-tech-baby-blue/50 rounded-full p-3 tech-shadow smooth-transition hover:bg-tech-baby-blue hover:border-tech-baby-blue hover:shadow-glow"
             aria-label="Previous project"
           >
-            <ChevronLeft className="w-6 h-6 text-luxury-charcoal" />
+            <ChevronLeft className="w-6 h-6 text-tech-white" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white border border-luxury-silver rounded-full p-3 luxury-shadow smooth-transition hover:bg-luxury-off-white"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-tech-black/80 border border-tech-baby-blue/50 rounded-full p-3 tech-shadow smooth-transition hover:bg-tech-baby-blue hover:border-tech-baby-blue hover:shadow-glow"
             aria-label="Next project"
           >
-            <ChevronRight className="w-6 h-6 text-luxury-charcoal" />
+            <ChevronRight className="w-6 h-6 text-tech-white" />
           </button>
 
           {/* Indicators */}
@@ -130,8 +157,8 @@ export default function ProjectsCarousel() {
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2 rounded-full smooth-transition ${
                   index === currentIndex
-                    ? 'w-8 bg-luxury-charcoal'
-                    : 'w-2 bg-luxury-silver-light hover:bg-luxury-silver'
+                    ? 'w-8 bg-tech-baby-blue shadow-glow-sm'
+                    : 'w-2 bg-tech-platinum/30 hover:bg-tech-baby-blue/50'
                 }`}
                 aria-label={`Go to project ${index + 1}`}
               />

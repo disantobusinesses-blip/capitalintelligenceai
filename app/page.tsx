@@ -1,20 +1,16 @@
 import Hero from '@/components/Hero'
-import PackageSection from '@/components/PackageSection'
+import ServiceSelection from '@/components/ServiceSelection'
 import ProjectsCarousel from '@/components/ProjectsCarousel'
 import AIChatDemo from '@/components/AIChatDemo'
-import OnboardingSection from '@/components/OnboardingSection'
-import PricingDetails from '@/components/PricingDetails'
 import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-tech-black">
       <Hero />
-      <PackageSection />
+      <ServiceSelection />
       <ProjectsCarousel />
       <AIChatDemo />
-      <OnboardingSection />
-      <PricingDetails />
       <Footer />
     </main>
   )

@@ -88,14 +88,18 @@ export default function AIChatDemo() {
   }
 
   return (
-    <section className="py-24 px-6 bg-luxury-off-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-24 px-6 bg-tech-black relative overflow-hidden" id="chat">
+      {/* Background effects */}
+      <div className="absolute inset-0 tech-grid opacity-10" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-5" />
+      
+      <div className="max-w-7xl mx-auto relative">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-luxury-charcoal mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-tech-white mb-4">
             AI Assistant Demo
           </h2>
-          <p className="text-xl text-luxury-silver-dark max-w-2xl mx-auto">
+          <p className="text-xl text-tech-platinum max-w-2xl mx-auto">
             Ask questions about our packages, pricing, and onboarding process
           </p>
         </div>
@@ -103,28 +107,31 @@ export default function AIChatDemo() {
         {/* Chatbox Container */}
         <div className="max-w-3xl mx-auto">
           {isOpen ? (
-            <div className="bg-white rounded-2xl luxury-shadow overflow-hidden">
+            <div className="bg-tech-gray border border-tech-baby-blue/30 rounded-2xl tech-shadow overflow-hidden">
               {/* Chat Header */}
-              <div className="bg-gradient-silver p-4 flex items-center justify-between">
+              <div className="bg-gradient-blue p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                    <Bot className="w-6 h-6 text-luxury-charcoal" />
+                  <div className="w-10 h-10 rounded-full bg-tech-black/20 flex items-center justify-center animate-pulse">
+                    <Bot className="w-6 h-6 text-tech-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white">AI Assistant</h3>
-                    <p className="text-sm text-white/80">Always available</p>
+                    <h3 className="font-semibold text-tech-white">AI Assistant</h3>
+                    <p className="text-sm text-tech-white/80 flex items-center gap-1">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                      Always available
+                    </p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 hover:bg-white/20 rounded-lg smooth-transition"
+                  className="p-2 hover:bg-tech-black/20 rounded-lg smooth-transition"
                 >
-                  <X className="w-5 h-5 text-white" />
+                  <X className="w-5 h-5 text-tech-white" />
                 </button>
               </div>
 
               {/* Messages Area */}
-              <div className="h-96 overflow-y-auto p-6 space-y-4">
+              <div className="h-96 overflow-y-auto p-6 space-y-4 bg-tech-black/50">
                 {messages.map((message, index) => (
                   <div
                     key={index}
@@ -135,21 +142,21 @@ export default function AIChatDemo() {
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                         message.role === 'user'
-                          ? 'bg-luxury-charcoal'
-                          : 'bg-luxury-silver-light'
+                          ? 'bg-tech-baby-blue'
+                          : 'bg-tech-gray border border-tech-baby-blue/30'
                       }`}
                     >
                       {message.role === 'user' ? (
-                        <User className="w-4 h-4 text-white" />
+                        <User className="w-4 h-4 text-tech-black" />
                       ) : (
-                        <Bot className="w-4 h-4 text-luxury-charcoal" />
+                        <Bot className="w-4 h-4 text-tech-baby-blue" />
                       )}
                     </div>
                     <div
                       className={`max-w-[70%] p-4 rounded-2xl ${
                         message.role === 'user'
-                          ? 'bg-luxury-charcoal text-white'
-                          : 'bg-luxury-silver-light text-luxury-charcoal'
+                          ? 'bg-tech-baby-blue text-tech-black'
+                          : 'bg-tech-gray border border-tech-baby-blue/20 text-tech-white'
                       }`}
                     >
                       <p className="whitespace-pre-line">{message.content}</p>
@@ -159,14 +166,14 @@ export default function AIChatDemo() {
                 
                 {isTyping && (
                   <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-luxury-silver-light flex items-center justify-center flex-shrink-0">
-                      <Bot className="w-4 h-4 text-luxury-charcoal" />
+                    <div className="w-8 h-8 rounded-full bg-tech-gray border border-tech-baby-blue/30 flex items-center justify-center flex-shrink-0">
+                      <Bot className="w-4 h-4 text-tech-baby-blue" />
                     </div>
-                    <div className="bg-luxury-silver-light p-4 rounded-2xl">
+                    <div className="bg-tech-gray border border-tech-baby-blue/20 p-4 rounded-2xl">
                       <div className="flex gap-1">
-                        <div className="w-2 h-2 bg-luxury-silver rounded-full animate-bounce" />
-                        <div className="w-2 h-2 bg-luxury-silver rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
-                        <div className="w-2 h-2 bg-luxury-silver rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                        <div className="w-2 h-2 bg-tech-baby-blue rounded-full animate-bounce" />
+                        <div className="w-2 h-2 bg-tech-baby-blue rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
+                        <div className="w-2 h-2 bg-tech-baby-blue rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
                       </div>
                     </div>
                   </div>
@@ -175,7 +182,7 @@ export default function AIChatDemo() {
               </div>
 
               {/* Input Area */}
-              <div className="border-t border-luxury-silver-light p-4">
+              <div className="border-t border-tech-baby-blue/20 p-4 bg-tech-gray">
                 <div className="flex gap-2">
                   <input
                     type="text"
@@ -183,12 +190,12 @@ export default function AIChatDemo() {
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="Ask about our packages..."
-                    className="flex-1 px-4 py-2 border border-luxury-silver-light rounded-lg focus:outline-none focus:border-luxury-silver"
+                    className="flex-1 px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg focus:outline-none focus:border-tech-baby-blue text-tech-white placeholder-tech-platinum/50"
                   />
                   <button
                     onClick={handleSend}
                     disabled={!inputValue.trim()}
-                    className="px-6 py-2 bg-luxury-charcoal text-white rounded-lg font-semibold smooth-transition hover:bg-luxury-silver-dark disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-6 py-2 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="w-5 h-5" />
                   </button>
@@ -198,15 +205,17 @@ export default function AIChatDemo() {
           ) : (
             <button
               onClick={() => setIsOpen(true)}
-              className="w-full bg-white border-2 border-luxury-silver rounded-2xl p-8 luxury-shadow smooth-transition hover:scale-105 hover:border-luxury-charcoal"
+              className="w-full bg-tech-gray border-2 border-tech-baby-blue/30 rounded-2xl p-8 tech-shadow smooth-transition hover:border-tech-baby-blue hover:shadow-glow"
             >
               <div className="flex items-center justify-center gap-4">
-                <MessageCircle className="w-12 h-12 text-luxury-charcoal" />
+                <div className="w-16 h-16 bg-gradient-blue rounded-2xl flex items-center justify-center animate-pulse">
+                  <MessageCircle className="w-8 h-8 text-tech-white" />
+                </div>
                 <div className="text-left">
-                  <h3 className="text-2xl font-bold text-luxury-charcoal mb-2">
+                  <h3 className="text-2xl font-bold text-tech-white mb-2">
                     Try Our AI Assistant
                   </h3>
-                  <p className="text-luxury-silver-dark">
+                  <p className="text-tech-platinum">
                     Click to ask questions about our services
                   </p>
                 </div>
