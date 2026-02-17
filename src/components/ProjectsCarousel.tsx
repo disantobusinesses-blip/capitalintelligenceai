@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
@@ -90,7 +90,7 @@ export default function ProjectsCarousel() {
                   Featured Projects
                 </h2>
                 <p className="text-muted-foreground text-lg max-w-xl">
-                  See how we've transformed businesses with intelligent systems
+                  See how we&apos;ve transformed businesses with intelligent systems
                 </p>
               </div>
               <div className="hidden md:flex items-center gap-2">

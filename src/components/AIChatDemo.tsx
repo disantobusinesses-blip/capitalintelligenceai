@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Send, Bot, X, MessageSquare } from "lucide-react";
+import { Send, Bot } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 interface Message {
@@ -12,7 +12,6 @@ interface Message {
 }
 
 export default function AIChatDemo() {
-  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
