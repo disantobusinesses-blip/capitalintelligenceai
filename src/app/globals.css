@@ -3,15 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --accent: #a78bfa;
-  --accent-hover: #c4b5fd;
-  --muted: #18181b;
-  --muted-foreground: #a1a1aa;
-  --border: #27272a;
-  --card: #111113;
-  --card-foreground: #fafafa;
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --accent: #c0c0c0;
+  --accent-hover: #d4d4d4;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --border: #e5e5e5;
+  --card: #fafafa;
+  --card-foreground: #1a1a1a;
+  --silver: #c0c0c0;
+  --silver-light: #e8e8e8;
+  --silver-dark: #a8a8a8;
 }
 
 * {
@@ -34,30 +37,30 @@ body {
   height: 200%;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.03;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   animation: grain 8s steps(10) infinite;
 }
 
 /* Premium gradient backgrounds */
 .gradient-radial {
-  background: radial-gradient(ellipse at 50% 0%, rgba(167, 139, 250, 0.08) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(192, 192, 192, 0.08) 0%, transparent 60%);
 }
 
 .gradient-radial-bottom {
-  background: radial-gradient(ellipse at 50% 100%, rgba(167, 139, 250, 0.06) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 100%, rgba(192, 192, 192, 0.06) 0%, transparent 60%);
 }
 
 /* Glass card effect */
 .glass-card {
-  background: rgba(17, 17, 19, 0.6);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(192, 192, 192, 0.3);
 }
 
 .glass-card:hover {
-  border-color: rgba(167, 139, 250, 0.2);
-  background: rgba(17, 17, 19, 0.8);
+  border-color: rgba(192, 192, 192, 0.5);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 /* Custom scrollbar */
@@ -68,17 +71,17 @@ body {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #d4d4d4;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #c0c0c0;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(167, 139, 250, 0.3);
-  color: #fff;
+  background: rgba(192, 192, 192, 0.3);
+  color: #1a1a1a;
 }
 
 @layer utilities {

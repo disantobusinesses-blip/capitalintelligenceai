@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import HeaderNew from "@/components/HeaderNew";
+import FooterNew from "@/components/FooterNew";
 import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
@@ -17,9 +17,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Capital Intelligence Group | Premium Web Development Studio",
+  title: "Intelligent Systems | Capital Intelligence Group",
   description:
-    "Premium web development studio crafting high-end, AI-integrated digital experiences that convert and scale your business.",
+    "We integrate intelligent systems into businesses to streamline operations and increase efficiency. Systems That Think. Businesses That Scale.",
 };
 
 export default function RootLayout({
@@ -33,9 +33,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="grain-overlay" />
-        <Header />
+        <HeaderNew />
         <main className="min-h-screen">{children}</main>
-        <Footer />
+        <FooterNew />
         <Toaster position="bottom-right" />
       </body>
     </html>

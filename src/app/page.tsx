@@ -1,19 +1,17 @@
-import Hero from "@/components/Hero";
-import TierCards from "@/components/TierCards";
-import AboutSection from "@/components/AboutSection";
-import ProjectsPreview from "@/components/ProjectsPreview";
-import AddOnsSection from "@/components/AddOnsSection";
-import CTASection from "@/components/CTASection";
+import HeroNew from "@/components/HeroNew";
+import PackageSection from "@/components/PackageSection";
+import ProjectsCarousel from "@/components/ProjectsCarousel";
+import AIChatDemo from "@/components/AIChatDemo";
+import OnboardingSection from "@/components/OnboardingSection";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <TierCards />
-      <AboutSection />
-      <ProjectsPreview />
-      <AddOnsSection />
-      <CTASection />
+      <HeroNew />
+      <PackageSection />
+      <ProjectsCarousel />
+      <AIChatDemo />
+      <OnboardingSection />
     </>
   );
 }

@@ -18,6 +18,9 @@ const config: Config = {
         border: "var(--border)",
         card: "var(--card)",
         "card-foreground": "var(--card-foreground)",
+        silver: "var(--silver)",
+        "silver-light": "var(--silver-light)",
+        "silver-dark": "var(--silver-dark)",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
