@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
+import Image from 'next/image'
 
 const projects = [
   {
@@ -9,7 +10,7 @@ const projects = [
     title: 'EAY Electrical',
     industry: 'Electrical Services',
     description: 'Professional electrical services website for residential and commercial clients across Australia. Modern design with service showcase and contact integration.',
-    image: '/api/placeholder/600/400',
+    image: '/projects/eay-electrical.svg',
     url: 'https://www.eayelectrical.com.au',
   },
   {
@@ -17,35 +18,35 @@ const projects = [
     title: 'E-Commerce Platform',
     industry: 'Retail',
     description: 'Complete digital transformation with AI-powered inventory management and customer analytics.',
-    image: '/api/placeholder/600/400',
+    image: null, // No image - will show fallback
   },
   {
     id: 3,
     title: 'Healthcare Portal',
     industry: 'Healthcare',
     description: 'Secure patient management system with intelligent appointment scheduling and telemedicine integration.',
-    image: '/api/placeholder/600/400',
+    image: null, // No image - will show fallback
   },
   {
     id: 4,
     title: 'FinTech Dashboard',
     industry: 'Finance',
     description: 'Real-time financial analytics platform with automated reporting and predictive insights.',
-    image: '/api/placeholder/600/400',
+    image: null, // No image - will show fallback
   },
   {
     id: 5,
     title: 'Property Management',
     industry: 'Real Estate',
     description: 'Intelligent property listing and tenant management system with automated workflows.',
-    image: '/api/placeholder/600/400',
+    image: null, // No image - will show fallback
   },
   {
     id: 6,
     title: 'Manufacturing ERP',
     industry: 'Manufacturing',
     description: 'End-to-end production tracking with AI-driven quality control and supply chain optimization.',
-    image: '/api/placeholder/600/400',
+    image: null, // No image - will show fallback
   },
 ]
 
@@ -109,9 +110,25 @@ export default function ProjectsCarousel() {
                 <div key={project.id} className="min-w-full px-4">
                   <div className="max-w-4xl mx-auto bg-tech-black border border-tech-baby-blue/20 rounded-2xl overflow-hidden tech-shadow smooth-transition hover:border-tech-baby-blue hover:shadow-glow">
                     {/* Project Image */}
-                    <div className="aspect-video bg-gradient-tech flex items-center justify-center text-tech-white text-2xl font-semibold relative overflow-hidden">
-                      <div className="absolute inset-0 bg-tech-baby-blue/10" />
-                      <span className="relative z-10">{project.title}</span>
+                    <div className="aspect-video bg-gradient-tech relative overflow-hidden">
+                      {project.image && (
+                        <>
+                          <Image
+                            src={project.image}
+                            alt={project.title}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                          {/* Dark overlay for better text readability when image is present */}
+                          <div className="absolute inset-0 bg-tech-black/40" />
+                        </>
+                      )}
+                      {/* Title overlay (always visible, but more prominent when no image) */}
+                      <div className={`absolute inset-0 flex items-center justify-center text-tech-white text-2xl font-semibold ${!project.image ? 'bg-gradient-tech' : ''}`}>
+                        {!project.image && <div className="absolute inset-0 bg-tech-baby-blue/10" />}
+                        <span className="relative z-10">{project.title}</span>
+                      </div>
                       {/* Animated lines */}
                       <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-tech-baby-blue to-transparent animate-pulse" />
                     </div>
