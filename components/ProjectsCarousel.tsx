@@ -6,34 +6,42 @@ import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 const projects = [
   {
     id: 1,
+    title: 'EAY Electrical',
+    industry: 'Electrical Services',
+    description: 'Professional electrical services website for residential and commercial clients across Australia. Modern design with service showcase and contact integration.',
+    image: '/api/placeholder/600/400',
+    url: 'https://www.eayelectrical.com.au',
+  },
+  {
+    id: 2,
     title: 'E-Commerce Platform',
     industry: 'Retail',
     description: 'Complete digital transformation with AI-powered inventory management and customer analytics.',
     image: '/api/placeholder/600/400',
   },
   {
-    id: 2,
+    id: 3,
     title: 'Healthcare Portal',
     industry: 'Healthcare',
     description: 'Secure patient management system with intelligent appointment scheduling and telemedicine integration.',
     image: '/api/placeholder/600/400',
   },
   {
-    id: 3,
+    id: 4,
     title: 'FinTech Dashboard',
     industry: 'Finance',
     description: 'Real-time financial analytics platform with automated reporting and predictive insights.',
     image: '/api/placeholder/600/400',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Property Management',
     industry: 'Real Estate',
     description: 'Intelligent property listing and tenant management system with automated workflows.',
     image: '/api/placeholder/600/400',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Manufacturing ERP',
     industry: 'Manufacturing',
     description: 'End-to-end production tracking with AI-driven quality control and supply chain optimization.',
@@ -121,10 +129,22 @@ export default function ProjectsCarousel() {
                       <p className="text-tech-platinum mb-6 leading-relaxed">
                         {project.description}
                       </p>
-                      <button className="inline-flex items-center gap-2 px-6 py-3 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-sm">
-                        View Project
-                        <ExternalLink className="w-4 h-4" />
-                      </button>
+                      {project.url ? (
+                        <a 
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-sm"
+                        >
+                          View Project
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      ) : (
+                        <button className="inline-flex items-center gap-2 px-6 py-3 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-sm">
+                          View Project
+                          <ExternalLink className="w-4 h-4" />
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
