@@ -10,7 +10,7 @@ const projects = [
     title: 'EAY Electrical',
     industry: 'Electrical Services',
     description: 'Professional electrical services website for residential and commercial clients across Australia. Modern design with service showcase and contact integration.',
-    image: '/projects/eay-electrical.svg',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EAY%20site-7S7pX8I1Dmy6mqs88OqeeR0avSRFuH.jpg',
     url: 'https://www.eayelectrical.com.au',
   },
   {
