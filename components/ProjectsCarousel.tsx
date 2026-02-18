@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
-import Image from 'next/image'
 
 const projects = [
   {
@@ -113,15 +112,14 @@ export default function ProjectsCarousel() {
                     <div className="aspect-video bg-gradient-tech relative overflow-hidden">
                       {project.image && (
                         <>
-                          <Image
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
                             src={project.image}
                             alt={project.title}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="absolute inset-0 w-full h-full object-cover object-top"
                           />
                           {/* Dark overlay for better text readability when image is present */}
-                          <div className="absolute inset-0 bg-tech-black/40" />
+                          <div className="absolute inset-0 bg-tech-black/20" />
                         </>
                       )}
                       {/* Title overlay (always visible, but more prominent when no image) */}
