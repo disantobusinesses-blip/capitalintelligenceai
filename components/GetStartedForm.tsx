@@ -14,6 +14,7 @@ type FormData = {
   colorPreference: string
   features: string[]
   monthlyPlan: string
+  aiAutomationRequest: string
   contactName: string
   contactEmail: string
   contactPhone: string
@@ -30,6 +31,7 @@ const initialFormData: FormData = {
   colorPreference: '',
   features: [],
   monthlyPlan: '',
+  aiAutomationRequest: '',
   contactName: '',
   contactEmail: '',
   contactPhone: '',
@@ -72,24 +74,17 @@ const monthlyPlans = [
   {
     id: 'care',
     name: 'Website Care',
-    price: '$169',
-    description: 'Essential maintenance and updates',
-    features: ['Monthly maintenance', 'Security updates', 'Content updates (5/month)', 'Email support'],
+    price: '$99 AUD',
+    description: 'Website hosting and maintenance',
+    features: ['Website Hosting', 'Website Maintenance', 'Website changes may require additional fees depending on size of change'],
   },
   {
-    id: 'revenue',
-    name: 'Revenue Optimisation',
-    price: '$279',
-    description: 'Growth-focused with SEO & analytics',
-    recommended: true,
-    features: ['Everything in Website Care', 'Conversion optimization', 'SEO enhancements', 'Priority support'],
-  },
-  {
-    id: 'team',
-    name: 'Done-For-You Digital Team',
-    price: '$449',
-    description: 'Complete digital management',
-    features: ['Everything in Revenue Optimisation', 'Dedicated strategist', 'Custom development', '24/7 support'],
+    id: 'ai-integration',
+    name: 'AI Systems Integration',
+    price: 'Custom',
+    description: 'Automate your business processes',
+    features: ['Custom automation solutions', 'AI-powered systems', 'Tailored to your needs'],
+    isCustom: true,
   },
 ]
 
@@ -110,6 +105,8 @@ export default function GetStartedForm({
     service: preselectedService || null,
   })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   if (!isOpen) return null
 
@@ -121,14 +118,39 @@ export default function GetStartedForm({
     if (step > 1) setStep(step - 1)
   }
 
-  const handleSubmit = () => {
-    setSubmitted(true)
+  const handleSubmit = async () => {
+    setSubmitting(true)
+    setSubmitError(null)
+
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        setSubmitted(true)
+      } else {
+        setSubmitError(result.message || 'Failed to submit form. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitError('An error occurred. Please try again or contact us directly at sales@intelligentaisystem.com')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const handleClose = () => {
     setStep(1)
     setFormData({ ...initialFormData })
     setSubmitted(false)
+    setSubmitError(null)
     onClose()
   }
 
@@ -152,7 +174,11 @@ export default function GetStartedForm({
       case 4:
         return formData.features.length > 0
       case 5:
-        return formData.monthlyPlan !== ''
+        if (formData.monthlyPlan === '') return false
+        if (formData.monthlyPlan === 'ai-integration') {
+          return formData.aiAutomationRequest.trim() !== ''
+        }
+        return true
       case 6:
         return formData.contactName.trim() !== '' && formData.contactEmail.trim() !== ''
       default:
@@ -457,10 +483,10 @@ export default function GetStartedForm({
                         <span className="text-tech-baby-blue font-bold">{plan.price}/mo</span>
                       </div>
                       <p className="text-sm text-tech-platinum mb-2">{plan.description}</p>
-                      <ul className="grid grid-cols-2 gap-1">
+                      <ul className="grid gap-1">
                         {plan.features.map((f, i) => (
-                          <li key={i} className="flex items-center gap-1.5 text-xs text-tech-platinum">
-                            <div className="w-1 h-1 bg-tech-baby-blue rounded-full flex-shrink-0" />
+                          <li key={i} className="flex items-start gap-1.5 text-xs text-tech-platinum">
+                            <div className="w-1 h-1 bg-tech-baby-blue rounded-full flex-shrink-0 mt-1.5" />
                             {f}
                           </li>
                         ))}
@@ -472,6 +498,39 @@ export default function GetStartedForm({
                   </button>
                 ))}
               </div>
+
+              {/* AI Integration custom input */}
+              {formData.monthlyPlan === 'ai-integration' && (
+                <div className="mt-6 p-6 bg-tech-black border border-tech-baby-blue/30 rounded-xl">
+                  <h4 className="text-lg font-bold text-tech-white mb-2">What would you like to automate?</h4>
+                  <p className="text-sm text-tech-platinum mb-4">
+                    Tell us about your automation needs. Here are some suggestions:
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, aiAutomationRequest: 'Integrated 24/7 AI customer support' })}
+                      className="px-3 py-1.5 text-xs bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-baby-blue rounded-lg smooth-transition hover:bg-tech-baby-blue/20"
+                    >
+                      24/7 AI Customer Support
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, aiAutomationRequest: 'Automated content posting on social media' })}
+                      className="px-3 py-1.5 text-xs bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-baby-blue rounded-lg smooth-transition hover:bg-tech-baby-blue/20"
+                    >
+                      Automated Social Media Posting
+                    </button>
+                  </div>
+                  <textarea
+                    value={formData.aiAutomationRequest}
+                    onChange={(e) => setFormData({ ...formData, aiAutomationRequest: e.target.value })}
+                    placeholder="Describe what you want to automate..."
+                    rows={4}
+                    className="w-full px-4 py-3 bg-tech-gray border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none"
+                  />
+                </div>
+              )}
             </div>
           )}
 
@@ -539,33 +598,41 @@ export default function GetStartedForm({
         </div>
 
         {/* Footer Navigation */}
-        <div className="flex items-center justify-between p-6 border-t border-tech-baby-blue/20">
-          <button
-            onClick={step === 1 ? handleClose : handleBack}
-            className="flex items-center gap-2 px-5 py-2.5 border border-tech-baby-blue/30 text-tech-platinum rounded-lg font-medium smooth-transition hover:border-tech-baby-blue hover:text-tech-white"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            {step === 1 ? 'Cancel' : 'Back'}
-          </button>
-          {step < TOTAL_STEPS ? (
-            <button
-              onClick={handleNext}
-              disabled={!canProceed()}
-              className="flex items-center gap-2 px-6 py-2.5 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              Next
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          ) : (
-            <button
-              onClick={handleSubmit}
-              disabled={!canProceed()}
-              className="flex items-center gap-2 px-6 py-2.5 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              Submit
-              <Check className="w-4 h-4" />
-            </button>
+        <div className="p-6 border-t border-tech-baby-blue/20">
+          {submitError && (
+            <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
+              {submitError}
+            </div>
           )}
+          <div className="flex items-center justify-between">
+            <button
+              onClick={step === 1 ? handleClose : handleBack}
+              disabled={submitting}
+              className="flex items-center gap-2 px-5 py-2.5 border border-tech-baby-blue/30 text-tech-platinum rounded-lg font-medium smooth-transition hover:border-tech-baby-blue hover:text-tech-white disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              {step === 1 ? 'Cancel' : 'Back'}
+            </button>
+            {step < TOTAL_STEPS ? (
+              <button
+                onClick={handleNext}
+                disabled={!canProceed()}
+                className="flex items-center gap-2 px-6 py-2.5 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                Next
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            ) : (
+              <button
+                onClick={handleSubmit}
+                disabled={!canProceed() || submitting}
+                className="flex items-center gap-2 px-6 py-2.5 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {submitting ? 'Submitting...' : 'Submit'}
+                <Check className="w-4 h-4" />
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
