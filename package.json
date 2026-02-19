@@ -16,6 +16,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "packageManager": "pnpm@9.15.9",
   "bugs": {
     "url": "https://github.com/disantobusinesses-blip/capitalintelligenceai/issues"
   },
