@@ -504,14 +504,14 @@ export default function GetStartedForm({
                   <div className="flex flex-wrap gap-2 mb-4">
                     <button
                       type="button"
-                      onClick={() => setFormData({ ...formData, aiAutomationRequest: 'Integrated 24/7 AI customer support' })}
+                      onClick={() => setFormData({ ...formData, aiAutomationRequest: '24/7 AI Customer Support' })}
                       className="px-3 py-1.5 text-xs bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-baby-blue rounded-lg smooth-transition hover:bg-tech-baby-blue/20"
                     >
                       24/7 AI Customer Support
                     </button>
                     <button
                       type="button"
-                      onClick={() => setFormData({ ...formData, aiAutomationRequest: 'Automated content posting on social media' })}
+                      onClick={() => setFormData({ ...formData, aiAutomationRequest: 'Automated Social Media Posting' })}
                       className="px-3 py-1.5 text-xs bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-baby-blue rounded-lg smooth-transition hover:bg-tech-baby-blue/20"
                     >
                       Automated Social Media Posting

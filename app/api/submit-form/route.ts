@@ -1,8 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+type ServiceType = 'landing-page' | 'full-package'
+
+interface FormData {
+  service: ServiceType | null
+  businessName: string
+  industry: string
+  description: string
+  designStyle: string
+  colorPreference: string
+  features: string[]
+  monthlyPlan: string
+  aiAutomationRequest: string
+  contactName: string
+  contactEmail: string
+  contactPhone: string
+  hasLogo: boolean
+  additionalNotes: string
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const formData = await request.json()
+    const formData: FormData = await request.json()
 
     // Format the email content
     const emailContent = formatEmailContent(formData)
@@ -13,12 +32,14 @@ export async function POST(request: NextRequest) {
     // - AWS SES
     // - Nodemailer with SMTP
     
-    // For now, we'll log the email and return success
+    // For now, we'll log minimal info and return success
     // The client will still show a success message
     console.log('Form submission received:', {
       to: 'sales@intelligentaisystem.com',
-      subject: `New ${formData.service === 'landing-page' ? 'Landing Page' : 'Full Package'} Inquiry - ${formData.businessName}`,
-      content: emailContent,
+      from: formData.contactEmail,
+      businessName: formData.businessName,
+      service: formData.service,
+      monthlyPlan: formData.monthlyPlan,
     })
 
     // Simulate email sending
@@ -44,7 +65,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function formatEmailContent(formData: any): string {
+function formatEmailContent(formData: FormData): string {
   const {
     service,
     businessName,
