@@ -469,11 +469,6 @@ export default function GetStartedForm({
                         : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
                     }`}
                   >
-                    {plan.recommended && (
-                      <span className="absolute -top-3 right-4 px-3 py-0.5 bg-tech-baby-blue text-tech-black text-xs font-bold rounded-full">
-                        Recommended
-                      </span>
-                    )}
                     <div className="w-12 h-12 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <CreditCard className="w-6 h-6 text-tech-baby-blue" />
                     </div>

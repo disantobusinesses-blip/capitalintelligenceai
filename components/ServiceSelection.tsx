@@ -66,7 +66,7 @@ export default function ServiceSelection() {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {/* Glow effect on hover */}
-                  <div className="absolute inset-0 bg-gradient-blue opacity-0 group-hover:opacity-5 rounded-2xl smooth-transition" />
+                  <div className="absolute inset-0 bg-gradient-blue opacity-0 group-hover:opacity-5 rounded-2xl smooth-transition pointer-events-none" />
                   
                   {/* Icon */}
                   <div className="relative mb-6">
