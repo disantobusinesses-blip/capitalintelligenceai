@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { Resend } from 'resend'
 
 type ServiceType = 'landing-page' | 'full-package'
 
@@ -19,43 +20,78 @@ interface FormData {
   additionalNotes: string
 }
 
+// Lazy initialization of Resend client
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    return null
+  }
+  return new Resend(apiKey)
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData: FormData = await request.json()
 
     // Format the email content
     const emailContent = formatEmailContent(formData)
+    const emailSubject = `New ${formData.service === 'landing-page' ? 'Landing Page' : 'Full Package'} Inquiry - ${formData.businessName}`
 
-    // In a production environment, you would use an email service like:
-    // - SendGrid
-    // - Resend
-    // - AWS SES
-    // - Nodemailer with SMTP
+    // Check if Resend is configured
+    const resend = getResendClient()
     
-    // For now, we'll log minimal info and return success
-    // The client will still show a success message
-    console.log('Form submission received:', {
-      to: 'sales@intelligentaisystem.com',
-      from: formData.contactEmail,
-      businessName: formData.businessName,
-      service: formData.service,
-      monthlyPlan: formData.monthlyPlan,
-    })
+    if (!resend) {
+      console.warn('RESEND_API_KEY not configured. Email will not be sent.')
+      console.log('Form submission received:', {
+        to: process.env.EMAIL_TO || 'sales@intelligentaisystem.com',
+        from: formData.contactEmail,
+        businessName: formData.businessName,
+        service: formData.service,
+        monthlyPlan: formData.monthlyPlan,
+      })
+      
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Form submitted successfully (email disabled - no API key)' 
+      })
+    }
 
-    // Simulate email sending
-    // TODO: Integrate with email service provider
-    // Example with Resend:
-    // const { data, error } = await resend.emails.send({
-    //   from: 'onboarding@intelligentaisystem.com',
-    //   to: 'sales@intelligentaisystem.com',
-    //   subject: `New ${formData.service === 'landing-page' ? 'Landing Page' : 'Full Package'} Inquiry - ${formData.businessName}`,
-    //   html: emailContent,
-    // })
+    // Send email using Resend
+    try {
+      const { data, error } = await resend.emails.send({
+        from: process.env.EMAIL_FROM || 'onboarding@intelligentaisystem.com',
+        to: process.env.EMAIL_TO || 'sales@intelligentaisystem.com',
+        subject: emailSubject,
+        html: emailContent,
+        replyTo: formData.contactEmail,
+      })
 
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Form submitted successfully' 
-    })
+      if (error) {
+        console.error('Resend API error:', error)
+        return NextResponse.json(
+          { success: false, message: 'Failed to send email. Please try again or contact us directly.' },
+          { status: 500 }
+        )
+      }
+
+      console.log('Email sent successfully:', {
+        emailId: data?.id,
+        to: process.env.EMAIL_TO,
+        from: formData.contactEmail,
+        businessName: formData.businessName,
+      })
+
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Form submitted successfully. We will contact you within 24 hours.' 
+      })
+    } catch (emailError) {
+      console.error('Error sending email:', emailError)
+      return NextResponse.json(
+        { success: false, message: 'Failed to send email. Please try again or contact us directly at sales@intelligentaisystem.com' },
+        { status: 500 }
+      )
+    }
   } catch (error) {
     console.error('Error processing form submission:', error)
     return NextResponse.json(

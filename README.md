@@ -50,12 +50,17 @@ Premium business landing page showcasing intelligent system integration services
 ### Prerequisites
 - Node.js 18+ 
 - npm or yarn
+- Resend API key (for email functionality - see [RESEND_SETUP.md](RESEND_SETUP.md))
 
 ### Installation
 
 ```bash
 # Install dependencies
 npm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local and add your Resend API key
 
 # Run development server
 npm run dev
@@ -68,6 +73,16 @@ npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Email Setup
+
+The contact form uses Resend for email delivery. To enable email functionality:
+
+1. Sign up for a free account at [Resend](https://resend.com)
+2. Get your API key
+3. Follow the detailed setup guide in [RESEND_SETUP.md](RESEND_SETUP.md)
+
+**Note**: The form will work without email configuration (submissions will be logged instead).
 
 ## Project Structure
 
