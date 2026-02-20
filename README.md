@@ -50,7 +50,7 @@ Premium business landing page showcasing intelligent system integration services
 ### Prerequisites
 - Node.js 18+ 
 - npm or yarn
-- Resend API key (for email functionality - see [RESEND_SETUP.md](RESEND_SETUP.md))
+- n8n webhook URL (for form submission handling)
 
 ### Installation
 
@@ -60,7 +60,7 @@ npm install
 
 # Set up environment variables
 cp .env.example .env.local
-# Edit .env.local and add your Resend API key
+# Edit .env.local and add your n8n webhook URL
 
 # Run development server
 npm run dev
@@ -74,15 +74,15 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Email Setup
+### Webhook Setup
 
-The contact form uses Resend for email delivery. To enable email functionality:
+The contact form sends submissions to an n8n webhook for automation:
 
-1. Sign up for a free account at [Resend](https://resend.com)
-2. Get your API key
-3. Follow the detailed setup guide in [RESEND_SETUP.md](RESEND_SETUP.md)
+1. Set up an n8n workflow with a Webhook trigger node
+2. Copy the webhook URL
+3. Add it to your `.env.local` as `N8N_WEBHOOK_URL`
 
-**Note**: The form will work without email configuration (submissions will be logged instead).
+**Note**: The `N8N_WEBHOOK_URL` environment variable must be configured for form submissions to work.
 
 ## Project Structure
 
