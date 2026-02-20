@@ -123,7 +123,7 @@ export default function GetStartedForm({
     setSubmitError(null)
 
     try {
-      const response = await fetch('/api/submit-form', {
+      const response = await fetch('/api/lead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -133,7 +133,7 @@ export default function GetStartedForm({
 
       const result = await response.json()
 
-      if (response.ok && result.success) {
+      if (response.ok && result.ok) {
         setSubmitted(true)
       } else {
         setSubmitError(result.message || 'Failed to submit form. Please try again.')

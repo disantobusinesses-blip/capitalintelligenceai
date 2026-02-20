@@ -50,7 +50,7 @@ Premium business landing page showcasing intelligent system integration services
 ### Prerequisites
 - Node.js 18+ 
 - npm or yarn
-- n8n webhook URL (for form submission handling)
+- Google Workspace SMTP credentials (for form email delivery)
 
 ### Installation
 
@@ -60,7 +60,7 @@ npm install
 
 # Set up environment variables
 cp .env.example .env.local
-# Edit .env.local and add your n8n webhook URL
+# Edit .env.local and add your SMTP credentials
 
 # Run development server
 npm run dev
@@ -74,15 +74,14 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Webhook Setup
+### Email Setup
 
-The contact form sends submissions to an n8n webhook for automation:
+The contact form sends emails via Google Workspace SMTP:
 
-1. Set up an n8n workflow with a Webhook trigger node
-2. Copy the webhook URL
-3. Add it to your `.env.local` as `N8N_WEBHOOK_URL`
+1. Generate a Google App Password for your Workspace account
+2. Add SMTP credentials to `.env.local` (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`)
 
-**Note**: The `N8N_WEBHOOK_URL` environment variable must be configured for form submissions to work.
+Emails are delivered to `sales@intelligentaisystem.com` with the user's email set as Reply-To.
 
 ## Project Structure
 
