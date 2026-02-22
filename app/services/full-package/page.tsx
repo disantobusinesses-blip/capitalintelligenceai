@@ -57,9 +57,9 @@ export default function FullPackageService() {
   ]
 
   return (
-    <div className="min-h-screen bg-tech-black">
+    <div className="min-h-screen">
       {/* Header */}
-      <header className="border-b border-tech-baby-blue/20 py-6 px-6">
+      <header className="border-b border-tech-baby-blue/20 py-6 px-6 bg-tech-black/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link
             href="/"
@@ -81,8 +81,6 @@ export default function FullPackageService() {
 
       {/* Hero Section */}
       <section className="py-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 animated-grid opacity-20" />
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-10" />
         
         <div className="max-w-4xl mx-auto text-center relative">
           <div className="inline-block px-4 py-2 bg-tech-baby-blue/10 border border-tech-baby-blue/30 rounded-full text-tech-baby-blue font-semibold mb-6">
@@ -149,7 +147,7 @@ export default function FullPackageService() {
       </section>
 
       {/* Setup Fee */}
-      <section className="py-20 px-6 bg-tech-gray">
+      <section className="py-20 px-6 bg-tech-gray/80 backdrop-blur-sm">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-tech-white mb-6">
             Website Setup & Development
@@ -197,7 +195,6 @@ export default function FullPackageService() {
 
       {/* CTA Section */}
       <section className="py-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 animated-grid opacity-10" />
         <div className="max-w-3xl mx-auto text-center relative">
           <h2 className="text-4xl font-bold text-tech-white mb-6">
             Ready to Transform Your Digital Presence?

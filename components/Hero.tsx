@@ -4,53 +4,38 @@ import { ArrowRight, Zap } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="relative h-[60vh] flex items-center justify-center px-6 overflow-hidden bg-tech-black">
-      {/* Animated grid background */}
-      <div className="absolute inset-0 animated-grid opacity-20" />
-      
-      {/* Floating particles effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-tech-baby-blue rounded-full animate-float opacity-60" />
-        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-tech-baby-blue rounded-full animate-float opacity-40" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-tech-baby-blue rounded-full animate-float opacity-50" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-tech-baby-blue rounded-full animate-float opacity-70" style={{ animationDelay: '1.5s' }} />
-      </div>
-      
-      {/* Glow effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-10 animate-pulse-slow" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-10 animate-pulse-slow" style={{ animationDelay: '2s' }} />
-      
-      <div className="relative max-w-6xl mx-auto text-center space-y-6">
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      <div className="relative max-w-6xl mx-auto text-center space-y-6 px-6">
         {/* Logo/Brand Icon with glow */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-6 animate-fade-in-down">
           <div className="w-16 h-16 rounded-2xl bg-gradient-blue flex items-center justify-center shadow-glow smooth-transition hover:scale-110 animate-glow">
             <Zap className="w-8 h-8 text-tech-white" strokeWidth={2.5} />
           </div>
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-tech-white leading-tight">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-tech-white leading-tight animate-fade-in-up animation-delay-200">
           Intelligent Systems
         </h1>
-        
+
         {/* Subheadline */}
-        <p className="text-lg md:text-xl text-tech-platinum font-medium">
+        <p className="text-lg md:text-xl text-tech-platinum font-medium animate-fade-in-up animation-delay-400">
           Capital Intelligence Group
         </p>
 
         {/* Slogan with gradient */}
-        <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-tech-white via-tech-baby-blue to-tech-white bg-clip-text text-transparent max-w-4xl mx-auto leading-relaxed">
+        <p className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-tech-white via-tech-baby-blue to-tech-white bg-clip-text text-transparent max-w-4xl mx-auto leading-relaxed animate-fade-in-up animation-delay-600">
           Systems That Think. Businesses That Scale.
         </p>
 
         {/* CTA Button */}
-        <div className="pt-6">
+        <div className="pt-6 animate-fade-in-up animation-delay-800">
           <button
             onClick={() => {
-              const element = document.getElementById('services');
-              element?.scrollIntoView({ behavior: 'smooth' });
+              const element = document.getElementById('services')
+              element?.scrollIntoView({ behavior: 'smooth' })
             }}
-            className="group px-10 py-4 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-lg flex items-center gap-2 mx-auto shadow-glow smooth-transition hover:bg-tech-baby-blue-light hover:scale-105 hover:shadow-glow-lg"
+            className="group px-10 py-4 bg-tech-baby-blue text-tech-black rounded-full font-semibold text-lg inline-flex items-center gap-2 shadow-glow smooth-transition hover:bg-tech-baby-blue-light hover:scale-105 hover:shadow-glow-lg"
           >
             Explore Services
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

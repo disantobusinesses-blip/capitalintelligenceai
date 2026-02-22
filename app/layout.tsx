@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import ShaderBackground from '@/components/ShaderBackground'
 
 export const metadata: Metadata = {
   title: 'Intelligent Systems - Capital Intelligence Group',
@@ -16,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ShaderBackground />
+        {children}
+      </body>
     </html>
   )
 }

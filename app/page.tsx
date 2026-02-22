@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-tech-black">
+    <main className="relative min-h-screen">
       <Hero />
       <ServiceSelection />
       <ProjectsCarousel />

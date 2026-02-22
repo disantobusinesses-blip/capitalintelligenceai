@@ -50,7 +50,7 @@ Premium business landing page showcasing intelligent system integration services
 ### Prerequisites
 - Node.js 18+ 
 - npm or yarn
-- Resend API key (for email functionality - see [RESEND_SETUP.md](RESEND_SETUP.md))
+- Google Workspace SMTP credentials (for form email delivery)
 
 ### Installation
 
@@ -60,7 +60,7 @@ npm install
 
 # Set up environment variables
 cp .env.example .env.local
-# Edit .env.local and add your Resend API key
+# Edit .env.local and add your SMTP credentials
 
 # Run development server
 npm run dev
@@ -76,13 +76,12 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Email Setup
 
-The contact form uses Resend for email delivery. To enable email functionality:
+The contact form sends emails via Google Workspace SMTP:
 
-1. Sign up for a free account at [Resend](https://resend.com)
-2. Get your API key
-3. Follow the detailed setup guide in [RESEND_SETUP.md](RESEND_SETUP.md)
+1. Generate a Google App Password for your Workspace account
+2. Add SMTP credentials to `.env.local` (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`)
 
-**Note**: The form will work without email configuration (submissions will be logged instead).
+Emails are delivered to `sales@intelligentaisystem.com` with the user's email set as Reply-To.
 
 ## Project Structure
 
