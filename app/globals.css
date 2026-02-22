@@ -8,7 +8,7 @@
   }
   
   body {
-    @apply bg-tech-black text-tech-white antialiased;
+    @apply bg-transparent text-tech-white antialiased;
   }
 }
 

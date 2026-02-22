@@ -36,10 +36,7 @@ export default function ServiceSelection() {
 
   return (
     <>
-      <section id="services" className="relative min-h-screen py-20 px-6 overflow-hidden bg-tech-black/80 backdrop-blur-sm">
-        {/* Animated grid background */}
-        <div className="absolute inset-0 animated-grid opacity-30" />
-        
+      <section id="services" className="relative min-h-screen py-20 px-6 overflow-hidden">
         {/* Glow effects */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-10 animate-pulse-slow" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-10 animate-pulse-slow" style={{ animationDelay: '2s' }} />

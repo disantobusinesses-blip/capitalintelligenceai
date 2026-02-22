@@ -7,7 +7,7 @@ export default function TermsAndConditions() {
   return (
     <main className="min-h-screen">
       {/* Header */}
-      <div className="bg-tech-black/80 backdrop-blur-sm border-b border-tech-baby-blue/20">
+      <div className="border-b border-tech-baby-blue/20">
         <div className="max-w-4xl mx-auto px-6 py-8">
           <Link
             href="/"

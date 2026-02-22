@@ -88,7 +88,7 @@ export default function AIChatDemo() {
   }
 
   return (
-    <section className="py-24 px-6 bg-tech-black/80 backdrop-blur-sm relative overflow-hidden" id="chat">
+    <section className="py-24 px-6 relative overflow-hidden" id="chat">
       {/* Background effects */}
       <div className="absolute inset-0 tech-grid opacity-10" />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-5" />
