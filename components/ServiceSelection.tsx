@@ -36,7 +36,7 @@ export default function ServiceSelection() {
 
   return (
     <>
-      <section id="services" className="relative min-h-screen py-20 px-6 overflow-hidden bg-tech-black/80 backdrop-blur-sm">
+      <section id="services" className="relative min-h-screen py-20 px-6 overflow-hidden">
         {/* Animated grid background */}
         <div className="absolute inset-0 animated-grid opacity-30" />
         

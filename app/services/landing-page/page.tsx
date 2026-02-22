@@ -46,7 +46,7 @@ export default function LandingPageService() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="border-b border-tech-baby-blue/20 py-6 px-6 bg-tech-black/80 backdrop-blur-sm">
+      <header className="border-b border-tech-baby-blue/20 py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link
             href="/"
@@ -101,7 +101,7 @@ export default function LandingPageService() {
       </section>
 
       {/* Features Grid */}
-      <section id="features" className="py-20 px-6 bg-tech-gray/80 backdrop-blur-sm">
+      <section id="features" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-tech-white text-center mb-12">
             What You'll Get
@@ -149,7 +149,7 @@ export default function LandingPageService() {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="py-20 px-6 bg-tech-gray/80 backdrop-blur-sm">
+      <section id="pricing" className="py-20 px-6">
         <div className="max-w-2xl mx-auto">
           <div className="bg-tech-black border-2 border-tech-baby-blue rounded-2xl p-8 text-center shadow-glow">
             <h2 className="text-3xl font-bold text-tech-white mb-4">

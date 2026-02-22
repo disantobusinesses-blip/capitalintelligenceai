@@ -74,7 +74,7 @@ export default function ProjectsCarousel() {
   return (
     <section 
       id="projects" 
-      className="py-24 px-6 bg-tech-gray/80 backdrop-blur-sm relative overflow-hidden"
+      className="py-24 px-6 relative overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

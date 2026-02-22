@@ -59,7 +59,7 @@ export default function FullPackageService() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="border-b border-tech-baby-blue/20 py-6 px-6 bg-tech-black/80 backdrop-blur-sm">
+      <header className="border-b border-tech-baby-blue/20 py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link
             href="/"
@@ -147,7 +147,7 @@ export default function FullPackageService() {
       </section>
 
       {/* Setup Fee */}
-      <section className="py-20 px-6 bg-tech-gray/80 backdrop-blur-sm">
+      <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-tech-white mb-6">
             Website Setup & Development

@@ -5,7 +5,7 @@ import { Zap } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-tech-black/80 backdrop-blur-sm border-t border-tech-baby-blue/20 text-tech-white py-16 px-6 relative overflow-hidden">
+    <footer className="border-t border-tech-baby-blue/20 text-tech-white py-16 px-6 relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 tech-grid opacity-5" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-5" />
