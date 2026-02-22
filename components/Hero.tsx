@@ -1,11 +1,10 @@
 'use client'
 
 import { ArrowRight, Zap } from 'lucide-react'
-import AnimatedShaderHero from '@/components/ui/animated-shader-hero'
 
 export default function Hero() {
   return (
-    <AnimatedShaderHero>
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       <div className="relative max-w-6xl mx-auto text-center space-y-6 px-6">
         {/* Logo/Brand Icon with glow */}
         <div className="flex justify-center mb-6 animate-fade-in-down">
@@ -45,11 +44,11 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-tech-baby-blue rounded-full flex justify-center pt-2">
           <div className="w-1 h-2 bg-tech-baby-blue rounded-full animate-pulse" />
         </div>
       </div>
-    </AnimatedShaderHero>
+    </section>
   )
 }
