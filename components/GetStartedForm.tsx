@@ -56,34 +56,41 @@ const colorOptions = [
 ]
 
 const featureOptions = [
-  'Contact Form',
-  'Live Chat Widget',
-  'Blog / News Section',
-  'Gallery / Portfolio',
-  'Booking / Scheduling',
-  'E-commerce / Shop',
-  'Customer Reviews',
-  'Social Media Integration',
-  'Newsletter Signup',
-  'Analytics Dashboard',
-  'Video Background',
-  'Map / Location',
+  { name: 'Contact Form', price: 'Included' },
+  { name: 'Live Chat Widget', price: '+$99 AUD' },
+  { name: 'Blog / News Section', price: '+$199 AUD' },
+  { name: 'Gallery / Portfolio', price: '+$149 AUD' },
+  { name: 'Booking / Scheduling', price: '+$199 AUD' },
+  { name: 'E-commerce / Shop', price: '+$499 AUD' },
+  { name: 'Customer Reviews', price: '+$99 AUD' },
+  { name: 'Social Media Integration', price: '+$99 AUD' },
+  { name: 'Newsletter Signup', price: '+$149 AUD' },
+  { name: 'Analytics Dashboard', price: '+$199 AUD' },
+  { name: 'Video Background', price: '+$149 AUD' },
+  { name: 'Map / Location', price: 'Included' },
 ]
 
 const monthlyPlans = [
   {
     id: 'care',
     name: 'Website Care',
-    price: '$99 AUD',
-    description: 'Website hosting and maintenance',
-    features: ['Website Hosting', 'Website Maintenance', 'Website changes may require additional fees depending on size of change'],
+    price: 'Starting at $119 AUD/month+',
+    description: 'Essential hosting and maintenance',
+    features: ['Website Hosting', 'Website Maintenance', 'Security Updates', 'Monthly Backups', 'Tech Support'],
+  },
+  {
+    id: 'seo-ai',
+    name: 'SEO & AI Visibility',
+    price: 'Starting at $149 AUD/month+',
+    description: 'Get found on Google and AI search engines',
+    features: ['Google Search Optimisation', 'AI Search Engine Indexing (ChatGPT, Gemini, Perplexity)', 'Structured Data / Schema Markup', 'Monthly SEO Reports', 'Content Strategy Guidance'],
   },
   {
     id: 'ai-integration',
     name: 'AI Systems Integration',
     price: 'Custom',
-    description: 'Automate your business processes',
-    features: ['Custom automation solutions', 'AI-powered systems', 'Tailored to your needs'],
+    description: 'Automate your business with AI',
+    features: ['24/7 AI Chat Support', 'Automated Email Responder', 'Phone Call Transcript Generator', 'Custom AI Workflows', 'Business Process Automation'],
     isCustom: true,
   },
 ]
@@ -262,9 +269,10 @@ export default function GetStartedForm({
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-tech-white mb-1">Landing Page</h4>
-                    <p className="text-sm text-tech-platinum">
+                    <p className="text-sm text-tech-platinum mb-2">
                       A single-page website to establish your online presence. Modern design, mobile responsive, and SEO optimized.
                     </p>
+                    <p className="text-sm font-semibold text-tech-baby-blue">$599 – $1,499 AUD</p>
                   </div>
                   {formData.service === 'landing-page' && (
                     <Check className="w-5 h-5 text-tech-baby-blue flex-shrink-0 mt-1" />
@@ -283,9 +291,10 @@ export default function GetStartedForm({
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-tech-white mb-1">Website + Full Package</h4>
-                    <p className="text-sm text-tech-platinum">
+                    <p className="text-sm text-tech-platinum mb-2">
                       Complete multi-page website with ongoing maintenance, digital strategy, and monthly support plan.
                     </p>
+                    <p className="text-sm font-semibold text-tech-baby-blue">Starting at $1,999+ AUD</p>
                   </div>
                   {formData.service === 'full-package' && (
                     <Check className="w-5 h-5 text-tech-baby-blue flex-shrink-0 mt-1" />
@@ -425,19 +434,19 @@ export default function GetStartedForm({
               <p className="text-tech-platinum mb-6">Select all the features you want on your website.</p>
               <div className="grid grid-cols-2 gap-3">
                 {featureOptions.map((feature) => {
-                  const isSelected = formData.features.includes(feature)
+                  const isSelected = formData.features.includes(feature.name)
                   return (
                     <button
-                      key={feature}
-                      onClick={() => toggleFeature(feature)}
-                      className={`flex items-center gap-3 p-3 rounded-lg border-2 text-left smooth-transition ${
+                      key={feature.name}
+                      onClick={() => toggleFeature(feature.name)}
+                      className={`flex items-start gap-3 p-3 rounded-lg border-2 text-left smooth-transition ${
                         isSelected
                           ? 'border-tech-baby-blue bg-tech-baby-blue/10'
                           : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
                       }`}
                     >
                       <div
-                        className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 smooth-transition ${
+                        className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 smooth-transition mt-0.5 ${
                           isSelected
                             ? 'bg-tech-baby-blue border-tech-baby-blue'
                             : 'border-tech-baby-blue/30'
@@ -445,7 +454,10 @@ export default function GetStartedForm({
                       >
                         {isSelected && <Check className="w-3 h-3 text-tech-black" />}
                       </div>
-                      <span className="text-sm text-tech-white">{feature}</span>
+                      <div>
+                        <span className="text-sm text-tech-white block">{feature.name}</span>
+                        <span className="text-xs text-tech-baby-blue font-semibold">{feature.price}</span>
+                      </div>
                     </button>
                   )
                 })}
@@ -473,9 +485,9 @@ export default function GetStartedForm({
                       <CreditCard className="w-6 h-6 text-tech-baby-blue" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-baseline gap-2 mb-1">
+                      <div className="flex items-baseline gap-2 mb-1 flex-wrap">
                         <h4 className="text-lg font-bold text-tech-white">{plan.name}</h4>
-                        <span className="text-tech-baby-blue font-bold">{plan.price}/mo</span>
+                        <span className="text-tech-baby-blue font-bold text-sm">{plan.price}</span>
                       </div>
                       <p className="text-sm text-tech-platinum mb-2">{plan.description}</p>
                       <ul className="grid gap-1">

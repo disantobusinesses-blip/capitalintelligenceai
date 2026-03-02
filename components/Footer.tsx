@@ -47,6 +47,14 @@ export default function Footer() {
                 </button>
               </li>
               <li>
+                <Link
+                  href="/pricing"
+                  className="text-tech-platinum hover:text-tech-baby-blue smooth-transition"
+                >
+                  Pricing
+                </Link>
+              </li>
+              <li>
                 <button
                   onClick={() => {
                     const element = document.getElementById('projects');
