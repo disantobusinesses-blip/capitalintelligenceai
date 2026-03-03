@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import ShaderBackground from '@/components/ShaderBackground'
+import LightRays from '@/components/LightRays'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 import BottomNav from '@/components/BottomNav'
 
@@ -39,7 +39,16 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CurrencyProvider>
-          <ShaderBackground />
+          <LightRays
+            raysColor="#89CFF0"
+            raysSpeed={0.8}
+            lightSpread={1.2}
+            rayLength={2.5}
+            fadeDistance={1.0}
+            saturation={0.8}
+            followMouse={true}
+            mouseInfluence={0.05}
+          />
           {children}
           <BottomNav />
         </CurrencyProvider>
