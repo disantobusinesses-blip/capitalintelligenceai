@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Zap } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -15,8 +15,15 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-blue flex items-center justify-center shadow-glow-sm">
-                <Zap className="w-5 h-5 text-tech-white" />
+              <div className="w-12 h-16 flex items-center justify-center flex-shrink-0">
+                <Image
+                  src="/images/is-logo.jpg"
+                  alt="Intelligent Systems logo"
+                  width={48}
+                  height={64}
+                  className="object-contain"
+                  style={{ mixBlendMode: 'screen' }}
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-tech-white">Intelligent Systems</h3>

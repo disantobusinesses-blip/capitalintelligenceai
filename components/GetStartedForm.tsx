@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowRight, ArrowLeft, X, Check, Upload, Palette, Layout, Monitor, CreditCard, Sparkles, Package } from 'lucide-react'
+import { ArrowRight, ArrowLeft, X, Check, Upload, Palette, Layout, Monitor, CreditCard, Sparkles, Package, TrendingUp } from 'lucide-react'
 
 type ServiceType = 'landing-page' | 'full-package'
 
@@ -57,17 +57,16 @@ const colorOptions = [
 
 const featureOptions = [
   { name: 'Contact Form', price: 'Included' },
-  { name: 'Live Chat Widget', price: '+$99 AUD' },
-  { name: 'Blog / News Section', price: '+$199 AUD' },
-  { name: 'Gallery / Portfolio', price: '+$149 AUD' },
-  { name: 'Booking / Scheduling', price: '+$199 AUD' },
-  { name: 'E-commerce / Shop', price: '+$499 AUD' },
-  { name: 'Customer Reviews', price: '+$99 AUD' },
-  { name: 'Social Media Integration', price: '+$99 AUD' },
-  { name: 'Newsletter Signup', price: '+$149 AUD' },
-  { name: 'Analytics Dashboard', price: '+$199 AUD' },
+  { name: '24/7 AI Chat Support', price: '$399/month (limited usage)' },
+  { name: 'Blog / News Section', price: '+$199 AUD', seoBoost: true },
+  { name: 'Gallery / Portfolio', price: 'Setup fee $99' },
+  { name: 'AI Automated Booking via Website', price: 'Setup fee $399, then $99/month' },
+  { name: 'Customer Reviews', price: '+$99 AUD', seoBoost: true },
+  { name: 'Social Media Integration', price: 'FREE' },
+  { name: 'Newsletter Signup', price: '$199 setup fee' },
   { name: 'Video Background', price: '+$149 AUD' },
-  { name: 'Map / Location', price: 'Included' },
+  { name: 'Map / Location', price: 'FREE' },
+  { name: 'Automated AI Customer Replies via Email', price: 'Custom pricing' },
 ]
 
 const monthlyPlans = [
@@ -455,8 +454,16 @@ export default function GetStartedForm({
                         {isSelected && <Check className="w-3 h-3 text-tech-black" />}
                       </div>
                       <div>
-                        <span className="text-sm text-tech-white block">{feature.name}</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-sm text-tech-white block">{feature.name}</span>
+                          {feature.seoBoost && (
+                            <TrendingUp className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
+                          )}
+                        </div>
                         <span className="text-xs text-tech-baby-blue font-semibold">{feature.price}</span>
+                        {feature.seoBoost && (
+                          <span className="text-xs text-green-400 block mt-0.5">Boosts Google ranking</span>
+                        )}
                       </div>
                     </button>
                   )
