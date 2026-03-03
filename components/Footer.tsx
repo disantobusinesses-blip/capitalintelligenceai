@@ -15,20 +15,13 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div
-                className="w-12 h-16 flex items-center justify-center flex-shrink-0 rounded overflow-hidden"
-                style={{ background: 'transparent' }}
-              >
+              <div className="w-10 h-14 flex items-center justify-center flex-shrink-0">
                 <Image
-                  src="/images/is-logo.jpg"
+                  src="/images/is-logo.png"
                   alt="Intelligent Systems logo"
-                  width={48}
-                  height={64}
+                  width={40}
+                  height={56}
                   className="object-contain w-full h-full"
-                  style={{
-                    mixBlendMode: 'luminosity',
-                    filter: 'invert(1) sepia(1) saturate(2) hue-rotate(330deg) brightness(0.9)',
-                  }}
                 />
               </div>
               <div>
