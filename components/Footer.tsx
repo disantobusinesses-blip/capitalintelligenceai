@@ -15,15 +15,15 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-14 flex items-center justify-center flex-shrink-0">
-                <Image
-                  src="/images/is-logo.png"
-                  alt="Intelligent Systems logo"
-                  width={40}
-                  height={56}
-                  className="object-contain w-full h-full"
-                />
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/d91d1f36-5c68-48c3-9175-665929bd8103.jpeg"
+                alt="Intelligent Systems logo"
+                width={48}
+                height={64}
+                className="object-contain flex-shrink-0"
+                style={{ mixBlendMode: 'screen', width: 48, height: 64 }}
+              />
               <div>
                 <h3 className="text-xl font-bold text-tech-white">Intelligent Systems</h3>
                 <p className="text-sm text-tech-platinum">Capital Intelligence Group</p>
