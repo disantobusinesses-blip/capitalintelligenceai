@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply bg-black;
+  }
+  
+  body {
+    @apply bg-transparent text-tech-white antialiased;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Tech glass effect */
+  .glass-effect {
+    @apply bg-tech-black/80 backdrop-blur-md border border-tech-baby-blue/30;
+  }
+  
+  /* Tech shadow */
+  .tech-shadow {
+    box-shadow: 0 4px 24px rgba(137, 207, 240, 0.2);
+  }
+  
+  /* Glow effect */
+  .glow-effect {
+    box-shadow: 0 0 20px rgba(137, 207, 240, 0.5);
+  }
+  
+  /* Smooth transitions */
+  .smooth-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  /* Grid background */
+  .tech-grid {
+    background-image: 
+      linear-gradient(rgba(137, 207, 240, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(137, 207, 240, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  /* Animated grid */
+  .animated-grid {
+    background-image: 
+      linear-gradient(rgba(137, 207, 240, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(137, 207, 240, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+  }
+  
+  @keyframes gridMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+
+  /* Hero entrance animations */
+  .animate-fade-in-down {
+    animation: fade-in-down 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 0.8s;
+  }
+
+  @keyframes fade-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
