@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/disantobusinesses-blip/capitalintelligenceai#readme",
   "dependencies": {
+    "@paper-design/shaders-react": "^0.0.71",
     "autoprefixer": "^10.4.24",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.4",

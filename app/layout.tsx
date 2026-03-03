@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import LightPillar from '@/components/LightPillar'
+import MeshGradientBackground from '@/components/MeshGradientBackground'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 import BottomNav from '@/components/BottomNav'
 
@@ -39,17 +39,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CurrencyProvider>
-          <LightPillar
-            topColor="#81D8D0"
-            bottomColor="#0ABAB5"
-            intensity={1.0}
-            rotationSpeed={0.3}
-            interactive={false}
-            glowAmount={0.005}
-            pillarWidth={3.0}
-            pillarHeight={0.4}
-            noiseIntensity={0.5}
-            quality="high"
+          <MeshGradientBackground
+            colors={["#5C3A21", "#8B6B4A", "#C49A6C", "#D4B08C", "#3E2723", "#A1887F"]}
+            distortion={1.2}
+            speed={0.8}
           />
           {children}
           <BottomNav />
