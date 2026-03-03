@@ -17,12 +17,12 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/d91d1f36-5c68-48c3-9175-665929bd8103.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/987c6401-7e4f-425c-afe0-67cfa9fb2937.jpeg"
                 alt="Intelligent Systems logo"
-                width={48}
-                height={64}
+                width={56}
+                height={80}
                 className="object-contain flex-shrink-0"
-                style={{ mixBlendMode: 'screen', width: 48, height: 64 }}
+                style={{ width: 56, height: 80 }}
               />
               <div>
                 <h3 className="text-xl font-bold text-tech-white">Intelligent Systems</h3>
