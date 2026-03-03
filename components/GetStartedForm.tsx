@@ -465,7 +465,7 @@ export default function GetStartedForm({
             <div>
               <h3 className="text-2xl font-bold text-tech-white mb-2">Choose your features</h3>
               <p className="text-tech-platinum mb-2">Select all the features you want on your website.</p>
-              <p className="text-sm text-green-400 italic mb-6">*Select multiple paid options for discount upon quote*</p>
+              <p className="text-sm text-tech-white italic mb-6">*Select multiple paid options for discount upon quote*</p>
               <div className="grid grid-cols-2 gap-3">
                 {featureOptions.map((feature) => {
                   const isSelected = formData.features.includes(feature.name)
@@ -495,7 +495,7 @@ export default function GetStartedForm({
                             <TrendingUp className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
                           )}
                         </div>
-                        <span className={`text-xs font-semibold ${feature.isFree ? 'text-green-400' : 'text-tech-baby-blue'}`}>{feature.price}</span>
+                        <span className="text-xs font-semibold text-tech-baby-blue">{feature.price}</span>
                         <span className="text-xs text-green-400 block mt-0.5">{feature.benefit}</span>
                       </div>
                     </button>

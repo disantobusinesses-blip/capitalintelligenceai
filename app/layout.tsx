@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import ShaderBackground from '@/components/ShaderBackground'
-import Navbar from '@/components/Navbar'
 import { CurrencyProvider } from '@/context/CurrencyContext'
+import BottomNav from '@/components/BottomNav'
 
 export const metadata: Metadata = {
   title: 'IAS – Intelligent AI Systems | Websites from $599 AUD',
@@ -40,10 +40,8 @@ export default function RootLayout({
       <body>
         <CurrencyProvider>
           <ShaderBackground />
-          <Navbar />
-          <div className="pt-16">
-            {children}
-          </div>
+          {children}
+          <BottomNav />
         </CurrencyProvider>
       </body>
     </html>
