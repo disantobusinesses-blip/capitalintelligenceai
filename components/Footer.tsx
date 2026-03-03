@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -10,10 +11,11 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-2">
             <div className="mb-4">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/is-logo.jpg"
                 alt="Intelligent Systems Logo"
+                width={192}
+                height={64}
                 className="h-16 w-auto rounded"
               />
             </div>

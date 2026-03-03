@@ -50,7 +50,7 @@ export default function LandingPageService() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-tech-white hover:text-tech-white-light smooth-transition"
+            className="flex items-center gap-2 text-tech-white hover:text-tech-platinum-light smooth-transition"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home
