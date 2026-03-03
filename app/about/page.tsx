@@ -39,7 +39,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-[100dvh] pb-24">
       {/* Hero */}
       <section className="py-24 px-6 text-center relative overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-10" />

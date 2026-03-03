@@ -44,7 +44,7 @@ export default function LandingPageService() {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[100dvh]">
       {/* Header */}
       <header className="border-b border-tech-baby-blue/20 py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">

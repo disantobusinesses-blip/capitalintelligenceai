@@ -95,7 +95,7 @@ const monthlyPlans = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[100dvh]">
       {/* Hero */}
       <section className="py-20 px-6 text-center">
         <div className="max-w-3xl mx-auto">

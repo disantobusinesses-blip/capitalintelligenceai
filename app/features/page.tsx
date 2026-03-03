@@ -174,7 +174,7 @@ const features = [
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-[100dvh] pb-24">
       {/* Hero */}
       <section className="py-24 px-6 text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-10" />

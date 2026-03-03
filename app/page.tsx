@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen pb-24">
+    <main className="relative min-h-[100dvh] pb-24">
       <Hero />
       <ServiceSelection />
       <AIChatDemo />
