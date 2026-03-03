@@ -17,7 +17,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="/pricing"
-            className="hidden sm:block text-sm font-medium text-gray-600 hover:text-tech-baby-blue smooth-transition"
+            className="hidden sm:block text-sm font-medium text-gray-600 hover:text-tech-white smooth-transition"
           >
             Pricing
           </Link>

@@ -7,11 +7,11 @@ export default function PrivacyPolicy() {
   return (
     <main className="min-h-[100dvh]">
       {/* Header */}
-      <div className="border-b border-tech-baby-blue/20">
+      <div>
         <div className="max-w-4xl mx-auto px-6 py-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition mb-6"
+            className="inline-flex items-center gap-2 text-tech-white hover:text-tech-white-light smooth-transition mb-6"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home

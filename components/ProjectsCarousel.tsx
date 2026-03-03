@@ -91,7 +91,7 @@ export default function ProjectsCarousel() {
           <p className="text-xl text-tech-platinum max-w-2xl mx-auto">
             Intelligent systems implemented across diverse industries
           </p>
-          <div className="mt-4 flex items-center justify-center gap-2 text-sm text-tech-baby-blue">
+          <div className="mt-4 flex items-center justify-center gap-2 text-sm text-tech-white">
             <div className="w-2 h-2 bg-tech-baby-blue rounded-full animate-pulse" />
             Auto-rotating • Hover to pause
           </div>
@@ -134,7 +134,7 @@ export default function ProjectsCarousel() {
                     {/* Project Info */}
                     <div className="p-8">
                       <div className="mb-4">
-                        <span className="inline-block px-4 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-baby-blue rounded-full text-sm font-semibold">
+                        <span className="inline-block px-4 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full text-sm font-semibold">
                           {project.industry}
                         </span>
                       </div>

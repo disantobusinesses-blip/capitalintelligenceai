@@ -59,11 +59,11 @@ export default function FullPackageService() {
   return (
     <div className="min-h-[100dvh]">
       {/* Header */}
-      <header className="border-b border-tech-baby-blue/20 py-6 px-6">
+      <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition"
+            className="flex items-center gap-2 text-tech-white hover:text-tech-white-light smooth-transition"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home
@@ -83,7 +83,7 @@ export default function FullPackageService() {
       <section className="py-20 px-6 relative overflow-hidden">
         
         <div className="max-w-4xl mx-auto text-center relative">
-          <div className="inline-block px-4 py-2 bg-tech-baby-blue/10 border border-tech-baby-blue/30 rounded-full text-tech-baby-blue font-semibold mb-6">
+          <div className="inline-block px-4 py-2 bg-tech-baby-blue/10 border border-tech-baby-blue/30 rounded-full text-tech-white font-semibold mb-6">
             Complete Solution
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-tech-white mb-6">
@@ -120,13 +120,13 @@ export default function FullPackageService() {
                 <h3 className="text-2xl font-bold text-tech-white mb-2">{tier.name}</h3>
                 <p className="text-tech-platinum mb-4">{tier.description}</p>
                 <div className="mb-6">
-                  <span className="text-5xl font-bold text-tech-baby-blue">{tier.price}</span>
+                  <span className="text-5xl font-bold text-tech-white">{tier.price}</span>
                   <span className="text-tech-platinum">{tier.period}</span>
                 </div>
                 <ul className="space-y-3 mb-8">
                   {tier.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-tech-baby-blue flex-shrink-0 mt-0.5" />
+                      <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-0.5" />
                       <span className="text-tech-white">{feature}</span>
                     </li>
                   ))}
@@ -135,7 +135,7 @@ export default function FullPackageService() {
                   className={`w-full py-3 rounded-lg font-semibold smooth-transition ${
                     tier.featured
                       ? 'bg-tech-baby-blue text-tech-black hover:bg-tech-baby-blue-light hover:shadow-glow-sm'
-                      : 'border-2 border-tech-baby-blue text-tech-baby-blue hover:bg-tech-baby-blue hover:text-tech-black'
+                      : 'border-2 border-tech-baby-blue text-tech-white hover:bg-tech-baby-blue hover:text-tech-black'
                   }`}
                 >
                   Get Started
@@ -157,7 +157,7 @@ export default function FullPackageService() {
           </p>
           <div className="bg-tech-black border border-tech-baby-blue/30 rounded-2xl p-8">
             <div className="mb-4">
-              <span className="text-5xl font-bold text-tech-baby-blue">$2,499</span>
+              <span className="text-5xl font-bold text-tech-white">$2,499</span>
               <span className="text-tech-platinum ml-2">one-time</span>
             </div>
             <p className="text-tech-platinum mb-6">
@@ -165,27 +165,27 @@ export default function FullPackageService() {
             </p>
             <ul className="grid md:grid-cols-2 gap-3 text-left max-w-2xl mx-auto">
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-baby-blue" />
+                <Check className="w-5 h-5 text-tech-white" />
                 <span className="text-tech-white">Custom design</span>
               </li>
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-baby-blue" />
+                <Check className="w-5 h-5 text-tech-white" />
                 <span className="text-tech-white">Up to 10 pages</span>
               </li>
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-baby-blue" />
+                <Check className="w-5 h-5 text-tech-white" />
                 <span className="text-tech-white">Mobile responsive</span>
               </li>
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-baby-blue" />
+                <Check className="w-5 h-5 text-tech-white" />
                 <span className="text-tech-white">SEO setup</span>
               </li>
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-baby-blue" />
+                <Check className="w-5 h-5 text-tech-white" />
                 <span className="text-tech-white">Analytics integration</span>
               </li>
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-baby-blue" />
+                <Check className="w-5 h-5 text-tech-white" />
                 <span className="text-tech-white">Contact forms</span>
               </li>
             </ul>
@@ -218,7 +218,7 @@ export default function FullPackageService() {
             </button>
             <button
               onClick={() => router.push('/')}
-              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-baby-blue rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
             >
               Back to Home
             </button>

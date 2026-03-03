@@ -115,7 +115,7 @@ export default function ProjectsPage() {
 
                 {/* Project Info */}
                 <div className="p-6">
-                  <span className="inline-block px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-baby-blue rounded-full text-xs font-semibold mb-3">
+                  <span className="inline-block px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full text-xs font-semibold mb-3">
                     {project.industry}
                   </span>
                   <h3 className="text-xl font-bold text-tech-white mb-2">{project.title}</h3>
@@ -142,7 +142,7 @@ export default function ProjectsPage() {
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   ) : (
-                    <span className="inline-flex items-center gap-2 px-4 py-2 border border-tech-baby-blue/30 text-tech-baby-blue rounded-lg font-semibold text-sm">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 border border-tech-baby-blue/30 text-tech-white rounded-lg font-semibold text-sm">
                       Coming Soon
                     </span>
                   )}

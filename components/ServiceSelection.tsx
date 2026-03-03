@@ -73,7 +73,7 @@ export default function ServiceSelection() {
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-bold text-tech-white mb-4 group-hover:text-tech-baby-blue smooth-transition">
+                  <h3 className="text-2xl font-bold text-tech-white mb-4 group-hover:text-tech-white smooth-transition">
                     {service.title}
                   </h3>
                   
@@ -114,7 +114,7 @@ export default function ServiceSelection() {
                 const element = document.getElementById('chat');
                 element?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-8 py-3 border-2 border-tech-baby-blue text-tech-baby-blue rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+              className="px-8 py-3 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
             >
               Talk to Our AI Assistant
             </button>

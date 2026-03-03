@@ -185,7 +185,7 @@ export default function FeaturesPage() {
           <p className="text-xl text-tech-platinum max-w-2xl mx-auto mb-4">
             Choose from AI-powered tools, free essentials, and premium add-ons to build the perfect website for your business.
           </p>
-          <p className="text-tech-baby-blue font-semibold">
+          <p className="text-tech-white font-semibold">
             All features available during our onboarding process (Step 4 of 6)
           </p>
         </div>
@@ -228,11 +228,11 @@ export default function FeaturesPage() {
                       </div>
                       <div>
                         <h3 className="text-lg font-bold text-tech-white">{feature.name}</h3>
-                        <span className="text-tech-baby-blue font-semibold text-sm">{feature.price}</span>
+                        <span className="text-tech-white font-semibold text-sm">{feature.price}</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 mt-2">
-                      <span className="text-xs px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-baby-blue rounded-full font-semibold">
+                      <span className="text-xs px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full font-semibold">
                         {feature.category}
                       </span>
                       {feature.seoBoost && (
@@ -252,7 +252,7 @@ export default function FeaturesPage() {
                     <ul className="space-y-2 mb-4">
                       {feature.valuePoints.map((point, idx) => (
                         <li key={idx} className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-tech-baby-blue flex-shrink-0 mt-0.5" />
+                          <Check className="w-4 h-4 text-tech-white flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-tech-platinum">{point}</span>
                         </li>
                       ))}
@@ -260,7 +260,7 @@ export default function FeaturesPage() {
 
                     <div className="bg-tech-black/50 border border-tech-baby-blue/10 rounded-lg p-3">
                       <p className="text-xs text-tech-platinum">
-                        <span className="text-tech-baby-blue font-semibold">Ideal for: </span>
+                        <span className="text-tech-white font-semibold">Ideal for: </span>
                         {feature.idealFor}
                       </p>
                     </div>
@@ -291,7 +291,7 @@ export default function FeaturesPage() {
             </Link>
             <Link
               href="/pricing"
-              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-baby-blue rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
             >
               View Pricing
             </Link>

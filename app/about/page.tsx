@@ -86,7 +86,7 @@ export default function AboutPage() {
                 <Zap className="w-10 h-10 text-tech-white" />
               </div>
               <h3 className="text-2xl font-bold text-tech-white mb-2">Systems That Think.</h3>
-              <p className="text-xl font-bold text-tech-baby-blue">Businesses That Scale.</p>
+              <p className="text-xl font-bold text-tech-white">Businesses That Scale.</p>
             </div>
           </div>
         </div>
@@ -204,7 +204,7 @@ export default function AboutPage() {
             </Link>
             <Link
               href="/pricing"
-              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-baby-blue rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
             >
               View Pricing
             </Link>

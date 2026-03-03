@@ -24,7 +24,7 @@ export default function Hero() {
         </p>
 
         {/* Slogan with gradient */}
-        <p className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-tech-white via-tech-baby-blue to-tech-white bg-clip-text text-transparent max-w-4xl mx-auto leading-relaxed animate-fade-in-up animation-delay-600">
+        <p className="text-2xl md:text-4xl font-bold text-tech-white max-w-4xl mx-auto leading-relaxed animate-fade-in-up animation-delay-600">
           Systems That Think. Businesses That Scale.
         </p>
 

@@ -57,8 +57,8 @@ export function NavBar({ items, className }: NavBarProps) {
               onClick={() => setActiveTab(item.name)}
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-3 md:px-6 py-2 rounded-full transition-colors",
-                "text-tech-platinum hover:text-tech-baby-blue",
-                isActive && "bg-tech-baby-blue/10 text-tech-baby-blue",
+                "text-tech-platinum hover:text-tech-white",
+                isActive && "bg-tech-baby-blue/10 text-tech-white",
               )}
             >
               <span>{item.name}</span>

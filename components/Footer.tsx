@@ -4,16 +4,18 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-transparent text-white py-16 px-6 border-t border-white/20">
+    <footer className="bg-transparent text-white py-16 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
           <div className="md:col-span-2">
-            {/* Logo placeholder – replace via GitHub with your own logo */}
             <div className="mb-4">
-              <div className="h-16 w-48 border border-dashed border-white/30 rounded flex items-center justify-center text-sm text-white/60">
-                Logo
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/is-logo.jpg"
+                alt="Intelligent Systems Logo"
+                className="h-16 w-auto rounded"
+              />
             </div>
             <p className="text-white/70 leading-relaxed mb-4">
               We integrate intelligent systems into businesses so they operate smoother, faster, and smarter.
@@ -33,7 +35,7 @@ export default function Footer() {
                     const element = document.getElementById('services');
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-white/70 hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Services
                 </button>
@@ -41,7 +43,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/pricing"
-                  className="text-white/70 hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Pricing
                 </Link>
@@ -52,7 +54,7 @@ export default function Footer() {
                     const element = document.getElementById('projects');
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-white/70 hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Our Projects
                 </button>
@@ -63,7 +65,7 @@ export default function Footer() {
                     const element = document.getElementById('chat');
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-white/70 hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   AI Assistant
                 </button>
@@ -71,7 +73,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white/70 hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Blog
                 </Link>
@@ -86,7 +88,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="text-white/70 hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Privacy Policy
                 </Link>
@@ -94,7 +96,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms-and-conditions"
-                  className="text-white/70 hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Terms & Conditions
                 </Link>
@@ -104,7 +106,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/20 pt-8 text-center text-white/50">
+        <div className="pt-8 text-center text-white/50">
           <p>© {new Date().getFullYear()} Capital Intelligence Group. All rights reserved.</p>
         </div>
       </div>
