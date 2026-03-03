@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import LightRays from '@/components/LightRays'
+import Plasma from '@/components/Plasma'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 import BottomNav from '@/components/BottomNav'
 
@@ -39,15 +39,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CurrencyProvider>
-          <LightRays
-            raysColor="#89CFF0"
-            raysSpeed={0.8}
-            lightSpread={1.2}
-            rayLength={2.5}
-            fadeDistance={1.0}
-            saturation={0.8}
-            followMouse={true}
-            mouseInfluence={0.05}
+          <Plasma
+            color="#ffffff"
+            speed={1}
+            direction="forward"
+            scale={1}
+            opacity={1}
+            mouseInteractive={true}
           />
           {children}
           <BottomNav />
