@@ -8,34 +8,36 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Modern techy theme: Black, White, Platinum, Baby Blue
+        // Luxury dark brown leather theme
+        // Note: Token names retain 'baby-blue' prefix for backward compatibility
+        // with all component references. Actual values are dark brown leather tones.
         tech: {
           black: '#000000',
           white: '#FFFFFF',
           platinum: '#E5E4E2',
           'platinum-light': '#F0F0EE',
           'platinum-dark': '#C9C8C6',
-          'baby-blue': '#89CFF0',
-          'baby-blue-light': '#A8DFFF',
-          'baby-blue-dark': '#6AB8D8',
-          'baby-blue-glow': 'rgba(137, 207, 240, 0.3)',
+          'baby-blue': '#8B5E3C',
+          'baby-blue-light': '#A67B5B',
+          'baby-blue-dark': '#5C3A1E',
+          'baby-blue-glow': 'rgba(139, 94, 60, 0.3)',
           gray: '#1A1A1A',
           'gray-light': '#2A2A2A',
         },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-tech': 'linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #89CFF0 100%)',
-        'gradient-blue': 'linear-gradient(135deg, #89CFF0 0%, #6AB8D8 100%)',
+        'gradient-tech': 'linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #8B5E3C 100%)',
+        'gradient-blue': 'linear-gradient(135deg, #8B5E3C 0%, #5C3A1E 100%)',
         'gradient-platinum': 'linear-gradient(135deg, #F0F0EE 0%, #E5E4E2 100%)',
       },
       fontFamily: {
         sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(137, 207, 240, 0.5)',
-        'glow-sm': '0 0 10px rgba(137, 207, 240, 0.3)',
-        'glow-lg': '0 0 30px rgba(137, 207, 240, 0.6)',
+        'glow': '0 0 20px rgba(139, 94, 60, 0.5)',
+        'glow-sm': '0 0 10px rgba(139, 94, 60, 0.3)',
+        'glow-lg': '0 0 30px rgba(139, 94, 60, 0.6)',
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -48,8 +50,8 @@ module.exports = {
           '50%': { transform: 'translateY(-20px)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 5px rgba(137, 207, 240, 0.5)' },
-          '100%': { boxShadow: '0 0 20px rgba(137, 207, 240, 0.8)' },
+          '0%': { boxShadow: '0 0 5px rgba(139, 94, 60, 0.5)' },
+          '100%': { boxShadow: '0 0 20px rgba(139, 94, 60, 0.8)' },
         },
       },
     },

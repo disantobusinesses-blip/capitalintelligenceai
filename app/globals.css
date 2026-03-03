@@ -5,7 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    @apply bg-black;
+    background-color: #1a0f0a;
   }
   
   body {
@@ -25,12 +25,12 @@
   
   /* Tech shadow */
   .tech-shadow {
-    box-shadow: 0 4px 24px rgba(137, 207, 240, 0.2);
+    box-shadow: 0 4px 24px rgba(139, 94, 60, 0.2);
   }
   
   /* Glow effect */
   .glow-effect {
-    box-shadow: 0 0 20px rgba(137, 207, 240, 0.5);
+    box-shadow: 0 0 20px rgba(139, 94, 60, 0.5);
   }
   
   /* Smooth transitions */
@@ -41,16 +41,16 @@
   /* Grid background */
   .tech-grid {
     background-image: 
-      linear-gradient(rgba(137, 207, 240, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(137, 207, 240, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(139, 94, 60, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 94, 60, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;
   }
   
   /* Animated grid */
   .animated-grid {
     background-image: 
-      linear-gradient(rgba(137, 207, 240, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(137, 207, 240, 0.1) 1px, transparent 1px);
+      linear-gradient(rgba(139, 94, 60, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 94, 60, 0.1) 1px, transparent 1px);
     background-size: 50px 50px;
     animation: gridMove 20s linear infinite;
   }

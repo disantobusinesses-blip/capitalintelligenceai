@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import ShaderBackground from '@/components/ShaderBackground'
-import Navbar from '@/components/Navbar'
+import MeshGradientBackground from '@/components/MeshGradientBackground'
 import { CurrencyProvider } from '@/context/CurrencyContext'
+import BottomNav from '@/components/BottomNav'
 
 export const metadata: Metadata = {
   title: 'IAS – Intelligent AI Systems | Websites from $599 AUD',
@@ -39,11 +39,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CurrencyProvider>
-          <ShaderBackground />
-          <Navbar />
-          <div className="pt-16">
-            {children}
-          </div>
+          <MeshGradientBackground
+            colors={["#5C3A21", "#8B6B4A", "#C49A6C", "#D4B08C", "#3E2723", "#A1887F"]}
+            distortion={1.2}
+            speed={0.8}
+          />
+          {children}
+          <BottomNav />
         </CurrencyProvider>
       </body>
     </html>

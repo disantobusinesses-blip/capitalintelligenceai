@@ -56,17 +56,16 @@ const colorOptions = [
 ]
 
 const featureOptions = [
-  { name: 'Contact Form', price: 'Included' },
-  { name: '24/7 AI Chat Support', price: '$399/month (limited usage)' },
-  { name: 'Blog / News Section', price: '+$199 AUD', seoBoost: true },
-  { name: 'Gallery / Portfolio', price: 'Setup fee $99' },
-  { name: 'AI Automated Booking via Website', price: 'Setup fee $399, then $99/month' },
-  { name: 'Customer Reviews', price: '+$99 AUD', seoBoost: true },
-  { name: 'Social Media Integration', price: 'FREE' },
-  { name: 'Newsletter Signup', price: '$199 setup fee' },
-  { name: 'Video Background', price: '+$149 AUD' },
-  { name: 'Map / Location', price: 'FREE' },
-  { name: 'Automated AI Customer Replies via Email', price: 'Custom pricing' },
+  { name: '24/7 AI Chat Support', price: '$399/month', numericPrice: 399, benefit: 'Increases customer support efficiency' },
+  { name: 'AI Automated Booking System', price: '$399 setup + $99/month', numericPrice: 399, benefit: 'Increases booking conversion rate' },
+  { name: 'Automated AI Customer Replies', price: 'Custom pricing', numericPrice: 0, benefit: 'Increases customer acquisition/support' },
+  { name: 'Contact Form', price: 'FREE', numericPrice: 0, benefit: 'Increases lead generation', isFree: true },
+  { name: 'Map / Location', price: 'FREE', numericPrice: 0, benefit: 'Increases local visibility', isFree: true },
+  { name: 'Social Media Integration', price: 'FREE', numericPrice: 0, benefit: 'Increases brand awareness', isFree: true },
+  { name: 'Blog / News Section', price: '+$199 AUD', numericPrice: 199, benefit: 'Boosts Google ranking', seoBoost: true },
+  { name: 'Gallery / Portfolio', price: '$99 setup', numericPrice: 99, benefit: 'Increases visitor engagement' },
+  { name: 'Customer Reviews', price: '+$99 AUD', numericPrice: 99, benefit: 'Increases trust & conversions', seoBoost: true },
+  { name: 'Newsletter Signup', price: '$199 setup', numericPrice: 199, benefit: 'Increases repeat visitors' },
 ]
 
 const monthlyPlans = [
@@ -74,6 +73,7 @@ const monthlyPlans = [
     id: 'care',
     name: 'Website Care',
     price: 'Starting at $119 AUD/month+',
+    numericPrice: 119,
     description: 'Essential hosting and maintenance',
     features: ['Website Hosting', 'Website Maintenance', 'Security Updates', 'Monthly Backups', 'Tech Support'],
   },
@@ -81,6 +81,7 @@ const monthlyPlans = [
     id: 'seo-ai',
     name: 'SEO & AI Visibility',
     price: 'Starting at $149 AUD/month+',
+    numericPrice: 149,
     description: 'Get found on Google and AI search engines',
     features: ['Google Search Optimisation', 'AI Search Engine Indexing (ChatGPT, Gemini, Perplexity)', 'Structured Data / Schema Markup', 'Monthly SEO Reports', 'Content Strategy Guidance'],
   },
@@ -88,13 +89,46 @@ const monthlyPlans = [
     id: 'ai-integration',
     name: 'AI Systems Integration',
     price: 'Custom',
+    numericPrice: 0,
     description: 'Automate your business with AI',
     features: ['24/7 AI Chat Support', 'Automated Email Responder', 'Phone Call Transcript Generator', 'Custom AI Workflows', 'Business Process Automation'],
     isCustom: true,
   },
 ]
 
+const servicePrices: Record<string, number> = {
+  'landing-page': 599,
+  'full-package': 1999,
+}
+
 const TOTAL_STEPS = 6
+
+function calculateRunningTotal(formData: FormData): number {
+  let total = 0
+
+  // Step 1: Service price
+  if (formData.service) {
+    total += servicePrices[formData.service] || 0
+  }
+
+  // Step 4: Feature prices
+  for (const featureName of formData.features) {
+    const feature = featureOptions.find((f) => f.name === featureName)
+    if (feature) {
+      total += feature.numericPrice
+    }
+  }
+
+  // Step 5: Monthly plan price
+  if (formData.monthlyPlan) {
+    const plan = monthlyPlans.find((p) => p.id === formData.monthlyPlan)
+    if (plan) {
+      total += plan.numericPrice
+    }
+  }
+
+  return total
+}
 
 export default function GetStartedForm({
   isOpen,
@@ -197,14 +231,14 @@ export default function GetStartedForm({
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-tech-black/90 backdrop-blur-sm">
         <div className="bg-tech-gray border border-tech-baby-blue/30 rounded-2xl p-8 max-w-lg w-full text-center">
           <div className="w-20 h-20 bg-tech-baby-blue/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Check className="w-10 h-10 text-tech-baby-blue" />
+            <Check className="w-10 h-10 text-tech-white" />
           </div>
           <h2 className="text-3xl font-bold text-tech-white mb-4">Thank You!</h2>
           <p className="text-tech-platinum mb-2">
             We have received your project details.
           </p>
           <p className="text-tech-platinum mb-8">
-            Our team will review your requirements and get back to you within 24 hours at <span className="text-tech-baby-blue">{formData.contactEmail}</span>.
+            Our team will review your requirements and get back to you within 24 hours at <span className="text-tech-white">{formData.contactEmail}</span>.
           </p>
           <button
             onClick={handleClose}
@@ -264,17 +298,17 @@ export default function GetStartedForm({
                   }`}
                 >
                   <div className="w-12 h-12 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Sparkles className="w-6 h-6 text-tech-baby-blue" />
+                    <Sparkles className="w-6 h-6 text-tech-white" />
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-tech-white mb-1">Landing Page</h4>
                     <p className="text-sm text-tech-platinum mb-2">
                       A single-page website to establish your online presence. Modern design, mobile responsive, and SEO optimized.
                     </p>
-                    <p className="text-sm font-semibold text-tech-baby-blue">$599 – $1,499 AUD</p>
+                    <p className="text-sm font-semibold text-tech-white">$599 – $1,499 AUD</p>
                   </div>
                   {formData.service === 'landing-page' && (
-                    <Check className="w-5 h-5 text-tech-baby-blue flex-shrink-0 mt-1" />
+                    <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-1" />
                   )}
                 </button>
                 <button
@@ -286,17 +320,17 @@ export default function GetStartedForm({
                   }`}
                 >
                   <div className="w-12 h-12 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Package className="w-6 h-6 text-tech-baby-blue" />
+                    <Package className="w-6 h-6 text-tech-white" />
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-tech-white mb-1">Website + Full Package</h4>
                     <p className="text-sm text-tech-platinum mb-2">
                       Complete multi-page website with ongoing maintenance, digital strategy, and monthly support plan.
                     </p>
-                    <p className="text-sm font-semibold text-tech-baby-blue">Starting at $1,999+ AUD</p>
+                    <p className="text-sm font-semibold text-tech-white">Starting at $1,999+ AUD</p>
                   </div>
                   {formData.service === 'full-package' && (
-                    <Check className="w-5 h-5 text-tech-baby-blue flex-shrink-0 mt-1" />
+                    <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-1" />
                   )}
                 </button>
               </div>
@@ -311,7 +345,7 @@ export default function GetStartedForm({
               <div className="grid gap-4">
                 <div>
                   <label htmlFor="businessName" className="block text-sm font-semibold text-tech-white mb-1.5">
-                    Business Name <span className="text-tech-baby-blue">*</span>
+                    Business Name <span className="text-tech-white">*</span>
                   </label>
                   <input
                     id="businessName"
@@ -324,7 +358,7 @@ export default function GetStartedForm({
                 </div>
                 <div>
                   <label htmlFor="industry" className="block text-sm font-semibold text-tech-white mb-1.5">
-                    Industry <span className="text-tech-baby-blue">*</span>
+                    Industry <span className="text-tech-white">*</span>
                   </label>
                   <input
                     id="industry"
@@ -376,7 +410,7 @@ export default function GetStartedForm({
               <p className="text-tech-platinum mb-6">Choose the look and feel for your website.</p>
 
               <div className="mb-6">
-                <p className="text-sm font-semibold text-tech-white mb-3">Layout Style <span className="text-tech-baby-blue">*</span></p>
+                <p className="text-sm font-semibold text-tech-white mb-3">Layout Style <span className="text-tech-white">*</span></p>
                 <div className="grid grid-cols-2 gap-3">
                   {designStyles.map((style) => (
                     <button
@@ -388,7 +422,7 @@ export default function GetStartedForm({
                           : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
                       }`}
                     >
-                      <Layout className="w-5 h-5 text-tech-baby-blue mb-2" />
+                      <Layout className="w-5 h-5 text-tech-white mb-2" />
                       <p className="text-sm font-bold text-tech-white">{style.label}</p>
                       <p className="text-xs text-tech-platinum mt-1">{style.description}</p>
                     </button>
@@ -430,7 +464,8 @@ export default function GetStartedForm({
           {step === 4 && (
             <div>
               <h3 className="text-2xl font-bold text-tech-white mb-2">Choose your features</h3>
-              <p className="text-tech-platinum mb-6">Select all the features you want on your website.</p>
+              <p className="text-tech-platinum mb-2">Select all the features you want on your website.</p>
+              <p className="text-sm text-tech-white italic mb-6">*Select multiple paid options for discount upon quote*</p>
               <div className="grid grid-cols-2 gap-3">
                 {featureOptions.map((feature) => {
                   const isSelected = formData.features.includes(feature.name)
@@ -460,10 +495,8 @@ export default function GetStartedForm({
                             <TrendingUp className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
                           )}
                         </div>
-                        <span className="text-xs text-tech-baby-blue font-semibold">{feature.price}</span>
-                        {feature.seoBoost && (
-                          <span className="text-xs text-green-400 block mt-0.5">Boosts Google ranking</span>
-                        )}
+                        <span className="text-xs font-semibold text-tech-white">{feature.price}</span>
+                        <span className="text-xs text-green-400 block mt-0.5">{feature.benefit}</span>
                       </div>
                     </button>
                   )
@@ -489,12 +522,12 @@ export default function GetStartedForm({
                     }`}
                   >
                     <div className="w-12 h-12 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <CreditCard className="w-6 h-6 text-tech-baby-blue" />
+                      <CreditCard className="w-6 h-6 text-tech-white" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-baseline gap-2 mb-1 flex-wrap">
                         <h4 className="text-lg font-bold text-tech-white">{plan.name}</h4>
-                        <span className="text-tech-baby-blue font-bold text-sm">{plan.price}</span>
+                        <span className="text-tech-white font-bold text-sm">{plan.price}</span>
                       </div>
                       <p className="text-sm text-tech-platinum mb-2">{plan.description}</p>
                       <ul className="grid gap-1">
@@ -507,7 +540,7 @@ export default function GetStartedForm({
                       </ul>
                     </div>
                     {formData.monthlyPlan === plan.id && (
-                      <Check className="w-5 h-5 text-tech-baby-blue flex-shrink-0 mt-1" />
+                      <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-1" />
                     )}
                   </button>
                 ))}
@@ -524,14 +557,14 @@ export default function GetStartedForm({
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, aiAutomationRequest: '24/7 AI Customer Support' })}
-                      className="px-3 py-1.5 text-xs bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-baby-blue rounded-lg smooth-transition hover:bg-tech-baby-blue/20"
+                      className="px-3 py-1.5 text-xs bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-lg smooth-transition hover:bg-tech-baby-blue/20"
                     >
                       24/7 AI Customer Support
                     </button>
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, aiAutomationRequest: 'Automated Social Media Posting' })}
-                      className="px-3 py-1.5 text-xs bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-baby-blue rounded-lg smooth-transition hover:bg-tech-baby-blue/20"
+                      className="px-3 py-1.5 text-xs bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-lg smooth-transition hover:bg-tech-baby-blue/20"
                     >
                       Automated Social Media Posting
                     </button>
@@ -556,7 +589,7 @@ export default function GetStartedForm({
               <div className="grid gap-4">
                 <div>
                   <label htmlFor="contactName" className="block text-sm font-semibold text-tech-white mb-1.5">
-                    Full Name <span className="text-tech-baby-blue">*</span>
+                    Full Name <span className="text-tech-white">*</span>
                   </label>
                   <input
                     id="contactName"
@@ -569,7 +602,7 @@ export default function GetStartedForm({
                 </div>
                 <div>
                   <label htmlFor="contactEmail" className="block text-sm font-semibold text-tech-white mb-1.5">
-                    Email Address <span className="text-tech-baby-blue">*</span>
+                    Email Address <span className="text-tech-white">*</span>
                   </label>
                   <input
                     id="contactEmail"
@@ -613,6 +646,13 @@ export default function GetStartedForm({
 
         {/* Footer Navigation */}
         <div className="p-6 border-t border-tech-baby-blue/20">
+          {/* Running Total */}
+          {calculateRunningTotal(formData) > 0 && (
+            <div className="mb-4 p-3 bg-tech-baby-blue/10 border border-tech-baby-blue/30 rounded-lg flex items-center justify-between">
+              <span className="text-sm font-medium text-tech-platinum">Estimated Total</span>
+              <span className="text-lg font-bold text-tech-white">${calculateRunningTotal(formData).toLocaleString()} AUD</span>
+            </div>
+          )}
           {submitError && (
             <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
               {submitError}

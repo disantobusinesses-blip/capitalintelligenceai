@@ -149,7 +149,7 @@ export default function AIChatDemo() {
                       {message.role === 'user' ? (
                         <User className="w-4 h-4 text-tech-black" />
                       ) : (
-                        <Bot className="w-4 h-4 text-tech-baby-blue" />
+                        <Bot className="w-4 h-4 text-tech-white" />
                       )}
                     </div>
                     <div
@@ -167,7 +167,7 @@ export default function AIChatDemo() {
                 {isTyping && (
                   <div className="flex gap-3">
                     <div className="w-8 h-8 rounded-full bg-tech-gray border border-tech-baby-blue/30 flex items-center justify-center flex-shrink-0">
-                      <Bot className="w-4 h-4 text-tech-baby-blue" />
+                      <Bot className="w-4 h-4 text-tech-white" />
                     </div>
                     <div className="bg-tech-gray border border-tech-baby-blue/20 p-4 rounded-2xl">
                       <div className="flex gap-1">

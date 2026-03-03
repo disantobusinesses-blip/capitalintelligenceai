@@ -44,13 +44,13 @@ export default function LandingPageService() {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[100dvh]">
       {/* Header */}
-      <header className="border-b border-tech-baby-blue/20 py-6 px-6">
+      <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition"
+            className="flex items-center gap-2 text-tech-white hover:text-tech-platinum-light smooth-transition"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home
@@ -92,7 +92,7 @@ export default function LandingPageService() {
                 const element = document.getElementById('features');
                 element?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-baby-blue rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
             >
               Learn More
             </button>
@@ -156,7 +156,7 @@ export default function LandingPageService() {
               Landing Page Package
             </h2>
             <div className="mb-6">
-              <span className="text-6xl font-bold text-tech-baby-blue">$1,299</span>
+              <span className="text-6xl font-bold text-tech-white">$1,299</span>
               <span className="text-tech-platinum ml-2">one-time</span>
             </div>
             <p className="text-tech-platinum mb-8">

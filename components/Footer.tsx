@@ -5,41 +5,31 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-tech-baby-blue/20 text-tech-white py-16 px-6 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 tech-grid opacity-5" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-5" />
-      
-      <div className="max-w-7xl mx-auto relative">
+    <footer className="bg-transparent text-white py-16 px-6">
+      <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/987c6401-7e4f-425c-afe0-67cfa9fb2937.jpeg"
-                alt="Intelligent Systems logo"
-                width={56}
-                height={80}
-                className="object-contain flex-shrink-0"
-                style={{ width: 56, height: 80 }}
+            <div className="mb-4">
+              <Image
+                src="/images/is-logo.jpg"
+                alt="Intelligent Systems Logo"
+                width={192}
+                height={64}
+                className="h-16 w-auto rounded"
               />
-              <div>
-                <h3 className="text-xl font-bold text-tech-white">Intelligent Systems</h3>
-                <p className="text-sm text-tech-platinum">Capital Intelligence Group</p>
-              </div>
             </div>
-            <p className="text-tech-platinum leading-relaxed mb-4">
+            <p className="text-white/70 leading-relaxed mb-4">
               We integrate intelligent systems into businesses so they operate smoother, faster, and smarter.
             </p>
-            <p className="text-sm text-tech-platinum">
+            <p className="text-sm text-white/50">
               ABN: 38 693 023 371
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-tech-white">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-4 text-white">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <button
@@ -47,7 +37,7 @@ export default function Footer() {
                     const element = document.getElementById('services');
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-tech-platinum hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Services
                 </button>
@@ -55,7 +45,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/pricing"
-                  className="text-tech-platinum hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Pricing
                 </Link>
@@ -66,7 +56,7 @@ export default function Footer() {
                     const element = document.getElementById('projects');
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-tech-platinum hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Our Projects
                 </button>
@@ -77,22 +67,30 @@ export default function Footer() {
                     const element = document.getElementById('chat');
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-tech-platinum hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   AI Assistant
                 </button>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
+                >
+                  Blog
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Legal Links */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-tech-white">Legal</h4>
+            <h4 className="text-lg font-bold mb-4 text-white">Legal</h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="text-tech-platinum hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Privacy Policy
                 </Link>
@@ -100,7 +98,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms-and-conditions"
-                  className="text-tech-platinum hover:text-tech-baby-blue smooth-transition"
+                  className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Terms & Conditions
                 </Link>
@@ -110,7 +108,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-tech-baby-blue/20 pt-8 text-center text-tech-platinum">
+        <div className="pt-8 text-center text-white/50">
           <p>© {new Date().getFullYear()} Capital Intelligence Group. All rights reserved.</p>
         </div>
       </div>

@@ -95,7 +95,7 @@ const monthlyPlans = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[100dvh]">
       {/* Hero */}
       <section className="py-20 px-6 text-center">
         <div className="max-w-3xl mx-auto">
@@ -105,7 +105,7 @@ export default function PricingPage() {
           <p className="text-xl text-tech-platinum mb-4">
             Professional websites and AI systems for Australian businesses.
           </p>
-          <p className="text-2xl font-bold text-tech-baby-blue">
+          <p className="text-2xl font-bold text-tech-white">
             Websites starting from $599 AUD
           </p>
         </div>
@@ -138,13 +138,13 @@ export default function PricingPage() {
                 <h3 className="text-2xl font-bold text-tech-white mb-2">{pkg.name}</h3>
                 <p className="text-tech-platinum mb-4">{pkg.description}</p>
                 <div className="mb-2">
-                  <span className="text-3xl font-bold text-tech-baby-blue">{pkg.priceAUD}</span>
+                  <span className="text-3xl font-bold text-tech-white">{pkg.priceAUD}</span>
                 </div>
                 <p className="text-sm text-tech-platinum mb-6">{pkg.priceUSD}</p>
                 <ul className="space-y-3 mb-8">
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-tech-baby-blue flex-shrink-0 mt-0.5" />
+                      <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-0.5" />
                       <span className="text-tech-white text-sm">{f}</span>
                     </li>
                   ))}
@@ -154,7 +154,7 @@ export default function PricingPage() {
                   className={`block w-full py-3 rounded-lg font-semibold text-center smooth-transition ${
                     pkg.featured
                       ? 'bg-tech-baby-blue text-tech-black hover:bg-tech-baby-blue-light'
-                      : 'border-2 border-tech-baby-blue text-tech-baby-blue hover:bg-tech-baby-blue hover:text-tech-black'
+                      : 'border-2 border-tech-baby-blue text-tech-white hover:bg-tech-baby-blue hover:text-tech-black'
                   }`}
                 >
                   Get Started
@@ -192,20 +192,20 @@ export default function PricingPage() {
                 <h3 className="text-xl font-bold text-tech-white mb-2">{plan.name}</h3>
                 <p className="text-tech-platinum text-sm mb-4">{plan.description}</p>
                 <div className="mb-1">
-                  <span className="text-xl font-bold text-tech-baby-blue">{plan.priceAUD}</span>
+                  <span className="text-xl font-bold text-tech-white">{plan.priceAUD}</span>
                 </div>
                 <p className="text-xs text-tech-platinum mb-6">{plan.priceUSD}</p>
                 <ul className="space-y-2 mb-8">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-tech-baby-blue flex-shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-tech-white flex-shrink-0 mt-0.5" />
                       <span className="text-tech-white text-sm">{f}</span>
                     </li>
                   ))}
                 </ul>
                 <Link
                   href="/"
-                  className="block w-full py-3 rounded-lg font-semibold text-center border-2 border-tech-baby-blue text-tech-baby-blue hover:bg-tech-baby-blue hover:text-tech-black smooth-transition"
+                  className="block w-full py-3 rounded-lg font-semibold text-center border-2 border-tech-baby-blue text-tech-white hover:bg-tech-baby-blue hover:text-tech-black smooth-transition"
                 >
                   Get Started
                 </Link>
