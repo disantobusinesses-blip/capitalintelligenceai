@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Plasma from '@/components/Plasma'
+import LightPillar from '@/components/LightPillar'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 import BottomNav from '@/components/BottomNav'
 
@@ -39,13 +39,17 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CurrencyProvider>
-          <Plasma
-            color="#ffffff"
-            speed={1}
-            direction="forward"
-            scale={1}
-            opacity={1}
-            mouseInteractive={true}
+          <LightPillar
+            topColor="#81D8D0"
+            bottomColor="#0ABAB5"
+            intensity={1.0}
+            rotationSpeed={0.3}
+            interactive={false}
+            glowAmount={0.005}
+            pillarWidth={3.0}
+            pillarHeight={0.4}
+            noiseIntensity={0.5}
+            quality="high"
           />
           {children}
           <BottomNav />
