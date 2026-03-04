@@ -5,13 +5,13 @@ import { CurrencyProvider } from '@/context/CurrencyContext'
 import BottomNav from '@/components/BottomNav'
 
 export const metadata: Metadata = {
-  title: 'IAS – Intelligent AI Systems | Websites from $599 AUD',
-  description: 'Intelligent AI Systems (IAS) builds professional websites, AI integrations, and digital solutions for Australian businesses. Landing pages from $599 AUD, full packages from $1,999 AUD.',
+  title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
+  description: 'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by Australian businesses to build smarter digital experiences.',
   keywords: 'web design Australia, landing page, AI integration, website maintenance, SEO, digital agency, IAS, Intelligent AI Systems',
   metadataBase: new URL('https://intelligentaisystem.com'),
   openGraph: {
-    title: 'IAS – Intelligent AI Systems | Websites from $599 AUD',
-    description: 'Professional websites and AI integrations for Australian businesses. Landing pages from $599 AUD, full packages from $1,999 AUD.',
+    title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
+    description: 'Premium websites and AI integrations engineered for growth. Trusted by Australian businesses to build smarter digital experiences.',
     url: 'https://intelligentaisystem.com',
     siteName: 'Intelligent AI Systems',
     locale: 'en_AU',

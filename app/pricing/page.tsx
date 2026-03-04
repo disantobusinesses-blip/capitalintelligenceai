@@ -3,12 +3,12 @@ import Link from 'next/link'
 import { Check } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Pricing – Websites from $599 AUD | IAS Intelligent AI Systems',
-  description: 'Transparent pricing for professional websites and AI integrations. Landing pages from $599 AUD, full website packages starting at $1,999 AUD. Monthly plans from $119 AUD/month.',
+  title: 'Pricing – Premium Web & AI Solutions | IAS Intelligent AI Systems',
+  description: 'Transparent pricing for premium websites and AI integrations. Flexible packages tailored to your business needs, with monthly support plans available.',
   keywords: 'website pricing Australia, landing page cost, web design price, AI integration cost, monthly website plan, IAS pricing',
   openGraph: {
-    title: 'Pricing – Websites from $599 AUD | IAS',
-    description: 'Landing pages from $599 AUD. Full website packages from $1,999 AUD. Monthly maintenance from $119 AUD/month.',
+    title: 'Pricing – Premium Web & AI Solutions | IAS',
+    description: 'Flexible packages for premium websites and AI integrations. Tailored to your business needs, with monthly support plans available.',
     url: 'https://intelligentaisystem.com/pricing',
     type: 'website',
   },
