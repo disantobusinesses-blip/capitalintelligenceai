@@ -14,38 +14,39 @@ const projects = [
   },
   {
     id: 2,
-    title: 'E-Commerce Platform',
-    industry: 'Retail',
-    description: 'Complete digital transformation with AI-powered inventory management and customer analytics.',
-    image: null, // No image - will show fallback
+    title: 'My AI Bank',
+    industry: 'FinTech',
+    description: 'AI-powered banking platform delivering intelligent financial tools and personalised banking experiences.',
+    image: null,
+    url: 'https://myaibank.ai',
   },
   {
     id: 3,
-    title: 'Healthcare Portal',
-    industry: 'Healthcare',
-    description: 'Secure patient management system with intelligent appointment scheduling and telemedicine integration.',
-    image: null, // No image - will show fallback
+    title: 'TBA',
+    industry: 'TBA',
+    description: 'Details to be announced.',
+    image: null,
   },
   {
     id: 4,
-    title: 'FinTech Dashboard',
-    industry: 'Finance',
-    description: 'Real-time financial analytics platform with automated reporting and predictive insights.',
-    image: null, // No image - will show fallback
+    title: 'TBA',
+    industry: 'TBA',
+    description: 'Details to be announced.',
+    image: null,
   },
   {
     id: 5,
-    title: 'Property Management',
-    industry: 'Real Estate',
-    description: 'Intelligent property listing and tenant management system with automated workflows.',
-    image: null, // No image - will show fallback
+    title: 'TBA',
+    industry: 'TBA',
+    description: 'Details to be announced.',
+    image: null,
   },
   {
     id: 6,
-    title: 'Manufacturing ERP',
-    industry: 'Manufacturing',
-    description: 'End-to-end production tracking with AI-driven quality control and supply chain optimization.',
-    image: null, // No image - will show fallback
+    title: 'TBA',
+    industry: 'TBA',
+    description: 'Details to be announced.',
+    image: null,
   },
 ]
 
