@@ -253,9 +253,9 @@ export default function GetStartedForm({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-tech-black/90 backdrop-blur-sm">
-      <div className="bg-tech-gray border border-tech-baby-blue/30 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div className="bg-tech-gray border border-tech-baby-blue/30 rounded-2xl w-full max-w-2xl flex flex-col max-h-[85vh]">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-tech-baby-blue/20">
+        <div className="flex items-center justify-between p-4 border-b border-tech-baby-blue/20 flex-shrink-0">
           <div>
             <h2 className="text-xl font-bold text-tech-white">Get Started</h2>
             <p className="text-sm text-tech-platinum">
@@ -272,7 +272,7 @@ export default function GetStartedForm({
         </div>
 
         {/* Progress Bar */}
-        <div className="px-6 pt-4">
+        <div className="px-4 pt-3 flex-shrink-0">
           <div className="w-full h-1.5 bg-tech-black rounded-full overflow-hidden">
             <div
               className="h-full bg-tech-baby-blue rounded-full smooth-transition"
@@ -282,23 +282,23 @@ export default function GetStartedForm({
         </div>
 
         {/* Form Content */}
-        <div className="p-6">
+        <div className="p-4 overflow-y-auto flex-1">
           {/* Step 1: Choose Service */}
           {step === 1 && (
             <div>
-              <h3 className="text-2xl font-bold text-tech-white mb-2">What do you need?</h3>
-              <p className="text-tech-platinum mb-6">Select the service that best fits your project.</p>
-              <div className="grid gap-4">
+              <h3 className="text-xl font-bold text-tech-white mb-2">What do you need?</h3>
+              <p className="text-tech-platinum mb-4">Select the service that best fits your project.</p>
+              <div className="grid gap-3">
                 <button
                   onClick={() => setFormData({ ...formData, service: 'landing-page' })}
-                  className={`flex items-start gap-4 p-5 rounded-xl border-2 text-left smooth-transition ${
+                  className={`flex items-start gap-4 p-4 rounded-xl border-2 text-left smooth-transition ${
                     formData.service === 'landing-page'
                       ? 'border-tech-baby-blue bg-tech-baby-blue/10'
                       : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
                   }`}
                 >
-                  <div className="w-12 h-12 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Sparkles className="w-6 h-6 text-tech-white" />
+                  <div className="w-10 h-10 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Sparkles className="w-5 h-5 text-tech-white" />
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-tech-white mb-1">Landing Page</h4>
@@ -313,14 +313,14 @@ export default function GetStartedForm({
                 </button>
                 <button
                   onClick={() => setFormData({ ...formData, service: 'full-package' })}
-                  className={`flex items-start gap-4 p-5 rounded-xl border-2 text-left smooth-transition ${
+                  className={`flex items-start gap-4 p-4 rounded-xl border-2 text-left smooth-transition ${
                     formData.service === 'full-package'
                       ? 'border-tech-baby-blue bg-tech-baby-blue/10'
                       : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
                   }`}
                 >
-                  <div className="w-12 h-12 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Package className="w-6 h-6 text-tech-white" />
+                  <div className="w-10 h-10 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Package className="w-5 h-5 text-tech-white" />
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-tech-white mb-1">Website + Full Package</h4>
@@ -340,9 +340,9 @@ export default function GetStartedForm({
           {/* Step 2: Business Info */}
           {step === 2 && (
             <div>
-              <h3 className="text-2xl font-bold text-tech-white mb-2">Tell us about your business</h3>
-              <p className="text-tech-platinum mb-6">Help us understand what your website needs to represent.</p>
-              <div className="grid gap-4">
+              <h3 className="text-xl font-bold text-tech-white mb-2">Tell us about your business</h3>
+              <p className="text-tech-platinum mb-4">Help us understand what your website needs to represent.</p>
+              <div className="grid gap-3">
                 <div>
                   <label htmlFor="businessName" className="block text-sm font-semibold text-tech-white mb-1.5">
                     Business Name <span className="text-tech-white">*</span>
@@ -353,7 +353,7 @@ export default function GetStartedForm({
                     value={formData.businessName}
                     onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                     placeholder="e.g. Capital Intelligence Group"
-                    className="w-full px-4 py-3 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
+                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
                   />
                 </div>
                 <div>
@@ -366,7 +366,7 @@ export default function GetStartedForm({
                     value={formData.industry}
                     onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
                     placeholder="e.g. Electrical Services, Technology, etc."
-                    className="w-full px-4 py-3 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
+                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
                   />
                 </div>
                 <div>
@@ -378,8 +378,8 @@ export default function GetStartedForm({
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     placeholder="What does your business do? Who are your customers?"
-                    rows={3}
-                    className="w-full px-4 py-3 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none"
+                    rows={2}
+                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none"
                   />
                 </div>
                 <div className="flex items-center gap-3">
@@ -406,17 +406,17 @@ export default function GetStartedForm({
           {/* Step 3: Design Style */}
           {step === 3 && (
             <div>
-              <h3 className="text-2xl font-bold text-tech-white mb-2">Design preferences</h3>
-              <p className="text-tech-platinum mb-6">Choose the look and feel for your website.</p>
+              <h3 className="text-xl font-bold text-tech-white mb-2">Design preferences</h3>
+              <p className="text-tech-platinum mb-4">Choose the look and feel for your website.</p>
 
-              <div className="mb-6">
-                <p className="text-sm font-semibold text-tech-white mb-3">Layout Style <span className="text-tech-white">*</span></p>
-                <div className="grid grid-cols-2 gap-3">
+              <div className="mb-4">
+                <p className="text-sm font-semibold text-tech-white mb-2">Layout Style <span className="text-tech-white">*</span></p>
+                <div className="grid grid-cols-2 gap-2">
                   {designStyles.map((style) => (
                     <button
                       key={style.id}
                       onClick={() => setFormData({ ...formData, designStyle: style.id })}
-                      className={`p-4 rounded-xl border-2 text-left smooth-transition ${
+                      className={`p-3 rounded-xl border-2 text-left smooth-transition ${
                         formData.designStyle === style.id
                           ? 'border-tech-baby-blue bg-tech-baby-blue/10'
                           : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
@@ -431,13 +431,13 @@ export default function GetStartedForm({
               </div>
 
               <div>
-                <p className="text-sm font-semibold text-tech-white mb-3">Color Preference</p>
-                <div className="grid grid-cols-3 gap-3">
+                <p className="text-sm font-semibold text-tech-white mb-2">Color Preference</p>
+                <div className="grid grid-cols-3 gap-2">
                   {colorOptions.map((option) => (
                     <button
                       key={option.id}
                       onClick={() => setFormData({ ...formData, colorPreference: option.id })}
-                      className={`p-3 rounded-xl border-2 text-center smooth-transition ${
+                      className={`p-2 rounded-xl border-2 text-center smooth-transition ${
                         formData.colorPreference === option.id
                           ? 'border-tech-baby-blue bg-tech-baby-blue/10'
                           : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
@@ -463,9 +463,9 @@ export default function GetStartedForm({
           {/* Step 4: Features */}
           {step === 4 && (
             <div>
-              <h3 className="text-2xl font-bold text-tech-white mb-2">Choose your features</h3>
-              <p className="text-tech-platinum mb-2">Select all the features you want on your website.</p>
-              <p className="text-sm text-tech-white italic mb-6">*Select multiple paid options for discount upon quote*</p>
+              <h3 className="text-xl font-bold text-tech-white mb-2">Choose your features</h3>
+              <p className="text-tech-platinum mb-1">Select all the features you want on your website.</p>
+              <p className="text-sm text-tech-white italic mb-4">*Select multiple paid options for discount upon quote*</p>
               <div className="grid grid-cols-2 gap-3">
                 {featureOptions.map((feature) => {
                   const isSelected = formData.features.includes(feature.name)
@@ -508,21 +508,21 @@ export default function GetStartedForm({
           {/* Step 5: Monthly Plan */}
           {step === 5 && (
             <div>
-              <h3 className="text-2xl font-bold text-tech-white mb-2">Choose your monthly plan</h3>
-              <p className="text-tech-platinum mb-6">Select the ongoing support plan that works for you.</p>
-              <div className="grid gap-4">
+              <h3 className="text-xl font-bold text-tech-white mb-2">Choose your monthly plan</h3>
+              <p className="text-tech-platinum mb-4">Select the ongoing support plan that works for you.</p>
+              <div className="grid gap-3">
                 {monthlyPlans.map((plan) => (
                   <button
                     key={plan.id}
                     onClick={() => setFormData({ ...formData, monthlyPlan: plan.id })}
-                    className={`relative flex items-start gap-4 p-5 rounded-xl border-2 text-left smooth-transition ${
+                    className={`relative flex items-start gap-4 p-4 rounded-xl border-2 text-left smooth-transition ${
                       formData.monthlyPlan === plan.id
                         ? 'border-tech-baby-blue bg-tech-baby-blue/10'
                         : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
                     }`}
                   >
-                    <div className="w-12 h-12 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <CreditCard className="w-6 h-6 text-tech-white" />
+                    <div className="w-10 h-10 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CreditCard className="w-5 h-5 text-tech-white" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-baseline gap-2 mb-1 flex-wrap">
@@ -548,9 +548,9 @@ export default function GetStartedForm({
 
               {/* AI Integration custom input */}
               {formData.monthlyPlan === 'ai-integration' && (
-                <div className="mt-6 p-6 bg-tech-black border border-tech-baby-blue/30 rounded-xl">
-                  <h4 className="text-lg font-bold text-tech-white mb-2">What would you like to automate?</h4>
-                  <p className="text-sm text-tech-platinum mb-4">
+                <div className="mt-4 p-4 bg-tech-black border border-tech-baby-blue/30 rounded-xl">
+                  <h4 className="text-base font-bold text-tech-white mb-2">What would you like to automate?</h4>
+                  <p className="text-sm text-tech-platinum mb-3">
                     Tell us about your automation needs. Here are some suggestions:
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -573,8 +573,8 @@ export default function GetStartedForm({
                     value={formData.aiAutomationRequest}
                     onChange={(e) => setFormData({ ...formData, aiAutomationRequest: e.target.value })}
                     placeholder="Describe what you want to automate..."
-                    rows={4}
-                    className="w-full px-4 py-3 bg-tech-gray border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none"
+                    rows={3}
+                    className="w-full px-4 py-2 bg-tech-gray border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none"
                   />
                 </div>
               )}
@@ -584,9 +584,9 @@ export default function GetStartedForm({
           {/* Step 6: Contact Info */}
           {step === 6 && (
             <div>
-              <h3 className="text-2xl font-bold text-tech-white mb-2">Your contact details</h3>
-              <p className="text-tech-platinum mb-6">How can we reach you to discuss your project?</p>
-              <div className="grid gap-4">
+              <h3 className="text-xl font-bold text-tech-white mb-2">Your contact details</h3>
+              <p className="text-tech-platinum mb-4">How can we reach you to discuss your project?</p>
+              <div className="grid gap-3">
                 <div>
                   <label htmlFor="contactName" className="block text-sm font-semibold text-tech-white mb-1.5">
                     Full Name <span className="text-tech-white">*</span>
@@ -597,7 +597,7 @@ export default function GetStartedForm({
                     value={formData.contactName}
                     onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
                     placeholder="Your full name"
-                    className="w-full px-4 py-3 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
+                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
                   />
                 </div>
                 <div>
@@ -610,7 +610,7 @@ export default function GetStartedForm({
                     value={formData.contactEmail}
                     onChange={(e) => setFormData({ ...formData, contactEmail: e.target.value })}
                     placeholder="you@company.com"
-                    className="w-full px-4 py-3 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
+                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
                   />
                 </div>
                 <div>
@@ -623,7 +623,7 @@ export default function GetStartedForm({
                     value={formData.contactPhone}
                     onChange={(e) => setFormData({ ...formData, contactPhone: e.target.value })}
                     placeholder="Optional"
-                    className="w-full px-4 py-3 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
+                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
                   />
                 </div>
                 <div>
@@ -635,8 +635,8 @@ export default function GetStartedForm({
                     value={formData.additionalNotes}
                     onChange={(e) => setFormData({ ...formData, additionalNotes: e.target.value })}
                     placeholder="Anything else you'd like us to know?"
-                    rows={3}
-                    className="w-full px-4 py-3 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none"
+                    rows={2}
+                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none"
                   />
                 </div>
               </div>
@@ -645,16 +645,16 @@ export default function GetStartedForm({
         </div>
 
         {/* Footer Navigation */}
-        <div className="p-6 border-t border-tech-baby-blue/20">
+        <div className="p-4 border-t border-tech-baby-blue/20 flex-shrink-0">
           {/* Running Total */}
           {calculateRunningTotal(formData) > 0 && (
-            <div className="mb-4 p-3 bg-tech-baby-blue/10 border border-tech-baby-blue/30 rounded-lg flex items-center justify-between">
+            <div className="mb-3 p-3 bg-tech-baby-blue/10 border border-tech-baby-blue/30 rounded-lg flex items-center justify-between">
               <span className="text-sm font-medium text-tech-platinum">Estimated Total</span>
               <span className="text-lg font-bold text-tech-white">${calculateRunningTotal(formData).toLocaleString()} AUD</span>
             </div>
           )}
           {submitError && (
-            <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
+            <div className="mb-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
               {submitError}
             </div>
           )}
