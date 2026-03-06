@@ -29,7 +29,7 @@ const projects = [
     title: 'My AI Bank',
     industry: 'FinTech',
     description: 'AI-powered banking platform delivering intelligent financial tools and personalised banking experiences.',
-    image: null,
+    image: 'https://image.thum.io/get/width/1280/crop/720/https://myaibank.ai',
     url: 'https://myaibank.ai',
     features: ['AI-powered tools', 'Personalised banking', 'Intelligent insights', 'Secure platform', 'Modern UX'],
   },
@@ -101,6 +101,7 @@ export default function ProjectsPage() {
                       <img
                         src={project.image}
                         alt={project.title}
+                        loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover object-top"
                       />
                       <div className="absolute inset-0 bg-tech-black/20" />
