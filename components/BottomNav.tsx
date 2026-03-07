@@ -1,6 +1,6 @@
 'use client'
 
-import { Home, User, Briefcase, DollarSign, Layers } from 'lucide-react'
+import { Home, User, Briefcase, DollarSign, Layers, BookOpen } from 'lucide-react'
 import { NavBar } from '@/components/ui/tubelight-navbar'
 
 const navItems = [
@@ -9,6 +9,7 @@ const navItems = [
   { name: 'Projects', url: '/projects', icon: Briefcase },
   { name: 'Pricing', url: '/pricing', icon: DollarSign },
   { name: 'Features', url: '/features', icon: Layers },
+  { name: 'Blog', url: '/blog', icon: BookOpen },
 ]
 
 export default function BottomNav() {

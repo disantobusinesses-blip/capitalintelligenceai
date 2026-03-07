@@ -74,7 +74,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/blog"
                   className="text-white/70 hover:text-tech-white smooth-transition"
                 >
                   Blog
