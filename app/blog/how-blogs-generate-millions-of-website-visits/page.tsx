@@ -123,11 +123,11 @@ export default function BlogPostHowBlogsGenerateTraffic() {
             <div className="mb-12 rounded-2xl overflow-hidden border border-tech-baby-blue/20">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/blog/blog-traffic-search-console.svg"
+                src="/images/blog/search-console-screenshot.png"
                 alt="Google Search Console performance graph showing blog traffic growing to 1.21 million impressions and 11.2K clicks over three months"
                 className="w-full h-auto object-cover"
-                width={900}
-                height={640}
+                width={800}
+                height={628}
               />
             </div>
 
