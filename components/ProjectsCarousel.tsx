@@ -14,38 +14,39 @@ const projects = [
   },
   {
     id: 2,
-    title: 'E-Commerce Platform',
-    industry: 'Retail',
-    description: 'Complete digital transformation with AI-powered inventory management and customer analytics.',
-    image: null, // No image - will show fallback
+    title: 'My AI Bank',
+    industry: 'FinTech',
+    description: 'AI-powered banking platform delivering intelligent financial tools and personalised banking experiences.',
+    image: 'https://image.thum.io/get/width/1280/crop/720/https://myaibank.ai',
+    url: 'https://myaibank.ai',
   },
   {
     id: 3,
-    title: 'Healthcare Portal',
-    industry: 'Healthcare',
-    description: 'Secure patient management system with intelligent appointment scheduling and telemedicine integration.',
-    image: null, // No image - will show fallback
+    title: 'TBA',
+    industry: 'TBA',
+    description: 'Details to be announced.',
+    image: null,
   },
   {
     id: 4,
-    title: 'FinTech Dashboard',
-    industry: 'Finance',
-    description: 'Real-time financial analytics platform with automated reporting and predictive insights.',
-    image: null, // No image - will show fallback
+    title: 'TBA',
+    industry: 'TBA',
+    description: 'Details to be announced.',
+    image: null,
   },
   {
     id: 5,
-    title: 'Property Management',
-    industry: 'Real Estate',
-    description: 'Intelligent property listing and tenant management system with automated workflows.',
-    image: null, // No image - will show fallback
+    title: 'TBA',
+    industry: 'TBA',
+    description: 'Details to be announced.',
+    image: null,
   },
   {
     id: 6,
-    title: 'Manufacturing ERP',
-    industry: 'Manufacturing',
-    description: 'End-to-end production tracking with AI-driven quality control and supply chain optimization.',
-    image: null, // No image - will show fallback
+    title: 'TBA',
+    industry: 'TBA',
+    description: 'Details to be announced.',
+    image: null,
   },
 ]
 
@@ -110,23 +111,25 @@ export default function ProjectsCarousel() {
                   <div className="max-w-4xl mx-auto bg-tech-black border border-tech-baby-blue/20 rounded-2xl overflow-hidden tech-shadow smooth-transition hover:border-tech-baby-blue hover:shadow-glow">
                     {/* Project Image */}
                     <div className="aspect-video bg-gradient-tech relative overflow-hidden">
-                      {project.image && (
+                      {project.image ? (
                         <>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={project.image}
                             alt={project.title}
+                            loading="lazy"
                             className="absolute inset-0 w-full h-full object-cover object-top"
                           />
                           {/* Dark overlay for better text readability when image is present */}
                           <div className="absolute inset-0 bg-tech-black/20" />
                         </>
+                      ) : (
+                        /* Fallback placeholder for TBA entries */
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-tech">
+                          <div className="absolute inset-0 bg-tech-baby-blue/10" />
+                          <span className="relative z-10 text-tech-white text-2xl font-semibold">{project.title}</span>
+                        </div>
                       )}
-                      {/* Title overlay (always visible, but more prominent when no image) */}
-                      <div className={`absolute inset-0 flex items-center justify-center text-tech-white text-2xl font-semibold ${!project.image ? 'bg-gradient-tech' : ''}`}>
-                        {!project.image && <div className="absolute inset-0 bg-tech-baby-blue/10" />}
-                        <span className="relative z-10">{project.title}</span>
-                      </div>
                       {/* Animated lines */}
                       <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-tech-baby-blue to-transparent animate-pulse" />
                     </div>

@@ -9,6 +9,7 @@ interface MeshGradientBackgroundProps {
   swirl?: number
   speed?: number
   offsetX?: number
+  maxPixelCount?: number
 }
 
 export default function MeshGradientBackground({
@@ -17,6 +18,9 @@ export default function MeshGradientBackground({
   swirl = 0.6,
   speed = 0.8,
   offsetX = 0.08,
+  // Cap WebGL render resolution at 720p equivalent to avoid GPU lag on large desktop screens.
+  // The output is upscaled by CSS to fill the viewport, so it still looks smooth.
+  maxPixelCount = 1280 * 720, // 921 600 px ≈ 720p
 }: MeshGradientBackgroundProps) {
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 })
   const [mounted, setMounted] = useState(false)
@@ -47,6 +51,7 @@ export default function MeshGradientBackground({
         grainOverlay={0}
         speed={speed}
         offsetX={offsetX}
+        maxPixelCount={maxPixelCount}
       />
       <div className="absolute inset-0 pointer-events-none bg-black/25" />
     </div>
