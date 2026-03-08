@@ -29,4 +29,24 @@ export const blogPosts: BlogPost[] = [
     readingTime: '10 min read',
     category: 'Business & AI',
   },
+  {
+    slug: 'how-ai-improves-local-seo-google-business-profile',
+    title: 'How AI Can Improve Local SEO and Google Business Profile Rankings',
+    description:
+      'Most service businesses need local visibility, not vanity traffic. Learn how AI can improve your website structure, Google Business Profile, and local search rankings to turn nearby searches into real enquiries.',
+    publishedAt: '2026-03-08',
+    lastModified: '2026-03-08',
+    readingTime: '8 min read',
+    category: 'Local SEO',
+  },
+  {
+    slug: 'ai-chatbots-automation-more-leads',
+    title: 'How AI Chatbots and Automation Can Turn Website Traffic Into More Leads',
+    description:
+      'Getting traffic is only part of the job. Discover how AI chatbots and workflow automation can capture more leads, reduce response time, and turn your website visitors into paying customers.',
+    publishedAt: '2026-03-08',
+    lastModified: '2026-03-08',
+    readingTime: '8 min read',
+    category: 'Lead Generation',
+  },
 ]

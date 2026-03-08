@@ -21,22 +21,11 @@ interface NavBarProps {
 export function NavBar({ items, className }: NavBarProps) {
   const pathname = usePathname()
   const [activeTab, setActiveTab] = useState(items[0].name)
-  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const match = items.find((item) => item.url === pathname)
     if (match) setActiveTab(match.name)
   }, [pathname, items])
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
 
   return (
     <div
@@ -45,7 +34,7 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
     >
-      <div className="flex items-center gap-3 bg-tech-black/80 border border-tech-baby-blue/30 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+      <div className="flex items-center gap-0.5 bg-tech-black/80 border border-tech-baby-blue/30 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -55,13 +44,22 @@ export function NavBar({ items, className }: NavBarProps) {
               key={item.name}
               href={item.url}
               onClick={() => setActiveTab(item.name)}
+              aria-label={item.name}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-3 md:px-6 py-2 rounded-full transition-colors",
+                "relative cursor-pointer font-semibold rounded-full transition-colors",
+                // Mobile: icon-only, compact padding
+                "p-2.5",
+                // Desktop: icon + label with more padding
+                "md:px-5 md:py-2 md:flex md:items-center md:gap-1.5",
                 "text-tech-platinum hover:text-tech-white",
                 isActive && "bg-tech-baby-blue/10 text-tech-white",
               )}
             >
-              <span>{item.name}</span>
+              {/* Mobile: icon only */}
+              <Icon className="w-4 h-4 md:hidden" />
+              {/* Desktop: icon + label */}
+              <Icon className="hidden md:block w-4 h-4 flex-shrink-0" />
+              <span className="hidden md:inline text-sm">{item.name}</span>
               {isActive && (
                 <motion.div
                   layoutId="lamp"
