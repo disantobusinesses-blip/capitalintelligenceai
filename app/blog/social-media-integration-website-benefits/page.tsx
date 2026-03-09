@@ -171,7 +171,7 @@ export default function BlogPostSocialMediaIntegration() {
                   Fresh content matters for two reasons. First, it signals to visitors that
                   your business is active, which builds confidence. A website that looks the
                   same as it did three years ago raises questions. Second, search engines use
-                  content freshness as a relevance signal. A site that is regularly updated —
+                  content freshness as a relevance signal. A site that is regularly updated,
                   even through embedded feeds, sends a stronger signal than a static one.
                 </p>
               </section>

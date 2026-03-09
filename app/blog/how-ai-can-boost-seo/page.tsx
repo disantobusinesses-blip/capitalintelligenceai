@@ -260,8 +260,8 @@ export default function BlogPostAISEO() {
                 <p className="mt-4">
                   AI-assisted technical SEO tools can scan your site, detect
                   issues like broken redirects, duplicate content, slow-loading
-                  resources, missing canonical tags, and hreflang errors —
-                  then explain each issue in plain language and suggest the
+                  resources, missing canonical tags, and hreflang errors,
+                  then explains each issue in plain language and suggests the
                   correct fix.
                 </p>
                 <p className="mt-4">
@@ -303,7 +303,7 @@ export default function BlogPostAISEO() {
                 <p>
                   Your competitors are already ranking for keywords you are not
                   targeting. Content gap analysis identifies exactly which
-                  topics and queries they are capturing that you are missing —
+                  topics and queries they are capturing that you are missing,
                   giving you a precise roadmap for content that can win traffic
                   quickly.
                 </p>

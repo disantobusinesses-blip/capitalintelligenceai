@@ -246,8 +246,8 @@ export default function BlogPostNewsletterSignup() {
                   they receive, how often, and why should they care?
                 </p>
                 <p className="mt-4">
-                  Placement matters too. A signup embedded in a relevant page section —
-                  after a useful blog post, alongside a service description, or at a natural
+                  Placement matters too. A signup embedded in a relevant page section,
+                  such as after a useful blog post, alongside a service description, or at a natural
                   pause point, performs better than a pop-up that interrupts the browsing
                   experience. The goal is to make subscribing feel like the natural next step
                   for someone who has found your content valuable.

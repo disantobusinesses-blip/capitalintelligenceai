@@ -231,8 +231,8 @@ export default function BlogPostGalleryPortfolio() {
                   Perhaps the most commercially valuable function of a portfolio is the trust it
                   builds before any direct contact. When a potential customer has already browsed
                   fifteen examples of your work, seen the quality, understood your style, and felt
-                  confident in your capabilities, the first conversation is not a sales call —
-                  it is a confirmation call. They have already decided they want to work with you.
+                  confident in your capabilities, the first conversation is not a sales call.
+                  It is a confirmation call. They have already decided they want to work with you.
                 </p>
                 <p className="mt-4">
                   That shift from cold enquiry to warm enquiry changes everything about the
