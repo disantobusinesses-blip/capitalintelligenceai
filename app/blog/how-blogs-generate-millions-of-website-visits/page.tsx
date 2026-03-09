@@ -119,18 +119,6 @@ export default function BlogPostHowBlogsGenerateTraffic() {
               </div>
             </header>
 
-            {/* Hero image */}
-            <div className="mb-12 rounded-2xl overflow-hidden border border-tech-baby-blue/20">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/blog/search-console-screenshot.png"
-                alt="Google Search Console performance graph showing blog traffic growing to 1.21 million impressions and 11.2K clicks over three months"
-                className="w-full h-auto object-cover"
-                width={800}
-                height={628}
-              />
-            </div>
-
             {/* Body */}
             <div className="space-y-8 text-tech-platinum leading-relaxed">
 
@@ -237,11 +225,10 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                   The Snowball Effect of Content
                 </h2>
                 <p>
-                  The screenshot at the top of this page matters because it shows what business
-                  owners actually care about: views, visibility, and momentum. When someone sees a
-                  graph climbing, or pageview numbers compounding, it makes the value tangible.
-                  Blogs are one of the few marketing assets that can build this kind of snowball
-                  effect.
+                  Blogs are one of the few marketing assets that can build a genuine snowball
+                  effect. When someone sees pageview numbers compounding month after month, it
+                  makes the value tangible. That momentum is what content-led growth looks like
+                  in practice — and it is accessible to businesses of any size.
                 </p>
                 <p className="mt-4">You publish. Google crawls. Pages start appearing. Some articles rank. Internal links strengthen the site. More searches trigger impressions. More impressions lead to clicks. More clicks lead to enquiries. That is how content scales.</p>
               </section>

@@ -59,4 +59,44 @@ export const blogPosts: BlogPost[] = [
     readingTime: '9 min read',
     category: 'Blogging & SEO',
   },
+  {
+    slug: 'ai-automated-booking-system-benefits',
+    title: 'Why an AI Automated Booking System Is One of the Best Investments a Service Business Can Make',
+    description:
+      'An AI booking system lets customers schedule appointments 24/7, sends automated reminders, and eliminates double-bookings. Here is why service businesses that add one see measurable improvements in bookings and revenue.',
+    publishedAt: '2026-03-09',
+    lastModified: '2026-03-09',
+    readingTime: '7 min read',
+    category: 'Business & AI',
+  },
+  {
+    slug: 'social-media-integration-website-benefits',
+    title: 'Why Connecting Your Website to Social Media Is Essential for Business Growth',
+    description:
+      'Social media integration on your website turns passive visitors into followers, amplifies your reach, and keeps your content fresh. Here is how connecting your platforms builds a stronger, more visible online presence.',
+    publishedAt: '2026-03-09',
+    lastModified: '2026-03-09',
+    readingTime: '7 min read',
+    category: 'Digital Marketing',
+  },
+  {
+    slug: 'gallery-portfolio-website-benefits',
+    title: 'Why a Gallery or Portfolio Section on Your Website Wins More Clients and Builds Instant Trust',
+    description:
+      'Visual proof of your work is one of the most powerful selling tools a business has. A well-built gallery or portfolio section on your website converts browsers into enquiries by showing exactly what you are capable of.',
+    publishedAt: '2026-03-09',
+    lastModified: '2026-03-09',
+    readingTime: '7 min read',
+    category: 'Website Growth',
+  },
+  {
+    slug: 'newsletter-signup-email-marketing-benefits',
+    title: 'Why a Newsletter Signup Is the Most Valuable Marketing Asset Your Website Can Have',
+    description:
+      'Your email list is the one marketing channel you fully own. A newsletter signup on your website builds a direct line to your best prospects and customers — and keeps your business top of mind long after they leave your site.',
+    publishedAt: '2026-03-09',
+    lastModified: '2026-03-09',
+    readingTime: '7 min read',
+    category: 'Email Marketing',
+  },
 ]
