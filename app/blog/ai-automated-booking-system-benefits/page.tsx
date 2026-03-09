@@ -128,7 +128,7 @@ export default function BlogPostAIBookingSystem() {
                   a text message, or an email chain. Customers have to wait for business hours.
                   Staff have to manually check calendars. Confirmations get forgotten. An AI
                   automated booking system removes every one of those friction points and replaces
-                  them with a process that runs itself — day and night, without any manual
+                  them with a process that runs itself, day and night, without any manual
                   involvement.
                 </p>
                 <p className="mt-4">
@@ -165,7 +165,7 @@ export default function BlogPostAIBookingSystem() {
                 </h2>
                 <p>
                   No-shows cost service businesses real money. An appointment that is missed is
-                  not just revenue lost — it is a time slot that could have gone to another
+                  not just revenue lost. It is a time slot that could have gone to another
                   customer. Automated reminder sequences dramatically reduce no-show rates.
                   Studies on appointment reminders in healthcare, beauty, and professional
                   services consistently show reductions of 30 to 40 percent when automated SMS
@@ -204,8 +204,8 @@ export default function BlogPostAIBookingSystem() {
                 </h2>
                 <p>
                   A well-integrated booking system does not exist in isolation. It synchronises
-                  with your existing calendar — whether that is Google Calendar, Outlook, or a
-                  specialist scheduling tool — so that bookings made online immediately appear
+                  with your existing calendar, whether that is Google Calendar, Outlook, or a
+                  specialist scheduling tool, so that bookings made online immediately appear
                   alongside your existing appointments. There are no double-bookings, no
                   confusion, and no need to manually transfer information between systems.
                 </p>
@@ -224,8 +224,8 @@ export default function BlogPostAIBookingSystem() {
                 <p>
                   The financial case for an AI booking system is straightforward. If the system
                   captures just one additional booking per week that would otherwise have been
-                  missed — because it was outside business hours, because the customer did not
-                  want to wait on hold, or because the enquiry form went cold — the revenue
+                  missed (because it was outside business hours, because the customer did not
+                  want to wait on hold, or because the enquiry form went cold), the revenue
                   generated typically exceeds the cost of the system within the first month.
                 </p>
                 <p className="mt-4">

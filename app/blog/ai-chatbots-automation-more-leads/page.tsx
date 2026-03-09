@@ -155,7 +155,7 @@ export default function BlogPostChatbotsLeads() {
                 <p className="mt-4">
                   The SBA specifically points to chatbots, automated phone routing, and workflow
                   automation as practical AI uses for small business operations. This is not a
-                  theoretical capability — these tools are available and deployable for businesses
+                  theoretical capability; these tools are available and deployable for businesses
                   of all sizes, and the cost of implementation has dropped significantly in the
                   last two years.
                 </p>
@@ -176,7 +176,7 @@ export default function BlogPostChatbotsLeads() {
                   Studies consistently show that the speed of first response is one of the most
                   significant factors in conversion for service businesses. Responding within
                   minutes is many times more effective than responding hours later. AI ensures
-                  the first response always happens immediately — regardless of when the enquiry
+                  the first response always happens immediately, regardless of when the enquiry
                   arrives, who is working, or what else is happening in the business that day.
                 </p>
               </section>
@@ -187,7 +187,7 @@ export default function BlogPostChatbotsLeads() {
                 </h2>
                 <p>
                   AI chatbots also improve the quality of lead handling. Instead of receiving
-                  vague form entries, the business can receive qualified information — service
+                  vague form entries, the business can receive qualified information such as service
                   type, urgency, suburb, company size, project scope, or preferred contact
                   method. That makes the next interaction more focused and more likely to convert.
                 </p>
@@ -226,10 +226,10 @@ export default function BlogPostChatbotsLeads() {
                 <p>A good setup usually includes five layers:</p>
                 <ul className="list-none mt-4 space-y-3">
                   {[
-                    'A chatbot trained on the business\'s services and FAQs — so it can answer real questions accurately',
+                    'A chatbot trained on the business\'s services and FAQs, so it can answer real questions accurately',
                     'A qualification flow that captures useful lead information such as service type, location, and urgency',
                     'An automation that sends data to the right inbox, CRM, or booking system without manual handling',
-                    'Follow-up messaging if the lead does not convert immediately — keeping the opportunity alive',
+                    'Follow-up messaging if the lead does not convert immediately, keeping the opportunity alive',
                     'Reporting so the business can see what pages and conversations actually produce revenue',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">

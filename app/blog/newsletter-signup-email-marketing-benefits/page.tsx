@@ -6,7 +6,7 @@ const post = {
   slug: 'newsletter-signup-email-marketing-benefits',
   title: 'Why a Newsletter Signup Is the Most Valuable Marketing Asset Your Website Can Have',
   description:
-    'Your email list is the one marketing channel you fully own. A newsletter signup on your website builds a direct line to your best prospects and customers — and keeps your business top of mind long after they leave your site.',
+    'Your email list is the one marketing channel you fully own. A newsletter signup on your website builds a direct line to your best prospects and customers, keeping your business top of mind long after they leave your site.',
   publishedAt: '2026-03-09',
   lastModified: '2026-03-09',
   readingTime: '7 min read',
@@ -126,7 +126,7 @@ export default function BlogPostNewsletterSignup() {
                 <p className="text-lg leading-relaxed">
                   Social media platforms can change their algorithms overnight. Paid ad costs
                   can spike. SEO rankings can shift. But your email list is an asset you own
-                  outright — no platform can take it away, no algorithm can suppress it, and no
+                  outright. No platform can take it away, no algorithm can suppress it, and no
                   budget increase is required to reach the people on it. That is why, for
                   businesses thinking about long-term customer relationships, building an email
                   list through a newsletter signup is one of the smartest investments you can
@@ -137,7 +137,7 @@ export default function BlogPostNewsletterSignup() {
                   digital marketing channel. Industry research has placed average email marketing
                   ROI at many multiples of cost, particularly for service businesses where even
                   one retained customer or repeat booking can represent significant revenue.
-                  The reason is that email reaches people who have already opted in — they want
+                  The reason is that email reaches people who have already opted in; they want
                   to hear from you.
                 </p>
               </section>
@@ -177,7 +177,7 @@ export default function BlogPostNewsletterSignup() {
                   a well-structured email sequence, you can stay visible to that person over
                   the weeks and months they are making their decision. You can demonstrate
                   expertise, share helpful information, and position your business as the
-                  obvious choice — all before they ever make direct contact.
+                  obvious choice, all before they ever make direct contact.
                 </p>
               </section>
 
@@ -188,7 +188,7 @@ export default function BlogPostNewsletterSignup() {
                 <p>
                   A newsletter signup integrated with the right email platform does more than
                   just collect addresses. It can trigger an automated welcome sequence that
-                  immediately delivers value to new subscribers — a guide, a special offer,
+                  immediately delivers value to new subscribers, such as a guide, a special offer,
                   a series of helpful tips, or an introduction to your services. That sequence
                   runs automatically for every new subscriber, building the relationship from
                   day one without any ongoing manual effort.
@@ -225,7 +225,7 @@ export default function BlogPostNewsletterSignup() {
                     'Automated sequences that nurture leads and convert subscribers over time',
                     'A marketing channel unaffected by social media algorithm changes',
                     'Ability to segment subscribers and personalise communications at scale',
-                    'Owned data — your list is your asset, not a rented audience on someone else\'s platform',
+                    'Owned data: your list is your asset, not a rented audience on someone else\'s platform',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 bg-tech-baby-blue rounded-full mt-2 flex-shrink-0" />
@@ -248,7 +248,7 @@ export default function BlogPostNewsletterSignup() {
                 <p className="mt-4">
                   Placement matters too. A signup embedded in a relevant page section —
                   after a useful blog post, alongside a service description, or at a natural
-                  pause point — performs better than a pop-up that interrupts the browsing
+                  pause point, performs better than a pop-up that interrupts the browsing
                   experience. The goal is to make subscribing feel like the natural next step
                   for someone who has found your content valuable.
                 </p>

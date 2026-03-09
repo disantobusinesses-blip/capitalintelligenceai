@@ -127,7 +127,7 @@ export default function BlogPostSocialMediaIntegration() {
                   Most businesses treat their website and their social media accounts as separate
                   things. The website is the &ldquo;professional&rdquo; presence. The social media accounts are
                   where the activity happens. But keeping them disconnected means missing the
-                  compounding benefit that comes from linking the two together — and leaving
+                  compounding benefit that comes from linking the two together, and leaving
                   organic reach on the table every day.
                 </p>
                 <p className="mt-4">
@@ -145,15 +145,15 @@ export default function BlogPostSocialMediaIntegration() {
                 <p>
                   Every person who visits your website is a warm lead. They have already found
                   you, they are already interested, and they are evaluating whether to trust your
-                  business. Adding social media integration — profile links, embedded feeds, and
-                  follow prompts — gives you a second way to stay connected with that visitor even
+                  business. Adding social media integration, including profile links, embedded feeds, and
+                  follow prompts, gives you a second way to stay connected with that visitor even
                   if they leave without making an enquiry.
                 </p>
                 <p className="mt-4">
                   A visitor who follows you on Instagram or LinkedIn after visiting your website
                   stays in your orbit. They see your posts, your updates, and your value
-                  demonstration over time. When they are ready to buy — which might be weeks or
-                  months later — your business is the one they already know and trust.
+                  demonstration over time. When they are ready to buy, which might be weeks or
+                  months later, your business is the one they already know and trust.
                 </p>
               </section>
 
@@ -172,7 +172,7 @@ export default function BlogPostSocialMediaIntegration() {
                   your business is active, which builds confidence. A website that looks the
                   same as it did three years ago raises questions. Second, search engines use
                   content freshness as a relevance signal. A site that is regularly updated —
-                  even through embedded feeds — sends a stronger signal than a static one.
+                  even through embedded feeds, sends a stronger signal than a static one.
                 </p>
               </section>
 
@@ -187,7 +187,7 @@ export default function BlogPostSocialMediaIntegration() {
                   business to dozens or hundreds of people who fit your ideal customer profile.
                 </p>
                 <p className="mt-4">
-                  This is organic amplification — growth that happens without additional ad
+                  This is organic amplification: growth that happens without additional ad
                   spend. It works best when your content is genuinely useful or interesting, and
                   when sharing is made as frictionless as possible. Adding social sharing buttons
                   to blog posts, portfolio pieces, and service pages removes the effort of
@@ -202,7 +202,7 @@ export default function BlogPostSocialMediaIntegration() {
                 </h2>
                 <p>
                   When a potential customer sees your business consistently across multiple
-                  channels — your website, Instagram, Facebook, LinkedIn — the repeated exposure
+                  channels, including your website, Instagram, Facebook, and LinkedIn, the repeated exposure
                   builds familiarity and trust. Marketing research has long shown that people
                   need multiple touchpoints before they are comfortable making a purchase
                   decision, particularly for higher-value services.
@@ -227,11 +227,11 @@ export default function BlogPostSocialMediaIntegration() {
                 </p>
                 <ul className="list-none mt-6 space-y-3">
                   {[
-                    'Instagram — strong for businesses with visual work such as trades, design, hospitality, and retail',
-                    'Facebook — broad reach across age groups, particularly effective for local and community-based businesses',
-                    'LinkedIn — essential for B2B businesses, consultants, and professional services',
-                    'Google Business Profile — while not social media, it feeds into local search and should connect back to your website',
-                    'X (formerly Twitter) — useful for thought leadership and staying visible in fast-moving industries',
+                    'Instagram: strong for businesses with visual work such as trades, design, hospitality, and retail',
+                    'Facebook: broad reach across age groups, particularly effective for local and community-based businesses',
+                    'LinkedIn: essential for B2B businesses, consultants, and professional services',
+                    'Google Business Profile: while not social media, it feeds into local search and should connect back to your website',
+                    'X (formerly Twitter): useful for thought leadership and staying visible in fast-moving industries',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 bg-tech-baby-blue rounded-full mt-2 flex-shrink-0" />
@@ -256,7 +256,7 @@ export default function BlogPostSocialMediaIntegration() {
                   More importantly, it helps a newer or smaller website punch above its weight.
                   Embedding social proof from active, engaged social channels onto your website
                   adds credibility that a plain static site simply cannot match. Visitors see
-                  that your business is real, active, and trusted by others — and that
+                  that your business is real, active, and trusted by others, and that
                   dramatically improves conversion.
                 </p>
               </section>

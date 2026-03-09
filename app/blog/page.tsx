@@ -110,7 +110,7 @@ export default function BlogIndexPage() {
             Ready to Implement AI in Your Business?
           </h2>
           <p className="text-tech-platinum mb-8">
-            We build intelligent systems for Australian businesses — from
+            We build intelligent systems for Australian businesses, from
             AI-integrated websites to full automation workflows.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

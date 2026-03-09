@@ -149,7 +149,7 @@ export default function BlogPostLocalSEO() {
                 <p>
                   One of the biggest local SEO mistakes businesses make is relying only on a
                   homepage. A homepage is not enough if you want to rank for multiple suburbs,
-                  services, or intent types. AI can help create a clearer page structure — service
+                  services, or intent types. AI can help create a clearer page structure, with service
                   pages, suburb pages, FAQ sections, and supporting blog content. When the site
                   structure is clearer, search engines have a better chance of understanding the
                   relationship between the business, the service, and the local area.
@@ -158,7 +158,7 @@ export default function BlogPostLocalSEO() {
                   That becomes even stronger when combined with structured data. Google documents
                   LocalBusiness structured data as a way to provide standardised information about
                   a business and help Search interpret that page more accurately. AI can generate
-                  this markup and validate it against Google&apos;s guidelines — significantly reducing
+                  this markup and validate it against Google&apos;s guidelines, significantly reducing
                   the implementation effort for businesses that have never used schema before.
                 </p>
               </section>
@@ -199,7 +199,7 @@ export default function BlogPostLocalSEO() {
                   stay cleaner and more coherent.
                 </p>
                 <p className="mt-4">
-                  It can also help identify missing opportunities — &quot;near me&quot; pages, comparison
+                  It can also help identify missing opportunities, such as &quot;near me&quot; pages, comparison
                   pages, or suburb-specific supporting content that a competitor has and you do
                   not. That does not guarantee rankings, but it improves the site&apos;s clarity and
                   coverage, which are core inputs to stronger SEO. This is consistent with
@@ -243,8 +243,8 @@ export default function BlogPostLocalSEO() {
                 <p className="mt-4">
                   Google also recommends using structured data properly and testing eligibility
                   for rich results where relevant. Each step is individually valuable, but the
-                  compounding effect of doing all of them — clean site structure, active profile,
-                  proper schema, targeted local content — is what produces sustained visibility
+                  compounding effect of doing all of them, including clean site structure, an active profile,
+                  proper schema, and targeted local content, is what produces sustained visibility
                   rather than a short-term traffic spike.
                 </p>
                 <p className="mt-4">

@@ -126,7 +126,7 @@ export default function BlogPostGalleryPortfolio() {
                 <p className="text-lg leading-relaxed">
                   When a potential customer arrives on your website, they are making a judgment
                   about whether to trust you. Words help, but images do the heavy lifting. A
-                  well-built gallery or portfolio section lets your work speak for itself — and
+                  well-built gallery or portfolio section lets your work speak for itself, and
                   in most cases, that is more persuasive than anything you could write about
                   yourself.
                 </p>
@@ -169,10 +169,10 @@ export default function BlogPostGalleryPortfolio() {
                 </p>
                 <ul className="list-none mt-6 space-y-3">
                   {[
-                    'Tradespeople — builders, electricians, plumbers, landscapers, painters — where before and after results are compelling',
-                    'Creative and design professionals — photographers, graphic designers, interior designers, architects',
-                    'Hospitality and food businesses — restaurants, caterers, and event spaces where atmosphere and presentation matter',
-                    'Healthcare and wellness providers — clinics and therapists who want to show their space and environment',
+                    'Tradespeople (builders, electricians, plumbers, landscapers, painters) where before and after results are compelling',
+                    'Creative and design professionals: photographers, graphic designers, interior designers, and architects',
+                    'Hospitality and food businesses: restaurants, caterers, and event spaces where atmosphere and presentation matter',
+                    'Healthcare and wellness providers: clinics and therapists who want to show their space and environment',
                     'Any service business with case studies, completed projects, or client work to showcase',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
@@ -188,8 +188,8 @@ export default function BlogPostGalleryPortfolio() {
                   What Makes a Portfolio Section Actually Work
                 </h2>
                 <p>
-                  Not all gallery sections are equal. A poorly built gallery — slow to load,
-                  hard to navigate, or lacking context — can actually hurt conversion by
+                  Not all gallery sections are equal. A poorly built gallery that is slow to load,
+                  hard to navigate, or lacking context can actually hurt conversion by
                   frustrating visitors or failing to communicate the story behind the work.
                   A well-built portfolio section has several key properties.
                 </p>
@@ -197,7 +197,7 @@ export default function BlogPostGalleryPortfolio() {
                   It loads fast, even with high-resolution images, through proper image
                   optimisation and lazy loading. It organises work into categories so visitors
                   can quickly find examples relevant to their situation. It includes enough
-                  context — a brief description, a location, the type of project — to make the
+                  context, including a brief description, a location, and the type of project, to make the
                   images meaningful rather than just decorative. And it works just as well on
                   mobile as it does on desktop, because a large proportion of visitors will be
                   browsing on their phone.
@@ -209,7 +209,7 @@ export default function BlogPostGalleryPortfolio() {
                   Portfolio Sections Support SEO as Well as Conversion
                 </h2>
                 <p>
-                  A gallery or portfolio does not just help with conversion — it also supports
+                  A gallery or portfolio does not just help with conversion; it also supports
                   your search engine visibility. Images with descriptive file names and alt text
                   contribute to your overall SEO. Portfolio pages that include location
                   information and project type descriptions can rank for relevant local searches.

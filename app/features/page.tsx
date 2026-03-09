@@ -25,7 +25,7 @@ const features = [
     valuePoints: [
       'Increases customer support efficiency by handling up to 80% of common queries automatically',
       'Reduces response time from hours to seconds, improving customer satisfaction',
-      'Available 24/7 including weekends and holidays — never miss a lead',
+      'Available 24/7 including weekends and holidays, so you never miss a lead',
       'Learns from interactions to provide increasingly accurate answers over time',
       'Seamlessly escalates complex issues to human agents when needed',
     ],
@@ -78,7 +78,7 @@ const features = [
       'Customisable fields to collect the specific information your business needs',
       'Mobile-optimised for easy submission on any device',
     ],
-    idealFor: 'Every business — an essential feature for capturing enquiries and converting visitors into leads.',
+    idealFor: 'Every business: an essential feature for capturing enquiries and converting visitors into leads.',
   },
   {
     name: 'Map / Location',
@@ -126,7 +126,7 @@ const features = [
     valuePoints: [
       'Boosts Google ranking by providing fresh, keyword-rich content that search engines love',
       'Establishes your business as an authority in your industry',
-      'Drives organic traffic — businesses with blogs generate 55% more website visitors',
+      'Drives organic traffic: businesses with blogs generate 55% more website visitors',
       'Provides shareable content for social media marketing',
       'Supports long-tail keyword strategy for capturing niche search traffic',
     ],
@@ -157,7 +157,7 @@ const features = [
     blogLink: '/blog/how-ai-can-boost-seo',
     description: 'Display verified customer testimonials and reviews on your website to build trust and social proof.',
     valuePoints: [
-      'Increases trust and conversions — 93% of consumers say reviews influence their decisions',
+      'Increases trust and conversions: 93% of consumers say reviews influence their decisions',
       'Boosts Google ranking through review schema markup and fresh user-generated content',
       'Provides social proof that reduces hesitation and encourages action',
       'Integrates with Google Reviews and other platforms for automatic updates',

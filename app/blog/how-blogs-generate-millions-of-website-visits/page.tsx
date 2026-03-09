@@ -228,7 +228,7 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                   Blogs are one of the few marketing assets that can build a genuine snowball
                   effect. When someone sees pageview numbers compounding month after month, it
                   makes the value tangible. That momentum is what content-led growth looks like
-                  in practice — and it is accessible to businesses of any size.
+                  in practice, and it is accessible to businesses of any size.
                 </p>
                 <p className="mt-4">You publish. Google crawls. Pages start appearing. Some articles rank. Internal links strengthen the site. More searches trigger impressions. More impressions lead to clicks. More clicks lead to enquiries. That is how content scales.</p>
               </section>
