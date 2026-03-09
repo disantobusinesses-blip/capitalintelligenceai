@@ -240,8 +240,8 @@ export default function BlogPostAIBusiness() {
                 </p>
                 <p className="mt-4">
                   For businesses in industries where customers have many
-                  questions before committing, including in healthcare, finance, legal,
-                  trades, and consulting. An AI assistant can meaningfully
+                  questions before committing, including healthcare, finance, legal,
+                  trades, and consulting, an AI assistant can meaningfully
                   increase the number of visitors who convert to enquiries by
                   providing instant, accurate answers at the moment they are
                   needed.
