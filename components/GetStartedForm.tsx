@@ -57,7 +57,7 @@ const colorOptions = [
 
 const featureOptions = [
   { name: '24/7 AI Chat Support', price: '$399/month', numericPrice: 399, benefit: 'Increases customer support efficiency' },
-  { name: 'AI Automated Booking System', price: '$399 setup + $99/month', numericPrice: 399, benefit: 'Increases booking conversion rate' },
+  { name: 'AI Automated Booking System', price: '$399 setup + $99/month', numericPrice: 399, benefit: 'Increases booking conversion rate', comingSoon: true },
   { name: 'Automated AI Customer Replies', price: 'Custom pricing', numericPrice: 0, benefit: 'Increases customer acquisition/support' },
   { name: 'Contact Form', price: 'FREE', numericPrice: 0, benefit: 'Increases lead generation', isFree: true },
   { name: 'Map / Location', price: 'FREE', numericPrice: 0, benefit: 'Increases local visibility', isFree: true },
@@ -469,6 +469,26 @@ export default function GetStartedForm({
               <div className="grid grid-cols-2 gap-3">
                 {featureOptions.map((feature) => {
                   const isSelected = formData.features.includes(feature.name)
+                  if (feature.comingSoon) {
+                    return (
+                      <div
+                        key={feature.name}
+                        className="flex items-start gap-3 p-3 rounded-lg border-2 text-left border-tech-baby-blue/10 opacity-60 cursor-not-allowed"
+                      >
+                        <div className="w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 mt-0.5 border-tech-baby-blue/20" />
+                        <div>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="text-sm text-tech-white block">{feature.name}</span>
+                            <span className="text-xs px-2 py-0.5 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-full font-semibold">
+                              Coming Soon
+                            </span>
+                          </div>
+                          <span className="text-xs font-semibold text-tech-white">{feature.price}</span>
+                          <span className="text-xs text-green-400 block mt-0.5">{feature.benefit}</span>
+                        </div>
+                      </div>
+                    )
+                  }
                   return (
                     <button
                       key={feature.name}
