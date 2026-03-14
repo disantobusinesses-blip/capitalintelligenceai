@@ -305,7 +305,6 @@ export default function GetStartedForm({
                     <p className="text-sm text-tech-platinum mb-2">
                       A single-page website to establish your online presence. Modern design, mobile responsive, and SEO optimized.
                     </p>
-                    <p className="text-sm font-semibold text-tech-white">$599 – $1,499 AUD</p>
                   </div>
                   {formData.service === 'landing-page' && (
                     <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-1" />
@@ -327,7 +326,6 @@ export default function GetStartedForm({
                     <p className="text-sm text-tech-platinum mb-2">
                       Complete multi-page website with ongoing maintenance, digital strategy, and monthly support plan.
                     </p>
-                    <p className="text-sm font-semibold text-tech-white">Starting at $1,999+ AUD</p>
                   </div>
                   {formData.service === 'full-package' && (
                     <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-1" />
@@ -483,7 +481,6 @@ export default function GetStartedForm({
                               Coming Soon
                             </span>
                           </div>
-                          <span className="text-xs font-semibold text-tech-white">{feature.price}</span>
                           <span className="text-xs text-green-400 block mt-0.5">{feature.benefit}</span>
                         </div>
                       </div>
@@ -515,7 +512,6 @@ export default function GetStartedForm({
                             <TrendingUp className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
                           )}
                         </div>
-                        <span className="text-xs font-semibold text-tech-white">{feature.price}</span>
                         <span className="text-xs text-green-400 block mt-0.5">{feature.benefit}</span>
                       </div>
                     </button>
@@ -547,7 +543,6 @@ export default function GetStartedForm({
                     <div className="flex-1">
                       <div className="flex items-baseline gap-2 mb-1 flex-wrap">
                         <h4 className="text-lg font-bold text-tech-white">{plan.name}</h4>
-                        <span className="text-tech-white font-bold text-sm">{plan.price}</span>
                       </div>
                       <p className="text-sm text-tech-platinum mb-2">{plan.description}</p>
                       <ul className="grid gap-1">
@@ -666,13 +661,6 @@ export default function GetStartedForm({
 
         {/* Footer Navigation */}
         <div className="p-4 border-t border-tech-baby-blue/20 flex-shrink-0">
-          {/* Running Total */}
-          {calculateRunningTotal(formData) > 0 && (
-            <div className="mb-3 p-3 bg-tech-baby-blue/10 border border-tech-baby-blue/30 rounded-lg flex items-center justify-between">
-              <span className="text-sm font-medium text-tech-platinum">Estimated Total</span>
-              <span className="text-lg font-bold text-tech-white">${calculateRunningTotal(formData).toLocaleString()} AUD</span>
-            </div>
-          )}
           {submitError && (
             <div className="mb-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
               {submitError}

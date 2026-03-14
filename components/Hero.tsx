@@ -1,8 +1,57 @@
 'use client'
 
-import { ArrowRight, Zap } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowRight, Zap, Send, CheckCircle } from 'lucide-react'
 
 export default function Hero() {
+  const [quoteEmail, setQuoteEmail] = useState('')
+  const [quoteDescription, setQuoteDescription] = useState('')
+  const [quoteStatus, setQuoteStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [quoteError, setQuoteError] = useState('')
+
+  const handleQuoteSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!quoteEmail.trim() || !quoteDescription.trim()) return
+
+    setQuoteStatus('submitting')
+    setQuoteError('')
+
+    try {
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service: null,
+          businessName: 'Quick Quote Request',
+          industry: '',
+          description: quoteDescription,
+          designStyle: '',
+          colorPreference: '',
+          features: [],
+          monthlyPlan: '',
+          aiAutomationRequest: '',
+          contactName: 'Quick Quote',
+          contactEmail: quoteEmail,
+          contactPhone: '',
+          hasLogo: false,
+          additionalNotes: quoteDescription,
+        }),
+      })
+      const result = await response.json()
+      if (response.ok && result.ok) {
+        setQuoteStatus('success')
+        setQuoteEmail('')
+        setQuoteDescription('')
+      } else {
+        setQuoteStatus('error')
+        setQuoteError(result.message || 'Something went wrong. Please try again.')
+      }
+    } catch {
+      setQuoteStatus('error')
+      setQuoteError('Something went wrong. Please try again.')
+    }
+  }
+
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       <div className="relative max-w-6xl mx-auto text-center space-y-6 px-6">
@@ -28,8 +77,56 @@ export default function Hero() {
           Systems That Think. Businesses That Scale.
         </p>
 
+        {/* Email for Quote */}
+        <div className="animate-fade-in-up animation-delay-700 max-w-xl mx-auto">
+          {quoteStatus === 'success' ? (
+            <div className="flex flex-col items-center gap-2 py-4">
+              <CheckCircle className="w-8 h-8 text-tech-baby-blue" />
+              <p className="text-tech-white font-semibold text-lg">Quote request received!</p>
+              <p className="text-tech-platinum text-sm">We&apos;ll be in touch shortly.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleQuoteSubmit} className="bg-tech-black/60 backdrop-blur-sm border border-tech-baby-blue/30 rounded-2xl p-5 text-left space-y-3">
+              <div>
+                <p className="text-tech-white font-bold text-lg">Email for Quote</p>
+                <p className="text-tech-platinum text-sm mt-0.5">Instant Quote response</p>
+              </div>
+              <textarea
+                value={quoteDescription}
+                onChange={(e) => setQuoteDescription(e.target.value)}
+                placeholder="Describe the website you want — industry, style, features, goals…"
+                rows={3}
+                required
+                className="w-full px-4 py-2.5 bg-tech-black/80 border border-tech-baby-blue/30 rounded-xl text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none text-sm"
+              />
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  value={quoteEmail}
+                  onChange={(e) => setQuoteEmail(e.target.value)}
+                  placeholder="Your email address"
+                  required
+                  className="flex-1 px-4 py-2.5 bg-tech-black/80 border border-tech-baby-blue/30 rounded-xl text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition text-sm"
+                />
+                <button
+                  type="submit"
+                  disabled={quoteStatus === 'submitting'}
+                  className="px-5 py-2.5 bg-tech-baby-blue text-tech-black rounded-xl font-semibold text-sm inline-flex items-center gap-2 smooth-transition hover:bg-tech-baby-blue-light disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {quoteStatus === 'submitting' ? 'Sending…' : (
+                    <>Send <Send className="w-4 h-4" /></>
+                  )}
+                </button>
+              </div>
+              {quoteStatus === 'error' && (
+                <p className="text-red-400 text-xs">{quoteError}</p>
+              )}
+            </form>
+          )}
+        </div>
+
         {/* CTA Button */}
-        <div className="pt-6 animate-fade-in-up animation-delay-800">
+        <div className="pt-2 animate-fade-in-up animation-delay-800">
           <button
             onClick={() => {
               const element = document.getElementById('services')
