@@ -53,7 +53,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden py-20">
       <div className="relative max-w-6xl mx-auto text-center space-y-6 px-6">
         {/* Logo/Brand Icon with glow */}
         <div className="flex justify-center mb-6 animate-fade-in-down">
@@ -94,7 +94,7 @@ export default function Hero() {
               <textarea
                 value={quoteDescription}
                 onChange={(e) => setQuoteDescription(e.target.value)}
-                placeholder="Describe the website you want — industry, style, features, goals…"
+                placeholder="Describe the website you want: industry, style, features, goals..."
                 rows={3}
                 required
                 className="w-full px-4 py-2.5 bg-tech-black/80 border border-tech-baby-blue/30 rounded-xl text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none text-sm"
@@ -137,13 +137,6 @@ export default function Hero() {
             Explore Services
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-tech-baby-blue rounded-full flex justify-center pt-2">
-          <div className="w-1 h-2 bg-tech-baby-blue rounded-full animate-pulse" />
         </div>
       </div>
     </section>
