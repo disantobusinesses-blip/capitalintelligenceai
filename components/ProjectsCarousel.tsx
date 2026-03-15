@@ -17,7 +17,7 @@ const projects = [
     title: 'My AI Bank',
     industry: 'FinTech',
     description: 'AI-powered banking platform delivering intelligent financial tools and personalised banking experiences.',
-    image: 'https://image.thum.io/get/width/1280/crop/720/https://myaibank.ai',
+    image: null,
     url: 'https://myaibank.ai',
   },
   {
