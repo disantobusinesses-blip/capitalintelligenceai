@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import MeshGradientBackground from '@/components/MeshGradientBackground'
 import { CurrencyProvider } from '@/context/CurrencyContext'
@@ -37,6 +38,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* Google Ads global site tag (AW-17950129824) */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-17950129824"
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-17950129824');
+        `}
+      </Script>
       <body>
         <CurrencyProvider>
           <MeshGradientBackground

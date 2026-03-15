@@ -36,6 +36,7 @@ const features = [
     icon: CalendarCheck,
     price: '$399 setup + $99/month',
     category: 'AI-Powered',
+    comingSoon: true,
     blogLink: '/blog/ai-automated-booking-system-benefits',
     description: 'A smart booking system that lets customers schedule appointments directly through your website, with automated confirmations and reminders.',
     valuePoints: [
@@ -245,7 +246,7 @@ export default function FeaturesPage() {
                         )}
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 mt-2">
+                    <div className="flex items-center gap-2 mt-2 flex-wrap">
                       <span className="text-xs px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full font-semibold">
                         {feature.category}
                       </span>
@@ -253,6 +254,11 @@ export default function FeaturesPage() {
                         <span className="text-xs px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 rounded-full font-semibold flex items-center gap-1">
                           <TrendingUp className="w-3 h-3" />
                           SEO Boost
+                        </span>
+                      )}
+                      {feature.comingSoon && (
+                        <span className="text-xs px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-full font-semibold">
+                          Coming Soon
                         </span>
                       )}
                     </div>
