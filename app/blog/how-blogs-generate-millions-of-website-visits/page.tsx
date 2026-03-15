@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 
 const post = {
@@ -156,6 +157,15 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                   The principle is consistent: more search-optimised pages create more entry points
                   and more opportunities to convert visitors into customers.
                 </p>
+                <div className="my-8">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/seogrowthwebsite-LFd3yebBOu9zrO2HaMVQqaumy0E0U5.jpg"
+                    alt="SEO performance growth showing clicks and impressions over time"
+                    width={1077}
+                    height={657}
+                    className="rounded-lg border border-tech-baby-blue/20"
+                  />
+                </div>
               </section>
 
               <section>
