@@ -97,21 +97,19 @@ export default function Hero() {
     <section className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden py-20">
       <div className="relative max-w-2xl mx-auto text-center space-y-6 px-6">
 
-        {/* IS Logo */}
-        <div className="flex justify-center mb-4 animate-fade-in-down">
-          <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-glow smooth-transition hover:scale-105">
-            <Image
-              src="/images/is-logo.jpg"
-              alt="Capital Intelligence Group logo"
-              width={64}
-              height={64}
-              className="w-full h-full object-cover"
-            />
-          </div>
+        {/* IS Logo — floating, no box */}
+        <div className="flex justify-center mb-2 animate-fade-in-down">
+          <Image
+            src="/images/is-logo.jpg"
+            alt="Capital Intelligence Group logo"
+            width={72}
+            height={72}
+            className="rounded-full object-cover drop-shadow-lg smooth-transition hover:scale-105"
+          />
         </div>
 
         {/* Label */}
-        <p className="text-sm font-semibold uppercase tracking-widest text-tech-baby-blue animate-fade-in-up animation-delay-200">
+        <p className="text-sm font-semibold uppercase tracking-widest text-tech-white animate-fade-in-up animation-delay-200">
           Capital Intelligence Group
         </p>
 

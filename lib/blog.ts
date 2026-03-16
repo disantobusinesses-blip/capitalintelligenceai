@@ -99,4 +99,34 @@ export const blogPosts: BlogPost[] = [
     readingTime: '7 min read',
     category: 'Email Marketing',
   },
+  {
+    slug: 'google-growth-plan-199-per-month',
+    title: 'Google Growth Plan — Foundational SEO for $199 Per Month',
+    description:
+      'Our Google Growth Plan delivers consistent SEO content, keyword targeting, and technical optimisation every month for $199 — a fraction of what traditional agencies charge. Here is what is included and why it works.',
+    publishedAt: '2026-03-10',
+    lastModified: '2026-03-10',
+    readingTime: '6 min read',
+    category: 'Website Growth',
+  },
+  {
+    slug: 'super-growth-plan-359-per-month',
+    title: 'Super Growth Plan — Accelerated SEO Content Coverage for $359 Per Month',
+    description:
+      'The Super Growth Plan expands your content footprint faster with broader keyword coverage, more monthly articles, and deeper optimisation. Ideal for businesses ready to seriously compete in their market.',
+    publishedAt: '2026-03-10',
+    lastModified: '2026-03-10',
+    readingTime: '7 min read',
+    category: 'Website Growth',
+  },
+  {
+    slug: 'market-authority-plan-599-per-month',
+    title: 'Market Authority Plan — Maximum SEO Growth for $599 Per Month',
+    description:
+      'For businesses that want to dominate their niche, the Market Authority Plan delivers high-volume content, deep keyword coverage, and authority-building at a cost that is still 80% less than typical SEO agencies.',
+    publishedAt: '2026-03-10',
+    lastModified: '2026-03-10',
+    readingTime: '8 min read',
+    category: 'Website Growth',
+  },
 ]

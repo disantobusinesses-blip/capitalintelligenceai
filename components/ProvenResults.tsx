@@ -9,7 +9,7 @@ export default function ProvenResults() {
 
         {/* Header */}
         <div className="text-center mb-6">
-          <p className="text-xs font-semibold uppercase tracking-widest text-tech-baby-blue mb-2">Proven Results</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-tech-white mb-2">Proven Results</p>
           <h2 className="text-2xl md:text-3xl font-bold text-tech-white text-balance">
             Why our websites are proven to perform
           </h2>

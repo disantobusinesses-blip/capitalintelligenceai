@@ -1,27 +1,19 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
+import { useState } from 'react'
 import { Calendar, Clock } from 'lucide-react'
 import { blogPosts } from '@/lib/blog'
 
-export const metadata: Metadata = {
-  title: 'Blog – Intelligent AI Systems | AI, SEO & Business Insights',
-  description:
-    'Practical insights on AI, SEO, and digital strategy for Australian businesses. Learn how intelligent systems can transform your operations and online visibility.',
-  keywords:
-    'AI blog Australia, SEO tips, business automation, AI search optimisation, intelligent systems, digital strategy',
-  openGraph: {
-    title: 'Blog – Intelligent AI Systems | AI, SEO & Business Insights',
-    description:
-      'Practical insights on AI, SEO, and digital strategy for Australian businesses.',
-    url: 'https://intelligentaisystem.com/blog',
-    type: 'website',
-  },
-  alternates: {
-    canonical: 'https://intelligentaisystem.com/blog',
-  },
-}
+const ALL_CATEGORIES = ['All', 'Website Growth', 'SEO & AI Search', 'Local SEO', 'Lead Generation', 'Business & AI', 'Digital Marketing', 'Email Marketing', 'Blogging & SEO']
 
 export default function BlogIndexPage() {
+  const [activeCategory, setActiveCategory] = useState('All')
+
+  const filtered = activeCategory === 'All'
+    ? blogPosts
+    : blogPosts.filter((p) => p.category === activeCategory)
+
   return (
     <div className="min-h-[100dvh] pb-24">
       {/* Hero */}
@@ -31,16 +23,37 @@ export default function BlogIndexPage() {
             Insights & Ideas
           </h1>
           <p className="text-lg text-tech-platinum max-w-2xl mx-auto">
-            Practical guides on AI, SEO, and intelligent systems for businesses ready to grow.
+            Practical guides on AI, SEO, and website growth for businesses ready to scale.
           </p>
         </div>
       </section>
 
+      {/* Category Filters */}
+      <section className="px-6 pb-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {ALL_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-1.5 rounded-full text-sm font-semibold smooth-transition border ${
+                  activeCategory === cat
+                    ? 'bg-tech-baby-blue text-tech-black border-tech-baby-blue'
+                    : 'bg-transparent text-tech-platinum border-tech-baby-blue/30 hover:border-tech-baby-blue hover:text-tech-white'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Blog Posts Grid */}
-      <section className="py-12 px-6">
+      <section className="py-4 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
-            {blogPosts.map((post) => (
+            {filtered.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
@@ -48,7 +61,11 @@ export default function BlogIndexPage() {
               >
                 <article className="bg-tech-gray border border-tech-baby-blue/20 rounded-xl overflow-hidden smooth-transition hover:border-tech-baby-blue hover:shadow-glow-sm flex flex-col h-full p-6">
                   {/* Category badge */}
-                  <span className="inline-block self-start px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full text-xs font-semibold mb-3">
+                  <span className={`inline-block self-start px-3 py-1 rounded-full text-xs font-semibold mb-3 border ${
+                    post.category === 'Website Growth'
+                      ? 'bg-tech-baby-blue/20 border-tech-baby-blue/50 text-tech-baby-blue'
+                      : 'bg-tech-baby-blue/10 border-tech-baby-blue/30 text-tech-white'
+                  }`}>
                     {post.category}
                   </span>
 
