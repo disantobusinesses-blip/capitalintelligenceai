@@ -159,7 +159,7 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                 </p>
                 <div className="my-8">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/seogrowthwebsite-LFd3yebBOu9zrO2HaMVQqaumy0E0U5.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MABSEO.PNG-H96U410eRHcntIqVCiwNKg7ysULdQ2.jpeg"
                     alt="SEO performance growth showing clicks and impressions over time"
                     width={1077}
                     height={657}
