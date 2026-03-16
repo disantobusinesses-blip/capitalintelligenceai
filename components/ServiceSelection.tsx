@@ -43,13 +43,35 @@ export default function ServiceSelection() {
         
         <div className="relative max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-5xl md:text-6xl font-bold text-tech-white mb-6 animate-fade-in">
               What Can We Build For You?
             </h2>
             <p className="text-xl text-tech-platinum max-w-3xl mx-auto">
               Choose the service that best fits your needs and let's create something amazing together
             </p>
+          </div>
+
+          {/* Performance Stats Banner */}
+          <div className="bg-tech-black/60 border border-tech-baby-blue/20 rounded-2xl p-8 mb-12 backdrop-blur-sm">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div>
+                <p className="text-3xl md:text-4xl font-bold text-tech-baby-blue mb-1">+1.2M</p>
+                <p className="text-tech-platinum text-sm">Monthly Impressions Generated</p>
+              </div>
+              <div>
+                <p className="text-3xl md:text-4xl font-bold text-tech-baby-blue mb-1">+11.2K</p>
+                <p className="text-tech-platinum text-sm">Organic Clicks to Client Sites</p>
+              </div>
+              <div>
+                <p className="text-3xl md:text-4xl font-bold text-tech-baby-blue mb-1">85%</p>
+                <p className="text-tech-platinum text-sm">Average Lead Increase Year 1</p>
+              </div>
+              <div>
+                <p className="text-3xl md:text-4xl font-bold text-tech-baby-blue mb-1">3x</p>
+                <p className="text-tech-platinum text-sm">ROI Improvement vs Paid Ads</p>
+              </div>
+            </div>
           </div>
 
           {/* Service Cards - 2 column grid */}
