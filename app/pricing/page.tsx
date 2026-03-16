@@ -53,8 +53,8 @@ const oneTimePrices = [
 const monthlyPlans = [
   {
     name: 'Website Care',
-    priceAUD: 'Starting at $119 AUD/month+',
-    priceUSD: 'Starting at $77 USD/month+',
+    priceAUD: 'Starting at $119 AUD/month',
+    priceUSD: 'Starting at $77 USD/month',
     description: 'Essential hosting and maintenance to keep your site running smoothly.',
     features: [
       'Website Hosting',
@@ -65,30 +65,43 @@ const monthlyPlans = [
     ],
   },
   {
-    name: 'SEO & AI Visibility',
-    priceAUD: 'Starting at $149 AUD/month+',
-    priceUSD: 'Starting at $97 USD/month+',
-    description: 'Get found on Google and featured in AI-powered search engines.',
+    name: 'Google Growth Plan',
+    priceAUD: '$199 AUD/month',
+    priceUSD: '$129 USD/month',
+    description: 'Foundational SEO content and keyword targeting to grow your organic traffic.',
     features: [
-      'Google Search Optimisation',
-      'AI Search Engine Indexing (ChatGPT, Gemini, Perplexity)',
-      'Structured Data / Schema Markup',
-      'Monthly SEO Reports',
-      'Content Strategy Guidance',
+      'Monthly keyword research',
+      'SEO-optimised blog articles',
+      'On-page optimisation',
+      'Technical SEO monitoring',
+      'Monthly progress report',
+    ],
+  },
+  {
+    name: 'Super Growth Plan',
+    priceAUD: '$359 AUD/month',
+    priceUSD: '$233 USD/month',
+    description: 'Accelerated content coverage and broader keyword targeting for faster growth.',
+    features: [
+      'Expanded keyword research',
+      'Higher volume of blog articles',
+      'Deep on-page optimisation',
+      'Internal linking strategy',
+      'Detailed monthly reporting',
     ],
     featured: true,
   },
   {
-    name: 'AI Systems Integration',
-    priceAUD: 'Custom pricing',
-    priceUSD: 'Custom pricing',
-    description: 'Automate your business with intelligent AI tools.',
+    name: 'Market Authority Plan',
+    priceAUD: '$599 AUD/month',
+    priceUSD: '$389 USD/month',
+    description: 'Maximum content output and topical authority to dominate your niche in search.',
     features: [
-      '24/7 AI Chat Support',
-      'Automated Email Responder',
-      'Phone Call Transcript Generator',
-      'Custom AI Workflows',
-      'Business Process Automation',
+      'Maximum monthly content output',
+      'Comprehensive keyword research',
+      'Full topical authority mapping',
+      'Advanced technical SEO',
+      'Priority support & reporting',
     ],
   },
 ]
@@ -174,7 +187,7 @@ export default function PricingPage() {
           <p className="text-tech-platinum text-center mb-12">
             Keep your website running and growing every month.
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
             {monthlyPlans.map((plan) => (
               <div
                 key={plan.name}

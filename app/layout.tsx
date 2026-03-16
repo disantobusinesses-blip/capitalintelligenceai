@@ -54,8 +54,7 @@ export default function RootLayout({
       <body>
         <CurrencyProvider>
           <GradientBackground
-            className="fixed inset-0 min-h-0 w-screen h-screen"
-            style={{ zIndex: -10 }}
+            className="fixed inset-0 min-h-0 w-screen h-screen -z-10"
             animationDuration={10}
           />
           {children}
