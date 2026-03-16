@@ -3,9 +3,12 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { ArrowRight, Send, CheckCircle, Clock } from 'lucide-react'
+import { GLSLHills } from '@/components/ui/glsl-hills'
+import SplitText from '@/components/ui/split-text'
 
 // Countdown target: March 25, 2026
 const DEAL_DEADLINE = new Date('2026-03-25T23:59:59')
+const HERO_HEADLINE = 'Websites That Get Found. Businesses That Grow.'
 
 function useCountdown(target: Date) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
@@ -95,7 +98,15 @@ export default function Hero() {
 
   return (
     <section className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden py-20">
-      <div className="relative max-w-2xl mx-auto text-center space-y-6 px-6">
+      {/* GLSLHills animated terrain background */}
+      <div className="absolute inset-0 z-0">
+        <GLSLHills width="100%" height="100%" />
+      </div>
+
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 z-[1] bg-black/60" />
+
+      <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6 px-6">
 
         {/* IS Logo — floating, no box */}
         <div className="flex justify-center mb-2 animate-fade-in-down">
@@ -113,9 +124,16 @@ export default function Hero() {
           Capital Intelligence Group
         </p>
 
-        {/* Main Headline */}
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-tech-white leading-tight text-balance animate-fade-in-up animation-delay-400">
-          Websites That Get Found.<br />Businesses That Grow.
+        {/* Main Headline with SplitText animation */}
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-tech-white leading-tight">
+          <SplitText
+            text={HERO_HEADLINE}
+            delay={25}
+            textAlign="center"
+            animationFrom={{ opacity: 0, transform: 'translate3d(0,30px,0)' }}
+            animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+            rootMargin="-20px"
+          />
         </h1>
 
         {/* Sub copy */}

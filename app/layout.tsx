@@ -54,9 +54,9 @@ export default function RootLayout({
       <body>
         <CurrencyProvider>
           <MeshGradientBackground
-            colors={["#5C3A21", "#8B6B4A", "#C49A6C", "#D4B08C", "#3E2723", "#A1887F"]}
-            distortion={1.2}
-            speed={0.8}
+            colors={["#000000", "#0A0705", "#1A0F08", "#2E1A0E", "#3E2310", "#000000"]}
+            distortion={0.8}
+            speed={0.4}
           />
           {children}
           <BottomNav />
