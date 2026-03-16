@@ -1,14 +1,11 @@
 'use client'
 
-import { useState } from 'react'
 import { ArrowRight, Sparkles, Package } from 'lucide-react'
-import GetStartedForm from './GetStartedForm'
-
-type ServiceType = 'landing-page' | 'full-package'
+import { useQuoteModal } from '@/context/QuoteModalContext'
 
 const services = [
   {
-    id: 'landing-page' as ServiceType,
+    id: 'landing-page',
     title: 'Need a Landing Page',
     description: 'Perfect for startups and businesses looking to establish their online presence with a stunning single-page website.',
     icon: Sparkles,
@@ -16,7 +13,7 @@ const services = [
     color: 'baby-blue',
   },
   {
-    id: 'full-package' as ServiceType,
+    id: 'full-package',
     title: 'Website + Full Package',
     description: 'Complete solution including multi-page website, ongoing maintenance, and comprehensive digital strategy.',
     icon: Package,
@@ -26,13 +23,7 @@ const services = [
 ]
 
 export default function ServiceSelection() {
-  const [formOpen, setFormOpen] = useState(false)
-  const [selectedService, setSelectedService] = useState<ServiceType | null>(null)
-
-  const handleGetStarted = (serviceId: ServiceType) => {
-    setSelectedService(serviceId)
-    setFormOpen(true)
-  }
+  const { openModal } = useQuoteModal()
 
   return (
     <>
@@ -115,7 +106,7 @@ export default function ServiceSelection() {
 
                   {/* CTA Button */}
                   <button
-                    onClick={() => handleGetStarted(service.id)}
+                    onClick={openModal}
                     className="w-full px-6 py-3 bg-tech-baby-blue text-tech-black rounded-lg font-semibold flex items-center justify-center gap-2 smooth-transition hover:bg-tech-baby-blue-light group-hover:shadow-glow-sm"
                   >
                     Get Started
@@ -128,13 +119,6 @@ export default function ServiceSelection() {
 
         </div>
       </section>
-
-      {/* Get Started Form Modal */}
-      <GetStartedForm
-        isOpen={formOpen}
-        onClose={() => setFormOpen(false)}
-        preselectedService={selectedService}
-      />
     </>
   )
 }

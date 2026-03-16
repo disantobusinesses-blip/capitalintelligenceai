@@ -3,7 +3,10 @@ import Script from 'next/script'
 import './globals.css'
 import { GradientBackground } from '@/components/ui/gradient-background'
 import { CurrencyProvider } from '@/context/CurrencyContext'
+import { QuoteModalProvider } from '@/context/QuoteModalContext'
 import BottomNav from '@/components/BottomNav'
+import QuoteModal from '@/components/QuoteModal'
+import FloatingButton from '@/components/FloatingButton'
 
 export const metadata: Metadata = {
   title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
@@ -53,12 +56,16 @@ export default function RootLayout({
       </Script>
       <body>
         <CurrencyProvider>
-          <GradientBackground
-            className="fixed inset-0 min-h-0 w-screen h-screen -z-10"
-            animationDuration={10}
-          />
-          {children}
-          <BottomNav />
+          <QuoteModalProvider>
+            <GradientBackground
+              className="fixed inset-0 min-h-0 w-screen h-screen -z-10"
+              animationDuration={10}
+            />
+            {children}
+            <BottomNav />
+            <FloatingButton />
+            <QuoteModal />
+          </QuoteModalProvider>
         </CurrencyProvider>
       </body>
     </html>

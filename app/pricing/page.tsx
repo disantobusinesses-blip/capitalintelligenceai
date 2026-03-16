@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Check } from 'lucide-react'
+import OpenQuoteModalButton from '@/components/OpenQuoteModalButton'
 
 export const metadata: Metadata = {
   title: 'Pricing – Premium Web & AI Solutions | IAS Intelligent AI Systems',
@@ -53,56 +54,78 @@ const oneTimePrices = [
 const monthlyPlans = [
   {
     name: 'Website Care',
-    priceAUD: 'Starting at $119 AUD/month',
-    priceUSD: 'Starting at $77 USD/month',
+    badge: null as string | null,
+    badgeStyle: '',
+    priceAUD: '$119 AUD/month',
+    priceUSD: '$77 USD/month',
+    subLabel: 'Includes 1 free SEO blog on signup',
     description: 'Essential hosting and maintenance to keep your site running smoothly.',
     features: [
-      'Website Hosting',
-      'Website Maintenance',
-      'Security Updates',
-      'Monthly Backups',
-      'Tech Support',
+      'Website hosting',
+      'Website maintenance',
+      'Security updates',
+      'Monthly backups',
+      'Up to 1hr tech support/month',
     ],
+    featured: false,
+    bestValue: false,
   },
   {
-    name: 'Google Growth Plan',
-    priceAUD: '$199 AUD/month',
-    priceUSD: '$129 USD/month',
-    description: 'Foundational SEO content and keyword targeting to grow your organic traffic.',
+    name: 'Google Growth',
+    badge: 'Most popular',
+    badgeStyle: 'bg-green-500 text-white',
+    priceAUD: '$299 AUD/month',
+    priceUSD: '$194 USD/month',
+    subLabel: '2 blogs/month · Website Care included',
+    description: 'Start ranking on Google with consistent monthly content.',
     features: [
+      'Everything in Website Care',
+      '2 SEO-optimised blog articles/month',
       'Monthly keyword research',
-      'SEO-optimised blog articles',
       'On-page optimisation',
-      'Technical SEO monitoring',
-      'Monthly progress report',
+      'Monthly performance report',
+      'AI search indexing (ChatGPT, Gemini, Perplexity)',
     ],
+    featured: false,
+    bestValue: true,
   },
   {
-    name: 'Super Growth Plan',
-    priceAUD: '$359 AUD/month',
-    priceUSD: '$233 USD/month',
-    description: 'Accelerated content coverage and broader keyword targeting for faster growth.',
+    name: 'Super Growth',
+    badge: 'Recommended',
+    badgeStyle: 'bg-tech-baby-blue text-tech-black',
+    priceAUD: '$499 AUD/month',
+    priceUSD: '$324 USD/month',
+    subLabel: '4 blogs/month · Website Care included',
+    description: 'Accelerate your rankings with double the content and deeper strategy.',
     features: [
+      'Everything in Google Growth',
+      '4 SEO-optimised blog articles/month',
       'Expanded keyword research',
-      'Higher volume of blog articles',
-      'Deep on-page optimisation',
       'Internal linking strategy',
+      'Deep on-page optimisation',
       'Detailed monthly reporting',
     ],
     featured: true,
+    bestValue: false,
   },
   {
-    name: 'Market Authority Plan',
-    priceAUD: '$599 AUD/month',
-    priceUSD: '$389 USD/month',
-    description: 'Maximum content output and topical authority to dominate your niche in search.',
+    name: 'Market Authority',
+    badge: null as string | null,
+    badgeStyle: '',
+    priceAUD: '$799 AUD/month',
+    priceUSD: '$519 USD/month',
+    subLabel: '8 blogs/month · Website Care included',
+    description: 'Dominate your niche and own the first page of Google.',
     features: [
-      'Maximum monthly content output',
-      'Comprehensive keyword research',
+      'Everything in Super Growth',
+      '8 SEO-optimised blog articles/month',
       'Full topical authority mapping',
       'Advanced technical SEO',
-      'Priority support & reporting',
+      'Competitor gap analysis',
+      'Priority support and reporting',
     ],
+    featured: false,
+    bestValue: false,
   },
 ]
 
@@ -118,9 +141,12 @@ export default function PricingPage() {
           <p className="text-xl text-tech-platinum mb-4">
             Professional websites and AI systems for Australian businesses.
           </p>
-          <p className="text-2xl font-bold text-tech-white">
+          <p className="text-2xl font-bold text-tech-white mb-8">
             Websites starting from $599 AUD
           </p>
+          <OpenQuoteModalButton className="inline-flex items-center gap-2 px-8 py-4 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue-light">
+            Get Started →
+          </OpenQuoteModalButton>
         </div>
       </section>
 
@@ -180,45 +206,64 @@ export default function PricingPage() {
 
       {/* Monthly Plans */}
       <section className="py-16 px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-tech-white text-center mb-4">
-            Monthly Support Plans
+            Monthly Support Plans — Keep Growing Every Month
           </h2>
-          <p className="text-tech-platinum text-center mb-12">
+          <p className="text-tech-platinum text-center mb-8">
             Keep your website running and growing every month.
           </p>
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+
+          {/* Amber callout banner */}
+          <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl px-6 py-4 mb-10 flex items-start gap-3 max-w-4xl mx-auto">
+            <span className="text-2xl flex-shrink-0">🎁</span>
+            <p className="text-amber-200 leading-snug">
+              <span className="font-semibold">Every website build includes 1 free SEO blog</span> — see real Google results before committing to a plan.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             {monthlyPlans.map((plan) => (
               <div
                 key={plan.name}
-                className={`relative bg-tech-gray rounded-2xl p-8 ${
+                className={`relative bg-tech-gray rounded-2xl p-6 flex flex-col ${
                   plan.featured
                     ? 'border-2 border-tech-baby-blue shadow-glow'
                     : 'border border-tech-baby-blue/20'
                 }`}
               >
-                {plan.featured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-tech-baby-blue text-tech-black rounded-full text-sm font-semibold">
-                    Recommended
+                {plan.badge && (
+                  <div className={`absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-sm font-semibold whitespace-nowrap ${plan.badgeStyle}`}>
+                    {plan.badge}
                   </div>
                 )}
-                <h3 className="text-xl font-bold text-tech-white mb-2">{plan.name}</h3>
-                <p className="text-tech-platinum text-sm mb-4">{plan.description}</p>
-                <div className="mb-1">
+                <h3 className="text-lg font-bold text-tech-white mb-1">{plan.name}</h3>
+                <p className="text-tech-platinum text-xs mb-3 leading-snug">{plan.description}</p>
+                <div className="flex items-center gap-2 flex-wrap mb-1">
                   <span className="text-xl font-bold text-tech-white">{plan.priceAUD}</span>
+                  {plan.bestValue && (
+                    <span className="text-xs px-2 py-0.5 bg-green-500/20 border border-green-500/30 text-green-400 rounded-full font-semibold">
+                      Best value
+                    </span>
+                  )}
                 </div>
-                <p className="text-xs text-tech-platinum mb-6">{plan.priceUSD}</p>
-                <ul className="space-y-2 mb-8">
+                <p className="text-xs text-tech-platinum mb-1">{plan.priceUSD}</p>
+                <p className="text-xs text-tech-baby-blue font-semibold mb-4">{plan.subLabel}</p>
+                <ul className="space-y-2 mb-6 flex-1">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-tech-white flex-shrink-0 mt-0.5" />
-                      <span className="text-tech-white text-sm">{f}</span>
+                      <span className="text-tech-white text-xs">{f}</span>
                     </li>
                   ))}
                 </ul>
                 <Link
                   href="/"
-                  className="block w-full py-3 rounded-lg font-semibold text-center border-2 border-tech-baby-blue text-tech-white hover:bg-tech-baby-blue hover:text-tech-black smooth-transition"
+                  className={`block w-full py-2.5 rounded-lg font-semibold text-center text-sm smooth-transition ${
+                    plan.featured
+                      ? 'bg-tech-baby-blue text-tech-black hover:bg-tech-baby-blue-light'
+                      : 'border-2 border-tech-baby-blue text-tech-white hover:bg-tech-baby-blue hover:text-tech-black'
+                  }`}
                 >
                   Get Started
                 </Link>
