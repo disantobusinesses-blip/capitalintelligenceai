@@ -1,7 +1,6 @@
 import Hero from '@/components/Hero'
 import ProvenResults from '@/components/ProvenResults'
 import ServiceSelection from '@/components/ServiceSelection'
-import AIChatDemo from '@/components/AIChatDemo'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -10,7 +9,6 @@ export default function Home() {
       <Hero />
       <ProvenResults />
       <ServiceSelection />
-      <AIChatDemo />
       <Footer />
     </main>
   )
