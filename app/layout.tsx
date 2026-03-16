@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       {/* Google Ads global site tag (AW-17950129824) */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=AW-17950129824"
