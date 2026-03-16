@@ -8,11 +8,7 @@ interface QuoteModalContextValue {
   closeModal: () => void
 }
 
-const QuoteModalContext = createContext<QuoteModalContextValue>({
-  isOpen: false,
-  openModal: () => {},
-  closeModal: () => {},
-})
+const QuoteModalContext = createContext<QuoteModalContextValue | undefined>(undefined)
 
 export function QuoteModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)

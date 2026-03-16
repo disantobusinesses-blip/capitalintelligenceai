@@ -297,12 +297,12 @@ export default function QuoteModal() {
           {/* Step 3 — SEO plan */}
           {step === 3 && (
             <div>
-              <h2 className="text-2xl font-bold text-tech-white mb-1">Get your website found on Google</h2>
-              <p className="text-tech-platinum mb-4">Every build includes 1 free SEO blog. Add a plan to keep growing.</p>
+              <h2 className="text-xl md:text-2xl font-bold text-tech-white mb-1">Get your website found on Google</h2>
+              <p className="text-tech-platinum text-sm mb-3">Every build includes 1 free SEO blog. Add a plan to keep growing.</p>
               {/* Amber banner */}
-              <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl px-4 py-3 mb-5 flex items-start gap-2">
-                <span className="text-lg">🎁</span>
-                <p className="text-amber-200 text-sm leading-snug">
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl px-3 py-2.5 mb-3 flex items-start gap-2">
+                <span className="text-base flex-shrink-0">🎁</span>
+                <p className="text-amber-200 text-xs leading-snug">
                   <span className="font-semibold">1 free SEO blog included with your build</span> — no commitment required.
                 </p>
               </div>
@@ -311,30 +311,33 @@ export default function QuoteModal() {
                   <button
                     key={plan.id}
                     onClick={() => setFormData({ ...formData, seoPlan: plan.id, seoPrice: plan.numericPrice })}
-                    className={`w-full flex items-center justify-between gap-4 px-4 py-3 rounded-xl border-2 text-left smooth-transition ${
+                    className={`w-full flex items-start gap-3 px-3 py-2.5 rounded-xl border-2 text-left smooth-transition ${
                       formData.seoPlan === plan.id
                         ? 'border-tech-baby-blue bg-tech-baby-blue/10'
                         : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/40'
                     }`}
                   >
-                    <div className="flex items-start gap-3 flex-1 min-w-0">
-                      <div
-                        className={`w-4 h-4 rounded-full border-2 flex-shrink-0 mt-0.5 smooth-transition ${
-                          formData.seoPlan === plan.id
-                            ? 'border-tech-baby-blue bg-tech-baby-blue'
-                            : 'border-tech-baby-blue/40'
-                        }`}
-                      />
-                      <div className="min-w-0">
+                    {/* Radio dot */}
+                    <div
+                      className={`w-4 h-4 rounded-full border-2 flex-shrink-0 mt-0.5 smooth-transition ${
+                        formData.seoPlan === plan.id
+                          ? 'border-tech-baby-blue bg-tech-baby-blue'
+                          : 'border-tech-baby-blue/40'
+                      }`}
+                    />
+                    {/* Label + description (flex-1 so it fills available space) */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
                         <span className="text-tech-white font-semibold text-sm">{plan.label}</span>
                         {plan.badge && (
-                          <span className="ml-2 text-xs px-2 py-0.5 bg-tech-baby-blue/20 border border-tech-baby-blue/40 text-tech-baby-blue rounded-full font-semibold">
+                          <span className="text-xs px-1.5 py-0.5 bg-tech-baby-blue/20 border border-tech-baby-blue/40 text-tech-baby-blue rounded-full font-semibold leading-none">
                             {plan.badge}
                           </span>
                         )}
-                        <p className="text-tech-platinum text-xs mt-0.5 truncate">{plan.description}</p>
                       </div>
+                      <p className="text-tech-platinum text-xs mt-0.5 leading-snug break-words">{plan.description}</p>
                     </div>
+                    {/* Price — always visible, right-aligned */}
                     <span className={`text-sm font-bold flex-shrink-0 ${plan.id === 'none' ? 'text-green-400' : 'text-tech-white'}`}>
                       {plan.price}
                     </span>
