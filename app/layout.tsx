@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
-import MeshGradientBackground from '@/components/MeshGradientBackground'
+import { GradientBackground } from '@/components/ui/gradient-background'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 import BottomNav from '@/components/BottomNav'
 
@@ -53,10 +53,10 @@ export default function RootLayout({
       </Script>
       <body>
         <CurrencyProvider>
-          <MeshGradientBackground
-            colors={["#000000", "#0A0705", "#1A0F08", "#2E1A0E", "#3E2310", "#000000"]}
-            distortion={0.8}
-            speed={0.4}
+          <GradientBackground
+            className="fixed inset-0 min-h-0 w-screen h-screen"
+            style={{ zIndex: -10 }}
+            animationDuration={10}
           />
           {children}
           <BottomNav />

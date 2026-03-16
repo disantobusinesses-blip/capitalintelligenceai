@@ -47,7 +47,7 @@ export default function SplitText({
                 el.style.opacity = String(animationTo.opacity)
                 el.style.transform = animationTo.transform
                 if (i === els.length - 1 && onLetterAnimationComplete) {
-                  setTimeout(onLetterAnimationComplete, 0)
+                  onLetterAnimationComplete()
                 }
               }, i * delay)
             })

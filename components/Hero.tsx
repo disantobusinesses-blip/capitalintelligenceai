@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { ArrowRight, Send, CheckCircle, Clock } from 'lucide-react'
-import { GLSLHills } from '@/components/ui/glsl-hills'
 import SplitText from '@/components/ui/split-text'
 
 // Countdown target: March 25, 2026
@@ -98,15 +97,7 @@ export default function Hero() {
 
   return (
     <section className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden py-20">
-      {/* GLSLHills animated terrain background */}
-      <div className="absolute inset-0 z-0">
-        <GLSLHills width="100%" height="100%" />
-      </div>
-
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 z-[1] bg-black/60" />
-
-      <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6 px-6">
+      <div className="relative max-w-2xl mx-auto text-center space-y-6 px-6">
 
         {/* IS Logo — floating, no box */}
         <div className="flex justify-center mb-2 animate-fade-in-down">
