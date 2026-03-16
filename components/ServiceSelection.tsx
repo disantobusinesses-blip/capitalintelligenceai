@@ -126,21 +126,6 @@ export default function ServiceSelection() {
             })}
           </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center mt-16">
-            <p className="text-tech-platinum mb-4">
-              Not sure which option is right for you?
-            </p>
-            <button
-              onClick={() => {
-                const element = document.getElementById('chat');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-8 py-3 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
-            >
-              Talk to Our AI Assistant
-            </button>
-          </div>
         </div>
       </section>
 
