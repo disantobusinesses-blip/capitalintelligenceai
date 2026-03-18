@@ -20,7 +20,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/70 leading-relaxed mb-4">
-              We integrate intelligent systems into businesses so they operate smoother, faster, and smarter.
+              We help Australian businesses get found on Google and recommended by AI — so you get more leads, more calls, and more growth.
             </p>
             <p className="text-sm text-white/50">
               ABN: 38 693 023 371
@@ -109,7 +109,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 text-center text-white/50">
-          <p>© {new Date().getFullYear()} Capital Intelligence Group. All rights reserved.</p>
+          <p>© 2026 Intelligent AI Systems. All rights reserved.</p>
         </div>
       </div>
     </footer>
