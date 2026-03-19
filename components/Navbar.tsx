@@ -30,7 +30,7 @@ export default function Navbar() {
             aria-label="Call us on 03 7051 0100"
           >
             <Phone className="w-4 h-4 flex-shrink-0" />
-            <span className="hidden sm:inline">03 7051 0100</span>
+            <span>03 7051 0100</span>
           </Link>
         </div>
       </div>
