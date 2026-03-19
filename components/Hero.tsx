@@ -3,9 +3,11 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { ArrowRight, Send, CheckCircle, Clock } from 'lucide-react'
+import SplitText from '@/components/ui/split-text'
 
 // Countdown target: March 25, 2026
 const DEAL_DEADLINE = new Date('2026-03-25T23:59:59')
+const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 
 function useCountdown(target: Date) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
@@ -108,19 +110,21 @@ export default function Hero() {
           />
         </div>
 
-        {/* Label */}
-        <p className="text-sm font-semibold uppercase tracking-widest text-tech-white animate-fade-in-up animation-delay-200">
-          Capital Intelligence Group
-        </p>
-
-        {/* Main Headline */}
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-tech-white leading-tight text-balance animate-fade-in-up animation-delay-400">
-          Websites That Get Found.<br />Businesses That Grow.
+        {/* Main Headline with SplitText animation */}
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-tech-white leading-tight">
+          <SplitText
+            text={HERO_HEADLINE}
+            delay={25}
+            textAlign="center"
+            animationFrom={{ opacity: 0, transform: 'translate3d(0,30px,0)' }}
+            animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+            rootMargin="-20px"
+          />
         </h1>
 
         {/* Sub copy */}
         <p className="text-base md:text-lg text-tech-platinum leading-relaxed text-balance animate-fade-in-up animation-delay-600">
-          We build SEO-powered websites for Australian businesses — designed to attract visitors, generate leads, and scale with you.
+          We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini — using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.
         </p>
 
         {/* Countdown Banner */}
