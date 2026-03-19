@@ -23,13 +23,14 @@ export default function Navbar() {
             Pricing
           </Link>
 
-          {/* Phone button */}
+          {/* Phone CTA button – top-right, visible on all screen sizes */}
           <Link
             href="tel:0370510100"
             className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-4 py-2 rounded-full smooth-transition"
             aria-label="Call us on 03 7051 0100"
           >
             <Phone className="w-4 h-4 flex-shrink-0" />
+            <span className="hidden sm:inline">Call Now · </span>
             <span>03 7051 0100</span>
           </Link>
         </div>
