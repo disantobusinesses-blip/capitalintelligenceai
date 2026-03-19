@@ -7,7 +7,7 @@ import { QuoteModalProvider } from '@/context/QuoteModalContext'
 import BottomNav from '@/components/BottomNav'
 import QuoteModal from '@/components/QuoteModal'
 import FloatingButton from '@/components/FloatingButton'
-import Navbar from '@/components/Navbar'
+import FloatingPhoneButton from '@/components/FloatingPhoneButton'
 
 export const metadata: Metadata = {
   title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
@@ -62,10 +62,10 @@ export default function RootLayout({
               className="fixed inset-0 min-h-0 w-screen h-screen -z-10"
               animationDuration={10}
             />
-            <Navbar />
             {children}
             <BottomNav />
             <FloatingButton />
+            <FloatingPhoneButton />
             <QuoteModal />
           </QuoteModalProvider>
         </CurrencyProvider>
