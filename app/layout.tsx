@@ -9,6 +9,29 @@ import QuoteModal from '@/components/QuoteModal'
 import FloatingButton from '@/components/FloatingButton'
 import FloatingPhoneButton from '@/components/FloatingPhoneButton'
 
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Intelligent AI Systems',
+  alternateName: 'IAS',
+  url: 'https://intelligentaisystem.com',
+  logo: 'https://intelligentaisystem.com/images/is-logo.jpg',
+  description:
+    'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by Australian businesses to build smarter digital experiences.',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'AU',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+61-3-7051-0100',
+    contactType: 'customer service',
+    availableLanguage: 'English',
+  },
+  sameAs: ['https://intelligentaisystem.com'],
+  taxID: '38 693 023 371',
+}
+
 export const metadata: Metadata = {
   title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
   description: 'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by Australian businesses to build smarter digital experiences.',
@@ -31,7 +54,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.svg',
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
 }
 
@@ -56,6 +81,10 @@ export default function RootLayout({
         `}
       </Script>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
         <CurrencyProvider>
           <QuoteModalProvider>
             <GradientBackground
