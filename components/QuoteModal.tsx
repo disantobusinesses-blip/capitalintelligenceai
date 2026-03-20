@@ -299,11 +299,11 @@ export default function QuoteModal() {
             <div>
               <h2 className="text-xl md:text-2xl font-bold text-[#1A1A1A] mb-1">Get your website found on Google</h2>
               <p className="text-[#6B6560] text-sm mb-3">Every build includes 1 free SEO blog. Add a plan to keep growing.</p>
-              {/* Amber banner */}
-              <div className="bg-amber-500/10 border border-amber-500/30 rounded-[6px] px-3 py-2.5 mb-3 flex items-start gap-2">
+              {/* Green banner */}
+              <div className="bg-green-500/10 border border-green-500/30 rounded-[6px] px-3 py-2.5 mb-3 flex items-start gap-2">
                 <span className="text-base flex-shrink-0">🎁</span>
-                <p className="text-amber-200 text-xs leading-snug">
-                  <span className="font-semibold">1 free SEO blog included with your build</span>, no commitment required.
+                <p className="text-green-400 text-xs leading-snug font-semibold">
+                  1 free SEO blog included with your build, no commitment required.
                 </p>
               </div>
               <div className="space-y-2">

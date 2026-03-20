@@ -8,21 +8,18 @@ const projects = [
     name: 'EAY Electrical',
     industry: 'Trades',
     metric: 'Ranked page 1 Google',
-    link: '/projects',
+    link: 'https://www.eayelectrical.com.au',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EAY%20site-7S7pX8I1Dmy6mqs88OqeeR0avSRFuH.jpg',
+    imageAlt: 'EAY Electrical website screenshot',
   },
   {
     id: 2,
-    name: 'Coming Soon',
-    industry: 'Professional Services',
-    metric: '',
-    link: '/projects',
-  },
-  {
-    id: 3,
-    name: 'Coming Soon',
-    industry: 'Local Business',
-    metric: '',
-    link: '/projects',
+    name: 'My AI Bank',
+    industry: 'FinTech',
+    metric: 'AI-powered banking platform',
+    link: 'https://myaibank.ai',
+    image: null,
+    imageAlt: 'My AI Bank website screenshot',
   },
 ]
 
@@ -38,8 +35,8 @@ export default function OurWork() {
           <p className="text-[18px] text-[#6B6560]">Real websites. Real results.</p>
         </div>
 
-        {/* Project Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Project Cards — 2 columns max, centred */}
+        <div className="grid sm:grid-cols-2 gap-8 max-w-[760px] mx-auto">
           {projects.map((project) => (
             <div
               key={project.id}
@@ -52,11 +49,21 @@ export default function OurWork() {
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
-              {/* Screenshot placeholder */}
-              <div
-                className="h-[200px] bg-[#E8E4DF] flex items-center justify-center"
-              >
-                <span className="text-[#6B6560] text-sm font-medium">Screenshot Coming Soon</span>
+              {/* Screenshot */}
+              <div className="h-[200px] bg-[#E8E4DF] overflow-hidden">
+                {project.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt}
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-[#F8F7F4]">
+                    <span className="text-[#6B6560] text-sm font-medium">Screenshot Coming Soon</span>
+                  </div>
+                )}
               </div>
 
               {/* Card content */}
@@ -70,6 +77,8 @@ export default function OurWork() {
                 )}
                 <a
                   href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-[#5C3D2E] font-semibold text-sm hover:underline transition-colors duration-200"
                 >
                   View Project →
@@ -78,6 +87,11 @@ export default function OurWork() {
             </div>
           ))}
         </div>
+
+        {/* Footnote */}
+        <p className="text-center text-[#9E9790] text-sm mt-8 italic">
+          Other projects may not be shown yet.
+        </p>
       </div>
     </section>
   )
