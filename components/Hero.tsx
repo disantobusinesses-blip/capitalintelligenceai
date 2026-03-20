@@ -1,60 +1,29 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { ArrowRight, Send, CheckCircle, Clock } from 'lucide-react'
-import SplitText from '@/components/ui/split-text'
+import { useState } from 'react'
+import { CheckCircle, Send } from 'lucide-react'
 
-// Countdown target: March 25, 2026
-const DEAL_DEADLINE = new Date('2026-03-25T23:59:59')
 const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 
-function useCountdown(target: Date) {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-
-  useEffect(() => {
-    const calc = () => {
-      const diff = target.getTime() - Date.now()
-      if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-        return
-      }
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / (1000 * 60)) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
-      })
-    }
-    calc()
-    const id = setInterval(calc, 1000)
-    return () => clearInterval(id)
-  }, [target])
-
-  return timeLeft
-}
-
-function CountdownUnit({ value, label }: { value: number; label: string }) {
-  return (
-    <div className="flex flex-col items-center">
-      <span className="text-2xl md:text-3xl font-bold text-tech-white tabular-nums leading-none">
-        {String(value).padStart(2, '0')}
-      </span>
-      <span className="text-[10px] uppercase tracking-widest text-tech-platinum mt-1">{label}</span>
-    </div>
-  )
-}
+const trustBadges = [
+  'First SEO Blog Free',
+  'No Lock-In Contracts',
+  'Split Payments Available',
+  '90-Day Ranking Guarantee',
+]
 
 export default function Hero() {
+  const [name, setName] = useState('')
+  const [businessName, setBusinessName] = useState('')
+  const [phone, setPhone] = useState('')
   const [quoteEmail, setQuoteEmail] = useState('')
-  const [quoteDescription, setQuoteDescription] = useState('')
+  const [message, setMessage] = useState('')
   const [quoteStatus, setQuoteStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [quoteError, setQuoteError] = useState('')
-  const countdown = useCountdown(DEAL_DEADLINE)
 
   const handleQuoteSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!quoteEmail.trim() || !quoteDescription.trim()) return
+    if (!quoteEmail.trim() || !message.trim()) return
 
     setQuoteStatus('submitting')
     setQuoteError('')
@@ -65,26 +34,29 @@ export default function Hero() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           service: null,
-          businessName: 'Quick Quote Request',
+          businessName: businessName || 'Quick Quote Request',
           industry: '',
-          description: quoteDescription,
+          description: message,
           designStyle: '',
           colorPreference: '',
           features: [],
           monthlyPlan: '',
           aiAutomationRequest: '',
-          contactName: 'Quick Quote',
+          contactName: name || 'Quick Quote',
           contactEmail: quoteEmail,
-          contactPhone: '',
+          contactPhone: phone,
           hasLogo: false,
-          additionalNotes: quoteDescription,
+          additionalNotes: message,
         }),
       })
       const result = await response.json()
       if (response.ok && result.ok) {
         setQuoteStatus('success')
+        setName('')
+        setBusinessName('')
+        setPhone('')
         setQuoteEmail('')
-        setQuoteDescription('')
+        setMessage('')
       } else {
         setQuoteStatus('error')
         setQuoteError(result.message || 'Something went wrong. Please try again.')
@@ -96,121 +68,131 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden py-20">
-      <div className="relative max-w-2xl mx-auto text-center space-y-6 px-6">
+    <section
+      id="quote"
+      className="bg-[#F8F7F4] pt-[100px] pb-[80px] px-6 mt-[68px]"
+    >
+      <div className="max-w-[1200px] mx-auto">
+        <div className="grid md:grid-cols-[60%_40%] gap-12 items-start">
+          {/* LEFT COLUMN */}
+          <div className="space-y-6">
+            {/* Label */}
+            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase">
+              Melbourne&apos;s AI-Powered Web Agency
+            </p>
 
-        {/* IS Logo — floating, no box */}
-        <div className="flex justify-center mb-2 animate-fade-in-down">
-          <Image
-            src="/images/is-logo.jpg"
-            alt="Capital Intelligence Group logo"
-            width={72}
-            height={72}
-            className="rounded-full object-cover drop-shadow-lg smooth-transition hover:scale-105"
-          />
-        </div>
+            {/* Headline */}
+            <h1 className="text-[52px] leading-[1.15] font-extrabold text-[#1A1A1A] md:text-[52px] text-[36px]">
+              {HERO_HEADLINE}
+            </h1>
 
-        {/* Main Headline with SplitText animation */}
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-tech-white leading-tight">
-          <SplitText
-            text={HERO_HEADLINE}
-            delay={25}
-            textAlign="center"
-            animationFrom={{ opacity: 0, transform: 'translate3d(0,30px,0)' }}
-            animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
-            rootMargin="-20px"
-          />
-        </h1>
+            {/* Subheadline */}
+            <p className="text-[18px] text-[#6B6560] mt-4 max-w-[520px]">
+              We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini — using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.
+            </p>
 
-        {/* Sub copy */}
-        <p className="text-base md:text-lg text-tech-platinum leading-relaxed text-balance animate-fade-in-up animation-delay-600">
-          We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini — using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.
-        </p>
-
-        {/* Countdown Banner */}
-        <div className="animate-fade-in-up animation-delay-600">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-tech-black/70 backdrop-blur-sm border border-amber-500/40 rounded-2xl px-6 py-4">
-            <div className="flex items-center gap-2 text-amber-400">
-              <Clock className="w-4 h-4 flex-shrink-0" />
-              <span className="text-sm font-semibold whitespace-nowrap">15% off website builds — ends March 25</span>
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              <a
+                href="#quote"
+                className="bg-[#1A1A1A] text-white font-semibold px-6 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 inline-block"
+              >
+                Get a Free Quote
+              </a>
+              <a
+                href="#our-work"
+                className="border-2 border-[#1A1A1A] text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 inline-block"
+              >
+                View Our Work
+              </a>
             </div>
-            <div className="flex items-center gap-3 border-t sm:border-t-0 sm:border-l border-amber-500/30 pt-3 sm:pt-0 sm:pl-4">
-              <CountdownUnit value={countdown.days} label="days" />
-              <span className="text-amber-400 font-bold text-lg">:</span>
-              <CountdownUnit value={countdown.hours} label="hrs" />
-              <span className="text-amber-400 font-bold text-lg">:</span>
-              <CountdownUnit value={countdown.minutes} label="min" />
-              <span className="text-amber-400 font-bold text-lg">:</span>
-              <CountdownUnit value={countdown.seconds} label="sec" />
+
+            {/* Trust Badges */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              {trustBadges.map((badge) => (
+                <div key={badge} className="flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-[13px] text-[#6B6560]">{badge}</span>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Quote Form */}
-        <div className="animate-fade-in-up animation-delay-700">
-          {quoteStatus === 'success' ? (
-            <div className="flex flex-col items-center gap-2 py-6">
-              <CheckCircle className="w-8 h-8 text-tech-baby-blue" />
-              <p className="text-tech-white font-semibold text-lg">Quote request received!</p>
-              <p className="text-tech-platinum text-sm">We&apos;ll be in touch shortly.</p>
-            </div>
-          ) : (
-            <form
-              onSubmit={handleQuoteSubmit}
-              className="bg-tech-black/60 backdrop-blur-sm border border-tech-baby-blue/25 rounded-2xl p-5 text-left space-y-3"
-            >
-              <div>
-                <p className="text-tech-white font-bold text-base">Get a Free Quote</p>
-                <p className="text-tech-platinum text-xs mt-0.5">Tell us about your business — we respond fast.</p>
+          {/* RIGHT COLUMN: Quote Form */}
+          <div
+            className="bg-white rounded-[12px] p-8"
+            style={{ border: '1px solid #E8E4DF', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}
+          >
+            {quoteStatus === 'success' ? (
+              <div className="flex flex-col items-center gap-3 py-8">
+                <CheckCircle className="w-10 h-10 text-green-500" />
+                <p className="text-[#1A1A1A] font-bold text-xl text-center">Quote request received!</p>
+                <p className="text-[#6B6560] text-sm text-center">We&apos;ll be in touch shortly.</p>
               </div>
-              <textarea
-                value={quoteDescription}
-                onChange={(e) => setQuoteDescription(e.target.value)}
-                placeholder="Describe your business and what you need..."
-                rows={3}
-                required
-                className="w-full px-4 py-2.5 bg-tech-black/80 border border-tech-baby-blue/25 rounded-xl text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none text-sm"
-              />
-              <div className="flex gap-2">
+            ) : (
+              <form onSubmit={handleQuoteSubmit} className="space-y-4">
+                <div>
+                  <p className="text-[#1A1A1A] font-bold text-lg mb-1">Get My Free Quote</p>
+                  <p className="text-[#6B6560] text-sm">We Respond Within 1 Hour</p>
+                </div>
+
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your Name"
+                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+                />
+                <input
+                  type="text"
+                  value={businessName}
+                  onChange={(e) => setBusinessName(e.target.value)}
+                  placeholder="Business Name"
+                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+                />
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="Phone Number"
+                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+                />
                 <input
                   type="email"
                   value={quoteEmail}
                   onChange={(e) => setQuoteEmail(e.target.value)}
-                  placeholder="Your email address"
+                  placeholder="Email Address"
                   required
-                  className="flex-1 px-4 py-2.5 bg-tech-black/80 border border-tech-baby-blue/25 rounded-xl text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition text-sm"
+                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
                 />
+                <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Tell us about your business and what you need..."
+                  rows={3}
+                  required
+                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 resize-none text-sm"
+                />
+
                 <button
                   type="submit"
                   disabled={quoteStatus === 'submitting'}
-                  className="px-5 py-2.5 bg-tech-baby-blue text-tech-black rounded-xl font-bold text-sm inline-flex items-center gap-2 smooth-transition hover:bg-tech-baby-blue-light disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {quoteStatus === 'submitting' ? 'Sending…' : (
-                    <>Send <Send className="w-4 h-4" /></>
+                    <>Get My Free Quote — We Respond Within 1 Hour <Send className="w-4 h-4" /></>
                   )}
                 </button>
-              </div>
-              {quoteStatus === 'error' && (
-                <p className="text-red-400 text-xs">{quoteError}</p>
-              )}
-            </form>
-          )}
-        </div>
 
-        {/* CTA */}
-        <div className="pt-1 animate-fade-in-up animation-delay-800">
-          <button
-            onClick={() => {
-              const element = document.getElementById('services')
-              element?.scrollIntoView({ behavior: 'smooth' })
-            }}
-            className="group px-8 py-3.5 bg-tech-baby-blue text-tech-black rounded-full font-bold text-base inline-flex items-center gap-2 shadow-glow smooth-transition hover:bg-tech-baby-blue-light hover:scale-105 hover:shadow-glow-lg"
-          >
-            See Our Services
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+                {quoteStatus === 'error' && (
+                  <p className="text-red-500 text-xs">{quoteError}</p>
+                )}
+              </form>
+            )}
+          </div>
         </div>
-
       </div>
     </section>
   )
