@@ -82,7 +82,7 @@ export default function Hero() {
             </p>
 
             {/* Headline */}
-            <h1 className="text-[52px] leading-[1.15] font-extrabold text-[#1A1A1A] md:text-[52px] text-[36px]">
+            <h1 className="text-[36px] md:text-[52px] leading-[1.15] font-extrabold text-[#1A1A1A]">
               {HERO_HEADLINE}
             </h1>
 

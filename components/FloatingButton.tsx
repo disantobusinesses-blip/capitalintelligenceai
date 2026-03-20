@@ -17,7 +17,7 @@ export default function FloatingButton() {
     <button
       onClick={openModal}
       aria-label="Build me a website"
-      className={`fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-tech-baby-blue text-tech-black font-semibold rounded-full shadow-glow smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-lg active:scale-95 ${
+      className={`fixed bottom-24 right-6 z-40 flex items-center gap-2 bg-[#1A1A1A] text-white font-semibold rounded-full shadow-lg active:scale-95 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
       style={{ transition: 'opacity 0.5s ease, transform 0.5s ease, background-color 0.2s ease' }}

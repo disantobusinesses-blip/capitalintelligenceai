@@ -71,11 +71,11 @@ export default function ServiceSelection() {
             return (
               <div
                 key={service.id}
-                className="bg-white rounded-[10px] p-8 flex flex-col transition-all duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]"
+                className="bg-white rounded-[10px] p-8 flex flex-col transition-all duration-200"
                 style={{
                   border: '1px solid #E8E4DF',
                   borderTop: isHovered ? '3px solid #5C3D2E' : '1px solid #E8E4DF',
-                  boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+                  boxShadow: isHovered ? '0 8px 32px rgba(0,0,0,0.10)' : '0 2px 12px rgba(0,0,0,0.06)',
                 }}
                 onMouseEnter={() => setHoveredId(service.id)}
                 onMouseLeave={() => setHoveredId(null)}

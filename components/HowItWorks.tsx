@@ -49,8 +49,7 @@ export default function HowItWorks() {
             return (
               <div key={step.number} className="relative flex flex-col items-center text-center px-4 mb-10 md:mb-0">
                 {/* Icon circle */}
-                <div className="relative z-10 w-[72px] h-[72px] bg-white rounded-full flex items-center justify-center mb-4"
-                  style={{ border: '2px solid #E8E4DF', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+                <div className="relative z-10 w-[72px] h-[72px] bg-white rounded-full flex items-center justify-center mb-4 border-2 border-[#E8E4DF] shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
                   <Icon className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
                 </div>
 

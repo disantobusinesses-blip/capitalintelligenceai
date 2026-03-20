@@ -9,7 +9,7 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="bg-[#F8F7F4]">
+    <main className="bg-[#F8F7F4] pb-24 md:pb-0">
       <Hero />
       <ProvenResults />
       <ServiceSelection />

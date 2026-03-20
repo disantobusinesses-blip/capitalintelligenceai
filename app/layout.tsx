@@ -6,7 +6,6 @@ import { QuoteModalProvider } from '@/context/QuoteModalContext'
 import BottomNav from '@/components/BottomNav'
 import QuoteModal from '@/components/QuoteModal'
 import FloatingButton from '@/components/FloatingButton'
-import FloatingPhoneButton from '@/components/FloatingPhoneButton'
 import Navbar from '@/components/Navbar'
 
 const orgSchema = {
@@ -91,7 +90,6 @@ export default function RootLayout({
             {children}
             <BottomNav />
             <FloatingButton />
-            <FloatingPhoneButton />
             <QuoteModal />
           </QuoteModalProvider>
         </CurrencyProvider>
