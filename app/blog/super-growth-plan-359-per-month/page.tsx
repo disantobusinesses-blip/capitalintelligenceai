@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowLeft, Calendar, Clock, CheckCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Super Growth Plan — Accelerated SEO for $359/month | Capital Intelligence Group',
+  title: 'Super Growth Plan: Accelerated SEO for $359/month | Capital Intelligence Group',
   description:
     'The Super Growth Plan expands your content footprint faster with broader keyword coverage and more monthly articles. Ideal for businesses ready to seriously compete.',
   alternates: { canonical: 'https://intelligentaisystem.com/blog/super-growth-plan-359-per-month' },

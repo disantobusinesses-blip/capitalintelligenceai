@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { ArrowLeft, Calendar, Clock, CheckCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Google Growth Plan — Foundational SEO for $199/month | Capital Intelligence Group',
+  title: 'Google Growth Plan: Foundational SEO for $199/month | Capital Intelligence Group',
   description:
-    'Our Google Growth Plan delivers consistent SEO content, keyword targeting, and technical optimisation every month for $199 — a fraction of what traditional agencies charge.',
+    'Our Google Growth Plan delivers consistent SEO content, keyword targeting, and technical optimisation every month for $199, a fraction of what traditional agencies charge.',
   alternates: { canonical: 'https://intelligentaisystem.com/blog/google-growth-plan-199-per-month' },
 }
 

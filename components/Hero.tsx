@@ -88,7 +88,7 @@ export default function Hero() {
 
             {/* Subheadline */}
             <p className="text-[18px] text-[#6B6560] mt-4 max-w-[520px]">
-              We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini — using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.
+              We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini, using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.
             </p>
 
             {/* CTA Buttons */}
@@ -182,7 +182,7 @@ export default function Hero() {
                   className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {quoteStatus === 'submitting' ? 'Sending…' : (
-                    <>Get My Free Quote — We Respond Within 1 Hour <Send className="w-4 h-4" /></>
+                    <>Get My Free Quote: We Respond Within 1 Hour <Send className="w-4 h-4" /></>
                   )}
                 </button>
 

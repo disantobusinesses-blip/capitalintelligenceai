@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowLeft, Calendar, Clock, CheckCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Market Authority Plan — Maximum SEO Growth for $599/month | Capital Intelligence Group',
+  title: 'Market Authority Plan: Maximum SEO Growth for $599/month | Capital Intelligence Group',
   description:
     'For businesses that want to dominate their niche, the Market Authority Plan delivers high-volume content and deep keyword coverage at 80% less than typical SEO agencies.',
   alternates: { canonical: 'https://intelligentaisystem.com/blog/market-authority-plan-599-per-month' },

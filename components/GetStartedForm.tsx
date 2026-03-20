@@ -214,21 +214,21 @@ export default function GetStartedForm({
 
   if (submitted) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-tech-black/90 backdrop-blur-sm">
-        <div className="bg-tech-gray border border-tech-baby-blue/30 rounded-2xl p-8 max-w-lg w-full text-center">
-          <div className="w-20 h-20 bg-tech-baby-blue/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Check className="w-10 h-10 text-tech-white" />
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+        <div className="bg-white border border-[#E8E4DF] rounded-2xl p-8 max-w-lg w-full text-center">
+          <div className="w-20 h-20 bg-[#F8F7F4] rounded-full flex items-center justify-center mx-auto mb-6">
+            <Check className="w-10 h-10 text-[#1A1A1A]" />
           </div>
-          <h2 className="text-3xl font-bold text-tech-white mb-4">Thank You!</h2>
-          <p className="text-tech-platinum mb-2">
+          <h2 className="text-3xl font-bold text-[#1A1A1A] mb-4">Thank You!</h2>
+          <p className="text-[#6B6560] mb-2">
             We have received your project details.
           </p>
-          <p className="text-tech-platinum mb-8">
-            Our team will review your requirements and get back to you within 24 hours at <span className="text-tech-white">{formData.contactEmail}</span>.
+          <p className="text-[#6B6560] mb-8">
+            Our team will review your requirements and get back to you within 24 hours at <span className="text-[#1A1A1A]">{formData.contactEmail}</span>.
           </p>
           <button
             onClick={handleClose}
-            className="px-8 py-3 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light"
+            className="px-8 py-3 bg-[#1A1A1A] text-white rounded-lg font-semibold smooth-transition hover:bg-[#2D2D2D]"
           >
             Back to Home
           </button>
@@ -238,30 +238,30 @@ export default function GetStartedForm({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-tech-black/90 backdrop-blur-sm">
-      <div className="bg-tech-gray border border-tech-baby-blue/30 rounded-2xl w-full max-w-2xl flex flex-col max-h-[85vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+      <div className="bg-white border border-[#E8E4DF] rounded-2xl w-full max-w-2xl flex flex-col max-h-[85vh]">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-tech-baby-blue/20 flex-shrink-0">
+        <div className="flex items-center justify-between p-4 border-b border-[#E8E4DF] flex-shrink-0">
           <div>
-            <h2 className="text-xl font-bold text-tech-white">Get Started</h2>
-            <p className="text-sm text-tech-platinum">
+            <h2 className="text-xl font-bold text-[#1A1A1A]">Get Started</h2>
+            <p className="text-sm text-[#6B6560]">
               Step {step} of {TOTAL_STEPS}
             </p>
           </div>
           <button
             onClick={handleClose}
-            className="p-2 hover:bg-tech-black/50 rounded-lg smooth-transition"
+            className="p-2 hover:bg-[#F8F7F4] rounded-lg smooth-transition"
             aria-label="Close form"
           >
-            <X className="w-5 h-5 text-tech-platinum" />
+            <X className="w-5 h-5 text-[#6B6560]" />
           </button>
         </div>
 
         {/* Progress Bar */}
         <div className="px-4 pt-3 flex-shrink-0">
-          <div className="w-full h-1.5 bg-tech-black rounded-full overflow-hidden">
+          <div className="w-full h-1.5 bg-white rounded-full overflow-hidden">
             <div
-              className="h-full bg-tech-baby-blue rounded-full smooth-transition"
+              className="h-full bg-[#1A1A1A] rounded-full smooth-transition"
               style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
             />
           </div>
@@ -272,49 +272,49 @@ export default function GetStartedForm({
           {/* Step 1: Choose Service */}
           {step === 1 && (
             <div>
-              <h3 className="text-xl font-bold text-tech-white mb-2">What do you need?</h3>
-              <p className="text-tech-platinum mb-4">Select the service that best fits your project.</p>
+              <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">What do you need?</h3>
+              <p className="text-[#6B6560] mb-4">Select the service that best fits your project.</p>
               <div className="grid gap-3">
                 <button
                   onClick={() => setFormData({ ...formData, service: 'landing-page' })}
                   className={`flex items-start gap-4 p-4 rounded-xl border-2 text-left smooth-transition ${
                     formData.service === 'landing-page'
-                      ? 'border-tech-baby-blue bg-tech-baby-blue/10'
-                      : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
+                      ? 'border-[#5C3D2E] bg-[#F8F7F4]'
+                      : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                   }`}
                 >
-                  <div className="w-10 h-10 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Sparkles className="w-5 h-5 text-tech-white" />
+                  <div className="w-10 h-10 bg-[#F8F7F4] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Sparkles className="w-5 h-5 text-[#1A1A1A]" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-tech-white mb-1">Landing Page</h4>
-                    <p className="text-sm text-tech-platinum mb-2">
+                    <h4 className="text-lg font-bold text-[#1A1A1A] mb-1">Landing Page</h4>
+                    <p className="text-sm text-[#6B6560] mb-2">
                       A single-page website to establish your online presence. Modern design, mobile responsive, and SEO optimized.
                     </p>
                   </div>
                   {formData.service === 'landing-page' && (
-                    <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-1" />
+                    <Check className="w-5 h-5 text-[#1A1A1A] flex-shrink-0 mt-1" />
                   )}
                 </button>
                 <button
                   onClick={() => setFormData({ ...formData, service: 'full-package' })}
                   className={`flex items-start gap-4 p-4 rounded-xl border-2 text-left smooth-transition ${
                     formData.service === 'full-package'
-                      ? 'border-tech-baby-blue bg-tech-baby-blue/10'
-                      : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
+                      ? 'border-[#5C3D2E] bg-[#F8F7F4]'
+                      : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                   }`}
                 >
-                  <div className="w-10 h-10 bg-tech-baby-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Package className="w-5 h-5 text-tech-white" />
+                  <div className="w-10 h-10 bg-[#F8F7F4] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Package className="w-5 h-5 text-[#1A1A1A]" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-tech-white mb-1">Website + Full Package</h4>
-                    <p className="text-sm text-tech-platinum mb-2">
+                    <h4 className="text-lg font-bold text-[#1A1A1A] mb-1">Website + Full Package</h4>
+                    <p className="text-sm text-[#6B6560] mb-2">
                       Complete multi-page website with ongoing maintenance, digital strategy, and monthly support plan.
                     </p>
                   </div>
                   {formData.service === 'full-package' && (
-                    <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-1" />
+                    <Check className="w-5 h-5 text-[#1A1A1A] flex-shrink-0 mt-1" />
                   )}
                 </button>
               </div>
@@ -324,12 +324,12 @@ export default function GetStartedForm({
           {/* Step 2: Business Info */}
           {step === 2 && (
             <div>
-              <h3 className="text-xl font-bold text-tech-white mb-2">Tell us about your business</h3>
-              <p className="text-tech-platinum mb-4">Help us understand what your website needs to represent.</p>
+              <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">Tell us about your business</h3>
+              <p className="text-[#6B6560] mb-4">Help us understand what your website needs to represent.</p>
               <div className="grid gap-3">
                 <div>
-                  <label htmlFor="businessName" className="block text-sm font-semibold text-tech-white mb-1.5">
-                    Business Name <span className="text-tech-white">*</span>
+                  <label htmlFor="businessName" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
+                    Business Name <span className="text-[#1A1A1A]">*</span>
                   </label>
                   <input
                     id="businessName"
@@ -337,12 +337,12 @@ export default function GetStartedForm({
                     value={formData.businessName}
                     onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                     placeholder="e.g. Capital Intelligence Group"
-                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
                   />
                 </div>
                 <div>
-                  <label htmlFor="industry" className="block text-sm font-semibold text-tech-white mb-1.5">
-                    Industry <span className="text-tech-white">*</span>
+                  <label htmlFor="industry" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
+                    Industry <span className="text-[#1A1A1A]">*</span>
                   </label>
                   <input
                     id="industry"
@@ -350,11 +350,11 @@ export default function GetStartedForm({
                     value={formData.industry}
                     onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
                     placeholder="e.g. Electrical Services, Technology, etc."
-                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
                   />
                 </div>
                 <div>
-                  <label htmlFor="description" className="block text-sm font-semibold text-tech-white mb-1.5">
+                  <label htmlFor="description" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
                     Brief description of your business
                   </label>
                   <textarea
@@ -363,7 +363,7 @@ export default function GetStartedForm({
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     placeholder="What does your business do? Who are your customers?"
                     rows={2}
-                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition resize-none"
                   />
                 </div>
                 <div className="flex items-center gap-3">
@@ -371,15 +371,15 @@ export default function GetStartedForm({
                     onClick={() => setFormData({ ...formData, hasLogo: !formData.hasLogo })}
                     className={`w-6 h-6 rounded border-2 flex items-center justify-center smooth-transition ${
                       formData.hasLogo
-                        ? 'bg-tech-baby-blue border-tech-baby-blue'
-                        : 'border-tech-baby-blue/30 hover:border-tech-baby-blue/60'
+                        ? 'bg-[#1A1A1A] border-[#5C3D2E]'
+                        : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                     }`}
                     role="checkbox"
                     aria-checked={formData.hasLogo}
                   >
-                    {formData.hasLogo && <Check className="w-4 h-4 text-tech-black" />}
+                    {formData.hasLogo && <Check className="w-4 h-4 text-white" />}
                   </button>
-                  <label className="text-sm text-tech-platinum">
+                  <label className="text-sm text-[#6B6560]">
                     I have a logo and brand assets ready to provide
                   </label>
                 </div>
@@ -390,11 +390,11 @@ export default function GetStartedForm({
           {/* Step 3: Design Style */}
           {step === 3 && (
             <div>
-              <h3 className="text-xl font-bold text-tech-white mb-2">Design preferences</h3>
-              <p className="text-tech-platinum mb-4">Choose the look and feel for your website.</p>
+              <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">Design preferences</h3>
+              <p className="text-[#6B6560] mb-4">Choose the look and feel for your website.</p>
 
               <div className="mb-4">
-                <p className="text-sm font-semibold text-tech-white mb-2">Layout Style <span className="text-tech-white">*</span></p>
+                <p className="text-sm font-semibold text-[#1A1A1A] mb-2">Layout Style <span className="text-[#1A1A1A]">*</span></p>
                 <div className="grid grid-cols-2 gap-2">
                   {designStyles.map((style) => (
                     <button
@@ -402,20 +402,20 @@ export default function GetStartedForm({
                       onClick={() => setFormData({ ...formData, designStyle: style.id })}
                       className={`p-3 rounded-xl border-2 text-left smooth-transition ${
                         formData.designStyle === style.id
-                          ? 'border-tech-baby-blue bg-tech-baby-blue/10'
-                          : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
+                          ? 'border-[#5C3D2E] bg-[#F8F7F4]'
+                          : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                       }`}
                     >
-                      <Layout className="w-5 h-5 text-tech-white mb-2" />
-                      <p className="text-sm font-bold text-tech-white">{style.label}</p>
-                      <p className="text-xs text-tech-platinum mt-1">{style.description}</p>
+                      <Layout className="w-5 h-5 text-[#1A1A1A] mb-2" />
+                      <p className="text-sm font-bold text-[#1A1A1A]">{style.label}</p>
+                      <p className="text-xs text-[#6B6560] mt-1">{style.description}</p>
                     </button>
                   ))}
                 </div>
               </div>
 
               <div>
-                <p className="text-sm font-semibold text-tech-white mb-2">Color Preference</p>
+                <p className="text-sm font-semibold text-[#1A1A1A] mb-2">Color Preference</p>
                 <div className="grid grid-cols-3 gap-2">
                   {colorOptions.map((option) => (
                     <button
@@ -423,8 +423,8 @@ export default function GetStartedForm({
                       onClick={() => setFormData({ ...formData, colorPreference: option.id })}
                       className={`p-2 rounded-xl border-2 text-center smooth-transition ${
                         formData.colorPreference === option.id
-                          ? 'border-tech-baby-blue bg-tech-baby-blue/10'
-                          : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
+                          ? 'border-[#5C3D2E] bg-[#F8F7F4]'
+                          : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                       }`}
                     >
                       <div className="flex justify-center gap-1 mb-2">
@@ -436,7 +436,7 @@ export default function GetStartedForm({
                           />
                         ))}
                       </div>
-                      <p className="text-xs font-semibold text-tech-white">{option.label}</p>
+                      <p className="text-xs font-semibold text-[#1A1A1A]">{option.label}</p>
                     </button>
                   ))}
                 </div>
@@ -447,12 +447,12 @@ export default function GetStartedForm({
           {/* Step 4: Features */}
           {step === 4 && (
             <div>
-              <h3 className="text-xl font-bold text-tech-white mb-1">
+              <h3 className="text-xl font-bold text-[#1A1A1A] mb-1">
                 Choose your features{' '}
-                <span className="text-sm font-normal text-tech-platinum/80">(Quote for features are custom to each business)</span>
+                <span className="text-sm font-normal text-[#6B6560]">(Quote for features are custom to each business)</span>
               </h3>
-              <p className="text-tech-platinum mb-1">Select all the features you want on your website.</p>
-              <p className="text-sm text-tech-white italic mb-4">*Select multiple paid options for discount upon quote*</p>
+              <p className="text-[#6B6560] mb-1">Select all the features you want on your website.</p>
+              <p className="text-sm text-[#1A1A1A] italic mb-4">*Select multiple paid options for discount upon quote*</p>
               <div className="grid grid-cols-2 gap-3">
                 {featureOptions.map((feature) => {
                   const isSelected = formData.features.includes(feature.name)
@@ -460,18 +460,18 @@ export default function GetStartedForm({
                     return (
                       <div
                         key={feature.name}
-                        className="flex items-start gap-3 p-3 rounded-lg border-2 text-left border-tech-baby-blue/10 opacity-60 cursor-not-allowed"
+                        className="flex items-start gap-3 p-3 rounded-lg border-2 text-left border-[#E8E4DF] opacity-60 cursor-not-allowed"
                       >
-                        <div className="w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 mt-0.5 border-tech-baby-blue/20" />
+                        <div className="w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 mt-0.5 border-[#E8E4DF]" />
                         <div>
                           <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="text-sm text-tech-white block">{feature.name}</span>
+                            <span className="text-sm text-[#1A1A1A] block">{feature.name}</span>
                             <span className="text-xs px-2 py-0.5 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-full font-semibold">
                               Coming Soon
                             </span>
                           </div>
                           <span className="text-xs text-green-400 block mt-0.5">{feature.benefit}</span>
-                          <span className="text-xs text-tech-platinum/60 block mt-0.5">{feature.price}</span>
+                          <span className="text-xs text-[#6B6560] block mt-0.5">{feature.price}</span>
                         </div>
                       </div>
                     )
@@ -482,28 +482,28 @@ export default function GetStartedForm({
                       onClick={() => toggleFeature(feature.name)}
                       className={`flex items-start gap-3 p-3 rounded-lg border-2 text-left smooth-transition ${
                         isSelected
-                          ? 'border-tech-baby-blue bg-tech-baby-blue/10'
-                          : 'border-tech-baby-blue/20 hover:border-tech-baby-blue/50'
+                          ? 'border-[#5C3D2E] bg-[#F8F7F4]'
+                          : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                       }`}
                     >
                       <div
                         className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 smooth-transition mt-0.5 ${
                           isSelected
-                            ? 'bg-tech-baby-blue border-tech-baby-blue'
-                            : 'border-tech-baby-blue/30'
+                            ? 'bg-[#1A1A1A] border-[#5C3D2E]'
+                            : 'border-[#E8E4DF]'
                         }`}
                       >
-                        {isSelected && <Check className="w-3 h-3 text-tech-black" />}
+                        {isSelected && <Check className="w-3 h-3 text-white" />}
                       </div>
                       <div>
                         <div className="flex items-center gap-1.5">
-                          <span className="text-sm text-tech-white block">{feature.name}</span>
+                          <span className="text-sm text-[#1A1A1A] block">{feature.name}</span>
                           {feature.seoBoost && (
                             <TrendingUp className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
                           )}
                         </div>
                         <span className="text-xs text-green-400 block mt-0.5">{feature.benefit}</span>
-                        <span className={`text-xs font-semibold block mt-0.5 ${feature.isFree ? 'text-tech-baby-blue' : 'text-tech-platinum/60'}`}>
+                        <span className={`text-xs font-semibold block mt-0.5 ${feature.isFree ? 'text-[#5C3D2E]' : 'text-[#6B6560]'}`}>
                           {feature.price}
                         </span>
                       </div>
@@ -518,12 +518,12 @@ export default function GetStartedForm({
           {/* Step 5: Contact Info */}
           {step === 5 && (
             <div>
-              <h3 className="text-xl font-bold text-tech-white mb-2">Your contact details</h3>
-              <p className="text-tech-platinum mb-4">How can we reach you to discuss your project?</p>
+              <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">Your contact details</h3>
+              <p className="text-[#6B6560] mb-4">How can we reach you to discuss your project?</p>
               <div className="grid gap-3">
                 <div>
-                  <label htmlFor="contactName" className="block text-sm font-semibold text-tech-white mb-1.5">
-                    Full Name <span className="text-tech-white">*</span>
+                  <label htmlFor="contactName" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
+                    Full Name <span className="text-[#1A1A1A]">*</span>
                   </label>
                   <input
                     id="contactName"
@@ -531,12 +531,12 @@ export default function GetStartedForm({
                     value={formData.contactName}
                     onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
                     placeholder="Your full name"
-                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
                   />
                 </div>
                 <div>
-                  <label htmlFor="contactEmail" className="block text-sm font-semibold text-tech-white mb-1.5">
-                    Email Address <span className="text-tech-white">*</span>
+                  <label htmlFor="contactEmail" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
+                    Email Address <span className="text-[#1A1A1A]">*</span>
                   </label>
                   <input
                     id="contactEmail"
@@ -544,11 +544,11 @@ export default function GetStartedForm({
                     value={formData.contactEmail}
                     onChange={(e) => setFormData({ ...formData, contactEmail: e.target.value })}
                     placeholder="you@company.com"
-                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
                   />
                 </div>
                 <div>
-                  <label htmlFor="contactPhone" className="block text-sm font-semibold text-tech-white mb-1.5">
+                  <label htmlFor="contactPhone" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
                     Phone Number
                   </label>
                   <input
@@ -557,11 +557,11 @@ export default function GetStartedForm({
                     value={formData.contactPhone}
                     onChange={(e) => setFormData({ ...formData, contactPhone: e.target.value })}
                     placeholder="Optional"
-                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
                   />
                 </div>
                 <div>
-                  <label htmlFor="additionalNotes" className="block text-sm font-semibold text-tech-white mb-1.5">
+                  <label htmlFor="additionalNotes" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
                     Additional Notes
                   </label>
                   <textarea
@@ -570,7 +570,7 @@ export default function GetStartedForm({
                     onChange={(e) => setFormData({ ...formData, additionalNotes: e.target.value })}
                     placeholder="Anything else you'd like us to know?"
                     rows={2}
-                    className="w-full px-4 py-2 bg-tech-black border border-tech-baby-blue/30 rounded-lg text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition resize-none"
                   />
                 </div>
               </div>
@@ -579,7 +579,7 @@ export default function GetStartedForm({
         </div>
 
         {/* Footer Navigation */}
-        <div className="p-4 border-t border-tech-baby-blue/20 flex-shrink-0">
+        <div className="p-4 border-t border-[#E8E4DF] flex-shrink-0">
           {submitError && (
             <div className="mb-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
               {submitError}
@@ -589,7 +589,7 @@ export default function GetStartedForm({
             <button
               onClick={step === 1 ? handleClose : handleBack}
               disabled={submitting}
-              className="flex items-center gap-2 px-5 py-2.5 border border-tech-baby-blue/30 text-tech-platinum rounded-lg font-medium smooth-transition hover:border-tech-baby-blue hover:text-tech-white disabled:opacity-40 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-5 py-2.5 border border-[#E8E4DF] text-[#6B6560] rounded-lg font-medium smooth-transition hover:border-[#5C3D2E] hover:text-[#1A1A1A] disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <ArrowLeft className="w-4 h-4" />
               {step === 1 ? 'Cancel' : 'Back'}
@@ -598,7 +598,7 @@ export default function GetStartedForm({
               <button
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className="flex items-center gap-2 px-6 py-2.5 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-6 py-2.5 bg-[#1A1A1A] text-white rounded-lg font-semibold smooth-transition hover:bg-[#2D2D2D] disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Next
                 <ArrowRight className="w-4 h-4" />
@@ -607,7 +607,7 @@ export default function GetStartedForm({
               <button
                 onClick={handleSubmit}
                 disabled={!canProceed() || submitting}
-                className="flex items-center gap-2 px-6 py-2.5 bg-tech-baby-blue text-tech-black rounded-lg font-semibold smooth-transition hover:bg-tech-baby-blue-light disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-6 py-2.5 bg-[#1A1A1A] text-white rounded-lg font-semibold smooth-transition hover:bg-[#2D2D2D] disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 {submitting ? 'Submitting...' : 'Submit'}
                 <Check className="w-4 h-4" />

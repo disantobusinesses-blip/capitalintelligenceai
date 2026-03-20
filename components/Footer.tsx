@@ -20,7 +20,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-[#9E9790] text-sm leading-relaxed mb-3">
-              We help Australian businesses get found on Google and recommended by AI — so you get more leads, more calls, and more growth.
+              We help Australian businesses get found on Google and recommended by AI, so you get more leads, more calls, and more growth.
             </p>
             <p className="text-xs text-[#6B6560]">ABN: 38 693 023 371</p>
           </div>

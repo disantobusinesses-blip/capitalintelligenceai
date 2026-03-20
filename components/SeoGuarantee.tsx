@@ -32,7 +32,7 @@ export default function SeoGuarantee() {
         {/* Body text */}
         <p className="text-[#6B6560] text-base leading-relaxed mb-8 max-w-[560px] mx-auto">
           We&apos;re so confident in our SEO process that we back it with a 90-day ranking guarantee. 
-          If we don&apos;t improve your Google rankings within 90 days, we&apos;ll give you an extra month free — no questions asked.
+          If we don&apos;t improve your Google rankings within 90 days, we&apos;ll give you an extra month free, no questions asked.
         </p>
 
         {/* Disclaimer checklist */}

@@ -7,7 +7,7 @@ const steps = [
     number: '01',
     icon: MessageSquare,
     title: 'Get a Free Quote',
-    description: 'Tell us about your business — we respond within 1 hour',
+    description: 'Tell us about your business. We respond within 1 hour.',
   },
   {
     number: '02',
