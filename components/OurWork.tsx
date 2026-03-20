@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 const projects = [
   {
     id: 1,
@@ -25,6 +27,8 @@ const projects = [
 ]
 
 export default function OurWork() {
+  const [hoveredId, setHoveredId] = useState<number | null>(null)
+
   return (
     <section id="our-work" className="bg-white py-[80px] px-6">
       <div className="max-w-[1200px] mx-auto">
@@ -41,14 +45,12 @@ export default function OurWork() {
               key={project.id}
               className="rounded-[10px] overflow-hidden bg-white transition-all duration-200 hover:-translate-y-1"
               style={{
-                boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
+                boxShadow: hoveredId === project.id
+                  ? '0 8px 32px rgba(0,0,0,0.14)'
+                  : '0 2px 12px rgba(0,0,0,0.08)',
               }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(0,0,0,0.14)'
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 12px rgba(0,0,0,0.08)'
-              }}
+              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
               {/* Screenshot placeholder */}
               <div

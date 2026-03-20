@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useQuoteModal } from '@/context/QuoteModalContext'
 import { Globe, Package, TrendingUp } from 'lucide-react'
 
@@ -47,6 +48,7 @@ const services = [
 
 export default function ServiceSelection() {
   const { openModal } = useQuoteModal()
+  const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   return (
     <section id="services" className="bg-[#F8F7F4] py-[80px] px-6">
@@ -65,22 +67,18 @@ export default function ServiceSelection() {
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service) => {
             const Icon = service.icon
+            const isHovered = hoveredId === service.id
             return (
               <div
                 key={service.id}
-                className="bg-white rounded-[10px] p-8 flex flex-col group transition-all duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]"
+                className="bg-white rounded-[10px] p-8 flex flex-col transition-all duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]"
                 style={{
                   border: '1px solid #E8E4DF',
+                  borderTop: isHovered ? '3px solid #5C3D2E' : '1px solid #E8E4DF',
                   boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
                 }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget
-                  el.style.borderTop = '3px solid #5C3D2E'
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget
-                  el.style.borderTop = '1px solid #E8E4DF'
-                }}
+                onMouseEnter={() => setHoveredId(service.id)}
+                onMouseLeave={() => setHoveredId(null)}
               >
                 {/* Icon */}
                 <div className="mb-5">
