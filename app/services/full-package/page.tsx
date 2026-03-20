@@ -113,7 +113,7 @@ export default function FullPackageService() {
                 }`}
               >
                 {tier.featured && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-[#1A1A1A] text-[#1A1A1A] rounded-full text-sm font-semibold">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-[#1A1A1A] text-white rounded-full text-sm font-semibold">
                     Recommended
                   </div>
                 )}

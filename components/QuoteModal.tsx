@@ -163,7 +163,7 @@ export default function QuoteModal() {
           </p>
           <button
             onClick={handleClose}
-            className="px-8 py-3 bg-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold smooth-transition hover:bg-[#2D2D2D]"
+            className="px-8 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold smooth-transition hover:bg-[#2D2D2D]"
           >
             Close
           </button>
@@ -461,7 +461,7 @@ export default function QuoteModal() {
             <button
               onClick={() => setStep(step + 1)}
               disabled={!canProceed()}
-              className="flex items-center gap-2 px-6 py-2.5 bg-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold smooth-transition hover:bg-[#2D2D2D] disabled:opacity-40 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-6 py-2.5 bg-[#1A1A1A] text-white rounded-[6px] font-semibold smooth-transition hover:bg-[#2D2D2D] disabled:opacity-40 disabled:cursor-not-allowed"
             >
               Next
               <ArrowRight className="w-4 h-4" />
@@ -470,7 +470,7 @@ export default function QuoteModal() {
             <button
               onClick={handleSubmit}
               disabled={submitting}
-              className="flex items-center gap-2 px-6 py-2.5 bg-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold smooth-transition hover:bg-[#2D2D2D] disabled:opacity-40 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-6 py-2.5 bg-[#1A1A1A] text-white rounded-[6px] font-semibold smooth-transition hover:bg-[#2D2D2D] disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {submitting ? 'Sending...' : 'Send quote request →'}
             </button>
