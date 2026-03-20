@@ -69,15 +69,14 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-[100dvh] pb-24">
+    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24">
       {/* Hero */}
       <section className="py-24 px-6 text-center relative overflow-hidden">
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-10" />
         <div className="max-w-4xl mx-auto relative">
-          <h1 className="text-5xl md:text-6xl font-bold text-tech-white mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
             Our Projects
           </h1>
-          <p className="text-xl text-tech-platinum max-w-2xl mx-auto">
+          <p className="text-xl text-[#6B6560] max-w-2xl mx-auto">
             Intelligent systems implemented across diverse industries. 
             See how we have helped businesses operate smoother, faster, and smarter.
           </p>
@@ -91,10 +90,10 @@ export default function ProjectsPage() {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-tech-gray border border-tech-baby-blue/20 rounded-2xl overflow-hidden smooth-transition hover:border-tech-baby-blue hover:shadow-glow-sm"
+                className="bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
               >
                 {/* Project Image */}
-                <div className="aspect-video bg-gradient-tech relative overflow-hidden">
+                <div className="aspect-video bg-[#E8E4DF] relative overflow-hidden">
                   {project.image ? (
                     <>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -104,30 +103,30 @@ export default function ProjectsPage() {
                         loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover object-top"
                       />
-                      <div className="absolute inset-0 bg-tech-black/20" />
+                      <div className="absolute inset-0 bg-[#1A1A1A]/20" />
                     </>
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-tech">
-                      <div className="absolute inset-0 bg-tech-baby-blue/10" />
-                      <span className="relative z-10 text-tech-white text-xl font-semibold">{project.title}</span>
+                    <div className="absolute inset-0 flex items-center justify-center bg-[#E8E4DF]">
+                      <div className="absolute inset-0 bg-[#E8E4DF]" />
+                      <span className="relative z-10 text-[#6B6560] text-xl font-semibold">{project.title}</span>
                     </div>
                   )}
-                  <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-tech-baby-blue to-transparent opacity-50" />
+                  <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#5C3D2E] to-transparent opacity-50" />
                 </div>
 
                 {/* Project Info */}
                 <div className="p-6">
-                  <span className="inline-block px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full text-xs font-semibold mb-3">
+                  <span className="inline-block px-3 py-1 bg-[#F8F7F4] border border-[#E8E4DF] text-[#1A1A1A] rounded-full text-xs font-semibold mb-3">
                     {project.industry}
                   </span>
-                  <h3 className="text-xl font-bold text-tech-white mb-2">{project.title}</h3>
-                  <p className="text-tech-platinum text-sm mb-4 leading-relaxed">{project.description}</p>
+                  <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">{project.title}</h3>
+                  <p className="text-[#6B6560] text-sm mb-4 leading-relaxed">{project.description}</p>
                   
                   {/* Features */}
                   <ul className="space-y-1 mb-4">
                     {project.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-xs text-tech-platinum">
-                        <div className="w-1 h-1 bg-tech-baby-blue rounded-full" />
+                      <li key={idx} className="flex items-center gap-2 text-xs text-[#6B6560]">
+                        <div className="w-1 h-1 bg-[#5C3D2E] rounded-full" />
                         {feature}
                       </li>
                     ))}
@@ -138,13 +137,13 @@ export default function ProjectsPage() {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-sm smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-sm"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-sm smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
                     >
                       View Project
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   ) : (
-                    <span className="inline-flex items-center gap-2 px-4 py-2 border border-tech-baby-blue/30 text-tech-white rounded-lg font-semibold text-sm">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E8E4DF] text-[#1A1A1A] rounded-[6px] font-semibold text-sm">
                       Coming Soon
                     </span>
                   )}
@@ -158,13 +157,13 @@ export default function ProjectsPage() {
       {/* CTA */}
       <section className="py-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-tech-white mb-6">Want to Be Our Next Project?</h2>
-          <p className="text-tech-platinum mb-8">
+          <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6">Want to Be Our Next Project?</h2>
+          <p className="text-[#6B6560] mb-8">
             Let us build an intelligent system tailored to your business needs.
           </p>
           <Link
             href="/"
-            className="inline-block px-8 py-4 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow"
+            className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
           >
             Get Started
           </Link>

@@ -74,13 +74,13 @@ export default function BlogPostHowBlogsGenerateTraffic() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="min-h-[100dvh] pb-24">
+      <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24">
         {/* Back link */}
         <div className="pt-10 px-6">
           <div className="max-w-3xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-tech-platinum hover:text-tech-white smooth-transition text-sm"
+              className="inline-flex items-center gap-2 text-[#6B6560] hover:text-[#1A1A1A] smooth-transition text-sm"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
@@ -94,16 +94,16 @@ export default function BlogPostHowBlogsGenerateTraffic() {
 
             {/* Header */}
             <header className="mb-10">
-              <span className="inline-block px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full text-xs font-semibold mb-4">
+              <span className="inline-block px-3 py-1 bg-[#F8F7F4] border border-[#E8E4DF] text-[#1A1A1A] rounded-full text-xs font-semibold mb-4">
                 {post.category}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-tech-white leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-6">
                 {post.title}
               </h1>
-              <p className="text-lg text-tech-platinum leading-relaxed mb-6">
+              <p className="text-lg text-[#6B6560] leading-relaxed mb-6">
                 {post.description}
               </p>
-              <div className="flex items-center gap-4 text-sm text-tech-platinum border-t border-tech-baby-blue/20 pt-6">
+              <div className="flex items-center gap-4 text-sm text-[#6B6560] border-t border-[#E8E4DF] pt-6">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-4 h-4" />
                   {new Date(post.publishedAt).toLocaleDateString('en-AU', {
@@ -121,11 +121,11 @@ export default function BlogPostHowBlogsGenerateTraffic() {
             </header>
 
             {/* Body */}
-            <div className="space-y-8 text-tech-platinum leading-relaxed">
+            <div className="space-y-8 text-[#6B6560] leading-relaxed">
 
               <section>
                 <p className="text-lg leading-relaxed">
-                  Most businesses are invisible on Google — not because their service is poor, but
+                  Most businesses are invisible on Google, not because their service is poor, but
                   because their website has never been set up to be found. Our Google SEO add-on
                   fixes that. It is designed to get your pages appearing when real customers search
                   for exactly what you offer, turning your website from a digital brochure into an
@@ -135,13 +135,13 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                   Google&apos;s own Search guidance emphasises that content should be helpful, reliable,
                   and created for people first. It also explains that SEO helps search engines
                   understand your content and helps the right people find it. Our add-on is built
-                  entirely around that principle — we optimise your website so Google can discover,
+                  entirely around that principle: we optimise your website so Google can discover,
                   understand, and rank it for the searches your customers are already making.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   How Search Visibility Compounds Over Time
                 </h2>
                 <p>
@@ -149,7 +149,7 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                   your business. A well-structured site with strong content and proper technical
                   setup can rank for dozens or hundreds of related searches. That is how businesses
                   grow from barely being found online to pulling in thousands of website views every
-                  month — organically, without paying for every click.
+                  month, organically, without paying for every click.
                 </p>
                 <p className="mt-4">
                   HubSpot has reported that businesses that invest in organic search average
@@ -163,13 +163,13 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                     alt="SEO performance growth showing clicks and impressions over time"
                     width={1077}
                     height={657}
-                    className="rounded-lg border border-tech-baby-blue/20"
+                    className="rounded-[6px] border border-[#E8E4DF]"
                   />
                 </div>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   Why Google SEO Matters for Service Businesses
                 </h2>
                 <p>
@@ -183,29 +183,29 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                 <p className="mt-4">
                   Google explicitly recommends creating content that is helpful and written for
                   people rather than designed to manipulate rankings. That is the foundation of our
-                  SEO add-on — real optimisation that builds lasting visibility.
+                  SEO add-on, delivering real optimisation that builds lasting visibility.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   What Our Google SEO Add-On Includes
                 </h2>
                 <p>
                   Our SEO add-on goes beyond basic keyword placement. It covers the full technical
-                  and content layer of search visibility — making sure Google can discover your
+                  and content layer of search visibility, making sure Google can discover your
                   pages, understand what they are about, and rank them for relevant searches.
                 </p>
                 <ul className="list-none mt-6 space-y-3">
                   {[
-                    'Google Search Optimisation — on-page SEO for every key page on your site',
-                    'AI Search Engine Indexing — ensuring visibility on ChatGPT, Gemini, and Perplexity',
-                    'Structured Data & Schema Markup — helping Google understand your business clearly',
-                    'Monthly SEO Reports — transparent tracking of keyword rankings and traffic growth',
-                    'Content Strategy Guidance — identifying the topics your customers are actively searching for',
+                    'Google Search Optimisation: on-page SEO for every key page on your site',
+                    'AI Search Engine Indexing: ensuring visibility on ChatGPT, Gemini, and Perplexity',
+                    'Structured Data & Schema Markup: helping Google understand your business clearly',
+                    'Monthly SEO Reports: transparent tracking of keyword rankings and traffic growth',
+                    'Content Strategy Guidance: identifying the topics your customers are actively searching for',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-tech-baby-blue rounded-full mt-2 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-2 flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -213,7 +213,7 @@ export default function BlogPostHowBlogsGenerateTraffic() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   SEO Also Strengthens Your Entire Website
                 </h2>
                 <p>
@@ -221,13 +221,13 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                   service pages through internal linking, builds topical authority around your
                   niche, and helps search engines understand what your business is actually about.
                   Google&apos;s SEO Starter Guide explains that clear site structure and useful content
-                  help both users and search engines. So SEO is not just about ranking one page —
+                  help both users and search engines. So SEO is not just about ranking one page;
                   it is the engine that makes the whole site easier to discover.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   The Snowball Effect of Organic Search
                 </h2>
                 <p>
@@ -235,7 +235,7 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                   snowball effect. Once pages start ranking, they keep generating traffic without
                   ongoing ad spend. When you see pageview numbers compounding month after month,
                   the value becomes tangible. That momentum is what search-led growth looks like
-                  in practice — and it is accessible to businesses of any size.
+                  in practice, and it is accessible to businesses of any size.
                 </p>
                 <p className="mt-4">
                   You optimise. Google crawls. Pages start appearing in search results. Some
@@ -246,7 +246,7 @@ export default function BlogPostHowBlogsGenerateTraffic() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   An Easy Decision for Service Businesses
                 </h2>
                 <p>
@@ -266,8 +266,8 @@ export default function BlogPostHowBlogsGenerateTraffic() {
               </section>
 
               {/* CTA */}
-              <section className="mt-14 bg-tech-gray border border-tech-baby-blue/30 rounded-2xl p-8">
-                <h2 className="text-2xl font-bold text-tech-white mb-4">
+              <section className="mt-14 bg-white border border-[#E8E4DF] rounded-[10px] p-8">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">
                   Get Found on Google and Start Growing Your Traffic
                 </h2>
                 <p className="mb-6">
@@ -278,13 +278,13 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/"
-                    className="px-6 py-3 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-center smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-sm"
+                    className="px-6 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-center smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
                   >
                     Explore Our Services
                   </Link>
                   <Link
                     href="/pricing"
-                    className="px-6 py-3 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-center smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+                    className="px-6 py-3 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-center smooth-transition hover:bg-[#1A1A1A] hover:text-white"
                   >
                     View Pricing
                   </Link>
@@ -292,13 +292,13 @@ export default function BlogPostHowBlogsGenerateTraffic() {
               </section>
 
               {/* Internal links */}
-              <section className="mt-10 pt-8 border-t border-tech-baby-blue/20">
-                <h3 className="text-lg font-bold text-tech-white mb-4">Related Reading</h3>
+              <section className="mt-10 pt-8 border-t border-[#E8E4DF]">
+                <h3 className="text-lg font-bold text-[#1A1A1A] mb-4">Related Reading</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link
                       href="/blog/how-ai-can-boost-seo"
-                      className="text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition font-medium"
+                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
                     >
                       How AI Can Boost SEO and AI Search Engine Optimisation for Modern Businesses →
                     </Link>
@@ -306,7 +306,7 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                   <li>
                     <Link
                       href="/blog/how-ai-improves-local-seo-google-business-profile"
-                      className="text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition font-medium"
+                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
                     >
                       How AI Can Improve Local SEO and Google Business Profile Rankings →
                     </Link>
@@ -314,7 +314,7 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                   <li>
                     <Link
                       href="/blog/how-ai-can-boost-business-performance"
-                      className="text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition font-medium"
+                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
                     >
                       How AI Can Boost Business Performance, Save Time, and Increase Revenue →
                     </Link>

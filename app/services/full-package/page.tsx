@@ -57,23 +57,23 @@ export default function FullPackageService() {
   ]
 
   return (
-    <div className="min-h-[100dvh]">
+    <div className="min-h-[100dvh] bg-[#F8F7F4]">
       {/* Header */}
       <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-tech-white hover:text-tech-platinum-light smooth-transition"
+            className="flex items-center gap-2 text-[#6B6560] hover:text-[#1A1A1A] smooth-transition"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home
           </Link>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-blue flex items-center justify-center shadow-glow-sm">
-              <Zap className="w-5 h-5 text-tech-white" />
+            <div className="w-10 h-10 rounded-[6px] bg-[#F8F7F4] border border-[#E8E4DF] flex items-center justify-center">
+              <Zap className="w-5 h-5 text-[#5C3D2E]" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-tech-white">Intelligent Systems</h3>
+              <h3 className="text-sm font-bold text-[#1A1A1A]">Intelligent Systems</h3>
             </div>
           </div>
         </div>
@@ -83,13 +83,13 @@ export default function FullPackageService() {
       <section className="py-20 px-6 relative overflow-hidden">
         
         <div className="max-w-4xl mx-auto text-center relative">
-          <div className="inline-block px-4 py-2 bg-tech-baby-blue/10 border border-tech-baby-blue/30 rounded-full text-tech-white font-semibold mb-6">
+          <div className="inline-block px-4 py-2 bg-[#F8F7F4] border border-[#E8E4DF] rounded-full text-[#5C3D2E] font-semibold mb-6">
             Complete Solution
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-tech-white mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
             Website + Full Package
           </h1>
-          <p className="text-xl text-tech-platinum mb-8 leading-relaxed">
+          <p className="text-xl text-[#6B6560] mb-8 leading-relaxed">
             Complete solution including multi-page website, ongoing maintenance, 
             and comprehensive digital strategy for continuous growth.
           </p>
@@ -99,43 +99,43 @@ export default function FullPackageService() {
       {/* Pricing Tiers */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-tech-white text-center mb-12">
+          <h2 className="text-4xl font-bold text-[#1A1A1A] text-center mb-12">
             Choose Your Monthly Plan
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {tiers.map((tier, index) => (
               <div
                 key={index}
-                className={`relative bg-tech-gray rounded-2xl p-8 smooth-transition hover:scale-105 ${
+                className={`relative bg-white rounded-[10px] p-8 smooth-transition hover:scale-105 ${
                   tier.featured
-                    ? 'border-2 border-tech-baby-blue shadow-glow'
-                    : 'border border-tech-baby-blue/20'
+                    ? 'border-2 border-[#1A1A1A] shadow-[0_2px_12px_rgba(0,0,0,0.06)]'
+                    : 'border border-[#E8E4DF]'
                 }`}
               >
                 {tier.featured && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-tech-baby-blue text-tech-black rounded-full text-sm font-semibold">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-[#1A1A1A] text-[#1A1A1A] rounded-full text-sm font-semibold">
                     Recommended
                   </div>
                 )}
-                <h3 className="text-2xl font-bold text-tech-white mb-2">{tier.name}</h3>
-                <p className="text-tech-platinum mb-4">{tier.description}</p>
+                <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2">{tier.name}</h3>
+                <p className="text-[#6B6560] mb-4">{tier.description}</p>
                 <div className="mb-6">
-                  <span className="text-5xl font-bold text-tech-white">{tier.price}</span>
-                  <span className="text-tech-platinum">{tier.period}</span>
+                  <span className="text-5xl font-bold text-[#1A1A1A]">{tier.price}</span>
+                  <span className="text-[#6B6560]">{tier.period}</span>
                 </div>
                 <ul className="space-y-3 mb-8">
                   {tier.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-0.5" />
-                      <span className="text-tech-white">{feature}</span>
+                      <Check className="w-5 h-5 text-[#1A1A1A] flex-shrink-0 mt-0.5" />
+                      <span className="text-[#1A1A1A]">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <button
-                  className={`w-full py-3 rounded-lg font-semibold smooth-transition ${
+                  className={`w-full py-3 rounded-[6px] font-semibold smooth-transition ${
                     tier.featured
-                      ? 'bg-tech-baby-blue text-tech-black hover:bg-tech-baby-blue-light hover:shadow-glow-sm'
-                      : 'border-2 border-tech-baby-blue text-tech-white hover:bg-tech-baby-blue hover:text-tech-black'
+                      ? 'bg-[#1A1A1A] text-white hover:bg-[#2D2D2D]'
+                      : 'border-2 border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white'
                   }`}
                 >
                   Get Started
@@ -149,44 +149,44 @@ export default function FullPackageService() {
       {/* Setup Fee */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-tech-white mb-6">
+          <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6">
             Website Setup & Development
           </h2>
-          <p className="text-xl text-tech-platinum mb-8">
+          <p className="text-xl text-[#6B6560] mb-8">
             One-time setup fee for your custom multi-page website
           </p>
-          <div className="bg-tech-black border border-tech-baby-blue/30 rounded-2xl p-8">
+          <div className="bg-[#1A1A1A] border border-[#E8E4DF] rounded-[10px] p-8">
             <div className="mb-4">
-              <span className="text-5xl font-bold text-tech-white">$2,499</span>
-              <span className="text-tech-platinum ml-2">one-time</span>
+              <span className="text-5xl font-bold text-white">$2,499</span>
+              <span className="text-gray-400 ml-2">one-time</span>
             </div>
-            <p className="text-tech-platinum mb-6">
+            <p className="text-gray-400 mb-6">
               Includes custom design, development, and deployment
             </p>
             <ul className="grid md:grid-cols-2 gap-3 text-left max-w-2xl mx-auto">
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-white" />
-                <span className="text-tech-white">Custom design</span>
+                <Check className="w-5 h-5 text-white" />
+                <span className="text-white">Custom design</span>
               </li>
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-white" />
-                <span className="text-tech-white">Up to 10 pages</span>
+                <Check className="w-5 h-5 text-white" />
+                <span className="text-white">Up to 10 pages</span>
               </li>
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-white" />
-                <span className="text-tech-white">Mobile responsive</span>
+                <Check className="w-5 h-5 text-white" />
+                <span className="text-white">Mobile responsive</span>
               </li>
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-white" />
-                <span className="text-tech-white">SEO setup</span>
+                <Check className="w-5 h-5 text-white" />
+                <span className="text-white">SEO setup</span>
               </li>
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-white" />
-                <span className="text-tech-white">Analytics integration</span>
+                <Check className="w-5 h-5 text-white" />
+                <span className="text-white">Analytics integration</span>
               </li>
               <li className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-tech-white" />
-                <span className="text-tech-white">Contact forms</span>
+                <Check className="w-5 h-5 text-white" />
+                <span className="text-white">Contact forms</span>
               </li>
             </ul>
           </div>
@@ -196,10 +196,10 @@ export default function FullPackageService() {
       {/* CTA Section */}
       <section className="py-20 px-6 relative overflow-hidden">
         <div className="max-w-3xl mx-auto text-center relative">
-          <h2 className="text-4xl font-bold text-tech-white mb-6">
+          <h2 className="text-4xl font-bold text-[#1A1A1A] mb-6">
             Ready to Transform Your Digital Presence?
           </h2>
-          <p className="text-xl text-tech-platinum mb-8">
+          <p className="text-xl text-[#6B6560] mb-8">
             Let's build something amazing together
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -212,13 +212,13 @@ export default function FullPackageService() {
                   router.push('/#chat');
                 }
               }}
-              className="px-8 py-4 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow"
+              className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
             >
               Talk to Our AI Assistant
             </button>
             <button
               onClick={() => router.push('/')}
-              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+              className="px-8 py-4 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#1A1A1A] hover:text-white"
             >
               Back to Home
             </button>

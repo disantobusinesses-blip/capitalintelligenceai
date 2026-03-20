@@ -186,18 +186,17 @@ const features = [
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-[100dvh] pb-24">
+    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24">
       {/* Hero */}
       <section className="py-24 px-6 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-tech-baby-blue rounded-full blur-3xl opacity-10" />
         <div className="max-w-4xl mx-auto relative">
-          <h1 className="text-5xl md:text-6xl font-bold text-tech-white mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
             Website Features & Add-Ons
           </h1>
-          <p className="text-xl text-tech-platinum max-w-2xl mx-auto mb-4">
+          <p className="text-xl text-[#6B6560] max-w-2xl mx-auto mb-4">
             Choose from AI-powered tools, free essentials, and premium add-ons to build the perfect website for your business.
           </p>
-          <p className="text-tech-white font-semibold">
+          <p className="text-[#1A1A1A] font-semibold">
             All features available during our onboarding process (Step 4 of 6)
           </p>
         </div>
@@ -206,17 +205,17 @@ export default function FeaturesPage() {
       {/* Category Legend */}
       <section className="px-6 pb-8">
         <div className="max-w-5xl mx-auto flex flex-wrap gap-4 justify-center">
-          <div className="flex items-center gap-2 px-4 py-2 bg-tech-gray border border-tech-baby-blue/20 rounded-full text-sm">
-            <div className="w-3 h-3 bg-tech-baby-blue rounded-full" />
-            <span className="text-tech-white">AI-Powered</span>
+          <div className="flex items-center gap-2 px-4 py-2 bg-white border border-[#E8E4DF] rounded-full text-sm">
+            <div className="w-3 h-3 bg-[#5C3D2E] rounded-full" />
+            <span className="text-[#1A1A1A]">AI-Powered</span>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2 bg-tech-gray border border-tech-baby-blue/20 rounded-full text-sm">
-            <div className="w-3 h-3 bg-tech-baby-blue rounded-full" />
-            <span className="text-tech-white">Essential (FREE)</span>
+          <div className="flex items-center gap-2 px-4 py-2 bg-white border border-[#E8E4DF] rounded-full text-sm">
+            <div className="w-3 h-3 bg-[#5C3D2E] rounded-full" />
+            <span className="text-[#1A1A1A]">Essential (FREE)</span>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2 bg-tech-gray border border-tech-baby-blue/20 rounded-full text-sm">
-            <div className="w-3 h-3 bg-tech-baby-blue rounded-full" />
-            <span className="text-tech-white">Growth Add-Ons</span>
+          <div className="flex items-center gap-2 px-4 py-2 bg-white border border-[#E8E4DF] rounded-full text-sm">
+            <div className="w-3 h-3 bg-[#5C3D2E] rounded-full" />
+            <span className="text-[#1A1A1A]">Growth Add-Ons</span>
           </div>
         </div>
       </section>
@@ -229,25 +228,25 @@ export default function FeaturesPage() {
             return (
               <div
                 key={index}
-                className="bg-tech-gray border border-tech-baby-blue/20 rounded-2xl p-8 smooth-transition hover:border-tech-baby-blue hover:shadow-glow-sm"
+                className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
               >
                 <div className="flex flex-col md:flex-row gap-6">
                   {/* Left: Icon & Name */}
                   <div className="md:w-64 flex-shrink-0">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-12 h-12 bg-gradient-blue rounded-lg flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-tech-white" />
+                      <div className="w-12 h-12 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-[#1A1A1A]" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-tech-white">{feature.name}</h3>
-                        <span className="text-tech-white font-semibold text-sm">{feature.price}</span>
+                        <h3 className="text-lg font-bold text-[#1A1A1A]">{feature.name}</h3>
+                        <span className="text-[#1A1A1A] font-semibold text-sm">{feature.price}</span>
                         {feature.priceNote && (
                           <p className="text-green-400 text-xs font-semibold mt-0.5">{feature.priceNote}</p>
                         )}
                       </div>
                     </div>
                     <div className="flex items-center gap-2 mt-2 flex-wrap">
-                      <span className="text-xs px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full font-semibold">
+                      <span className="text-xs px-3 py-1 bg-[#F8F7F4] border border-[#E8E4DF] text-[#1A1A1A] rounded-full font-semibold">
                         {feature.category}
                       </span>
                       {feature.seoBoost && (
@@ -266,21 +265,21 @@ export default function FeaturesPage() {
 
                   {/* Right: Description & Value */}
                   <div className="flex-1">
-                    <p className="text-tech-platinum mb-4 leading-relaxed">{feature.description}</p>
+                    <p className="text-[#6B6560] mb-4 leading-relaxed">{feature.description}</p>
                     
-                    <h4 className="text-sm font-bold text-tech-white mb-3">How It Provides Value:</h4>
+                    <h4 className="text-sm font-bold text-[#1A1A1A] mb-3">How It Provides Value:</h4>
                     <ul className="space-y-2 mb-4">
                       {feature.valuePoints.map((point, idx) => (
                         <li key={idx} className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-tech-white flex-shrink-0 mt-0.5" />
-                          <span className="text-sm text-tech-platinum">{point}</span>
+                          <Check className="w-4 h-4 text-[#1A1A1A] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-[#6B6560]">{point}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="bg-tech-black/50 border border-tech-baby-blue/10 rounded-lg p-3 mb-4">
-                      <p className="text-xs text-tech-platinum">
-                        <span className="text-tech-white font-semibold">Ideal for: </span>
+                    <div className="bg-[#F8F7F4] border border-[#E8E4DF] rounded-[6px] p-3 mb-4">
+                      <p className="text-xs text-[#6B6560]">
+                        <span className="text-[#1A1A1A] font-semibold">Ideal for: </span>
                         {feature.idealFor}
                       </p>
                     </div>
@@ -288,7 +287,7 @@ export default function FeaturesPage() {
                     {feature.blogLink && (
                       <Link
                         href={feature.blogLink}
-                        className="inline-flex items-center gap-1.5 text-tech-baby-blue text-sm font-semibold hover:text-tech-baby-blue-light smooth-transition group"
+                        className="inline-flex items-center gap-1.5 text-[#5C3D2E] text-sm font-semibold hover:text-[#5C3D2E] smooth-transition group"
                       >
                         Read our blog on this feature
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -305,23 +304,23 @@ export default function FeaturesPage() {
       {/* CTA */}
       <section className="py-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-tech-white mb-4">Ready to Build Your Website?</h2>
-          <p className="text-tech-platinum mb-2">
+          <h2 className="text-3xl font-bold text-[#1A1A1A] mb-4">Ready to Build Your Website?</h2>
+          <p className="text-[#6B6560] mb-2">
             Select your features during our simple 6-step onboarding process.
           </p>
-          <p className="text-sm text-tech-white italic mb-8">
+          <p className="text-sm text-[#1A1A1A] italic mb-8">
             Select multiple paid options for a discount upon quote.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/"
-              className="px-8 py-4 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow"
+              className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
             >
               Get Started
             </Link>
             <Link
               href="/pricing"
-              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+              className="px-8 py-4 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#1A1A1A] hover:text-white"
             >
               View Pricing
             </Link>

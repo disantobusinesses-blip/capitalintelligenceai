@@ -92,7 +92,7 @@ const monthlyPlans = [
   {
     name: 'Super Growth',
     badge: 'Recommended',
-    badgeStyle: 'bg-tech-baby-blue text-tech-black',
+    badgeStyle: 'bg-[#1A1A1A] text-white',
     priceAUD: '$499 AUD/month',
     priceUSD: '$324 USD/month',
     subLabel: '4 blogs/month · Website Care included',
@@ -131,20 +131,20 @@ const monthlyPlans = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-[100dvh]">
+    <div className="min-h-[100dvh] bg-[#F8F7F4]">
       {/* Hero */}
       <section className="py-20 px-6 text-center">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-tech-white mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
             Simple, Transparent Pricing
           </h1>
-          <p className="text-xl text-tech-platinum mb-4">
+          <p className="text-xl text-[#6B6560] mb-4">
             Professional websites and AI systems for Australian businesses.
           </p>
-          <p className="text-2xl font-bold text-tech-white mb-8">
+          <p className="text-2xl font-bold text-[#1A1A1A] mb-8">
             Websites starting from $599 AUD
           </p>
-          <OpenQuoteModalButton className="inline-flex items-center gap-2 px-8 py-4 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue-light">
+          <OpenQuoteModalButton className="inline-flex items-center gap-2 px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D]">
             Get Started →
           </OpenQuoteModalButton>
         </div>
@@ -153,47 +153,47 @@ export default function PricingPage() {
       {/* One-time Packages */}
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-tech-white text-center mb-4">
+          <h2 className="text-3xl font-bold text-[#1A1A1A] text-center mb-4">
             One-Time Website Packages
           </h2>
-          <p className="text-tech-platinum text-center mb-12">
+          <p className="text-[#6B6560] text-center mb-12">
             Pay once, own your website. No lock-in contracts.
           </p>
           <div className="grid md:grid-cols-2 gap-8">
             {oneTimePrices.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`relative bg-tech-gray rounded-2xl p-8 ${
+                className={`relative bg-white rounded-[10px] p-8 ${
                   pkg.featured
-                    ? 'border-2 border-tech-baby-blue shadow-glow'
-                    : 'border border-tech-baby-blue/20'
+                    ? 'border-2 border-[#1A1A1A] shadow-[0_2px_12px_rgba(0,0,0,0.06)]'
+                    : 'border border-[#E8E4DF]'
                 }`}
               >
                 {pkg.featured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-tech-baby-blue text-tech-black rounded-full text-sm font-semibold">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#1A1A1A] text-white rounded-full text-sm font-semibold">
                     Most Popular
                   </div>
                 )}
-                <h3 className="text-2xl font-bold text-tech-white mb-2">{pkg.name}</h3>
-                <p className="text-tech-platinum mb-4">{pkg.description}</p>
+                <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2">{pkg.name}</h3>
+                <p className="text-[#6B6560] mb-4">{pkg.description}</p>
                 <div className="mb-2">
-                  <span className="text-3xl font-bold text-tech-white">{pkg.priceAUD}</span>
+                  <span className="text-3xl font-bold text-[#1A1A1A]">{pkg.priceAUD}</span>
                 </div>
-                <p className="text-sm text-tech-platinum mb-6">{pkg.priceUSD}</p>
+                <p className="text-sm text-[#6B6560] mb-6">{pkg.priceUSD}</p>
                 <ul className="space-y-3 mb-8">
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-tech-white flex-shrink-0 mt-0.5" />
-                      <span className="text-tech-white text-sm">{f}</span>
+                      <Check className="w-5 h-5 text-[#1A1A1A] flex-shrink-0 mt-0.5" />
+                      <span className="text-[#1A1A1A] text-sm">{f}</span>
                     </li>
                   ))}
                 </ul>
                 <Link
                   href="/"
-                  className={`block w-full py-3 rounded-lg font-semibold text-center smooth-transition ${
+                  className={`block w-full py-3 rounded-[6px] font-semibold text-center smooth-transition ${
                     pkg.featured
-                      ? 'bg-tech-baby-blue text-tech-black hover:bg-tech-baby-blue-light'
-                      : 'border-2 border-tech-baby-blue text-tech-white hover:bg-tech-baby-blue hover:text-tech-black'
+                      ? 'bg-[#1A1A1A] text-white hover:bg-[#2D2D2D]'
+                      : 'border-2 border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white'
                   }`}
                 >
                   Get Started
@@ -207,18 +207,18 @@ export default function PricingPage() {
       {/* Monthly Plans */}
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-tech-white text-center mb-4">
-            Monthly Support Plans — Keep Growing Every Month
+          <h2 className="text-3xl font-bold text-[#1A1A1A] text-center mb-4">
+            Monthly Support Plans: Keep Growing Every Month
           </h2>
-          <p className="text-tech-platinum text-center mb-8">
+          <p className="text-[#6B6560] text-center mb-8">
             Keep your website running and growing every month.
           </p>
 
           {/* Amber callout banner */}
-          <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl px-6 py-4 mb-10 flex items-start gap-3 max-w-4xl mx-auto">
+          <div className="bg-amber-500/10 border border-amber-500/30 rounded-[10px] px-6 py-4 mb-10 flex items-start gap-3 max-w-4xl mx-auto">
             <span className="text-2xl flex-shrink-0">🎁</span>
             <p className="text-amber-200 leading-snug">
-              <span className="font-semibold">Every website build includes 1 free SEO blog</span> — see real Google results before committing to a plan.
+              <span className="font-semibold">Every website build includes 1 free SEO blog</span>. See real Google results before committing to a plan.
             </p>
           </div>
 
@@ -226,10 +226,10 @@ export default function PricingPage() {
             {monthlyPlans.map((plan) => (
               <div
                 key={plan.name}
-                className={`relative bg-tech-gray rounded-2xl p-6 flex flex-col ${
+                className={`relative bg-white rounded-[10px] p-6 flex flex-col ${
                   plan.featured
-                    ? 'border-2 border-tech-baby-blue shadow-glow'
-                    : 'border border-tech-baby-blue/20'
+                    ? 'border-2 border-[#1A1A1A] shadow-[0_2px_12px_rgba(0,0,0,0.06)]'
+                    : 'border border-[#E8E4DF]'
                 }`}
               >
                 {plan.badge && (
@@ -237,32 +237,32 @@ export default function PricingPage() {
                     {plan.badge}
                   </div>
                 )}
-                <h3 className="text-lg font-bold text-tech-white mb-1">{plan.name}</h3>
-                <p className="text-tech-platinum text-xs mb-3 leading-snug">{plan.description}</p>
+                <h3 className="text-lg font-bold text-[#1A1A1A] mb-1">{plan.name}</h3>
+                <p className="text-[#6B6560] text-xs mb-3 leading-snug">{plan.description}</p>
                 <div className="flex items-center gap-2 flex-wrap mb-1">
-                  <span className="text-xl font-bold text-tech-white">{plan.priceAUD}</span>
+                  <span className="text-xl font-bold text-[#1A1A1A]">{plan.priceAUD}</span>
                   {plan.bestValue && (
                     <span className="text-xs px-2 py-0.5 bg-green-500/20 border border-green-500/30 text-green-400 rounded-full font-semibold">
                       Best value
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-tech-platinum mb-1">{plan.priceUSD}</p>
-                <p className="text-xs text-tech-baby-blue font-semibold mb-4">{plan.subLabel}</p>
+                <p className="text-xs text-[#6B6560] mb-1">{plan.priceUSD}</p>
+                <p className="text-xs text-[#5C3D2E] font-semibold mb-4">{plan.subLabel}</p>
                 <ul className="space-y-2 mb-6 flex-1">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-tech-white flex-shrink-0 mt-0.5" />
-                      <span className="text-tech-white text-xs">{f}</span>
+                      <Check className="w-4 h-4 text-[#1A1A1A] flex-shrink-0 mt-0.5" />
+                      <span className="text-[#1A1A1A] text-xs">{f}</span>
                     </li>
                   ))}
                 </ul>
                 <Link
                   href="/"
-                  className={`block w-full py-2.5 rounded-lg font-semibold text-center text-sm smooth-transition ${
+                  className={`block w-full py-2.5 rounded-[6px] font-semibold text-center text-sm smooth-transition ${
                     plan.featured
-                      ? 'bg-tech-baby-blue text-tech-black hover:bg-tech-baby-blue-light'
-                      : 'border-2 border-tech-baby-blue text-tech-white hover:bg-tech-baby-blue hover:text-tech-black'
+                      ? 'bg-[#1A1A1A] text-white hover:bg-[#2D2D2D]'
+                      : 'border-2 border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white'
                   }`}
                 >
                   Get Started
@@ -276,14 +276,14 @@ export default function PricingPage() {
       {/* FAQ / Note */}
       <section className="py-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-tech-white mb-6">Have Questions?</h2>
-          <p className="text-tech-platinum mb-8">
+          <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6">Have Questions?</h2>
+          <p className="text-[#6B6560] mb-8">
             All prices are in Australian Dollars (AUD) unless otherwise stated. USD prices are approximate.
             Get in touch with our team for a custom quote tailored to your business needs.
           </p>
           <Link
             href="/"
-            className="inline-block px-8 py-4 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue-light"
+            className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D]"
           >
             Talk to Our Team
           </Link>

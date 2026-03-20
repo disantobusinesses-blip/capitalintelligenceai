@@ -30,8 +30,8 @@ export default function BlogFilter({ posts, categories }: Props) {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-1.5 rounded-full text-sm font-semibold smooth-transition border ${
                   activeCategory === cat
-                    ? 'bg-tech-baby-blue text-tech-black border-tech-baby-blue'
-                    : 'bg-transparent text-tech-platinum border-tech-baby-blue/30 hover:border-tech-baby-blue hover:text-tech-white'
+                    ? 'bg-[#1A1A1A] text-[#1A1A1A] border-[#5C3D2E]'
+                    : 'bg-transparent text-[#6B6560] border-[#E8E4DF] hover:border-[#5C3D2E] hover:text-[#1A1A1A]'
                 }`}
               >
                 {cat}
@@ -47,30 +47,30 @@ export default function BlogFilter({ posts, categories }: Props) {
           <div className="grid md:grid-cols-2 gap-6">
             {filtered.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-                <article className="bg-tech-gray border border-tech-baby-blue/20 rounded-xl overflow-hidden smooth-transition hover:border-tech-baby-blue hover:shadow-glow-sm flex flex-col h-full p-6">
+                <article className="bg-white border border-[#E8E4DF] rounded-[6px] overflow-hidden smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col h-full p-6">
                   {/* Category badge */}
                   <span
                     className={`inline-block self-start px-3 py-1 rounded-full text-xs font-semibold mb-3 border ${
                       post.category === 'Website Growth'
-                        ? 'bg-tech-baby-blue/20 border-tech-baby-blue/50 text-tech-baby-blue'
-                        : 'bg-tech-baby-blue/10 border-tech-baby-blue/30 text-tech-white'
+                        ? 'bg-[#F8F7F4] border-[#5C3D2E] text-[#5C3D2E]'
+                        : 'bg-[#F8F7F4] border-[#E8E4DF] text-[#1A1A1A]'
                     }`}
                   >
                     {post.category}
                   </span>
 
                   {/* Title */}
-                  <h2 className="text-lg font-bold text-tech-white mb-3 leading-snug group-hover:text-tech-baby-blue smooth-transition">
+                  <h2 className="text-lg font-bold text-[#1A1A1A] mb-3 leading-snug group-hover:text-[#5C3D2E] smooth-transition">
                     {post.title}
                   </h2>
 
                   {/* Description */}
-                  <p className="text-tech-platinum text-sm leading-relaxed mb-4 flex-1">
+                  <p className="text-[#6B6560] text-sm leading-relaxed mb-4 flex-1">
                     {post.description}
                   </p>
 
                   {/* Meta */}
-                  <div className="flex items-center gap-3 text-xs text-tech-platinum border-t border-tech-baby-blue/10 pt-4">
+                  <div className="flex items-center gap-3 text-xs text-[#6B6560] border-t border-[#E8E4DF] pt-4">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3.5 h-3.5" />
                       {new Date(post.published_at).toLocaleDateString('en-AU', {

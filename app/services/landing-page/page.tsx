@@ -44,23 +44,23 @@ export default function LandingPageService() {
   ]
 
   return (
-    <div className="min-h-[100dvh]">
+    <div className="min-h-[100dvh] bg-[#F8F7F4]">
       {/* Header */}
       <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-tech-white hover:text-tech-platinum-light smooth-transition"
+            className="flex items-center gap-2 text-[#6B6560] hover:text-[#1A1A1A] smooth-transition"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home
           </Link>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-blue flex items-center justify-center shadow-glow-sm">
-              <Zap className="w-5 h-5 text-tech-white" />
+            <div className="w-10 h-10 rounded-[6px] bg-[#F8F7F4] border border-[#E8E4DF] flex items-center justify-center">
+              <Zap className="w-5 h-5 text-[#5C3D2E]" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-tech-white">Intelligent Systems</h3>
+              <h3 className="text-sm font-bold text-[#1A1A1A]">Intelligent Systems</h3>
             </div>
           </div>
         </div>
@@ -70,10 +70,10 @@ export default function LandingPageService() {
       <section className="py-20 px-6 relative overflow-hidden">
         
         <div className="max-w-4xl mx-auto text-center relative">
-          <h1 className="text-5xl md:text-6xl font-bold text-tech-white mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
             Need a Landing Page?
           </h1>
-          <p className="text-xl text-tech-platinum mb-8 leading-relaxed">
+          <p className="text-xl text-[#6B6560] mb-8 leading-relaxed">
             Perfect for startups and businesses looking to establish their online presence 
             with a stunning, high-converting single-page website.
           </p>
@@ -83,7 +83,7 @@ export default function LandingPageService() {
                 const element = document.getElementById('pricing');
                 element?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-8 py-4 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow"
+              className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
             >
               View Pricing
             </button>
@@ -92,7 +92,7 @@ export default function LandingPageService() {
                 const element = document.getElementById('features');
                 element?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-8 py-4 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+              className="px-8 py-4 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#1A1A1A] hover:text-white"
             >
               Learn More
             </button>
@@ -103,7 +103,7 @@ export default function LandingPageService() {
       {/* Features Grid */}
       <section id="features" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-tech-white text-center mb-12">
+          <h2 className="text-4xl font-bold text-[#1A1A1A] text-center mb-12">
             What You'll Get
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -112,13 +112,13 @@ export default function LandingPageService() {
               return (
                 <div
                   key={index}
-                  className="bg-tech-black border border-tech-baby-blue/20 rounded-xl p-6 smooth-transition hover:border-tech-baby-blue hover:shadow-glow-sm"
+                  className="bg-white border border-[#E8E4DF] rounded-[6px] p-6 smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
                 >
-                  <div className="w-12 h-12 bg-gradient-blue rounded-lg flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-tech-white" />
+                  <div className="w-12 h-12 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-[#1A1A1A]" />
                   </div>
-                  <h3 className="text-xl font-bold text-tech-white mb-2">{feature.title}</h3>
-                  <p className="text-tech-platinum">{feature.description}</p>
+                  <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">{feature.title}</h3>
+                  <p className="text-[#6B6560]">{feature.description}</p>
                 </div>
               )
             })}
@@ -129,19 +129,19 @@ export default function LandingPageService() {
       {/* Included Items */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-tech-white text-center mb-12">
+          <h2 className="text-4xl font-bold text-[#1A1A1A] text-center mb-12">
             Everything Included
           </h2>
           <div className="grid md:grid-cols-2 gap-4">
             {included.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 bg-tech-gray border border-tech-baby-blue/10 rounded-lg p-4"
+                className="flex items-center gap-3 bg-white border border-[#E8E4DF] rounded-[6px] p-4"
               >
-                <div className="flex-shrink-0 w-6 h-6 bg-tech-baby-blue rounded-full flex items-center justify-center">
-                  <Check className="w-4 h-4 text-tech-black" />
+                <div className="flex-shrink-0 w-6 h-6 bg-[#1A1A1A] rounded-full flex items-center justify-center">
+                  <Check className="w-4 h-4 text-[#1A1A1A]" />
                 </div>
-                <span className="text-tech-white">{item}</span>
+                <span className="text-[#1A1A1A]">{item}</span>
               </div>
             ))}
           </div>
@@ -151,24 +151,24 @@ export default function LandingPageService() {
       {/* Pricing */}
       <section id="pricing" className="py-20 px-6">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-tech-black border-2 border-tech-baby-blue rounded-2xl p-8 text-center shadow-glow">
-            <h2 className="text-3xl font-bold text-tech-white mb-4">
+          <div className="bg-[#1A1A1A] border-2 border-[#1A1A1A] rounded-[10px] p-8 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+            <h2 className="text-3xl font-bold text-white mb-4">
               Landing Page Package
             </h2>
             <div className="mb-6">
-              <span className="text-6xl font-bold text-tech-white">$1,299</span>
-              <span className="text-tech-platinum ml-2">one-time</span>
+              <span className="text-6xl font-bold text-white">$599 AUD</span>
+              <span className="text-gray-400 ml-2">one-time</span>
             </div>
-            <p className="text-tech-platinum mb-8">
+            <p className="text-gray-400 mb-8">
               Includes design, development, and deployment of your landing page
             </p>
             <button
               onClick={() => router.push('/')}
-              className="w-full px-8 py-4 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-lg"
+              className="w-full px-8 py-4 bg-white text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#F8F7F4]"
             >
               Get Started Now
             </button>
-            <p className="text-sm text-tech-platinum mt-4">
+            <p className="text-sm text-gray-400 mt-4">
               Add monthly maintenance package for ongoing support
             </p>
           </div>
@@ -178,10 +178,10 @@ export default function LandingPageService() {
       {/* CTA Section */}
       <section className="py-20 px-6 relative overflow-hidden">
         <div className="max-w-3xl mx-auto text-center relative">
-          <h2 className="text-4xl font-bold text-tech-white mb-6">
+          <h2 className="text-4xl font-bold text-[#1A1A1A] mb-6">
             Ready to Launch Your Landing Page?
           </h2>
-          <p className="text-xl text-tech-platinum mb-8">
+          <p className="text-xl text-[#6B6560] mb-8">
             Let's create something amazing together
           </p>
           <button
@@ -193,7 +193,7 @@ export default function LandingPageService() {
                 router.push('/#chat');
               }
             }}
-            className="px-8 py-4 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-lg smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow"
+            className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
           >
             Talk to Our AI Assistant
           </button>
