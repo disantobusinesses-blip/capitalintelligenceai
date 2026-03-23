@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
 
     await transporter.sendMail({
       from: SMTP_FROM,
-      to: 'hello@intelligentaisystem.com',
+      to: 'sales@intelligentaisystem.com',
       replyTo: body.email.trim(),
       subject: `New quote request — ${body.businessName}`,
       html: htmlBody,
