@@ -217,7 +217,7 @@ export default function PricingPage() {
           {/* Amber callout banner */}
           <div className="bg-amber-500/10 border border-amber-500/30 rounded-[10px] px-6 py-4 mb-10 flex items-start gap-3 max-w-4xl mx-auto">
             <span className="text-2xl flex-shrink-0">🎁</span>
-            <p className="text-amber-200 leading-snug">
+            <p className="text-black leading-snug">
               <span className="font-semibold">Every website build includes 1 free SEO blog</span>. See real Google results before committing to a plan.
             </p>
           </div>
