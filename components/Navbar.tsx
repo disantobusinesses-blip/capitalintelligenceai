@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Phone } from 'lucide-react'
+import { Phone, Hammer } from 'lucide-react'
 import { useQuoteModal } from '@/context/QuoteModalContext'
 
 const navLinks = [
@@ -64,16 +64,17 @@ export default function Navbar() {
             <Phone className="w-4 h-4" />
             <span className="hidden md:inline font-semibold text-[15px]">03 7051 0100</span>
           </a>
-          {/* Scroll-triggered "Build My Website →" button */}
+          {/* Scroll-triggered "Build My Website" button */}
           <button
             onClick={openModal}
-            className={`bg-[#1A1A1A] text-white text-sm font-semibold px-4 py-2 rounded-[6px] hover:bg-[#2D2D2D] transition-all duration-300 ${
+            className={`flex items-center gap-1.5 bg-[#1A1A1A] text-white text-sm font-semibold px-4 py-2 rounded-[6px] hover:bg-[#2D2D2D] transition-all duration-300 ${
               scrolled
                 ? 'opacity-100 translate-y-0'
                 : 'opacity-0 -translate-y-1 pointer-events-none'
             }`}
           >
-            Build My Website →
+            <Hammer className="w-4 h-4" />
+            Build My Website
           </button>
           <Link
             href="/#quote"

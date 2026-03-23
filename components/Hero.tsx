@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { CheckCircle, Send } from 'lucide-react'
+import { CheckCircle, Send, Hammer } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { useQuoteModal } from '@/context/QuoteModalContext'
 
 const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
@@ -95,15 +96,43 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col gap-3 pt-2">
-              {/* Primary CTA — most prominent */}
-              <div className="relative inline-flex self-start w-full sm:w-auto">
-                <span className="absolute inset-0 rounded-[6px] bg-[#1A1A1A] animate-ping opacity-20" />
+              {/* Primary CTA — most prominent with animated hand-drawn SVG underline */}
+              <div className="relative inline-flex self-start w-full sm:w-auto pb-4">
                 <button
                   onClick={openModal}
-                  className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200"
+                  className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
                 >
-                  Build Me a Website →
+                  <Hammer className="w-5 h-5" />
+                  Build Me a Website
                 </button>
+                {/* Animated hand-drawn loop (HandWrittenTitle-style) */}
+                <motion.svg
+                  className="absolute -bottom-1 left-0 w-full overflow-visible pointer-events-none"
+                  viewBox="0 0 300 18"
+                  height="18"
+                  preserveAspectRatio="none"
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <motion.path
+                    d="M 6 10 Q 75 2, 150 10 Q 225 18, 294 10"
+                    fill="none"
+                    stroke="#5C3D2E"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    variants={{
+                      hidden: { pathLength: 0, opacity: 0 },
+                      visible: {
+                        pathLength: 1,
+                        opacity: 1,
+                        transition: {
+                          pathLength: { duration: 2, ease: [0.43, 0.13, 0.23, 0.96], repeat: Infinity, repeatDelay: 4 },
+                          opacity: { duration: 0.4 },
+                        },
+                      },
+                    }}
+                  />
+                </motion.svg>
               </div>
               {/* Secondary CTAs */}
               <div className="flex flex-col sm:flex-row gap-3">
@@ -124,7 +153,7 @@ export default function Hero() {
 
             {/* Urgency text */}
             <p className="text-sm text-gray-500 text-left md:text-center -mt-1">
-              🔥 Limited spots available this month — we only take on a handful of new clients at a time.
+              Limited spots available this month — we only take on a handful of new clients at a time.
             </p>
 
             {/* Trust Badges */}
