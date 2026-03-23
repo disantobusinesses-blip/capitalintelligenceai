@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { CheckCircle, Send } from 'lucide-react'
+import { useQuoteModal } from '@/context/QuoteModalContext'
 
 const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 
@@ -13,6 +14,7 @@ const trustBadges = [
 ]
 
 export default function Hero() {
+  const { openModal } = useQuoteModal()
   const [name, setName] = useState('')
   const [businessName, setBusinessName] = useState('')
   const [phone, setPhone] = useState('')
@@ -92,20 +94,38 @@ export default function Hero() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="#quote"
-                className="bg-[#1A1A1A] text-white font-semibold px-6 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 inline-block"
-              >
-                Get a Free Quote
-              </a>
-              <a
-                href="#our-work"
-                className="border-2 border-[#1A1A1A] text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 inline-block"
-              >
-                View Our Work
-              </a>
+            <div className="flex flex-col gap-3 pt-2">
+              {/* Primary CTA — most prominent */}
+              <div className="relative inline-flex self-start w-full sm:w-auto">
+                <span className="absolute inset-0 rounded-[6px] bg-[#1A1A1A] animate-ping opacity-20" />
+                <button
+                  onClick={openModal}
+                  className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200"
+                >
+                  Build Me a Website →
+                </button>
+              </div>
+              {/* Secondary CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#quote"
+                  className="bg-[#1A1A1A] text-white font-semibold px-6 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 inline-block text-center"
+                >
+                  Get a Free Quote
+                </a>
+                <a
+                  href="#our-work"
+                  className="border-2 border-[#1A1A1A] text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 inline-block text-center"
+                >
+                  View Our Work
+                </a>
+              </div>
             </div>
+
+            {/* Urgency text */}
+            <p className="text-sm text-gray-500 text-left md:text-center -mt-1">
+              🔥 Limited spots available this month — we only take on a handful of new clients at a time.
+            </p>
 
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-4 pt-2">

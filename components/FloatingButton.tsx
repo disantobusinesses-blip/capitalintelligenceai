@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { PenLine, Plus } from 'lucide-react'
+import { PenLine } from 'lucide-react'
 import { useQuoteModal } from '@/context/QuoteModalContext'
 
 export default function FloatingButton() {
@@ -22,9 +22,9 @@ export default function FloatingButton() {
       }`}
       style={{ transition: 'opacity 0.5s ease, transform 0.5s ease, background-color 0.2s ease' }}
     >
-      {/* Mobile: icon only */}
-      <span className="flex items-center justify-center w-14 h-14 md:hidden">
-        <Plus className="w-6 h-6" />
+      {/* Mobile: pill with globe + label */}
+      <span className="flex items-center gap-2 px-4 py-3 md:hidden text-sm">
+        🌐 Build My Website
       </span>
       {/* Desktop: full label */}
       <span className="hidden md:flex items-center gap-2 px-5 py-3.5 text-sm">

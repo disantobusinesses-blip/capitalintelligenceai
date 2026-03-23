@@ -2,6 +2,7 @@ import Hero from '@/components/Hero'
 import ProvenResults from '@/components/ProvenResults'
 import ServiceSelection from '@/components/ServiceSelection'
 import OurWork from '@/components/OurWork'
+import Testimonials from '@/components/Testimonials'
 import HowItWorks from '@/components/HowItWorks'
 import SeoGuarantee from '@/components/SeoGuarantee'
 import FinalCta from '@/components/FinalCta'
@@ -14,6 +15,7 @@ export default function Home() {
       <ProvenResults />
       <ServiceSelection />
       <OurWork />
+      <Testimonials />
       <HowItWorks />
       <SeoGuarantee />
       <FinalCta />

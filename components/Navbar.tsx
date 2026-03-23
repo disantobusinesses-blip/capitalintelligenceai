@@ -1,6 +1,10 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Phone } from 'lucide-react'
+import { useQuoteModal } from '@/context/QuoteModalContext'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -11,6 +15,15 @@ const navLinks = [
 ]
 
 export default function Navbar() {
+  const { openModal } = useQuoteModal()
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 300)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <header
       style={{ boxShadow: '0 1px 8px rgba(0,0,0,0.08)' }}
@@ -41,8 +54,8 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* RIGHT: Phone + CTA */}
-        <div className="flex items-center gap-4">
+        {/* RIGHT: Phone + CTAs */}
+        <div className="flex items-center gap-3">
           <a
             href="tel:0370510100"
             aria-label="Call us"
@@ -51,6 +64,17 @@ export default function Navbar() {
             <Phone className="w-4 h-4" />
             <span className="hidden md:inline font-semibold text-[15px]">03 7051 0100</span>
           </a>
+          {/* Scroll-triggered "Build My Website →" button */}
+          <button
+            onClick={openModal}
+            className={`bg-[#1A1A1A] text-white text-sm font-semibold px-4 py-2 rounded-[6px] hover:bg-[#2D2D2D] transition-all duration-300 ${
+              scrolled
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 -translate-y-1 pointer-events-none'
+            }`}
+          >
+            Build My Website →
+          </button>
           <Link
             href="/#quote"
             className="bg-[#1A1A1A] text-white text-sm font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
