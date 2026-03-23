@@ -76,11 +76,11 @@ const monthlyPlans = [
     badgeStyle: 'bg-green-500 text-white',
     priceAUD: '$299 AUD/month',
     priceUSD: '$194 USD/month',
-    subLabel: '2 blogs/month · Website Care included',
+    subLabel: '4 blogs/month · Website Care included',
     description: 'Start ranking on Google with consistent monthly content.',
     features: [
       'Everything in Website Care',
-      '2 SEO-optimised blog articles/month',
+      '4 SEO-optimised blog articles/month',
       'Monthly keyword research',
       'On-page optimisation',
       'Monthly performance report',
@@ -93,13 +93,15 @@ const monthlyPlans = [
     name: 'Super Growth',
     badge: 'Recommended',
     badgeStyle: 'bg-[#1A1A1A] text-white',
-    priceAUD: '$499 AUD/month',
-    priceUSD: '$324 USD/month',
-    subLabel: '4 blogs/month · Website Care included',
+    priceAUD: '$359 AUD/month',
+    originalPriceAUD: '$499 AUD/month',
+    saleLabel: '28% off',
+    priceUSD: '$234 USD/month',
+    subLabel: '8 blogs/month · Website Care included',
     description: 'Accelerate your rankings with double the content and deeper strategy.',
     features: [
       'Everything in Google Growth',
-      '4 SEO-optimised blog articles/month',
+      '8 SEO-optimised blog articles/month',
       'Expanded keyword research',
       'Internal linking strategy',
       'Deep on-page optimisation',
@@ -114,11 +116,11 @@ const monthlyPlans = [
     badgeStyle: '',
     priceAUD: '$799 AUD/month',
     priceUSD: '$519 USD/month',
-    subLabel: '8 blogs/month · Website Care included',
+    subLabel: '12 blogs/month · Website Care included',
     description: 'Dominate your niche and own the first page of Google.',
     features: [
       'Everything in Super Growth',
-      '8 SEO-optimised blog articles/month',
+      '12 SEO-optimised blog articles/month',
       'Full topical authority mapping',
       'Advanced technical SEO',
       'Competitor gap analysis',
@@ -240,7 +242,15 @@ export default function PricingPage() {
                 <h3 className="text-lg font-bold text-[#1A1A1A] mb-1">{plan.name}</h3>
                 <p className="text-[#6B6560] text-xs mb-3 leading-snug">{plan.description}</p>
                 <div className="flex items-center gap-2 flex-wrap mb-1">
+                  {plan.originalPriceAUD && (
+                    <span className="text-xs line-through text-[#9E9790]">{plan.originalPriceAUD}</span>
+                  )}
                   <span className="text-xl font-bold text-[#1A1A1A]">{plan.priceAUD}</span>
+                  {plan.saleLabel && (
+                    <span className="text-xs px-2 py-0.5 bg-[#5C3D2E] text-white rounded-full font-semibold">
+                      {plan.saleLabel}
+                    </span>
+                  )}
                   {plan.bestValue && (
                     <span className="text-xs px-2 py-0.5 bg-green-500/20 border border-green-500/30 text-green-400 rounded-full font-semibold">
                       Best value

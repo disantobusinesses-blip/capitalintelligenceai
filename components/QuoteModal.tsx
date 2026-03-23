@@ -26,7 +26,7 @@ const INITIAL: QuoteFormData = {
   colourDirection: '',
   colourLabel: '',
   seoPlan: 'super',
-  seoPrice: 499,
+  seoPrice: 359,
   name: '',
   businessName: '',
   email: '',
@@ -60,7 +60,7 @@ const SEO_PLANS = [
   {
     id: 'google' as const,
     label: 'Google Growth',
-    description: '2 blogs/month · keyword research · monthly report',
+    description: '4 blogs/month · keyword research · monthly report',
     price: '+$299/mo',
     numericPrice: 299,
   },
@@ -68,14 +68,15 @@ const SEO_PLANS = [
     id: 'super' as const,
     label: 'Super Growth',
     badge: '✦ Recommended',
-    description: '4 blogs/month · deep strategy · internal linking',
-    price: '+$499/mo',
-    numericPrice: 499,
+    description: '8 blogs/month · deep strategy · internal linking',
+    price: '+$359/mo',
+    originalPrice: '+$499/mo',
+    numericPrice: 359,
   },
   {
     id: 'market' as const,
     label: 'Market Authority',
-    description: '8 blogs/month · topical authority · competitor analysis',
+    description: '12 blogs/month · topical authority · competitor analysis',
     price: '+$799/mo',
     numericPrice: 799,
   },
@@ -338,9 +339,14 @@ export default function QuoteModal() {
                       <p className="text-[#6B6560] text-xs mt-0.5 leading-snug break-words">{plan.description}</p>
                     </div>
                     {/* Price — always visible, right-aligned */}
-                    <span className={`text-sm font-bold flex-shrink-0 ${plan.id === 'none' ? 'text-green-400' : 'text-[#1A1A1A]'}`}>
-                      {plan.price}
-                    </span>
+                    <div className="flex-shrink-0 text-right">
+                      {plan.originalPrice && (
+                        <span className="text-xs line-through text-[#9E9790] block">{plan.originalPrice}</span>
+                      )}
+                      <span className={`text-sm font-bold ${plan.id === 'none' ? 'text-green-400' : 'text-[#1A1A1A]'}`}>
+                        {plan.price}
+                      </span>
+                    </div>
                   </button>
                 ))}
               </div>
