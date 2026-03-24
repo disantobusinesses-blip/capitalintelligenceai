@@ -3,7 +3,24 @@
 import { useState } from 'react'
 import { CheckCircle, Send, Hammer } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useQuoteModal } from '@/context/QuoteModalContext'
+import { useGetStartedModal } from '@/context/GetStartedModalContext'
+
+// Time slots 9:00 AM – 5:00 PM in 15-minute increments
+function generateTimeSlots(): string[] {
+  const slots: string[] = []
+  for (let hour = 9; hour <= 17; hour++) {
+    for (let min = 0; min < 60; min += 15) {
+      if (hour === 17 && min > 0) break
+      const h = hour % 12 === 0 ? 12 : hour % 12
+      const m = min.toString().padStart(2, '0')
+      const period = hour < 12 ? 'AM' : 'PM'
+      slots.push(`${h}:${m} ${period}`)
+    }
+  }
+  return slots
+}
+
+const TIME_SLOTS = generateTimeSlots()
 
 const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 
@@ -15,58 +32,39 @@ const trustBadges = [
 ]
 
 export default function Hero() {
-  const { openModal } = useQuoteModal()
+  const { openModal } = useGetStartedModal()
   const [name, setName] = useState('')
-  const [businessName, setBusinessName] = useState('')
   const [phone, setPhone] = useState('')
-  const [quoteEmail, setQuoteEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [quoteStatus, setQuoteStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
-  const [quoteError, setQuoteError] = useState('')
+  const [time, setTime] = useState('')
+  const [consultStatus, setConsultStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [consultError, setConsultError] = useState('')
 
-  const handleQuoteSubmit = async (e: React.FormEvent) => {
+  const handleConsultSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!quoteEmail.trim() || !message.trim()) return
+    if (!name.trim() || !phone.trim() || !time) return
 
-    setQuoteStatus('submitting')
-    setQuoteError('')
+    setConsultStatus('submitting')
+    setConsultError('')
 
     try {
-      const response = await fetch('/api/lead', {
+      const response = await fetch('/api/consultation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          service: null,
-          businessName: businessName || 'Quick Quote Request',
-          industry: '',
-          description: message,
-          designStyle: '',
-          colorPreference: '',
-          features: [],
-          monthlyPlan: '',
-          aiAutomationRequest: '',
-          contactName: name || 'Quick Quote',
-          contactEmail: quoteEmail,
-          contactPhone: phone,
-          hasLogo: false,
-          additionalNotes: message,
-        }),
+        body: JSON.stringify({ name, phone, time }),
       })
       const result = await response.json()
       if (response.ok && result.ok) {
-        setQuoteStatus('success')
+        setConsultStatus('success')
         setName('')
-        setBusinessName('')
         setPhone('')
-        setQuoteEmail('')
-        setMessage('')
+        setTime('')
       } else {
-        setQuoteStatus('error')
-        setQuoteError(result.message || 'Something went wrong. Please try again.')
+        setConsultStatus('error')
+        setConsultError(result.message || 'Something went wrong. Please try again.')
       }
     } catch {
-      setQuoteStatus('error')
-      setQuoteError('Something went wrong. Please try again.')
+      setConsultStatus('error')
+      setConsultError('Something went wrong. Please try again.')
     }
   }
 
@@ -96,16 +94,16 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col gap-3 pt-2">
-              {/* Primary CTA — most prominent with animated hand-drawn SVG underline */}
+              {/* Primary CTA */}
               <div className="relative inline-flex self-start w-full sm:w-auto pb-4">
                 <button
-                  onClick={openModal}
+                  onClick={() => openModal()}
                   className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                   <Hammer className="w-5 h-5" />
                   Build Me a Website
                 </button>
-                {/* Animated hand-drawn loop (HandWrittenTitle-style) */}
+                {/* Animated hand-drawn loop */}
                 <motion.svg
                   className="absolute -bottom-1 left-0 w-full overflow-visible pointer-events-none"
                   viewBox="0 0 300 18"
@@ -152,7 +150,7 @@ export default function Hero() {
             </div>
 
             {/* Urgency text */}
-            <p className="text-sm text-gray-500 text-left md:text-center -mt-1">
+            <p className="text-sm text-[#6B6560] text-left md:text-center -mt-1">
               Limited spots available this month — we only take on a handful of new clients at a time.
             </p>
 
@@ -169,36 +167,43 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Quote Form */}
+          {/* RIGHT COLUMN: Free Consultation Booking */}
           <div
             className="bg-white rounded-[12px] p-8"
             style={{ border: '1px solid #E8E4DF', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}
           >
-            {quoteStatus === 'success' ? (
+            {consultStatus === 'success' ? (
               <div className="flex flex-col items-center gap-3 py-8">
                 <CheckCircle className="w-10 h-10 text-green-500" />
-                <p className="text-[#1A1A1A] font-bold text-xl text-center">Quote request received!</p>
-                <p className="text-[#6B6560] text-sm text-center">We&apos;ll be in touch shortly.</p>
+                <p className="text-[#1A1A1A] font-bold text-xl text-center">You&apos;re booked in!</p>
+                <p className="text-[#6B6560] text-sm text-center">We&apos;ll call you at your preferred time. Talk soon!</p>
               </div>
             ) : (
-              <form onSubmit={handleQuoteSubmit} className="space-y-4">
+              <form onSubmit={handleConsultSubmit} className="space-y-4">
                 <div>
-                  <p className="text-[#1A1A1A] font-bold text-lg mb-1">Get My Free Quote</p>
-                  <p className="text-[#6B6560] text-sm">We Respond Within 1 Hour</p>
+                  <p className="text-[#1A1A1A] font-bold text-lg mb-1">Book a Free Consultation</p>
+                  <p className="text-[#6B6560] text-sm">Free 15-minute phone call · No commitment</p>
                 </div>
+
+                {/* Time picker */}
+                <select
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                  required
+                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+                >
+                  <option value="">Select preferred call time (9 AM – 5 PM)</option>
+                  {TIME_SLOTS.map((slot) => (
+                    <option key={slot} value={slot}>{slot}</option>
+                  ))}
+                </select>
 
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your Name"
-                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
-                />
-                <input
-                  type="text"
-                  value={businessName}
-                  onChange={(e) => setBusinessName(e.target.value)}
-                  placeholder="Business Name"
+                  required
                   className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
                 />
                 <input
@@ -206,37 +211,22 @@ export default function Hero() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Phone Number"
-                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
-                />
-                <input
-                  type="email"
-                  value={quoteEmail}
-                  onChange={(e) => setQuoteEmail(e.target.value)}
-                  placeholder="Email Address"
                   required
                   className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
-                />
-                <textarea
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Tell us about your business and what you need..."
-                  rows={3}
-                  required
-                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 resize-none text-sm"
                 />
 
                 <button
                   type="submit"
-                  disabled={quoteStatus === 'submitting'}
+                  disabled={consultStatus === 'submitting'}
                   className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
                 >
-                  {quoteStatus === 'submitting' ? 'Sending…' : (
-                    <>Get My Free Quote: We Respond Within 1 Hour <Send className="w-4 h-4" /></>
+                  {consultStatus === 'submitting' ? 'Booking…' : (
+                    <>Book My Free Consultation <Send className="w-4 h-4" /></>
                   )}
                 </button>
 
-                {quoteStatus === 'error' && (
-                  <p className="text-red-500 text-xs">{quoteError}</p>
+                {consultStatus === 'error' && (
+                  <p className="text-red-500 text-xs">{consultError}</p>
                 )}
               </form>
             )}

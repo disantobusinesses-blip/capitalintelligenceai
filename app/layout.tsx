@@ -3,6 +3,8 @@ import Script from 'next/script'
 import './globals.css'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 import { QuoteModalProvider } from '@/context/QuoteModalContext'
+import { GetStartedModalProvider } from '@/context/GetStartedModalContext'
+import GetStartedFormWrapper from '@/components/GetStartedFormWrapper'
 import BottomNav from '@/components/BottomNav'
 import QuoteModal from '@/components/QuoteModal'
 import FloatingButton from '@/components/FloatingButton'
@@ -86,11 +88,14 @@ export default function RootLayout({
         />
         <CurrencyProvider>
           <QuoteModalProvider>
-            <Navbar />
-            {children}
-            <BottomNav />
-            <FloatingButton />
-            <QuoteModal />
+            <GetStartedModalProvider>
+              <Navbar />
+              {children}
+              <BottomNav />
+              <FloatingButton />
+              <QuoteModal />
+              <GetStartedFormWrapper />
+            </GetStartedModalProvider>
           </QuoteModalProvider>
         </CurrencyProvider>
       </body>

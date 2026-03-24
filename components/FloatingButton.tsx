@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import { Hammer } from 'lucide-react'
-import { useQuoteModal } from '@/context/QuoteModalContext'
+import { useGetStartedModal } from '@/context/GetStartedModalContext'
 
 export default function FloatingButton() {
-  const { openModal } = useQuoteModal()
+  const { openModal } = useGetStartedModal()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function FloatingButton() {
 
   return (
     <button
-      onClick={openModal}
+      onClick={() => openModal()}
       aria-label="Build me a website"
       className={`fixed bottom-24 right-6 z-40 flex items-center gap-2 bg-[#1A1A1A] text-white font-semibold rounded-full shadow-lg active:scale-95 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useQuoteModal } from '@/context/QuoteModalContext'
+import { useGetStartedModal } from '@/context/GetStartedModalContext'
 import { Globe, Package, TrendingUp } from 'lucide-react'
 
 const services = [
@@ -47,7 +47,7 @@ const services = [
 ]
 
 export default function ServiceSelection() {
-  const { openModal } = useQuoteModal()
+  const { openModal } = useGetStartedModal()
   const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   return (
@@ -108,7 +108,7 @@ export default function ServiceSelection() {
 
                 {/* CTA */}
                 <button
-                  onClick={openModal}
+                  onClick={() => openModal()}
                   className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 mt-auto"
                 >
                   Get Started
