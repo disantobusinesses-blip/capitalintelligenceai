@@ -135,7 +135,7 @@ export default function Hero() {
               {/* Secondary CTAs */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="#quote"
+                  href="#consultation"
                   className="bg-[#1A1A1A] text-white font-semibold px-6 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 inline-block text-center"
                 >
                   Get a Free Quote
@@ -169,7 +169,8 @@ export default function Hero() {
 
           {/* RIGHT COLUMN: Free Consultation Booking */}
           <div
-            className="bg-white rounded-[12px] p-8"
+            id="consultation"
+            className="bg-white rounded-[12px] p-8 scroll-mt-24"
             style={{ border: '1px solid #E8E4DF', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}
           >
             {consultStatus === 'success' ? (

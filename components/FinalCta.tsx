@@ -14,7 +14,7 @@ export default function FinalCta() {
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
-            href="/#quote"
+            href="/#consultation"
             className="bg-white text-[#1A1A1A] font-bold px-8 py-[14px] rounded-[6px] hover:bg-[#F8F7F4] transition-colors duration-200 text-base"
           >
             Get a Free Quote

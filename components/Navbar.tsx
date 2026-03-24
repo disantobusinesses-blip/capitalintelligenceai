@@ -77,7 +77,7 @@ export default function Navbar() {
             Build My Website
           </button>
           <Link
-            href="/#quote"
+            href="/#consultation"
             className="bg-[#1A1A1A] text-white text-sm font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
           >
             Get a Free Quote
