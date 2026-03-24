@@ -72,27 +72,38 @@ const monthlyPlans = [
   {
     id: 'care',
     name: 'Website Care',
-    price: 'Starting at $119 AUD/month+',
-    numericPrice: 119,
-    description: 'Essential hosting and maintenance',
-    features: ['Website Hosting', 'Website Maintenance', 'Security Updates', 'Monthly Backups', 'Tech Support'],
+    badge: null as string | null,
+    price: '$119 AUD/month',
+    subLabel: 'Hosting & maintenance',
+    description: 'Essential hosting and maintenance to keep your site running smoothly.',
+    features: ['Website hosting', 'Website maintenance', 'Security updates', 'Monthly backups', 'Up to 1hr tech support/month'],
   },
   {
-    id: 'seo-ai',
-    name: 'SEO & AI Visibility',
-    price: 'Starting at $149 AUD/month+',
-    numericPrice: 149,
-    description: 'Get found on Google and AI search engines',
-    features: ['Google Search Optimisation', 'AI Search Engine Indexing (ChatGPT, Gemini, Perplexity)', 'Structured Data / Schema Markup', 'Monthly SEO Reports', 'Content Strategy Guidance'],
+    id: 'google-growth',
+    name: 'Google Growth',
+    badge: 'Most popular',
+    price: '$299 AUD/month',
+    subLabel: '4 blogs/month · Website Care included',
+    description: 'Start ranking on Google with consistent monthly content.',
+    features: ['Everything in Website Care', '4 SEO-optimised blog articles/month', 'Monthly keyword research', 'On-page optimisation', 'Monthly performance report', 'AI search indexing (ChatGPT, Gemini, Perplexity)'],
   },
   {
-    id: 'ai-integration',
-    name: 'AI Systems Integration',
-    price: 'Custom',
-    numericPrice: 0,
-    description: 'Automate your business with AI',
-    features: ['24/7 AI Chat Support', 'Automated Email Responder', 'Phone Call Transcript Generator', 'Custom AI Workflows', 'Business Process Automation'],
-    isCustom: true,
+    id: 'super-growth',
+    name: 'Super Growth',
+    badge: 'Recommended',
+    price: '$359 AUD/month',
+    subLabel: '8 blogs/month · Website Care included',
+    description: 'Accelerate your rankings with double the content and deeper strategy.',
+    features: ['Everything in Google Growth', '8 SEO-optimised blog articles/month', 'Expanded keyword research', 'Internal linking strategy', 'Deep on-page optimisation', 'Detailed monthly reporting'],
+  },
+  {
+    id: 'market-authority',
+    name: 'Market Authority',
+    badge: null as string | null,
+    price: '$799 AUD/month',
+    subLabel: '12 blogs/month · Website Care included',
+    description: 'Dominate your niche and own the first page of Google.',
+    features: ['Everything in Super Growth', '12 SEO-optimised blog articles/month', 'Full topical authority mapping', 'Advanced technical SEO', 'Competitor gap analysis', 'Priority support and reporting'],
   },
 ]
 
@@ -204,7 +215,7 @@ export default function GetStartedForm({
       case 3:
         return formData.designStyle !== ''
       case 4:
-        return formData.features.length > 0
+        return formData.monthlyPlan !== ''
       case 5:
         return formData.contactName.trim() !== '' && formData.contactEmail.trim() !== ''
       default:
@@ -444,68 +455,55 @@ export default function GetStartedForm({
             </div>
           )}
 
-          {/* Step 4: Features */}
+          {/* Step 4: Monthly Plan */}
           {step === 4 && (
             <div>
-              <h3 className="text-xl font-bold text-[#1A1A1A] mb-1">
-                Choose your features{' '}
-                <span className="text-sm font-normal text-[#6B6560]">(Quote for features are custom to each business)</span>
-              </h3>
-              <p className="text-[#6B6560] mb-1">Select all the features you want on your website.</p>
-              <p className="text-sm text-[#1A1A1A] italic mb-4">*Select multiple paid options for discount upon quote*</p>
-              <div className="grid grid-cols-2 gap-3">
-                {featureOptions.map((feature) => {
-                  const isSelected = formData.features.includes(feature.name)
-                  if (feature.comingSoon) {
-                    return (
-                      <div
-                        key={feature.name}
-                        className="flex items-start gap-3 p-3 rounded-lg border-2 text-left border-[#E8E4DF] opacity-60 cursor-not-allowed"
-                      >
-                        <div className="w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 mt-0.5 border-[#E8E4DF]" />
-                        <div>
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="text-sm text-[#1A1A1A] block">{feature.name}</span>
-                            <span className="text-xs px-2 py-0.5 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-full font-semibold">
-                              Coming Soon
-                            </span>
-                          </div>
-                          <span className="text-xs text-green-400 block mt-0.5">{feature.benefit}</span>
-                          <span className="text-xs text-[#6B6560] block mt-0.5">{feature.price}</span>
-                        </div>
-                      </div>
-                    )
-                  }
+              <h3 className="text-xl font-bold text-[#1A1A1A] mb-1">Choose a monthly plan</h3>
+              <p className="text-[#6B6560] mb-4">Select the ongoing support package that fits your goals. (Min. 1 required)</p>
+              <div className="grid gap-3">
+                {monthlyPlans.map((plan) => {
+                  const isSelected = formData.monthlyPlan === plan.id
                   return (
                     <button
-                      key={feature.name}
-                      onClick={() => toggleFeature(feature.name)}
-                      className={`flex items-start gap-3 p-3 rounded-lg border-2 text-left smooth-transition ${
+                      key={plan.id}
+                      onClick={() => setFormData({ ...formData, monthlyPlan: plan.id })}
+                      className={`flex items-start gap-4 p-4 rounded-xl border-2 text-left smooth-transition ${
                         isSelected
                           ? 'border-[#5C3D2E] bg-[#F8F7F4]'
                           : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                       }`}
                     >
                       <div
-                        className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 smooth-transition mt-0.5 ${
-                          isSelected
-                            ? 'bg-[#1A1A1A] border-[#5C3D2E]'
-                            : 'border-[#E8E4DF]'
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 smooth-transition ${
+                          isSelected ? 'bg-[#1A1A1A] border-[#5C3D2E]' : 'border-[#E8E4DF]'
                         }`}
                       >
-                        {isSelected && <Check className="w-3 h-3 text-white" />}
+                        {isSelected && <div className="w-2 h-2 rounded-full bg-white" />}
                       </div>
-                      <div>
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-sm text-[#1A1A1A] block">{feature.name}</span>
-                          {feature.seoBoost && (
-                            <TrendingUp className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                          <span className="text-base font-bold text-[#1A1A1A]">{plan.name}</span>
+                          {plan.badge && (
+                            <span className="text-xs px-2 py-0.5 bg-[#1A1A1A] text-white rounded-full font-semibold">
+                              {plan.badge}
+                            </span>
                           )}
                         </div>
-                        <span className="text-xs text-green-400 block mt-0.5">{feature.benefit}</span>
-                        <span className={`text-xs font-semibold block mt-0.5 ${feature.isFree ? 'text-[#5C3D2E]' : 'text-[#6B6560]'}`}>
-                          {feature.price}
-                        </span>
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <span className="text-sm font-bold text-[#5C3D2E]">{plan.price}</span>
+                          {plan.subLabel && (
+                            <span className="text-xs text-[#9E9790]">{plan.subLabel}</span>
+                          )}
+                        </div>
+                        <p className="text-xs text-[#6B6560] mb-2">{plan.description}</p>
+                        <ul className="grid grid-cols-2 gap-x-3 gap-y-1">
+                          {plan.features.map((f) => (
+                            <li key={f} className="flex items-start gap-1.5 text-xs text-[#6B6560]">
+                              <Check className="w-3 h-3 text-[#5C3D2E] flex-shrink-0 mt-0.5" />
+                              <span>{f}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </button>
                   )
