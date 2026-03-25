@@ -79,7 +79,7 @@ export default function Hero() {
           <div className="space-y-6">
             {/* Label */}
             <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase">
-              Melbourne&apos;s AI-Powered Web Agency
+              AI-Powered Web Agency
             </p>
 
             {/* Headline */}
