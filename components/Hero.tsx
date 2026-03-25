@@ -149,11 +149,6 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Urgency text */}
-            <p className="text-sm text-[#6B6560] text-left md:text-center -mt-1">
-              Limited spots available this month — we only take on a handful of new clients at a time.
-            </p>
-
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-4 pt-2">
               {trustBadges.map((badge) => (

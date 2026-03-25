@@ -34,8 +34,8 @@ const oneTimePrices = [
   },
   {
     name: 'Website + Full Package',
-    priceAUD: 'Starting at $1,999+ AUD',
-    priceUSD: 'Starting at $1,299+ USD',
+    priceAUD: 'Custom price upon request',
+    priceUSD: 'Custom price upon request',
     description: 'A complete multi-page website with ongoing digital strategy and support.',
     features: [
       'Custom multi-page design (up to 10 pages)',

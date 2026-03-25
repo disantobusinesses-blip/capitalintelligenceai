@@ -109,7 +109,6 @@ const monthlyPlans = [
 
 const servicePrices: Record<string, number> = {
   'landing-page': 599,
-  'full-package': 1999,
 }
 
 const TOTAL_STEPS = 5

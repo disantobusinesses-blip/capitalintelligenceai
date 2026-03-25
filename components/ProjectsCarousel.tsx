@@ -9,7 +9,7 @@ const projects = [
     title: 'EAY Electrical',
     industry: 'Electrical Services',
     description: 'Professional electrical services website for residential and commercial clients across Australia. Modern design with service showcase and contact integration.',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EAY%20site-7S7pX8I1Dmy6mqs88OqeeR0avSRFuH.jpg',
+    image: 'https://image.thum.io/get/width/1266/crop/574/https://www.eayelectrical.com.au',
     url: 'https://www.eayelectrical.com.au',
   },
   {
@@ -17,7 +17,7 @@ const projects = [
     title: 'My AI Bank',
     industry: 'FinTech',
     description: 'AI-powered banking platform delivering intelligent financial tools and personalised banking experiences.',
-    image: null,
+    image: 'https://image.thum.io/get/width/1266/crop/574/https://myaibank.ai',
     url: 'https://myaibank.ai',
   },
   {

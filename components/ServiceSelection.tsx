@@ -22,7 +22,7 @@ const services = [
     id: 'full-package',
     icon: Package,
     title: 'Website + Full Package',
-    price: 'From $1,999 AUD',
+    price: 'Custom price upon request',
     description: 'Complete multi-page website with ongoing support and digital strategy.',
     features: [
       'Custom multi-page design',
