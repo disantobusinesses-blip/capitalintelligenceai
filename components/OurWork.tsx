@@ -9,7 +9,7 @@ const projects = [
     industry: 'Trades',
     metric: 'Ranked page 1 Google',
     link: 'https://www.eayelectrical.com.au',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EAY%20site-7S7pX8I1Dmy6mqs88OqeeR0avSRFuH.jpg',
+    image: 'https://image.thum.io/get/width/1266/crop/574/https://www.eayelectrical.com.au',
     imageAlt: 'EAY Electrical website screenshot',
   },
   {
@@ -18,7 +18,7 @@ const projects = [
     industry: 'FinTech',
     metric: 'AI-powered banking platform',
     link: 'https://myaibank.ai',
-    image: null,
+    image: 'https://image.thum.io/get/width/1266/crop/574/https://myaibank.ai',
     imageAlt: 'My AI Bank website screenshot',
   },
 ]
