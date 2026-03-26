@@ -1,35 +1,139 @@
-# Capital Intelligence Group
+# Intelligent Systems - Capital Intelligence Group
 
-Premium web development studio website built with Next.js 14, TypeScript, and Tailwind CSS.
+Premium business landing page showcasing intelligent system integration services. Built with Next.js 14, TypeScript, and Tailwind CSS.
+
+**Slogan:** *Systems That Think. Businesses That Scale.*
 
 ## Features
 
-- **Dark premium aesthetic** with subtle grain overlay and gradient backgrounds
-- **Smooth animations** using Framer Motion with scroll-triggered reveals
-- **Multi-step intake form** with Zod validation and progress indicator
-- **Two-tier pricing** — Landing Page ($2,300 AUD) and AI Integrated (from $3,300 AUD)
-- **Projects gallery** with lightbox and video support
-- **Features showcase** with interactive UI module demos
-- **Add-ons marketplace** for modular website upgrades
-- **Premium toast notifications** via react-hot-toast
-- **Responsive design** with mobile-first approach
-- **Sticky header** with glass morphism effect
+### Core Sections
+- **Hero Section** - Prominent brand display with compelling headline and dual CTAs
+- **Package Selection** - Three monthly subscription tiers ($169, $279, $449)
+  - Website Care - Essential maintenance
+  - Revenue Optimisation (Recommended) - Conversion & SEO
+  - Done-For-You Digital Team - Full-service management
+- **Projects Carousel** - Smooth horizontal slider showcasing 5 industry projects
+- **AI Chatbot Demo** - Interactive assistant that answers service-related questions
+  - Currently simulated, ready for API integration
+  - Intelligently restricts responses to package/pricing/onboarding topics
+- **Onboarding Flow** - Visual 5-step process from plan selection to launch
+- **Pricing Details** - Comprehensive breakdown of features per plan
+- **Professional Footer** - Quick links, legal pages, ABN display
+
+### Legal Pages
+- **Privacy Policy** - Complete professional content covering:
+  - Data collection and usage
+  - AI integrations and processing
+  - Hosting and security measures
+  - User rights under Australian law
+  - Cookie policies
+- **Terms & Conditions** - Comprehensive legal coverage including:
+  - Subscription billing and cancellation
+  - Intellectual property rights
+  - Liability limitations
+  - Service guarantees
+
+## Design System
+
+- **Theme**: White + Silver luxury aesthetic
+- **Typography**: Modern, bold, confident system fonts
+- **Colors**: 
+  - White backgrounds (#FFFFFF)
+  - Silver accents (#C0C0C0, #E8E8E8)
+  - Charcoal text (#2C2C2C)
+- **Spacing**: Generous whitespace for premium feel
+- **Effects**: Subtle shadows, smooth transitions, elegant hover states
+- **Responsive**: Mobile-first design
 
 ## Getting Started
 
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Google Workspace SMTP credentials (for form email delivery)
+
+### Installation
+
 ```bash
+# Install dependencies
 npm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local and add your SMTP credentials
+
+# Run development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Email Setup
+
+The contact form sends emails via Google Workspace SMTP:
+
+1. Generate a Google App Password for your Workspace account
+2. Add SMTP credentials to `.env.local` (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`)
+
+Emails are delivered to `sales@intelligentaisystem.com` with the user's email set as Reply-To.
+
+## Project Structure
+
+```
+├── app/
+│   ├── layout.tsx                    # Root layout
+│   ├── page.tsx                      # Homepage
+│   ├── globals.css                   # Global styles
+│   ├── privacy-policy/
+│   │   └── page.tsx                  # Privacy Policy page
+│   └── terms-and-conditions/
+│       └── page.tsx                  # Terms & Conditions page
+├── components/
+│   ├── Hero.tsx                      # Hero section with CTAs
+│   ├── PackageSection.tsx            # Monthly plan cards
+│   ├── ProjectsCarousel.tsx          # Project showcase slider
+│   ├── AIChatDemo.tsx                # Interactive AI chatbot
+│   ├── OnboardingSection.tsx         # 5-step onboarding visual
+│   ├── PricingDetails.tsx            # Detailed feature breakdown
+│   └── Footer.tsx                    # Footer with legal links
+├── tailwind.config.ts                # Tailwind configuration
+├── tsconfig.json                     # TypeScript configuration
+└── package.json                      # Dependencies
+```
 
 ## Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Forms**: React Hook Form + Zod
+- **Styling**: Tailwind CSS v3
 - **Icons**: Lucide React
-- **Notifications**: React Hot Toast
+- **UI Patterns**: Client/Server Component architecture
+
+## AI Chatbot Integration
+
+The AI chatbot component is structured for easy API integration:
+
+```typescript
+// Currently uses simulated responses via getSimulatedResponse()
+// To integrate with an API:
+// 1. Replace getSimulatedResponse() with API call
+// 2. Add your API endpoint and authentication
+// 3. The component already handles loading states and error handling
+```
+
+## Business Information
+
+- **Business Name**: Intelligent Systems
+- **Trading As**: Capital Intelligence Group  
+- **ABN**: 38 693 023 371
+- **Services**: Intelligent system integration for business operations
+
+## License
+
+All rights reserved © 2026 Capital Intelligence Group
