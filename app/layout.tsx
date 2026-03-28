@@ -4,11 +4,7 @@ import './globals.css'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 import { QuoteModalProvider } from '@/context/QuoteModalContext'
 import { GetStartedModalProvider } from '@/context/GetStartedModalContext'
-import GetStartedFormWrapper from '@/components/GetStartedFormWrapper'
-import BottomNav from '@/components/BottomNav'
-import QuoteModal from '@/components/QuoteModal'
-import FloatingButton from '@/components/FloatingButton'
-import Navbar from '@/components/Navbar'
+import MarketingChrome from '@/components/MarketingChrome'
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -89,12 +85,9 @@ export default function RootLayout({
         <CurrencyProvider>
           <QuoteModalProvider>
             <GetStartedModalProvider>
-              <Navbar />
-              {children}
-              <BottomNav />
-              <FloatingButton />
-              <QuoteModal />
-              <GetStartedFormWrapper />
+              <MarketingChrome>
+                {children}
+              </MarketingChrome>
             </GetStartedModalProvider>
           </QuoteModalProvider>
         </CurrencyProvider>
