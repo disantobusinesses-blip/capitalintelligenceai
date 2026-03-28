@@ -33,8 +33,8 @@ export default function CRMLogin() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0f', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}>
-      <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: '40px 36px', width: '100%', maxWidth: 360 }}>
+    <div style={{ minHeight: '100vh', background: '#0a0a0f', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", padding: '0 16px' }}>
+      <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: '36px 28px', width: '100%', maxWidth: 360 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}>
           <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, color: '#fff' }}>CI</div>
           <span style={{ fontWeight: 600, fontSize: 15, color: '#e2e8f0', letterSpacing: '-0.02em' }}>Capital Intelligence <span style={{ color: '#6366f1' }}>CRM</span></span>
