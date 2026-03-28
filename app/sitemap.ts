@@ -1,8 +1,10 @@
 import { MetadataRoute } from 'next'
-import { blogPosts } from '@/lib/blog'
+import { supabase } from '@/lib/supabase'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://intelligentaisystem.com'
+export const dynamic = 'force-dynamic'
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = 'https://www.intelligentaisystem.com'
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -67,12 +69,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Blog posts — automatically includes any future posts added to lib/blog.ts
-  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+  // Blog posts — fetched dynamically from Supabase
+  const { data: posts } = await supabase
+    .from('capitalintelligence_posts')
+    .select('slug, created_at')
+
+  const blogRoutes: MetadataRoute.Sitemap = (posts ?? []).map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.lastModified),
+    lastModified: new Date(post.created_at),
     changeFrequency: 'monthly',
-    priority: 0.7,
+    priority: 0.8,
   }))
 
   return [...staticRoutes, ...blogRoutes]

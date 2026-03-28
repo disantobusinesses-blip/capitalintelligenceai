@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
       switch (body.seoPlan) {
         case 'none': return 'No SEO plan (free blog only)'
         case 'google': return `Google Growth — $299/mo`
-        case 'super': return `Super Growth — $499/mo`
+        case 'super': return `Super Growth — $359/mo`
         case 'market': return `Market Authority — $799/mo`
         default: return body.seoPlan
       }
@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
 
     await transporter.sendMail({
       from: SMTP_FROM,
-      to: 'hello@intelligentaisystem.com',
+      to: 'sales@intelligentaisystem.com',
       replyTo: body.email.trim(),
       subject: `New quote request — ${body.businessName}`,
       html: htmlBody,

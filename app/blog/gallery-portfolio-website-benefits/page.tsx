@@ -73,13 +73,13 @@ export default function BlogPostGalleryPortfolio() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="min-h-[100dvh] pb-24">
+      <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24">
         {/* Back link */}
         <div className="pt-10 px-6">
           <div className="max-w-3xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-tech-platinum hover:text-tech-white smooth-transition text-sm"
+              className="inline-flex items-center gap-2 text-[#6B6560] hover:text-[#1A1A1A] smooth-transition text-sm"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
@@ -93,16 +93,16 @@ export default function BlogPostGalleryPortfolio() {
 
             {/* Header */}
             <header className="mb-12">
-              <span className="inline-block px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full text-xs font-semibold mb-4">
+              <span className="inline-block px-3 py-1 bg-[#F8F7F4] border border-[#E8E4DF] text-[#1A1A1A] rounded-full text-xs font-semibold mb-4">
                 {post.category}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-tech-white leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-6">
                 {post.title}
               </h1>
-              <p className="text-lg text-tech-platinum leading-relaxed mb-6">
+              <p className="text-lg text-[#6B6560] leading-relaxed mb-6">
                 {post.description}
               </p>
-              <div className="flex items-center gap-4 text-sm text-tech-platinum border-t border-tech-baby-blue/20 pt-6">
+              <div className="flex items-center gap-4 text-sm text-[#6B6560] border-t border-[#E8E4DF] pt-6">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-4 h-4" />
                   {new Date(post.publishedAt).toLocaleDateString('en-AU', {
@@ -120,7 +120,7 @@ export default function BlogPostGalleryPortfolio() {
             </header>
 
             {/* Body */}
-            <div className="space-y-8 text-tech-platinum leading-relaxed">
+            <div className="space-y-8 text-[#6B6560] leading-relaxed">
 
               <section>
                 <p className="text-lg leading-relaxed">
@@ -140,7 +140,7 @@ export default function BlogPostGalleryPortfolio() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   The Psychology of Visual Proof
                 </h2>
                 <p>
@@ -160,7 +160,7 @@ export default function BlogPostGalleryPortfolio() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   Who Benefits Most from a Gallery or Portfolio Section
                 </h2>
                 <p>
@@ -176,7 +176,7 @@ export default function BlogPostGalleryPortfolio() {
                     'Any service business with case studies, completed projects, or client work to showcase',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-tech-baby-blue rounded-full mt-2 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-2 flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -184,7 +184,7 @@ export default function BlogPostGalleryPortfolio() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   What Makes a Portfolio Section Actually Work
                 </h2>
                 <p>
@@ -205,7 +205,7 @@ export default function BlogPostGalleryPortfolio() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   Portfolio Sections Support SEO as Well as Conversion
                 </h2>
                 <p>
@@ -224,7 +224,7 @@ export default function BlogPostGalleryPortfolio() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   Building Trust Before the First Conversation
                 </h2>
                 <p>
@@ -244,8 +244,8 @@ export default function BlogPostGalleryPortfolio() {
               </section>
 
               {/* CTA */}
-              <section className="mt-14 bg-tech-gray border border-tech-baby-blue/30 rounded-2xl p-8">
-                <h2 className="text-2xl font-bold text-tech-white mb-4">
+              <section className="mt-14 bg-white border border-[#E8E4DF] rounded-[10px] p-8">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">
                   Showcase Your Work With a Professional Gallery
                 </h2>
                 <p className="mb-6">
@@ -256,13 +256,13 @@ export default function BlogPostGalleryPortfolio() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/"
-                    className="px-6 py-3 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-center smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-sm"
+                    className="px-6 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-center smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
                   >
                     Explore Our Services
                   </Link>
                   <Link
                     href="/features"
-                    className="px-6 py-3 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-center smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+                    className="px-6 py-3 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-center smooth-transition hover:bg-[#1A1A1A] hover:text-white"
                   >
                     View All Features
                   </Link>
@@ -270,13 +270,13 @@ export default function BlogPostGalleryPortfolio() {
               </section>
 
               {/* Internal links */}
-              <section className="mt-10 pt-8 border-t border-tech-baby-blue/20">
-                <h3 className="text-lg font-bold text-tech-white mb-4">Related Reading</h3>
+              <section className="mt-10 pt-8 border-t border-[#E8E4DF]">
+                <h3 className="text-lg font-bold text-[#1A1A1A] mb-4">Related Reading</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link
                       href="/blog/how-ai-can-boost-seo"
-                      className="text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition font-medium"
+                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
                     >
                       How AI Can Boost SEO and AI Search Engine Optimisation →
                     </Link>
@@ -284,7 +284,7 @@ export default function BlogPostGalleryPortfolio() {
                   <li>
                     <Link
                       href="/blog/how-ai-improves-local-seo-google-business-profile"
-                      className="text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition font-medium"
+                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
                     >
                       How AI Can Improve Local SEO and Google Business Profile Rankings →
                     </Link>
@@ -292,7 +292,7 @@ export default function BlogPostGalleryPortfolio() {
                   <li>
                     <Link
                       href="/blog/how-ai-can-boost-business-performance"
-                      className="text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition font-medium"
+                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
                     >
                       How AI Can Boost Business Performance, Save Time, and Increase Revenue →
                     </Link>

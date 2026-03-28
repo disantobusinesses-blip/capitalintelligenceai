@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
-import { GradientBackground } from '@/components/ui/gradient-background'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 import { QuoteModalProvider } from '@/context/QuoteModalContext'
+import { GetStartedModalProvider } from '@/context/GetStartedModalContext'
+import GetStartedFormWrapper from '@/components/GetStartedFormWrapper'
 import BottomNav from '@/components/BottomNav'
 import QuoteModal from '@/components/QuoteModal'
 import FloatingButton from '@/components/FloatingButton'
-import FloatingPhoneButton from '@/components/FloatingPhoneButton'
+import Navbar from '@/components/Navbar'
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -80,22 +81,21 @@ export default function RootLayout({
           gtag('config', 'AW-17950129824');
         `}
       </Script>
-      <body>
+      <body className="bg-[#F8F7F4]">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
         <CurrencyProvider>
           <QuoteModalProvider>
-            <GradientBackground
-              className="fixed inset-0 min-h-0 w-screen h-screen -z-10"
-              animationDuration={10}
-            />
-            {children}
-            <BottomNav />
-            <FloatingButton />
-            <FloatingPhoneButton />
-            <QuoteModal />
+            <GetStartedModalProvider>
+              <Navbar />
+              {children}
+              <BottomNav />
+              <FloatingButton />
+              <QuoteModal />
+              <GetStartedFormWrapper />
+            </GetStartedModalProvider>
           </QuoteModalProvider>
         </CurrencyProvider>
       </body>

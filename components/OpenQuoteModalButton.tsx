@@ -1,12 +1,12 @@
 'use client'
 
-import { useQuoteModal } from '@/context/QuoteModalContext'
+import { useGetStartedModal } from '@/context/GetStartedModalContext'
 
 export default function OpenQuoteModalButton({ className, children }: { className?: string; children?: React.ReactNode }) {
-  const { openModal } = useQuoteModal()
+  const { openModal } = useGetStartedModal()
   return (
     <button
-      onClick={openModal}
+      onClick={() => openModal()}
       className={className}
     >
       {children ?? 'Get Started'}

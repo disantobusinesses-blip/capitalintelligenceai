@@ -89,13 +89,13 @@ export default async function DynamicBlogPost({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="min-h-[100dvh] pb-24">
+      <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24">
         {/* Back link */}
         <div className="pt-10 px-6">
           <div className="max-w-3xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-tech-platinum hover:text-tech-white smooth-transition text-sm"
+              className="inline-flex items-center gap-2 text-[#6B6560] hover:text-[#1A1A1A] smooth-transition text-sm"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
@@ -109,16 +109,16 @@ export default async function DynamicBlogPost({ params }: Props) {
 
             {/* Header */}
             <header className="mb-12">
-              <span className="inline-block px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full text-xs font-semibold mb-4">
+              <span className="inline-block px-3 py-1 bg-[#F8F7F4] border border-[#E8E4DF] text-[#1A1A1A] rounded-full text-xs font-semibold mb-4">
                 {post.category}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-tech-white leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-6">
                 {post.title}
               </h1>
-              <p className="text-lg text-tech-platinum leading-relaxed mb-6">
+              <p className="text-lg text-[#6B6560] leading-relaxed mb-6">
                 {post.description}
               </p>
-              <div className="flex items-center gap-4 text-sm text-tech-platinum border-t border-tech-baby-blue/20 pt-6">
+              <div className="flex items-center gap-4 text-sm text-[#6B6560] border-t border-[#E8E4DF] pt-6">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-4 h-4" />
                   {new Date(post.published_at).toLocaleDateString('en-AU', {
@@ -137,7 +137,7 @@ export default async function DynamicBlogPost({ params }: Props) {
 
             {/* Body — HTML content from Supabase */}
             <div
-              className="prose-custom space-y-8 text-tech-platinum leading-relaxed"
+              className="prose-custom space-y-8 text-[#6B6560] leading-relaxed"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>

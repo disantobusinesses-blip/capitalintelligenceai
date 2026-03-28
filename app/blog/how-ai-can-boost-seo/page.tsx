@@ -73,13 +73,13 @@ export default function BlogPostAISEO() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="min-h-[100dvh] pb-24">
+      <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24">
         {/* Back link */}
         <div className="pt-10 px-6">
           <div className="max-w-3xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-tech-platinum hover:text-tech-white smooth-transition text-sm"
+              className="inline-flex items-center gap-2 text-[#6B6560] hover:text-[#1A1A1A] smooth-transition text-sm"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
@@ -93,16 +93,16 @@ export default function BlogPostAISEO() {
 
             {/* Header */}
             <header className="mb-12">
-              <span className="inline-block px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full text-xs font-semibold mb-4">
+              <span className="inline-block px-3 py-1 bg-[#F8F7F4] border border-[#E8E4DF] text-[#1A1A1A] rounded-full text-xs font-semibold mb-4">
                 {post.category}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-tech-white leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-6">
                 {post.title}
               </h1>
-              <p className="text-lg text-tech-platinum leading-relaxed mb-6">
+              <p className="text-lg text-[#6B6560] leading-relaxed mb-6">
                 {post.description}
               </p>
-              <div className="flex items-center gap-4 text-sm text-tech-platinum border-t border-tech-baby-blue/20 pt-6">
+              <div className="flex items-center gap-4 text-sm text-[#6B6560] border-t border-[#E8E4DF] pt-6">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-4 h-4" />
                   {new Date(post.publishedAt).toLocaleDateString('en-AU', {
@@ -120,7 +120,7 @@ export default function BlogPostAISEO() {
             </header>
 
             {/* Body */}
-            <div className="prose-custom space-y-8 text-tech-platinum leading-relaxed">
+            <div className="prose-custom space-y-8 text-[#6B6560] leading-relaxed">
 
               {/* Introduction */}
               <section>
@@ -129,7 +129,7 @@ export default function BlogPostAISEO() {
                   what people search for and making your content the best possible
                   answer. AI has not replaced that goal; it has accelerated every
                   step of the process, while simultaneously introducing an entirely
-                  new category of search: <strong className="text-tech-white">AI-powered answer engines</strong> like
+                  new category of search: <strong className="text-[#1A1A1A]">AI-powered answer engines</strong> like
                   ChatGPT, Perplexity, and Google&apos;s AI Overviews.
                 </p>
                 <p className="mt-4">
@@ -143,7 +143,7 @@ export default function BlogPostAISEO() {
 
               {/* Section 1 */}
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   1. Keyword Clustering and Intent Mapping at Scale
                 </h2>
                 <p>
@@ -170,7 +170,7 @@ export default function BlogPostAISEO() {
 
               {/* Section 2 */}
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   2. Content Planning That Builds Topical Authority
                 </h2>
                 <p>
@@ -196,7 +196,7 @@ export default function BlogPostAISEO() {
 
               {/* Section 3 */}
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   3. Internal Linking Optimisation
                 </h2>
                 <p>
@@ -222,7 +222,7 @@ export default function BlogPostAISEO() {
 
               {/* Section 4 */}
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   4. On-Page SEO Optimisation
                 </h2>
                 <p>
@@ -248,7 +248,7 @@ export default function BlogPostAISEO() {
 
               {/* Section 5 */}
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   5. Technical SEO Workflows
                 </h2>
                 <p>
@@ -273,7 +273,7 @@ export default function BlogPostAISEO() {
 
               {/* Section 6 */}
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   6. Schema and Structured Data Recommendations
                 </h2>
                 <p>
@@ -297,7 +297,7 @@ export default function BlogPostAISEO() {
 
               {/* Section 7 */}
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   7. Content Gap Analysis
                 </h2>
                 <p>
@@ -317,7 +317,7 @@ export default function BlogPostAISEO() {
 
               {/* Section 8 */}
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   8. Optimising for AI Search Engines and Answer Platforms
                 </h2>
                 <p>
@@ -340,7 +340,7 @@ export default function BlogPostAISEO() {
                     'Authoritative: having a clear author, organisation, and publication date signals that your content can be trusted',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-tech-baby-blue rounded-full mt-2 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-2 flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -354,7 +354,7 @@ export default function BlogPostAISEO() {
 
               {/* Section 9 */}
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   9. Scaling Content Production Without Lowering Quality
                 </h2>
                 <p>
@@ -381,7 +381,7 @@ export default function BlogPostAISEO() {
 
               {/* Section 10 */}
               <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
                   10. Why Structured, Expert, Crawlable Content Wins
                 </h2>
                 <p>
@@ -407,8 +407,8 @@ export default function BlogPostAISEO() {
               </section>
 
               {/* CTA Section */}
-              <section className="mt-14 bg-tech-gray border border-tech-baby-blue/30 rounded-2xl p-8">
-                <h2 className="text-2xl font-bold text-tech-white mb-4">
+              <section className="mt-14 bg-white border border-[#E8E4DF] rounded-[10px] p-8">
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">
                   Want AI-Powered SEO Working for Your Business?
                 </h2>
                 <p className="mb-6">
@@ -421,13 +421,13 @@ export default function BlogPostAISEO() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/"
-                    className="px-6 py-3 bg-tech-baby-blue text-tech-black rounded-lg font-semibold text-center smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-sm"
+                    className="px-6 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-center smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
                   >
                     Explore Our Services
                   </Link>
                   <Link
                     href="/pricing"
-                    className="px-6 py-3 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-center smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
+                    className="px-6 py-3 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-center smooth-transition hover:bg-[#1A1A1A] hover:text-white"
                   >
                     View Pricing
                   </Link>
@@ -435,15 +435,15 @@ export default function BlogPostAISEO() {
               </section>
 
               {/* Internal links */}
-              <section className="mt-10 pt-8 border-t border-tech-baby-blue/20">
-                <h3 className="text-lg font-bold text-tech-white mb-4">
+              <section className="mt-10 pt-8 border-t border-[#E8E4DF]">
+                <h3 className="text-lg font-bold text-[#1A1A1A] mb-4">
                   Related Reading
                 </h3>
                 <ul className="space-y-3">
                   <li>
                     <Link
                       href="/blog/how-ai-can-boost-business-performance"
-                      className="text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition font-medium"
+                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
                     >
                       How AI Can Boost Business Performance, Save Time, and Increase Revenue →
                     </Link>
@@ -451,7 +451,7 @@ export default function BlogPostAISEO() {
                   <li>
                     <Link
                       href="/features"
-                      className="text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition font-medium"
+                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
                     >
                       Website Features & AI Add-Ons →
                     </Link>
@@ -459,7 +459,7 @@ export default function BlogPostAISEO() {
                   <li>
                     <Link
                       href="/pricing"
-                      className="text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition font-medium"
+                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
                     >
                       SEO & AI Visibility Plans →
                     </Link>

@@ -17,14 +17,14 @@ export default async function BlogIndexPage() {
   const categories = ['All', ...Array.from(categorySet)]
 
   return (
-    <div className="min-h-[100dvh] pb-24">
+    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24">
       {/* Hero */}
       <section className="py-16 px-6 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-tech-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4">
             Insights & Ideas
           </h1>
-          <p className="text-lg text-tech-platinum max-w-2xl mx-auto">
+          <p className="text-lg text-[#6B6560] max-w-2xl mx-auto">
             Practical guides on AI, SEO, and website growth for businesses ready to scale.
           </p>
         </div>

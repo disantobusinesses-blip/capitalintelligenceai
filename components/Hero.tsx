@@ -1,216 +1,238 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { ArrowRight, Send, CheckCircle, Clock } from 'lucide-react'
-import SplitText from '@/components/ui/split-text'
+import { useState } from 'react'
+import { CheckCircle, Send, Hammer } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useGetStartedModal } from '@/context/GetStartedModalContext'
 
-// Countdown target: March 25, 2026
-const DEAL_DEADLINE = new Date('2026-03-25T23:59:59')
+// Time slots 9:00 AM – 5:00 PM in 15-minute increments
+function generateTimeSlots(): string[] {
+  const slots: string[] = []
+  for (let hour = 9; hour <= 17; hour++) {
+    for (let min = 0; min < 60; min += 15) {
+      if (hour === 17 && min > 0) break
+      const h = hour % 12 === 0 ? 12 : hour % 12
+      const m = min.toString().padStart(2, '0')
+      const period = hour < 12 ? 'AM' : 'PM'
+      slots.push(`${h}:${m} ${period}`)
+    }
+  }
+  return slots
+}
+
+const TIME_SLOTS = generateTimeSlots()
+
 const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 
-function useCountdown(target: Date) {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-
-  useEffect(() => {
-    const calc = () => {
-      const diff = target.getTime() - Date.now()
-      if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-        return
-      }
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / (1000 * 60)) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
-      })
-    }
-    calc()
-    const id = setInterval(calc, 1000)
-    return () => clearInterval(id)
-  }, [target])
-
-  return timeLeft
-}
-
-function CountdownUnit({ value, label }: { value: number; label: string }) {
-  return (
-    <div className="flex flex-col items-center">
-      <span className="text-2xl md:text-3xl font-bold text-tech-white tabular-nums leading-none">
-        {String(value).padStart(2, '0')}
-      </span>
-      <span className="text-[10px] uppercase tracking-widest text-tech-platinum mt-1">{label}</span>
-    </div>
-  )
-}
+const trustBadges = [
+  'First SEO Blog Free',
+  'No Lock-In Contracts',
+  'Split Payments Available',
+  '90-Day Ranking Guarantee',
+]
 
 export default function Hero() {
-  const [quoteEmail, setQuoteEmail] = useState('')
-  const [quoteDescription, setQuoteDescription] = useState('')
-  const [quoteStatus, setQuoteStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
-  const [quoteError, setQuoteError] = useState('')
-  const countdown = useCountdown(DEAL_DEADLINE)
+  const { openModal } = useGetStartedModal()
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [time, setTime] = useState('')
+  const [consultStatus, setConsultStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [consultError, setConsultError] = useState('')
 
-  const handleQuoteSubmit = async (e: React.FormEvent) => {
+  const handleConsultSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!quoteEmail.trim() || !quoteDescription.trim()) return
+    if (!name.trim() || !phone.trim() || !time) return
 
-    setQuoteStatus('submitting')
-    setQuoteError('')
+    setConsultStatus('submitting')
+    setConsultError('')
 
     try {
-      const response = await fetch('/api/lead', {
+      const response = await fetch('/api/consultation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          service: null,
-          businessName: 'Quick Quote Request',
-          industry: '',
-          description: quoteDescription,
-          designStyle: '',
-          colorPreference: '',
-          features: [],
-          monthlyPlan: '',
-          aiAutomationRequest: '',
-          contactName: 'Quick Quote',
-          contactEmail: quoteEmail,
-          contactPhone: '',
-          hasLogo: false,
-          additionalNotes: quoteDescription,
-        }),
+        body: JSON.stringify({ name, phone, time }),
       })
       const result = await response.json()
       if (response.ok && result.ok) {
-        setQuoteStatus('success')
-        setQuoteEmail('')
-        setQuoteDescription('')
+        setConsultStatus('success')
+        setName('')
+        setPhone('')
+        setTime('')
       } else {
-        setQuoteStatus('error')
-        setQuoteError(result.message || 'Something went wrong. Please try again.')
+        setConsultStatus('error')
+        setConsultError(result.message || 'Something went wrong. Please try again.')
       }
     } catch {
-      setQuoteStatus('error')
-      setQuoteError('Something went wrong. Please try again.')
+      setConsultStatus('error')
+      setConsultError('Something went wrong. Please try again.')
     }
   }
 
   return (
-    <section className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden py-20">
-      <div className="relative max-w-2xl mx-auto text-center space-y-6 px-6">
+    <section
+      id="quote"
+      className="bg-[#F8F7F4] pt-[100px] pb-[80px] px-6 mt-[68px]"
+    >
+      <div className="max-w-[1200px] mx-auto">
+        <div className="grid md:grid-cols-[60%_40%] gap-12 items-start">
+          {/* LEFT COLUMN */}
+          <div className="space-y-6">
+            {/* Label */}
+            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase">
+              Melbourne&apos;s AI-Powered Web Agency
+            </p>
 
-        {/* IS Logo — floating, no box */}
-        <div className="flex justify-center mb-2 animate-fade-in-down">
-          <Image
-            src="/images/is-logo.jpg"
-            alt="Capital Intelligence Group logo"
-            width={72}
-            height={72}
-            className="rounded-full object-cover drop-shadow-lg smooth-transition hover:scale-105"
-          />
-        </div>
+            {/* Headline */}
+            <h1 className="text-[36px] md:text-[52px] leading-[1.15] font-extrabold text-[#1A1A1A]">
+              {HERO_HEADLINE}
+            </h1>
 
-        {/* Main Headline with SplitText animation */}
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-tech-white leading-tight">
-          <SplitText
-            text={HERO_HEADLINE}
-            delay={25}
-            textAlign="center"
-            animationFrom={{ opacity: 0, transform: 'translate3d(0,30px,0)' }}
-            animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
-            rootMargin="-20px"
-          />
-        </h1>
+            {/* Subheadline */}
+            <p className="text-[18px] text-[#6B6560] mt-4 max-w-[520px]">
+              We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini, using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.
+            </p>
 
-        {/* Sub copy */}
-        <p className="text-base md:text-lg text-tech-platinum leading-relaxed text-balance animate-fade-in-up animation-delay-600">
-          We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini — using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.
-        </p>
-
-        {/* Countdown Banner */}
-        <div className="animate-fade-in-up animation-delay-600">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-tech-black/70 backdrop-blur-sm border border-amber-500/40 rounded-2xl px-6 py-4">
-            <div className="flex items-center gap-2 text-amber-400">
-              <Clock className="w-4 h-4 flex-shrink-0" />
-              <span className="text-sm font-semibold whitespace-nowrap">15% off website builds — ends March 25</span>
+            {/* CTA Buttons */}
+            <div className="flex flex-col gap-3 pt-2">
+              {/* Primary CTA */}
+              <div className="relative inline-flex self-start w-full sm:w-auto pb-4">
+                <button
+                  onClick={() => openModal()}
+                  className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
+                >
+                  <Hammer className="w-5 h-5" />
+                  Build Me a Website
+                </button>
+                {/* Animated hand-drawn loop */}
+                <motion.svg
+                  className="absolute -bottom-1 left-0 w-full overflow-visible pointer-events-none"
+                  viewBox="0 0 300 18"
+                  height="18"
+                  preserveAspectRatio="none"
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <motion.path
+                    d="M 6 10 Q 75 2, 150 10 Q 225 18, 294 10"
+                    fill="none"
+                    stroke="#5C3D2E"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    variants={{
+                      hidden: { pathLength: 0, opacity: 0 },
+                      visible: {
+                        pathLength: 1,
+                        opacity: 1,
+                        transition: {
+                          pathLength: { duration: 2, ease: [0.43, 0.13, 0.23, 0.96], repeat: Infinity, repeatDelay: 4 },
+                          opacity: { duration: 0.4 },
+                        },
+                      },
+                    }}
+                  />
+                </motion.svg>
+              </div>
+              {/* Secondary CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#consultation"
+                  className="bg-[#1A1A1A] text-white font-semibold px-6 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 inline-block text-center"
+                >
+                  Get a Free Quote
+                </a>
+                <a
+                  href="#our-work"
+                  className="border-2 border-[#1A1A1A] text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 inline-block text-center"
+                >
+                  View Our Work
+                </a>
+              </div>
             </div>
-            <div className="flex items-center gap-3 border-t sm:border-t-0 sm:border-l border-amber-500/30 pt-3 sm:pt-0 sm:pl-4">
-              <CountdownUnit value={countdown.days} label="days" />
-              <span className="text-amber-400 font-bold text-lg">:</span>
-              <CountdownUnit value={countdown.hours} label="hrs" />
-              <span className="text-amber-400 font-bold text-lg">:</span>
-              <CountdownUnit value={countdown.minutes} label="min" />
-              <span className="text-amber-400 font-bold text-lg">:</span>
-              <CountdownUnit value={countdown.seconds} label="sec" />
+
+            {/* Urgency text */}
+            <p className="text-sm text-[#6B6560] text-left md:text-center -mt-1">
+              Limited spots available this month — we only take on a handful of new clients at a time.
+            </p>
+
+            {/* Trust Badges */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              {trustBadges.map((badge) => (
+                <div key={badge} className="flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-[13px] text-[#6B6560]">{badge}</span>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Quote Form */}
-        <div className="animate-fade-in-up animation-delay-700">
-          {quoteStatus === 'success' ? (
-            <div className="flex flex-col items-center gap-2 py-6">
-              <CheckCircle className="w-8 h-8 text-tech-baby-blue" />
-              <p className="text-tech-white font-semibold text-lg">Quote request received!</p>
-              <p className="text-tech-platinum text-sm">We&apos;ll be in touch shortly.</p>
-            </div>
-          ) : (
-            <form
-              onSubmit={handleQuoteSubmit}
-              className="bg-tech-black/60 backdrop-blur-sm border border-tech-baby-blue/25 rounded-2xl p-5 text-left space-y-3"
-            >
-              <div>
-                <p className="text-tech-white font-bold text-base">Get a Free Quote</p>
-                <p className="text-tech-platinum text-xs mt-0.5">Tell us about your business — we respond fast.</p>
+          {/* RIGHT COLUMN: Free Consultation Booking */}
+          <div
+            id="consultation"
+            className="bg-white rounded-[12px] p-8 scroll-mt-24"
+            style={{ border: '1px solid #E8E4DF', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}
+          >
+            {consultStatus === 'success' ? (
+              <div className="flex flex-col items-center gap-3 py-8">
+                <CheckCircle className="w-10 h-10 text-green-500" />
+                <p className="text-[#1A1A1A] font-bold text-xl text-center">You&apos;re booked in!</p>
+                <p className="text-[#6B6560] text-sm text-center">We&apos;ll call you at your preferred time. Talk soon!</p>
               </div>
-              <textarea
-                value={quoteDescription}
-                onChange={(e) => setQuoteDescription(e.target.value)}
-                placeholder="Describe your business and what you need..."
-                rows={3}
-                required
-                className="w-full px-4 py-2.5 bg-tech-black/80 border border-tech-baby-blue/25 rounded-xl text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition resize-none text-sm"
-              />
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  value={quoteEmail}
-                  onChange={(e) => setQuoteEmail(e.target.value)}
-                  placeholder="Your email address"
+            ) : (
+              <form onSubmit={handleConsultSubmit} className="space-y-4">
+                <div>
+                  <p className="text-[#1A1A1A] font-bold text-lg mb-1">Book a Free Consultation</p>
+                  <p className="text-[#6B6560] text-sm">Free 15-minute phone call · No commitment</p>
+                </div>
+
+                {/* Time picker */}
+                <select
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
                   required
-                  className="flex-1 px-4 py-2.5 bg-tech-black/80 border border-tech-baby-blue/25 rounded-xl text-tech-white placeholder-tech-platinum/50 focus:outline-none focus:border-tech-baby-blue smooth-transition text-sm"
+                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+                >
+                  <option value="">Select preferred call time (9 AM – 5 PM)</option>
+                  {TIME_SLOTS.map((slot) => (
+                    <option key={slot} value={slot}>{slot}</option>
+                  ))}
+                </select>
+
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your Name"
+                  required
+                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
                 />
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="Phone Number"
+                  required
+                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+                />
+
                 <button
                   type="submit"
-                  disabled={quoteStatus === 'submitting'}
-                  className="px-5 py-2.5 bg-tech-baby-blue text-tech-black rounded-xl font-bold text-sm inline-flex items-center gap-2 smooth-transition hover:bg-tech-baby-blue-light disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={consultStatus === 'submitting'}
+                  className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
                 >
-                  {quoteStatus === 'submitting' ? 'Sending…' : (
-                    <>Send <Send className="w-4 h-4" /></>
+                  {consultStatus === 'submitting' ? 'Booking…' : (
+                    <>Book My Free Consultation <Send className="w-4 h-4" /></>
                   )}
                 </button>
-              </div>
-              {quoteStatus === 'error' && (
-                <p className="text-red-400 text-xs">{quoteError}</p>
-              )}
-            </form>
-          )}
-        </div>
 
-        {/* CTA */}
-        <div className="pt-1 animate-fade-in-up animation-delay-800">
-          <button
-            onClick={() => {
-              const element = document.getElementById('services')
-              element?.scrollIntoView({ behavior: 'smooth' })
-            }}
-            className="group px-8 py-3.5 bg-tech-baby-blue text-tech-black rounded-full font-bold text-base inline-flex items-center gap-2 shadow-glow smooth-transition hover:bg-tech-baby-blue-light hover:scale-105 hover:shadow-glow-lg"
-          >
-            See Our Services
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+                {consultStatus === 'error' && (
+                  <p className="text-red-500 text-xs">{consultError}</p>
+                )}
+              </form>
+            )}
+          </div>
         </div>
-
       </div>
     </section>
   )

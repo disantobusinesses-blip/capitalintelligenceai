@@ -1,11 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { PenLine, Plus } from 'lucide-react'
-import { useQuoteModal } from '@/context/QuoteModalContext'
+import { Hammer } from 'lucide-react'
+import { useGetStartedModal } from '@/context/GetStartedModalContext'
 
 export default function FloatingButton() {
-  const { openModal } = useQuoteModal()
+  const { openModal } = useGetStartedModal()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -15,20 +15,21 @@ export default function FloatingButton() {
 
   return (
     <button
-      onClick={openModal}
+      onClick={() => openModal()}
       aria-label="Build me a website"
-      className={`fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-tech-baby-blue text-tech-black font-semibold rounded-full shadow-glow smooth-transition hover:bg-tech-baby-blue-light hover:shadow-glow-lg active:scale-95 ${
+      className={`fixed bottom-24 right-6 z-40 flex items-center gap-2 bg-[#1A1A1A] text-white font-semibold rounded-full shadow-lg active:scale-95 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
       style={{ transition: 'opacity 0.5s ease, transform 0.5s ease, background-color 0.2s ease' }}
     >
-      {/* Mobile: icon only */}
-      <span className="flex items-center justify-center w-14 h-14 md:hidden">
-        <Plus className="w-6 h-6" />
+      {/* Mobile: pill with hammer + label */}
+      <span className="flex items-center gap-2 px-4 py-3 md:hidden text-sm">
+        <Hammer className="w-4 h-4" />
+        Build My Website
       </span>
       {/* Desktop: full label */}
       <span className="hidden md:flex items-center gap-2 px-5 py-3.5 text-sm">
-        <PenLine className="w-4 h-4" />
+        <Hammer className="w-4 h-4" />
         Build me a website →
       </span>
     </button>
