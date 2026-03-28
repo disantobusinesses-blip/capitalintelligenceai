@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false }, { status: 401 })
   }
   const response = NextResponse.json({ ok: true })
-  response.cookies.set('crm_auth', 'true', {
+  response.cookies.set('crm_auth', CRM_PASSWORD, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
