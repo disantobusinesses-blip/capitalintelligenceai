@@ -6,7 +6,7 @@ const post = {
   slug: 'how-ai-can-boost-seo',
   title: 'How AI Can Boost SEO and AI Search Engine Optimisation for Modern Businesses',
   description:
-    'Learn how AI transforms traditional SEO — from keyword clustering and content planning to technical audits and AI search visibility. A practical guide for Australian businesses ready to scale their organic presence.',
+    'Learn how AI transforms traditional SEO, covering keyword clustering and content planning through to technical audits and AI search visibility. A practical guide for Australian businesses ready to scale their organic presence.',
   publishedAt: '2026-03-07',
   lastModified: '2026-03-07',
   readingTime: '9 min read',
@@ -127,7 +127,7 @@ export default function BlogPostAISEO() {
                 <p className="text-lg leading-relaxed">
                   Search engine optimisation has always been about understanding
                   what people search for and making your content the best possible
-                  answer. AI has not replaced that goal — it has accelerated every
+                  answer. AI has not replaced that goal; it has accelerated every
                   step of the process, while simultaneously introducing an entirely
                   new category of search: <strong className="text-tech-white">AI-powered answer engines</strong> like
                   ChatGPT, Perplexity, and Google&apos;s AI Overviews.
@@ -135,7 +135,7 @@ export default function BlogPostAISEO() {
                 <p className="mt-4">
                   For Australian businesses competing online, the question is no
                   longer whether AI belongs in your SEO strategy. It already does.
-                  The question is how well you are using it — and whether your
+                  The question is how well you are using it, and whether your
                   content is structured to rank in both traditional search and the
                   new generation of AI-driven discovery.
                 </p>
@@ -149,7 +149,7 @@ export default function BlogPostAISEO() {
                 <p>
                   Traditional keyword research produced long lists that were
                   difficult to prioritise and easy to misinterpret. AI tools can
-                  now cluster thousands of keywords by search intent — grouping
+                  now cluster thousands of keywords by search intent, grouping
                   informational, navigational, commercial, and transactional
                   queries so you can map each cluster to the right type of page.
                 </p>
@@ -177,7 +177,7 @@ export default function BlogPostAISEO() {
                   Google rewards websites that demonstrate deep, consistent
                   expertise on a topic. This is called topical authority, and it
                   is increasingly measured by how comprehensively a site covers
-                  its subject area — not just how many backlinks it has.
+                  its subject area, not just how many backlinks it has.
                 </p>
                 <p className="mt-4">
                   AI tools can audit your existing content against competitor
@@ -208,7 +208,7 @@ export default function BlogPostAISEO() {
                 </p>
                 <p className="mt-4">
                   AI can analyse your entire site architecture and recommend
-                  specific internal links — identifying pages that are under-linked
+                  specific internal links, identifying pages that are under-linked
                   (orphaned), pages that should pass their authority to key
                   conversion pages, and anchor text variations that support your
                   target keyword strategy without appearing unnatural.
@@ -226,8 +226,8 @@ export default function BlogPostAISEO() {
                   4. On-Page SEO Optimisation
                 </h2>
                 <p>
-                  Getting the fundamentals right — title tags, meta descriptions,
-                  header hierarchy, image alt text, word count — still matters
+                  Getting the fundamentals right, including title tags, meta descriptions,
+                  header hierarchy, image alt text, and word count, still matters
                   enormously. AI tools can audit every page on your site against
                   current best practices and generate prioritised fix lists in
                   minutes.
@@ -236,7 +236,7 @@ export default function BlogPostAISEO() {
                   Beyond the basics, AI can analyse the top-ranking pages for
                   your target keywords and identify patterns in how they structure
                   their content. This includes the questions they answer, the
-                  related topics they cover, and the depth they go to — all
+                  related topics they cover, and the depth they go to. These are all
                   signals you can use to improve your own pages.
                 </p>
                 <p className="mt-4">
@@ -260,8 +260,8 @@ export default function BlogPostAISEO() {
                 <p className="mt-4">
                   AI-assisted technical SEO tools can scan your site, detect
                   issues like broken redirects, duplicate content, slow-loading
-                  resources, missing canonical tags, and hreflang errors —
-                  then explain each issue in plain language and suggest the
+                  resources, missing canonical tags, and hreflang errors,
+                  then explains each issue in plain language and suggests the
                   correct fix.
                 </p>
                 <p className="mt-4">
@@ -277,7 +277,7 @@ export default function BlogPostAISEO() {
                   6. Schema and Structured Data Recommendations
                 </h2>
                 <p>
-                  Structured data — also called schema markup — tells search
+                  Structured data (also called schema markup) tells search
                   engines exactly what your content is about. It is how you
                   qualify for rich results like FAQs, review stars, how-to panels,
                   and product information in Google Search.
@@ -290,7 +290,7 @@ export default function BlogPostAISEO() {
                 <p className="mt-4">
                   AI tools can analyse your content and suggest the most
                   appropriate schema types, generate the JSON-LD markup, and
-                  validate it against Google&apos;s guidelines — dramatically reducing
+                  validate it against Google&apos;s guidelines, dramatically reducing
                   the implementation effort.
                 </p>
               </section>
@@ -303,7 +303,7 @@ export default function BlogPostAISEO() {
                 <p>
                   Your competitors are already ranking for keywords you are not
                   targeting. Content gap analysis identifies exactly which
-                  topics and queries they are capturing that you are missing —
+                  topics and queries they are capturing that you are missing,
                   giving you a precise roadmap for content that can win traffic
                   quickly.
                 </p>
@@ -321,8 +321,8 @@ export default function BlogPostAISEO() {
                   8. Optimising for AI Search Engines and Answer Platforms
                 </h2>
                 <p>
-                  AI search engines — including Perplexity, Google AI Overviews,
-                  ChatGPT Search, and Bing Copilot — do not work the same way as
+                  AI search engines, including Perplexity, Google AI Overviews,
+                  ChatGPT Search, and Bing Copilot, do not work the same way as
                   traditional search. They synthesise answers from multiple
                   sources and surface citations. Being cited in these answers
                   can drive qualified traffic and build brand visibility in a
@@ -333,11 +333,11 @@ export default function BlogPostAISEO() {
                 </p>
                 <ul className="list-none mt-4 space-y-3">
                   {[
-                    'Factually accurate and well-sourced — AI answer engines deprioritise thin or speculative content',
+                    'Factually accurate and well-sourced: AI answer engines deprioritise thin or speculative content',
                     'Clearly structured with logical headings, so AI systems can extract specific answers easily',
-                    'Comprehensive on its topic — AI engines prefer pages that answer a question fully rather than partially',
-                    'Technically crawlable — proper indexation, fast load times, and valid structured data all help AI systems understand and cite your content',
-                    'Authoritative — having a clear author, organisation, and publication date signals that your content can be trusted',
+                    'Comprehensive on its topic: AI engines prefer pages that answer a question fully rather than partially',
+                    'Technically crawlable: proper indexation, fast load times, and valid structured data all help AI systems understand and cite your content',
+                    'Authoritative: having a clear author, organisation, and publication date signals that your content can be trusted',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 bg-tech-baby-blue rounded-full mt-2 flex-shrink-0" />
@@ -365,7 +365,7 @@ export default function BlogPostAISEO() {
                 </p>
                 <p className="mt-4">
                   AI assists with content production in ways that accelerate
-                  output without sacrificing quality — generating research-backed
+                  output without sacrificing quality, generating research-backed
                   outlines, drafting initial versions for human refinement,
                   repurposing long-form content into social posts and emails, and
                   ensuring consistent brand voice across all output.
@@ -373,7 +373,7 @@ export default function BlogPostAISEO() {
                 <p className="mt-4">
                   The key is treating AI as a skilled assistant rather than a
                   replacement for expertise. Human review, factual accuracy,
-                  and original insights remain essential — but AI removes the
+                  and original insights remain essential, but AI removes the
                   blank-page problem and compresses the time between ideation
                   and publication.
                 </p>
@@ -385,8 +385,8 @@ export default function BlogPostAISEO() {
                   10. Why Structured, Expert, Crawlable Content Wins
                 </h2>
                 <p>
-                  Google&apos;s E-E-A-T framework — Experience, Expertise,
-                  Authoritativeness, and Trustworthiness — has never been more
+                  Google&apos;s E-E-A-T framework (Experience, Expertise,
+                  Authoritativeness, and Trustworthiness) has never been more
                   central to how content is evaluated. Pages that demonstrate
                   genuine expertise, are clearly attributed, cite credible
                   sources, and are technically accessible consistently outperform
@@ -395,7 +395,7 @@ export default function BlogPostAISEO() {
                 <p className="mt-4">
                   This matters as much for AI search as it does for traditional
                   search. Both systems are designed to surface the most
-                  trustworthy, useful content — and the signals they use to
+                  trustworthy, useful content, and the signals they use to
                   assess trust overlap significantly.
                 </p>
                 <p className="mt-4">

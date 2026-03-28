@@ -28,7 +28,7 @@ const values = [
   {
     icon: Target,
     title: 'Results-Driven',
-    description: 'Our focus is on measurable outcomes — faster load times, higher conversions, and streamlined operations.',
+    description: 'Our focus is on measurable outcomes: faster load times, higher conversions, and streamlined operations.',
   },
   {
     icon: Shield,
@@ -71,7 +71,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   Based in Australia, we work with startups, small businesses, and established companies across 
-                  diverse industries — from electrical services to healthcare, finance, and retail.
+                  diverse industries, from electrical services to healthcare, finance, and retail.
                 </p>
                 <p>
                   Our mission is simple: deliver intelligent, scalable systems that make businesses run better.

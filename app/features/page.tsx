@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Check, MessageCircle, CalendarCheck, Mail, FileText, MapPin, Share2, Newspaper, Image, Star, TrendingUp } from 'lucide-react'
+import { Check, MessageCircle, CalendarCheck, Mail, FileText, MapPin, Share2, Newspaper, Image, Star, TrendingUp, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -20,11 +20,12 @@ const features = [
     icon: MessageCircle,
     price: '$399/month',
     category: 'AI-Powered',
+    blogLink: '/blog/ai-chatbots-automation-more-leads',
     description: 'An intelligent chatbot that handles customer enquiries around the clock, providing instant responses and routing complex issues to your team.',
     valuePoints: [
       'Increases customer support efficiency by handling up to 80% of common queries automatically',
       'Reduces response time from hours to seconds, improving customer satisfaction',
-      'Available 24/7 including weekends and holidays — never miss a lead',
+      'Available 24/7 including weekends and holidays, so you never miss a lead',
       'Learns from interactions to provide increasingly accurate answers over time',
       'Seamlessly escalates complex issues to human agents when needed',
     ],
@@ -35,6 +36,8 @@ const features = [
     icon: CalendarCheck,
     price: '$399 setup + $99/month',
     category: 'AI-Powered',
+    comingSoon: true,
+    blogLink: '/blog/ai-automated-booking-system-benefits',
     description: 'A smart booking system that lets customers schedule appointments directly through your website, with automated confirmations and reminders.',
     valuePoints: [
       'Increases booking conversion rate by allowing customers to book instantly, 24/7',
@@ -50,6 +53,7 @@ const features = [
     icon: Mail,
     price: 'Custom pricing',
     category: 'AI-Powered',
+    blogLink: '/blog/ai-chatbots-automation-more-leads',
     description: 'AI-powered email response system that automatically drafts and sends personalised replies to customer enquiries based on your business context.',
     valuePoints: [
       'Increases customer acquisition and support by responding instantly to every enquiry',
@@ -66,6 +70,7 @@ const features = [
     price: 'FREE',
     category: 'Essential',
     isFree: true,
+    blogLink: '/blog/ai-chatbots-automation-more-leads',
     description: 'A professional contact form that captures visitor details and sends enquiries directly to your inbox, making it easy for potential customers to reach you.',
     valuePoints: [
       'Increases lead generation by providing a simple, low-friction way for visitors to get in touch',
@@ -74,7 +79,7 @@ const features = [
       'Customisable fields to collect the specific information your business needs',
       'Mobile-optimised for easy submission on any device',
     ],
-    idealFor: 'Every business — an essential feature for capturing enquiries and converting visitors into leads.',
+    idealFor: 'Every business: an essential feature for capturing enquiries and converting visitors into leads.',
   },
   {
     name: 'Map / Location',
@@ -82,6 +87,7 @@ const features = [
     price: 'FREE',
     category: 'Essential',
     isFree: true,
+    blogLink: '/blog/how-ai-improves-local-seo-google-business-profile',
     description: 'An embedded interactive map showing your business location, making it easy for local customers to find you.',
     valuePoints: [
       'Increases local visibility and helps customers find your physical location easily',
@@ -98,6 +104,7 @@ const features = [
     price: 'FREE',
     category: 'Essential',
     isFree: true,
+    blogLink: '/blog/social-media-integration-website-benefits',
     description: 'Connect your website to your social media profiles, displaying feeds and making it easy for visitors to follow and share your content.',
     valuePoints: [
       'Increases brand awareness by connecting your web presence with social platforms',
@@ -111,14 +118,16 @@ const features = [
   {
     name: 'Blog / News Section',
     icon: Newspaper,
-    price: '+$199 AUD',
+    price: '+$199 AUD/month',
+    priceNote: 'First two weeks free to see growth',
     category: 'Growth',
     seoBoost: true,
+    blogLink: '/blog/how-blogs-generate-millions-of-website-visits',
     description: 'A professionally designed blog section where you can publish articles, news updates, and industry insights to attract organic traffic.',
     valuePoints: [
       'Boosts Google ranking by providing fresh, keyword-rich content that search engines love',
       'Establishes your business as an authority in your industry',
-      'Drives organic traffic — businesses with blogs generate 55% more website visitors',
+      'Drives organic traffic: businesses with blogs generate 55% more website visitors',
       'Provides shareable content for social media marketing',
       'Supports long-tail keyword strategy for capturing niche search traffic',
     ],
@@ -129,6 +138,7 @@ const features = [
     icon: Image,
     price: '$99 setup',
     category: 'Growth',
+    blogLink: '/blog/gallery-portfolio-website-benefits',
     description: 'A visually stunning gallery or portfolio section to showcase your work, products, or completed projects.',
     valuePoints: [
       'Increases visitor engagement by providing visual proof of your work quality',
@@ -145,9 +155,10 @@ const features = [
     price: '+$99 AUD',
     category: 'Growth',
     seoBoost: true,
+    blogLink: '/blog/how-ai-can-boost-seo',
     description: 'Display verified customer testimonials and reviews on your website to build trust and social proof.',
     valuePoints: [
-      'Increases trust and conversions — 93% of consumers say reviews influence their decisions',
+      'Increases trust and conversions: 93% of consumers say reviews influence their decisions',
       'Boosts Google ranking through review schema markup and fresh user-generated content',
       'Provides social proof that reduces hesitation and encourages action',
       'Integrates with Google Reviews and other platforms for automatic updates',
@@ -160,6 +171,7 @@ const features = [
     icon: Mail,
     price: '$199 setup',
     category: 'Growth',
+    blogLink: '/blog/newsletter-signup-email-marketing-benefits',
     description: 'A newsletter subscription form to build your email list and keep customers engaged with regular updates.',
     valuePoints: [
       'Increases repeat visitors by keeping your business top-of-mind with regular emails',
@@ -229,9 +241,12 @@ export default function FeaturesPage() {
                       <div>
                         <h3 className="text-lg font-bold text-tech-white">{feature.name}</h3>
                         <span className="text-tech-white font-semibold text-sm">{feature.price}</span>
+                        {feature.priceNote && (
+                          <p className="text-green-400 text-xs font-semibold mt-0.5">{feature.priceNote}</p>
+                        )}
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 mt-2">
+                    <div className="flex items-center gap-2 mt-2 flex-wrap">
                       <span className="text-xs px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full font-semibold">
                         {feature.category}
                       </span>
@@ -239,6 +254,11 @@ export default function FeaturesPage() {
                         <span className="text-xs px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 rounded-full font-semibold flex items-center gap-1">
                           <TrendingUp className="w-3 h-3" />
                           SEO Boost
+                        </span>
+                      )}
+                      {feature.comingSoon && (
+                        <span className="text-xs px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-full font-semibold">
+                          Coming Soon
                         </span>
                       )}
                     </div>
@@ -258,12 +278,22 @@ export default function FeaturesPage() {
                       ))}
                     </ul>
 
-                    <div className="bg-tech-black/50 border border-tech-baby-blue/10 rounded-lg p-3">
+                    <div className="bg-tech-black/50 border border-tech-baby-blue/10 rounded-lg p-3 mb-4">
                       <p className="text-xs text-tech-platinum">
                         <span className="text-tech-white font-semibold">Ideal for: </span>
                         {feature.idealFor}
                       </p>
                     </div>
+
+                    {feature.blogLink && (
+                      <Link
+                        href={feature.blogLink}
+                        className="inline-flex items-center gap-1.5 text-tech-baby-blue text-sm font-semibold hover:text-tech-baby-blue-light smooth-transition group"
+                      >
+                        Read our blog on this feature
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

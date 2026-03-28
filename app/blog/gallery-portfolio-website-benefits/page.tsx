@@ -3,14 +3,14 @@ import Link from 'next/link'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 
 const post = {
-  slug: 'how-blogs-generate-millions-of-website-visits',
-  title: 'How Our Google SEO Add-On Can Generate Thousands of Website Views',
+  slug: 'gallery-portfolio-website-benefits',
+  title: 'Why a Gallery or Portfolio Section on Your Website Wins More Clients and Builds Instant Trust',
   description:
-    'Our Google SEO add-on is designed to get your business in front of people actively searching for what you offer. Here is how it works and why Australian businesses use it to grow their online visibility.',
-  publishedAt: '2026-03-08',
-  lastModified: '2026-03-14',
-  readingTime: '9 min read',
-  category: 'Blogging & SEO',
+    'Visual proof of your work is one of the most powerful selling tools a business has. A well-built gallery or portfolio section on your website converts browsers into enquiries by showing exactly what you are capable of.',
+  publishedAt: '2026-03-09',
+  lastModified: '2026-03-09',
+  readingTime: '7 min read',
+  category: 'Website Growth',
 }
 
 const jsonLd = {
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   title: `${post.title} | IAS Blog`,
   description: post.description,
   keywords:
-    'Google SEO add-on, SEO service Australia, website views, Google search visibility, local SEO, SEO for small business, organic traffic, Google ranking, AI search optimisation, IAS SEO',
+    'website gallery, portfolio website, showcase work online, trades portfolio website, creative portfolio, business portfolio Australia, website visual proof, case studies website, before and after website',
   alternates: {
     canonical: `https://intelligentaisystem.com/blog/${post.slug}`,
   },
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BlogPostHowBlogsGenerateTraffic() {
+export default function BlogPostGalleryPortfolio() {
   return (
     <>
       <script
@@ -92,7 +92,7 @@ export default function BlogPostHowBlogsGenerateTraffic() {
           <div className="max-w-3xl mx-auto">
 
             {/* Header */}
-            <header className="mb-10">
+            <header className="mb-12">
               <span className="inline-block px-3 py-1 bg-tech-baby-blue/10 border border-tech-baby-blue/30 text-tech-white rounded-full text-xs font-semibold mb-4">
                 {post.category}
               </span>
@@ -124,75 +124,56 @@ export default function BlogPostHowBlogsGenerateTraffic() {
 
               <section>
                 <p className="text-lg leading-relaxed">
-                  Most businesses are invisible on Google — not because their service is poor, but
-                  because their website has never been set up to be found. Our Google SEO add-on
-                  fixes that. It is designed to get your pages appearing when real customers search
-                  for exactly what you offer, turning your website from a digital brochure into an
-                  active lead source.
+                  When a potential customer arrives on your website, they are making a judgment
+                  about whether to trust you. Words help, but images do the heavy lifting. A
+                  well-built gallery or portfolio section lets your work speak for itself, and
+                  in most cases, that is more persuasive than anything you could write about
+                  yourself.
                 </p>
                 <p className="mt-4">
-                  Google&apos;s own Search guidance emphasises that content should be helpful, reliable,
-                  and created for people first. It also explains that SEO helps search engines
-                  understand your content and helps the right people find it. Our add-on is built
-                  entirely around that principle — we optimise your website so Google can discover,
-                  understand, and rank it for the searches your customers are already making.
+                  For trades, creative professionals, service businesses, and anyone whose work
+                  produces a visible result, a gallery or portfolio is not an optional extra.
+                  It is one of the most commercially important features a website can have. The
+                  question is not whether to include one, but how to build it so it actually
+                  converts visitors into enquiries.
                 </p>
               </section>
 
               <section>
                 <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
-                  How Search Visibility Compounds Over Time
+                  The Psychology of Visual Proof
                 </h2>
                 <p>
-                  SEO works because it compounds. Each optimised page is another entry point into
-                  your business. A well-structured site with strong content and proper technical
-                  setup can rank for dozens or hundreds of related searches. That is how businesses
-                  grow from barely being found online to pulling in thousands of website views every
-                  month — organically, without paying for every click.
+                  People make decisions based on what they can see, not just what they are told.
+                  A builder can say they do quality work, but showing ten completed projects with
+                  clean finishes, happy clients, and before-and-after comparisons is far more
+                  convincing. Visual evidence bypasses the natural scepticism that text-based
+                  claims trigger.
                 </p>
                 <p className="mt-4">
-                  HubSpot has reported that businesses that invest in organic search average
-                  significantly more website visitors than those that rely on direct traffic alone.
-                  The principle is consistent: more search-optimised pages create more entry points
-                  and more opportunities to convert visitors into customers.
+                  Research in consumer behaviour consistently shows that images increase
+                  engagement, time on page, and conversion rates across industries. When a
+                  visitor can see your actual work, they are making a much more informed and
+                  emotionally confident decision about whether to contact you. That reduces
+                  hesitation and shortens the sales cycle.
                 </p>
               </section>
 
               <section>
                 <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
-                  Why Google SEO Matters for Service Businesses
+                  Who Benefits Most from a Gallery or Portfolio Section
                 </h2>
                 <p>
-                  People do not search for a company name when they need help. They search for a
-                  problem. They type things like &ldquo;best electrician near me,&rdquo; &ldquo;website design for
-                  small business,&rdquo; or &ldquo;how to get more customers online.&rdquo; If your website is
-                  properly optimised, Google can surface your page for those exact searches. The
-                  visitor lands on your site, sees your expertise, and starts trusting your business
-                  before you have even spoken to them.
-                </p>
-                <p className="mt-4">
-                  Google explicitly recommends creating content that is helpful and written for
-                  people rather than designed to manipulate rankings. That is the foundation of our
-                  SEO add-on — real optimisation that builds lasting visibility.
-                </p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
-                  What Our Google SEO Add-On Includes
-                </h2>
-                <p>
-                  Our SEO add-on goes beyond basic keyword placement. It covers the full technical
-                  and content layer of search visibility — making sure Google can discover your
-                  pages, understand what they are about, and rank them for relevant searches.
+                  Almost any business that produces a tangible result benefits from showcasing
+                  it visually. The businesses that see the biggest impact tend to be:
                 </p>
                 <ul className="list-none mt-6 space-y-3">
                   {[
-                    'Google Search Optimisation — on-page SEO for every key page on your site',
-                    'AI Search Engine Indexing — ensuring visibility on ChatGPT, Gemini, and Perplexity',
-                    'Structured Data & Schema Markup — helping Google understand your business clearly',
-                    'Monthly SEO Reports — transparent tracking of keyword rankings and traffic growth',
-                    'Content Strategy Guidance — identifying the topics your customers are actively searching for',
+                    'Tradespeople (builders, electricians, plumbers, landscapers, painters) where before and after results are compelling',
+                    'Creative and design professionals: photographers, graphic designers, interior designers, and architects',
+                    'Hospitality and food businesses: restaurants, caterers, and event spaces where atmosphere and presentation matter',
+                    'Healthcare and wellness providers: clinics and therapists who want to show their space and environment',
+                    'Any service business with case studies, completed projects, or client work to showcase',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 bg-tech-baby-blue rounded-full mt-2 flex-shrink-0" />
@@ -204,66 +185,73 @@ export default function BlogPostHowBlogsGenerateTraffic() {
 
               <section>
                 <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
-                  SEO Also Strengthens Your Entire Website
+                  What Makes a Portfolio Section Actually Work
                 </h2>
                 <p>
-                  A well-executed SEO strategy supports the rest of your site. It strengthens
-                  service pages through internal linking, builds topical authority around your
-                  niche, and helps search engines understand what your business is actually about.
-                  Google&apos;s SEO Starter Guide explains that clear site structure and useful content
-                  help both users and search engines. So SEO is not just about ranking one page —
-                  it is the engine that makes the whole site easier to discover.
+                  Not all gallery sections are equal. A poorly built gallery that is slow to load,
+                  hard to navigate, or lacking context can actually hurt conversion by
+                  frustrating visitors or failing to communicate the story behind the work.
+                  A well-built portfolio section has several key properties.
+                </p>
+                <p className="mt-4">
+                  It loads fast, even with high-resolution images, through proper image
+                  optimisation and lazy loading. It organises work into categories so visitors
+                  can quickly find examples relevant to their situation. It includes enough
+                  context, including a brief description, a location, and the type of project, to make the
+                  images meaningful rather than just decorative. And it works just as well on
+                  mobile as it does on desktop, because a large proportion of visitors will be
+                  browsing on their phone.
                 </p>
               </section>
 
               <section>
                 <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
-                  The Snowball Effect of Organic Search
+                  Portfolio Sections Support SEO as Well as Conversion
                 </h2>
                 <p>
-                  Organic search is one of the few marketing channels that builds a genuine
-                  snowball effect. Once pages start ranking, they keep generating traffic without
-                  ongoing ad spend. When you see pageview numbers compounding month after month,
-                  the value becomes tangible. That momentum is what search-led growth looks like
-                  in practice — and it is accessible to businesses of any size.
+                  A gallery or portfolio does not just help with conversion; it also supports
+                  your search engine visibility. Images with descriptive file names and alt text
+                  contribute to your overall SEO. Portfolio pages that include location
+                  information and project type descriptions can rank for relevant local searches.
                 </p>
                 <p className="mt-4">
-                  You optimise. Google crawls. Pages start appearing in search results. Some
-                  pages rank for multiple terms. More searches trigger impressions. More
-                  impressions lead to clicks. More clicks lead to enquiries. That is how SEO
-                  scales.
+                  For example, a plumber in Brisbane who has a portfolio page titled
+                  &ldquo;Bathroom Renovation Projects – Brisbane&rdquo; with images, descriptions, and
+                  suburb names is giving search engines a strong signal of relevance for those
+                  searches. Over time, well-structured portfolio pages can become significant
+                  traffic drivers in their own right.
                 </p>
               </section>
 
               <section>
                 <h2 className="text-2xl font-bold text-tech-white mt-10 mb-4">
-                  An Easy Decision for Service Businesses
+                  Building Trust Before the First Conversation
                 </h2>
                 <p>
-                  For service businesses, search visibility creates an attractive return profile.
-                  One new customer acquired through organic search can justify months of SEO
-                  investment. The bar is not &ldquo;will this rank number one overnight?&rdquo; The bar is
-                  &ldquo;can this optimisation bring in qualified visitors and help convert just one or
-                  two customers over time?&rdquo; For most businesses, the answer is yes.
+                  Perhaps the most commercially valuable function of a portfolio is the trust it
+                  builds before any direct contact. When a potential customer has already browsed
+                  fifteen examples of your work, seen the quality, understood your style, and felt
+                  confident in your capabilities, the first conversation is not a sales call.
+                  It is a confirmation call. They have already decided they want to work with you.
                 </p>
                 <p className="mt-4">
-                  The bigger picture is this: SEO works because it lets your website meet people
-                  earlier in the buying journey. Before they are ready to fill in a form, before
-                  they are ready to call, before they even know which provider to choose, they are
-                  searching for answers. The business that shows up best earns the click, the
-                  trust, and often the lead.
+                  That shift from cold enquiry to warm enquiry changes everything about the
+                  sales process. Close rates are higher. Negotiation on price is less intense.
+                  Clients are more likely to proceed quickly because they have done their
+                  research and already feel confident. A gallery or portfolio section is one
+                  of the most effective tools for creating that outcome.
                 </p>
               </section>
 
               {/* CTA */}
               <section className="mt-14 bg-tech-gray border border-tech-baby-blue/30 rounded-2xl p-8">
                 <h2 className="text-2xl font-bold text-tech-white mb-4">
-                  Get Found on Google and Start Growing Your Traffic
+                  Showcase Your Work With a Professional Gallery
                 </h2>
                 <p className="mb-6">
-                  We build Google SEO strategies for businesses that want long-term search
-                  visibility, stronger rankings, and more qualified leads. Our SEO add-on is
-                  designed to turn your website into an asset that keeps growing.
+                  We build gallery and portfolio sections that load fast, look stunning on any
+                  device, and are designed to turn project showcases into enquiries. Give
+                  potential clients the visual proof they need to choose you.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
@@ -273,10 +261,10 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                     Explore Our Services
                   </Link>
                   <Link
-                    href="/pricing"
+                    href="/features"
                     className="px-6 py-3 border-2 border-tech-baby-blue text-tech-white rounded-lg font-semibold text-center smooth-transition hover:bg-tech-baby-blue hover:text-tech-black"
                   >
-                    View Pricing
+                    View All Features
                   </Link>
                 </div>
               </section>
@@ -290,7 +278,7 @@ export default function BlogPostHowBlogsGenerateTraffic() {
                       href="/blog/how-ai-can-boost-seo"
                       className="text-tech-baby-blue hover:text-tech-baby-blue-light smooth-transition font-medium"
                     >
-                      How AI Can Boost SEO and AI Search Engine Optimisation for Modern Businesses →
+                      How AI Can Boost SEO and AI Search Engine Optimisation →
                     </Link>
                   </li>
                   <li>

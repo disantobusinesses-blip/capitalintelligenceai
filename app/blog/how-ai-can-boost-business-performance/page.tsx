@@ -131,7 +131,7 @@ export default function BlogPostAIBusiness() {
                   AI is designed to close.
                 </p>
                 <p className="mt-4">
-                  AI is not a single tool or product — it is a category of
+                  AI is not a single tool or product; it is a category of
                   capabilities that can be applied across almost every function
                   in a modern business. When implemented thoughtfully, AI reduces
                   the time your team spends on low-value tasks, accelerates the
@@ -140,7 +140,7 @@ export default function BlogPostAIBusiness() {
                 </p>
                 <p className="mt-4">
                   This article breaks down the most impactful areas where AI
-                  delivers measurable business results — with practical examples
+                  delivers measurable business results, with practical examples
                   relevant to Australian service businesses, agencies, and
                   growing companies.
                 </p>
@@ -161,7 +161,7 @@ export default function BlogPostAIBusiness() {
                   AI automation workflows can handle these tasks end-to-end
                   without manual intervention. A customer enquiry can trigger
                   an automatic acknowledgement, populate a CRM record, assign
-                  a follow-up task, and send a personalised response — all
+                  a follow-up task, and send a personalised response, all
                   within seconds and without any staff involvement.
                 </p>
                 <p className="mt-4">
@@ -182,7 +182,7 @@ export default function BlogPostAIBusiness() {
                   Speed of response is one of the most significant drivers of
                   conversion for service businesses. Studies consistently show
                   that responding to a new lead within five minutes is many
-                  times more effective than responding within an hour — and
+                  times more effective than responding within an hour, and
                   responding within the same business day versus the next
                   represents a meaningful drop in close rates.
                 </p>
@@ -212,8 +212,8 @@ export default function BlogPostAIBusiness() {
                   qualify leads before they reach your calendar.
                 </p>
                 <p className="mt-4">
-                  AI-powered intake flows — embedded in your website or
-                  delivered via chat — can ask targeted questions, assess fit
+                  AI-powered intake flows, embedded in your website or
+                  delivered via chat, can ask targeted questions, assess fit
                   based on your criteria, and automatically route high-priority
                   leads to your team while politely declining or redirecting
                   those who are not a match.
@@ -240,8 +240,8 @@ export default function BlogPostAIBusiness() {
                 </p>
                 <p className="mt-4">
                   For businesses in industries where customers have many
-                  questions before committing — healthcare, finance, legal,
-                  trades, and consulting — an AI assistant can meaningfully
+                  questions before committing, including healthcare, finance, legal,
+                  trades, and consulting, an AI assistant can meaningfully
                   increase the number of visitors who convert to enquiries by
                   providing instant, accurate answers at the moment they are
                   needed.
@@ -265,7 +265,7 @@ export default function BlogPostAIBusiness() {
                   When a new client is signed, an AI-powered workflow can
                   automatically create a project folder, send an onboarding
                   sequence, schedule the first milestone, generate an invoice,
-                  and notify the relevant team members — all triggered by a
+                  and notify the relevant team members, all triggered by a
                   single action.
                 </p>
                 <p className="mt-4">
@@ -277,7 +277,7 @@ export default function BlogPostAIBusiness() {
                 <p className="mt-4">
                   Tools like Zapier, Make, and n8n can connect hundreds of
                   business applications and are increasingly enhanced with AI
-                  reasoning that can make decisions mid-workflow — not just pass
+                  reasoning that can make decisions mid-workflow, not just pass
                   data between systems.
                 </p>
               </section>
@@ -289,9 +289,9 @@ export default function BlogPostAIBusiness() {
                 </h2>
                 <p>
                   Decisions made without data are expensive. But pulling data
-                  from multiple sources — your CRM, website analytics, ad
-                  platforms, accounting software, and project management tools
-                  — and synthesising it into actionable insights is genuinely
+                  from multiple sources, including your CRM, website analytics, ad
+                  platforms, accounting software, and project management tools,
+                  and synthesising it into actionable insights is genuinely
                   time-consuming.
                 </p>
                 <p className="mt-4">
@@ -371,9 +371,9 @@ export default function BlogPostAIBusiness() {
                 <p>
                   Every hour your team spends on tasks that could be automated
                   is an hour not spent on the work that actually generates
-                  revenue. The accumulation of small inefficiencies — manual
-                  data entry, repetitive email drafting, chasing approvals,
-                  reformatting documents — adds up to a significant productivity
+                  revenue. The accumulation of small inefficiencies, including manual
+                  data entry, repetitive email drafting, chasing approvals, and
+                  reformatting documents, adds up to a significant productivity
                   drain over the course of a year.
                 </p>
                 <p className="mt-4">
@@ -386,7 +386,7 @@ export default function BlogPostAIBusiness() {
                 <p className="mt-4">
                   For a team of five people, eliminating even two hours of
                   low-value work per person per day represents ten hours per day
-                  of recovered capacity — the equivalent of more than a full-time
+                  of recovered capacity, the equivalent of more than a full-time
                   hire without the associated cost.
                 </p>
               </section>
@@ -398,7 +398,7 @@ export default function BlogPostAIBusiness() {
                 </h2>
                 <p>
                   The businesses that implement AI effectively do not just save
-                  time — they create new revenue opportunities that were
+                  time; they create new revenue opportunities that were
                   previously impractical. AI-powered sales follow-up sequences
                   re-engage leads that would otherwise go cold. Upsell
                   recommendations increase average transaction values. Retention
@@ -412,9 +412,9 @@ export default function BlogPostAIBusiness() {
                   improve the return on every dollar spent on generating leads.
                 </p>
                 <p className="mt-4">
-                  The compounding effect of these improvements — more leads
+                  The compounding effect of these improvements, including more leads
                   captured, qualified more effectively, converted at a higher
-                  rate, retained longer, and upsold more consistently — can
+                  rate, retained longer, and upsold more consistently, can
                   represent a substantial revenue uplift over twelve months.
                 </p>
               </section>
@@ -427,7 +427,7 @@ export default function BlogPostAIBusiness() {
                 <p>
                   The most effective approach to AI implementation is not to
                   attempt a complete transformation overnight. Start with the
-                  highest-friction point in your current operations — the task
+                  highest-friction point in your current operations: the task
                   or process that consumes the most time relative to the value
                   it produces.
                 </p>
@@ -462,7 +462,7 @@ export default function BlogPostAIBusiness() {
                 </h2>
                 <p className="mb-6">
                   Intelligent AI Systems designs and implements AI-powered
-                  solutions for Australian businesses — from AI chat assistants
+                  solutions for Australian businesses, from AI chat assistants
                   and automated workflows to full digital infrastructure. We
                   handle the technical complexity so you can focus on growth.
                 </p>
