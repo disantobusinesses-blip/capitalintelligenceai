@@ -5,15 +5,14 @@ import { Check, Star } from 'lucide-react'
 const packages = [
   {
     name: 'Website Care',
-    price: 169,
+    price: 119,
     recommended: false,
     features: [
-      'Monthly website maintenance',
-      'Security updates & monitoring',
-      'Content updates (up to 5 per month)',
-      'Performance optimization',
-      'Backup & recovery',
-      'Email support',
+      'Website hosting',
+      'Website maintenance',
+      'Security updates',
+      'Monthly backups',
+      'Up to 1hr tech support/month',
     ],
   },
   {

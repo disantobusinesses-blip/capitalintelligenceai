@@ -5,17 +5,14 @@ import { Shield, Zap, TrendingUp, Users, Headphones, Clock } from 'lucide-react'
 const pricingDetails = [
   {
     plan: 'Website Care',
-    price: '$169/month',
+    price: '$119/month',
     icon: Shield,
     includes: [
-      'Monthly maintenance checks and updates',
-      'Security monitoring and SSL management',
-      'Up to 5 content updates per month',
-      'Performance optimization and speed improvements',
-      'Automatic backups and recovery',
-      'Email support (48-hour response time)',
-      'Uptime monitoring',
-      'Plugin and theme updates',
+      'Website hosting',
+      'Website maintenance',
+      'Security updates',
+      'Monthly backups',
+      'Up to 1hr tech support/month',
     ],
   },
   {
