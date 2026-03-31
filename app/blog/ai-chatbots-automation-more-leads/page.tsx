@@ -31,7 +31,7 @@ const jsonLd = {
     url: 'https://intelligentaisystem.com',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://intelligentaisystem.com/images/is-logo.jpg',
+      url: 'https://intelligentaisystem.com/images/og-image.png',
     },
   },
   mainEntityOfPage: {

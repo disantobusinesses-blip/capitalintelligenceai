@@ -16,7 +16,7 @@ const orgSchema = {
   name: 'Intelligent AI Systems',
   alternateName: 'IAS',
   url: 'https://intelligentaisystem.com',
-  logo: 'https://intelligentaisystem.com/images/is-logo.jpg',
+  logo: 'https://intelligentaisystem.com/images/ias-logo.png',
   description:
     'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by Australian businesses to build smarter digital experiences.',
   address: {
@@ -45,6 +45,14 @@ export const metadata: Metadata = {
     siteName: 'Intelligent AI Systems',
     locale: 'en_AU',
     type: 'website',
+    images: [
+      {
+        url: 'https://intelligentaisystem.com/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Intelligent AI Systems – Premium Web & AI Solutions',
+      },
+    ],
   },
   robots: {
     index: true,
@@ -55,9 +63,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/images/ias-logo.png', type: 'image/png', sizes: '512x512' },
+    ],
     shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    apple: '/images/ias-logo.png',
   },
 }
 

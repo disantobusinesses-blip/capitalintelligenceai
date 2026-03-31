@@ -62,11 +62,11 @@ export default function Footer() {
           <div>
             <div className="mb-4">
               <Image
-                src="/images/is-logo.jpg"
+                src="/images/ias-logo.png"
                 alt="Intelligent AI Systems"
-                width={56}
-                height={56}
-                className="h-14 w-auto rounded object-cover"
+                width={72}
+                height={72}
+                className="h-16 w-auto rounded-lg object-cover"
               />
             </div>
             <p className="text-[#9E9790] text-sm leading-relaxed mb-3">
