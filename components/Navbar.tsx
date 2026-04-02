@@ -33,7 +33,7 @@ export default function Navbar() {
         {/* LEFT: Logo */}
         <Link href="/" aria-label="Home" className="flex items-center flex-shrink-0">
           <Image
-            src="/images/is-logo.jpg"
+            src="/ias-logo.png"
             alt="Intelligent AI Systems"
             width={48}
             height={48}
