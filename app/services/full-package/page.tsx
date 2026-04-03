@@ -202,27 +202,12 @@ export default function FullPackageService() {
           <p className="text-xl text-[#6B6560] mb-8">
             Let's build something amazing together
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => {
-                const element = document.getElementById('chat');
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                  router.push('/#chat');
-                }
-              }}
-              className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
-            >
-              Talk to Our AI Assistant
-            </button>
-            <button
-              onClick={() => router.push('/')}
-              className="px-8 py-4 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#1A1A1A] hover:text-white"
-            >
-              Back to Home
-            </button>
-          </div>
+          <button
+            onClick={() => router.push('/')}
+            className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
+          >
+            Back to Home
+          </button>
         </div>
       </section>
     </div>

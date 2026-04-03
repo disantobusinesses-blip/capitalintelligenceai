@@ -184,19 +184,7 @@ export default function LandingPageService() {
           <p className="text-xl text-[#6B6560] mb-8">
             Let's create something amazing together
           </p>
-          <button
-            onClick={() => {
-              const element = document.getElementById('chat');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                router.push('/#chat');
-              }
-            }}
-            className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
-          >
-            Talk to Our AI Assistant
-          </button>
+
         </div>
       </section>
     </div>
