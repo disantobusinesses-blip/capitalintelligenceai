@@ -127,7 +127,7 @@ export function CalendarTwin({
   return (
     <div
       className={cn(
-        "rounded-lg border bg-background p-3 w-[600px]",
+        "rounded-lg border bg-white p-3 w-[600px] text-gray-900",
         className
       )}
     >
