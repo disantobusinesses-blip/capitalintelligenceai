@@ -10,7 +10,7 @@ function esc(str: string): string {
 }
 
 export async function POST(request: NextRequest) {
-  let body: { name?: string; phone?: string; time?: string }
+  let body: { name?: string; phone?: string; time?: string; date?: string }
   try {
     body = await request.json()
   } catch {
@@ -22,6 +22,9 @@ export async function POST(request: NextRequest) {
   }
   if (!body.phone?.trim()) {
     return NextResponse.json({ ok: false, message: 'Phone number is required.' }, { status: 400 })
+  }
+  if (!body.date?.trim()) {
+    return NextResponse.json({ ok: false, message: 'Preferred date is required.' }, { status: 400 })
   }
   if (!body.time?.trim()) {
     return NextResponse.json({ ok: false, message: 'Preferred time is required.' }, { status: 400 })
@@ -46,9 +49,10 @@ export async function POST(request: NextRequest) {
       <ul>
         <li><strong>Name:</strong> ${esc(body.name.trim())}</li>
         <li><strong>Phone:</strong> ${esc(body.phone.trim())}</li>
+        <li><strong>Preferred Date:</strong> ${esc(body.date.trim())}</li>
         <li><strong>Preferred Call Time:</strong> ${esc(body.time.trim())}</li>
       </ul>
-      <p>This is a free 15-minute phone call consultation request. Please call the client at their preferred time.</p>
+      <p>This is a free 15-minute phone call consultation request. Please call the client at their preferred date and time.</p>
     `
 
     await transporter.sendMail({

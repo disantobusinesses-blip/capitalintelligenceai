@@ -1,9 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import { CheckCircle, Send, Hammer } from 'lucide-react'
+import { useState, useRef, useEffect } from 'react'
+import { CheckCircle, Send, Hammer, CalendarDays } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useGetStartedModal } from '@/context/GetStartedModalContext'
+import { CalendarTwin } from '@/components/ui/calendar-twin'
+import { format } from 'date-fns'
 
 // Time slots 9:00 AM – 5:00 PM in 15-minute increments
 function generateTimeSlots(): string[] {
@@ -36,12 +38,28 @@ export default function Hero() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [time, setTime] = useState('')
+  const [date, setDate] = useState<Date | undefined>(undefined)
+  const [showCalendar, setShowCalendar] = useState(false)
+  const calendarRef = useRef<HTMLDivElement>(null)
   const [consultStatus, setConsultStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [consultError, setConsultError] = useState('')
 
+  // Close calendar when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (calendarRef.current && !calendarRef.current.contains(e.target as Node)) {
+        setShowCalendar(false)
+      }
+    }
+    if (showCalendar) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [showCalendar])
+
   const handleConsultSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!name.trim() || !phone.trim() || !time) return
+    if (!name.trim() || !phone.trim() || !time || !date) return
 
     setConsultStatus('submitting')
     setConsultError('')
@@ -50,7 +68,7 @@ export default function Hero() {
       const response = await fetch('/api/consultation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, time }),
+        body: JSON.stringify({ name, phone, time, date: format(date, 'EEEE, d MMMM yyyy') }),
       })
       const result = await response.json()
       if (response.ok && result.ok) {
@@ -58,6 +76,7 @@ export default function Hero() {
         setName('')
         setPhone('')
         setTime('')
+        setDate(undefined)
       } else {
         setConsultStatus('error')
         setConsultError(result.message || 'Something went wrong. Please try again.')
@@ -181,6 +200,33 @@ export default function Hero() {
                   <p className="text-[#6B6560] text-sm">Free 15-minute phone call · No commitment</p>
                 </div>
 
+                {/* Date picker */}
+                <div className="relative" ref={calendarRef}>
+                  <button
+                    type="button"
+                    onClick={() => setShowCalendar((v) => !v)}
+                    className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-sm text-left flex items-center gap-2 focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200"
+                  >
+                    <CalendarDays className="w-4 h-4 text-[#9E9790] flex-shrink-0" />
+                    <span className={date ? 'text-[#1A1A1A]' : 'text-[#9E9790]'}>
+                      {date ? format(date, 'EEEE, d MMMM yyyy') : 'Select a date'}
+                    </span>
+                  </button>
+                  {showCalendar && (
+                    <div className="absolute right-0 z-50 mt-1 shadow-xl">
+                      <CalendarTwin
+                        value={date}
+                        onChange={(d) => {
+                          setDate(d)
+                          setShowCalendar(false)
+                        }}
+                        className="w-[min(600px,90vw)]"
+                        yearRange={[2025, 2030]}
+                      />
+                    </div>
+                  )}
+                </div>
+
                 {/* Time picker */}
                 <select
                   value={time}
@@ -213,7 +259,7 @@ export default function Hero() {
 
                 <button
                   type="submit"
-                  disabled={consultStatus === 'submitting'}
+                  disabled={consultStatus === 'submitting' || !date}
                   className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {consultStatus === 'submitting' ? 'Booking…' : (
