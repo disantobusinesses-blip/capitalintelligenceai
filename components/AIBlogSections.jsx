@@ -32,48 +32,62 @@ const trustPoints = [
 export default function AIBlogSections() {
   return (
     <section
-      className="relative py-[80px] px-6"
-      style={{
-        borderBottom: '1px solid #E8E4DF',
-        backgroundImage: 'url(/images/impressionsSEO.jpg)',
-        backgroundSize: '60%',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
+      className="py-[80px] px-6"
+      style={{ borderBottom: '1px solid #E8E4DF' }}
     >
-      {/* Dark overlay so text stays readable */}
-      <div className="absolute inset-0 bg-white/80" aria-hidden="true" />
+      <div className="max-w-[1200px] mx-auto">
 
-      <div className="relative max-w-[1200px] mx-auto">
+        {/* Header + Real Results image side by side */}
+        <div className="flex flex-col md:flex-row gap-10 items-start mb-14">
 
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
-            AI-Powered Content Engine
-          </p>
-          <h2 className="text-[32px] md:text-[44px] font-extrabold text-[#1A1A1A] leading-[1.15] mb-4">
-            We Write the Blogs.<br className="hidden md:block" /> You Get the Traffic.
-          </h2>
-          <p className="text-[18px] text-[#6B6560] max-w-[560px] mx-auto">
-            Our AI publishes SEO-optimised blog posts for your business every week —
-            so Google and AI assistants like ChatGPT always have something new to recommend.
-          </p>
-        </div>
+          {/* Left: text + trust points */}
+          <div className="flex-1">
+            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
+              AI-Powered Content Engine
+            </p>
+            <h2 className="text-[32px] md:text-[44px] font-extrabold text-[#1A1A1A] leading-[1.15] mb-4">
+              We Write the Blogs.<br className="hidden md:block" /> You Get the Traffic.
+            </h2>
+            <p className="text-[18px] text-[#6B6560] max-w-[560px] mb-8">
+              Our AI publishes SEO-optimised blog posts for your business every week —
+              so Google and AI assistants like ChatGPT always have something new to recommend.
+            </p>
 
-        {/* Trust points row */}
-        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-14">
-          {trustPoints.map((point) => (
-            <div key={point.label} className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span className="text-[14px] text-[#6B6560]">{point.label}</span>
+            {/* Trust points */}
+            <div className="flex flex-col gap-3">
+              {trustPoints.map((point) => (
+                <div key={point.label} className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-[14px] text-[#6B6560]">{point.label}</span>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Right: Real Results image box */}
+          <div
+            className="flex-shrink-0 w-full md:w-[440px] rounded-[12px] overflow-hidden"
+            style={{ border: '1px solid #E8E4DF' }}
+          >
+            <div
+              className="px-4 py-2 text-[12px] font-semibold tracking-[1.2px] uppercase text-[#5C3D2E]"
+              style={{ borderBottom: '1px solid #E8E4DF', background: '#F8F7F4' }}
+            >
+              Real Results
+            </div>
+            <img
+              src="/images/impressionsSEO.jpg"
+              alt="Real SEO impressions results"
+              className="w-full h-auto block"
+            />
+          </div>
+
         </div>
 
         {/* Sample blog cards */}
