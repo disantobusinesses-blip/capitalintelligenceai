@@ -36,7 +36,7 @@ export default function AIBlogSections() {
       style={{
         borderBottom: '1px solid #E8E4DF',
         backgroundImage: 'url(/images/impressionsSEO.jpg)',
-        backgroundSize: 'cover',
+        backgroundSize: '60%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
