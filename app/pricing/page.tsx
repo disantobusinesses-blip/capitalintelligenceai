@@ -2,30 +2,11 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Check, Zap, TrendingUp, Globe, Shield, ChevronDown, ChevronUp } from 'lucide-react'
+import { Check, Zap, TrendingUp, Shield, ChevronDown, ChevronUp } from 'lucide-react'
 
 const AUD_USD = 0.64
 
 const plans = [
-  {
-    key: 'landing_page',
-    name: 'Landing Page',
-    description: 'A premium, high-converting landing page built to capture leads and grow your business.',
-    aud: 1499,
-    badge: null,
-    recurring: false,
-    icon: Globe,
-    features: [
-      'Custom Next.js design',
-      'Mobile-first responsive',
-      'Lead capture form',
-      'SEO-optimised structure',
-      'Google Analytics integration',
-      'Fast delivery (5–7 days)',
-    ],
-    cta: 'Get Started',
-    highlight: false,
-  },
   {
     key: 'website_care',
     name: 'Website Hosting',
@@ -107,7 +88,6 @@ const faqs = [
   { q: 'How does Stripe checkout work?', a: "You'll be taken to Stripe's secure hosted checkout. We accept all major credit cards, Apple Pay, and Google Pay." },
   { q: 'Can I cancel my monthly plan anytime?', a: 'Yes — all monthly plans can be cancelled at any time with no lock-in contracts or cancellation fees.' },
   { q: 'Are prices in AUD?', a: 'Yes, all prices are in Australian Dollars (AUD). Use the toggle to see approximate USD pricing.' },
-  { q: 'What happens after I purchase a landing page?', a: "We'll email you within 24 hours to kick off your project with a brief onboarding form and discovery call." },
   { q: 'Do you offer custom packages?', a: 'Absolutely. Contact us for enterprise or custom builds — we tailor every solution to your specific goals.' },
 ]
 

@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const PRICE_MAP = {
-  landing_page:     process.env.STRIPE_PRICE_LANDING_PAGE,
   website_care:     process.env.STRIPE_PRICE_WEBSITE_CARE,
   google_growth:    process.env.STRIPE_PRICE_GOOGLE_GROWTH,
   super_growth:     process.env.STRIPE_PRICE_SUPER_GROWTH,
