@@ -87,7 +87,7 @@ const plans = [
     key: 'market_authority',
     name: 'Market Authority',
     description: 'Maximum content output, technical SEO, and dedicated strategy to make you the industry leader.',
-    aud: 699,
+    aud: 799,
     badge: 'Ultimate',
     recurring: true,
     icon: Zap,
