@@ -31,8 +31,20 @@ const trustPoints = [
 
 export default function AIBlogSections() {
   return (
-    <section className="bg-white py-[80px] px-6" style={{ borderBottom: '1px solid #E8E4DF' }}>
-      <div className="max-w-[1200px] mx-auto">
+    <section
+      className="relative py-[80px] px-6"
+      style={{
+        borderBottom: '1px solid #E8E4DF',
+        backgroundImage: 'url(/images/impressionsSEO.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Dark overlay so text stays readable */}
+      <div className="absolute inset-0 bg-white/80" aria-hidden="true" />
+
+      <div className="relative max-w-[1200px] mx-auto">
 
         {/* Header */}
         <div className="text-center mb-12">
