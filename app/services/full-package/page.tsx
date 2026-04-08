@@ -9,7 +9,7 @@ export default function FullPackageService() {
 
   const tiers = [
     {
-      name: 'Website Care',
+      name: 'Website Hosting',
       price: '$169',
       period: '/month',
       description: 'Essential maintenance and security',
@@ -29,7 +29,7 @@ export default function FullPackageService() {
       description: 'Growth-focused with SEO & analytics',
       featured: true,
       features: [
-        'Everything in Website Care',
+        'Everything in Website Hosting',
         'Conversion optimization',
         'A/B testing & analytics',
         'SEO enhancements',

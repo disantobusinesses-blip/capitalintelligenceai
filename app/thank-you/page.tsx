@@ -7,7 +7,7 @@ import { CheckCircle, Mail, Clock, ArrowRight } from 'lucide-react'
 
 const planNames: Record<string, string> = {
   landing_page: 'Landing Page',
-  website_care: 'Website Care Plan',
+  website_care: 'Website Hosting Plan',
   google_growth: 'Google Growth Plan',
   super_growth: 'Super Growth Plan',
   market_authority: 'Market Authority Plan',

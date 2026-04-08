@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
 
     const serviceName = body.service === 'landing-page' ? 'Landing Page' : 'Website + Full Package'
     const planName = body.monthlyPlan === 'care'
-      ? 'Website Care ($99 AUD/mo)'
+      ? 'Website Hosting ($99 AUD/mo)'
       : body.monthlyPlan === 'ai-integration'
         ? 'AI Systems Integration (Custom)'
         : body.monthlyPlan || 'Not selected'

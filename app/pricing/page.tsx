@@ -11,7 +11,7 @@ const plans = [
     key: 'landing_page',
     name: 'Landing Page',
     description: 'A premium, high-converting landing page built to capture leads and grow your business.',
-    aud: 2300,
+    aud: 1499,
     badge: null,
     recurring: false,
     icon: Globe,
@@ -28,7 +28,7 @@ const plans = [
   },
   {
     key: 'website_care',
-    name: 'Website Care',
+    name: 'Website Hosting',
     description: 'We handle updates, security, performance, and monitoring so you can focus on your business.',
     aud: 99,
     badge: null,
@@ -57,7 +57,6 @@ const plans = [
       '4 SEO blog posts/month',
       'Keyword research included',
       'Internal linking strategy',
-      'Published to your site',
       'Performance tracking',
       'Monthly ranking report',
     ],
@@ -77,7 +76,6 @@ const plans = [
       'Keyword research included',
       'Content calendar',
       'Internal linking strategy',
-      'Published to your site',
       'Monthly ranking report',
     ],
     cta: 'Supercharge Growth',
@@ -92,6 +90,7 @@ const plans = [
     recurring: true,
     icon: Zap,
     features: [
+      'Free website included',
       '12 SEO blog posts/month',
       'Technical SEO audits',
       'Keyword strategy sessions',
@@ -146,11 +145,10 @@ export default function PricingPage() {
       <div className="max-w-5xl mx-auto px-4 text-center mb-16">
         <p className="text-xs font-bold tracking-widest text-emerald-400 uppercase mb-3">Transparent Pricing</p>
         <h1 className="text-4xl md:text-5xl font-bold mb-5 leading-tight">
-          Invest in growth.<br className="hidden md:block" />
-          See real results.
+          What Can We Build For You?
         </h1>
         <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-8">
-          Premium websites and SEO systems built for Australian businesses ready to scale.
+          Choose the service that fits your business
         </p>
         <div className="inline-flex rounded-full border border-zinc-700 overflow-hidden">
           {(['AUD', 'USD'] as const).map((cur) => (

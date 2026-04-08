@@ -34,7 +34,7 @@ const services = [
   {
     id: 'website-care',
     icon: TrendingUp,
-    title: 'Website Care',
+    title: 'Website Hosting',
     price: '$119/month',
     description: 'Essential hosting and maintenance to keep your site running smoothly.',
     features: [

@@ -4,7 +4,7 @@ import { Shield, Zap, TrendingUp, Users, Headphones, Clock } from 'lucide-react'
 
 const pricingDetails = [
   {
-    plan: 'Website Care',
+    plan: 'Website Hosting',
     price: '$119/month',
     icon: Shield,
     includes: [
@@ -20,7 +20,7 @@ const pricingDetails = [
     price: '$279/month',
     icon: TrendingUp,
     includes: [
-      'Everything in Website Care, plus:',
+      'Everything in Website Hosting, plus:',
       'Conversion rate optimization strategies',
       'A/B testing setup and analysis',
       'Advanced SEO enhancements and monitoring',

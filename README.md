@@ -9,7 +9,7 @@ Premium business landing page showcasing intelligent system integration services
 ### Core Sections
 - **Hero Section** - Prominent brand display with compelling headline and dual CTAs
 - **Package Selection** - Three monthly subscription tiers ($169, $279, $449)
-  - Website Care - Essential maintenance
+  - Website Hosting - Essential maintenance
   - Revenue Optimisation (Recommended) - Conversion & SEO
   - Done-For-You Digital Team - Full-service management
 - **Projects Carousel** - Smooth horizontal slider showcasing 5 industry projects

@@ -4,7 +4,7 @@ import { Check, Star } from 'lucide-react'
 
 const packages = [
   {
-    name: 'Website Care',
+    name: 'Website Hosting',
     price: 119,
     recommended: false,
     features: [
@@ -20,7 +20,7 @@ const packages = [
     price: 279,
     recommended: true,
     features: [
-      'Everything in Website Care',
+      'Everything in Website Hosting',
       'Conversion rate optimization',
       'A/B testing & analytics',
       'SEO enhancements',
