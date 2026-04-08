@@ -73,7 +73,7 @@ const monthlyPlans = [
     id: 'care',
     name: 'Website Hosting',
     badge: null as string | null,
-    price: '$119 AUD/month',
+    price: '$99 AUD/month',
     subLabel: 'Hosting & maintenance',
     description: 'Essential hosting and maintenance to keep your site running smoothly.',
     features: ['Website hosting', 'Website maintenance', 'Security updates', 'Monthly backups', 'Up to 1hr tech support/month'],
@@ -224,7 +224,7 @@ export default function GetStartedForm({
 
   if (submitted) {
     return (
-      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70">
         <div className="bg-white border border-[#E8E4DF] rounded-2xl p-8 max-w-lg w-full text-center">
           <div className="w-20 h-20 bg-[#F8F7F4] rounded-full flex items-center justify-center mx-auto mb-6">
             <Check className="w-10 h-10 text-[#1A1A1A]" />
@@ -248,7 +248,7 @@ export default function GetStartedForm({
   }
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70">
       <div className="bg-white border border-[#E8E4DF] rounded-2xl w-full max-w-2xl flex flex-col max-h-[85vh]">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-[#E8E4DF] flex-shrink-0">
@@ -345,9 +345,9 @@ export default function GetStartedForm({
                     id="businessName"
                     type="text"
                     value={formData.businessName}
-                    onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, businessName: e.target.value }))}
                     placeholder="e.g. Capital Intelligence Group"
-                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
                   />
                 </div>
                 <div>
@@ -358,9 +358,9 @@ export default function GetStartedForm({
                     id="industry"
                     type="text"
                     value={formData.industry}
-                    onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, industry: e.target.value }))}
                     placeholder="e.g. Electrical Services, Technology, etc."
-                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
                   />
                 </div>
                 <div>
@@ -370,10 +370,10 @@ export default function GetStartedForm({
                   <textarea
                     id="description"
                     value={formData.description}
-                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
                     placeholder="What does your business do? Who are your customers?"
                     rows={2}
-                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition resize-none"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 resize-none"
                   />
                 </div>
                 <div className="flex items-center gap-3">
@@ -526,9 +526,9 @@ export default function GetStartedForm({
                     id="contactName"
                     type="text"
                     value={formData.contactName}
-                    onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, contactName: e.target.value }))}
                     placeholder="Your full name"
-                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
                   />
                 </div>
                 <div>
@@ -539,9 +539,9 @@ export default function GetStartedForm({
                     id="contactEmail"
                     type="email"
                     value={formData.contactEmail}
-                    onChange={(e) => setFormData({ ...formData, contactEmail: e.target.value })}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, contactEmail: e.target.value }))}
                     placeholder="you@company.com"
-                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
                   />
                 </div>
                 <div>
@@ -552,9 +552,9 @@ export default function GetStartedForm({
                     id="contactPhone"
                     type="tel"
                     value={formData.contactPhone}
-                    onChange={(e) => setFormData({ ...formData, contactPhone: e.target.value })}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, contactPhone: e.target.value }))}
                     placeholder="Optional"
-                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
                   />
                 </div>
                 <div>
@@ -564,10 +564,10 @@ export default function GetStartedForm({
                   <textarea
                     id="additionalNotes"
                     value={formData.additionalNotes}
-                    onChange={(e) => setFormData({ ...formData, additionalNotes: e.target.value })}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, additionalNotes: e.target.value }))}
                     placeholder="Anything else you'd like us to know?"
                     rows={2}
-                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] smooth-transition resize-none"
+                    className="w-full px-4 py-2 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 resize-none"
                   />
                 </div>
               </div>
