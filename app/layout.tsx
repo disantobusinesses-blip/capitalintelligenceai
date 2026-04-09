@@ -81,6 +81,19 @@ export default function RootLayout({
           gtag('config', 'AW-17950129824');
         `}
       </Script>
+        {/* Google Analytics GA4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-F90QP8NNGL"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-F90QP8NNGL');
+          `}
+        </Script>
       <body className="bg-[#F8F7F4]">
         <script
           type="application/ld+json"
