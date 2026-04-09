@@ -23,6 +23,14 @@ const testimonials = [
     initial: 'R',
     avatarColor: 'bg-purple-500',
   },
+  {
+    quote:
+      'Website was made for me within 48 hours, and after a month or so was ranked 1 on Google for some topics. Amazing work.',
+    author: 'EAY Electrical',
+    role: 'Electrical Services, Australia',
+    initial: 'E',
+    avatarColor: 'bg-yellow-500',
+  },
 ]
 
 export default function Testimonials() {
@@ -40,7 +48,7 @@ export default function Testimonials() {
         </div>
 
         {/* Cards — horizontal scroll on mobile, 3-column grid on desktop */}
-        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
+        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0">
           {testimonials.map((t) => (
             <div
               key={t.author}

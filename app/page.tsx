@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero'
+import AIBlogSections from '@/components/AIBlogSections'
 import ProvenResults from '@/components/ProvenResults'
 import ServiceSelection from '@/components/ServiceSelection'
 import OurWork from '@/components/OurWork'
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <main className="bg-[#F8F7F4] pb-24 md:pb-0">
       <Hero />
+      <AIBlogSections />
       <ProvenResults />
       <ServiceSelection />
       <OurWork />

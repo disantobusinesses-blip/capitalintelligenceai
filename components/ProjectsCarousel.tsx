@@ -17,7 +17,7 @@ const projects = [
     title: 'My AI Bank',
     industry: 'FinTech',
     description: 'AI-powered banking platform delivering intelligent financial tools and personalised banking experiences.',
-    image: null,
+    image: 'https://image.thum.io/get/width/1266/crop/574/https://myaibank.ai',
     url: 'https://myaibank.ai',
   },
   {
@@ -53,6 +53,7 @@ const projects = [
 export default function ProjectsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [failedImages, setFailedImages] = useState<Set<number>>(new Set())
 
   // Auto-rotate carousel every 5 seconds
   useEffect(() => {
@@ -111,7 +112,7 @@ export default function ProjectsCarousel() {
                   <div className="max-w-4xl mx-auto bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)] smooth-transition hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
                     {/* Project Image */}
                     <div className="aspect-video bg-gradient-tech relative overflow-hidden">
-                      {project.image ? (
+                      {project.image && !failedImages.has(project.id) ? (
                         <>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
@@ -119,6 +120,7 @@ export default function ProjectsCarousel() {
                             alt={project.title}
                             loading="lazy"
                             className="absolute inset-0 w-full h-full object-cover object-top"
+                            onError={() => setFailedImages(prev => new Set([...prev, project.id]))}
                           />
                           {/* Dark overlay for better text readability when image is present */}
                           <div className="absolute inset-0 bg-[#1A1A1A]/20" />

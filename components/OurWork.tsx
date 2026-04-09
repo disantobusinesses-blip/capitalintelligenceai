@@ -9,7 +9,7 @@ const projects = [
     industry: 'Trades',
     metric: 'Ranked page 1 Google',
     link: 'https://www.eayelectrical.com.au',
-    image: 'https://image.thum.io/get/width/1266/crop/574/https://www.eayelectrical.com.au',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EAY%20site-7S7pX8I1Dmy6mqs88OqeeR0avSRFuH.jpg',
     imageAlt: 'EAY Electrical website screenshot',
   },
   {
@@ -25,6 +25,7 @@ const projects = [
 
 export default function OurWork() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
+  const [failedImages, setFailedImages] = useState<Set<number>>(new Set())
 
   return (
     <section id="our-work" className="bg-white py-[80px] px-6">
@@ -51,13 +52,14 @@ export default function OurWork() {
             >
               {/* Screenshot */}
               <div className="h-[200px] bg-[#E8E4DF] overflow-hidden">
-                {project.image ? (
+                {project.image && !failedImages.has(project.id) ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={project.image}
                     alt={project.imageAlt}
                     className="w-full h-full object-cover object-top"
                     loading="lazy"
+                    onError={() => setFailedImages(prev => new Set([...prev, project.id]))}
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-[#F8F7F4]">

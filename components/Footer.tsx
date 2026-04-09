@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <div className="mb-4">
               <Image
-                src="/images/is-logo.jpg"
+                src="/ias-logo.png"
                 alt="Intelligent AI Systems"
                 width={56}
                 height={56}

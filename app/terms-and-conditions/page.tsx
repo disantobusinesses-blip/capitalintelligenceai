@@ -66,7 +66,7 @@ export default function TermsAndConditions() {
             We offer three monthly subscription plans:
           </p>
           <ul className="list-disc pl-6 text-[#1A1A1A] space-y-2 mb-4">
-            <li><strong>Website Care:</strong> $169 AUD per month</li>
+            <li><strong>Website Hosting:</strong> $169 AUD per month</li>
             <li><strong>Revenue Optimisation:</strong> $279 AUD per month</li>
             <li><strong>Done-For-You Digital Team:</strong> $449 AUD per month</li>
           </ul>
