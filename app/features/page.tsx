@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Check, MessageCircle, Mail, FileText, MapPin, Share2, TrendingUp, ArrowRight } from 'lucide-react'
+import { Check, MessageCircle, Mail, FileText, MapPin, Share2, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -172,26 +172,12 @@ export default function FeaturesPage() {
                       <div>
                         <h3 className="text-lg font-bold text-[#1A1A1A]">{feature.name}</h3>
                         <span className="text-[#1A1A1A] font-semibold text-sm">{feature.price}</span>
-                        {feature.priceNote && (
-                          <p className="text-green-400 text-xs font-semibold mt-0.5">{feature.priceNote}</p>
-                        )}
                       </div>
                     </div>
                     <div className="flex items-center gap-2 mt-2 flex-wrap">
                       <span className="text-xs px-3 py-1 bg-[#F8F7F4] border border-[#E8E4DF] text-[#1A1A1A] rounded-full font-semibold">
                         {feature.category}
                       </span>
-                      {feature.seoBoost && (
-                        <span className="text-xs px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 rounded-full font-semibold flex items-center gap-1">
-                          <TrendingUp className="w-3 h-3" />
-                          SEO Boost
-                        </span>
-                      )}
-                      {feature.comingSoon && (
-                        <span className="text-xs px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-full font-semibold">
-                          Coming Soon
-                        </span>
-                      )}
                     </div>
                   </div>
 
