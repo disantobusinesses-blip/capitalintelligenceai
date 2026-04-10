@@ -2,10 +2,8 @@
 
 import Link from 'next/link'
 import { ArrowLeft, Check, Zap, Smartphone, Gauge, Search } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 
 export default function LandingPageService() {
-  const router = useRouter()
 
   const features = [
     {
@@ -162,12 +160,12 @@ export default function LandingPageService() {
             <p className="text-gray-400 mb-8">
               Includes design, development, and deployment of your landing page
             </p>
-            <button
-              onClick={() => router.push('/')}
-              className="w-full px-8 py-4 bg-white text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#F8F7F4]"
+            <a
+              href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+              className="w-full px-8 py-4 bg-white text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#F8F7F4] text-center block"
             >
               Get Started Now
-            </button>
+            </a>
             <p className="text-sm text-gray-400 mt-4">
               Add monthly maintenance package for ongoing support
             </p>

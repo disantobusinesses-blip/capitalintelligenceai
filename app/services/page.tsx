@@ -226,8 +226,8 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    href="/"
+                  <a
+                    href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
                     className={`w-full text-center font-semibold py-3 rounded-[6px] transition-colors duration-200 text-sm block ${
                       plan.highlight
                         ? 'bg-[#1A1A1A] text-white hover:bg-[#2D2D2D]'
@@ -235,7 +235,7 @@ export default function ServicesPage() {
                     }`}
                   >
                     {plan.cta}
-                  </Link>
+                  </a>
                 </div>
               )
             })}

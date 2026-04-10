@@ -107,12 +107,12 @@ export default function MarketAuthorityPlanPage() {
         <div className="mt-12 bg-white border border-[#E8E4DF] rounded-[10px] p-8 text-center">
           <h3 className="text-xl font-bold text-[#1A1A1A] mb-3">Ready to become the authority in your market?</h3>
           <p className="text-[#6B6560] text-sm mb-6">Start the Market Authority Plan for $599/month. No lock-in contracts.</p>
-          <Link
-            href="/"
+          <a
+            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
             className="inline-flex items-center gap-2 px-8 py-3 bg-[#1A1A1A] text-white rounded-full font-bold smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
           >
             Get Started
-          </Link>
+          </a>
         </div>
 
       </div>

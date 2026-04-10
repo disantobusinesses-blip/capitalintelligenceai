@@ -120,12 +120,12 @@ export default function SuperGrowthPlanPage() {
             <strong className="text-[#1A1A1A]">$359/month</strong> — on sale now. No lock-in contracts.
           </p>
           <p className="text-xs text-[#5C3D2E] font-semibold mb-6">Save 28% — limited time pricing</p>
-          <Link
-            href="/"
+          <a
+            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
             className="inline-flex items-center gap-2 px-8 py-3 bg-[#1A1A1A] text-white rounded-full font-bold smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
           >
             Get Started
-          </Link>
+          </a>
         </div>
 
       </div>

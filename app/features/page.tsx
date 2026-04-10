@@ -230,12 +230,12 @@ export default function FeaturesPage() {
             Select multiple paid options for a discount upon quote.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/"
+            <a
+              href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
               className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
             >
               Get Started
-            </Link>
+            </a>
             <Link
               href="/pricing"
               className="px-8 py-4 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#1A1A1A] hover:text-white"

@@ -161,12 +161,12 @@ export default function ProjectsPage() {
           <p className="text-[#6B6560] mb-8">
             Let us build an intelligent system tailored to your business needs.
           </p>
-          <Link
-            href="/"
+          <a
+            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
             className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
           >
             Get Started
-          </Link>
+          </a>
         </div>
       </section>
     </div>

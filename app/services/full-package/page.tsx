@@ -131,15 +131,16 @@ export default function FullPackageService() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  className={`w-full py-3 rounded-[6px] font-semibold smooth-transition ${
+                <a
+                  href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+                  className={`w-full py-3 rounded-[6px] font-semibold smooth-transition text-center block ${
                     tier.featured
                       ? 'bg-[#1A1A1A] text-white hover:bg-[#2D2D2D]'
                       : 'border-2 border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white'
                   }`}
                 >
                   Get Started
-                </button>
+                </a>
               </div>
             ))}
           </div>
