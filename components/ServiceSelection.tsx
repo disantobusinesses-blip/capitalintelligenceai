@@ -2,14 +2,15 @@
 
 import { useState } from 'react'
 import { useGetStartedModal } from '@/context/GetStartedModalContext'
-import { Globe, Package, TrendingUp } from 'lucide-react'
+import { Globe, Package, TrendingUp, MapPin } from 'lucide-react'
 
 const services = [
   {
     id: 'landing-page',
     icon: Globe,
     title: 'Landing Page',
-    price: 'From $599 AUD',
+    price: 'From A$599',
+    priceNote: 'one-time',
     description: 'A high-converting single-page website designed to turn visitors into leads.',
     features: [
       'Custom modern design',
@@ -17,12 +18,15 @@ const services = [
       'SEO optimised on-page',
       'Contact form included',
     ],
+    addon: null,
+    cta: 'Get Started',
   },
   {
     id: 'full-package',
     icon: Package,
     title: 'Website + Full Package',
-    price: 'Custom price upon request',
+    price: 'Custom quote',
+    priceNote: 'upon request',
     description: 'Complete multi-page website with ongoing support and digital strategy.',
     features: [
       'Custom multi-page design',
@@ -30,12 +34,15 @@ const services = [
       'Analytics dashboard setup',
       'SEO + AI search indexing',
     ],
+    addon: null,
+    cta: 'Get Started',
   },
   {
     id: 'website-care',
     icon: TrendingUp,
     title: 'Website Hosting',
-    price: '$99/month',
+    price: 'A$99',
+    priceNote: '/month',
     description: 'Essential hosting and maintenance to keep your site running smoothly.',
     features: [
       'Website hosting',
@@ -44,12 +51,44 @@ const services = [
       'Monthly backups',
       'Up to 1hr tech support/month',
     ],
+    addon: null,
+    cta: 'Get Started',
+  },
+  {
+    id: 'google-business-profile',
+    icon: MapPin,
+    title: 'Google Business Profile Setup',
+    price: 'A$299',
+    priceNote: 'one-time',
+    description: 'Look more legitimate online, improve your local visibility, and make it easier for happy customers to find and review you.',
+    features: [
+      'Full GBP setup or optimisation',
+      'Business category & service config',
+      'Professionally written business description',
+      'Review QR code for customers',
+      'SMS & email review request templates',
+      '1 professional cover image supplied',
+      'Handover notes for self-management',
+    ],
+    addon: {
+      label: 'Optional add-on',
+      title: 'Ongoing Profile Management',
+      price: 'A$79/month',
+      features: [
+        'Ongoing profile edits',
+        'Review response support',
+        'Image & post updates',
+        'Light optimisation over time',
+      ],
+    },
+    cta: 'Enquire Now',
   },
 ]
 
 export default function ServiceSelection() {
   const { openModal } = useGetStartedModal()
   const [hoveredId, setHoveredId] = useState<string | null>(null)
+  const [addonOpen, setAddonOpen] = useState(false)
 
   return (
     <section id="services" className="bg-[#F8F7F4] py-[80px] px-6">
@@ -65,14 +104,15 @@ export default function ServiceSelection() {
         </div>
 
         {/* Service Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {services.map((service) => {
             const Icon = service.icon
             const isHovered = hoveredId === service.id
+            const isGbp = service.id === 'google-business-profile'
             return (
               <div
                 key={service.id}
-                className="bg-white rounded-[10px] p-8 flex flex-col transition-all duration-200"
+                className="bg-white rounded-[10px] p-7 flex flex-col transition-all duration-200"
                 style={{
                   border: '1px solid #E8E4DF',
                   borderTop: isHovered ? '3px solid #5C3D2E' : '1px solid #E8E4DF',
@@ -87,13 +127,16 @@ export default function ServiceSelection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-[20px] font-bold text-[#1A1A1A] mb-1">{service.title}</h3>
+                <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-1 leading-snug">{service.title}</h3>
 
                 {/* Price */}
-                <p className="text-[18px] font-bold text-[#5C3D2E] mb-3">{service.price}</p>
+                <p className="text-[17px] font-bold text-[#5C3D2E] mb-0.5">
+                  {service.price}
+                  <span className="text-[13px] font-normal text-[#9E9790] ml-1">{service.priceNote}</span>
+                </p>
 
                 {/* Description */}
-                <p className="text-[#6B6560] text-sm mb-5 leading-relaxed">{service.description}</p>
+                <p className="text-[#6B6560] text-sm mb-5 leading-relaxed mt-2">{service.description}</p>
 
                 {/* Features */}
                 <ul className="space-y-2 mb-6 flex-1">
@@ -107,12 +150,42 @@ export default function ServiceSelection() {
                   ))}
                 </ul>
 
+                {/* Add-on (GBP only) */}
+                {isGbp && service.addon && (
+                  <div className="mb-4 rounded-[6px] border border-[#E8E4DF] overflow-hidden">
+                    <button
+                      type="button"
+                      onClick={() => setAddonOpen((v) => !v)}
+                      className="w-full flex items-center justify-between px-3 py-2.5 bg-[#F8F7F4] hover:bg-[#F0EDE8] transition-colors duration-150 text-left"
+                    >
+                      <span className="text-xs font-semibold text-[#5C3D2E] uppercase tracking-wide">
+                        {service.addon.label}
+                      </span>
+                      <span className="text-xs font-bold text-[#1A1A1A] ml-2 whitespace-nowrap">
+                        {service.addon.price}
+                      </span>
+                    </button>
+                    {addonOpen && (
+                      <ul className="px-3 py-2 space-y-1 bg-white">
+                        {service.addon.features.map((f) => (
+                          <li key={f} className="flex items-start gap-2 text-xs text-[#6B6560]">
+                            <svg className="w-3.5 h-3.5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
+
                 {/* CTA */}
                 <button
                   onClick={() => openModal()}
-                  className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 mt-auto"
+                  className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 mt-auto text-sm"
                 >
-                  Get Started
+                  {service.cta}
                 </button>
               </div>
             )
