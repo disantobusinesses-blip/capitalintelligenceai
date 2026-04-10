@@ -1,7 +1,6 @@
 'use client'
 
 import { MapPin, Star, ShieldCheck, TrendingUp } from 'lucide-react'
-import { useGetStartedModal } from '@/context/GetStartedModalContext'
 
 const trustPoints = [
   {
@@ -27,8 +26,6 @@ const trustPoints = [
 ]
 
 export default function GoogleBusinessProfileBanner() {
-  const { openModal } = useGetStartedModal()
-
   return (
     <section
       className="bg-[#F8F7F4] py-[72px] px-6"
@@ -84,12 +81,12 @@ export default function GoogleBusinessProfileBanner() {
 
         {/* CTA row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <button
-            onClick={() => openModal()}
+          <a
+            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
             className="bg-[#1A1A1A] text-white font-semibold px-7 py-3.5 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 text-[15px]"
           >
             Enquire About GBP Setup — A$299
-          </button>
+          </a>
           <a
             href="/services/google-business-profile"
             className="text-[14px] font-semibold text-[#5C3D2E] hover:underline underline-offset-2 transition-colors duration-150"

@@ -154,10 +154,10 @@ export default function Hero() {
               {/* Secondary CTAs */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="#consultation"
+                  href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
                   className="bg-[#1A1A1A] text-white font-semibold px-6 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 inline-block text-center"
                 >
-                  Get a Free Quote
+                  Email for Quote
                 </a>
                 <a
                   href="#our-work"

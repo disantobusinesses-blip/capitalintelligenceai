@@ -19,7 +19,7 @@ export default function ProvenResults() {
               <span className="text-[14px] text-[#9E9790] line-through">$2,000–$5,000/mo</span>
             </div>
             <p className="text-[34px] font-extrabold text-white leading-tight">
-              $299–$799<span className="text-[16px] font-bold">/mo</span>
+              $199–$799<span className="text-[16px] font-bold">/mo</span>
             </p>
             <p className="text-[13px] text-[#9E9790] mt-2">vs Traditional Agencies</p>
           </div>
