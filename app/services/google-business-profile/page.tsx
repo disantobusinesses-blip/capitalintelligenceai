@@ -94,7 +94,7 @@ export default function GoogleBusinessProfilePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Google%20Business%20Profile%20Setup%20service%20(A%24299).%20Please%20get%20in%20touch."
+              href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
               className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
             >
               Enquire Now — A$299
@@ -167,7 +167,7 @@ export default function GoogleBusinessProfilePage() {
               ))}
             </ul>
             <a
-              href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Google%20Business%20Profile%20Setup%20service%20(A%24299).%20Please%20get%20in%20touch."
+              href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
               className="w-full sm:w-auto px-8 py-4 bg-white text-[#1A1A1A] rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#F8F7F4] inline-block text-center"
             >
               Enquire Now
@@ -214,7 +214,7 @@ export default function GoogleBusinessProfilePage() {
                   ))}
                 </ul>
                 <a
-                  href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Management&body=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Google%20Business%20Profile%20Management%20add-on%20(A%2479%2Fmonth).%20Please%20get%20in%20touch."
+                  href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Management&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
                   className="w-full sm:w-auto px-6 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-sm transition-colors duration-200 hover:bg-[#2D2D2D] inline-block text-center"
                 >
                   Enquire About the Add-on
@@ -236,7 +236,7 @@ export default function GoogleBusinessProfilePage() {
             business can do. Get yours done right, once, for A$299.
           </p>
           <a
-            href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Google%20Business%20Profile%20Setup%20service%20(A%24299).%20Please%20get%20in%20touch."
+            href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
             className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D] inline-block"
           >
             Enquire Now

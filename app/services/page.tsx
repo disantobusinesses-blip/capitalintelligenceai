@@ -319,7 +319,7 @@ export default function ServicesPage() {
             Tell us about your business and we&apos;ll recommend the right combination of services to get you results.
           </p>
           <a
-            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hi%2C%20I%27d%20like%20to%20get%20a%20free%20quote%20for%20your%20services.%20Please%20get%20in%20touch%20with%20me."
+            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
             className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
           >
             Get a Free Quote
