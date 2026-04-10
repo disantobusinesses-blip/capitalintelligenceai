@@ -82,7 +82,7 @@ const monthlyPlans = [
     id: 'google-growth',
     name: 'Google Growth',
     badge: 'Most popular',
-    price: '$299 AUD/month',
+    price: '$199 AUD/month',
     subLabel: '4 blogs/month · Website Hosting included',
     description: 'Start ranking on Google with consistent monthly content.',
     features: ['Everything in Website Hosting', '4 SEO-optimised blog articles/month', 'Monthly keyword research', 'On-page optimisation', 'Monthly performance report', 'AI search indexing (ChatGPT, Gemini, Perplexity)'],
