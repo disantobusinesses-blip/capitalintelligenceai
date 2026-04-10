@@ -41,7 +41,7 @@ const seoPlans = [
     key: 'google-growth',
     icon: TrendingUp,
     name: 'Google Growth',
-    price: 'A$299',
+    price: 'A$199',
     period: '/month',
     badge: 'Most Popular',
     description: 'Start ranking on Google with consistent monthly content and keyword strategy.',
@@ -318,12 +318,12 @@ export default function ServicesPage() {
           <p className="text-[#6B6560] mb-8">
             Tell us about your business and we&apos;ll recommend the right combination of services to get you results.
           </p>
-          <Link
-            href="/"
+          <a
+            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hi%2C%20I%27d%20like%20to%20get%20a%20free%20quote%20for%20your%20services.%20Please%20get%20in%20touch%20with%20me."
             className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
           >
-            Get a Custom Quote
-          </Link>
+            Get a Free Quote
+          </a>
         </div>
       </section>
     </div>

@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowLeft, Check, MapPin, Star, QrCode, FileText, Image, MessageSquare, Settings } from 'lucide-react'
-import { useGetStartedModal } from '@/context/GetStartedModalContext'
 
 const setupFeatures = [
   {
@@ -56,7 +55,6 @@ const managementIncludes = [
 ]
 
 export default function GoogleBusinessProfilePage() {
-  const { openModal } = useGetStartedModal()
   const [addonExpanded, setAddonExpanded] = useState(false)
 
   return (
@@ -95,12 +93,12 @@ export default function GoogleBusinessProfilePage() {
             easier for happy customers to find and review you — all done for you in one hit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => openModal()}
+            <a
+              href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Google%20Business%20Profile%20Setup%20service%20(A%24299).%20Please%20get%20in%20touch."
               className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
             >
               Enquire Now — A$299
-            </button>
+            </a>
             <a
               href="#what-you-get"
               className="px-8 py-4 border border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#1A1A1A] hover:text-white"
@@ -168,12 +166,12 @@ export default function GoogleBusinessProfilePage() {
                 </li>
               ))}
             </ul>
-            <button
-              onClick={() => openModal()}
-              className="w-full sm:w-auto px-8 py-4 bg-white text-[#1A1A1A] rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#F8F7F4]"
+            <a
+              href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Google%20Business%20Profile%20Setup%20service%20(A%24299).%20Please%20get%20in%20touch."
+              className="w-full sm:w-auto px-8 py-4 bg-white text-[#1A1A1A] rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#F8F7F4] inline-block text-center"
             >
               Enquire Now
-            </button>
+            </a>
           </div>
 
           {/* Add-on card */}
@@ -215,12 +213,12 @@ export default function GoogleBusinessProfilePage() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  onClick={() => openModal()}
-                  className="w-full sm:w-auto px-6 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-sm transition-colors duration-200 hover:bg-[#2D2D2D]"
+                <a
+                  href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Management&body=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Google%20Business%20Profile%20Management%20add-on%20(A%2479%2Fmonth).%20Please%20get%20in%20touch."
+                  className="w-full sm:w-auto px-6 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-sm transition-colors duration-200 hover:bg-[#2D2D2D] inline-block text-center"
                 >
                   Enquire About the Add-on
-                </button>
+                </a>
               </div>
             )}
           </div>
@@ -237,12 +235,12 @@ export default function GoogleBusinessProfilePage() {
             A properly set-up Google Business Profile is one of the highest-ROI things a local
             business can do. Get yours done right, once, for A$299.
           </p>
-          <button
-            onClick={() => openModal()}
-            className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
+          <a
+            href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Google%20Business%20Profile%20Setup%20service%20(A%24299).%20Please%20get%20in%20touch."
+            className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D] inline-block"
           >
             Enquire Now
-          </button>
+          </a>
           <p className="text-xs text-[#9E9790] mt-4">No lock-in contracts. Australian business. Fast turnaround.</p>
         </div>
       </section>
