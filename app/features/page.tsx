@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Check, MessageCircle, CalendarCheck, Mail, FileText, MapPin, Share2, Newspaper, Image, Star, TrendingUp, ArrowRight } from 'lucide-react'
+import { Check, MessageCircle, Mail, FileText, MapPin, Share2, TrendingUp, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ const features = [
   {
     name: '24/7 AI Chat Support',
     icon: MessageCircle,
-    price: '$399/month',
+    price: '$799 setup + custom/month',
     category: 'AI-Powered',
     blogLink: '/blog/ai-chatbots-automation-more-leads',
     description: 'An intelligent chatbot that handles customer enquiries around the clock, providing instant responses and routing complex issues to your team.',
@@ -30,23 +30,6 @@ const features = [
       'Seamlessly escalates complex issues to human agents when needed',
     ],
     idealFor: 'Businesses receiving frequent customer enquiries who want to provide instant support without hiring additional staff.',
-  },
-  {
-    name: 'AI Automated Booking System',
-    icon: CalendarCheck,
-    price: '$399 setup + $99/month',
-    category: 'AI-Powered',
-    comingSoon: true,
-    blogLink: '/blog/ai-automated-booking-system-benefits',
-    description: 'A smart booking system that lets customers schedule appointments directly through your website, with automated confirmations and reminders.',
-    valuePoints: [
-      'Increases booking conversion rate by allowing customers to book instantly, 24/7',
-      'Eliminates double-bookings with intelligent calendar synchronisation',
-      'Sends automated email and SMS reminders, reducing no-shows by up to 40%',
-      'Integrates with popular calendar platforms like Google Calendar and Outlook',
-      'Provides analytics on booking patterns to help optimise your schedule',
-    ],
-    idealFor: 'Service-based businesses such as consultants, tradespeople, healthcare providers, and salons.',
   },
   {
     name: 'Automated AI Customer Replies',
@@ -116,60 +99,9 @@ const features = [
     idealFor: 'Businesses actively using social media who want to cross-promote their online presence.',
   },
   {
-    name: 'Blog / News Section',
-    icon: Newspaper,
-    price: '+$199 AUD/month',
-    priceNote: 'First two weeks free to see growth',
-    category: 'Growth',
-    seoBoost: true,
-    blogLink: '/blog/how-blogs-generate-millions-of-website-visits',
-    description: 'A professionally designed blog section where you can publish articles, news updates, and industry insights to attract organic traffic.',
-    valuePoints: [
-      'Boosts Google ranking by providing fresh, keyword-rich content that search engines love',
-      'Establishes your business as an authority in your industry',
-      'Drives organic traffic: businesses with blogs generate 55% more website visitors',
-      'Provides shareable content for social media marketing',
-      'Supports long-tail keyword strategy for capturing niche search traffic',
-    ],
-    idealFor: 'Businesses looking to improve their SEO and establish thought leadership in their industry.',
-  },
-  {
-    name: 'Gallery / Portfolio',
-    icon: Image,
-    price: '$99 setup',
-    category: 'Growth',
-    blogLink: '/blog/gallery-portfolio-website-benefits',
-    description: 'A visually stunning gallery or portfolio section to showcase your work, products, or completed projects.',
-    valuePoints: [
-      'Increases visitor engagement by providing visual proof of your work quality',
-      'Builds credibility by showcasing completed projects and satisfied clients',
-      'Supports high-resolution images with optimised loading for fast performance',
-      'Filterable categories to help visitors find relevant examples quickly',
-      'Mobile-responsive grid layout that looks great on all devices',
-    ],
-    idealFor: 'Creative professionals, tradespeople, photographers, and any business that can benefit from visual showcases.',
-  },
-  {
-    name: 'Customer Reviews',
-    icon: Star,
-    price: '+$99 AUD',
-    category: 'Growth',
-    seoBoost: true,
-    blogLink: '/blog/how-ai-can-boost-seo',
-    description: 'Display verified customer testimonials and reviews on your website to build trust and social proof.',
-    valuePoints: [
-      'Increases trust and conversions: 93% of consumers say reviews influence their decisions',
-      'Boosts Google ranking through review schema markup and fresh user-generated content',
-      'Provides social proof that reduces hesitation and encourages action',
-      'Integrates with Google Reviews and other platforms for automatic updates',
-      'Customisable display options to highlight your best testimonials',
-    ],
-    idealFor: 'Service-based businesses and e-commerce stores looking to build trust with new visitors.',
-  },
-  {
     name: 'Newsletter Signup',
     icon: Mail,
-    price: '$199 setup',
+    price: '$599 setup',
     category: 'Growth',
     blogLink: '/blog/newsletter-signup-email-marketing-benefits',
     description: 'A newsletter subscription form to build your email list and keep customers engaged with regular updates.',
