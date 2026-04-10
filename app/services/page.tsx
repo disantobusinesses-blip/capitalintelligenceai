@@ -107,7 +107,7 @@ const oneOffServices = [
     price: 'A$299',
     priceNote: 'one-time',
     description:
-      'We get your Google Business Profile set up and connected to your website, ready to collect reviews from customers. A fully optimised profile is one of the strongest trust signals a local business can have — it's often the first thing a potential lead checks before making a call.',
+      "We get your Google Business Profile set up and connected to your website, ready to collect reviews from customers. A fully optimised profile is one of the strongest trust signals a local business can have — it's often the first thing a potential lead checks before making a call.",
     features: [
       'Full GBP setup or optimisation',
       'Business category & service configuration',
