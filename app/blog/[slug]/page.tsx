@@ -13,7 +13,7 @@ interface Props {
 async function getPost(slug: string) {
   const { data } = await supabase
     .from('capitalintelligence_posts')
-    .select('id, slug, title, description, published_at, last_modified, reading_time, category, content, published')
+    .select('id, slug, title, description, published_at, last_modified, reading_time, category, content, published, faq_schema')
     .eq('slug', slug)
     .single()
   return data
@@ -88,6 +88,12 @@ export default async function DynamicBlogPost({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {post.faq_schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(post.faq_schema) }}
+        />
+      )}
 
       <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24">
         {/* Back link */}
