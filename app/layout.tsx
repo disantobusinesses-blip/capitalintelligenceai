@@ -106,20 +106,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      {/* Google Ads global site tag (AW-17950129824) */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=AW-17950129824"
-        strategy="afterInteractive"
-      />
-      <Script id="google-ads-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'AW-17950129824');
-        `}
-      </Script>
       <body className="bg-[#F8F7F4]">
+        {/* Google tag (GA4: G-F6FB612WF9 + Google Ads: AW-17950129824) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-F90QP8NNGL"
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-F90QP8NNGL');
+            gtag('config', 'AW-17950129824');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
