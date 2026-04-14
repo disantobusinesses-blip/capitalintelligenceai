@@ -18,8 +18,17 @@ const projects = [
     industry: 'FinTech',
     metric: 'AI-powered banking platform',
     link: 'https://myaibank.ai',
-    image: 'https://image.thum.io/get/width/1266/crop/574/https://myaibank.ai',
+    image: 'https://image.thum.io/get/width/1200/crop/630/noanimate/https://myaibank.ai',
     imageAlt: 'My AI Bank website screenshot',
+  },
+  {
+    id: 3,
+    name: 'Reborn Physiques',
+    industry: 'Health & Fitness',
+    metric: 'Custom fitness website',
+    link: 'https://rebornphysiques.com',
+    image: 'https://image.thum.io/get/width/1200/crop/630/noanimate/https://rebornphysiques.com',
+    imageAlt: 'Reborn Physiques website screenshot',
   },
 ]
 
@@ -36,8 +45,8 @@ export default function OurWork() {
           <p className="text-[18px] text-[#6B6560]">Real websites. Real results.</p>
         </div>
 
-        {/* Project Cards — 2 columns max, centred */}
-        <div className="grid sm:grid-cols-2 gap-8 max-w-[760px] mx-auto">
+        {/* Project Cards — 3 columns max, centred */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1140px] mx-auto">
           {projects.map((project) => (
             <div
               key={project.id}
