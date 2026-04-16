@@ -33,7 +33,7 @@ const projects = [
   },
 ]
 
-/** Branded gradient placeholder shown when a static screenshot isn't available yet */
+/** Branded gradient placeholder shown when a static screenshot isn't available or fails to load */
 function ProjectPlaceholder({ title, color, url }: { title: string; color: string; url?: string }) {
   return (
     <div
