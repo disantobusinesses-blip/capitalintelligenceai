@@ -30,8 +30,8 @@ export default function ProvenResults() {
                           sm:border-r-0 sm:border-b
                           md:border-b-0 md:border-r">
             <p className="text-[13px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Up to</p>
-            <p className="text-[42px] font-extrabold text-white leading-none">100</p>
-            <p className="text-[13px] text-[#9E9790] mt-2">SEO Blogs Published Per Year</p>
+            <p className="text-[42px] font-extrabold text-white leading-none">144</p>
+            <p className="text-[13px] text-[#9E9790] mt-2">SEO Blogs Published Per Year by AI trained on your business</p>
           </div>
 
           {/* STAT 3: 24/7 Support */}
