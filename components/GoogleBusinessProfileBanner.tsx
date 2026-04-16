@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { MapPin, Star, ShieldCheck, TrendingUp } from 'lucide-react'
 
 const trustPoints = [
@@ -34,29 +35,47 @@ export default function GoogleBusinessProfileBanner() {
       <div className="max-w-[1200px] mx-auto">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <div className="max-w-[600px]">
-            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
-              Google Business Profile
-            </p>
-            <h2 className="text-[30px] md:text-[40px] font-extrabold text-[#1A1A1A] leading-[1.15] mb-4">
-              Get Found on Google.<br className="hidden md:block" /> Build Trust Before They Even Click.
-            </h2>
-            <p className="text-[17px] text-[#6B6560] leading-relaxed">
-              We get your Google Business Profile set up, optimised, and connected to your website —
-              so it&apos;s working as a trust signal and lead source from day one.
-            </p>
+        <div className="flex flex-col lg:flex-row lg:items-center gap-10 mb-12">
+
+          {/* Left: text + price badge */}
+          <div className="flex-1 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div className="max-w-[600px]">
+              <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
+                Google Business Profile
+              </p>
+              <h2 className="text-[30px] md:text-[40px] font-extrabold text-[#1A1A1A] leading-[1.15] mb-4">
+                Get Found on Google.<br className="hidden md:block" /> Build Trust Before They Even Click.
+              </h2>
+              <p className="text-[17px] text-[#6B6560] leading-relaxed">
+                We get your Google Business Profile set up, optimised, and connected to your website —
+                so it&apos;s working as a trust signal and lead source from day one.
+              </p>
+            </div>
+
+            {/* Price badge */}
+            <div
+              className="flex-shrink-0 bg-white rounded-[10px] px-6 py-5 text-center self-start md:self-auto"
+              style={{ border: '1px solid #E8E4DF' }}
+            >
+              <p className="text-[12px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">One-time setup</p>
+              <p className="text-[32px] font-extrabold text-[#1A1A1A] leading-none">A$299</p>
+              <p className="text-[12px] text-[#9E9790] mt-1">+optional A$79/mo management</p>
+            </div>
           </div>
 
-          {/* Price badge */}
-          <div
-            className="flex-shrink-0 bg-white rounded-[10px] px-6 py-5 text-center self-start md:self-auto"
+          {/* Right: section image */}
+          <div className="flex-shrink-0 w-full lg:w-[420px] rounded-[12px] overflow-hidden"
             style={{ border: '1px solid #E8E4DF' }}
           >
-            <p className="text-[12px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">One-time setup</p>
-            <p className="text-[32px] font-extrabold text-[#1A1A1A] leading-none">A$299</p>
-            <p className="text-[12px] text-[#9E9790] mt-1">+optional A$79/mo management</p>
+            <Image
+              src="/images/HBSgbp.png"
+              alt="Google Business Profile setup"
+              width={420}
+              height={320}
+              className="w-full h-auto object-cover"
+            />
           </div>
+
         </div>
 
         {/* Trust point cards */}
