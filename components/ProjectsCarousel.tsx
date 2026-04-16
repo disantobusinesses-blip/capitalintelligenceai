@@ -9,47 +9,52 @@ const projects = [
     title: 'EAY Electrical',
     industry: 'Electrical Services',
     description: 'Professional electrical services website for residential and commercial clients across Australia. Modern design with service showcase and contact integration.',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EAY%20site-7S7pX8I1Dmy6mqs88OqeeR0avSRFuH.jpg',
+    image: '/projects/eay-electrical.png',
     url: 'https://www.eayelectrical.com.au',
+    color: '#1A3A5C',
   },
   {
     id: 2,
     title: 'My AI Bank',
     industry: 'FinTech',
     description: 'AI-powered banking platform delivering intelligent financial tools and personalised banking experiences.',
-    image: 'https://image.thum.io/get/width/1200/crop/630/noanimate/https://myaibank.ai',
+    image: '/projects/myaibank.png',
     url: 'https://myaibank.ai',
+    color: '#0F172A',
   },
   {
     id: 3,
     title: 'Reborn Physiques',
     industry: 'Health & Fitness',
     description: 'Custom fitness and physique coaching website built to convert visitors into clients, with service showcases and seamless contact integration.',
-    image: 'https://image.thum.io/get/width/1200/crop/630/noanimate/https://rebornphysiques.com',
+    image: '/projects/rebornphysiques.png',
     url: 'https://rebornphysiques.com',
-  },
-  {
-    id: 4,
-    title: 'TBA',
-    industry: 'TBA',
-    description: 'Details to be announced.',
-    image: null,
-  },
-  {
-    id: 5,
-    title: 'TBA',
-    industry: 'TBA',
-    description: 'Details to be announced.',
-    image: null,
-  },
-  {
-    id: 6,
-    title: 'TBA',
-    industry: 'TBA',
-    description: 'Details to be announced.',
-    image: null,
+    color: '#1A1A1A',
   },
 ]
+
+/** Branded gradient placeholder shown when a static screenshot isn't available yet */
+function ProjectPlaceholder({ title, color, url }: { title: string; color: string; url?: string }) {
+  return (
+    <div
+      className="absolute inset-0 flex flex-col items-center justify-center gap-4"
+      style={{ background: `linear-gradient(135deg, ${color} 0%, ${color}DD 100%)` }}
+    >
+      <span className="text-white text-2xl font-bold tracking-wide">{title}</span>
+      {url && (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/15 backdrop-blur text-white text-sm font-medium rounded-full hover:bg-white/25 transition-colors"
+        >
+          Visit Live Site
+          <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+      )}
+    </div>
+  )
+}
 
 export default function ProjectsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -127,11 +132,7 @@ export default function ProjectsCarousel() {
                           <div className="absolute inset-0 bg-[#1A1A1A]/20" />
                         </>
                       ) : (
-                        /* Fallback placeholder for TBA entries */
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-tech">
-                          <div className="absolute inset-0 bg-[#F8F7F4]" />
-                          <span className="relative z-10 text-[#1A1A1A] text-2xl font-semibold">{project.title}</span>
-                        </div>
+                        <ProjectPlaceholder title={project.title} color={project.color} url={project.url} />
                       )}
                       {/* Animated lines */}
                       <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-tech-baby-blue to-transparent animate-pulse" />

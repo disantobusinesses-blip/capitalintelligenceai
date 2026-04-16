@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { ExternalLink } from 'lucide-react'
 
 const projects = [
   {
@@ -9,8 +10,9 @@ const projects = [
     industry: 'Trades',
     metric: 'Ranked page 1 Google',
     link: 'https://www.eayelectrical.com.au',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EAY%20site-7S7pX8I1Dmy6mqs88OqeeR0avSRFuH.jpg',
+    image: '/projects/eay-electrical.png',
     imageAlt: 'EAY Electrical website screenshot',
+    color: '#1A3A5C',
   },
   {
     id: 2,
@@ -18,8 +20,9 @@ const projects = [
     industry: 'FinTech',
     metric: 'AI-powered banking platform',
     link: 'https://myaibank.ai',
-    image: 'https://image.thum.io/get/width/1200/crop/630/noanimate/https://myaibank.ai',
+    image: '/projects/myaibank.png',
     imageAlt: 'My AI Bank website screenshot',
+    color: '#0F172A',
   },
   {
     id: 3,
@@ -27,10 +30,32 @@ const projects = [
     industry: 'Health & Fitness',
     metric: 'Custom fitness website',
     link: 'https://rebornphysiques.com',
-    image: 'https://image.thum.io/get/width/1200/crop/630/noanimate/https://rebornphysiques.com',
+    image: '/projects/rebornphysiques.png',
     imageAlt: 'Reborn Physiques website screenshot',
+    color: '#1A1A1A',
   },
 ]
+
+/** Branded gradient placeholder shown when a static screenshot isn't available yet */
+function ProjectPlaceholder({ name, color, link }: { name: string; color: string; link: string }) {
+  return (
+    <div
+      className="w-full h-full flex flex-col items-center justify-center gap-3"
+      style={{ background: `linear-gradient(135deg, ${color} 0%, ${color}DD 100%)` }}
+    >
+      <span className="text-white text-lg font-bold tracking-wide">{name}</span>
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/15 backdrop-blur text-white text-xs font-medium rounded-full hover:bg-white/25 transition-colors"
+      >
+        Visit Live Site
+        <ExternalLink className="w-3 h-3" />
+      </a>
+    </div>
+  )
+}
 
 export default function OurWork() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
@@ -59,7 +84,7 @@ export default function OurWork() {
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
-              {/* Screenshot */}
+              {/* Screenshot or branded placeholder */}
               <div className="h-[200px] bg-[#E8E4DF] overflow-hidden">
                 {project.image && !failedImages.has(project.id) ? (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -71,9 +96,7 @@ export default function OurWork() {
                     onError={() => setFailedImages(prev => new Set([...prev, project.id]))}
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-[#F8F7F4]">
-                    <span className="text-[#6B6560] text-sm font-medium">Screenshot Coming Soon</span>
-                  </div>
+                  <ProjectPlaceholder name={project.name} color={project.color} link={project.link} />
                 )}
               </div>
 
