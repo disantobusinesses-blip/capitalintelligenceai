@@ -68,7 +68,7 @@ export default function GoogleBusinessProfileBanner() {
             style={{ border: '1px solid #E8E4DF' }}
           >
             <Image
-              src="/images/HBSgbp.png"
+              src="/HBSgbp.png"
               alt="Google Business Profile setup"
               width={420}
               height={320}
