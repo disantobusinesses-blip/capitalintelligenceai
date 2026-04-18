@@ -31,6 +31,15 @@ const projects = [
     url: 'https://rebornphysiques.com',
     color: '#1A1A1A',
   },
+  {
+    id: 4,
+    title: 'Your Coach Plus',
+    industry: 'Health & Fitness',
+    description: 'Personal training landing page built to capture leads and showcase coaching services, with a clean modern design and fast contact integration.',
+    image: '/projects/yourcoachplus.png',
+    url: 'https://yourcoachplus.com.au',
+    color: '#2D5016',
+  },
 ]
 
 /** Branded gradient placeholder shown when a static screenshot isn't available or fails to load */

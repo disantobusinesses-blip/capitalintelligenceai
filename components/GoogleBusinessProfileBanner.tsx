@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { MapPin, Star, ShieldCheck, TrendingUp } from 'lucide-react'
+import { MapPin, Star, ShieldCheck, TrendingUp, CheckCircle } from 'lucide-react'
 
 const trustPoints = [
   {
@@ -65,8 +65,8 @@ export default function GoogleBusinessProfileBanner() {
 
           {/* Right: section image */}
           <div className="flex-shrink-0 w-full lg:w-[420px] flex flex-col gap-2">
-            <div className="flex items-center justify-center gap-2 bg-[#EAF5EA] text-[#2A7A2A] text-[12px] font-semibold rounded-[6px] px-4 py-2">
-              <span>✅</span>
+            <div className="flex items-center justify-center gap-2 bg-[#EAF5EA] text-[#1A1A1A] text-[12px] font-semibold rounded-[6px] px-4 py-2">
+              <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
               <span>Results in 7 days of setup</span>
             </div>
             <div className="rounded-[12px] overflow-hidden" style={{ border: '1px solid #E8E4DF' }}>

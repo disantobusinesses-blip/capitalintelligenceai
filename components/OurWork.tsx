@@ -34,6 +34,16 @@ const projects = [
     imageAlt: 'Reborn Physiques website screenshot',
     color: '#1A1A1A',
   },
+  {
+    id: 4,
+    name: 'Your Coach Plus',
+    industry: 'Health & Fitness',
+    metric: 'PT landing page',
+    link: 'https://yourcoachplus.com.au',
+    image: '/projects/yourcoachplus.png',
+    imageAlt: 'Your Coach Plus website screenshot',
+    color: '#2D5016',
+  },
 ]
 
 /** Branded gradient placeholder shown when a static screenshot isn't available or fails to load */

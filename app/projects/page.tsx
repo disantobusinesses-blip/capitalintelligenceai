@@ -44,6 +44,16 @@ const projects = [
     color: '#1A1A1A',
     features: ['Custom modern design', 'Mobile responsive', 'Service showcase', 'Contact form', 'SEO optimised'],
   },
+  {
+    id: 4,
+    title: 'Your Coach Plus',
+    industry: 'Health & Fitness',
+    description: 'Personal training landing page built to convert visitors into clients, showcasing coaching services with a clean modern design and seamless contact integration.',
+    image: '/projects/yourcoachplus.png',
+    url: 'https://yourcoachplus.com.au',
+    color: '#2D5016',
+    features: ['PT landing page', 'Mobile responsive', 'Lead capture', 'Contact form', 'SEO optimised'],
+  },
 ]
 
 export default function ProjectsPage() {
