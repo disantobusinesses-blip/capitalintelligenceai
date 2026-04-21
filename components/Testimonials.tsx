@@ -44,6 +44,14 @@ const testimonials = [
     initial: 'R',
     avatarColor: 'bg-red-500',
   },
+  {
+    quote:
+      'Great experience with IAS. They got my PT landing page done the same day, set up my Google Business Profile, and walked me through getting my domain sorted. They also linked my Fresha booking so clients can book easily. Super smooth process, would definitely recommend.',
+    author: 'Antonio — Your Coach Plus',
+    role: 'Personal Training, Australia',
+    initial: 'A',
+    avatarColor: 'bg-emerald-500',
+  },
 ]
 
 function PremiumStars() {

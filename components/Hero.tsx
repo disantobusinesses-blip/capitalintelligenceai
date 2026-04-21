@@ -29,7 +29,6 @@ const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 const trustBadges = [
   'First SEO Blog Free',
   'No Lock-In Contracts',
-  'Split Payments Available',
   '90-Day Ranking Guarantee',
 ]
 

@@ -10,7 +10,7 @@ const features = [
   'Google Analytics dashboard setup',
   'SEO + AI search indexing (ChatGPT, Gemini, Perplexity)',
   'Ongoing maintenance options available',
-  '10 free SEO-optimised blog articles included',
+  '5 free SEO-optimised blog articles included',
   'Professional copywriting & content strategy',
   'Domain & hosting setup assistance',
   'Launch support & handover notes',
@@ -89,10 +89,10 @@ export default function FullPackageService() {
         <div className="max-w-4xl mx-auto">
           <div className="bg-[#1A1A1A] rounded-[10px] p-10 text-center">
             <p className="text-[13px] font-semibold text-[#9E9790] uppercase tracking-widest mb-3">Bonus Included</p>
-            <p className="text-[52px] font-extrabold text-white leading-none mb-2">10</p>
+            <p className="text-[52px] font-extrabold text-white leading-none mb-2">5</p>
             <p className="text-[18px] font-semibold text-white mb-3">Free SEO-Optimised Blog Articles</p>
             <p className="text-[#9E9790] text-base max-w-xl mx-auto">
-              Every custom website package includes 10 professionally written, SEO-optimised blog articles to give your Google rankings a head start from the moment you launch.
+              Every custom website package includes 5 professionally written, SEO-optimised blog articles to give your Google rankings a head start from the moment you launch.
             </p>
           </div>
         </div>

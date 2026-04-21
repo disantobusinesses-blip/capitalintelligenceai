@@ -26,7 +26,7 @@ const trustPoints = [
   { label: 'Published weekly — automatically' },
   { label: 'Every post SEO & GEO optimised' },
   { label: 'Indexed by Google and AI assistants' },
-  { label: 'Up to 100 blogs per year included' },
+  { label: 'Up to 144 blogs per year included' },
 ]
 
 export default function AIBlogSections() {
