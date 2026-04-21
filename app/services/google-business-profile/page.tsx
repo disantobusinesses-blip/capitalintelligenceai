@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { ArrowLeft, Check, MapPin, Star, QrCode, FileText, Image, MessageSquare, Settings } from 'lucide-react'
+import { ArrowLeft, Check, MapPin, Star, QrCode, FileText, Image, Settings } from 'lucide-react'
 
 const setupFeatures = [
   {
@@ -21,11 +21,6 @@ const setupFeatures = [
     description: 'A ready-to-print QR code you can hand to customers to make leaving a review effortless.',
   },
   {
-    icon: MessageSquare,
-    title: 'Review Request Templates',
-    description: 'Done-for-you SMS and email templates to help you ask for reviews professionally, without the awkwardness.',
-  },
-  {
     icon: Image,
     title: 'Cover Image Supplied',
     description: 'One professionally sourced cover image to make your profile look polished and credible from day one.',
@@ -42,7 +37,6 @@ const setupIncludes = [
   'Business category and service configuration',
   'Professionally written business description',
   'Review QR code for customers',
-  'SMS and email review request templates',
   '1 professional cover image supplied by us',
   'Handover notes so you can manage it yourself',
 ]
