@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Check, Globe, Package, MapPin, Shield, TrendingUp, Zap, ArrowRight } from 'lucide-react'
+import { Check, Globe, Package, MapPin, Shield, TrendingUp, Zap, ArrowRight, Bot } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Our Services – Intelligent AI Systems',
@@ -303,6 +303,113 @@ export default function ServicesPage() {
                 </div>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── B2B Custom Platform ──────────────────────────────────────────── */}
+      <section className="py-16 px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="mb-10">
+            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+              B2B Solutions
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
+              Custom-Built for Your Business
+            </h2>
+            <p className="text-[#6B6560] text-base max-w-[560px]">
+              Enterprise-grade AI systems built exclusively around your industry, niche, and sales process — no generic tools, no shared databases.
+            </p>
+          </div>
+
+          <div
+            className="bg-white rounded-[10px] p-7 md:p-10 transition-shadow duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
+            style={{ border: '1px solid #E8E4DF' }}
+          >
+            {/* Top row */}
+            <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+              {/* Left */}
+              <div className="md:w-80 flex-shrink-0">
+                <div className="flex items-center gap-3 mb-3">
+                  <Bot className="w-6 h-6 text-[#5C3D2E]" strokeWidth={1.5} />
+                  <span className="text-xs font-semibold text-[#5C3D2E] uppercase tracking-widest">
+                    B2B AI Platform
+                  </span>
+                </div>
+                <h3 className="text-[22px] font-bold text-[#1A1A1A] mb-3 leading-snug">
+                  B2B Custom CRM AI Acquisition Platform
+                </h3>
+
+                {/* Custom Pricing */}
+                <p className="text-[22px] font-bold text-[#1A1A1A]">
+                  Custom Pricing
+                  <span className="text-[13px] font-normal text-[#9E9790] ml-1">— discovery call required</span>
+                </p>
+
+                {/* Market value anchor */}
+                <div className="mt-3 bg-[#F8F7F4] rounded-[6px] px-4 py-3" style={{ border: '1px solid #E8E4DF' }}>
+                  <p className="text-[11px] font-semibold text-[#5C3D2E] uppercase tracking-widest mb-1">Market Value</p>
+                  <p className="text-[15px] font-bold text-[#1A1A1A]">$5,000 – $35,000</p>
+                  <p className="text-[12px] text-[#9E9790] mt-0.5">depending on lead volume and acquisition value</p>
+                </div>
+
+                {/* Key terms */}
+                <ul className="mt-4 space-y-1.5">
+                  <li className="flex items-start gap-2 text-[13px] text-[#6B6560]">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                    $2,000 deposit to begin · balance on completion
+                  </li>
+                  <li className="flex items-start gap-2 text-[13px] text-[#6B6560]">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                    10–15 day build timeline
+                  </li>
+                  <li className="flex items-start gap-2 text-[13px] text-[#6B6560]">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                    Guaranteed results or full money back
+                  </li>
+                  <li className="flex items-start gap-2 text-[13px] text-[#6B6560]">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                    Hosted & maintained on a monthly plan
+                  </li>
+                </ul>
+
+                <Link
+                  href="/services/b2b-crm-ai-platform"
+                  className="inline-flex items-center gap-1.5 mt-6 text-[13px] font-semibold text-[#5C3D2E] hover:underline underline-offset-2 transition-colors duration-150"
+                >
+                  See full details
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+              {/* Right */}
+              <div className="flex-1">
+                <p className="text-[#6B6560] text-[15px] leading-relaxed mb-6">
+                  A fully private, custom-built AI-powered CRM and customer acquisition system designed exclusively for B2B businesses. The platform uses AI to automatically scrape and surface qualified leads from your target market, stores them in a dedicated database, and manages your entire acquisition pipeline — built specifically around your industry, your niche, and your sales process. No generic tools. No shared databases. A system built only for your business.
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 mb-8">
+                  {[
+                    'AI trained specifically on your industry and target market',
+                    'Private lead scraping and storage — your data, your system',
+                    'Full CRM pipeline management',
+                    'Automated lead tracking and follow-up workflows',
+                    'Built exclusively for your business — competitors cannot access the same system',
+                    'Ongoing hosting and system management included',
+                  ].map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
+                      <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="mailto:sales@intelligentaisystem.com?subject=B2B%20CRM%20AI%20Platform%20-%20Discovery%20Call&body=Hello%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20for%20the%20B2B%20Custom%20CRM%20AI%20Acquisition%20Platform."
+                  className="inline-block px-7 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-sm transition-colors duration-200 hover:bg-[#2D2D2D]"
+                >
+                  Book a Discovery Call
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

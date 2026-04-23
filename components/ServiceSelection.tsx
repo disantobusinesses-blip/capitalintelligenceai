@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useGetStartedModal } from '@/context/GetStartedModalContext'
-import { Globe, Package, TrendingUp, MapPin } from 'lucide-react'
+import { Globe, Package, TrendingUp, MapPin, Bot } from 'lucide-react'
 
 const services = [
   {
@@ -83,6 +83,24 @@ const services = [
     },
     cta: 'Enquire Now',
   },
+  {
+    id: 'b2b-crm-ai-platform',
+    icon: Bot,
+    title: 'B2B Custom CRM AI Acquisition Platform',
+    price: 'Custom Pricing',
+    priceNote: 'book a discovery call',
+    description: 'A fully private, custom-built AI-powered CRM and customer acquisition system — built exclusively around your industry, niche, and sales process.',
+    features: [
+      'AI trained on your industry & target market',
+      'Private lead scraping & storage',
+      'Full CRM pipeline management',
+      'Automated lead tracking & follow-up',
+      'Built exclusively for your business',
+      'Ongoing hosting & management included',
+    ],
+    addon: null,
+    cta: 'Book a Discovery Call',
+  },
 ]
 
 export default function ServiceSelection() {
@@ -104,7 +122,7 @@ export default function ServiceSelection() {
         </div>
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-6">
           {services.map((service) => {
             const Icon = service.icon
             const isHovered = hoveredId === service.id
@@ -181,12 +199,21 @@ export default function ServiceSelection() {
                 )}
 
                 {/* CTA */}
-                <button
-                  onClick={() => openModal()}
-                  className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 mt-auto text-sm"
-                >
-                  {service.cta}
-                </button>
+                {service.id === 'b2b-crm-ai-platform' ? (
+                  <a
+                    href="mailto:sales@intelligentaisystem.com?subject=B2B%20CRM%20AI%20Platform%20-%20Discovery%20Call&body=Hello%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20for%20the%20B2B%20Custom%20CRM%20AI%20Acquisition%20Platform."
+                    className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 mt-auto text-sm text-center block"
+                  >
+                    {service.cta}
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => openModal()}
+                    className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 mt-auto text-sm"
+                  >
+                    {service.cta}
+                  </button>
+                )}
               </div>
             )
           })}
