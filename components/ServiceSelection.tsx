@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useGetStartedModal } from '@/context/GetStartedModalContext'
-import { Globe, Package, TrendingUp, MapPin, Bot } from 'lucide-react'
+import { Globe, Package, MapPin, Bot } from 'lucide-react'
 
 const services = [
   {
@@ -33,23 +33,6 @@ const services = [
       'Monthly maintenance & support',
       'Analytics dashboard setup',
       'SEO + AI search indexing',
-    ],
-    addon: null,
-    cta: 'Get Started',
-  },
-  {
-    id: 'website-care',
-    icon: TrendingUp,
-    title: 'Website Hosting',
-    price: 'A$99',
-    priceNote: '/month',
-    description: 'Essential hosting and maintenance to keep your site running smoothly.',
-    features: [
-      'Website hosting',
-      'Website maintenance',
-      'Security updates',
-      'Monthly backups',
-      'Up to 1hr tech support/month',
     ],
     addon: null,
     cta: 'Get Started',

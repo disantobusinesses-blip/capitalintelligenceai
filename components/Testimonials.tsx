@@ -6,6 +6,22 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 const testimonials = [
   {
     quote:
+      'Website was made for me within 48 hours, and after a month or so was ranked 1 on Google for some topics. Amazing work.',
+    author: 'EAY Electrical',
+    role: 'Electrical Services, Australia',
+    initial: 'E',
+    avatarColor: 'bg-yellow-500',
+  },
+  {
+    quote:
+      'The experience was incredible. Optimized my businesses presence on Google and helped with growth and insight overall. Couldn\'t recommend more',
+    author: 'Dylan.M',
+    role: 'Google Review',
+    initial: 'D',
+    avatarColor: 'bg-sky-500',
+  },
+  {
+    quote:
       "Our enquiries doubled within the first 60 days of launching our new site. Couldn't be happier.",
     author: 'M.T.',
     role: 'Trades Business, Melbourne',
@@ -27,14 +43,6 @@ const testimonials = [
     role: 'Professional Services, Brisbane',
     initial: 'R',
     avatarColor: 'bg-purple-500',
-  },
-  {
-    quote:
-      'Website was made for me within 48 hours, and after a month or so was ranked 1 on Google for some topics. Amazing work.',
-    author: 'EAY Electrical',
-    role: 'Electrical Services, Australia',
-    initial: 'E',
-    avatarColor: 'bg-yellow-500',
   },
   {
     quote:
