@@ -15,6 +15,7 @@ export default function Home() {
   return (
     <main className="bg-[#F8F7F4] pb-24 md:pb-0">
       <Hero />
+      <NewsletterSignup />
       <AIBlogSections />
       <GoogleBusinessProfileBanner />
       <ProvenResults />
@@ -23,7 +24,6 @@ export default function Home() {
       <Testimonials />
       <HowItWorks />
       <SeoGuarantee />
-      <NewsletterSignup />
       <FinalCta />
       <Footer />
     </main>

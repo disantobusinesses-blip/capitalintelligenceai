@@ -13,10 +13,10 @@ export default function NewsletterSignup() {
     if (!name.trim() || !email.trim()) return
     setStatus('submitting')
     try {
-      await fetch('/api/notify-lead', {
+      await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, source: 'newsletter' }),
+        body: JSON.stringify({ name, email }),
       })
     } catch {
       // Intentional: always show success message per UX requirement
@@ -25,20 +25,20 @@ export default function NewsletterSignup() {
   }
 
   return (
-    <section className="bg-[#F8F7F4] py-[80px] px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
+    <section className="bg-white py-[48px] px-6" style={{ borderTop: '1px solid #E8E4DF', borderBottom: '1px solid #E8E4DF' }}>
       <div className="max-w-[560px] mx-auto text-center">
         <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
-          Stay in the Loop
+          Free Business Growth Consultation
         </p>
-        <h2 className="text-[28px] md:text-[36px] font-extrabold text-[#1A1A1A] leading-tight mb-3">
-          Join Our Newsletter
+        <h2 className="text-[24px] md:text-[32px] font-extrabold text-[#1A1A1A] leading-tight mb-3">
+          See how we can grow your business
         </h2>
-        <p className="text-[16px] text-[#6B6560] mb-8">
-          Get the latest tips on AI, SEO, and digital growth delivered straight to your inbox.
+        <p className="text-[15px] text-[#6B6560] mb-6">
+          Drop your name and email — we&apos;ll reach out with a personalised growth plan.
         </p>
 
         {status === 'success' ? (
-          <div className="flex flex-col items-center gap-3 py-6">
+          <div className="flex flex-col items-center gap-3 py-4">
             <CheckCircle className="w-10 h-10 text-green-500" />
             <p className="text-[#1A1A1A] font-bold text-xl">We look forward to working with you.</p>
           </div>
@@ -65,8 +65,8 @@ export default function NewsletterSignup() {
               disabled={status === 'submitting'}
               className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50 text-sm"
             >
-              {status === 'submitting' ? 'Subscribing…' : (
-                <>Subscribe <Send className="w-4 h-4" /></>
+              {status === 'submitting' ? 'Sending…' : (
+                <>Get My Growth Plan <Send className="w-4 h-4" /></>
               )}
             </button>
           </form>
