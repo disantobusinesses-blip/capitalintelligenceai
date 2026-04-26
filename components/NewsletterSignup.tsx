@@ -18,10 +18,10 @@ export default function NewsletterSignup() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, source: 'newsletter' }),
       })
-      setStatus('success')
     } catch {
-      setStatus('success')
+      // Intentional: always show success message per UX requirement
     }
+    setStatus('success')
   }
 
   return (
