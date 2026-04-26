@@ -18,7 +18,8 @@ export default function NewsletterSignup() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),
       })
-    } catch {
+    } catch (err) {
+      console.error('Newsletter signup request failed:', err)
       // Intentional: always show success message per UX requirement
     }
     setStatus('success')
