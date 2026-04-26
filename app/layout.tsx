@@ -19,7 +19,7 @@ const localBusinessSchema = {
   logo: 'https://intelligentaisystem.com/ias-logo.png',
   image: 'https://intelligentaisystem.com/ias-logo.png',
   description:
-    'AI-powered web design and SEO agency based in Melbourne, Australia. Building fast websites and delivering SEO content for Australian small businesses and tradies.',
+    'AI-powered web design and SEO agency based in Melbourne, Australia. Building fast websites and delivering SEO content for ambitious businesses globally.',
   telephone: '+61-3-7051-0100',
   email: 'sales@intelligentaisystem.com',
   address: {
@@ -56,7 +56,7 @@ const orgSchema = {
   url: 'https://intelligentaisystem.com',
   logo: 'https://intelligentaisystem.com/ias-logo.png',
   description:
-    'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by Australian businesses to build smarter digital experiences.',
+    'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by businesses across Australia, the US, the UK, and Singapore to build smarter digital experiences.',
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'AU',
@@ -73,12 +73,12 @@ const orgSchema = {
 
 export const metadata: Metadata = {
   title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
-  description: 'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by Australian businesses to build smarter digital experiences.',
+  description: 'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by businesses across Australia, the US, the UK, and Singapore to build smarter digital experiences.',
   keywords: 'web design Australia, landing page, AI integration, website maintenance, SEO, digital agency, IAS, Intelligent AI Systems',
   metadataBase: new URL('https://intelligentaisystem.com'),
   openGraph: {
     title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
-    description: 'Premium websites and AI integrations engineered for growth. Trusted by Australian businesses to build smarter digital experiences.',
+    description: 'Premium websites and AI integrations engineered for growth. Trusted by businesses across Australia, the US, the UK, and Singapore to build smarter digital experiences.',
     url: 'https://intelligentaisystem.com',
     siteName: 'Intelligent AI Systems',
     locale: 'en_AU',

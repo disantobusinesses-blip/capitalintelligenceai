@@ -133,7 +133,7 @@ export default function BlogPostAISEO() {
                   ChatGPT, Perplexity, and Google&apos;s AI Overviews.
                 </p>
                 <p className="mt-4">
-                  For Australian businesses competing online, the question is no
+                  For businesses competing online, the question is no
                   longer whether AI belongs in your SEO strategy. It already does.
                   The question is how well you are using it, and whether your
                   content is structured to rank in both traditional search and the
@@ -413,7 +413,7 @@ export default function BlogPostAISEO() {
                 </h2>
                 <p className="mb-6">
                   Intelligent AI Systems builds SEO-ready websites and implements
-                  structured content strategies for Australian businesses. From
+                  structured content strategies for businesses across Australia, the US, the UK, and Singapore. From
                   proper schema markup and crawlable architecture to ongoing
                   content production, we handle the technical and strategic work
                   so you can focus on running your business.

@@ -47,19 +47,16 @@ export function NavBar({ items, className }: NavBarProps) {
               aria-label={item.name}
               className={cn(
                 "relative cursor-pointer font-semibold rounded-full transition-colors",
-                // Mobile: icon-only, compact padding
-                "p-2.5",
-                // Desktop: icon + label with more padding
-                "md:px-5 md:py-2 md:flex md:items-center md:gap-1.5",
+                // Mobile: label only, compact padding
+                "px-3 py-2",
+                // Desktop: label with more padding
+                "md:px-5 md:py-2",
                 "text-tech-platinum hover:text-tech-white",
                 isActive && "bg-tech-baby-blue/10 text-tech-white",
               )}
             >
-              {/* Mobile: icon only */}
-              <Icon className="w-4 h-4 md:hidden" />
-              {/* Desktop: icon + label */}
-              <Icon className="hidden md:block w-4 h-4 flex-shrink-0" />
-              <span className="hidden md:inline text-sm">{item.name}</span>
+              {/* Mobile and desktop: label only */}
+              <span className="text-xs md:text-sm">{item.name}</span>
               {isActive && (
                 <motion.div
                   layoutId="lamp"

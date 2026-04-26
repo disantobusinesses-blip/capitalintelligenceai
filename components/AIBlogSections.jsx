@@ -29,6 +29,13 @@ const trustPoints = [
   { label: 'Up to 144 blogs per year included' },
 ]
 
+const services = [
+  { label: 'B2B AI Acquisition', href: '/services/b2b-crm-ai-platform' },
+  { label: 'Website Creation', href: '/services/full-package' },
+  { label: 'SEO Blog Content', href: '/services' },
+  { label: 'Google Profile Setup', href: '/services/google-business-profile' },
+]
+
 export default function AIBlogSections() {
   return (
     <section
@@ -36,6 +43,22 @@ export default function AIBlogSections() {
       style={{ borderBottom: '1px solid #E8E4DF' }}
     >
       <div className="max-w-[1200px] mx-auto">
+
+        {/* Services quick-links */}
+        <div className="flex flex-wrap gap-3 mb-10">
+          {services.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E8E4DF] rounded-full text-[13px] font-semibold text-[#1A1A1A] hover:border-[#5C3D2E] hover:text-[#5C3D2E] transition-colors duration-200"
+            >
+              {s.label}
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          ))}
+        </div>
 
         {/* Header + Real Results image side by side */}
         <div className="flex flex-col md:flex-row gap-10 items-start mb-14">

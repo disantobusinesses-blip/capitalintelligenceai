@@ -141,7 +141,7 @@ export default function BlogPostAIBusiness() {
                 <p className="mt-4">
                   This article breaks down the most impactful areas where AI
                   delivers measurable business results, with practical examples
-                  relevant to Australian service businesses, agencies, and
+                  relevant to service businesses, agencies, and
                   growing companies.
                 </p>
               </section>
@@ -462,7 +462,7 @@ export default function BlogPostAIBusiness() {
                 </h2>
                 <p className="mb-6">
                   Intelligent AI Systems designs and implements AI-powered
-                  solutions for Australian businesses, from AI chat assistants
+                  solutions for businesses across Australia, the US, the UK, and Singapore, from AI chat assistants
                   and automated workflows to full digital infrastructure. We
                   handle the technical complexity so you can focus on growth.
                 </p>

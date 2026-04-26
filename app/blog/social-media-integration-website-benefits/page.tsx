@@ -218,12 +218,12 @@ export default function BlogPostSocialMediaIntegration() {
 
               <section>
                 <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">
-                  The Platforms That Matter Most for Australian Businesses
+                  The Platforms That Matter Most for Your Business
                 </h2>
                 <p>
                   The right platforms to integrate depend on where your customers actually spend
                   their time and how your business communicates visually. For most service
-                  businesses in Australia, the key platforms are:
+                  businesses globally, the key platforms are:
                 </p>
                 <ul className="list-none mt-6 space-y-3">
                   {[

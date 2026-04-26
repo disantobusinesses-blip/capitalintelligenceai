@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'About Us – Intelligent AI Systems | Capital Intelligence Group',
-  description: 'Learn about Intelligent AI Systems (IAS), part of Capital Intelligence Group. We build professional websites, AI integrations, and digital solutions for Australian businesses.',
+  description: 'Learn about Intelligent AI Systems (IAS), part of Capital Intelligence Group. We build professional websites, AI integrations, and digital solutions for businesses across Australia, the US, the UK, and Singapore.',
   keywords: 'about IAS, Intelligent AI Systems, Capital Intelligence Group, web design agency Australia, AI automation, digital solutions',
   openGraph: {
     title: 'About Us – Intelligent AI Systems',
@@ -51,7 +51,7 @@ export default function AboutPage() {
           </p>
           <p className="text-lg text-[#6B6560] max-w-2xl mx-auto leading-relaxed">
             We integrate intelligent systems into businesses so they operate smoother, faster, and smarter. 
-            From professional websites to AI-powered automation, we help Australian businesses thrive in the digital age.
+            From professional websites to AI-powered automation, we help businesses across Australia, the US, the UK, and Singapore thrive in the digital age.
           </p>
         </div>
       </section>
@@ -69,8 +69,7 @@ export default function AboutPage() {
                   automate their operations and grow their online presence.
                 </p>
                 <p>
-                  Based in Australia, we work with startups, small businesses, and established companies across 
-                  diverse industries, from electrical services to healthcare, finance, and retail.
+                  We work with businesses across Australia, the United States, the United Kingdom, and Singapore — fully remote. From startups and small businesses to established companies across diverse industries, from electrical services to healthcare, finance, and retail.
                 </p>
                 <p>
                   Our mission is simple: deliver intelligent, scalable systems that make businesses run better.
@@ -202,10 +201,10 @@ export default function AboutPage() {
               Explore Services
             </Link>
             <Link
-              href="/pricing"
+              href="/services"
               className="px-8 py-4 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#1A1A1A] hover:text-white"
             >
-              View Pricing
+              View Services
             </Link>
           </div>
         </div>

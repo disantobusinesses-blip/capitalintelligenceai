@@ -235,7 +235,7 @@ export default function GoogleBusinessProfilePage() {
           >
             Enquire Now
           </a>
-          <p className="text-xs text-[#9E9790] mt-4">No lock-in contracts. Australian business. Fast turnaround.</p>
+          <p className="text-xs text-[#9E9790] mt-4">No lock-in contracts. Remote-first. Fast turnaround.</p>
         </div>
       </section>
 

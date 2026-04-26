@@ -13,7 +13,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'how-ai-can-boost-seo',
     title: 'How AI Can Boost SEO and AI Search Engine Optimisation for Modern Businesses',
     description:
-      'Learn how AI transforms traditional SEO — from keyword clustering and content planning to technical audits and AI search visibility. A practical guide for Australian businesses ready to scale their organic presence.',
+      'Learn how AI transforms traditional SEO — from keyword clustering and content planning to technical audits and AI search visibility. A practical guide for businesses ready to scale their organic presence.',
     publishedAt: '2026-03-07',
     lastModified: '2026-03-07',
     readingTime: '9 min read',

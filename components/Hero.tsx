@@ -107,7 +107,8 @@ export default function Hero() {
 
             {/* Subheadline */}
             <p className="text-[18px] text-[#6B6560] mt-4 max-w-[520px]">
-              We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini, using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.
+              We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini, using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.{' '}
+              <span className="font-semibold text-[#5C3D2E]">Remote-first. Globally delivered.</span>
             </p>
 
             {/* CTA Buttons */}

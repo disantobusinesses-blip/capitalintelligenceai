@@ -20,7 +20,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-[#9E9790] text-sm leading-relaxed mb-3">
-              We help Australian businesses get found on Google and recommended by AI, so you get more leads, more calls, and more growth.
+              Serving clients globally from Melbourne, Australia — helping businesses get found on Google and recommended by AI, so you get more leads, more calls, and more growth.
             </p>
             <p className="text-xs text-[#6B6560]">ABN: 38 693 023 371</p>
           </div>
@@ -31,7 +31,6 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/" className="hover:text-white transition-colors duration-200">Home</Link></li>
               <li><Link href="/#services" className="hover:text-white transition-colors duration-200">Services</Link></li>
-              <li><Link href="/pricing" className="hover:text-white transition-colors duration-200">Pricing</Link></li>
               <li><Link href="/projects" className="hover:text-white transition-colors duration-200">Projects</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors duration-200">Blog</Link></li>
             </ul>
@@ -43,7 +42,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/services/landing-page" className="hover:text-white transition-colors duration-200">Landing Page</Link></li>
               <li><Link href="/services/full-package" className="hover:text-white transition-colors duration-200">Full Package</Link></li>
-              <li><Link href="/pricing" className="hover:text-white transition-colors duration-200">SEO Plans</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors duration-200">SEO Plans</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors duration-200">Blog</Link></li>
             </ul>
           </div>

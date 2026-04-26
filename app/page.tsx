@@ -7,6 +7,7 @@ import OurWork from '@/components/OurWork'
 import Testimonials from '@/components/Testimonials'
 import HowItWorks from '@/components/HowItWorks'
 import SeoGuarantee from '@/components/SeoGuarantee'
+import NewsletterSignup from '@/components/NewsletterSignup'
 import FinalCta from '@/components/FinalCta'
 import Footer from '@/components/Footer'
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Testimonials />
       <HowItWorks />
       <SeoGuarantee />
+      <NewsletterSignup />
       <FinalCta />
       <Footer />
     </main>

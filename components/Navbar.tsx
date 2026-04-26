@@ -9,7 +9,6 @@ import { useGetStartedModal } from '@/context/GetStartedModalContext'
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/#services' },
-  { label: 'Pricing', href: '/pricing' },
   { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
 ]
