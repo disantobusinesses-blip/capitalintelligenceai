@@ -44,6 +44,16 @@ const projects = [
     imageAlt: 'Your Coach Plus website screenshot',
     color: '#2D5016',
   },
+  {
+    id: 5,
+    name: 'Senator Developments',
+    industry: 'Property Development',
+    metric: 'Custom property development website',
+    link: 'https://senatordevelopments.com.au',
+    image: '/projects/senator-developments.png',
+    imageAlt: 'Senator Developments website screenshot',
+    color: '#2C3E50',
+  },
 ]
 
 /** Branded gradient placeholder shown when a static screenshot isn't available or fails to load */

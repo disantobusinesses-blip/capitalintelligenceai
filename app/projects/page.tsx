@@ -54,6 +54,16 @@ const projects = [
     color: '#2D5016',
     features: ['PT landing page', 'Mobile responsive', 'Lead capture', 'Contact form', 'SEO optimised'],
   },
+  {
+    id: 5,
+    title: 'Senator Developments',
+    industry: 'Property Development',
+    description: 'Professional property development website showcasing residential and commercial projects across Australia, with a modern design built to attract buyers and investors.',
+    image: '/projects/senator-developments.png',
+    url: 'https://senatordevelopments.com.au',
+    color: '#2C3E50',
+    features: ['Modern design', 'Project showcase', 'Mobile responsive', 'Contact form', 'SEO optimised'],
+  },
 ]
 
 export default function ProjectsPage() {
