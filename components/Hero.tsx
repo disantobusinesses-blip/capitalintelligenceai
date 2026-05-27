@@ -89,7 +89,7 @@ export default function Hero() {
   return (
     <section
       id="quote"
-      className="bg-[#F8F7F4] pt-[100px] pb-[80px] px-6 mt-[68px]"
+      className="bg-[#F8F7F4] pt-[100px] pb-[80px] px-6 mt-[110px]"
     >
       <div className="max-w-[1200px] mx-auto">
         <div className="grid md:grid-cols-[60%_40%] gap-12 items-start">
