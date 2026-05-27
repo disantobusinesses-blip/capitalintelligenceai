@@ -1,40 +1,19 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-
 const reviews = [
   {
-    quote: 'Website was made for me within 48 hours, and after a month or so was ranked 1 on Google for some topics. Amazing work.',
     author: 'EAY Electrical',
     initial: 'E',
   },
   {
-    quote: 'The experience was incredible. Optimized my businesses presence on Google and helped with growth and insight overall. Couldn\'t recommend more.',
     author: 'Dylan M.',
     initial: 'D',
   },
   {
-    quote: 'Our enquiries doubled within the first 60 days of launching our new site. Couldn\'t be happier.',
-    author: 'M.T.',
-    initial: 'M',
-  },
-  {
-    quote: 'We had no website at all before this. Now we\'re ranking on the first page of Google for our suburb.',
-    author: 'J.K.',
-    initial: 'J',
-  },
-  {
-    quote: 'The team was fast, professional, and the site looks better than competitors who paid 3x more.',
-    author: 'R.A.',
-    initial: 'R',
-  },
-  {
-    quote: 'Working with IAS was a great experience. They built my website exactly how I wanted, added a contact form, blogs, and analytics tracking.',
     author: 'Reborn Physiques',
     initial: 'R',
   },
   {
-    quote: 'Great experience with IAS. They got my PT landing page done the same day, set up my Google Business Profile, and walked me through getting my domain sorted.',
     author: 'Antonio — Your Coach Plus',
     initial: 'A',
   },
@@ -60,95 +39,42 @@ function GoogleIcon() {
 }
 
 export default function GoogleReviewsBanner() {
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const [isPaused, setIsPaused] = useState(false)
-
   // Duplicate reviews for seamless infinite scroll
   const duplicatedReviews = [...reviews, ...reviews]
 
-  useEffect(() => {
-    const scrollContainer = scrollRef.current
-    if (!scrollContainer) return
-
-    let animationFrameId: number
-    let scrollPosition = 0
-    const scrollSpeed = 0.5
-
-    const scroll = () => {
-      if (!isPaused && scrollContainer) {
-        scrollPosition += scrollSpeed
-        
-        // Reset position when we've scrolled through the first set of reviews
-        if (scrollPosition >= scrollContainer.scrollWidth / 2) {
-          scrollPosition = 0
-        }
-        
-        scrollContainer.scrollLeft = scrollPosition
-      }
-      animationFrameId = requestAnimationFrame(scroll)
-    }
-
-    animationFrameId = requestAnimationFrame(scroll)
-
-    return () => {
-      cancelAnimationFrame(animationFrameId)
-    }
-  }, [isPaused])
-
   return (
-    <div className="bg-white border-b border-[#E8E4DF] py-3 fixed top-[68px] left-0 right-0 z-40">
-      <div className="max-w-[1200px] mx-auto px-6">
-        {/* Header */}
-        <div className="flex items-center justify-center gap-2 mb-3">
-          <GoogleIcon />
-          <span className="text-xs font-semibold text-[#1A1A1A]">Verified Google Reviews</span>
-          <div className="flex items-center gap-0.5 ml-1">
-            {[...Array(5)].map((_, i) => (
-              <StarIcon key={i} />
-            ))}
-          </div>
-          <span className="text-xs text-[#6B6560] ml-1">5.0</span>
-        </div>
-      </div>
-
-      {/* Scrolling Reviews */}
-      <div
-        ref={scrollRef}
-        className="overflow-hidden"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+    <div className="bg-white border-b border-[#E8E4DF] py-2 fixed top-[68px] left-0 right-0 z-40 overflow-hidden">
+      {/* Scrolling Reviews - using CSS animation for consistent speed */}
+      <div 
+        className="flex gap-6 animate-scroll hover:[animation-play-state:paused]"
+        style={{
+          width: 'max-content',
+        }}
       >
-        <div className="flex gap-4 px-4 w-max">
-          {duplicatedReviews.map((review, index) => (
-            <div
-              key={`${review.author}-${index}`}
-              className="flex-shrink-0 w-[320px] bg-[#F8F7F4] rounded-lg p-4 border border-[#E8E4DF]"
-            >
-              {/* Stars */}
-              <div className="flex items-center gap-0.5 mb-2">
-                {[...Array(5)].map((_, i) => (
-                  <StarIcon key={i} />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <p className="text-[#1A1A1A] text-sm leading-relaxed line-clamp-2 mb-3">
-                &ldquo;{review.quote}&rdquo;
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-[#1A1A1A] rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                  {review.initial}
-                </div>
-                <span className="text-xs text-[#6B6560] truncate">{review.author}</span>
-                <div className="ml-auto flex items-center gap-1">
-                  <GoogleIcon />
-                </div>
-              </div>
+        {duplicatedReviews.map((review, index) => (
+          <div
+            key={`${review.author}-${index}`}
+            className="flex-shrink-0 flex items-center gap-3 px-4 py-1"
+          >
+            {/* Stars */}
+            <div className="flex items-center gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <StarIcon key={i} />
+              ))}
             </div>
-          ))}
-        </div>
+
+            {/* Author */}
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 bg-[#1A1A1A] rounded-full flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">
+                {review.initial}
+              </div>
+              <span className="text-xs text-[#6B6560] whitespace-nowrap">{review.author}</span>
+            </div>
+
+            {/* Google Icon */}
+            <GoogleIcon />
+          </div>
+        ))}
       </div>
     </div>
   )
