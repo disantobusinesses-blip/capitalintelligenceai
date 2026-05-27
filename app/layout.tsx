@@ -9,6 +9,7 @@ import BottomNav from '@/components/BottomNav'
 import QuoteModal from '@/components/QuoteModal'
 import FloatingButton from '@/components/FloatingButton'
 import Navbar from '@/components/Navbar'
+import GoogleReviewsBanner from '@/components/GoogleReviewsBanner'
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
@@ -133,6 +134,7 @@ export default function RootLayout({
           <QuoteModalProvider>
             <GetStartedModalProvider>
               <Navbar />
+              <GoogleReviewsBanner />
               {children}
               <BottomNav />
               <FloatingButton />

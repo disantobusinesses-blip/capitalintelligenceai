@@ -2,11 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 interface QuoteFormData {
-  websiteType: 'landing' | 'full' | null
-  colourDirection: string
-  colourLabel: string
-  seoPlan: string
-  seoPrice: number
+  websiteType?: 'landing' | 'full' | null
+  colourDirection?: string
+  colourLabel?: string
+  seoPlan?: string
+  seoPrice?: number
   name: string
   businessName: string
   email: string
@@ -62,10 +62,10 @@ export async function POST(request: NextRequest) {
           business_name: body.businessName.trim(),
           email: body.email.trim(),
           phone: body.phone?.trim() || null,
-          website_type: body.websiteType,
-          colour_direction: body.colourLabel || body.colourDirection,
-          seo_plan: body.seoPlan,
-          seo_price: body.seoPrice,
+          website_type: body.websiteType || null,
+          colour_direction: body.colourLabel || body.colourDirection || null,
+          seo_plan: body.seoPlan || null,
+          seo_price: body.seoPrice || 0,
           notes: body.notes?.trim() || null,
         }),
       })
@@ -91,44 +91,54 @@ export async function POST(request: NextRequest) {
       auth: { user: SMTP_USER, pass: SMTP_PASS },
     })
 
-    const websiteLabel = body.websiteType === 'landing' ? 'Landing Page' : 'Full Website'
-    const seoPlanLabel = (() => {
-      switch (body.seoPlan) {
-        case 'none': return 'No SEO plan (free blog only)'
-        case 'google': return `Google Growth — $299/mo`
-        case 'super': return `Super Growth — $359/mo`
-        case 'market': return `Market Authority — $799/mo`
-        default: return body.seoPlan
-      }
-    })()
-    const basePrices: Record<string, number> = { landing: 599, full: 1999 }
-    const basePrice = body.websiteType ? basePrices[body.websiteType] ?? 0 : 0
-
-    const htmlBody = `
+    // Build HTML body - handle both simple quote requests and detailed ones
+    let htmlBody = `
       <h2>New Quote Request — ${esc(body.businessName)}</h2>
       <h3>Contact Details</h3>
       <ul>
         <li><strong>Name:</strong> ${esc(body.name)}</li>
         <li><strong>Email:</strong> ${esc(body.email)}</li>
         ${body.phone ? `<li><strong>Phone:</strong> ${esc(body.phone)}</li>` : ''}
-      </ul>
-      <h3>Quote Details</h3>
-      <ul>
         <li><strong>Business Name:</strong> ${esc(body.businessName)}</li>
-        <li><strong>Website Type:</strong> ${esc(websiteLabel)}</li>
-        <li><strong>Colour Direction:</strong> ${esc(body.colourLabel || body.colourDirection)}</li>
-        <li><strong>SEO Plan:</strong> ${esc(seoPlanLabel)}</li>
-        <li><strong>Free SEO Blog:</strong> Included</li>
-        <li><strong>Build from:</strong> $${basePrice.toLocaleString()} AUD${body.seoPrice > 0 ? ` + $${body.seoPrice}/mo` : ''}</li>
       </ul>
-      ${body.notes ? `<h3>Additional Notes</h3><p>${esc(body.notes)}</p>` : ''}
     `
+
+    // Add detailed quote info if provided
+    if (body.websiteType) {
+      const websiteLabel = body.websiteType === 'landing' ? 'Landing Page' : 'Full Website'
+      const seoPlanLabel = (() => {
+        switch (body.seoPlan) {
+          case 'none': return 'No SEO plan (free blog only)'
+          case 'google': return `Google Growth — $299/mo`
+          case 'super': return `Super Growth — $359/mo`
+          case 'market': return `Market Authority — $799/mo`
+          default: return body.seoPlan || 'Not specified'
+        }
+      })()
+      const basePrices: Record<string, number> = { landing: 599, full: 1999 }
+      const basePrice = body.websiteType ? basePrices[body.websiteType] ?? 0 : 0
+
+      htmlBody += `
+        <h3>Quote Details</h3>
+        <ul>
+          <li><strong>Website Type:</strong> ${esc(websiteLabel)}</li>
+          ${body.colourLabel || body.colourDirection ? `<li><strong>Colour Direction:</strong> ${esc(body.colourLabel || body.colourDirection || '')}</li>` : ''}
+          <li><strong>SEO Plan:</strong> ${esc(seoPlanLabel)}</li>
+          <li><strong>Free SEO Blog:</strong> Included</li>
+          <li><strong>Build from:</strong> $${basePrice.toLocaleString()} AUD${(body.seoPrice || 0) > 0 ? ` + $${body.seoPrice}/mo` : ''}</li>
+        </ul>
+      `
+    }
+
+    if (body.notes) {
+      htmlBody += `<h3>Project Details / Message</h3><p>${esc(body.notes)}</p>`
+    }
 
     await transporter.sendMail({
       from: SMTP_FROM,
       to: 'sales@intelligentaisystem.com',
       replyTo: body.email.trim(),
-      subject: `New quote request — ${body.businessName}`,
+      subject: `New Quote Request — ${body.businessName}`,
       html: htmlBody,
     })
   } catch (err) {
