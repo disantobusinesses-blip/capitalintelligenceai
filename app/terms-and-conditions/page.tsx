@@ -5,7 +5,7 @@ import { ArrowLeft } from 'lucide-react'
 
 export default function TermsAndConditions() {
   return (
-    <main className="min-h-[100dvh] bg-[#F8F7F4]">
+    <main className="min-h-[100dvh] bg-[#F8F7F4] pt-[110px]">
       {/* Header */}
       <div>
         <div className="max-w-4xl mx-auto px-6 py-8">

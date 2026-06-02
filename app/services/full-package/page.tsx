@@ -18,7 +18,7 @@ const features = [
 
 export default function FullPackageService() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4]">
+    <div className="min-h-[100dvh] bg-[#F8F7F4] pt-[110px]">
       {/* Header */}
       <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
