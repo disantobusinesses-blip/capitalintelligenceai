@@ -105,7 +105,7 @@ export default function ServiceSelection() {
         </div>
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
           {services.map((service) => {
             const Icon = service.icon
             const isHovered = hoveredId === service.id
@@ -113,7 +113,7 @@ export default function ServiceSelection() {
             return (
               <div
                 key={service.id}
-                className="bg-white rounded-[10px] p-7 flex flex-col transition-all duration-200"
+                className="bg-white rounded-[10px] p-7 flex flex-col h-full transition-all duration-200"
                 style={{
                   border: '1px solid #E8E4DF',
                   borderTop: isHovered ? '3px solid #5C3D2E' : '1px solid #E8E4DF',

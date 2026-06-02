@@ -6,11 +6,19 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 const testimonials = [
   {
     quote:
-      'Website was made for me within 48 hours, and after a month or so was ranked 1 on Google for some topics. Amazing work.',
+      'Highly recommend Intelligent AI System. They created a high quality landing page for EAY Electrical that was built to attract more clients, and they also automated our SEO to help us show up better on Google and in AI search results. Very professional service and great results.',
     author: 'EAY Electrical',
     role: 'Electrical Services, Australia',
     initial: 'E',
     avatarColor: 'bg-yellow-500',
+  },
+  {
+    quote:
+      "Can't recommend IAS Website & Growth Agency enough. From the first chat to the finished website, everything was handled professionally. They knew exactly what they were doing and delivered a site that looks brilliant. Top-class service.",
+    author: 'Senator Developments',
+    role: 'Property Development, Australia',
+    initial: 'S',
+    avatarColor: 'bg-indigo-500',
   },
   {
     quote:
@@ -19,30 +27,6 @@ const testimonials = [
     role: 'Google Review',
     initial: 'D',
     avatarColor: 'bg-sky-500',
-  },
-  {
-    quote:
-      "Our enquiries doubled within the first 60 days of launching our new site. Couldn't be happier.",
-    author: 'M.T.',
-    role: 'Trades Business, Melbourne',
-    initial: 'M',
-    avatarColor: 'bg-blue-500',
-  },
-  {
-    quote:
-      "We had no website at all before this. Now we're ranking on the first page of Google for our suburb.",
-    author: 'J.K.',
-    role: 'Hospitality Business, Sydney',
-    initial: 'J',
-    avatarColor: 'bg-green-500',
-  },
-  {
-    quote:
-      'The team was fast, professional, and the site looks better than competitors who paid 3x more.',
-    author: 'R.A.',
-    role: 'Professional Services, Brisbane',
-    initial: 'R',
-    avatarColor: 'bg-purple-500',
   },
   {
     quote:

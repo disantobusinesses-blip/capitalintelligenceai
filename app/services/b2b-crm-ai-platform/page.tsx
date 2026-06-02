@@ -65,7 +65,7 @@ const included = [
 
 export default function B2BCrmAiPlatformPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24">
+    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[110px]">
       {/* Header */}
       <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
