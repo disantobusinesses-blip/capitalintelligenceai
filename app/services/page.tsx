@@ -210,9 +210,9 @@ export default function ServicesPage() {
                   </div>
                   <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-1">{plan.name}</h3>
                   <div className="mb-0.5">
-                    <span className="text-[10px] text-[#9E9790] block">+ GST</span>
                     <p className="text-[22px] font-bold text-[#5C3D2E]">
                       {plan.price}
+                      <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
                       <span className="text-[13px] font-normal text-[#9E9790] ml-1">{plan.period}</span>
                     </p>
                   </div>
@@ -276,9 +276,9 @@ export default function ServicesPage() {
                     </div>
                     <h3 className="text-[20px] font-bold text-[#1A1A1A] mb-2 leading-snug">{service.name}</h3>
                     <div>
-                      <span className="text-[10px] text-[#9E9790] block">+ GST</span>
                       <p className="text-[22px] font-bold text-[#1A1A1A]">
                         {service.price}
+                        <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
                         <span className="text-[13px] font-normal text-[#9E9790] ml-1">{service.priceNote}</span>
                       </p>
                     </div>
@@ -348,9 +348,9 @@ export default function ServicesPage() {
 
                 {/* Custom Pricing */}
                 <div>
-                  <span className="text-[10px] text-[#9E9790] block">+ GST</span>
                   <p className="text-[22px] font-bold text-[#1A1A1A]">
                     Custom Pricing
+                    <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
                     <span className="text-[13px] font-normal text-[#9E9790] ml-1">— discovery call required</span>
                   </p>
                 </div>

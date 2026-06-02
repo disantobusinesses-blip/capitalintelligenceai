@@ -10,7 +10,7 @@ const services = [
     id: 'landing-page',
     icon: Globe,
     title: 'Landing Page',
-    price: 'A$599–A$1,999',
+    price: 'A$599 – $1,999',
     priceNote: 'one-time',
     description: 'A high-converting single-page website designed to turn visitors into leads.',
     features: [
@@ -137,9 +137,9 @@ export default function ServiceSelection() {
 
                 {/* Price */}
                 <div className="mb-0.5">
-                  <span className="text-[10px] text-[#9E9790] block">+ GST</span>
                   <p className="text-[17px] font-bold text-[#5C3D2E]">
                     {service.price}
+                    <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
                     <span className="text-[13px] font-normal text-[#9E9790] ml-1">{service.priceNote}</span>
                   </p>
                 </div>
