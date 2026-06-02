@@ -6,6 +6,10 @@ const reviews = [
     initial: 'E',
   },
   {
+    author: 'Senator Developments',
+    initial: 'S',
+  },
+  {
     author: 'Dylan M.',
     initial: 'D',
   },
