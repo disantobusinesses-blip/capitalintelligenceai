@@ -154,7 +154,8 @@ export default function LandingPageService() {
               Landing Page Package
             </h2>
             <div className="mb-6">
-              <span className="text-6xl font-bold text-white">$599 AUD</span>
+              <span className="text-sm text-gray-400 block mb-1">+ GST</span>
+              <span className="text-6xl font-bold text-white">$599–$1,999 AUD</span>
               <span className="text-gray-400 ml-2">one-time</span>
             </div>
             <p className="text-gray-400 mb-8">

@@ -58,6 +58,7 @@ export default function FullPackageService() {
             style={{ border: '1px solid #E8E4DF' }}
           >
             <p className="text-[13px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Price range</p>
+            <span className="text-[10px] text-[#9E9790] block">+ GST</span>
             <p className="text-[40px] font-extrabold text-[#1A1A1A] leading-none">A$1,999 – A$5,999</p>
             <p className="text-[13px] text-[#9E9790] mt-2">one-time · custom quote upon request</p>
           </div>

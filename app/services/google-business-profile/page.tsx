@@ -148,6 +148,7 @@ export default function GoogleBusinessProfilePage() {
                 <h3 className="text-2xl md:text-3xl font-bold text-white">Google Business Profile Setup</h3>
               </div>
               <div className="sm:text-right shrink-0">
+                <span className="text-[10px] text-[#9E9790] block sm:text-right">+ GST</span>
                 <span className="text-4xl md:text-5xl font-bold text-white">A$299</span>
                 <p className="text-sm text-[#9E9790] mt-1">one-time · no monthly fees</p>
               </div>
@@ -184,7 +185,10 @@ export default function GoogleBusinessProfilePage() {
                 </span>
               </div>
               <div className="flex items-center gap-3 shrink-0 ml-4">
-                <span className="text-lg font-bold text-[#1A1A1A]">A$79<span className="text-sm font-normal text-[#6B6560]">/month</span></span>
+                <div>
+                  <span className="text-[10px] text-[#9E9790] block">+ GST</span>
+                  <span className="text-lg font-bold text-[#1A1A1A]">A$79<span className="text-sm font-normal text-[#6B6560]">/month</span></span>
+                </div>
                 <svg
                   className={`w-5 h-5 text-[#6B6560] transition-transform duration-200 ${addonExpanded ? 'rotate-180' : ''}`}
                   fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
