@@ -107,7 +107,7 @@ export default function B2BCrmAiPlatformPage() {
               style={{ border: '1px solid #E8E4DF' }}
             >
               <p className="text-[12px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Pricing</p>
-              <p className="text-[28px] font-extrabold text-[#1A1A1A] leading-none">Custom Pricing</p>
+              <p className="text-[28px] font-extrabold text-[#1A1A1A] leading-none">Custom Pricing <span className="text-[12px] font-normal text-[#9E9790]">+ GST</span></p>
               <p className="text-[13px] text-[#9E9790] mt-2">Book a discovery call to get your quote</p>
             </div>
             <div

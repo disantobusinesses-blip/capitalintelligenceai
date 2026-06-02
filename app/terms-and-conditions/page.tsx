@@ -75,7 +75,7 @@ export default function TermsAndConditions() {
             3.2 Billing Terms
           </h3>
           <p className="text-[#1A1A1A] leading-relaxed mb-4">
-            All prices are in Australian Dollars (AUD) and exclude GST unless otherwise stated. Subscription fees are billed monthly in advance on the anniversary date of your subscription. Payment must be made via the payment method you provide during registration.
+            All prices, quotes, and fees displayed on our website and in proposals are in Australian Dollars (AUD) and are exclusive of GST. Goods and Services Tax (GST) of 10% will be added to all invoices where applicable. Subscription fees are billed monthly in advance on the anniversary date of your subscription. Payment must be made via the payment method you provide during registration.
           </p>
           <p className="text-[#1A1A1A] leading-relaxed">
             We reserve the right to change our pricing with 30 days' written notice. Price changes will not affect your current billing cycle but will apply to subsequent billing periods.

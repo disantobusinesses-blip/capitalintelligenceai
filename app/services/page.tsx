@@ -209,10 +209,13 @@ export default function ServicesPage() {
                     <Icon className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-1">{plan.name}</h3>
-                  <p className="text-[22px] font-bold text-[#5C3D2E] mb-0.5">
-                    {plan.price}
-                    <span className="text-[13px] font-normal text-[#9E9790] ml-1">{plan.period}</span>
-                  </p>
+                  <div className="mb-0.5">
+                    <p className="text-[22px] font-bold text-[#5C3D2E]">
+                      {plan.price}
+                      <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
+                      <span className="text-[13px] font-normal text-[#9E9790] ml-1">{plan.period}</span>
+                    </p>
+                  </div>
                   <p className="text-sm text-[#6B6560] mb-5 leading-relaxed mt-2">{plan.description}</p>
                   <ul className="space-y-2 mb-6 flex-1">
                     {plan.features.map((f) => (
@@ -272,10 +275,13 @@ export default function ServicesPage() {
                       </span>
                     </div>
                     <h3 className="text-[20px] font-bold text-[#1A1A1A] mb-2 leading-snug">{service.name}</h3>
-                    <p className="text-[22px] font-bold text-[#1A1A1A]">
-                      {service.price}
-                      <span className="text-[13px] font-normal text-[#9E9790] ml-1">{service.priceNote}</span>
-                    </p>
+                    <div>
+                      <p className="text-[22px] font-bold text-[#1A1A1A]">
+                        {service.price}
+                        <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
+                        <span className="text-[13px] font-normal text-[#9E9790] ml-1">{service.priceNote}</span>
+                      </p>
+                    </div>
                     {service.addon && (
                       <p className="text-[12px] text-[#9E9790] mt-1">{service.addon}</p>
                     )}
@@ -341,10 +347,13 @@ export default function ServicesPage() {
                 </h3>
 
                 {/* Custom Pricing */}
-                <p className="text-[22px] font-bold text-[#1A1A1A]">
-                  Custom Pricing
-                  <span className="text-[13px] font-normal text-[#9E9790] ml-1">— discovery call required</span>
-                </p>
+                <div>
+                  <p className="text-[22px] font-bold text-[#1A1A1A]">
+                    Custom Pricing
+                    <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
+                    <span className="text-[13px] font-normal text-[#9E9790] ml-1">— discovery call required</span>
+                  </p>
+                </div>
 
                 {/* Market value anchor */}
                 <div className="mt-3 bg-[#F8F7F4] rounded-[6px] px-4 py-3" style={{ border: '1px solid #E8E4DF' }}>

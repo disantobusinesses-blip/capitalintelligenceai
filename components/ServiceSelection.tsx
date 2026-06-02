@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { useGetStartedModal } from '@/context/GetStartedModalContext'
 import { Globe, Package, MapPin, Bot } from 'lucide-react'
 
@@ -9,7 +10,7 @@ const services = [
     id: 'landing-page',
     icon: Globe,
     title: 'Landing Page',
-    price: 'From A$599',
+    price: 'A$599 – $1,999',
     priceNote: 'one-time',
     description: 'A high-converting single-page website designed to turn visitors into leads.',
     features: [
@@ -20,12 +21,13 @@ const services = [
     ],
     addon: null,
     cta: 'Get Started',
+    detailsLink: '/services/landing-page',
   },
   {
     id: 'full-package',
     icon: Package,
     title: 'Website + Full Package',
-    price: 'Custom quote',
+    price: 'From A$1,999',
     priceNote: 'upon request',
     description: 'Complete multi-page website with ongoing support and digital strategy.',
     features: [
@@ -36,6 +38,7 @@ const services = [
     ],
     addon: null,
     cta: 'Get Started',
+    detailsLink: '/services/full-package',
   },
   {
     id: 'google-business-profile',
@@ -65,6 +68,7 @@ const services = [
       ],
     },
     cta: 'Enquire Now',
+    detailsLink: '/services/google-business-profile',
   },
   {
     id: 'b2b-crm-ai-platform',
@@ -83,6 +87,7 @@ const services = [
     ],
     addon: null,
     cta: 'Book a Discovery Call',
+    detailsLink: '/services/b2b-crm-ai-platform',
   },
 ]
 
@@ -131,10 +136,23 @@ export default function ServiceSelection() {
                 <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-1 leading-snug">{service.title}</h3>
 
                 {/* Price */}
-                <p className="text-[17px] font-bold text-[#5C3D2E] mb-0.5">
-                  {service.price}
-                  <span className="text-[13px] font-normal text-[#9E9790] ml-1">{service.priceNote}</span>
-                </p>
+                <div className="mb-0.5">
+                  <p className="text-[17px] font-bold text-[#5C3D2E]">
+                    {service.price}
+                    <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
+                    <span className="text-[13px] font-normal text-[#9E9790] ml-1">{service.priceNote}</span>
+                  </p>
+                </div>
+
+                {/* See full details link for landing page and full package */}
+                {(service.id === 'landing-page' || service.id === 'full-package') && service.detailsLink && (
+                  <Link
+                    href={service.detailsLink}
+                    className="text-[12px] text-[#5C3D2E] hover:underline underline-offset-2 mb-2 inline-block"
+                  >
+                    See full details &rarr;
+                  </Link>
+                )}
 
                 {/* Description */}
                 <p className="text-[#6B6560] text-sm mb-5 leading-relaxed mt-2">{service.description}</p>
