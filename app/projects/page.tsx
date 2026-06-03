@@ -15,6 +15,16 @@ export const metadata: Metadata = {
 
 const projects = [
   {
+    id: 0,
+    title: 'Live Demo Website',
+    industry: 'Landing Page Demo',
+    description: 'See what a premium landing page looks like before you commit. This live demo showcases our design quality, mobile responsiveness, and conversion-focused layout.',
+    image: '/projects/live-demo.jpg',
+    url: 'https://demo.intelligentaisystem.com',
+    color: '#2C2A27',
+    features: ['Live preview', 'Mobile responsive', 'Modern design', 'Conversion focused', 'Fast loading'],
+  },
+  {
     id: 1,
     title: 'EAY Electrical',
     industry: 'Electrical Services',

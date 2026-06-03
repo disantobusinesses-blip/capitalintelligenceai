@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useGetStartedModal } from '@/context/GetStartedModalContext'
-import { Globe, Package, MapPin, Bot } from 'lucide-react'
+import { Globe, Package, MapPin, Bot, ExternalLink } from 'lucide-react'
 
 const services = [
   {
@@ -22,6 +22,7 @@ const services = [
     addon: null,
     cta: 'Get Started',
     detailsLink: '/services/landing-page',
+    demoLink: 'https://demo.intelligentaisystem.com',
   },
   {
     id: 'full-package',
@@ -146,12 +147,25 @@ export default function ServiceSelection() {
 
                 {/* See full details link for landing page and full package */}
                 {(service.id === 'landing-page' || service.id === 'full-package') && service.detailsLink && (
-                  <Link
-                    href={service.detailsLink}
-                    className="text-[12px] text-[#5C3D2E] hover:underline underline-offset-2 mb-2 inline-block"
-                  >
-                    See full details &rarr;
-                  </Link>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
+                    <Link
+                      href={service.detailsLink}
+                      className="text-[12px] text-[#5C3D2E] hover:underline underline-offset-2 inline-block"
+                    >
+                      See full details &rarr;
+                    </Link>
+                    {service.id === 'landing-page' && (
+                      <a
+                        href="https://demo.intelligentaisystem.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[12px] text-[#5C3D2E] hover:underline underline-offset-2 inline-flex items-center gap-1"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
                 )}
 
                 {/* Description */}
