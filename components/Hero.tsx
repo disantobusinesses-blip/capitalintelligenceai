@@ -151,21 +151,13 @@ export default function Hero() {
                   />
                 </motion.svg>
               </div>
-              {/* Secondary CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
-                  className="bg-[#1A1A1A] text-white font-semibold px-6 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 inline-block text-center"
-                >
-                  Email for Quote
-                </a>
-                <a
-                  href="#our-work"
-                  className="border-2 border-[#1A1A1A] text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 inline-block text-center"
-                >
-                  View Our Work
-                </a>
-              </div>
+              {/* Secondary CTA */}
+              <a
+                href="#our-work"
+                className="border-2 border-[#1A1A1A] text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 inline-block text-center w-full sm:w-auto"
+              >
+                View Our Work
+              </a>
             </div>
 
             {/* Trust Badges */}

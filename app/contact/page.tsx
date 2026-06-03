@@ -2,15 +2,48 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { CheckCircle, AlertCircle, Loader2, ArrowRight, Globe, Mail, User } from 'lucide-react'
+import { CheckCircle, AlertCircle, Loader2, ArrowRight, User, Building2, Mail, Phone, MessageSquare } from 'lucide-react'
+
+const SERVICE_OPTIONS = [
+  { id: 'website-build', label: 'Website Build' },
+  { id: 'redesign', label: 'Redesign' },
+  { id: 'seo', label: 'SEO' },
+  { id: 'care-plan', label: 'Care Plan' },
+]
+
+const BUDGET_OPTIONS = [
+  { value: '', label: 'Select your budget' },
+  { value: '600-1000', label: '$600 – $1,000' },
+  { value: '1000-2000', label: '$1,000 – $2,000' },
+  { value: '2000-5000', label: '$2,000 – $5,000' },
+  { value: '5000+', label: '$5,000+' },
+  { value: 'not-sure', label: 'Not sure' },
+]
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', url: '' })
+  const [form, setForm] = useState({
+    name: '',
+    businessName: '',
+    email: '',
+    phone: '',
+    services: [] as string[],
+    budget: '',
+    message: '',
+  })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const toggleService = (serviceId: string) => {
+    setForm(prev => ({
+      ...prev,
+      services: prev.services.includes(serviceId)
+        ? prev.services.filter(s => s !== serviceId)
+        : [...prev.services, serviceId]
+    }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -19,10 +52,18 @@ export default function ContactPage() {
     setErrorMsg('')
 
     try {
-      const res = await fetch('/api/audit', {
+      const res = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          name: form.name,
+          businessName: form.businessName,
+          email: form.email,
+          phone: form.phone,
+          services: form.services.map(id => SERVICE_OPTIONS.find(s => s.id === id)?.label).join(', '),
+          budget: BUDGET_OPTIONS.find(b => b.value === form.budget)?.label || form.budget,
+          message: form.message,
+        }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Something went wrong')
@@ -39,33 +80,14 @@ export default function ContactPage() {
       <section className="bg-[#1A1A1A] text-white py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-sm font-semibold tracking-widest uppercase text-[#C8B89A] mb-4">
-            Free Website Audit
+            Get a Quote
           </p>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Get Your Free <span className="text-[#C8B89A]">Website Audit</span>
+            Tell Us About Your <span className="text-[#C8B89A]">Project</span>
           </h1>
           <p className="text-[#B0A898] text-lg leading-relaxed max-w-2xl mx-auto">
-            Enter your details below and our team will personally audit your website — covering SEO, performance, design, and AI opportunities — completely free.
+            Fill out the form below and we&apos;ll get back to you with a tailored quote within 1-2 business days.
           </p>
-        </div>
-      </section>
-
-      {/* What you get */}
-      <section className="py-14 px-6 border-b border-[#E8E3DC]">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          {[
-            { title: 'SEO Analysis', desc: 'We check your rankings, keywords, and indexability to find quick wins.' },
-            { title: 'Performance Review', desc: 'Page speed, Core Web Vitals, and mobile experience assessed.' },
-            { title: 'AI Opportunities', desc: 'We identify exactly where AI can save you time and grow revenue.' },
-          ].map(item => (
-            <div key={item.title} className="p-6 bg-white rounded-xl border border-[#E8E3DC]">
-              <div className="w-10 h-10 bg-[#1A1A1A] rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-5 h-5 text-white" />
-              </div>
-              <h3 className="font-bold text-[#1A1A1A] text-lg mb-2">{item.title}</h3>
-              <p className="text-[#666] text-sm leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -77,9 +99,9 @@ export default function ContactPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-8 h-8 text-green-600" />
               </div>
-              <h2 className="text-2xl font-bold text-[#1A1A1A] mb-3">Request Received!</h2>
+              <h2 className="text-2xl font-bold text-[#1A1A1A] mb-3">Quote Request Received!</h2>
               <p className="text-[#666] mb-8 leading-relaxed">
-                Thanks for reaching out. We'll review your website and send your personalised audit within 1–2 business days.
+                Thanks for reaching out. We&apos;ll review your project details and send you a personalised quote within 1-2 business days.
               </p>
               <Link
                 href="/"
@@ -91,14 +113,15 @@ export default function ContactPage() {
           ) : (
             <>
               <div className="text-center mb-10">
-                <h2 className="text-2xl font-bold text-[#1A1A1A] mb-2">Request Your Free Audit</h2>
-                <p className="text-[#666]">Takes 30 seconds. No credit card. No obligation.</p>
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mb-2">Request a Quote</h2>
+                <p className="text-[#666]">No commitment. We&apos;ll be in touch shortly.</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Your Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                    Your Name
+                    Your Name <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#999]" />
@@ -115,9 +138,30 @@ export default function ContactPage() {
                   </div>
                 </div>
 
+                {/* Business Name */}
+                <div>
+                  <label htmlFor="businessName" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
+                    Business Name <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#999]" />
+                    <input
+                      id="businessName"
+                      name="businessName"
+                      type="text"
+                      required
+                      placeholder="Your Business Pty Ltd"
+                      value={form.businessName}
+                      onChange={handleChange}
+                      className="w-full pl-10 pr-4 py-3 border border-[#E0DAD0] rounded-[8px] bg-white text-[#1A1A1A] placeholder-[#BBB] focus:outline-none focus:border-[#1A1A1A] transition-colors text-sm"
+                    />
+                  </div>
+                </div>
+
+                {/* Email Address */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                    Email Address
+                    Email Address <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#999]" />
@@ -134,21 +178,84 @@ export default function ContactPage() {
                   </div>
                 </div>
 
+                {/* Phone Number */}
                 <div>
-                  <label htmlFor="url" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                    Website URL
+                  <label htmlFor="phone" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
+                    Phone Number
                   </label>
                   <div className="relative">
-                    <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#999]" />
+                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#999]" />
                     <input
-                      id="url"
-                      name="url"
-                      type="url"
-                      required
-                      placeholder="https://yourbusiness.com.au"
-                      value={form.url}
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="0400 000 000"
+                      value={form.phone}
                       onChange={handleChange}
                       className="w-full pl-10 pr-4 py-3 border border-[#E0DAD0] rounded-[8px] bg-white text-[#1A1A1A] placeholder-[#BBB] focus:outline-none focus:border-[#1A1A1A] transition-colors text-sm"
+                    />
+                  </div>
+                </div>
+
+                {/* What do you need? */}
+                <div>
+                  <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">
+                    What do you need?
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {SERVICE_OPTIONS.map((service) => (
+                      <button
+                        key={service.id}
+                        type="button"
+                        onClick={() => toggleService(service.id)}
+                        className={`px-4 py-2 rounded-[6px] text-sm font-medium transition-colors ${
+                          form.services.includes(service.id)
+                            ? 'bg-[#1A1A1A] text-white'
+                            : 'bg-white border border-[#E0DAD0] text-[#1A1A1A] hover:border-[#1A1A1A]'
+                        }`}
+                      >
+                        {service.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Estimated Budget */}
+                <div>
+                  <label htmlFor="budget" className="block text-sm font-semibold text-[#1A1A1A] mb-1">
+                    Estimated Budget
+                  </label>
+                  <p className="text-[10px] text-[#9E9790] mb-2">All prices are + GST</p>
+                  <select
+                    id="budget"
+                    name="budget"
+                    value={form.budget}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-[#E0DAD0] rounded-[8px] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors text-sm"
+                  >
+                    {BUDGET_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Tell us about your project */}
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
+                    Tell us about your project
+                  </label>
+                  <div className="relative">
+                    <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-[#999]" />
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      placeholder="Describe your project, goals, and any specific requirements..."
+                      value={form.message}
+                      onChange={handleChange}
+                      className="w-full pl-10 pr-4 py-3 border border-[#E0DAD0] rounded-[8px] bg-white text-[#1A1A1A] placeholder-[#BBB] focus:outline-none focus:border-[#1A1A1A] transition-colors text-sm resize-none"
                     />
                   </div>
                 </div>
@@ -171,13 +278,13 @@ export default function ContactPage() {
                     </>
                   ) : (
                     <>
-                      Get My Free Audit <ArrowRight className="w-4 h-4" />
+                      Get My Quote <ArrowRight className="w-4 h-4" />
                     </>
                   )}
                 </button>
 
                 <p className="text-center text-xs text-[#999] pt-1">
-                  We typically respond within 1–2 business days. No spam, ever.
+                  We typically respond within 1-2 business days. No spam, ever.
                 </p>
               </form>
             </>
