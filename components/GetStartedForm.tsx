@@ -52,8 +52,6 @@ export default function GetStartedForm({
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
 
-  if (!isOpen) return null
-
   const toggleService = (serviceId: string) => {
     setFormData((prev) => ({
       ...prev,
@@ -118,6 +116,8 @@ export default function GetStartedForm({
   }
 
   const canSubmit = formData.name.trim() !== '' && formData.email.trim() !== '' && formData.businessName.trim() !== ''
+
+  if (!isOpen) return null
 
   if (submitted) {
     return (
