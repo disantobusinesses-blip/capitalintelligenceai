@@ -44,6 +44,7 @@ export default function ContactPage() {
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const [addOnsOpen, setAddOnsOpen] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -223,7 +224,7 @@ export default function ContactPage() {
                 {/* What do you need? */}
                 <div>
                   <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                    What do you need?
+                    What do you need? <span className="text-red-500">*</span>
                   </label>
                   <div className="flex flex-wrap gap-2">
                     {SERVICE_OPTIONS.map((service) => (
@@ -249,67 +250,75 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                {/* Optional Add-ons */}
-                <div>
-                  <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                    Optional Add-ons
-                  </label>
-                  <div className="space-y-2">
-                    {ADD_ON_OPTIONS.map((addOn) => (
-                      <button
-                        key={addOn.id}
-                        type="button"
-                        onClick={() => toggleAddOn(addOn.id)}
-                        className={`w-full px-4 py-3 rounded-[6px] text-left text-sm font-medium transition-colors ${
-                          form.addOns.includes(addOn.id)
-                            ? 'bg-[#1A1A1A] text-white'
-                            : 'bg-white border border-[#E0DAD0] text-[#1A1A1A] hover:border-[#1A1A1A]'
-                        }`}
-                      >
-                        <span className="flex items-center gap-2">
-                          {form.addOns.includes(addOn.id) && (
-                            <Check className="w-4 h-4 flex-shrink-0" />
-                          )}
-                          <span>
-                            <span className="block font-semibold">{addOn.label}</span>
-                            <span className={`block text-xs mt-0.5 ${form.addOns.includes(addOn.id) ? 'text-white/70' : 'text-[#9E9790]'}`}>
-                              {addOn.description}
+                {/* Optional Add-ons - Collapsible */}
+                <div className="border border-[#E0DAD0] rounded-[8px] overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => setAddOnsOpen(!addOnsOpen)}
+                    className="w-full flex items-center justify-between px-4 py-3 bg-[#F8F7F4] hover:bg-[#F0EDE8] transition-colors"
+                  >
+                    <span className="text-sm font-semibold text-[#1A1A1A]">Optional Add-ons</span>
+                    <ChevronDown className={`w-4 h-4 text-[#6B6560] transition-transform duration-200 ${addOnsOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${addOnsOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="p-4 space-y-3 border-t border-[#E0DAD0]">
+                      {/* Hosting + Updates */}
+                      {ADD_ON_OPTIONS.map((addOn) => (
+                        <button
+                          key={addOn.id}
+                          type="button"
+                          onClick={() => toggleAddOn(addOn.id)}
+                          className={`w-full px-4 py-3 rounded-[6px] text-left text-sm font-medium transition-colors ${
+                            form.addOns.includes(addOn.id)
+                              ? 'bg-[#1A1A1A] text-white'
+                              : 'bg-white border border-[#E0DAD0] text-[#1A1A1A] hover:border-[#1A1A1A]'
+                          }`}
+                        >
+                          <span className="flex items-center gap-2">
+                            {form.addOns.includes(addOn.id) && (
+                              <Check className="w-4 h-4 flex-shrink-0" />
+                            )}
+                            <span>
+                              <span className="block font-semibold">{addOn.label}</span>
+                              <span className={`block text-xs mt-0.5 ${form.addOns.includes(addOn.id) ? 'text-white/70' : 'text-[#9E9790]'}`}>
+                                {addOn.description}
+                              </span>
                             </span>
                           </span>
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* SEO Packages */}
-                <div>
-                  <label htmlFor="seoPackage" className="block text-sm font-semibold text-[#1A1A1A] mb-1">
-                    SEO Packages
-                    <span className="text-[10px] font-normal text-[#9E9790] ml-1">(+GST)</span>
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="seoPackage"
-                      name="seoPackage"
-                      value={form.seoPackage}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-[#E0DAD0] rounded-[8px] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors text-sm appearance-none cursor-pointer"
-                    >
-                      {SEO_PACKAGE_OPTIONS.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
+                        </button>
                       ))}
-                    </select>
-                    <ChevronDown className="w-4 h-4 text-[#999] absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+
+                      {/* SEO Packages */}
+                      <div>
+                        <label htmlFor="seoPackage" className="block text-sm font-semibold text-[#1A1A1A] mb-1">
+                          SEO Packages
+                          <span className="text-[10px] font-normal text-[#9E9790] ml-1">(+GST)</span>
+                        </label>
+                        <div className="relative">
+                          <select
+                            id="seoPackage"
+                            name="seoPackage"
+                            value={form.seoPackage}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 border border-[#E0DAD0] rounded-[8px] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors text-sm appearance-none cursor-pointer"
+                          >
+                            {SEO_PACKAGE_OPTIONS.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </select>
+                          <ChevronDown className="w-4 h-4 text-[#999] absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 {/* Estimated Budget */}
                 <div>
                   <label htmlFor="budget" className="block text-sm font-semibold text-[#1A1A1A] mb-1">
-                    Estimated Budget
+                    Estimated Budget <span className="text-red-500">*</span>
                   </label>
                   <p className="text-[10px] text-[#9E9790] mb-2">All prices are + GST</p>
                   <select
@@ -355,7 +364,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  disabled={status === 'loading'}
+                  disabled={status === 'loading' || !form.name || !form.businessName || !form.email || form.services.length === 0 || !form.budget}
                   className="w-full flex items-center justify-center gap-2 bg-[#1A1A1A] text-white font-semibold py-3.5 rounded-[8px] hover:bg-[#2D2D2D] transition-colors disabled:opacity-60 disabled:cursor-not-allowed text-sm"
                 >
                   {status === 'loading' ? (
