@@ -4,10 +4,20 @@ import { useState } from 'react'
 import { X, Check, Send, Building2, User, Mail, Phone, MessageSquare, ChevronDown } from 'lucide-react'
 
 const serviceOptions = [
-  { id: 'website-build', label: 'Website Build' },
-  { id: 'redesign', label: 'Redesign' },
-  { id: 'seo', label: 'SEO' },
-  { id: 'care-plan', label: 'Care Plan' },
+  { id: 'website-build-redesign', label: 'Website Build/Redesign' },
+  { id: 'google-profile-setup', label: 'Google Profile Setup' },
+  { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
+]
+
+const addOnOptions = [
+  { id: 'hosting-updates', label: '$99 Hosting + Updates', description: 'Limited to 1 update per month — keeps websites looking fresh with new content you provide us.' },
+]
+
+const seoPackageOptions = [
+  { value: '', label: 'Select an SEO package (optional)' },
+  { value: 'google-growth', label: 'Google Growth — A$199/month' },
+  { value: 'super-growth', label: 'Super Growth — A$359/month' },
+  { value: 'market-authority', label: 'Market Authority — A$799/month' },
 ]
 
 const budgetOptions = [
@@ -25,6 +35,8 @@ type FormData = {
   email: string
   phone: string
   services: string[]
+  addOns: string[]
+  seoPackage: string
   budget: string
   message: string
 }
@@ -35,6 +47,8 @@ const initialFormData: FormData = {
   email: '',
   phone: '',
   services: [],
+  addOns: [],
+  seoPackage: '',
   budget: '',
   message: '',
 }
@@ -61,6 +75,15 @@ export default function GetStartedForm({
     }))
   }
 
+  const toggleAddOn = (addOnId: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      addOns: prev.addOns.includes(addOnId)
+        ? prev.addOns.filter((a) => a !== addOnId)
+        : [...prev.addOns, addOnId],
+    }))
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
@@ -70,6 +93,13 @@ export default function GetStartedForm({
       .map((id) => serviceOptions.find((s) => s.id === id)?.label)
       .filter(Boolean)
       .join(', ')
+
+    const addOnsLabels = formData.addOns
+      .map((id) => addOnOptions.find((a) => a.id === id)?.label)
+      .filter(Boolean)
+      .join(', ')
+
+    const seoPackageLabel = seoPackageOptions.find((s) => s.value === formData.seoPackage)?.label || ''
 
     try {
       const response = await fetch('/api/quote', {
@@ -84,6 +114,8 @@ export default function GetStartedForm({
           phone: formData.phone,
           notes: formData.message,
           services: servicesLabels,
+          addOns: addOnsLabels,
+          seoPackage: seoPackageLabel,
           budget: formData.budget,
           websiteType: null,
           colourDirection: '',
@@ -264,6 +296,65 @@ export default function GetStartedForm({
                   {service.label}
                 </button>
               ))}
+            </div>
+            <p className="text-[11px] text-[#9E9790] mt-2">
+              All websites require $79/month hosting service.
+            </p>
+          </div>
+
+          {/* Optional Add-ons */}
+          <div>
+            <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">
+              Optional Add-ons
+            </label>
+            <div className="space-y-2">
+              {addOnOptions.map((addOn) => (
+                <button
+                  key={addOn.id}
+                  type="button"
+                  onClick={() => toggleAddOn(addOn.id)}
+                  className={`w-full px-4 py-3 rounded-lg text-left text-sm font-medium transition-all duration-200 ${
+                    formData.addOns.includes(addOn.id)
+                      ? 'bg-[#1A1A1A] text-white'
+                      : 'bg-[#F8F7F4] text-[#1A1A1A] border border-[#E8E4DF] hover:border-[#5C3D2E]'
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    {formData.addOns.includes(addOn.id) && (
+                      <Check className="w-4 h-4 flex-shrink-0" />
+                    )}
+                    <span>
+                      <span className="block font-semibold">{addOn.label}</span>
+                      <span className={`block text-xs mt-0.5 ${formData.addOns.includes(addOn.id) ? 'text-white/70' : 'text-[#9E9790]'}`}>
+                        {addOn.description}
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* SEO Packages */}
+          <div>
+            <label htmlFor="seoPackage" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
+              SEO Packages
+              <span className="text-[10px] font-normal text-[#9E9790] ml-1">(+GST)</span>
+            </label>
+            <div className="relative">
+              <select
+                id="seoPackage"
+                value={formData.seoPackage}
+                onChange={(e) => setFormData((prev) => ({ ...prev, seoPackage: e.target.value }))}
+                className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 appearance-none cursor-pointer"
+              >
+                {seoPackageOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-4 h-4 text-[#9E9790] absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
           </div>
 
