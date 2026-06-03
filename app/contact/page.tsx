@@ -2,13 +2,23 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { CheckCircle, AlertCircle, Loader2, ArrowRight, User, Building2, Mail, Phone, MessageSquare } from 'lucide-react'
+import { CheckCircle, AlertCircle, Loader2, ArrowRight, User, Building2, Mail, Phone, MessageSquare, Check, ChevronDown } from 'lucide-react'
 
 const SERVICE_OPTIONS = [
-  { id: 'website-build', label: 'Website Build' },
-  { id: 'redesign', label: 'Redesign' },
-  { id: 'seo', label: 'SEO' },
-  { id: 'care-plan', label: 'Care Plan' },
+  { id: 'website-build-redesign', label: 'Website Build/Redesign' },
+  { id: 'google-profile-setup', label: 'Google Profile Setup' },
+  { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
+]
+
+const ADD_ON_OPTIONS = [
+  { id: 'hosting-updates', label: '$99 Hosting + Updates', description: 'Limited to 1 update per month — keeps websites looking fresh with new content you provide us.' },
+]
+
+const SEO_PACKAGE_OPTIONS = [
+  { value: '', label: 'Select an SEO package (optional)' },
+  { value: 'google-growth', label: 'Google Growth — A$199/month' },
+  { value: 'super-growth', label: 'Super Growth — A$359/month' },
+  { value: 'market-authority', label: 'Market Authority — A$799/month' },
 ]
 
 const BUDGET_OPTIONS = [
@@ -27,6 +37,8 @@ export default function ContactPage() {
     email: '',
     phone: '',
     services: [] as string[],
+    addOns: [] as string[],
+    seoPackage: '',
     budget: '',
     message: '',
   })
@@ -46,6 +58,15 @@ export default function ContactPage() {
     }))
   }
 
+  const toggleAddOn = (addOnId: string) => {
+    setForm(prev => ({
+      ...prev,
+      addOns: prev.addOns.includes(addOnId)
+        ? prev.addOns.filter(a => a !== addOnId)
+        : [...prev.addOns, addOnId]
+    }))
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
@@ -61,6 +82,8 @@ export default function ContactPage() {
           email: form.email,
           phone: form.phone,
           services: form.services.map(id => SERVICE_OPTIONS.find(s => s.id === id)?.label).join(', '),
+          addOns: form.addOns.map(id => ADD_ON_OPTIONS.find(a => a.id === id)?.label).join(', '),
+          seoPackage: SEO_PACKAGE_OPTIONS.find(s => s.value === form.seoPackage)?.label || '',
           budget: BUDGET_OPTIONS.find(b => b.value === form.budget)?.label || form.budget,
           message: form.message,
         }),
@@ -214,9 +237,72 @@ export default function ContactPage() {
                             : 'bg-white border border-[#E0DAD0] text-[#1A1A1A] hover:border-[#1A1A1A]'
                         }`}
                       >
+                        {form.services.includes(service.id) && (
+                          <Check className="w-3.5 h-3.5 inline mr-1.5 -mt-0.5" />
+                        )}
                         {service.label}
                       </button>
                     ))}
+                  </div>
+                  <p className="text-[11px] text-[#9E9790] mt-2">
+                    All websites require $79/month hosting service.
+                  </p>
+                </div>
+
+                {/* Optional Add-ons */}
+                <div>
+                  <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">
+                    Optional Add-ons
+                  </label>
+                  <div className="space-y-2">
+                    {ADD_ON_OPTIONS.map((addOn) => (
+                      <button
+                        key={addOn.id}
+                        type="button"
+                        onClick={() => toggleAddOn(addOn.id)}
+                        className={`w-full px-4 py-3 rounded-[6px] text-left text-sm font-medium transition-colors ${
+                          form.addOns.includes(addOn.id)
+                            ? 'bg-[#1A1A1A] text-white'
+                            : 'bg-white border border-[#E0DAD0] text-[#1A1A1A] hover:border-[#1A1A1A]'
+                        }`}
+                      >
+                        <span className="flex items-center gap-2">
+                          {form.addOns.includes(addOn.id) && (
+                            <Check className="w-4 h-4 flex-shrink-0" />
+                          )}
+                          <span>
+                            <span className="block font-semibold">{addOn.label}</span>
+                            <span className={`block text-xs mt-0.5 ${form.addOns.includes(addOn.id) ? 'text-white/70' : 'text-[#9E9790]'}`}>
+                              {addOn.description}
+                            </span>
+                          </span>
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* SEO Packages */}
+                <div>
+                  <label htmlFor="seoPackage" className="block text-sm font-semibold text-[#1A1A1A] mb-1">
+                    SEO Packages
+                    <span className="text-[10px] font-normal text-[#9E9790] ml-1">(+GST)</span>
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="seoPackage"
+                      name="seoPackage"
+                      value={form.seoPackage}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-[#E0DAD0] rounded-[8px] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] transition-colors text-sm appearance-none cursor-pointer"
+                    >
+                      {SEO_PACKAGE_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="w-4 h-4 text-[#999] absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                   </div>
                 </div>
 
