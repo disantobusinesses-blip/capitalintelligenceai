@@ -1,11 +1,22 @@
 'use client'
 
 import { useState } from 'react'
-import { ExternalLink } from 'lucide-react'
+import Link from 'next/link'
+import { ExternalLink, ArrowRight } from 'lucide-react'
 
 const projects = [
   {
     id: 1,
+    name: 'Tamar Cabinets PTY LTD',
+    industry: 'Cabinetry & Joinery',
+    metric: 'Premium cabinetry website',
+    link: 'https://tamarcabinets.com.au',
+    image: '/projects/tamar-cabinets.jpg',
+    imageAlt: 'Tamar Cabinets website screenshot',
+    color: '#E8A54B',
+  },
+  {
+    id: 2,
     name: 'EAY Electrical',
     industry: 'Trades',
     metric: 'Ranked page 1 Google',
@@ -15,44 +26,14 @@ const projects = [
     color: '#1A3A5C',
   },
   {
-    id: 2,
-    name: 'My AI Bank',
-    industry: 'FinTech',
-    metric: 'AI-powered banking platform',
-    link: 'https://myaibank.ai',
-    image: '/projects/myaibank.png',
-    imageAlt: 'My AI Bank website screenshot',
-    color: '#0F172A',
-  },
-  {
     id: 3,
-    name: 'Reborn Physiques',
-    industry: 'Health & Fitness',
-    metric: 'Custom fitness website',
-    link: 'https://rebornphysiques.com',
-    image: '/projects/rebornphysiques.png',
-    imageAlt: 'Reborn Physiques website screenshot',
-    color: '#1A1A1A',
-  },
-  {
-    id: 4,
-    name: 'Your Coach Plus',
-    industry: 'Health & Fitness',
-    metric: 'PT landing page',
-    link: 'https://yourcoachplus.com.au',
-    image: '/projects/yourcoachplus.png',
-    imageAlt: 'Your Coach Plus website screenshot',
-    color: '#2D5016',
-  },
-  {
-    id: 5,
-    name: 'Senator Developments',
-    industry: 'Property Development',
-    metric: 'Custom property development website',
-    link: 'https://senatordevelopments.com.au',
-    image: '/projects/senator-developments.png',
-    imageAlt: 'Senator Developments website screenshot',
-    color: '#2C3E50',
+    name: 'Live Demo Website',
+    industry: 'Landing Page Demo',
+    metric: 'See our work in action',
+    link: 'https://demo.intelligentaisystem.com',
+    image: '/projects/live-demo.jpg',
+    imageAlt: 'Live Demo website screenshot',
+    color: '#2C2A27',
   },
 ]
 
@@ -143,9 +124,15 @@ export default function OurWork() {
         </div>
 
         {/* Footnote */}
-        <p className="text-center text-[#9E9790] text-sm mt-8 italic">
-          Other projects may not be shown yet.
-        </p>
+        <div className="text-center mt-10">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 bg-[#1A1A1A] text-white font-semibold px-6 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
+          >
+            See All Projects
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
     </section>
   )
