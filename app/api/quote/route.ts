@@ -125,10 +125,10 @@ export async function POST(request: NextRequest) {
     if (hasServices || hasBudget) {
       htmlBody += `<h3>Quote Details</h3><ul>`
       if (hasServices) {
-        htmlBody += `<li><strong>Services Requested:</strong> ${esc(body.services)}</li>`
+        htmlBody += `<li><strong>Services Requested:</strong> ${esc(body.services!)}</li>`
       }
       if (hasBudget) {
-        htmlBody += `<li><strong>Estimated Budget:</strong> ${esc(body.budget)} (+GST)</li>`
+        htmlBody += `<li><strong>Estimated Budget:</strong> ${esc(body.budget!)} (+GST)</li>`
       }
       htmlBody += `</ul>`
     }
@@ -140,10 +140,10 @@ export async function POST(request: NextRequest) {
     if (hasAddOns || hasSeoPackage) {
       htmlBody += `<h3>Optional Add-ons</h3><ul>`
       if (hasAddOns) {
-        htmlBody += `<li><strong>Hosting Add-on:</strong> ${esc(body.addOns)}</li>`
+        htmlBody += `<li><strong>Hosting Add-on:</strong> ${esc(body.addOns!)}</li>`
       }
       if (hasSeoPackage) {
-        htmlBody += `<li><strong>SEO Package:</strong> ${esc(body.seoPackage)}</li>`
+        htmlBody += `<li><strong>SEO Package:</strong> ${esc(body.seoPackage!)}</li>`
       }
       htmlBody += `</ul>`
     }
