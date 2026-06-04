@@ -119,24 +119,30 @@ export async function POST(request: NextRequest) {
     `
 
     // New form fields (services, budget, addOns, seoPackage)
-    if (body.services || body.budget) {
+    const hasServices = body.services && body.services.trim() !== ''
+    const hasBudget = body.budget && body.budget.trim() !== ''
+    
+    if (hasServices || hasBudget) {
       htmlBody += `<h3>Quote Details</h3><ul>`
-      if (body.services) {
+      if (hasServices) {
         htmlBody += `<li><strong>Services Requested:</strong> ${esc(body.services)}</li>`
       }
-      if (body.budget) {
+      if (hasBudget) {
         htmlBody += `<li><strong>Estimated Budget:</strong> ${esc(body.budget)} (+GST)</li>`
       }
       htmlBody += `</ul>`
     }
 
     // Optional add-ons section
-    if (body.addOns || body.seoPackage) {
+    const hasAddOns = body.addOns && body.addOns.trim() !== ''
+    const hasSeoPackage = body.seoPackage && body.seoPackage.trim() !== '' && body.seoPackage !== 'Select an SEO package (optional)'
+    
+    if (hasAddOns || hasSeoPackage) {
       htmlBody += `<h3>Optional Add-ons</h3><ul>`
-      if (body.addOns) {
+      if (hasAddOns) {
         htmlBody += `<li><strong>Hosting Add-on:</strong> ${esc(body.addOns)}</li>`
       }
-      if (body.seoPackage) {
+      if (hasSeoPackage) {
         htmlBody += `<li><strong>SEO Package:</strong> ${esc(body.seoPackage)}</li>`
       }
       htmlBody += `</ul>`

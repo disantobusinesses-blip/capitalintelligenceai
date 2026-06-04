@@ -102,6 +102,8 @@ export default function GetStartedForm({
 
     const seoPackageLabel = seoPackageOptions.find((s) => s.value === formData.seoPackage)?.label || ''
 
+    const budgetLabel = budgetOptions.find((b) => b.value === formData.budget)?.label || formData.budget
+
     try {
       const response = await fetch('/api/quote', {
         method: 'POST',
@@ -117,7 +119,7 @@ export default function GetStartedForm({
           services: servicesLabels,
           addOns: addOnsLabels,
           seoPackage: seoPackageLabel,
-          budget: formData.budget,
+          budget: budgetLabel,
           websiteType: null,
           colourDirection: '',
           colourLabel: '',
