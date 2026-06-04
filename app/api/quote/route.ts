@@ -2,16 +2,24 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 interface QuoteFormData {
+  // New form fields
+  services?: string
+  addOns?: string
+  seoPackage?: string
+  budget?: string
+  message?: string
+  // Legacy form fields (keep for backward compatibility)
   websiteType?: 'landing' | 'full' | null
   colourDirection?: string
   colourLabel?: string
   seoPlan?: string
   seoPrice?: number
+  notes?: string
+  // Common fields
   name: string
   businessName: string
   email: string
   phone?: string
-  notes?: string
 }
 
 function esc(str: string): string {
@@ -62,6 +70,13 @@ export async function POST(request: NextRequest) {
           business_name: body.businessName.trim(),
           email: body.email.trim(),
           phone: body.phone?.trim() || null,
+          // New form fields
+          services: body.services || null,
+          add_ons: body.addOns || null,
+          seo_package: body.seoPackage || null,
+          budget: body.budget || null,
+          message: body.message || body.notes?.trim() || null,
+          // Legacy fields (backward compatibility)
           website_type: body.websiteType || null,
           colour_direction: body.colourLabel || body.colourDirection || null,
           seo_plan: body.seoPlan || null,
@@ -91,7 +106,7 @@ export async function POST(request: NextRequest) {
       auth: { user: SMTP_USER, pass: SMTP_PASS },
     })
 
-    // Build HTML body - handle both simple quote requests and detailed ones
+    // Build HTML body - handle both new simplified form and legacy detailed form
     let htmlBody = `
       <h2>New Quote Request — ${esc(body.businessName)}</h2>
       <h3>Contact Details</h3>
@@ -103,7 +118,31 @@ export async function POST(request: NextRequest) {
       </ul>
     `
 
-    // Add detailed quote info if provided
+    // New form fields (services, budget, addOns, seoPackage)
+    if (body.services || body.budget) {
+      htmlBody += `<h3>Quote Details</h3><ul>`
+      if (body.services) {
+        htmlBody += `<li><strong>Services Requested:</strong> ${esc(body.services)}</li>`
+      }
+      if (body.budget) {
+        htmlBody += `<li><strong>Estimated Budget:</strong> ${esc(body.budget)} (+GST)</li>`
+      }
+      htmlBody += `</ul>`
+    }
+
+    // Optional add-ons section
+    if (body.addOns || body.seoPackage) {
+      htmlBody += `<h3>Optional Add-ons</h3><ul>`
+      if (body.addOns) {
+        htmlBody += `<li><strong>Hosting Add-on:</strong> ${esc(body.addOns)}</li>`
+      }
+      if (body.seoPackage) {
+        htmlBody += `<li><strong>SEO Package:</strong> ${esc(body.seoPackage)}</li>`
+      }
+      htmlBody += `</ul>`
+    }
+
+    // Legacy detailed quote info if provided (backward compatibility)
     if (body.websiteType) {
       const websiteLabel = body.websiteType === 'landing' ? 'Landing Page' : 'Full Website'
       const seoPlanLabel = (() => {
@@ -130,8 +169,10 @@ export async function POST(request: NextRequest) {
       `
     }
 
-    if (body.notes) {
-      htmlBody += `<h3>Project Details / Message</h3><p>${esc(body.notes)}</p>`
+    // Project details / message
+    const messageContent = body.message || body.notes
+    if (messageContent) {
+      htmlBody += `<h3>Project Details / Message</h3><p>${esc(messageContent)}</p>`
     }
 
     await transporter.sendMail({
