@@ -58,6 +58,24 @@ interface BookingResult {
   calendarLink: string | null
 }
 
+// Validate Australian phone number: 04XX XXX XXX (10 digits) or +61 XXX XXX XXX (12 chars with +61)
+function isValidAustralianPhone(phone: string): boolean {
+  // Remove all spaces
+  const cleaned = phone.replace(/\s/g, '')
+  
+  // Check for 04 format: exactly 10 digits starting with 04
+  if (/^04\d{8}$/.test(cleaned)) {
+    return true
+  }
+  
+  // Check for +61 format: +61 followed by 9 digits (total 12 chars)
+  if (/^\+61\d{9}$/.test(cleaned)) {
+    return true
+  }
+  
+  return false
+}
+
 export default function Hero() {
   const { openModal } = useGetStartedModal()
   
@@ -79,6 +97,7 @@ export default function Hero() {
   // Submission state
   const [consultStatus, setConsultStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [consultError, setConsultError] = useState('')
+  const [phoneError, setPhoneError] = useState('')
   const [bookingResult, setBookingResult] = useState<BookingResult | null>(null)
   
   const calendarRef = useRef<HTMLDivElement>(null)
@@ -148,6 +167,14 @@ export default function Hero() {
 
   const handleConsultSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Validate phone number
+    if (!isValidAustralianPhone(phone)) {
+      setPhoneError('Phone number invalid. Use 04XX XXX XXX or +61 XXX XXX XXX format.')
+      return
+    }
+    setPhoneError('')
+    
     if (!name.trim() || !email.trim() || !phone.trim() || !selectedDate || !selectedTime || selectedServices.length === 0) return
 
     setConsultStatus('submitting')
@@ -193,7 +220,7 @@ export default function Hero() {
     }
   }
 
-  const canSubmit = name.trim() && email.trim() && phone.trim() && selectedDate && selectedTime && selectedServices.length > 0
+  const canSubmit = name.trim() && email.trim() && phone.trim() && selectedDate && selectedTime && selectedServices.length > 0 && !phoneError
 
   return (
     <section
@@ -450,14 +477,24 @@ export default function Hero() {
                   className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
                 />
                 
-                <input
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="Phone Number *"
-                  required
-                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
-                />
+                <div>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => {
+                      setPhone(e.target.value)
+                      if (phoneError) setPhoneError('')
+                    }}
+                    placeholder="Phone Number * (04XX XXX XXX or +61 XXX XXX XXX)"
+                    required
+                    className={`w-full px-4 py-3 border rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none transition-colors duration-200 text-sm ${
+                      phoneError ? 'border-red-400 focus:border-red-400' : 'border-[#E8E4DF] focus:border-[#1A1A1A]'
+                    }`}
+                  />
+                  {phoneError && (
+                    <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+                  )}
+                </div>
 
                 {/* What do you need - Multi select */}
                 <div>
