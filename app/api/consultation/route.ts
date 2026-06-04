@@ -21,9 +21,13 @@ function getGoogleAuth() {
     return null
   }
 
-  const auth = new google.auth.JWT(email, undefined, privateKey, [
-    'https://www.googleapis.com/auth/calendar.events',
-  ])
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: email,
+      private_key: privateKey,
+    },
+    scopes: ['https://www.googleapis.com/auth/calendar.events'],
+  })
 
   return { auth, calendarId }
 }
