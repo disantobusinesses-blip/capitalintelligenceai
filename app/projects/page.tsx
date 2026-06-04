@@ -16,6 +16,16 @@ export const metadata: Metadata = {
 const projects = [
   {
     id: 0,
+    title: 'Tamar Cabinets PTY LTD',
+    industry: 'Cabinetry & Joinery',
+    description: 'Bespoke cabinetry and joinery website for a Melbourne-based craftsman. Modern design showcasing their handcrafted kitchen and furniture work with a premium aesthetic.',
+    image: '/projects/tamar-cabinets.jpg',
+    url: 'https://tamarcabinets.com.au',
+    color: '#E8A54B',
+    features: ['Modern design', 'Portfolio showcase', 'Mobile responsive', 'Contact form', 'SEO optimised'],
+  },
+  {
+    id: 1,
     title: 'Live Demo Website',
     industry: 'Landing Page Demo',
     description: 'See what a premium landing page looks like before you commit. This live demo showcases our design quality, mobile responsiveness, and conversion-focused layout.',
@@ -25,7 +35,7 @@ const projects = [
     features: ['Live preview', 'Mobile responsive', 'Modern design', 'Conversion focused', 'Fast loading'],
   },
   {
-    id: 1,
+    id: 2,
     title: 'EAY Electrical',
     industry: 'Electrical Services',
     description: 'Professional electrical services website for residential and commercial clients across Australia. Modern design with service showcase and contact integration.',
@@ -35,7 +45,7 @@ const projects = [
     features: ['Responsive design', 'Service showcase', 'Contact form', 'SEO optimised', 'Fast loading'],
   },
   {
-    id: 2,
+    id: 3,
     title: 'My AI Bank',
     industry: 'FinTech',
     description: 'AI-powered banking platform delivering intelligent financial tools and personalised banking experiences.',
@@ -45,7 +55,7 @@ const projects = [
     features: ['AI-powered tools', 'Personalised banking', 'Intelligent insights', 'Secure platform', 'Modern UX'],
   },
   {
-    id: 3,
+    id: 4,
     title: 'Reborn Physiques',
     industry: 'Health & Fitness',
     description: 'Custom fitness and physique coaching website built to convert visitors into clients, with service showcases and seamless contact integration.',
@@ -55,7 +65,7 @@ const projects = [
     features: ['Custom modern design', 'Mobile responsive', 'Service showcase', 'Contact form', 'SEO optimised'],
   },
   {
-    id: 4,
+    id: 5,
     title: 'Your Coach Plus',
     industry: 'Health & Fitness',
     description: 'Personal training landing page built to convert visitors into clients, showcasing coaching services with a clean modern design and seamless contact integration.',
@@ -65,7 +75,7 @@ const projects = [
     features: ['PT landing page', 'Mobile responsive', 'Lead capture', 'Contact form', 'SEO optimised'],
   },
   {
-    id: 5,
+    id: 6,
     title: 'Senator Developments',
     industry: 'Property Development',
     description: 'Professional property development website showcasing residential and commercial projects across Australia, with a modern design built to attract buyers and investors.',
