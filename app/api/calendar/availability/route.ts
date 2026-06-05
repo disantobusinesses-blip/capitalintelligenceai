@@ -17,12 +17,20 @@ const BUSINESS_HOURS: Record<number, { start: number; end: number } | null> = {
 
 function getGoogleAuth() {
   const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+  let privateKey = process.env.GOOGLE_PRIVATE_KEY
   const calendarId = process.env.GOOGLE_CALENDAR_ID
 
   if (!email || !privateKey || !calendarId) {
     throw new Error('Google Calendar credentials not configured')
   }
+
+  // Handle various formats the private key might be stored in
+  // Remove surrounding quotes if present (JSON-encoded value)
+  if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+    privateKey = privateKey.slice(1, -1)
+  }
+  // Replace escaped newlines with actual newlines
+  privateKey = privateKey.replace(/\\n/g, '\n')
 
   const auth = new google.auth.GoogleAuth({
     credentials: {
@@ -152,7 +160,8 @@ export async function GET(request: NextRequest) {
       availableSlots: allSlots,
       bookedSlots: [],
       allSlots,
-      fallback: true
+      fallback: true,
+      error: error instanceof Error ? error.message : 'Unknown error',
     })
   }
 }
