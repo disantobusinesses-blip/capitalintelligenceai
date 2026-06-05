@@ -132,6 +132,10 @@ export default function GetStartedForm({
 
       if (response.ok && result.ok) {
         setSubmitted(true)
+        // Fire Google Ads conversion tracking
+        if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+          window.gtag('event', 'conversion', {'send_to': 'AW-17950129824/0hYECPfNlrkcEKD9pO9C'})
+        }
       } else {
         setSubmitError(result.message || 'Failed to submit form. Please try again.')
       }

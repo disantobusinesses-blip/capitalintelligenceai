@@ -92,6 +92,10 @@ export default function ContactPage() {
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Something went wrong')
       setStatus('success')
+      // Fire Google Ads conversion tracking
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {'send_to': 'AW-17950129824/0hYECPfNlrkcEKD9pO9C'})
+      }
     } catch (err: unknown) {
       setStatus('error')
       setErrorMsg(err instanceof Error ? err.message : 'Something went wrong')

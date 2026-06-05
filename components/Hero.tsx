@@ -203,6 +203,10 @@ export default function Hero() {
       if (response.ok && result.ok) {
         setConsultStatus('success')
         setBookingResult(result.booking)
+        // Fire Google Ads conversion tracking
+        if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+          window.gtag('event', 'conversion', {'send_to': 'AW-17950129824/ZA2zCPTNlrkcEKD9pO9C'})
+        }
         // Clear form
         setName('')
         setEmail('')
