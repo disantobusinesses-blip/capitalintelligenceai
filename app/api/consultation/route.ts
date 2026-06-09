@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { google } from 'googleapis'
-
-const TIMEZONE = 'Australia/Melbourne'
+import { TIMEZONE, melbourneWallTimeToUTC } from '@/lib/timezone'
 
 function esc(str: string): string {
   return str
@@ -79,10 +78,10 @@ export async function POST(request: NextRequest) {
 
   const servicesText = body.services.join(', ')
   
-  // Parse the date and time
+  // Parse the date and time as Melbourne wall-clock time, converting to a
+  // correct UTC instant (handles AEST/AEDT daylight saving automatically).
   const [hour, minute] = body.time.split(':').map(Number)
-  const startDateTime = new Date(body.date)
-  startDateTime.setHours(hour, minute, 0, 0)
+  const startDateTime = melbourneWallTimeToUTC(body.date, hour, minute)
   
   const endDateTime = new Date(startDateTime.getTime() + 15 * 60000) // 15 minutes later
 
