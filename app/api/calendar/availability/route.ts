@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { google } from 'googleapis'
-
-// AEST timezone
-const TIMEZONE = 'Australia/Melbourne'
+import { TIMEZONE, melbourneWallTimeToUTC } from '@/lib/timezone'
 
 // Business hours configuration
 const BUSINESS_HOURS: Record<number, { start: number; end: number } | null> = {
@@ -66,9 +64,11 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Date parameter required' }, { status: 400 })
   }
 
-  // Parse the date
-  const date = new Date(dateStr)
-  const dayOfWeek = date.getDay()
+  // Parse the date. Use UTC noon of the calendar date so the day-of-week
+  // is stable regardless of the server's local timezone.
+  const [yr, mo, dy] = dateStr.split('T')[0].split('-').map(Number)
+  const date = new Date(Date.UTC(yr, mo - 1, dy, 12, 0, 0))
+  const dayOfWeek = date.getUTCDay()
   const hours = BUSINESS_HOURS[dayOfWeek]
 
   // Check if it's a business day
@@ -83,12 +83,10 @@ export async function GET(request: NextRequest) {
     const { auth, calendarId } = getGoogleAuth()
     const calendar = google.calendar({ version: 'v3', auth })
 
-    // Get start and end of the selected day in AEST
-    const startOfDay = new Date(dateStr)
-    startOfDay.setHours(hours.start, 0, 0, 0)
-    
-    const endOfDay = new Date(dateStr)
-    endOfDay.setHours(hours.end, 0, 0, 0)
+    // Get start and end of the selected day as Melbourne wall-clock times,
+    // converted to correct UTC instants for the Google Calendar query.
+    const startOfDay = melbourneWallTimeToUTC(dateStr, hours.start, 0)
+    const endOfDay = melbourneWallTimeToUTC(dateStr, hours.end, 0)
 
     // Fetch events for the day
     const eventsResponse = await calendar.events.list({
@@ -116,8 +114,7 @@ export async function GET(request: NextRequest) {
         // Mark all 15-minute slots that overlap with this event as booked
         for (const slot of allSlots) {
           const [slotHour, slotMin] = slot.split(':').map(Number)
-          const slotStart = new Date(dateStr)
-          slotStart.setHours(slotHour, slotMin, 0, 0)
+          const slotStart = melbourneWallTimeToUTC(dateStr, slotHour, slotMin)
           const slotEnd = new Date(slotStart.getTime() + 15 * 60000)
 
           // Check if slot overlaps with event
@@ -128,15 +125,23 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Also block slots in the past for today
+    // Also block slots in the past. Compare actual UTC instants so "today"
+    // and past-slot detection are correct regardless of server timezone.
     const now = new Date()
-    const isToday = date.toDateString() === now.toDateString()
+    // Determine "today" in Melbourne to compare against the selected date.
+    const melbourneTodayStr = new Intl.DateTimeFormat('en-CA', {
+      timeZone: TIMEZONE,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(now)
+    const selectedDateStr = dateStr.split('T')[0]
+    const isToday = selectedDateStr === melbourneTodayStr
     
     if (isToday) {
       for (const slot of allSlots) {
         const [slotHour, slotMin] = slot.split(':').map(Number)
-        const slotTime = new Date(dateStr)
-        slotTime.setHours(slotHour, slotMin, 0, 0)
+        const slotTime = melbourneWallTimeToUTC(dateStr, slotHour, slotMin)
         
         if (slotTime <= now) {
           bookedTimes.add(slot)
