@@ -129,10 +129,6 @@ Please call the client at the scheduled time.`,
           dateTime: endDateTime.toISOString(),
           timeZone: TIMEZONE,
         },
-        attendees: [
-          { email: body.email, displayName: body.name },
-          { email: 'sales@intelligentaisystem.com' },
-        ],
         reminders: {
           useDefault: false,
           overrides: [
@@ -140,19 +136,12 @@ Please call the client at the scheduled time.`,
             { method: 'popup', minutes: 15 },
           ],
         },
-        conferenceData: {
-          createRequest: {
-            requestId: `ias-${Date.now()}`,
-            conferenceSolutionKey: { type: 'hangoutsMeet' },
-          },
-        },
       }
 
       const response = await calendar.events.insert({
         calendarId: googleAuth.calendarId,
         requestBody: event,
-        sendUpdates: 'all', // Send email invites to attendees
-        conferenceDataVersion: 1,
+        sendUpdates: 'none', // No guest invitations — owner calendar only
       })
 
       calendarEventId = response.data.id || null
