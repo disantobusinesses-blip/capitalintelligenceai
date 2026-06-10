@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { CheckCircle, Send, Hammer, CalendarDays, Clock, Check, ExternalLink } from 'lucide-react'
+import Link from 'next/link'
+import { CheckCircle, Send, Rocket, CalendarDays, Clock, Check, ExternalLink } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useGetStartedModal } from '@/context/GetStartedModalContext'
 import { format, addDays, isSunday, isSaturday, isToday, isBefore, startOfDay } from 'date-fns'
 
 const SERVICE_OPTIONS = [
@@ -77,8 +77,6 @@ function isValidAustralianPhone(phone: string): boolean {
 }
 
 export default function Hero() {
-  const { openModal } = useGetStartedModal()
-  
   // Form state
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -255,13 +253,13 @@ export default function Hero() {
             <div className="flex flex-col gap-3 pt-2">
               {/* Primary CTA */}
               <div className="relative inline-flex self-start w-full sm:w-auto pb-4">
-                <button
-                  onClick={() => openModal()}
+                <Link
+                  href="/launch"
                   className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
                 >
-                  <Hammer className="w-5 h-5" />
-                  Build Me a Website
-                </button>
+                  <Rocket className="w-5 h-5" />
+                  Launch My Site
+                </Link>
                 {/* Animated hand-drawn loop */}
                 <motion.svg
                   className="absolute -bottom-1 left-0 w-full overflow-visible pointer-events-none"

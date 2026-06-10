@@ -1,11 +1,20 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { ArrowLeft, ArrowRight, CalendarDays, CreditCard, Loader2 } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CalendarDays, CreditCard, Loader2, Palette, Rocket } from 'lucide-react'
 import TemplateCard from '@/components/TemplateCard'
-import { TEMPLATES, HOSTING_PLANS, HostingPlan, DEPOSIT_AMOUNT } from '@/lib/templates'
+import {
+  TEMPLATES,
+  HOSTING_PLANS,
+  HostingPlan,
+  DEPOSIT_AMOUNT,
+  CUSTOM_BUDGET_OPTIONS,
+  CustomBudget,
+} from '@/lib/templates'
 
-const STEPS = ['Choose Template', 'Go Live Date', 'Payment']
+const STEPS = ['Choose Your Site', 'Go Live Date', 'Payment']
+
+type SiteType = 'template' | 'custom'
 
 function getAvailableDates(): Date[] {
   const dates: Date[] = []
@@ -29,7 +38,9 @@ function toISODate(d: Date): string {
 
 export default function LaunchFlow() {
   const [step, setStep] = useState(0)
+  const [siteType, setSiteType] = useState<SiteType | null>(null)
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null)
+  const [selectedBudget, setSelectedBudget] = useState<CustomBudget | null>(null)
   const [selectedHosting, setSelectedHosting] = useState<HostingPlan['id'] | null>(null)
   const [goLiveDate, setGoLiveDate] = useState<string | null>(null)
   const [termsAccepted, setTermsAccepted] = useState(false)
@@ -41,11 +52,23 @@ export default function LaunchFlow() {
   const template = TEMPLATES.find((t) => t.id === selectedTemplate)
   const hosting = HOSTING_PLANS.find((p) => p.id === selectedHosting)
 
-  const canProceedStep1 = Boolean(selectedTemplate && selectedHosting)
+  const canProceedStep1 =
+    siteType === 'custom'
+      ? Boolean(selectedBudget && selectedHosting)
+      : Boolean(selectedTemplate && selectedHosting)
   const canProceedStep2 = Boolean(goLiveDate)
 
+  function selectSiteType(type: SiteType) {
+    setSiteType(type)
+    setSelectedTemplate(null)
+    setSelectedBudget(null)
+    setSelectedHosting(null)
+  }
+
   async function handleCheckout() {
-    if (!selectedTemplate || !selectedHosting || !goLiveDate || !termsAccepted) return
+    if (!siteType || !selectedHosting || !goLiveDate || !termsAccepted) return
+    if (siteType === 'template' && !selectedTemplate) return
+    if (siteType === 'custom' && !selectedBudget) return
     setLoading(true)
     setError(null)
     try {
@@ -53,7 +76,9 @@ export default function LaunchFlow() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          siteType,
           templateId: selectedTemplate,
+          budget: selectedBudget,
           hostingPlan: selectedHosting,
           goLiveDate,
         }),
@@ -115,8 +140,36 @@ export default function LaunchFlow() {
           ))}
         </div>
 
-        {/* Step 1: Template Gallery */}
-        {step === 0 && (
+        {/* Step 1: Site type, then template gallery or custom budget */}
+        {step === 0 && !siteType && (
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-xl font-bold text-center mb-6">
+              What kind of site do you need?
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <button
+                type="button"
+                onClick={() => selectSiteType('template')}
+                className="rounded-xl bg-[#141414] border border-white/10 hover:border-emerald-400 p-8 text-left transition-all duration-200"
+              >
+                <Rocket className="w-8 h-8 text-emerald-400 mb-4" />
+                <h3 className="text-2xl font-extrabold mb-2">Template Site</h3>
+                <p className="text-zinc-400">From $750, live in 24hrs</p>
+              </button>
+              <button
+                type="button"
+                onClick={() => selectSiteType('custom')}
+                className="rounded-xl bg-[#141414] border border-white/10 hover:border-emerald-400 p-8 text-left transition-all duration-200"
+              >
+                <Palette className="w-8 h-8 text-emerald-400 mb-4" />
+                <h3 className="text-2xl font-extrabold mb-2">Custom Site</h3>
+                <p className="text-zinc-400">From $1,999, tailored to your business</p>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 0 && siteType === 'template' && (
           <div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {TEMPLATES.map((t) => (
@@ -136,7 +189,14 @@ export default function LaunchFlow() {
                 />
               ))}
             </div>
-            <div className="flex justify-center mt-10">
+            <div className="flex justify-center gap-4 mt-10">
+              <button
+                onClick={() => setSiteType(null)}
+                className="inline-flex items-center gap-2 border border-white/30 text-white font-semibold px-6 py-4 rounded-[6px] hover:bg-white/10 transition-colors duration-200"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back
+              </button>
               <button
                 onClick={() => setStep(1)}
                 disabled={!canProceedStep1}
@@ -149,6 +209,69 @@ export default function LaunchFlow() {
             {!canProceedStep1 && (
               <p className="text-center text-zinc-500 text-sm mt-3">
                 Select a template and a hosting plan to continue.
+              </p>
+            )}
+          </div>
+        )}
+
+        {step === 0 && siteType === 'custom' && (
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-xl font-bold text-center mb-6">
+              What&apos;s your budget for your custom site?
+            </h2>
+            <div className="grid grid-cols-2 gap-4">
+              {CUSTOM_BUDGET_OPTIONS.map((budget) => (
+                <button
+                  key={budget}
+                  type="button"
+                  onClick={() => setSelectedBudget(budget)}
+                  className={`rounded-xl border px-4 py-6 text-lg font-bold transition-colors duration-200 ${
+                    selectedBudget === budget
+                      ? 'bg-emerald-500 border-emerald-500 text-white'
+                      : 'bg-[#141414] border-white/10 text-zinc-300 hover:border-white/40'
+                  }`}
+                >
+                  {budget}
+                </button>
+              ))}
+            </div>
+            <h2 className="text-xl font-bold text-center mt-10 mb-4">Choose your hosting plan</h2>
+            <div className="grid grid-cols-2 gap-4">
+              {HOSTING_PLANS.map((plan) => (
+                <button
+                  key={plan.id}
+                  type="button"
+                  onClick={() => setSelectedHosting(plan.id)}
+                  className={`rounded-xl border px-4 py-5 font-semibold transition-colors duration-200 ${
+                    selectedHosting === plan.id
+                      ? 'bg-emerald-500 border-emerald-500 text-white'
+                      : 'bg-[#141414] border-white/10 text-zinc-300 hover:border-white/40'
+                  }`}
+                >
+                  {plan.label} {plan.price}
+                </button>
+              ))}
+            </div>
+            <div className="flex justify-center gap-4 mt-10">
+              <button
+                onClick={() => setSiteType(null)}
+                className="inline-flex items-center gap-2 border border-white/30 text-white font-semibold px-6 py-4 rounded-[6px] hover:bg-white/10 transition-colors duration-200"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back
+              </button>
+              <button
+                onClick={() => setStep(1)}
+                disabled={!canProceedStep1}
+                className="inline-flex items-center gap-2 bg-emerald-500 text-white font-bold px-8 py-4 rounded-[6px] hover:bg-emerald-600 transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                Continue
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+            {!canProceedStep1 && (
+              <p className="text-center text-zinc-500 text-sm mt-3">
+                Select a budget range and a hosting plan to continue.
               </p>
             )}
           </div>
@@ -208,33 +331,53 @@ export default function LaunchFlow() {
         )}
 
         {/* Step 3: Payment */}
-        {step === 2 && template && hosting && goLiveDate && (
+        {step === 2 &&
+          hosting &&
+          goLiveDate &&
+          (siteType === 'custom' ? selectedBudget : template) && (
           <div className="max-w-lg mx-auto">
-            <div className="rounded-xl bg-[#141414] border border-white/10 p-6 space-y-4">
+            <div className="rounded-xl bg-[#F8F7F4] border border-black/10 p-6 space-y-4 text-[#1A1A1A]">
               <h2 className="text-xl font-bold flex items-center gap-2">
-                <CreditCard className="w-5 h-5 text-emerald-400" />
+                <CreditCard className="w-5 h-5 text-emerald-600" />
                 Secure your build
               </h2>
-              <ul className="text-sm text-zinc-300 space-y-2">
-                <li className="flex justify-between">
-                  <span>Template</span>
-                  <span className="text-white font-semibold">
-                    {template.businessName} ({template.industry})
-                  </span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Website build</span>
-                  <span className="text-white font-semibold">${template.price}</span>
-                </li>
+              <ul className="text-sm text-[#4A4540] space-y-2">
+                {siteType === 'custom' ? (
+                  <>
+                    <li className="flex justify-between">
+                      <span>Site type</span>
+                      <span className="text-[#1A1A1A] font-semibold">Custom Site</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span>Budget range</span>
+                      <span className="text-[#1A1A1A] font-semibold">{selectedBudget}</span>
+                    </li>
+                  </>
+                ) : (
+                  template && (
+                    <>
+                      <li className="flex justify-between">
+                        <span>Template</span>
+                        <span className="text-[#1A1A1A] font-semibold">
+                          {template.businessName} ({template.industry})
+                        </span>
+                      </li>
+                      <li className="flex justify-between">
+                        <span>Website build</span>
+                        <span className="text-[#1A1A1A] font-semibold">${template.price}</span>
+                      </li>
+                    </>
+                  )
+                )}
                 <li className="flex justify-between">
                   <span>Hosting plan</span>
-                  <span className="text-white font-semibold">
+                  <span className="text-[#1A1A1A] font-semibold">
                     {hosting.label} — {hosting.price}
                   </span>
                 </li>
                 <li className="flex justify-between">
                   <span>Go live date</span>
-                  <span className="text-white font-semibold">
+                  <span className="text-[#1A1A1A] font-semibold">
                     {new Date(`${goLiveDate}T00:00:00`).toLocaleDateString('en-AU', {
                       weekday: 'long',
                       day: 'numeric',
@@ -243,18 +386,18 @@ export default function LaunchFlow() {
                     })}
                   </span>
                 </li>
-                <li className="flex justify-between border-t border-white/10 pt-3">
+                <li className="flex justify-between border-t border-black/10 pt-3">
                   <span>Due today (deposit)</span>
-                  <span className="text-emerald-400 font-bold">${DEPOSIT_AMOUNT}</span>
+                  <span className="text-emerald-600 font-bold">${DEPOSIT_AMOUNT}</span>
                 </li>
               </ul>
-              <p className="text-xs text-zinc-500">
+              <p className="text-xs text-[#6B6560]">
                 You&apos;ll be charged the ${DEPOSIT_AMOUNT} deposit plus your first month of
                 hosting in one secure Stripe checkout. The remaining build balance is invoiced
                 before go live.
               </p>
 
-              <label className="flex items-start gap-3 text-sm text-zinc-300 cursor-pointer">
+              <label className="flex items-start gap-3 text-sm text-[#4A4540] cursor-pointer">
                 <input
                   type="checkbox"
                   checked={termsAccepted}
@@ -263,11 +406,12 @@ export default function LaunchFlow() {
                 />
                 <span>
                   I understand that the ${DEPOSIT_AMOUNT} deposit is non-refundable once the
-                  onboarding form has been submitted.
+                  website has been delivered and approved. If Capital Intelligence Group fails
+                  to deliver, the deposit will be refunded in full.
                 </span>
               </label>
 
-              {error && <p className="text-red-400 text-sm">{error}</p>}
+              {error && <p className="text-red-600 text-sm">{error}</p>}
 
               <button
                 onClick={handleCheckout}

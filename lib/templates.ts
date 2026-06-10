@@ -15,6 +15,16 @@ export interface HostingPlan {
 
 export const TEMPLATE_PRICE = 750
 export const DEPOSIT_AMOUNT = 200
+export const CUSTOM_SITE_FROM_PRICE = 1999
+
+export const CUSTOM_BUDGET_OPTIONS = [
+  '$1,999–$2,999',
+  '$3,000–$3,999',
+  '$4,000–$4,999',
+  '$5,000–$5,999',
+] as const
+
+export type CustomBudget = (typeof CUSTOM_BUDGET_OPTIONS)[number]
 
 export const HOSTING_PLANS: HostingPlan[] = [
   { id: 'basic', label: 'Hosting Only', price: '$59/mo' },
