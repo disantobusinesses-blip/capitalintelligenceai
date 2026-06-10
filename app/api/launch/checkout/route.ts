@@ -1,6 +1,6 @@
 import Stripe from 'stripe'
 import { NextRequest, NextResponse } from 'next/server'
-import { TEMPLATES, HOSTING_PLANS } from '@/lib/templates'
+import { TEMPLATES, HOSTING_PLANS, CUSTOM_BUDGET_OPTIONS } from '@/lib/templates'
 
 const HOSTING_PRICE_MAP: Record<string, string | undefined> = {
   basic: process.env.STRIPE_PRICE_HOSTING_BASIC,
@@ -9,11 +9,30 @@ const HOSTING_PRICE_MAP: Record<string, string | undefined> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const { templateId, hostingPlan, goLiveDate } = await req.json()
+    const { templateId, tier, hostingPlan, goLiveDate, siteType, budget } = await req.json()
 
-    const template = TEMPLATES.find((t) => t.id === templateId)
-    if (!template) {
+    const isCustom = siteType === 'custom'
+
+    const template = isCustom ? null : TEMPLATES.find((t) => t.id === templateId)
+    if (!isCustom && !template) {
       return NextResponse.json({ error: 'Invalid template' }, { status: 400 })
+    }
+
+    // Resolve the build tier (e.g. Basic / Premium) when the template offers them.
+    const selectedTier =
+      template?.tiers?.find((t) => t.id === tier) ?? template?.tiers?.[0] ?? null
+    const templateName = template
+      ? selectedTier && template.tiers && template.tiers.length > 1
+        ? `${template.businessName} (${template.industry}) — ${selectedTier.label}`
+        : `${template.businessName} (${template.industry})`
+      : ''
+
+    if (
+      isCustom &&
+      (typeof budget !== 'string' ||
+        !(CUSTOM_BUDGET_OPTIONS as readonly string[]).includes(budget))
+    ) {
+      return NextResponse.json({ error: 'Invalid budget range' }, { status: 400 })
     }
 
     const hosting = HOSTING_PLANS.find((p) => p.id === hostingPlan)
@@ -38,10 +57,15 @@ export async function POST(req: NextRequest) {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://intelligentaisystem.com'
 
     const successParams = new URLSearchParams({
-      template: template.id,
+      template: isCustom ? 'custom' : template!.id,
       hosting: hosting.id,
       goLiveDate,
     })
+    if (isCustom) {
+      successParams.set('budget', budget)
+    } else if (selectedTier && template!.tiers && template!.tiers.length > 1) {
+      successParams.set('tier', selectedTier.id)
+    }
 
     // Subscription mode lets us combine the recurring hosting plan with the
     // one-time $200 deposit in a single checkout session.
@@ -55,8 +79,10 @@ export async function POST(req: NextRequest) {
       cancel_url: `${baseUrl}/launch`,
       metadata: {
         flow: 'launch_my_site',
-        templateId: template.id,
-        templateName: `${template.businessName} (${template.industry})`,
+        siteType: isCustom ? 'custom' : 'template',
+        templateId: isCustom ? 'custom' : template!.id,
+        templateName: isCustom ? `Custom Site (${budget})` : templateName,
+        tier: isCustom ? '' : (selectedTier?.id ?? ''),
         hostingPlan: hosting.id,
         goLiveDate,
       },

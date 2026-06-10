@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Phone, Hammer } from 'lucide-react'
-import { useGetStartedModal } from '@/context/GetStartedModalContext'
+import { Phone, Rocket } from 'lucide-react'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -15,7 +14,6 @@ const navLinks = [
 ]
 
 export default function Navbar() {
-  const { openModal } = useGetStartedModal()
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -64,18 +62,18 @@ export default function Navbar() {
             <Phone className="w-4 h-4" />
             <span className="hidden md:inline font-semibold text-[15px]">03 7051 0100</span>
           </a>
-          {/* Scroll-triggered "Build My Website" button */}
-          <button
-            onClick={() => openModal()}
+          {/* Scroll-triggered "Launch My Site" button */}
+          <Link
+            href="/launch"
             className={`flex items-center gap-1.5 bg-[#1A1A1A] text-white text-sm font-semibold px-4 py-2 rounded-[6px] hover:bg-[#2D2D2D] transition-all duration-300 ${
               scrolled
                 ? 'opacity-100 translate-y-0'
                 : 'opacity-0 -translate-y-1 pointer-events-none'
             }`}
           >
-            <Hammer className="w-4 h-4" />
-            Build My Website
-          </button>
+            <Rocket className="w-4 h-4" />
+            Launch My Site
+          </Link>
           <Link
             href="/#consultation"
             className="bg-[#1A1A1A] text-white text-sm font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
