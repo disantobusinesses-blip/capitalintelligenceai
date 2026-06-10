@@ -82,7 +82,7 @@ export const TEMPLATES: TemplateOption[] = [
     industry: 'Fitness',
     businessName: 'Forge Performance',
     demoUrl: 'https://demo3.intelligentaisystem.com',
-    screenshot: '/templates/fitness.svg',
+    screenshot: '/templates/fitness.png',
     price: TEMPLATE_PRICE,
   },
   {
@@ -90,7 +90,7 @@ export const TEMPLATES: TemplateOption[] = [
     industry: 'Hospitality',
     businessName: 'The Anchor Kitchen & Bar',
     demoUrl: 'https://demo4.intelligentaisystem.com',
-    screenshot: '/templates/hospitality.svg',
+    screenshot: '/templates/hospitality.png',
     price: TEMPLATE_PRICE,
   },
   {
@@ -98,7 +98,7 @@ export const TEMPLATES: TemplateOption[] = [
     industry: 'Legal',
     businessName: 'Meridian Legal & Advisory',
     demoUrl: 'https://demo5.intelligentaisystem.com',
-    screenshot: '/templates/legal.svg',
+    screenshot: '/templates/legal.png',
     price: TEMPLATE_PRICE,
   },
 ]
