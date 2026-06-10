@@ -20,7 +20,7 @@ const INDUSTRIES = [
 ]
 
 const inputClass =
-  'w-full bg-[#141414] border border-white/15 rounded-[6px] px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-400 transition-colors duration-200'
+  'w-full bg-white border border-[#E8E4DF] rounded-[6px] px-4 py-3 text-[#1A1A1A] placeholder-[#8A8A8A] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200'
 
 function OnboardingContent() {
   const params = useSearchParams()
@@ -70,25 +70,25 @@ function OnboardingContent() {
 
   if (submitted) {
     return (
-      <main className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-4 py-20">
+      <main className="min-h-screen bg-[#F8F7F4] text-[#1A1A1A] flex items-center justify-center px-4 py-20">
         <div className="max-w-lg w-full text-center">
           <div className="flex justify-center mb-8">
-            <div className="w-24 h-24 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center">
-              <CheckCircle className="w-12 h-12 text-emerald-400" />
+            <div className="w-24 h-24 rounded-full bg-[#1A1A1A]/10 border border-[#1A1A1A]/20 flex items-center justify-center">
+              <CheckCircle className="w-12 h-12 text-[#1A1A1A]" />
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">You&apos;re all set! 🎉</h1>
-          <p className="text-zinc-400 text-lg mb-6 leading-relaxed">
+          <p className="text-[#5A5A5A] text-lg mb-6 leading-relaxed">
             Your onboarding details have been sent to our team. We&apos;ll start building your
             site right away and be in touch shortly to confirm everything before your go live
             date{goLiveDate ? ` (${goLiveDate})` : ''}.
           </p>
-          <p className="text-zinc-500 text-sm mb-10">
+          <p className="text-[#8A8A8A] text-sm mb-10">
             A team member will email you from sales@intelligentaisystem.com within 24 hours.
           </p>
           <Link
             href="/"
-            className="inline-block bg-emerald-500 text-white font-bold px-8 py-4 rounded-[6px] hover:bg-emerald-600 transition-colors duration-200"
+            className="inline-block bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
           >
             Back to Home
           </Link>
@@ -98,42 +98,42 @@ function OnboardingContent() {
   }
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white pt-[120px] pb-24 px-6">
+    <main className="min-h-screen bg-[#F8F7F4] text-[#1A1A1A] pt-[120px] pb-24 px-6">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10">
-          <p className="text-emerald-400 text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
+          <p className="text-[#1A1A1A] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
             Step 4 — Onboarding
           </p>
           <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
             Payment received — let&apos;s build your site
           </h1>
-          <p className="text-zinc-400">
+          <p className="text-[#5A5A5A]">
             Tell us about your business so we can launch your site on time.
           </p>
         </div>
 
         {(template || hosting || goLiveDate) && (
-          <div className="rounded-xl bg-[#141414] border border-white/10 p-5 mb-8 text-sm text-zinc-300 space-y-1">
+          <div className="rounded-xl bg-white border border-[#E8E4DF] p-5 mb-8 text-sm text-[#5A5A5A] space-y-1 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
             {template && (
               <p>
-                <span className="text-zinc-500">Template:</span>{' '}
-                <span className="font-semibold text-white">
+                <span className="text-[#8A8A8A]">Template:</span>{' '}
+                <span className="font-semibold text-[#1A1A1A]">
                   {template.businessName} ({template.industry})
                 </span>
               </p>
             )}
             {hosting && (
               <p>
-                <span className="text-zinc-500">Hosting plan:</span>{' '}
-                <span className="font-semibold text-white">
+                <span className="text-[#8A8A8A]">Hosting plan:</span>{' '}
+                <span className="font-semibold text-[#1A1A1A]">
                   {hosting.label} — {hosting.price}
                 </span>
               </p>
             )}
             {goLiveDate && (
               <p>
-                <span className="text-zinc-500">Go live date:</span>{' '}
-                <span className="font-semibold text-white">{goLiveDate}</span>
+                <span className="text-[#8A8A8A]">Go live date:</span>{' '}
+                <span className="font-semibold text-[#1A1A1A]">{goLiveDate}</span>
               </p>
             )}
           </div>
@@ -199,9 +199,9 @@ function OnboardingContent() {
             <label htmlFor="logo" className="block text-sm font-semibold mb-1.5">
               Logo Upload
             </label>
-            <label className="flex items-center gap-3 w-full bg-[#141414] border border-dashed border-white/25 rounded-[6px] px-4 py-4 cursor-pointer hover:border-emerald-400 transition-colors duration-200">
-              <Upload className="w-5 h-5 text-zinc-400" />
-              <span className="text-sm text-zinc-400">
+            <label className="flex items-center gap-3 w-full bg-white border border-dashed border-[#C9C4BD] rounded-[6px] px-4 py-4 cursor-pointer hover:border-[#1A1A1A] transition-colors duration-200">
+              <Upload className="w-5 h-5 text-[#8A8A8A]" />
+              <span className="text-sm text-[#5A5A5A]">
                 {logoName ?? 'Click to upload your logo (PNG, JPG or SVG, max 5MB)'}
               </span>
               <input
@@ -249,12 +249,12 @@ function OnboardingContent() {
             />
           </div>
 
-          {error && <p className="text-red-400 text-sm">{error}</p>}
+          {error && <p className="text-red-600 text-sm">{error}</p>}
 
           <button
             type="submit"
             disabled={submitting}
-            className="w-full inline-flex items-center justify-center gap-2 bg-emerald-500 text-white font-bold px-8 py-4 rounded-[6px] hover:bg-emerald-600 transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full inline-flex items-center justify-center gap-2 bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {submitting ? (
               <>
@@ -265,7 +265,7 @@ function OnboardingContent() {
               'Submit Onboarding Details'
             )}
           </button>
-          <p className="text-xs text-zinc-500 text-center">
+          <p className="text-xs text-[#8A8A8A] text-center">
             Reminder: your $200 deposit becomes non-refundable once this form is submitted.
           </p>
         </form>
@@ -278,8 +278,8 @@ export default function OnboardingForm() {
   return (
     <Suspense
       fallback={
-        <main className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center">
-          <Loader2 className="w-8 h-8 animate-spin text-emerald-400" />
+        <main className="min-h-screen bg-[#F8F7F4] text-[#1A1A1A] flex items-center justify-center">
+          <Loader2 className="w-8 h-8 animate-spin text-[#1A1A1A]" />
         </main>
       }
     >
