@@ -7,7 +7,6 @@ import { GetStartedModalProvider } from '@/context/GetStartedModalContext'
 import GetStartedFormWrapper from '@/components/GetStartedFormWrapper'
 import BottomNav from '@/components/BottomNav'
 import QuoteModal from '@/components/QuoteModal'
-import FloatingButton from '@/components/FloatingButton'
 import Navbar from '@/components/Navbar'
 import GoogleReviewsBanner from '@/components/GoogleReviewsBanner'
 import PromoBanner from '@/components/PromoBanner'
@@ -139,7 +138,6 @@ export default function RootLayout({
               <GoogleReviewsBanner />
               {children}
               <BottomNav />
-              <FloatingButton />
               <QuoteModal />
               <GetStartedFormWrapper />
             </GetStartedModalProvider>
