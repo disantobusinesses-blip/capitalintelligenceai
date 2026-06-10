@@ -8,7 +8,7 @@ import { TEMPLATES } from '@/lib/templates'
 export const metadata: Metadata = {
   title: 'Website Templates from $750 | Intelligent AI Systems',
   description:
-    'Browse six professionally designed industry website templates — construction, skincare, fitness, real estate, hospitality, and legal. Live in 24 hours from $750.',
+    'Browse six professionally designed industry website templates — construction, skincare, fitness, real estate, hospitality, and legal. Live within 24–48 hours from $750.',
 }
 
 export default function TemplatesPage() {
@@ -21,7 +21,7 @@ export default function TemplatesPage() {
               Template Gallery
             </p>
             <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
-              Launch Your Site in 24 Hours
+              Launch Your Site within 24–48 Hours
             </h1>
             <p className="text-zinc-400 max-w-2xl mx-auto">
               Six professionally designed industry templates, customised with your branding and

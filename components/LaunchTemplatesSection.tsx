@@ -12,11 +12,11 @@ export default function LaunchTemplatesSection() {
             Ready-Made Templates
           </p>
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-            Launch Your Site in 24 Hours
+            Launch Your Site within 24–48 Hours
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
             Choose from six professionally designed industry templates. We customise it with
-            your branding, content, and services — live within 24 hours of onboarding.
+            your branding, content, and services — live within 24–48 hours of onboarding.
           </p>
         </div>
 

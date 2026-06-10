@@ -38,7 +38,7 @@ const steps = [
   {
     num: '03',
     title: 'Go live and start getting calls',
-    desc: 'Your site is live within 24 hours. Start getting enquiries straight away.',
+    desc: 'Your site is live within 24–48 hours. Start getting enquiries straight away.',
   },
 ]
 

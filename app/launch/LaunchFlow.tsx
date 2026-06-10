@@ -103,7 +103,7 @@ export default function LaunchFlow() {
             Launch My Site
           </p>
           <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
-            Launch Your Site in 24 Hours
+            Launch Your Site within 24–48 Hours
           </h1>
           <p className="text-zinc-400 max-w-xl mx-auto">
             Pick a professionally designed template, choose your go live date, and pay a $
@@ -154,7 +154,7 @@ export default function LaunchFlow() {
               >
                 <Rocket className="w-8 h-8 text-emerald-400 mb-4" />
                 <h3 className="text-2xl font-extrabold mb-2">Template Site</h3>
-                <p className="text-zinc-400">From $750, live in 24hrs</p>
+                <p className="text-zinc-400">From $750, live within 24–48 hours</p>
               </button>
               <button
                 type="button"
@@ -336,21 +336,21 @@ export default function LaunchFlow() {
           goLiveDate &&
           (siteType === 'custom' ? selectedBudget : template) && (
           <div className="max-w-lg mx-auto">
-            <div className="rounded-xl bg-[#F8F7F4] border border-black/10 p-6 space-y-4 text-[#1A1A1A]">
+            <div className="rounded-xl bg-[#0a0a0a] border border-white/10 p-6 space-y-4 text-white">
               <h2 className="text-xl font-bold flex items-center gap-2">
-                <CreditCard className="w-5 h-5 text-emerald-600" />
+                <CreditCard className="w-5 h-5 text-emerald-400" />
                 Secure your build
               </h2>
-              <ul className="text-sm text-[#4A4540] space-y-2">
+              <ul className="text-sm text-zinc-300 space-y-2">
                 {siteType === 'custom' ? (
                   <>
                     <li className="flex justify-between">
                       <span>Site type</span>
-                      <span className="text-[#1A1A1A] font-semibold">Custom Site</span>
+                      <span className="text-white font-semibold">Custom Site</span>
                     </li>
                     <li className="flex justify-between">
                       <span>Budget range</span>
-                      <span className="text-[#1A1A1A] font-semibold">{selectedBudget}</span>
+                      <span className="text-white font-semibold">{selectedBudget}</span>
                     </li>
                   </>
                 ) : (
@@ -358,26 +358,26 @@ export default function LaunchFlow() {
                     <>
                       <li className="flex justify-between">
                         <span>Template</span>
-                        <span className="text-[#1A1A1A] font-semibold">
+                        <span className="text-white font-semibold">
                           {template.businessName} ({template.industry})
                         </span>
                       </li>
                       <li className="flex justify-between">
                         <span>Website build</span>
-                        <span className="text-[#1A1A1A] font-semibold">${template.price}</span>
+                        <span className="text-white font-semibold">${template.price}</span>
                       </li>
                     </>
                   )
                 )}
                 <li className="flex justify-between">
                   <span>Hosting plan</span>
-                  <span className="text-[#1A1A1A] font-semibold">
+                  <span className="text-white font-semibold">
                     {hosting.label} — {hosting.price}
                   </span>
                 </li>
                 <li className="flex justify-between">
                   <span>Go live date</span>
-                  <span className="text-[#1A1A1A] font-semibold">
+                  <span className="text-white font-semibold">
                     {new Date(`${goLiveDate}T00:00:00`).toLocaleDateString('en-AU', {
                       weekday: 'long',
                       day: 'numeric',
@@ -386,18 +386,18 @@ export default function LaunchFlow() {
                     })}
                   </span>
                 </li>
-                <li className="flex justify-between border-t border-black/10 pt-3">
+                <li className="flex justify-between border-t border-white/10 pt-3">
                   <span>Due today (deposit)</span>
-                  <span className="text-emerald-600 font-bold">${DEPOSIT_AMOUNT}</span>
+                  <span className="text-emerald-400 font-bold">${DEPOSIT_AMOUNT}</span>
                 </li>
               </ul>
-              <p className="text-xs text-[#6B6560]">
+              <p className="text-xs text-zinc-500">
                 You&apos;ll be charged the ${DEPOSIT_AMOUNT} deposit plus your first month of
                 hosting in one secure Stripe checkout. The remaining build balance is invoiced
                 before go live.
               </p>
 
-              <label className="flex items-start gap-3 text-sm text-[#4A4540] cursor-pointer">
+              <label className="flex items-start gap-3 text-sm text-zinc-300 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={termsAccepted}
@@ -411,7 +411,7 @@ export default function LaunchFlow() {
                 </span>
               </label>
 
-              {error && <p className="text-red-600 text-sm">{error}</p>}
+              {error && <p className="text-red-400 text-sm">{error}</p>}
 
               <button
                 onClick={handleCheckout}
