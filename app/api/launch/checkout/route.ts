@@ -18,7 +18,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid template' }, { status: 400 })
     }
 
-    if (isCustom && !CUSTOM_BUDGET_OPTIONS.includes(budget)) {
+    if (
+      isCustom &&
+      (typeof budget !== 'string' ||
+        !(CUSTOM_BUDGET_OPTIONS as readonly string[]).includes(budget))
+    ) {
       return NextResponse.json({ error: 'Invalid budget range' }, { status: 400 })
     }
 
