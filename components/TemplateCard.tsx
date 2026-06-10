@@ -136,16 +136,35 @@ export default function TemplateCard({
           </div>
         )}
 
-        <a
-          href={demoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1A1A1A] border border-[#1A1A1A]/30 rounded-[6px] px-4 py-2 self-start hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
-        >
-          View Demo
-          <ExternalLink className="w-3.5 h-3.5" />
-        </a>
+        {/* Demo links — tiered templates show one button per tier */}
+        {tiers && tiers.length > 1 ? (
+          <div className="flex flex-wrap gap-2">
+            {tiers.map((tier) => (
+              <a
+                key={tier.id}
+                href={tier.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1A1A1A] border border-[#1A1A1A]/30 rounded-[6px] px-4 py-2 hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
+              >
+                View {tier.id === 'premium' ? 'Premium' : 'Basic'} Demo
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            ))}
+          </div>
+        ) : (
+          <a
+            href={demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1A1A1A] border border-[#1A1A1A]/30 rounded-[6px] px-4 py-2 self-start hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
+          >
+            View Demo
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        )}
 
         {/* Home mode: start the launch flow with this template preselected */}
         {startFlow && (
