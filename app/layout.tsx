@@ -10,6 +10,7 @@ import QuoteModal from '@/components/QuoteModal'
 import FloatingButton from '@/components/FloatingButton'
 import Navbar from '@/components/Navbar'
 import GoogleReviewsBanner from '@/components/GoogleReviewsBanner'
+import PromoBanner from '@/components/PromoBanner'
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
@@ -107,7 +108,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className="bg-[#F8F7F4]">
+      <body className="bg-[#F8F7F4] pt-9">
         {/* Google tag (GA4: G-F6FB612WF9 + Google Ads: AW-17950129824) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-F90QP8NNGL"
@@ -133,6 +134,7 @@ export default function RootLayout({
         <CurrencyProvider>
           <QuoteModalProvider>
             <GetStartedModalProvider>
+              <PromoBanner />
               <Navbar />
               <GoogleReviewsBanner />
               {children}

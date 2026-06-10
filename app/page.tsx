@@ -3,6 +3,7 @@ import AIBlogSections from '@/components/AIBlogSections'
 import GoogleBusinessProfileBanner from '@/components/GoogleBusinessProfileBanner'
 import ProvenResults from '@/components/ProvenResults'
 import ServiceSelection from '@/components/ServiceSelection'
+import LaunchTemplatesSection from '@/components/LaunchTemplatesSection'
 import OurWork from '@/components/OurWork'
 import Testimonials from '@/components/Testimonials'
 import HowItWorks from '@/components/HowItWorks'
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <AIBlogSections />
       <ServiceSelection />
+      <LaunchTemplatesSection />
       <GoogleBusinessProfileBanner />
       <ProvenResults />
       <OurWork />

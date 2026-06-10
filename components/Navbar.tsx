@@ -9,6 +9,7 @@ import { useGetStartedModal } from '@/context/GetStartedModalContext'
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/#services' },
+  { label: 'Templates', href: '/templates' },
   { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
 ]
@@ -26,7 +27,7 @@ export default function Navbar() {
   return (
     <header
       style={{ boxShadow: '0 1px 8px rgba(0,0,0,0.08)' }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white h-[68px] flex items-center"
+      className="fixed top-9 left-0 right-0 z-50 bg-white h-[68px] flex items-center"
     >
       <div className="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
         {/* LEFT: Logo */}
