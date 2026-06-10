@@ -3,12 +3,12 @@ import Link from 'next/link'
 import { Rocket } from 'lucide-react'
 import TemplateCard from '@/components/TemplateCard'
 import Footer from '@/components/Footer'
-import { TEMPLATES } from '@/lib/templates'
+import { TEMPLATES, GLOBAL_ADDONS_DISCLAIMER } from '@/lib/templates'
 
 export const metadata: Metadata = {
-  title: 'Website Templates from $750 | Intelligent AI Systems',
+  title: 'Website Templates from $850 | Intelligent AI Systems',
   description:
-    'Browse six professionally designed industry website templates — construction, skincare, fitness, real estate, hospitality, and legal. Live within 24–48 hours from $750.',
+    'Browse professionally designed industry website templates — construction, skincare, fitness, hospitality, and legal. Live within 24–48 hours from $850 + GST.',
 }
 
 export default function TemplatesPage() {
@@ -24,8 +24,8 @@ export default function TemplatesPage() {
               Launch Your Site within 24–48 Hours
             </h1>
             <p className="text-[#5A5A5A] max-w-2xl mx-auto">
-              Six professionally designed industry templates, customised with your branding and
-              content. Every template is $750 with hosting from $59/mo.
+              Professionally designed industry templates, customised with your branding and
+              content. Templates from $850 + GST with hosting from $59/mo.
             </p>
           </div>
 
@@ -34,6 +34,10 @@ export default function TemplatesPage() {
               <TemplateCard key={t.id} template={t} />
             ))}
           </div>
+
+          <p className="text-center text-[#8A8A8A] text-[13px] leading-relaxed max-w-3xl mx-auto mt-10">
+            {GLOBAL_ADDONS_DISCLAIMER}
+          </p>
 
           <div className="flex justify-center mt-12">
             <Link

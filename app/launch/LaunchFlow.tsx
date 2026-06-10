@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight, CalendarDays, CreditCard, Loader2, Palette, Rocket } from 'lucide-react'
 import TemplateCard from '@/components/TemplateCard'
 import {
@@ -10,6 +10,7 @@ import {
   TemplateTier,
   DEPOSIT_AMOUNT,
   GST_NOTE,
+  GLOBAL_ADDONS_DISCLAIMER,
   CUSTOM_BUDGET_OPTIONS,
   CustomBudget,
 } from '@/lib/templates'
@@ -66,6 +67,21 @@ export default function LaunchFlow({
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  // Scroll to the top of the selection area on every step change so visitors
+  // always land at the start of the next step (frictionless flow on mobile).
+  const selectionRef = useRef<HTMLDivElement>(null)
+  const isFirstRender = useRef(true)
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+    if (selectionRef.current) {
+      const top = selectionRef.current.getBoundingClientRect().top + window.scrollY - 100
+      window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' })
+    }
+  }, [step, siteType])
 
   const dates = useMemo(getAvailableDates, [])
 
@@ -166,6 +182,9 @@ export default function LaunchFlow({
           ))}
         </div>
 
+        {/* Selection area — every step renders inside; we scroll here on step change */}
+        <div ref={selectionRef}>
+
         {/* Step 1: Site type, then template gallery or custom budget */}
         {step === 0 && !siteType && (
           <div className="max-w-3xl mx-auto">
@@ -180,7 +199,7 @@ export default function LaunchFlow({
               >
                 <Rocket className="w-8 h-8 text-[#1A1A1A] mb-4" />
                 <h3 className="text-2xl font-extrabold mb-2">Template Site</h3>
-                <p className="text-[#5A5A5A]">From $750, live within 24–48 hours</p>
+                <p className="text-[#5A5A5A]">From $850 {GST_NOTE}, live within 24–48 hours</p>
               </button>
               <button
                 type="button"
@@ -197,31 +216,48 @@ export default function LaunchFlow({
 
         {step === 0 && siteType === 'template' && (
           <div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Mobile: horizontal slide options keep each template and the Next button in one
+                frame. Desktop: standard grid. */}
+            <div className="flex gap-4 overflow-x-auto pb-4 px-1 snap-x snap-mandatory [scrollbar-width:thin] sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 sm:px-0">
               {TEMPLATES.map((t) => (
-                <TemplateCard
-                  key={t.id}
-                  template={t}
-                  selectable
-                  selected={selectedTemplate === t.id}
-                  selectedHosting={selectedTemplate === t.id ? selectedHosting : null}
-                  selectedTier={selectedTemplate === t.id ? selectedTier : null}
-                  onSelect={(id) => {
-                    if (selectedTemplate !== id) {
+                <div key={t.id} className="snap-center shrink-0 w-[85vw] max-w-[340px] sm:w-auto sm:max-w-none sm:shrink">
+                  <TemplateCard
+                    template={t}
+                    selectable
+                    selected={selectedTemplate === t.id}
+                    selectedHosting={selectedTemplate === t.id ? selectedHosting : null}
+                    selectedTier={selectedTemplate === t.id ? selectedTier : null}
+                    onSelect={(id) => {
+                      if (selectedTemplate !== id) {
+                        setSelectedTemplate(id)
+                        setSelectedTier(null)
+                        setSelectedHosting(null)
+                      }
+                    }}
+                    onSelectTier={(id, tierId) => {
                       setSelectedTemplate(id)
-                      setSelectedTier(null)
-                      setSelectedHosting(null)
-                    }
-                  }}
-                  onSelectTier={(id, tierId) => {
-                    setSelectedTemplate(id)
-                    setSelectedTier(tierId)
-                  }}
-                  onSelectHosting={(_, hostingId) => setSelectedHosting(hostingId)}
-                />
+                      setSelectedTier(tierId)
+                    }}
+                    onSelectHosting={(_, hostingId) => setSelectedHosting(hostingId)}
+                  />
+                </div>
               ))}
             </div>
-            <div className="flex justify-center gap-4 mt-10">
+            <p className="text-center text-[#8A8A8A] text-sm mt-2 sm:hidden">
+              Swipe to see more templates →
+            </p>
+            <p className="text-center text-[#8A8A8A] text-[13px] leading-relaxed max-w-3xl mx-auto mt-6">
+              {GLOBAL_ADDONS_DISCLAIMER}
+            </p>
+            <div className="flex justify-center mt-6">
+              <a
+                href="/#services"
+                className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
+              >
+                I want my own custom website
+              </a>
+            </div>
+            <div className="flex justify-center gap-4 mt-8">
               <button
                 onClick={() => setSiteType(null)}
                 className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-6 py-4 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
@@ -479,6 +515,7 @@ export default function LaunchFlow({
             </div>
           </div>
         )}
+        </div>
       </div>
     </main>
   )

@@ -1,5 +1,5 @@
 import TemplateCard from '@/components/TemplateCard'
-import { TEMPLATES } from '@/lib/templates'
+import { TEMPLATES, GLOBAL_ADDONS_DISCLAIMER } from '@/lib/templates'
 
 export default function LaunchTemplatesSection() {
   return (
@@ -40,6 +40,17 @@ export default function LaunchTemplatesSection() {
         <p className="text-center text-[#8A8A8A] text-sm mt-4 sm:hidden">
           Swipe to see more templates →
         </p>
+        <p className="text-center text-[#8A8A8A] text-[13px] leading-relaxed max-w-3xl mx-auto mt-8">
+          {GLOBAL_ADDONS_DISCLAIMER}
+        </p>
+        <div className="flex justify-center mt-6">
+          <a
+            href="#services"
+            className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
+          >
+            I want my own custom website
+          </a>
+        </div>
       </div>
     </section>
   )

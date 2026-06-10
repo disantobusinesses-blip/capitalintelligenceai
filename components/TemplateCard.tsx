@@ -2,9 +2,9 @@
 
 /* eslint-disable @next/next/no-img-element */
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { ExternalLink, Rocket } from 'lucide-react'
+import { Check, ExternalLink, Info, Rocket } from 'lucide-react'
 import { TemplateOption, TemplateTier, HOSTING_PLANS, HostingPlan, GST_NOTE } from '@/lib/templates'
 
 interface TemplateCardProps {
@@ -19,6 +19,54 @@ interface TemplateCardProps {
   onSelectTier?: (templateId: string, tierId: TemplateTier['id']) => void
   /** Home mode: shows a "Select & Continue" button that starts the launch flow. */
   startFlow?: boolean
+}
+
+/** Add-ons disclaimer tooltip — hover on desktop, tap-to-reveal on mobile. */
+function AddOnsTooltip({ text }: { text: string }) {
+  const [open, setOpen] = useState(false)
+  const wrapperRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    function handleOutside(e: MouseEvent | TouchEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleOutside)
+    document.addEventListener('touchstart', handleOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleOutside)
+      document.removeEventListener('touchstart', handleOutside)
+    }
+  }, [open])
+
+  return (
+    <span ref={wrapperRef} className="relative inline-flex group">
+      <button
+        type="button"
+        aria-label="Add-ons disclaimer"
+        aria-expanded={open}
+        onClick={(e) => {
+          e.stopPropagation()
+          setOpen((v) => !v)
+        }}
+        className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#8A8A8A] hover:text-[#1A1A1A] transition-colors duration-200"
+      >
+        <Info className="w-3.5 h-3.5" />
+        Add-ons disclaimer
+      </button>
+      <span
+        role="tooltip"
+        className={`absolute bottom-full left-0 z-20 mb-2 w-64 rounded-lg bg-[#1A1A1A] p-3 text-[12px] font-normal leading-relaxed text-white shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-opacity duration-200 ${
+          open ? 'opacity-100' : 'pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto'
+        }`}
+      >
+        {text}
+        <span className="absolute top-full left-4 border-x-[6px] border-t-[6px] border-x-transparent border-t-[#1A1A1A]" />
+      </span>
+    </span>
+  )
 }
 
 export default function TemplateCard({
@@ -43,6 +91,8 @@ export default function TemplateCard({
   const currentTier = tiers?.find((t) => t.id === activeTier) ?? null
   const displayPrice = currentTier?.price ?? template.price
   const demoUrl = currentTier?.demoUrl ?? template.demoUrl
+  const included = currentTier?.included ?? template.included
+  const tooltip = currentTier?.tooltip ?? template.tooltip
 
   function chooseTier(tierId: TemplateTier['id']) {
     setActiveTier(tierId)
@@ -135,6 +185,21 @@ export default function TemplateCard({
             })}
           </div>
         )}
+
+        {/* What's included */}
+        {included && included.length > 0 && (
+          <ul className="space-y-1.5">
+            {included.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-[13px] text-[#5A5A5A]">
+                <Check className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#1A1A1A]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* Add-ons disclaimer tooltip */}
+        {tooltip && <AddOnsTooltip text={tooltip} />}
 
         {/* Demo links — tiered templates show one button per tier */}
         {tiers && tiers.length > 1 ? (
