@@ -7,7 +7,9 @@ import {
   TEMPLATES,
   HOSTING_PLANS,
   HostingPlan,
+  TemplateTier,
   DEPOSIT_AMOUNT,
+  GST_NOTE,
   CUSTOM_BUDGET_OPTIONS,
   CustomBudget,
 } from '@/lib/templates'
@@ -15,6 +17,11 @@ import {
 const STEPS = ['Choose Your Site', 'Go Live Date', 'Payment']
 
 type SiteType = 'template' | 'custom'
+
+interface LaunchFlowProps {
+  initialTemplateId?: string | null
+  initialTier?: TemplateTier['id'] | null
+}
 
 function getAvailableDates(): Date[] {
   const dates: Date[] = []
@@ -36,10 +43,23 @@ function toISODate(d: Date): string {
   return `${y}-${m}-${day}`
 }
 
-export default function LaunchFlow() {
+export default function LaunchFlow({
+  initialTemplateId = null,
+  initialTier = null,
+}: LaunchFlowProps) {
+  const hasInitialTemplate = Boolean(
+    initialTemplateId && TEMPLATES.some((t) => t.id === initialTemplateId)
+  )
   const [step, setStep] = useState(0)
-  const [siteType, setSiteType] = useState<SiteType | null>(null)
-  const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null)
+  const [siteType, setSiteType] = useState<SiteType | null>(
+    hasInitialTemplate ? 'template' : null
+  )
+  const [selectedTemplate, setSelectedTemplate] = useState<string | null>(
+    hasInitialTemplate ? initialTemplateId : null
+  )
+  const [selectedTier, setSelectedTier] = useState<TemplateTier['id'] | null>(
+    hasInitialTemplate ? initialTier : null
+  )
   const [selectedBudget, setSelectedBudget] = useState<CustomBudget | null>(null)
   const [selectedHosting, setSelectedHosting] = useState<HostingPlan['id'] | null>(null)
   const [goLiveDate, setGoLiveDate] = useState<string | null>(null)
@@ -51,6 +71,10 @@ export default function LaunchFlow() {
 
   const template = TEMPLATES.find((t) => t.id === selectedTemplate)
   const hosting = HOSTING_PLANS.find((p) => p.id === selectedHosting)
+  // Resolve the active tier (defaults to first tier when a tiered template is chosen).
+  const tier =
+    template?.tiers?.find((t) => t.id === selectedTier) ?? template?.tiers?.[0] ?? null
+  const templatePrice = tier?.price ?? template?.price ?? 0
 
   const canProceedStep1 =
     siteType === 'custom'
@@ -61,6 +85,7 @@ export default function LaunchFlow() {
   function selectSiteType(type: SiteType) {
     setSiteType(type)
     setSelectedTemplate(null)
+    setSelectedTier(null)
     setSelectedBudget(null)
     setSelectedHosting(null)
   }
@@ -78,6 +103,7 @@ export default function LaunchFlow() {
         body: JSON.stringify({
           siteType,
           templateId: selectedTemplate,
+          tier: tier?.id ?? null,
           budget: selectedBudget,
           hostingPlan: selectedHosting,
           goLiveDate,
@@ -179,11 +205,17 @@ export default function LaunchFlow() {
                   selectable
                   selected={selectedTemplate === t.id}
                   selectedHosting={selectedTemplate === t.id ? selectedHosting : null}
+                  selectedTier={selectedTemplate === t.id ? selectedTier : null}
                   onSelect={(id) => {
                     if (selectedTemplate !== id) {
                       setSelectedTemplate(id)
+                      setSelectedTier(null)
                       setSelectedHosting(null)
                     }
+                  }}
+                  onSelectTier={(id, tierId) => {
+                    setSelectedTemplate(id)
+                    setSelectedTier(tierId)
                   }}
                   onSelectHosting={(_, hostingId) => setSelectedHosting(hostingId)}
                 />
@@ -362,9 +394,17 @@ export default function LaunchFlow() {
                           {template.businessName} ({template.industry})
                         </span>
                       </li>
+                      {tier && template.tiers && template.tiers.length > 1 && (
+                        <li className="flex justify-between">
+                          <span>Package</span>
+                          <span className="text-[#1A1A1A] font-semibold">{tier.label}</span>
+                        </li>
+                      )}
                       <li className="flex justify-between">
                         <span>Website build</span>
-                        <span className="text-[#1A1A1A] font-semibold">${template.price}</span>
+                        <span className="text-[#1A1A1A] font-semibold">
+                          ${templatePrice.toLocaleString()} {GST_NOTE}
+                        </span>
                       </li>
                     </>
                   )

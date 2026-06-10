@@ -9,7 +9,7 @@ const HOSTING_PRICE_MAP: Record<string, string | undefined> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const { templateId, hostingPlan, goLiveDate, siteType, budget } = await req.json()
+    const { templateId, tier, hostingPlan, goLiveDate, siteType, budget } = await req.json()
 
     const isCustom = siteType === 'custom'
 
@@ -17,6 +17,15 @@ export async function POST(req: NextRequest) {
     if (!isCustom && !template) {
       return NextResponse.json({ error: 'Invalid template' }, { status: 400 })
     }
+
+    // Resolve the build tier (e.g. Basic / Premium) when the template offers them.
+    const selectedTier =
+      template?.tiers?.find((t) => t.id === tier) ?? template?.tiers?.[0] ?? null
+    const templateName = template
+      ? selectedTier && template.tiers && template.tiers.length > 1
+        ? `${template.businessName} (${template.industry}) — ${selectedTier.label}`
+        : `${template.businessName} (${template.industry})`
+      : ''
 
     if (
       isCustom &&
@@ -54,6 +63,8 @@ export async function POST(req: NextRequest) {
     })
     if (isCustom) {
       successParams.set('budget', budget)
+    } else if (selectedTier && template!.tiers && template!.tiers.length > 1) {
+      successParams.set('tier', selectedTier.id)
     }
 
     // Subscription mode lets us combine the recurring hosting plan with the
@@ -70,9 +81,8 @@ export async function POST(req: NextRequest) {
         flow: 'launch_my_site',
         siteType: isCustom ? 'custom' : 'template',
         templateId: isCustom ? 'custom' : template!.id,
-        templateName: isCustom
-          ? `Custom Site (${budget})`
-          : `${template!.businessName} (${template!.industry})`,
+        templateName: isCustom ? `Custom Site (${budget})` : templateName,
+        tier: isCustom ? '' : (selectedTier?.id ?? ''),
         hostingPlan: hosting.id,
         goLiveDate,
       },

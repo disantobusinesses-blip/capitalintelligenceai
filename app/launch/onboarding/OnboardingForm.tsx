@@ -25,11 +25,21 @@ const inputClass =
 function OnboardingContent() {
   const params = useSearchParams()
   const templateId = params.get('template') ?? ''
+  const tierId = params.get('tier') ?? ''
   const hostingId = params.get('hosting') ?? ''
   const goLiveDate = params.get('goLiveDate') ?? ''
 
   const template = TEMPLATES.find((t) => t.id === templateId)
   const hosting = HOSTING_PLANS.find((p) => p.id === hostingId)
+  const tier =
+    template?.tiers && template.tiers.length > 1
+      ? template.tiers.find((t) => t.id === tierId)
+      : undefined
+  const templateLabel = template
+    ? tier
+      ? `${template.businessName} (${template.industry}) — ${tier.label}`
+      : `${template.businessName} (${template.industry})`
+    : templateId
 
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -42,10 +52,7 @@ function OnboardingContent() {
     setError(null)
     try {
       const formData = new FormData(e.currentTarget)
-      formData.set(
-        'template',
-        template ? `${template.businessName} (${template.industry})` : templateId
-      )
+      formData.set('template', templateLabel)
       formData.set('goLiveDate', goLiveDate)
       formData.set(
         'hostingPlan',
@@ -117,9 +124,7 @@ function OnboardingContent() {
             {template && (
               <p>
                 <span className="text-[#8A8A8A]">Template:</span>{' '}
-                <span className="font-semibold text-[#1A1A1A]">
-                  {template.businessName} ({template.industry})
-                </span>
+                <span className="font-semibold text-[#1A1A1A]">{templateLabel}</span>
               </p>
             )}
             {hosting && (

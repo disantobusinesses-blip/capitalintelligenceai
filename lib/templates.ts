@@ -1,11 +1,24 @@
+export interface TemplateTier {
+  id: 'basic' | 'premium'
+  label: string
+  price: number
+  demoUrl: string
+}
+
 export interface TemplateOption {
   id: string
   industry: string
   businessName: string
   demoUrl: string
   screenshot: string
+  /** When present, the preview is rendered as a split half-and-half of these images. */
+  screenshots?: string[]
   price: number
+  /** When present, the template offers multiple build tiers (e.g. Basic / Premium). */
+  tiers?: TemplateTier[]
 }
+
+export const GST_NOTE = '+GST'
 
 export interface HostingPlan {
   id: 'basic' | 'updates'
@@ -14,6 +27,7 @@ export interface HostingPlan {
 }
 
 export const TEMPLATE_PRICE = 750
+export const TEMPLATE_PREMIUM_PRICE = 1750
 export const DEPOSIT_AMOUNT = 200
 export const CUSTOM_SITE_FROM_PRICE = 1999
 
@@ -37,8 +51,23 @@ export const TEMPLATES: TemplateOption[] = [
     industry: 'Construction',
     businessName: 'Apex Built Co',
     demoUrl: 'https://demo.intelligentaisystem.com',
-    screenshot: '/templates/construction.svg',
+    screenshot: '/templates/apex-basic.jpeg',
+    screenshots: ['/templates/apex-basic.jpeg', '/templates/apex-premium.jpeg'],
     price: TEMPLATE_PRICE,
+    tiers: [
+      {
+        id: 'basic',
+        label: 'Basic',
+        price: TEMPLATE_PRICE,
+        demoUrl: 'https://demo.intelligentaisystem.com',
+      },
+      {
+        id: 'premium',
+        label: 'Premium Cinematic Scroll',
+        price: TEMPLATE_PREMIUM_PRICE,
+        demoUrl: 'https://demo1.intelligentaisystem.com',
+      },
+    ],
   },
   {
     id: 'skincare',
