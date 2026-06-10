@@ -14,10 +14,10 @@ import Footer from '@/components/Footer'
 export default function Home() {
   return (
     <main className="bg-[#F8F7F4] pb-24 md:pb-0">
+      <LaunchTemplatesSection />
       <Hero />
       <AIBlogSections />
       <ServiceSelection />
-      <LaunchTemplatesSection />
       <GoogleBusinessProfileBanner />
       <ProvenResults />
       <OurWork />
