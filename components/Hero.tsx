@@ -1,23 +1,13 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
-import Link from 'next/link'
-import { CheckCircle, Send, Rocket, CalendarDays, Clock, Check, ExternalLink } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { CheckCircle, Send, CalendarDays, Clock, Check, ExternalLink } from 'lucide-react'
 import { format, addDays, isSunday, isSaturday, isToday, isBefore, startOfDay } from 'date-fns'
 
 const SERVICE_OPTIONS = [
   { id: 'website-build', label: 'Website Build' },
   { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
   { id: 'google-profile-setup', label: 'Google Profile Setup' },
-]
-
-const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
-
-const trustBadges = [
-  'First SEO Blog Free',
-  'No Lock-In Contracts',
-  '90-Day Ranking Guarantee',
 ]
 
 // Format 24h time to 12h display
@@ -227,91 +217,11 @@ export default function Hero() {
   return (
     <section
       id="quote"
-      className="bg-[#F8F7F4] pt-[100px] pb-[80px] px-6 mt-[110px]"
+      className="bg-[#F8F7F4] pt-[40px] pb-[80px] px-6"
     >
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid md:grid-cols-[60%_40%] gap-12 items-start">
-          {/* LEFT COLUMN */}
-          <div className="space-y-6">
-            {/* Label */}
-            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase">
-              AI-Powered Web Agency
-            </p>
-
-            {/* Headline */}
-            <h1 className="text-[36px] md:text-[52px] leading-[1.15] font-extrabold text-[#1A1A1A]">
-              {HERO_HEADLINE}
-            </h1>
-
-            {/* Subheadline */}
-            <p className="text-[18px] text-[#6B6560] mt-4 max-w-[520px]">
-              We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini, using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.{' '}
-              <span className="font-semibold text-[#5C3D2E]">Remote-first. Globally delivered.</span>
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col gap-3 pt-2">
-              {/* Primary CTA */}
-              <div className="relative inline-flex self-start w-full sm:w-auto pb-4">
-                <Link
-                  href="/launch"
-                  className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
-                >
-                  <Rocket className="w-5 h-5" />
-                  Launch My Site
-                </Link>
-                {/* Animated hand-drawn loop */}
-                <motion.svg
-                  className="absolute -bottom-1 left-0 w-full overflow-visible pointer-events-none"
-                  viewBox="0 0 300 18"
-                  height="18"
-                  preserveAspectRatio="none"
-                  initial="hidden"
-                  animate="visible"
-                >
-                  <motion.path
-                    d="M 6 10 Q 75 2, 150 10 Q 225 18, 294 10"
-                    fill="none"
-                    stroke="#5C3D2E"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    variants={{
-                      hidden: { pathLength: 0, opacity: 0 },
-                      visible: {
-                        pathLength: 1,
-                        opacity: 1,
-                        transition: {
-                          pathLength: { duration: 2, ease: [0.43, 0.13, 0.23, 0.96], repeat: Infinity, repeatDelay: 4 },
-                          opacity: { duration: 0.4 },
-                        },
-                      },
-                    }}
-                  />
-                </motion.svg>
-              </div>
-              {/* Secondary CTA */}
-              <a
-                href="#our-work"
-                className="border-2 border-[#1A1A1A] text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 inline-block text-center w-full sm:w-auto"
-              >
-                View Our Work
-              </a>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="flex flex-wrap gap-4 pt-2">
-              {trustBadges.map((badge) => (
-                <div key={badge} className="flex items-center gap-1.5">
-                  <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-[13px] text-[#6B6560]">{badge}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT COLUMN: Free Consultation Booking */}
+        <div className="max-w-[560px] mx-auto">
+          {/* Free Consultation Booking */}
           <div
             id="consultation"
             className="bg-white rounded-[12px] p-6 md:p-8 scroll-mt-24"

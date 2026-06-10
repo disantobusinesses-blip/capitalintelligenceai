@@ -5,7 +5,7 @@ import { TEMPLATES } from '@/lib/templates'
 
 export default function LaunchTemplatesSection() {
   return (
-    <section id="launch" className="bg-[#F8F7F4] py-[100px] px-6">
+    <section id="launch" className="bg-[#F8F7F4] pt-[40px] pb-[100px] px-6">
       <div className="max-w-[1200px] mx-auto">
         <div className="text-center mb-12">
           <p className="text-[#1A1A1A] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
