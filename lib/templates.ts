@@ -46,7 +46,7 @@ const STANDARD_TOOLTIP =
 const FRESHA_TOOLTIP =
   'Fresha linking requires client to have an active Fresha account. We link to it — we do not create or manage your Fresha account. Client must supply logo, photos, and content.'
 export const DEPOSIT_AMOUNT = 200
-export const CUSTOM_SITE_FROM_PRICE = 1999
+export const CUSTOM_SITE_FROM_PRICE = 599
 
 export const CUSTOM_BUDGET_OPTIONS = [
   '$1,999–$2,999',
@@ -56,6 +56,22 @@ export const CUSTOM_BUDGET_OPTIONS = [
 ] as const
 
 export type CustomBudget = (typeof CUSTOM_BUDGET_OPTIONS)[number]
+
+/**
+ * Custom build options shown when a visitor chooses a custom site. Custom
+ * pricing requires a quote, so selecting one of these leads to booking a
+ * consultation rather than instant payment.
+ */
+export interface CustomSiteOption {
+  id: 'landing' | 'multipage'
+  label: string
+  range: string
+}
+
+export const CUSTOM_SITE_OPTIONS: CustomSiteOption[] = [
+  { id: 'landing', label: 'Landing Page', range: `$599 to $1,999 ${GST_NOTE}` },
+  { id: 'multipage', label: 'Multi-Page Site', range: `$1,999 to $5,999 ${GST_NOTE}` },
+]
 
 export const HOSTING_PLANS: HostingPlan[] = [
   { id: 'basic', label: 'Hosting Only', price: '$59/mo' },

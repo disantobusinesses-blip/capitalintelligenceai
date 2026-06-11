@@ -156,7 +156,7 @@ const oneOffServices = [
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[110px]">
+    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
 
       {/* Hero */}
       <section className="py-24 px-6 text-center">

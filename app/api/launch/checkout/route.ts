@@ -87,6 +87,7 @@ export async function POST(req: NextRequest) {
         goLiveDate,
       },
       billing_address_collection: 'required',
+      phone_number_collection: { enabled: true },
     })
 
     return NextResponse.json({ url: session.url })

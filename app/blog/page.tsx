@@ -17,7 +17,7 @@ export default async function BlogIndexPage() {
   const categories = ['All', ...Array.from(categorySet)]
 
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[110px]">
+    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
       {/* Hero */}
       <section className="py-16 px-6 text-center">
         <div className="max-w-4xl mx-auto">

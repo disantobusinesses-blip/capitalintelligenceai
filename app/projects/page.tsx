@@ -88,7 +88,7 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[110px]">
+    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
       {/* Hero */}
       <section className="py-24 px-6 text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative">

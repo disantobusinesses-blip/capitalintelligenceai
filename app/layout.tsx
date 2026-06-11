@@ -9,7 +9,6 @@ import BottomNav from '@/components/BottomNav'
 import QuoteModal from '@/components/QuoteModal'
 import Navbar from '@/components/Navbar'
 import GoogleReviewsBanner from '@/components/GoogleReviewsBanner'
-import PromoBanner from '@/components/PromoBanner'
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
@@ -133,7 +132,6 @@ export default function RootLayout({
         <CurrencyProvider>
           <QuoteModalProvider>
             <GetStartedModalProvider>
-              <PromoBanner />
               <Navbar />
               <GoogleReviewsBanner />
               {children}

@@ -5,17 +5,15 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Check, ExternalLink, Info, Rocket } from 'lucide-react'
-import { TemplateOption, TemplateTier, HOSTING_PLANS, HostingPlan, GST_NOTE } from '@/lib/templates'
+import { TemplateOption, TemplateTier, GST_NOTE } from '@/lib/templates'
 
 interface TemplateCardProps {
   template: TemplateOption
-  /** Launch flow selection mode (with hosting plan buttons). */
+  /** Launch flow selection mode (template + tier selection). */
   selectable?: boolean
   selected?: boolean
-  selectedHosting?: HostingPlan['id'] | null
   selectedTier?: TemplateTier['id'] | null
   onSelect?: (templateId: string) => void
-  onSelectHosting?: (templateId: string, hostingId: HostingPlan['id']) => void
   onSelectTier?: (templateId: string, tierId: TemplateTier['id']) => void
   /** Home mode: shows a "Select & Continue" button that starts the launch flow. */
   startFlow?: boolean
@@ -73,10 +71,8 @@ export default function TemplateCard({
   template,
   selectable = false,
   selected = false,
-  selectedHosting = null,
   selectedTier = null,
   onSelect,
-  onSelectHosting,
   onSelectTier,
   startFlow = false,
 }: TemplateCardProps) {
@@ -243,27 +239,25 @@ export default function TemplateCard({
           </Link>
         )}
 
-        {/* Launch flow mode: hosting plan selection */}
+        {/* Launch flow mode: a clear "selected" affordance at the foot of the card. */}
         {selectable && (
-          <div className="flex gap-2 pt-1 mt-auto">
-            {HOSTING_PLANS.map((plan) => (
-              <button
-                key={plan.id}
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  onSelect?.(template.id)
-                  onSelectHosting?.(template.id, plan.id)
-                }}
-                className={`flex-1 text-xs font-semibold rounded-full px-3 py-2 border transition-colors duration-200 ${
-                  selected && selectedHosting === plan.id
-                    ? 'bg-[#1A1A1A] border-[#1A1A1A] text-white'
-                    : 'border-[#1A1A1A]/30 text-[#5A5A5A] hover:border-[#1A1A1A]'
-                }`}
-              >
-                {plan.label} {plan.price}
-              </button>
-            ))}
+          <div className="mt-auto pt-1">
+            <span
+              className={`flex items-center justify-center gap-2 rounded-[6px] px-4 py-3 text-sm font-bold transition-colors duration-200 ${
+                selected
+                  ? 'bg-[#5C3D2E] text-white'
+                  : 'border border-[#1A1A1A]/30 text-[#1A1A1A]'
+              }`}
+            >
+              {selected ? (
+                <>
+                  <Check className="w-4 h-4" />
+                  Selected
+                </>
+              ) : (
+                'Select this template'
+              )}
+            </span>
           </div>
         )}
       </div>

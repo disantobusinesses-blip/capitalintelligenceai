@@ -14,7 +14,7 @@ const trustBadges = [
 
 export default function HeroIntro() {
   return (
-    <section className="bg-[#F8F7F4] pt-[100px] pb-[60px] px-6 mt-[110px]">
+    <section className="bg-[#F8F7F4] pt-[100px] pb-[60px] px-6 mt-[74px]">
       <div className="max-w-[1200px] mx-auto">
         <div className="max-w-[760px] space-y-6">
           {/* Label */}

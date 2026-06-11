@@ -47,7 +47,7 @@ export default function GoogleReviewsBanner() {
   const duplicatedReviews = [...reviews, ...reviews]
 
   return (
-    <div className="bg-white border-b border-[#E8E4DF] py-2 fixed top-[104px] left-0 right-0 z-40 overflow-hidden">
+    <div className="bg-white border-b border-[#E8E4DF] py-2 fixed top-[68px] left-0 right-0 z-40 overflow-hidden">
       {/* Scrolling Reviews - using CSS animation for consistent speed */}
       <div 
         className="flex gap-6 animate-scroll hover:[animation-play-state:paused]"

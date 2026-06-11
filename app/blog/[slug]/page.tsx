@@ -95,7 +95,7 @@ export default async function DynamicBlogPost({ params }: Props) {
         />
       )}
 
-      <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[110px]">
+      <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
         {/* Back link */}
         <div className="pt-10 px-6">
           <div className="max-w-3xl mx-auto">

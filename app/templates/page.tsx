@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function TemplatesPage() {
   return (
     <>
-      <main className="min-h-screen bg-[#F8F7F4] text-[#1A1A1A] pt-[120px] pb-24 px-6">
+      <main className="min-h-screen bg-[#F8F7F4] text-[#1A1A1A] pt-[84px] pb-24 px-6">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#1A1A1A] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">

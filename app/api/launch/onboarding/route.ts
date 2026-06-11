@@ -134,6 +134,35 @@ export async function POST(request: NextRequest) {
       html: htmlBody,
       attachments: logoAttachment ? [logoAttachment] : [],
     })
+
+    // Confirmation email to the customer so they know their details were received.
+    const customerHtmlBody = `
+      <h2>Thanks ${esc(fullName)} — we&rsquo;ve got your details!</h2>
+      <p>Your onboarding details for <strong>${esc(businessName)}</strong> have been received and our team is starting on your build.</p>
+      <h3>Your Order</h3>
+      <ul>
+        <li><strong>Selected build:</strong> ${esc(template || 'Not provided')}</li>
+        <li><strong>Hosting plan:</strong> ${esc(hostingPlan || 'Not provided')}</li>
+        <li><strong>Go live date:</strong> ${esc(goLiveDate || 'Not provided')}</li>
+      </ul>
+      <h3>Your Details</h3>
+      <ul>
+        <li><strong>Name:</strong> ${esc(fullName)}</li>
+        <li><strong>Email:</strong> ${esc(email)}</li>
+        <li><strong>Phone:</strong> ${esc(phone)}</li>
+        <li><strong>Business:</strong> ${esc(businessName)}</li>
+      </ul>
+      <p>We&rsquo;ll be in touch shortly from sales@intelligentaisystem.com to confirm everything before your go live date. If anything looks wrong, just reply to this email or call us on 03 7051 0100.</p>
+      <br>
+      <p>Best regards,<br>The IAS Team<br>Intelligent AI Systems</p>
+    `
+
+    await transporter.sendMail({
+      from: SMTP_FROM,
+      to: email,
+      subject: `We've received your details — Intelligent AI Systems`,
+      html: customerHtmlBody,
+    })
   } catch (err) {
     console.error('Onboarding email send failed:', err)
     return NextResponse.json(
