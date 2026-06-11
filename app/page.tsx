@@ -4,7 +4,7 @@ import AIBlogSections from '@/components/AIBlogSections'
 import GoogleBusinessProfileBanner from '@/components/GoogleBusinessProfileBanner'
 import ProvenResults from '@/components/ProvenResults'
 import ServiceSelection from '@/components/ServiceSelection'
-import LaunchTemplatesSection from '@/components/LaunchTemplatesSection'
+import PathChooser from '@/components/PathChooser'
 import OurWork from '@/components/OurWork'
 import Testimonials from '@/components/Testimonials'
 import HowItWorks from '@/components/HowItWorks'
@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main className="bg-[#F8F7F4] pb-24 md:pb-0">
       <HeroIntro />
-      <LaunchTemplatesSection />
+      <PathChooser />
       <Hero />
       <AIBlogSections />
       <ServiceSelection />

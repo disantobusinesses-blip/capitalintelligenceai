@@ -22,6 +22,7 @@ type SiteType = 'template' | 'custom'
 interface LaunchFlowProps {
   initialTemplateId?: string | null
   initialTier?: TemplateTier['id'] | null
+  initialSiteType?: SiteType | null
 }
 
 function getAvailableDates(): Date[] {
@@ -47,13 +48,14 @@ function toISODate(d: Date): string {
 export default function LaunchFlow({
   initialTemplateId = null,
   initialTier = null,
+  initialSiteType = null,
 }: LaunchFlowProps) {
   const hasInitialTemplate = Boolean(
     initialTemplateId && TEMPLATES.some((t) => t.id === initialTemplateId)
   )
   const [step, setStep] = useState(0)
   const [siteType, setSiteType] = useState<SiteType | null>(
-    hasInitialTemplate ? 'template' : null
+    hasInitialTemplate ? 'template' : initialSiteType
   )
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(
     hasInitialTemplate ? initialTemplateId : null
@@ -136,8 +138,28 @@ export default function LaunchFlow({
     }
   }
 
+  // The sticky action bar (with Back / Continue) is shown on the selection steps so the
+  // "next" action is always visible without scrolling to the bottom of the section.
+  const showActionBar = (step === 0 && Boolean(siteType)) || step === 1
+  const actionHelper =
+    step === 1
+      ? canProceedStep2
+        ? null
+        : 'Select a go live date to continue.'
+      : siteType === 'custom'
+        ? canProceedStep1
+          ? null
+          : 'Select a budget range and a hosting plan to continue.'
+        : canProceedStep1
+          ? null
+          : 'Select a template and a hosting plan to continue.'
+
   return (
-    <main className="min-h-screen bg-[#F8F7F4] text-[#1A1A1A] pt-[120px] pb-24 px-6">
+    <main
+      className={`min-h-screen bg-[#F8F7F4] text-[#1A1A1A] pt-[120px] px-6 ${
+        showActionBar ? 'pb-60 sm:pb-44' : 'pb-24'
+      }`}
+    >
       <div className="max-w-[1200px] mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
@@ -216,6 +238,26 @@ export default function LaunchFlow({
 
         {step === 0 && siteType === 'template' && (
           <div>
+            {/* Guided instructions so visitors know exactly what to do. */}
+            <div className="max-w-3xl mx-auto mb-6 rounded-xl bg-white border border-[#E8E4DF] px-5 py-4">
+              <p className="text-center text-[#1A1A1A] font-semibold mb-3">
+                Step 1 of 3 — set up your site in three quick clicks:
+              </p>
+              <div className="flex flex-col sm:flex-row items-stretch justify-center gap-3 text-sm">
+                <span className="flex items-center gap-2 text-[#5A5A5A]">
+                  <span className="w-5 h-5 rounded-full bg-[#1A1A1A] text-white text-[11px] font-bold flex items-center justify-center shrink-0">1</span>
+                  Pick a template
+                </span>
+                <span className="flex items-center gap-2 text-[#5A5A5A]">
+                  <span className="w-5 h-5 rounded-full bg-[#1A1A1A] text-white text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
+                  Choose a hosting plan
+                </span>
+                <span className="flex items-center gap-2 text-[#5A5A5A]">
+                  <span className="w-5 h-5 rounded-full bg-[#1A1A1A] text-white text-[11px] font-bold flex items-center justify-center shrink-0">3</span>
+                  Click Continue
+                </span>
+              </div>
+            </div>
             {/* Mobile: horizontal slide options keep each template and the Next button in one
                 frame. Desktop: standard grid. */}
             <div className="flex gap-4 overflow-x-auto pb-4 px-1 snap-x snap-mandatory [scrollbar-width:thin] sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 sm:px-0">
@@ -257,28 +299,6 @@ export default function LaunchFlow({
                 I want my own custom website
               </a>
             </div>
-            <div className="flex justify-center gap-4 mt-8">
-              <button
-                onClick={() => setSiteType(null)}
-                className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-6 py-4 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back
-              </button>
-              <button
-                onClick={() => setStep(1)}
-                disabled={!canProceedStep1}
-                className="inline-flex items-center gap-2 bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                Continue
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-            {!canProceedStep1 && (
-              <p className="text-center text-[#8A8A8A] text-sm mt-3">
-                Select a template and a hosting plan to continue.
-              </p>
-            )}
           </div>
         )}
 
@@ -320,28 +340,6 @@ export default function LaunchFlow({
                 </button>
               ))}
             </div>
-            <div className="flex justify-center gap-4 mt-10">
-              <button
-                onClick={() => setSiteType(null)}
-                className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-6 py-4 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back
-              </button>
-              <button
-                onClick={() => setStep(1)}
-                disabled={!canProceedStep1}
-                className="inline-flex items-center gap-2 bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                Continue
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-            {!canProceedStep1 && (
-              <p className="text-center text-[#8A8A8A] text-sm mt-3">
-                Select a budget range and a hosting plan to continue.
-              </p>
-            )}
           </div>
         )}
 
@@ -377,23 +375,6 @@ export default function LaunchFlow({
                   </button>
                 )
               })}
-            </div>
-            <div className="flex justify-between mt-10">
-              <button
-                onClick={() => setStep(0)}
-                className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back
-              </button>
-              <button
-                onClick={() => setStep(2)}
-                disabled={!canProceedStep2}
-                className="inline-flex items-center gap-2 bg-[#1A1A1A] text-white font-bold px-8 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                Continue
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
           </div>
         )}
@@ -517,6 +498,41 @@ export default function LaunchFlow({
         )}
         </div>
       </div>
+
+      {/* Sticky action bar — keeps the Back / Continue controls in view on the selection
+          steps so visitors never have to scroll to find the next action. */}
+      {showActionBar && (
+        <div className="fixed bottom-0 inset-x-0 z-40 border-t border-[#E8E4DF] bg-white/95 backdrop-blur px-6 pt-4 pb-24 sm:pb-4 shadow-[0_-2px_12px_rgba(0,0,0,0.06)]">
+          <div className="max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center gap-3 sm:justify-between">
+            {actionHelper ? (
+              <p className="text-[#8A8A8A] text-sm text-center sm:text-left order-2 sm:order-1">
+                {actionHelper}
+              </p>
+            ) : (
+              <p className="text-[#1A1A1A] text-sm font-semibold text-center sm:text-left order-2 sm:order-1">
+                All set — click Continue
+              </p>
+            )}
+            <div className="flex gap-3 order-1 sm:order-2 w-full sm:w-auto">
+              <button
+                onClick={() => (step === 1 ? setStep(0) : setSiteType(null))}
+                className="inline-flex items-center justify-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back
+              </button>
+              <button
+                onClick={() => setStep(step === 1 ? 2 : 1)}
+                disabled={step === 1 ? !canProceedStep2 : !canProceedStep1}
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-[#1A1A1A] text-white font-bold px-8 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                Continue
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }

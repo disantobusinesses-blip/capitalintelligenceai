@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default async function LaunchPage({
   searchParams,
 }: {
-  searchParams: Promise<{ template?: string; tier?: string }>
+  searchParams: Promise<{ template?: string; tier?: string; type?: string }>
 }) {
   const params = await searchParams
   return (
@@ -19,6 +19,9 @@ export default async function LaunchPage({
       <LaunchFlow
         initialTemplateId={params.template ?? null}
         initialTier={params.tier === 'premium' || params.tier === 'basic' ? params.tier : null}
+        initialSiteType={
+          params.type === 'template' || params.type === 'custom' ? params.type : null
+        }
       />
       <Footer />
     </>
