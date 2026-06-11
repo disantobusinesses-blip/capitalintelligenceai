@@ -4,7 +4,7 @@ import { Suspense, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle, Loader2, Upload } from 'lucide-react'
-import { TEMPLATES, HOSTING_PLANS } from '@/lib/templates'
+import { TEMPLATES, HOSTING_PLANS, CUSTOM_SITE_OPTIONS } from '@/lib/templates'
 
 const INDUSTRIES = [
   'Construction',
@@ -30,6 +30,7 @@ function OnboardingContent() {
   const goLiveDate = params.get('goLiveDate') ?? ''
 
   const template = TEMPLATES.find((t) => t.id === templateId)
+  const customBuild = CUSTOM_SITE_OPTIONS.find((o) => o.id === templateId)
   const hosting = HOSTING_PLANS.find((p) => p.id === hostingId)
   const tier =
     template?.tiers && template.tiers.length > 1
@@ -39,7 +40,9 @@ function OnboardingContent() {
     ? tier
       ? `${template.businessName} (${template.industry}) — ${tier.label}`
       : `${template.businessName} (${template.industry})`
-    : templateId
+    : customBuild
+      ? `${customBuild.label} (${customBuild.range})`
+      : templateId
 
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -119,11 +122,11 @@ function OnboardingContent() {
           </p>
         </div>
 
-        {(template || hosting || goLiveDate) && (
+        {(template || customBuild || hosting || goLiveDate) && (
           <div className="rounded-xl bg-white border border-[#E8E4DF] p-5 mb-8 text-sm text-[#5A5A5A] space-y-1 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-            {template && (
+            {(template || customBuild) && (
               <p>
-                <span className="text-[#8A8A8A]">Template:</span>{' '}
+                <span className="text-[#8A8A8A]">{customBuild ? 'Build:' : 'Template:'}</span>{' '}
                 <span className="font-semibold text-[#1A1A1A]">{templateLabel}</span>
               </p>
             )}

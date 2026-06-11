@@ -30,9 +30,9 @@ export default function PathChooser() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-3 md:gap-6">
           {/* Path 1 — Template */}
-          <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+          <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-5 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-12 h-12 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center">
                 <Rocket className="w-6 h-6" />
@@ -62,7 +62,7 @@ export default function PathChooser() {
           </div>
 
           {/* Path 2 — Custom */}
-          <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+          <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-5 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-12 h-12 rounded-full bg-[#5C3D2E] text-white flex items-center justify-center">
                 <Palette className="w-6 h-6" />

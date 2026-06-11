@@ -1,6 +1,6 @@
 import Stripe from 'stripe'
 import { NextRequest, NextResponse } from 'next/server'
-import { TEMPLATES, HOSTING_PLANS, CUSTOM_BUDGET_OPTIONS } from '@/lib/templates'
+import { TEMPLATES, HOSTING_PLANS, CUSTOM_SITE_OPTIONS } from '@/lib/templates'
 
 const HOSTING_PRICE_MAP: Record<string, string | undefined> = {
   basic: process.env.STRIPE_PRICE_HOSTING_BASIC,
@@ -9,7 +9,7 @@ const HOSTING_PRICE_MAP: Record<string, string | undefined> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const { templateId, tier, hostingPlan, goLiveDate, siteType, budget } = await req.json()
+    const { templateId, tier, hostingPlan, goLiveDate, siteType, customOption } = await req.json()
 
     const isCustom = siteType === 'custom'
 
@@ -27,12 +27,13 @@ export async function POST(req: NextRequest) {
         : `${template.businessName} (${template.industry})`
       : ''
 
-    if (
-      isCustom &&
-      (typeof budget !== 'string' ||
-        !(CUSTOM_BUDGET_OPTIONS as readonly string[]).includes(budget))
-    ) {
-      return NextResponse.json({ error: 'Invalid budget range' }, { status: 400 })
+    // Custom builds that take a deposit are landing pages (Starter / Premium).
+    // Multi-page sites are quote-only and never reach this checkout.
+    const custom = isCustom
+      ? CUSTOM_SITE_OPTIONS.find((o) => o.id === customOption && o.flow === 'deposit')
+      : null
+    if (isCustom && !custom) {
+      return NextResponse.json({ error: 'Invalid custom build option' }, { status: 400 })
     }
 
     const hosting = HOSTING_PLANS.find((p) => p.id === hostingPlan)
@@ -57,13 +58,11 @@ export async function POST(req: NextRequest) {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://intelligentaisystem.com'
 
     const successParams = new URLSearchParams({
-      template: isCustom ? 'custom' : template!.id,
+      template: isCustom ? custom!.id : template!.id,
       hosting: hosting.id,
       goLiveDate,
     })
-    if (isCustom) {
-      successParams.set('budget', budget)
-    } else if (selectedTier && template!.tiers && template!.tiers.length > 1) {
+    if (!isCustom && selectedTier && template!.tiers && template!.tiers.length > 1) {
       successParams.set('tier', selectedTier.id)
     }
 
@@ -80,8 +79,8 @@ export async function POST(req: NextRequest) {
       metadata: {
         flow: 'launch_my_site',
         siteType: isCustom ? 'custom' : 'template',
-        templateId: isCustom ? 'custom' : template!.id,
-        templateName: isCustom ? `Custom Site (${budget})` : templateName,
+        templateId: isCustom ? custom!.id : template!.id,
+        templateName: isCustom ? `${custom!.label} (${custom!.range})` : templateName,
         tier: isCustom ? '' : (selectedTier?.id ?? ''),
         hostingPlan: hosting.id,
         goLiveDate,

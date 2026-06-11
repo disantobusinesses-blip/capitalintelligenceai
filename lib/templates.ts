@@ -58,19 +58,43 @@ export const CUSTOM_BUDGET_OPTIONS = [
 export type CustomBudget = (typeof CUSTOM_BUDGET_OPTIONS)[number]
 
 /**
- * Custom build options shown when a visitor chooses a custom site. Custom
- * pricing requires a quote, so selecting one of these leads to booking a
- * consultation rather than instant payment.
+ * Custom build options shown when a visitor chooses a custom site.
+ *
+ * Landing page builds (Starter / Premium) flow through hosting selection and a
+ * Stripe deposit, just like template builds. Multi-page sites need a tailored
+ * quote, so selecting one leads to a consultation/quote request instead of
+ * instant payment.
  */
 export interface CustomSiteOption {
-  id: 'landing' | 'multipage'
+  id: 'landing-starter' | 'landing-premium' | 'multipage'
   label: string
   range: string
+  /**
+   * 'deposit' = proceed to hosting selection then Stripe deposit checkout.
+   * 'quote'   = show a "scope it out" card with a Get a Quote button.
+   */
+  flow: 'deposit' | 'quote'
 }
 
 export const CUSTOM_SITE_OPTIONS: CustomSiteOption[] = [
-  { id: 'landing', label: 'Landing Page', range: `$599 to $1,999 ${GST_NOTE}` },
-  { id: 'multipage', label: 'Multi-Page Site', range: `$1,999 to $5,999 ${GST_NOTE}` },
+  {
+    id: 'landing-starter',
+    label: 'Landing Page — Starter',
+    range: `$599 to $999 ${GST_NOTE}`,
+    flow: 'deposit',
+  },
+  {
+    id: 'landing-premium',
+    label: 'Landing Page — Premium',
+    range: `$1,000 to $1,999 ${GST_NOTE}`,
+    flow: 'deposit',
+  },
+  {
+    id: 'multipage',
+    label: 'Multi-Page Site',
+    range: `$1,999 to $5,999 ${GST_NOTE}`,
+    flow: 'quote',
+  },
 ]
 
 export const HOSTING_PLANS: HostingPlan[] = [

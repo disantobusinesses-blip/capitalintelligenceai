@@ -5,6 +5,7 @@ interface QuoteFormData {
   // New form fields
   services?: string
   addOns?: string
+  hostingPlan?: string
   seoPackage?: string
   budget?: string
   message?: string
@@ -121,11 +122,15 @@ export async function POST(request: NextRequest) {
     // New form fields (services, budget, addOns, seoPackage)
     const hasServices = body.services && body.services.trim() !== ''
     const hasBudget = body.budget && body.budget.trim() !== ''
-    
-    if (hasServices || hasBudget) {
+    const hasHostingPlan = body.hostingPlan && body.hostingPlan.trim() !== ''
+
+    if (hasServices || hasBudget || hasHostingPlan) {
       htmlBody += `<h3>Quote Details</h3><ul>`
       if (hasServices) {
         htmlBody += `<li><strong>Services Requested:</strong> ${esc(body.services!)}</li>`
+      }
+      if (hasHostingPlan) {
+        htmlBody += `<li><strong>Hosting Plan:</strong> ${esc(body.hostingPlan!)}</li>`
       }
       if (hasBudget) {
         htmlBody += `<li><strong>Estimated Budget:</strong> ${esc(body.budget!)} (+GST)</li>`

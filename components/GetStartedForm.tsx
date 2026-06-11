@@ -9,8 +9,11 @@ const serviceOptions = [
   { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
 ]
 
-const addOnOptions = [
-  { id: 'hosting-updates', label: '$99 Hosting + Updates', description: 'Limited to 1 update per month — keeps websites looking fresh with new content you provide us.' },
+const addOnOptions: { id: string; label: string; description: string }[] = []
+
+const hostingPlanOptions = [
+  { id: 'hosting-only', label: 'Hosting Only', price: '$59/mo' },
+  { id: 'hosting-updates', label: 'Hosting + Updates', price: '$99/mo' },
 ]
 
 const seoPackageOptions = [
@@ -35,6 +38,7 @@ type FormData = {
   email: string
   phone: string
   services: string[]
+  hostingPlan: string
   addOns: string[]
   seoPackage: string
   budget: string
@@ -47,6 +51,7 @@ const initialFormData: FormData = {
   email: '',
   phone: '',
   services: [],
+  hostingPlan: '',
   addOns: [],
   seoPackage: '',
   budget: '',
@@ -104,6 +109,11 @@ export default function GetStartedForm({
 
     const budgetLabel = budgetOptions.find((b) => b.value === formData.budget)?.label || formData.budget
 
+    const hostingPlanOption = hostingPlanOptions.find((h) => h.id === formData.hostingPlan)
+    const hostingPlanLabel = hostingPlanOption
+      ? `${hostingPlanOption.label} — ${hostingPlanOption.price}`
+      : ''
+
     try {
       const response = await fetch('/api/quote', {
         method: 'POST',
@@ -117,6 +127,7 @@ export default function GetStartedForm({
           phone: formData.phone,
           notes: formData.message,
           services: servicesLabels,
+          hostingPlan: hostingPlanLabel,
           addOns: addOnsLabels,
           seoPackage: seoPackageLabel,
           budget: budgetLabel,
@@ -154,7 +165,7 @@ export default function GetStartedForm({
     onClose()
   }
 
-  const canSubmit = formData.name.trim() !== '' && formData.email.trim() !== '' && formData.businessName.trim() !== '' && formData.services.length > 0 && formData.budget !== ''
+  const canSubmit = formData.name.trim() !== '' && formData.email.trim() !== '' && formData.businessName.trim() !== '' && formData.services.length > 0 && formData.hostingPlan !== '' && formData.budget !== ''
 
   if (!isOpen) return null
 
@@ -304,8 +315,41 @@ export default function GetStartedForm({
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* Hosting plan (required) */}
+          <div>
+            <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">
+              Hosting plan <span className="text-red-400">*</span>
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              {hostingPlanOptions.map((plan) => {
+                const isSelected = formData.hostingPlan === plan.id
+                return (
+                  <button
+                    key={plan.id}
+                    type="button"
+                    onClick={() => setFormData((prev) => ({ ...prev, hostingPlan: plan.id }))}
+                    aria-pressed={isSelected}
+                    className={`rounded-lg border px-4 py-3 text-left transition-all duration-200 ${
+                      isSelected
+                        ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E] bg-white'
+                        : 'bg-white border-[#E8E4DF] hover:border-[#5C3D2E]'
+                    }`}
+                  >
+                    <span className="flex items-center gap-1.5 font-semibold text-sm text-[#1A1A1A]">
+                      {isSelected && <Check className="w-3.5 h-3.5 flex-shrink-0" />}
+                      {plan.label}
+                    </span>
+                    <span className="block mt-0.5 text-sm font-semibold text-[#5C3D2E]">
+                      {plan.price}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
             <p className="text-[11px] text-[#9E9790] mt-2">
-              All websites require $79/month hosting service.
+              All websites require a hosting plan to stay live and secure.
             </p>
           </div>
 
