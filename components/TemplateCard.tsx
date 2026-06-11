@@ -15,6 +15,8 @@ interface TemplateCardProps {
   selectedTier?: TemplateTier['id'] | null
   onSelect?: (templateId: string) => void
   onSelectTier?: (templateId: string, tierId: TemplateTier['id']) => void
+  /** Compact launch-flow variant: smaller preview, tighter padding, trimmed copy. */
+  compact?: boolean
   /** Home mode: shows a "Select & Continue" button that starts the launch flow. */
   startFlow?: boolean
 }
@@ -74,6 +76,7 @@ export default function TemplateCard({
   selectedTier = null,
   onSelect,
   onSelectTier,
+  compact = false,
   startFlow = false,
 }: TemplateCardProps) {
   const tiers = template.tiers
@@ -107,12 +110,12 @@ export default function TemplateCard({
         selectable ? 'cursor-pointer' : ''
       } ${
         selected
-          ? 'border-[#1A1A1A] ring-2 ring-[#1A1A1A]/30'
+          ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
           : 'border-[#E8E4DF] hover:border-[#1A1A1A]'
       }`}
     >
       {/* Screenshot preview */}
-      <div className="relative aspect-[8/5] bg-[#F8F7F4]">
+      <div className={`relative bg-[#F8F7F4] ${compact ? 'aspect-[16/9]' : 'aspect-[8/5]'}`}>
         {previewImages ? (
           <div className="flex h-full w-full">
             {previewImages.map((src, i) => (
@@ -137,24 +140,24 @@ export default function TemplateCard({
         )}
       </div>
 
-      <div className="p-5 space-y-3 flex flex-col flex-1">
+      <div className={`flex flex-col flex-1 ${compact ? 'p-3 space-y-2' : 'p-5 space-y-3'}`}>
         <div className="flex items-start justify-between gap-2">
           <div>
-            <p className="text-[12px] font-semibold tracking-[1.5px] uppercase text-[#8A8A8A]">
+            <p className={`font-semibold tracking-[1.5px] uppercase text-[#8A8A8A] ${compact ? 'text-[10px]' : 'text-[12px]'}`}>
               {template.industry}
             </p>
-            <h3 className="text-[#1A1A1A] font-bold text-lg leading-tight">
+            <h3 className={`text-[#1A1A1A] font-bold leading-tight ${compact ? 'text-sm' : 'text-lg'}`}>
               {template.businessName}
             </h3>
           </div>
-          <p className="text-[#1A1A1A] font-extrabold text-lg whitespace-nowrap">
+          <p className={`text-[#1A1A1A] font-extrabold whitespace-nowrap ${compact ? 'text-sm' : 'text-lg'}`}>
             ${displayPrice.toLocaleString()} {GST_NOTE}
           </p>
         </div>
 
         {/* Tier selector (e.g. Basic / Premium) */}
         {tiers && tiers.length > 1 && (
-          <div className="flex flex-col gap-2">
+          <div className={`flex flex-col ${compact ? 'gap-1.5' : 'gap-2'}`}>
             {tiers.map((tier) => {
               const isActive = activeTier === tier.id
               return (
@@ -166,14 +169,16 @@ export default function TemplateCard({
                     chooseTier(tier.id)
                     if (selectable) onSelect?.(template.id)
                   }}
-                  className={`flex items-center justify-between gap-2 text-left rounded-[6px] border px-3 py-2 transition-colors duration-200 ${
+                  className={`flex items-center justify-between gap-2 text-left rounded-[6px] border transition-colors duration-200 ${
+                    compact ? 'px-2.5 py-1.5' : 'px-3 py-2'
+                  } ${
                     isActive
                       ? 'bg-[#1A1A1A] border-[#1A1A1A] text-white'
                       : 'border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#1A1A1A]'
                   }`}
                 >
-                  <span className="text-sm font-semibold">{tier.label}</span>
-                  <span className="text-sm font-bold whitespace-nowrap">
+                  <span className={`font-semibold ${compact ? 'text-[13px]' : 'text-sm'}`}>{tier.label}</span>
+                  <span className={`font-bold whitespace-nowrap ${compact ? 'text-[13px]' : 'text-sm'}`}>
                     ${tier.price.toLocaleString()} {GST_NOTE}
                   </span>
                 </button>
@@ -182,8 +187,8 @@ export default function TemplateCard({
           </div>
         )}
 
-        {/* What's included */}
-        {included && included.length > 0 && (
+        {/* What's included — hidden in compact mode to keep cards tight */}
+        {!compact && included && included.length > 0 && (
           <ul className="space-y-1.5">
             {included.map((item) => (
               <li key={item} className="flex items-start gap-2 text-[13px] text-[#5A5A5A]">
@@ -194,8 +199,8 @@ export default function TemplateCard({
           </ul>
         )}
 
-        {/* Add-ons disclaimer tooltip */}
-        {tooltip && <AddOnsTooltip text={tooltip} />}
+        {/* Add-ons disclaimer tooltip — hidden in compact mode */}
+        {!compact && tooltip && <AddOnsTooltip text={tooltip} />}
 
         {/* Demo links — tiered templates show one button per tier */}
         {tiers && tiers.length > 1 ? (
@@ -207,9 +212,11 @@ export default function TemplateCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1A1A1A] border border-[#1A1A1A]/30 rounded-[6px] px-4 py-2 hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
+                className={`inline-flex items-center gap-1.5 font-semibold text-[#1A1A1A] border border-[#1A1A1A]/30 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200 ${
+                  compact ? 'text-[13px] px-3 py-1.5' : 'text-sm px-4 py-2'
+                }`}
               >
-                View {tier.id === 'premium' ? 'Premium' : 'Basic'} Demo
+                {compact ? (tier.id === 'premium' ? 'Premium' : 'Basic') : `View ${tier.id === 'premium' ? 'Premium' : 'Basic'} Demo`}
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             ))}
@@ -220,7 +227,9 @@ export default function TemplateCard({
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1A1A1A] border border-[#1A1A1A]/30 rounded-[6px] px-4 py-2 self-start hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
+            className={`inline-flex items-center gap-1.5 font-semibold text-[#1A1A1A] border border-[#1A1A1A]/30 rounded-[6px] self-start hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200 ${
+              compact ? 'text-[13px] px-3 py-1.5' : 'text-sm px-4 py-2'
+            }`}
           >
             View Demo
             <ExternalLink className="w-3.5 h-3.5" />
@@ -243,7 +252,9 @@ export default function TemplateCard({
         {selectable && (
           <div className="mt-auto pt-1">
             <span
-              className={`flex items-center justify-center gap-2 rounded-[6px] px-4 py-3 text-sm font-bold transition-colors duration-200 ${
+              className={`flex items-center justify-center gap-2 rounded-[6px] font-bold transition-colors duration-200 ${
+                compact ? 'px-3 py-2 text-[13px]' : 'px-4 py-3 text-sm'
+              } ${
                 selected
                   ? 'bg-[#5C3D2E] text-white'
                   : 'border border-[#1A1A1A]/30 text-[#1A1A1A]'
@@ -255,7 +266,7 @@ export default function TemplateCard({
                   Selected
                 </>
               ) : (
-                'Select this template'
+                'Select'
               )}
             </span>
           </div>

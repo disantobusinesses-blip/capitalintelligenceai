@@ -18,16 +18,15 @@ import {
   TemplateTier,
   DEPOSIT_AMOUNT,
   GST_NOTE,
-  GLOBAL_ADDONS_DISCLAIMER,
   CUSTOM_SITE_OPTIONS,
   CustomSiteOption,
 } from '@/lib/templates'
 
-// Each step keeps the 1-2-3 indicator, with a short subheading describing its purpose.
+// Each step keeps the compact 1-2-3 indicator at the top.
 const STEPS = [
-  { title: 'Your Site', sub: 'Choose your site' },
-  { title: 'Schedule', sub: 'Pick a date' },
-  { title: 'Checkout', sub: 'Secure your build' },
+  { title: 'Your Site' },
+  { title: 'Schedule' },
+  { title: 'Checkout' },
 ]
 
 // Brand accent (dark brown leather) used to highlight active selections.
@@ -168,32 +167,28 @@ export default function LaunchFlow({
 
   return (
     <main
-      className={`min-h-screen bg-[#F8F7F4] text-[#1A1A1A] pt-[84px] px-6 ${
-        showActionBar ? 'pb-60 sm:pb-48' : 'pb-28'
+      className={`min-h-screen bg-[#F8F7F4] text-[#1A1A1A] pt-[76px] px-4 sm:px-6 ${
+        showActionBar ? 'pb-44 sm:pb-32' : 'pb-28'
       }`}
     >
       <div className="max-w-[1040px] mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <p className="text-[#1A1A1A] text-[13px] font-semibold tracking-[1.5px] uppercase mb-4">
+        {/* Compact one-time hero — shown small at the very top, never inside steps */}
+        <div className="text-center mb-5 md:mb-7">
+          <p className="text-[#1A1A1A] text-[11px] font-semibold tracking-[1.5px] uppercase mb-1">
             Launch My Site
           </p>
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-5 leading-tight">
-            Launch Your Site within 24–48 Hours
+          <h1 className="text-base md:text-lg font-bold leading-tight">
+            Launch your site in 24–48 hours
           </h1>
-          <p className="text-[#5A5A5A] text-lg max-w-xl mx-auto leading-relaxed">
-            Pick a professionally designed template, choose your go live date, and pay a $
-            {DEPOSIT_AMOUNT} deposit to secure your build.
-          </p>
         </div>
 
-        {/* Step indicator with a short subheading describing each step */}
-        <div className="flex items-start justify-center gap-3 md:gap-6 mb-14 md:mb-16">
+        {/* Compact step indicator — small, unobtrusive 1-2-3 at the top */}
+        <div className="flex items-center justify-center gap-2 mb-6 md:mb-8">
           {STEPS.map((stepInfo, i) => (
-            <div key={stepInfo.title} className="flex items-start gap-3 md:gap-6">
-              <div className="flex flex-col items-center text-center max-w-[120px]">
+            <div key={stepInfo.title} className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <span
-                  className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-colors duration-200 ${
+                  className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold transition-colors duration-200 ${
                     i === step
                       ? 'bg-[#1A1A1A] text-white'
                       : i < step
@@ -204,18 +199,15 @@ export default function LaunchFlow({
                   {i + 1}
                 </span>
                 <span
-                  className={`mt-2 text-sm font-semibold ${
+                  className={`text-[12px] font-semibold ${
                     i === step ? 'text-[#1A1A1A]' : 'text-[#8A8A8A]'
-                  }`}
+                  } ${i === step ? 'inline' : 'hidden sm:inline'}`}
                 >
                   {stepInfo.title}
                 </span>
-                <span className="hidden sm:block mt-0.5 text-[12px] text-[#8A8A8A] leading-snug">
-                  {stepInfo.sub}
-                </span>
               </div>
               {i < STEPS.length - 1 && (
-                <span className="hidden sm:block w-8 md:w-14 h-px bg-[#E8E4DF] mt-[18px]" />
+                <span className="w-5 sm:w-8 h-px bg-[#E8E4DF]" />
               )}
             </div>
           ))}
@@ -226,31 +218,27 @@ export default function LaunchFlow({
           {/* Step 1: Site type */}
           {step === 0 && !siteType && (
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl font-bold text-center mb-8">
-                What kind of site do you need?
+              <h2 className="text-xl md:text-2xl font-bold text-center mb-4">
+                What kind of site?
               </h2>
-              <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                 <button
                   type="button"
                   onClick={() => selectSiteType('template')}
-                  className="rounded-2xl bg-white border border-[#E8E4DF] hover:border-[#5C3D2E] p-8 md:p-10 text-left transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
+                  className="rounded-2xl bg-white border border-[#E8E4DF] hover:border-[#5C3D2E] p-5 text-left transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
                 >
-                  <Rocket className="w-9 h-9 text-[#1A1A1A] mb-5" />
-                  <h3 className="text-2xl font-extrabold mb-3">Template Site</h3>
-                  <p className="text-[#5A5A5A] leading-relaxed">
-                    From $850 {GST_NOTE} · Live in 24–48 hours
-                  </p>
+                  <Rocket className="w-6 h-6 text-[#1A1A1A] mb-2" />
+                  <h3 className="text-lg font-extrabold mb-1">Template Site</h3>
+                  <p className="text-[#5A5A5A] text-sm">From $850 · Live in 24–48h</p>
                 </button>
                 <button
                   type="button"
                   onClick={() => selectSiteType('custom')}
-                  className="rounded-2xl bg-white border border-[#E8E4DF] hover:border-[#5C3D2E] p-8 md:p-10 text-left transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
+                  className="rounded-2xl bg-white border border-[#E8E4DF] hover:border-[#5C3D2E] p-5 text-left transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
                 >
-                  <Palette className="w-9 h-9 text-[#1A1A1A] mb-5" />
-                  <h3 className="text-2xl font-extrabold mb-3">Custom Landing Page or Site</h3>
-                  <p className="text-[#5A5A5A] leading-relaxed">
-                    From $599 {GST_NOTE} · Tailored to your business
-                  </p>
+                  <Palette className="w-6 h-6 text-[#1A1A1A] mb-2" />
+                  <h3 className="text-lg font-extrabold mb-1">Custom Build</h3>
+                  <p className="text-[#5A5A5A] text-sm">From $599 · Tailored to you</p>
                 </button>
               </div>
             </div>
@@ -258,22 +246,22 @@ export default function LaunchFlow({
 
           {/* Step 1 (template): pick a template, then choose a hosting plan */}
           {step === 0 && siteType === 'template' && (
-            <div className="space-y-12">
+            <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-center mb-2">Choose your template</h2>
-                <p className="text-center text-[#5A5A5A] mb-8">
-                  Tap a design to select it, then pick your hosting plan below.
-                </p>
-                {/* Mobile: horizontal slider. Desktop: grid. */}
-                <div className="flex gap-5 overflow-x-auto pb-4 px-1 snap-x snap-mandatory [scrollbar-width:thin] sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-7 sm:overflow-visible sm:pb-0 sm:px-0">
+                <h2 className="text-xl md:text-2xl font-bold text-center mb-3">
+                  Pick a template
+                </h2>
+                {/* Mobile: tight horizontal carousel. Desktop: compact grid. */}
+                <div className="flex gap-3 overflow-x-auto pb-3 px-1 snap-x snap-mandatory [scrollbar-width:thin] sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-4 sm:overflow-visible sm:pb-0 sm:px-0">
                   {TEMPLATES.map((t) => (
                     <div
                       key={t.id}
-                      className="snap-center shrink-0 w-[85vw] max-w-[340px] sm:w-auto sm:max-w-none sm:shrink"
+                      className="snap-center shrink-0 w-[62vw] max-w-[240px] sm:w-auto sm:max-w-none sm:shrink"
                     >
                       <TemplateCard
                         template={t}
                         selectable
+                        compact
                         selected={selectedTemplate === t.id}
                         selectedTier={selectedTemplate === t.id ? selectedTier : null}
                         onSelect={(id) => {
@@ -290,8 +278,8 @@ export default function LaunchFlow({
                     </div>
                   ))}
                 </div>
-                <p className="text-center text-[#8A8A8A] text-sm mt-3 sm:hidden">
-                  Swipe to see more templates →
+                <p className="text-center text-[#8A8A8A] text-xs mt-1 sm:hidden">
+                  Swipe for more →
                 </p>
               </div>
 
@@ -300,10 +288,10 @@ export default function LaunchFlow({
                 <p className="text-center text-sm font-semibold text-[#1A1A1A] mb-1">
                   Choose your hosting plan (required)
                 </p>
-                <p className="text-center text-[#8A8A8A] text-sm mb-6">
-                  Keeps your site fast, secure, and online.
+                <p className="text-center text-[#8A8A8A] text-xs mb-3">
+                  Keeps your site fast, secure & online.
                 </p>
-                <div className="grid sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-2 gap-3">
                   {HOSTING_PLANS.map((plan) => {
                     const isSelected = selectedHosting === plan.id
                     return (
@@ -312,19 +300,19 @@ export default function LaunchFlow({
                         type="button"
                         onClick={() => setSelectedHosting(plan.id)}
                         aria-pressed={isSelected}
-                        className={`rounded-2xl border bg-white px-6 py-6 text-left transition-all duration-200 ${
+                        className={`rounded-xl border bg-white px-4 py-3 text-left transition-all duration-200 ${
                           isSelected
-                            ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E] shadow-[0_4px_18px_rgba(92,61,46,0.18)]'
+                            ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
                             : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                         }`}
                       >
-                        <div className="flex items-center justify-between gap-3">
-                          <span className="font-bold text-lg">{plan.label}</span>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-bold text-sm">{plan.label}</span>
                           {isSelected && (
-                            <CheckCircle2 className="w-5 h-5 shrink-0" style={{ color: ACCENT }} />
+                            <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: ACCENT }} />
                           )}
                         </div>
-                        <span className="block mt-1 text-[#5A5A5A] font-semibold">
+                        <span className="block mt-0.5 text-[#5A5A5A] text-sm font-semibold">
                           {plan.price}
                         </span>
                       </button>
@@ -332,23 +320,16 @@ export default function LaunchFlow({
                   })}
                 </div>
               </div>
-
-              <p className="text-center text-[#8A8A8A] text-[13px] leading-relaxed max-w-2xl mx-auto">
-                {GLOBAL_ADDONS_DISCLAIMER}
-              </p>
             </div>
           )}
 
           {/* Step 1 (custom): pick a build size, then book a consultation for a quote */}
           {step === 0 && siteType === 'custom' && (
             <div className="max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold text-center mb-2">
-                What kind of custom build do you need?
+              <h2 className="text-xl md:text-2xl font-bold text-center mb-4">
+                What custom build?
               </h2>
-              <p className="text-center text-[#5A5A5A] mb-8">
-                Custom pricing is tailored to your business, so we&apos;ll quote it on a quick call.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
+              <div className="grid grid-cols-2 gap-3">
                 {CUSTOM_SITE_OPTIONS.map((option) => {
                   const isSelected = selectedCustomOption === option.id
                   return (
@@ -357,39 +338,33 @@ export default function LaunchFlow({
                       type="button"
                       onClick={() => setSelectedCustomOption(option.id)}
                       aria-pressed={isSelected}
-                      className={`rounded-2xl border bg-white px-6 py-8 text-left transition-all duration-200 ${
+                      className={`rounded-xl border bg-white px-4 py-4 text-left transition-all duration-200 ${
                         isSelected
-                          ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E] shadow-[0_4px_18px_rgba(92,61,46,0.18)]'
+                          ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
                           : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                       }`}
                     >
-                      <div className="flex items-center justify-between gap-3">
-                        <span className="font-extrabold text-xl">{option.label}</span>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="font-extrabold text-sm">{option.label}</span>
                         {isSelected && (
-                          <CheckCircle2 className="w-5 h-5 shrink-0" style={{ color: ACCENT }} />
+                          <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: ACCENT }} />
                         )}
                       </div>
-                      <span className="block mt-2 text-[#5A5A5A] font-semibold">{option.range}</span>
+                      <span className="block mt-1 text-[#5A5A5A] text-sm font-semibold">{option.range}</span>
                     </button>
                   )
                 })}
               </div>
 
-              <div className="mt-10 rounded-2xl bg-white border border-[#E8E4DF] p-8 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                <h3 className="text-xl font-bold mb-2">Let&apos;s scope it together</h3>
-                <p className="text-[#5A5A5A] leading-relaxed mb-6">
-                  Book a free 15-minute consultation and we&apos;ll prepare a tailored quote for your
-                  {selectedCustomOption === 'multipage'
-                    ? ' multi-page site'
-                    : selectedCustomOption === 'landing'
-                      ? ' landing page'
-                      : ' custom build'}
-                  .
+              <div className="mt-5 rounded-xl bg-white border border-[#E8E4DF] p-5 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                <h3 className="text-base font-bold mb-1">Let&apos;s scope it together</h3>
+                <p className="text-[#5A5A5A] text-sm mb-4">
+                  Book a free 15-min call for a tailored quote.
                 </p>
                 <a
                   href={`/#consultation${selectedCustomOption ? `?build=${selectedCustomOption}` : ''}`}
                   aria-disabled={!selectedCustomOption}
-                  className={`inline-flex items-center justify-center gap-2 font-bold px-8 py-4 rounded-[6px] transition-colors duration-200 ${
+                  className={`inline-flex items-center justify-center gap-2 font-bold px-6 py-3 rounded-[6px] transition-colors duration-200 ${
                     selectedCustomOption
                       ? 'bg-[#1A1A1A] text-white hover:bg-[#2D2D2D]'
                       : 'bg-[#1A1A1A]/30 text-white pointer-events-none'
@@ -399,17 +374,15 @@ export default function LaunchFlow({
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 {!selectedCustomOption && (
-                  <p className="text-[#8A8A8A] text-sm mt-3">
-                    Select a build option above to continue.
-                  </p>
+                  <p className="text-[#8A8A8A] text-xs mt-2">Select a build option above.</p>
                 )}
               </div>
 
-              <div className="flex justify-center mt-8">
+              <div className="flex justify-center mt-5">
                 <button
                   type="button"
                   onClick={() => setSiteType(null)}
-                  className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
+                  className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Back
@@ -421,14 +394,11 @@ export default function LaunchFlow({
           {/* Step 2: Go Live Date Picker */}
           {step === 1 && (
             <div className="max-w-2xl mx-auto">
-              <div className="flex items-center gap-2 justify-center mb-3">
+              <div className="flex items-center gap-2 justify-center mb-4">
                 <CalendarDays className="w-5 h-5 text-[#1A1A1A]" />
-                <h2 className="text-2xl font-bold">Choose your preferred go live date</h2>
+                <h2 className="text-xl md:text-2xl font-bold">Pick your go-live date</h2>
               </div>
-              <p className="text-center text-[#5A5A5A] mb-8">
-                We&apos;ll have your site ready to go live on this day.
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-7 gap-3">
+              <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
                 {dates.map((d) => {
                   const iso = toISODate(d)
                   const isSelected = goLiveDate === iso
@@ -437,17 +407,17 @@ export default function LaunchFlow({
                       key={iso}
                       type="button"
                       onClick={() => setGoLiveDate(iso)}
-                      className={`rounded-xl border px-2 py-4 text-center transition-all duration-200 ${
+                      className={`rounded-lg border px-1 py-2.5 text-center transition-all duration-200 ${
                         isSelected
                           ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E] bg-white text-[#1A1A1A]'
                           : 'border-[#E8E4DF] bg-white text-[#1A1A1A] hover:border-[#5C3D2E]'
                       }`}
                     >
-                      <span className="block text-[11px] uppercase font-semibold">
+                      <span className="block text-[10px] uppercase font-semibold">
                         {d.toLocaleDateString('en-AU', { weekday: 'short' })}
                       </span>
-                      <span className="block text-lg font-bold">{d.getDate()}</span>
-                      <span className="block text-[11px]">
+                      <span className="block text-base font-bold">{d.getDate()}</span>
+                      <span className="block text-[10px]">
                         {d.toLocaleDateString('en-AU', { month: 'short' })}
                       </span>
                     </button>
@@ -460,8 +430,8 @@ export default function LaunchFlow({
           {/* Step 3: Payment (template path only) */}
           {step === 2 && hosting && goLiveDate && template && (
             <div className="max-w-lg mx-auto">
-              <div className="rounded-2xl bg-white border border-[#E8E4DF] p-8 space-y-5 text-[#1A1A1A] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                <h2 className="text-2xl font-bold flex items-center gap-2">
+              <div className="rounded-2xl bg-white border border-[#E8E4DF] p-5 sm:p-6 space-y-4 text-[#1A1A1A] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                <h2 className="text-xl font-bold flex items-center gap-2">
                   <CreditCard className="w-5 h-5 text-[#1A1A1A]" />
                   Secure your build
                 </h2>
@@ -544,10 +514,10 @@ export default function LaunchFlow({
                   )}
                 </button>
               </div>
-              <div className="flex justify-start mt-8">
+              <div className="flex justify-start mt-5">
                 <button
                   onClick={() => setStep(1)}
-                  className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
+                  className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Back
@@ -560,21 +530,19 @@ export default function LaunchFlow({
 
       {/* Sticky action bar — keeps Back / Continue in view on the template selection steps. */}
       {showActionBar && (
-        <div className="fixed bottom-0 inset-x-0 z-40 border-t border-[#E8E4DF] bg-white/95 backdrop-blur px-6 pt-4 pb-24 sm:pb-4 shadow-[0_-2px_12px_rgba(0,0,0,0.06)]">
-          <div className="max-w-[1040px] mx-auto flex flex-col sm:flex-row items-center gap-3 sm:justify-between">
+        <div className="fixed bottom-0 inset-x-0 z-40 border-t border-[#E8E4DF] bg-white/95 backdrop-blur px-4 sm:px-6 pt-3 pb-20 sm:pb-4 shadow-[0_-2px_12px_rgba(0,0,0,0.06)]">
+          <div className="max-w-[1040px] mx-auto flex items-center gap-3 justify-between">
             {actionHelper ? (
-              <p className="text-[#8A8A8A] text-sm text-center sm:text-left order-2 sm:order-1">
-                {actionHelper}
-              </p>
+              <p className="hidden sm:block text-[#8A8A8A] text-sm">{actionHelper}</p>
             ) : (
-              <p className="text-[#1A1A1A] text-sm font-semibold text-center sm:text-left order-2 sm:order-1">
+              <p className="hidden sm:block text-[#1A1A1A] text-sm font-semibold">
                 All set — click Continue
               </p>
             )}
-            <div className="flex gap-3 order-1 sm:order-2 w-full sm:w-auto">
+            <div className="flex gap-3 w-full sm:w-auto">
               <button
                 onClick={() => (step === 1 ? setStep(0) : setSiteType(null))}
-                className="inline-flex items-center justify-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
+                className="inline-flex items-center justify-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-5 py-3 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back
