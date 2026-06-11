@@ -12,6 +12,7 @@ import {
   Rocket,
 } from 'lucide-react'
 import TemplateCard from '@/components/TemplateCard'
+import { useGetStartedModal } from '@/context/GetStartedModalContext'
 import {
   TEMPLATES,
   HOSTING_PLANS,
@@ -100,6 +101,8 @@ export default function LaunchFlow({
 
   const dates = useMemo(getAvailableDates, [])
 
+  const { openModal: openQuoteForm } = useGetStartedModal()
+
   const template = TEMPLATES.find((t) => t.id === selectedTemplate)
   const hosting = HOSTING_PLANS.find((p) => p.id === selectedHosting)
   // Resolve the active tier (defaults to first tier when a tiered template is chosen).
@@ -107,10 +110,31 @@ export default function LaunchFlow({
     template?.tiers?.find((t) => t.id === selectedTier) ?? template?.tiers?.[0] ?? null
   const templatePrice = tier?.price ?? template?.price ?? 0
 
-  // The template path is the only path that flows through hosting → date → payment.
-  // Custom builds need a quote, so they branch off to a consultation booking.
-  const canProceedStep1 = Boolean(selectedTemplate && selectedHosting)
+  // Resolve the active custom build option and which path it follows.
+  const customOption: CustomSiteOption | null =
+    CUSTOM_SITE_OPTIONS.find((o) => o.id === selectedCustomOption) ?? null
+  const isCustomDeposit = siteType === 'custom' && customOption?.flow === 'deposit'
+  const isCustomQuote = siteType === 'custom' && customOption?.flow === 'quote'
+
+  // The Stripe path runs through hosting → date → payment. Template builds and
+  // custom landing pages (Starter / Premium) both follow it. Multi-page custom
+  // sites need a tailored quote, so they branch off to the quote request form.
+  const canProceedStep1 =
+    (siteType === 'template' && Boolean(selectedTemplate && selectedHosting)) ||
+    (isCustomDeposit && Boolean(selectedHosting))
   const canProceedStep2 = Boolean(goLiveDate)
+
+  // Summary values shared by the payment step for both template and custom builds.
+  const buildName =
+    siteType === 'custom'
+      ? (customOption?.label ?? '')
+      : template
+        ? `${template.businessName} (${template.industry})`
+        : ''
+  const buildPriceLabel =
+    siteType === 'custom'
+      ? (customOption?.range ?? '')
+      : `$${templatePrice.toLocaleString()} ${GST_NOTE}`
 
   function selectSiteType(type: SiteType) {
     setSiteType(type)
@@ -121,27 +145,32 @@ export default function LaunchFlow({
   }
 
   async function handleCheckout() {
-    if (
-      siteType !== 'template' ||
-      !selectedTemplate ||
-      !selectedHosting ||
-      !goLiveDate ||
-      !termsAccepted
-    )
-      return
+    const validTemplate =
+      siteType === 'template' && Boolean(selectedTemplate && selectedHosting)
+    const validCustom = isCustomDeposit && Boolean(selectedHosting)
+    if ((!validTemplate && !validCustom) || !goLiveDate || !termsAccepted) return
     setLoading(true)
     setError(null)
     try {
+      const body =
+        siteType === 'template'
+          ? {
+              siteType: 'template',
+              templateId: selectedTemplate,
+              tier: tier?.id ?? null,
+              hostingPlan: selectedHosting,
+              goLiveDate,
+            }
+          : {
+              siteType: 'custom',
+              customOption: selectedCustomOption,
+              hostingPlan: selectedHosting,
+              goLiveDate,
+            }
       const res = await fetch('/api/launch/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          siteType: 'template',
-          templateId: selectedTemplate,
-          tier: tier?.id ?? null,
-          hostingPlan: selectedHosting,
-          goLiveDate,
-        }),
+        body: JSON.stringify(body),
       })
       const data = await res.json()
       if (!res.ok || !data.url) {
@@ -154,8 +183,10 @@ export default function LaunchFlow({
     }
   }
 
-  // The sticky action bar (with Back / Continue) only drives the template path.
-  const showActionBar = (step === 0 && siteType === 'template') || step === 1
+  // The sticky action bar (with Back / Continue) drives the Stripe path —
+  // template builds and custom landing pages.
+  const showActionBar =
+    (step === 0 && (siteType === 'template' || isCustomDeposit)) || step === 1
   const actionHelper =
     step === 1
       ? canProceedStep2
@@ -163,7 +194,52 @@ export default function LaunchFlow({
         : 'Select a go live date to continue.'
       : canProceedStep1
         ? null
-        : 'Select a template and a hosting plan to continue.'
+        : siteType === 'custom'
+          ? 'Choose a hosting plan to continue.'
+          : 'Select a template and a hosting plan to continue.'
+
+  // Hosting plan picker — shared by the template flow and the custom landing
+  // page flow so both choose hosting before checkout.
+  function renderHostingPicker() {
+    return (
+      <div className="max-w-2xl mx-auto">
+        <p className="text-center text-sm font-semibold text-[#1A1A1A] mb-1">
+          Choose your hosting plan (required)
+        </p>
+        <p className="text-center text-[#8A8A8A] text-xs mb-3">
+          Keeps your site fast, secure &amp; online.
+        </p>
+        <div className="grid grid-cols-2 gap-3">
+          {HOSTING_PLANS.map((plan) => {
+            const isSelected = selectedHosting === plan.id
+            return (
+              <button
+                key={plan.id}
+                type="button"
+                onClick={() => setSelectedHosting(plan.id)}
+                aria-pressed={isSelected}
+                className={`rounded-xl border bg-white px-4 py-3 text-left transition-all duration-200 ${
+                  isSelected
+                    ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
+                    : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
+                }`}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-bold text-sm">{plan.label}</span>
+                  {isSelected && (
+                    <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: ACCENT }} />
+                  )}
+                </div>
+                <span className="block mt-0.5 text-[#5A5A5A] text-sm font-semibold">
+                  {plan.price}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <main
@@ -284,110 +360,87 @@ export default function LaunchFlow({
               </div>
 
               {/* Dedicated hosting plan selection */}
-              <div className="max-w-2xl mx-auto">
-                <p className="text-center text-sm font-semibold text-[#1A1A1A] mb-1">
-                  Choose your hosting plan (required)
-                </p>
-                <p className="text-center text-[#8A8A8A] text-xs mb-3">
-                  Keeps your site fast, secure & online.
-                </p>
-                <div className="grid grid-cols-2 gap-3">
-                  {HOSTING_PLANS.map((plan) => {
-                    const isSelected = selectedHosting === plan.id
+              {renderHostingPicker()}
+            </div>
+          )}
+
+          {/* Step 1 (custom): pick a build option.
+              Landing pages (Starter / Premium) continue to hosting → Stripe.
+              Multi-page sites branch off to a tailored quote request. */}
+          {step === 0 && siteType === 'custom' && (
+            <div className="space-y-6">
+              <div className="max-w-3xl mx-auto">
+                <h2 className="text-xl md:text-2xl font-bold text-center mb-4">
+                  What custom build?
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {CUSTOM_SITE_OPTIONS.map((option) => {
+                    const isSelected = selectedCustomOption === option.id
                     return (
                       <button
-                        key={plan.id}
+                        key={option.id}
                         type="button"
-                        onClick={() => setSelectedHosting(plan.id)}
+                        onClick={() => {
+                          setSelectedCustomOption(option.id)
+                          // Hosting only applies to the landing page (deposit) path.
+                          if (option.flow !== 'deposit') setSelectedHosting(null)
+                        }}
                         aria-pressed={isSelected}
-                        className={`rounded-xl border bg-white px-4 py-3 text-left transition-all duration-200 ${
+                        className={`rounded-xl border bg-white px-4 py-4 text-left transition-all duration-200 ${
                           isSelected
                             ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
                             : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                         }`}
                       >
                         <div className="flex items-center justify-between gap-2">
-                          <span className="font-bold text-sm">{plan.label}</span>
+                          <span className="font-extrabold text-sm">{option.label}</span>
                           {isSelected && (
                             <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: ACCENT }} />
                           )}
                         </div>
-                        <span className="block mt-0.5 text-[#5A5A5A] text-sm font-semibold">
-                          {plan.price}
+                        <span className="block mt-1 text-[#5A5A5A] text-sm font-semibold">
+                          {option.range}
                         </span>
                       </button>
                     )
                   })}
                 </div>
               </div>
-            </div>
-          )}
 
-          {/* Step 1 (custom): pick a build size, then book a consultation for a quote */}
-          {step === 0 && siteType === 'custom' && (
-            <div className="max-w-2xl mx-auto">
-              <h2 className="text-xl md:text-2xl font-bold text-center mb-4">
-                What custom build?
-              </h2>
-              <div className="grid grid-cols-2 gap-3">
-                {CUSTOM_SITE_OPTIONS.map((option) => {
-                  const isSelected = selectedCustomOption === option.id
-                  return (
-                    <button
-                      key={option.id}
-                      type="button"
-                      onClick={() => setSelectedCustomOption(option.id)}
-                      aria-pressed={isSelected}
-                      className={`rounded-xl border bg-white px-4 py-4 text-left transition-all duration-200 ${
-                        isSelected
-                          ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
-                          : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="font-extrabold text-sm">{option.label}</span>
-                        {isSelected && (
-                          <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: ACCENT }} />
-                        )}
-                      </div>
-                      <span className="block mt-1 text-[#5A5A5A] text-sm font-semibold">{option.range}</span>
-                    </button>
-                  )
-                })}
-              </div>
+              {/* Landing page path: choose hosting, then continue to checkout. */}
+              {isCustomDeposit && renderHostingPicker()}
 
-              <div className="mt-5 rounded-xl bg-white border border-[#E8E4DF] p-5 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                <h3 className="text-base font-bold mb-1">Let&apos;s scope it together</h3>
-                <p className="text-[#5A5A5A] text-sm mb-4">
-                  Book a free 15-min call for a tailored quote.
-                </p>
-                <a
-                  href={`/#consultation${selectedCustomOption ? `?build=${selectedCustomOption}` : ''}`}
-                  aria-disabled={!selectedCustomOption}
-                  className={`inline-flex items-center justify-center gap-2 font-bold px-6 py-3 rounded-[6px] transition-colors duration-200 ${
-                    selectedCustomOption
-                      ? 'bg-[#1A1A1A] text-white hover:bg-[#2D2D2D]'
-                      : 'bg-[#1A1A1A]/30 text-white pointer-events-none'
-                  }`}
-                >
-                  Book a Free Consultation
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-                {!selectedCustomOption && (
-                  <p className="text-[#8A8A8A] text-xs mt-2">Select a build option above.</p>
-                )}
-              </div>
+              {/* Multi-page path: scope it out with a tailored quote. */}
+              {isCustomQuote && (
+                <div className="max-w-2xl mx-auto rounded-xl bg-white border border-[#E8E4DF] p-5 sm:p-6 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                  <h3 className="text-base sm:text-lg font-bold mb-1">Let&apos;s scope it out</h3>
+                  <p className="text-[#5A5A5A] text-sm mb-4">
+                    Book a free 15-min consultation for a tailored quote.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => openQuoteForm()}
+                    className="inline-flex items-center justify-center gap-2 font-bold px-6 py-3 rounded-[6px] bg-[#1A1A1A] text-white hover:bg-[#2D2D2D] transition-colors duration-200"
+                  >
+                    Get a Quote
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
 
-              <div className="flex justify-center mt-5">
-                <button
-                  type="button"
-                  onClick={() => setSiteType(null)}
-                  className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  Back
-                </button>
-              </div>
+              {/* Inline Back button only when the sticky action bar is hidden. */}
+              {!isCustomDeposit && (
+                <div className="flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setSiteType(null)}
+                    className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                    Back
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
@@ -427,8 +480,8 @@ export default function LaunchFlow({
             </div>
           )}
 
-          {/* Step 3: Payment (template path only) */}
-          {step === 2 && hosting && goLiveDate && template && (
+          {/* Step 3: Payment — template builds and custom landing pages */}
+          {step === 2 && hosting && goLiveDate && (template || isCustomDeposit) && (
             <div className="max-w-lg mx-auto">
               <div className="rounded-2xl bg-white border border-[#E8E4DF] p-5 sm:p-6 space-y-4 text-[#1A1A1A] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                 <h2 className="text-xl font-bold flex items-center gap-2">
@@ -437,12 +490,12 @@ export default function LaunchFlow({
                 </h2>
                 <ul className="text-sm text-[#5A5A5A] space-y-3">
                   <li className="flex justify-between gap-4">
-                    <span>Template</span>
+                    <span>{siteType === 'custom' ? 'Custom build' : 'Template'}</span>
                     <span className="text-[#1A1A1A] font-semibold text-right">
-                      {template.businessName} ({template.industry})
+                      {buildName}
                     </span>
                   </li>
-                  {tier && template.tiers && template.tiers.length > 1 && (
+                  {siteType !== 'custom' && tier && template?.tiers && template.tiers.length > 1 && (
                     <li className="flex justify-between gap-4">
                       <span>Package</span>
                       <span className="text-[#1A1A1A] font-semibold text-right">{tier.label}</span>
@@ -451,7 +504,7 @@ export default function LaunchFlow({
                   <li className="flex justify-between gap-4">
                     <span>Website build</span>
                     <span className="text-[#1A1A1A] font-semibold text-right">
-                      ${templatePrice.toLocaleString()} {GST_NOTE}
+                      {buildPriceLabel}
                     </span>
                   </li>
                   <li className="flex justify-between gap-4">

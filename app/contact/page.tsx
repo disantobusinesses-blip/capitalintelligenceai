@@ -250,7 +250,7 @@ export default function ContactPage() {
                     ))}
                   </div>
                   <p className="text-[11px] text-[#9E9790] mt-2">
-                    All websites require $79/month hosting service.
+                    All websites require a hosting plan to stay live and secure.
                   </p>
                 </div>
 

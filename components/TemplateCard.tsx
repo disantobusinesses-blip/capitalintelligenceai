@@ -106,7 +106,7 @@ export default function TemplateCard({
   return (
     <div
       onClick={selectable ? () => onSelect?.(template.id) : undefined}
-      className={`flex flex-col rounded-xl overflow-hidden bg-white border transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.06)] ${
+      className={`flex flex-col h-full rounded-xl overflow-hidden bg-white border transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.06)] ${
         selectable ? 'cursor-pointer' : ''
       } ${
         selected
