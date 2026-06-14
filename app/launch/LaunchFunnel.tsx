@@ -27,6 +27,11 @@ const display = Cormorant_Garamond({
 // Brand accent (dark leather brown) — matches the rest of the site.
 const ACCENT = '#5C3D2E'
 
+// Higgsfield cinematic image slots. Drop a generated image URL here to enable
+// the backdrops. Left empty so we never show another brand's screenshot.
+const HF_HERO_SRC = ''
+const HF_PLAN_SRC = ''
+
 type PathKey = 'website' | 'google' | 'leads' | 'seo'
 
 const PATHS: { key: PathKey; label: string; sub: string; Icon: typeof Globe }[] = [
@@ -418,16 +423,20 @@ export default function LaunchFunnel() {
 
       {/* ---------------- INTRO ---------------- */}
       {view === 'intro' && (
-        <section className="relative min-h-full flex items-center justify-center px-5 py-24">
-          {/* Higgsfield hero slot — swap src for a generated cinematic image */}
-          <img
-            id="hf-hero"
-            src="/templates/apex-premium.jpeg"
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 z-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 z-0 bg-[#F8F7F4]/90" />
+        <section className="relative min-h-full flex items-center justify-center px-5 py-24 bg-[#F8F7F4]">
+          {/* Higgsfield hero slot — set a generated cinematic image URL here to enable the backdrop */}
+          {HF_HERO_SRC && (
+            <>
+              <img
+                id="hf-hero"
+                src={HF_HERO_SRC || "/placeholder.svg"}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 z-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 z-0 bg-[#F8F7F4]/90" />
+            </>
+          )}
           <div className="relative z-10 max-w-2xl text-center">
             <p className="text-[11px] font-semibold tracking-[2px] uppercase text-[#5C3D2E] mb-4">
               Launch My Site
@@ -509,7 +518,7 @@ export default function LaunchFunnel() {
       {/* ---------------- QUESTION STEPS ---------------- */}
       {view === 'step' && current && (
         <section className="min-h-full flex flex-col">
-          <div className="flex-1 flex items-center justify-center px-5 py-24">
+          <div className="flex-1 flex items-center justify-center px-5 pt-24 pb-40">
             <div className="w-full max-w-2xl">
               <p className="text-center text-[11px] font-semibold tracking-[2px] uppercase text-[#5C3D2E] mb-3">
                 {current.group}
@@ -566,16 +575,20 @@ export default function LaunchFunnel() {
               )}
               {current.key === 'website-plan' && (
                 <div>
-                  {/* Higgsfield plan banner slot */}
-                  <div className="relative mb-6 h-28 overflow-hidden rounded-2xl">
-                    <img
-                      id="hf-plan"
-                      src="/templates/hospitality.png"
-                      alt=""
-                      aria-hidden="true"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-[#1A1A1A]/55" />
+                  {/* Higgsfield plan banner slot — set HF_PLAN_SRC for a cinematic backdrop */}
+                  <div className="relative mb-6 h-28 overflow-hidden rounded-2xl bg-[#5C3D2E]">
+                    {HF_PLAN_SRC && (
+                      <>
+                        <img
+                          id="hf-plan"
+                          src={HF_PLAN_SRC || "/placeholder.svg"}
+                          alt=""
+                          aria-hidden="true"
+                          className="absolute inset-0 h-full w-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-[#1A1A1A]/55" />
+                      </>
+                    )}
                     <div className="relative z-10 flex h-full items-center justify-center px-4">
                       <h2 className={`${display.className} text-2xl md:text-4xl font-semibold text-white text-center text-balance`}>
                         Choose your plan
