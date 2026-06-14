@@ -29,9 +29,14 @@ const display = Cormorant_Garamond({
 // Brand accent (dark leather brown) — matches the rest of the site.
 const ACCENT = '#5C3D2E'
 
-// Higgsfield cinematic hero slot. Drop a generated image URL here to enable
-// the backdrop. Left empty so we never show another brand's screenshot.
-const HF_HERO_SRC = ''
+// Higgsfield cinematic image slots. Drop a generated image URL into the matching
+// constant (or set the src on the <img> with the given id) to enable each visual.
+// Left empty so the flow keeps its light look until visuals are added.
+//   hf-launch-hero -> opening screen background
+//   hf-plan        -> wide banner above the template/pricing cards
+const HF_LAUNCH_HERO_SRC = ''
+const HF_PLAN_SRC = ''
+const HF_FALLBACK_GRADIENT = 'linear-gradient(135deg, #0A0A0A 0%, #1A1208 100%)'
 
 type PathKey = 'website' | 'google' | 'leads' | 'seo'
 
@@ -458,30 +463,42 @@ export default function LaunchFunnel() {
 
       {/* ---------------- INTRO ---------------- */}
       {view === 'intro' && (
-        <section className="relative min-h-full flex items-center justify-center px-5 py-24 bg-[#F8F7F4]">
-          {/* Higgsfield hero slot — set a generated cinematic image URL here to enable the backdrop */}
-          {HF_HERO_SRC && (
+        <section className="relative min-h-full flex items-center justify-center overflow-hidden px-5 py-24 bg-[#F8F7F4]">
+          {/* Higgsfield launch hero background — full-bleed cinematic image with dark overlay. */}
+          {HF_LAUNCH_HERO_SRC && (
             <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                id="hf-hero"
-                src={HF_HERO_SRC || "/placeholder.svg"}
+                id="hf-launch-hero"
+                src={HF_LAUNCH_HERO_SRC || '/placeholder.svg'}
                 alt=""
                 aria-hidden="true"
                 className="absolute inset-0 z-0 h-full w-full object-cover"
+                style={{ background: HF_FALLBACK_GRADIENT }}
               />
-              <div className="absolute inset-0 z-0 bg-[#F8F7F4]/90" />
+              <div className="absolute inset-0 z-0 bg-black/60" />
             </>
           )}
           <div className="relative z-10 max-w-2xl text-center">
-            <p className="text-[11px] font-semibold tracking-[2px] uppercase text-[#5C3D2E] mb-4">
+            <p
+              className={`text-[11px] font-semibold tracking-[2px] uppercase mb-4 ${
+                HF_LAUNCH_HERO_SRC ? 'text-[#D8B894]' : 'text-[#5C3D2E]'
+              }`}
+            >
               Launch My Site
             </p>
             <h1
-              className={`${display.className} text-4xl md:text-6xl font-semibold leading-[1.05] text-balance mb-5`}
+              className={`${display.className} text-4xl md:text-6xl font-semibold leading-[1.05] text-balance mb-5 ${
+                HF_LAUNCH_HERO_SRC ? 'text-white' : ''
+              }`}
             >
               Let&apos;s build something remarkable.
             </h1>
-            <p className="text-[#5A5A5A] text-base md:text-lg leading-relaxed mb-8 max-w-xl mx-auto">
+            <p
+              className={`text-base md:text-lg leading-relaxed mb-8 max-w-xl mx-auto ${
+                HF_LAUNCH_HERO_SRC ? 'text-white/80' : 'text-[#5A5A5A]'
+              }`}
+            >
               Tell us what you need — we&apos;ll handle the rest.
             </p>
             <button
@@ -642,9 +659,33 @@ export default function LaunchFunnel() {
               )}
               {current.key === 'website-templates' && (
                 <div>
-                  <h2 className={`${display.className} text-center text-3xl md:text-5xl font-semibold mb-2 text-balance`}>
-                    Choose a template
-                  </h2>
+                  {/* Higgsfield plan banner — cinematic wide strip above the pricing cards. */}
+                  {HF_PLAN_SRC && (
+                    <div
+                      className="relative mb-6 w-full overflow-hidden rounded-2xl"
+                      style={{ height: 200, background: HF_FALLBACK_GRADIENT }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        id="hf-plan"
+                        src={HF_PLAN_SRC || '/placeholder.svg'}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/60" />
+                      <div className="relative z-10 flex h-full items-center justify-center px-4">
+                        <h2 className={`${display.className} text-3xl md:text-5xl font-semibold text-white text-center text-balance`}>
+                          Choose a template
+                        </h2>
+                      </div>
+                    </div>
+                  )}
+                  {!HF_PLAN_SRC && (
+                    <h2 className={`${display.className} text-center text-3xl md:text-5xl font-semibold mb-2 text-balance`}>
+                      Choose a template
+                    </h2>
+                  )}
                   <p className="mb-6 text-center text-sm text-[#8A8A8A]">
                     Tap a design to select it, or preview the live demo. All prices {GST_NOTE}.
                   </p>
