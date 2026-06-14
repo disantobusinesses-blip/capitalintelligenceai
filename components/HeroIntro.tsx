@@ -6,6 +6,14 @@ import { motion } from 'framer-motion'
 
 const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 
+// Higgsfield cinematic hero image. Drop a generated image URL here (or set the
+// src on <img id="hf-hero">) to enable the full-viewport background. Empty by
+// default so the hero keeps its current light look until a visual is added.
+const HF_HERO_SRC = ''
+
+const HF_FALLBACK_GRADIENT =
+  'linear-gradient(135deg, #0A0A0A 0%, #1A1208 100%)'
+
 const trustBadges = [
   'First SEO Blog Free',
   'No Lock-In Contracts',
@@ -14,8 +22,24 @@ const trustBadges = [
 
 export default function HeroIntro() {
   return (
-    <section className="bg-[#F8F7F4] pt-[100px] pb-[60px] px-6 mt-[74px]">
-      <div className="max-w-[1200px] mx-auto">
+    <section className="relative bg-[#F8F7F4] pt-[100px] pb-[60px] px-6 mt-[74px] overflow-hidden">
+      {/* Higgsfield hero background — full-bleed cinematic image with dark overlay.
+          Gated on HF_HERO_SRC so the section stays light until a visual is added. */}
+      {HF_HERO_SRC && (
+        <>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            id="hf-hero"
+            src={HF_HERO_SRC || '/placeholder.svg'}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 z-0 h-full w-full object-cover"
+            style={{ background: HF_FALLBACK_GRADIENT }}
+          />
+          <div className="absolute inset-0 z-0 bg-black/60" />
+        </>
+      )}
+      <div className="relative z-10 max-w-[1200px] mx-auto">
         <div className="max-w-[760px] space-y-6">
           {/* Label */}
           <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase">

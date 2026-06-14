@@ -5,10 +5,8 @@ import { CurrencyProvider } from '@/context/CurrencyContext'
 import { QuoteModalProvider } from '@/context/QuoteModalContext'
 import { GetStartedModalProvider } from '@/context/GetStartedModalContext'
 import GetStartedFormWrapper from '@/components/GetStartedFormWrapper'
-import BottomNav from '@/components/BottomNav'
 import QuoteModal from '@/components/QuoteModal'
-import Navbar from '@/components/Navbar'
-import GoogleReviewsBanner from '@/components/GoogleReviewsBanner'
+import SiteChrome from '@/components/SiteChrome'
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
@@ -132,10 +130,8 @@ export default function RootLayout({
         <CurrencyProvider>
           <QuoteModalProvider>
             <GetStartedModalProvider>
-              <Navbar />
-              <GoogleReviewsBanner />
+              <SiteChrome />
               {children}
-              <BottomNav />
               <QuoteModal />
               <GetStartedFormWrapper />
             </GetStartedModalProvider>
