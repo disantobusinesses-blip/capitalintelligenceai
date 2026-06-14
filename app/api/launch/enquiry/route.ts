@@ -14,11 +14,10 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 interface EnquiryPayload {
   paths: string[]
   website?: {
-    type?: string
+    choice?: string
+    template?: string
     industry?: string
     goal?: string
-    plan?: string
-    hosting?: string
     goLiveDate?: string
     hasLogo?: boolean
   } | null
@@ -86,11 +85,10 @@ export async function POST(request: NextRequest) {
 
   const websiteSection = body.website
     ? `<h3>Website</h3><table style="border-collapse:collapse;font-size:14px;">
-        ${row('Site type', body.website.type)}
+        ${row('Website choice', body.website.choice)}
+        ${row('Template', body.website.template)}
         ${row('Industry', body.website.industry)}
         ${row('Goal', body.website.goal)}
-        ${row('Plan', body.website.plan)}
-        ${row('Hosting', body.website.hosting)}
         ${row('Go live date', body.website.goLiveDate)}
         ${row('Logo uploaded', body.website.hasLogo ? 'Yes' : 'No')}
       </table>`

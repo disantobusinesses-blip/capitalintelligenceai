@@ -9,6 +9,7 @@ import {
   Check,
   CheckCircle2,
   CreditCard,
+  ExternalLink,
   Globe,
   Loader2,
   MapPin,
@@ -17,6 +18,7 @@ import {
   Upload,
   X,
 } from 'lucide-react'
+import { TEMPLATES, GST_NOTE } from '@/lib/templates'
 
 const display = Cormorant_Garamond({
   subsets: ['latin'],
@@ -27,10 +29,9 @@ const display = Cormorant_Garamond({
 // Brand accent (dark leather brown) — matches the rest of the site.
 const ACCENT = '#5C3D2E'
 
-// Higgsfield cinematic image slots. Drop a generated image URL here to enable
-// the backdrops. Left empty so we never show another brand's screenshot.
+// Higgsfield cinematic hero slot. Drop a generated image URL here to enable
+// the backdrop. Left empty so we never show another brand's screenshot.
 const HF_HERO_SRC = ''
-const HF_PLAN_SRC = ''
 
 type PathKey = 'website' | 'google' | 'leads' | 'seo'
 
@@ -56,10 +57,11 @@ const PATH_LABEL: Record<PathKey, string> = {
 
 type StepKey =
   | 'website-type'
+  | 'website-templates'
   | 'website-industry'
   | 'website-goal'
   | 'website-logo'
-  | 'website-plan'
+  | 'website-date'
   | 'biz-name'
   | 'google-suburb'
   | 'google-existing'
@@ -75,7 +77,29 @@ interface Step {
   group: string
 }
 
-const WEBSITE_TYPES = ['Landing Page', 'Full Website', 'Custom Build']
+type WebsiteChoice = 'landing' | 'custom' | 'template'
+
+const WEBSITE_CHOICES: { id: WebsiteChoice; label: string; price: string; blurb: string }[] = [
+  {
+    id: 'landing',
+    label: 'Landing Page',
+    price: 'from $599',
+    blurb: 'One high-converting page, live fast.',
+  },
+  {
+    id: 'custom',
+    label: 'Full Custom Website',
+    price: 'Custom quote',
+    blurb: 'Bespoke multi-page build, scoped to you.',
+  },
+  {
+    id: 'template',
+    label: 'Templates',
+    price: 'from $850',
+    blurb: 'Pick a proven, ready-to-launch design.',
+  },
+]
+
 const WEBSITE_INDUSTRIES = [
   'Trades',
   'Health & Fitness',
@@ -85,35 +109,6 @@ const WEBSITE_INDUSTRIES = [
   'Other',
 ]
 const WEBSITE_GOALS = ['Get More Leads', 'Sell Products', 'Build Credibility']
-
-const WEBSITE_PLANS = [
-  {
-    id: 'landing' as const,
-    label: 'Landing Page',
-    price: '$599',
-    blurb: 'One high-converting page, live fast.',
-    customOption: 'landing-starter',
-  },
-  {
-    id: 'full' as const,
-    label: 'Full Site',
-    price: '$1,999',
-    blurb: 'Multi-section site built to scale.',
-    customOption: 'landing-premium',
-  },
-  {
-    id: 'custom' as const,
-    label: 'Custom',
-    price: 'Book a Call',
-    blurb: 'Tailored scope, tailored quote.',
-    customOption: null,
-  },
-]
-
-const HOSTING_OPTIONS = [
-  { id: 'basic' as const, label: 'Hosting Only', price: '$59/mo' },
-  { id: 'updates' as const, label: 'Hosting + Updates', price: '$99/mo' },
-]
 
 const LEAD_VOLUMES = ['Under 50', '50–200', '200+']
 const GOOGLE_EXISTING = ['Yes', 'No', 'Not Sure']
@@ -152,12 +147,12 @@ export default function LaunchFunnel() {
   const [stepIndex, setStepIndex] = useState(0)
 
   // Website answers
-  const [websiteType, setWebsiteType] = useState<string | null>(null)
+  const [websiteChoice, setWebsiteChoice] = useState<WebsiteChoice | null>(null)
+  const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null)
+  const [selectedTier, setSelectedTier] = useState<'basic' | 'premium' | null>(null)
   const [websiteIndustry, setWebsiteIndustry] = useState<string | null>(null)
   const [websiteGoal, setWebsiteGoal] = useState<string | null>(null)
   const [logoFile, setLogoFile] = useState<File | null>(null)
-  const [websitePlan, setWebsitePlan] = useState<'landing' | 'full' | 'custom' | null>(null)
-  const [websiteHosting, setWebsiteHosting] = useState<'basic' | 'updates' | null>(null)
   const [goLiveDate, setGoLiveDate] = useState<string | null>(null)
 
   // Shared
@@ -197,9 +192,24 @@ export default function LaunchFunnel() {
     const hasBiz = () => list.some((s) => s.key === 'biz-name')
 
     if (selectedPaths.includes('website')) {
-      ;(['website-type', 'website-industry', 'website-goal', 'website-logo', 'website-plan'] as StepKey[]).forEach(
-        (key) => list.push({ key, group: PATH_LABEL.website })
-      )
+      const push = (key: StepKey) => list.push({ key, group: PATH_LABEL.website })
+      push('website-type')
+      if (websiteChoice === 'template') {
+        // The template already implies an industry, so skip the industry question.
+        push('website-templates')
+        push('website-logo')
+        push('website-date')
+      } else if (websiteChoice === 'landing') {
+        push('website-industry')
+        push('website-goal')
+        push('website-logo')
+        push('website-date')
+      } else if (websiteChoice === 'custom') {
+        // Full custom builds are quote-only — no instant deposit/date.
+        push('website-industry')
+        push('website-goal')
+        push('website-logo')
+      }
     }
     if (selectedPaths.includes('google')) {
       if (!hasBiz()) list.push({ key: 'biz-name', group: PATH_LABEL.google })
@@ -218,15 +228,16 @@ export default function LaunchFunnel() {
     }
     list.push({ key: 'contact', group: 'Your details' })
     return list
-  }, [selectedPaths])
+  }, [selectedPaths, websiteChoice])
 
   const current = steps[stepIndex]
 
-  // Website Stripe is available for the Landing / Full plans (deposit + hosting).
+  // Stripe deposit applies to Landing Page and Template builds. Full custom
+  // websites are quote-only. Hosting is billed later, on go-live.
   const websiteStripeEligible =
     selectedPaths.includes('website') &&
-    (websitePlan === 'landing' || websitePlan === 'full') &&
-    Boolean(websiteHosting) &&
+    (websiteChoice === 'landing' ||
+      (websiteChoice === 'template' && Boolean(selectedTemplate))) &&
     Boolean(goLiveDate)
 
   function togglePath(key: PathKey) {
@@ -241,16 +252,22 @@ export default function LaunchFunnel() {
     if (!current) return false
     switch (current.key) {
       case 'website-type':
-        return websiteType !== null
+        return websiteChoice !== null
+      case 'website-templates': {
+        if (!selectedTemplate) return false
+        const tpl = TEMPLATES.find((t) => t.id === selectedTemplate)
+        // Templates with multiple tiers (e.g. Basic / Premium) require a choice.
+        if (tpl?.tiers && tpl.tiers.length > 1) return selectedTier !== null
+        return true
+      }
       case 'website-industry':
         return websiteIndustry !== null
       case 'website-goal':
         return websiteGoal !== null
       case 'website-logo':
         return true // optional
-      case 'website-plan':
-        if (websitePlan === 'custom') return true
-        return websitePlan !== null && Boolean(websiteHosting) && Boolean(goLiveDate)
+      case 'website-date':
+        return Boolean(goLiveDate)
       case 'biz-name':
         return businessName.trim().length > 0
       case 'google-suburb':
@@ -278,16 +295,28 @@ export default function LaunchFunnel() {
     }
   }
 
+  function templateLabel(): string | undefined {
+    if (!selectedTemplate) return undefined
+    const tpl = TEMPLATES.find((t) => t.id === selectedTemplate)
+    if (!tpl) return undefined
+    const tier =
+      tpl.tiers && tpl.tiers.length > 1
+        ? tpl.tiers.find((t) => t.id === selectedTier)
+        : undefined
+    return tier
+      ? `${tpl.businessName} (${tpl.industry}) — ${tier.label}`
+      : `${tpl.businessName} (${tpl.industry})`
+  }
+
   function buildEnquiryPayload() {
     return {
       paths: selectedPaths.map((p) => PATH_LABEL[p]),
       website: selectedPaths.includes('website')
         ? {
-            type: websiteType ?? undefined,
+            choice: WEBSITE_CHOICES.find((c) => c.id === websiteChoice)?.label,
+            template: templateLabel(),
             industry: websiteIndustry ?? undefined,
             goal: websiteGoal ?? undefined,
-            plan: WEBSITE_PLANS.find((p) => p.id === websitePlan)?.label,
-            hosting: HOSTING_OPTIONS.find((h) => h.id === websiteHosting)?.label,
             goLiveDate: goLiveDate ?? undefined,
             hasLogo: Boolean(logoFile),
           }
@@ -335,17 +364,23 @@ export default function LaunchFunnel() {
     setLoading(true)
     setError(null)
     try {
-      const customOption =
-        websitePlan === 'landing' ? 'landing-starter' : 'landing-premium'
+      const payload =
+        websiteChoice === 'template'
+          ? {
+              siteType: 'template',
+              templateId: selectedTemplate,
+              tier: selectedTier ?? undefined,
+              goLiveDate,
+            }
+          : {
+              siteType: 'custom',
+              customOption: 'landing-starter',
+              goLiveDate,
+            }
       const res = await fetch('/api/launch/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          siteType: 'custom',
-          customOption,
-          hostingPlan: websiteHosting,
-          goLiveDate,
-        }),
+        body: JSON.stringify(payload),
       })
       const data = await res.json()
       if (!res.ok || !data.url) {
@@ -526,12 +561,44 @@ export default function LaunchFunnel() {
 
               {/* WEBSITE */}
               {current.key === 'website-type' && (
-                <QuestionChoices
-                  title="What type of site?"
-                  options={WEBSITE_TYPES}
-                  value={websiteType}
-                  onChange={setWebsiteType}
-                />
+                <div>
+                  <h2 className={`${display.className} text-center text-3xl md:text-5xl font-semibold mb-6 text-balance`}>
+                    What kind of website?
+                  </h2>
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    {WEBSITE_CHOICES.map((choice) => {
+                      const selected = websiteChoice === choice.id
+                      return (
+                        <button
+                          key={choice.id}
+                          type="button"
+                          onClick={() => {
+                            setWebsiteChoice(choice.id)
+                            // Reset downstream answers when switching choice.
+                            if (choice.id !== 'template') {
+                              setSelectedTemplate(null)
+                              setSelectedTier(null)
+                            }
+                            if (choice.id === 'custom') setGoLiveDate(null)
+                          }}
+                          aria-pressed={selected}
+                          className={`rounded-2xl border bg-white p-5 text-left transition-all duration-200 ${
+                            selected
+                              ? 'border-[#5C3D2E] scale-[1.03] shadow-[0_10px_30px_rgba(92,61,46,0.15)]'
+                              : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-bold">{choice.label}</span>
+                            {selected && <CheckCircle2 className="h-4 w-4" style={{ color: ACCENT }} />}
+                          </div>
+                          <span className="mt-1 block text-lg font-bold text-[#5C3D2E]">{choice.price}</span>
+                          <span className="mt-1 block text-xs text-[#8A8A8A]">{choice.blurb}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
               )}
               {current.key === 'website-industry' && (
                 <QuestionChoices
@@ -573,125 +640,142 @@ export default function LaunchFunnel() {
                   </label>
                 </div>
               )}
-              {current.key === 'website-plan' && (
+              {current.key === 'website-templates' && (
                 <div>
-                  {/* Higgsfield plan banner slot — set HF_PLAN_SRC for a cinematic backdrop */}
-                  <div className="relative mb-6 h-28 overflow-hidden rounded-2xl bg-[#5C3D2E]">
-                    {HF_PLAN_SRC && (
-                      <>
-                        <img
-                          id="hf-plan"
-                          src={HF_PLAN_SRC || "/placeholder.svg"}
-                          alt=""
-                          aria-hidden="true"
-                          className="absolute inset-0 h-full w-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-[#1A1A1A]/55" />
-                      </>
-                    )}
-                    <div className="relative z-10 flex h-full items-center justify-center px-4">
-                      <h2 className={`${display.className} text-2xl md:text-4xl font-semibold text-white text-center text-balance`}>
-                        Choose your plan
-                      </h2>
-                    </div>
-                  </div>
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    {WEBSITE_PLANS.map((plan) => {
-                      const selected = websitePlan === plan.id
+                  <h2 className={`${display.className} text-center text-3xl md:text-5xl font-semibold mb-2 text-balance`}>
+                    Choose a template
+                  </h2>
+                  <p className="mb-6 text-center text-sm text-[#8A8A8A]">
+                    Tap a design to select it, or preview the live demo. All prices {GST_NOTE}.
+                  </p>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {TEMPLATES.map((tpl) => {
+                      const selected = selectedTemplate === tpl.id
+                      const hasTiers = Boolean(tpl.tiers && tpl.tiers.length > 1)
                       return (
-                        <button
-                          key={plan.id}
-                          type="button"
-                          onClick={() => {
-                            setWebsitePlan(plan.id)
-                            if (plan.id === 'custom') {
-                              setWebsiteHosting(null)
-                              setGoLiveDate(null)
-                            }
-                          }}
-                          aria-pressed={selected}
-                          className={`rounded-2xl border bg-white p-5 text-left transition-all duration-200 ${
+                        <div
+                          key={tpl.id}
+                          className={`overflow-hidden rounded-2xl border bg-white transition-all duration-200 ${
                             selected
-                              ? 'border-[#5C3D2E] scale-[1.03] shadow-[0_10px_30px_rgba(92,61,46,0.15)]'
+                              ? 'border-[#5C3D2E] shadow-[0_10px_30px_rgba(92,61,46,0.15)]'
                               : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                           }`}
                         >
-                          <div className="flex items-center justify-between">
-                            <span className="font-bold">{plan.label}</span>
-                            {selected && <CheckCircle2 className="h-4 w-4" style={{ color: ACCENT }} />}
-                          </div>
-                          <span className="mt-1 block text-lg font-bold text-[#5C3D2E]">{plan.price}</span>
-                          <span className="mt-1 block text-xs text-[#8A8A8A]">{plan.blurb}</span>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setSelectedTemplate(tpl.id)
+                              setSelectedTier(hasTiers ? (tpl.tiers![0].id as 'basic' | 'premium') : null)
+                            }}
+                            aria-pressed={selected}
+                            className="block w-full text-left"
+                          >
+                            <div className="relative aspect-[16/10] overflow-hidden bg-[#EDE9E4]">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={tpl.screenshot || '/placeholder.svg'}
+                                alt={`${tpl.businessName} template preview`}
+                                className="h-full w-full object-cover object-top"
+                              />
+                              {selected && (
+                                <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[#5C3D2E]">
+                                  <Check className="h-3.5 w-3.5 text-white" />
+                                </span>
+                              )}
+                            </div>
+                            <div className="p-4">
+                              <p className="text-[11px] font-semibold uppercase tracking-[1px] text-[#8A8A8A]">
+                                {tpl.industry}
+                              </p>
+                              <p className="font-bold text-[#1A1A1A]">{tpl.businessName}</p>
+                              <p className="mt-1 text-sm font-bold text-[#5C3D2E]">
+                                {hasTiers
+                                  ? `From $${tpl.tiers![0].price} ${GST_NOTE}`
+                                  : `$${tpl.price} ${GST_NOTE}`}
+                              </p>
+                            </div>
+                          </button>
+
+                          {/* Tier picker for templates with Basic / Premium options */}
+                          {selected && hasTiers && (
+                            <div className="grid grid-cols-2 gap-2 px-4 pb-4">
+                              {tpl.tiers!.map((t) => {
+                                const tierSelected = selectedTier === t.id
+                                return (
+                                  <button
+                                    key={t.id}
+                                    type="button"
+                                    onClick={() => setSelectedTier(t.id as 'basic' | 'premium')}
+                                    aria-pressed={tierSelected}
+                                    className={`rounded-xl border px-3 py-2 text-left transition-all duration-200 ${
+                                      tierSelected
+                                        ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
+                                        : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
+                                    }`}
+                                  >
+                                    <span className="block text-xs font-bold">{t.label}</span>
+                                    <span className="block text-xs font-semibold text-[#5A5A5A]">
+                                      ${t.price} {GST_NOTE}
+                                    </span>
+                                  </button>
+                                )
+                              })}
+                            </div>
+                          )}
+
+                          <a
+                            href={
+                              selected && hasTiers
+                                ? (tpl.tiers!.find((t) => t.id === selectedTier)?.demoUrl ?? tpl.demoUrl)
+                                : tpl.demoUrl
+                            }
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-1.5 border-t border-[#E8E4DF] px-4 py-3 text-xs font-semibold text-[#5C3D2E] transition-colors duration-200 hover:bg-[#5C3D2E]/5"
+                          >
+                            <ExternalLink className="h-3.5 w-3.5" />
+                            View live demo
+                          </a>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+              {current.key === 'website-date' && (
+                <div>
+                  <h2 className={`${display.className} text-center text-3xl md:text-5xl font-semibold mb-2 text-balance`}>
+                    Pick your go-live date
+                  </h2>
+                  <p className="mb-6 text-center text-sm text-[#8A8A8A]">
+                    Hosting is billed separately once your site goes live — nothing extra today.
+                  </p>
+                  <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
+                    {dates.map((d) => {
+                      const iso = toISODate(d)
+                      const selected = goLiveDate === iso
+                      return (
+                        <button
+                          key={iso}
+                          type="button"
+                          onClick={() => setGoLiveDate(iso)}
+                          className={`rounded-lg border bg-white px-1 py-2 text-center transition-all duration-200 ${
+                            selected
+                              ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
+                              : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
+                          }`}
+                        >
+                          <span className="block text-[10px] font-semibold uppercase">
+                            {d.toLocaleDateString('en-AU', { weekday: 'short' })}
+                          </span>
+                          <span className="block text-base font-bold">{d.getDate()}</span>
+                          <span className="block text-[10px]">
+                            {d.toLocaleDateString('en-AU', { month: 'short' })}
+                          </span>
                         </button>
                       )
                     })}
                   </div>
-
-                  {/* Hosting + go-live for the deposit-based plans */}
-                  {(websitePlan === 'landing' || websitePlan === 'full') && (
-                    <div className="mt-6 space-y-5">
-                      <div>
-                        <p className="mb-2 text-sm font-semibold">Choose your hosting plan</p>
-                        <div className="grid grid-cols-2 gap-3">
-                          {HOSTING_OPTIONS.map((h) => {
-                            const selected = websiteHosting === h.id
-                            return (
-                              <button
-                                key={h.id}
-                                type="button"
-                                onClick={() => setWebsiteHosting(h.id)}
-                                aria-pressed={selected}
-                                className={`rounded-xl border bg-white px-4 py-3 text-left transition-all duration-200 ${
-                                  selected
-                                    ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
-                                    : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
-                                }`}
-                              >
-                                <span className="block text-sm font-bold">{h.label}</span>
-                                <span className="block text-sm font-semibold text-[#5A5A5A]">{h.price}</span>
-                              </button>
-                            )
-                          })}
-                        </div>
-                      </div>
-                      <div>
-                        <p className="mb-2 text-sm font-semibold">Pick your go-live date</p>
-                        <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
-                          {dates.map((d) => {
-                            const iso = toISODate(d)
-                            const selected = goLiveDate === iso
-                            return (
-                              <button
-                                key={iso}
-                                type="button"
-                                onClick={() => setGoLiveDate(iso)}
-                                className={`rounded-lg border bg-white px-1 py-2 text-center transition-all duration-200 ${
-                                  selected
-                                    ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
-                                    : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
-                                }`}
-                              >
-                                <span className="block text-[10px] font-semibold uppercase">
-                                  {d.toLocaleDateString('en-AU', { weekday: 'short' })}
-                                </span>
-                                <span className="block text-base font-bold">{d.getDate()}</span>
-                                <span className="block text-[10px]">
-                                  {d.toLocaleDateString('en-AU', { month: 'short' })}
-                                </span>
-                              </button>
-                            )
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {websitePlan === 'custom' && (
-                    <p className="mt-5 text-center text-sm text-[#8A8A8A]">
-                      No problem — we&apos;ll book a call to scope your custom build. Just add your
-                      details next.
-                    </p>
-                  )}
                 </div>
               )}
 
@@ -848,14 +932,13 @@ export default function LaunchFunnel() {
                 <h2 className={`${display.className} text-3xl font-semibold mb-1`}>Your order</h2>
                 <p className="mb-5 text-sm text-[#8A8A8A]">Review and secure your build.</p>
                 <ul className="space-y-3 text-sm text-[#5A5A5A]">
-                  <SummaryRow label="Plan" value={WEBSITE_PLANS.find((p) => p.id === websitePlan)?.label ?? ''} />
-                  {websiteType && <SummaryRow label="Site type" value={websiteType} />}
+                  <SummaryRow
+                    label="Build"
+                    value={WEBSITE_CHOICES.find((c) => c.id === websiteChoice)?.label ?? ''}
+                  />
+                  {templateLabel() && <SummaryRow label="Template" value={templateLabel()!} />}
                   {websiteIndustry && <SummaryRow label="Industry" value={websiteIndustry} />}
                   {websiteGoal && <SummaryRow label="Goal" value={websiteGoal} />}
-                  <SummaryRow
-                    label="Hosting"
-                    value={HOSTING_OPTIONS.find((h) => h.id === websiteHosting)?.label ?? ''}
-                  />
                   <SummaryRow
                     label="Go live"
                     value={
@@ -874,8 +957,9 @@ export default function LaunchFunnel() {
                   </li>
                 </ul>
                 <p className="mt-4 text-xs leading-relaxed text-[#8A8A8A]">
-                  You&apos;ll be charged the $200 deposit plus your first month of hosting in one
-                  secure Stripe checkout. The remaining balance is invoiced before go live.
+                  You&apos;ll be charged the $200 deposit today in a secure Stripe checkout. The
+                  remaining build balance and your hosting plan are invoiced once your site goes
+                  live.
                 </p>
                 {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
                 <button
