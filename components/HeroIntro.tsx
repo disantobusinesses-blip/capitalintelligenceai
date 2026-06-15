@@ -6,13 +6,17 @@ import { motion } from 'framer-motion'
 
 const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 
-// Higgsfield cinematic hero image. Drop a generated image URL here (or set the
-// src on <img id="hf-hero">) to enable the full-viewport background. Empty by
-// default so the hero keeps its current light look until a visual is added.
-const HF_HERO_SRC = ''
+// ─── Higgsfield assets ────────────────────────────────────────────────────────
+// Once Higgsfield MCP is authenticated, replace these with the generated URLs:
+//   HF_VIDEO_SRC  – 6-second cinematic loop (aerial Melbourne CBD, .mp4)
+//   HF_POSTER_SRC – matching still frame used as poster + mobile fallback
+const HF_VIDEO_SRC = ''
+const HF_POSTER_SRC = ''
+// ─────────────────────────────────────────────────────────────────────────────
 
-const HF_FALLBACK_GRADIENT =
-  'linear-gradient(135deg, #0A0A0A 0%, #1A1208 100%)'
+// SVG fractalNoise grain texture — base64 encoded, tiled at opacity 0.035
+const NOISE_DATA_URI =
+  'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyMDAnIGhlaWdodD0nMjAwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC43NScgbnVtT2N0YXZlcz0nNCcgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCUyM24pJy8+PC9zdmc+'
 
 const trustBadges = [
   'First SEO Blog Free',
@@ -22,39 +26,71 @@ const trustBadges = [
 
 export default function HeroIntro() {
   return (
-    <section className="relative bg-[#F8F7F4] pt-[100px] pb-[60px] px-6 mt-[74px] overflow-hidden">
-      {/* Higgsfield hero background — full-bleed cinematic image with dark overlay.
-          Gated on HF_HERO_SRC so the section stays light until a visual is added. */}
-      {HF_HERO_SRC && (
-        <>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            id="hf-hero"
-            src={HF_HERO_SRC || '/placeholder.svg'}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 z-0 h-full w-full object-cover"
-            style={{ background: HF_FALLBACK_GRADIENT }}
-          />
-          <div className="absolute inset-0 z-0 bg-black/60" />
-        </>
+    <section
+      className="relative min-h-screen pt-[100px] pb-[60px] px-6 mt-[74px] overflow-hidden bg-[#0A0A0A]"
+    >
+      {/* ── Video background (desktop) ─────────────────────────────────────── */}
+      {/* Hidden on mobile to save bandwidth — poster image renders instead   */}
+      {HF_VIDEO_SRC && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={HF_POSTER_SRC || undefined}
+          aria-hidden="true"
+          className="absolute inset-0 z-0 object-cover hidden md:block"
+          style={{ width: '100%', height: '100vh' }}
+        >
+          <source src={HF_VIDEO_SRC} type="video/mp4" />
+        </video>
       )}
-      <div className="relative z-10 max-w-[1200px] mx-auto">
+
+      {/* ── Poster / mobile fallback image ─────────────────────────────────── */}
+      {HF_POSTER_SRC && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={HF_POSTER_SRC}
+          alt=""
+          aria-hidden="true"
+          className={`absolute inset-0 z-0 object-cover${HF_VIDEO_SRC ? ' md:hidden' : ''}`}
+          style={{ width: '100%', height: '100vh' }}
+        />
+      )}
+
+      {/* ── Dark overlay ───────────────────────────────────────────────────── */}
+      <div className="absolute inset-0 bg-black/55 z-10" />
+
+      {/* ── Film-grain noise overlay ───────────────────────────────────────── */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          backgroundImage: `url("${NOISE_DATA_URI}")`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '200px 200px',
+          opacity: 0.035,
+          mixBlendMode: 'overlay',
+        }}
+      />
+
+      {/* ── Hero content ───────────────────────────────────────────────────── */}
+      <div className="relative z-20 max-w-[1200px] mx-auto">
         <div className="max-w-[760px] space-y-6">
           {/* Label */}
-          <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase">
+          <p className="text-amber-400 text-[13px] font-semibold tracking-[1.5px] uppercase">
             AI-Powered Web Agency
           </p>
 
           {/* Headline */}
-          <h1 className="text-[36px] md:text-[52px] leading-[1.15] font-extrabold text-[#1A1A1A] text-balance">
+          <h1 className="text-[36px] md:text-[52px] leading-[1.15] font-extrabold text-white text-balance">
             {HERO_HEADLINE}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-[18px] text-[#6B6560] mt-4 max-w-[520px]">
+          <p className="text-[18px] text-white/80 mt-4 max-w-[520px]">
             We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini, using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.{' '}
-            <span className="font-semibold text-[#5C3D2E]">Remote-first. Globally delivered.</span>
+            <span className="font-semibold text-amber-300">Remote-first. Globally delivered.</span>
           </p>
 
           {/* CTA Buttons */}
@@ -80,7 +116,7 @@ export default function HeroIntro() {
                 <motion.path
                   d="M 6 10 Q 75 2, 150 10 Q 225 18, 294 10"
                   fill="none"
-                  stroke="#5C3D2E"
+                  stroke="#F59E0B"
                   strokeWidth="3"
                   strokeLinecap="round"
                   variants={{
@@ -100,7 +136,7 @@ export default function HeroIntro() {
             {/* Secondary CTA */}
             <a
               href="#our-work"
-              className="border-2 border-[#1A1A1A] text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 inline-block text-center w-full sm:w-auto"
+              className="border-2 border-white text-white font-semibold px-6 py-3 rounded-[6px] hover:bg-white hover:text-[#1A1A1A] transition-all duration-200 inline-block text-center w-full sm:w-auto"
             >
               View Our Work
             </a>
@@ -110,10 +146,10 @@ export default function HeroIntro() {
           <div className="flex flex-wrap gap-4 pt-2">
             {trustBadges.map((badge) => (
               <div key={badge} className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
-                <span className="text-[13px] text-[#6B6560]">{badge}</span>
+                <span className="text-[13px] text-white/70">{badge}</span>
               </div>
             ))}
           </div>
