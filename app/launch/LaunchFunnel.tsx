@@ -533,22 +533,24 @@ export default function LaunchFunnel() {
                       type="button"
                       onClick={() => togglePath(key)}
                       aria-pressed={selected}
-                      className={`group relative min-h-[96px] rounded-2xl border bg-white p-5 text-left transition-all duration-200 ${
+                      className={`group relative rounded-2xl border bg-white p-4 md:p-5 text-left transition-all duration-200 ${
                         selected
                           ? 'border-[#5C3D2E] scale-[1.03] shadow-[0_10px_30px_rgba(92,61,46,0.15)]'
                           : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                       }`}
                     >
-                      <div className="flex items-start justify-between gap-3">
-                        <Icon className="w-6 h-6 text-[#5C3D2E]" />
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <Icon className="w-5 h-5 md:w-6 md:h-6 text-[#5C3D2E] flex-shrink-0" />
+                          <h3 className="text-[15px] md:text-base font-bold leading-snug">{label}</h3>
+                        </div>
                         {selected && (
-                          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#5C3D2E]">
+                          <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#5C3D2E]">
                             <Check className="w-3 h-3 text-white" />
                           </span>
                         )}
                       </div>
-                      <h3 className="mt-3 text-base font-bold">{label}</h3>
-                      <p className="text-[#8A8A8A] text-sm">{sub}</p>
+                      <p className="mt-1.5 text-[13px] md:text-sm text-[#8A8A8A]">{sub}</p>
                     </button>
                   )
                 })}
@@ -599,18 +601,18 @@ export default function LaunchFunnel() {
                             if (choice.id === 'custom') setGoLiveDate(null)
                           }}
                           aria-pressed={selected}
-                          className={`rounded-2xl border bg-white p-5 text-left transition-all duration-200 ${
+                          className={`rounded-2xl border bg-white p-4 md:p-5 text-left transition-all duration-200 ${
                             selected
                               ? 'border-[#5C3D2E] scale-[1.03] shadow-[0_10px_30px_rgba(92,61,46,0.15)]'
                               : 'border-[#E8E4DF] hover:border-[#5C3D2E]'
                           }`}
                         >
-                          <div className="flex items-center justify-between">
-                            <span className="font-bold">{choice.label}</span>
-                            {selected && <CheckCircle2 className="h-4 w-4" style={{ color: ACCENT }} />}
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-[15px] md:text-base font-bold leading-snug">{choice.label}</span>
+                            {selected && <CheckCircle2 className="h-4 w-4 flex-shrink-0" style={{ color: ACCENT }} />}
                           </div>
-                          <span className="mt-1 block text-lg font-bold text-[#5C3D2E]">{choice.price}</span>
-                          <span className="mt-1 block text-xs text-[#8A8A8A]">{choice.blurb}</span>
+                          <span className="mt-1 block text-base md:text-lg font-bold text-[#5C3D2E]">{choice.price}</span>
+                          <span className="mt-1 block text-sm md:text-xs text-[#8A8A8A]">{choice.blurb}</span>
                         </button>
                       )
                     })}

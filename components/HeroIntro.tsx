@@ -47,13 +47,14 @@ export default function HeroIntro() {
       )}
 
       {/* ── Poster / mobile fallback image ─────────────────────────────────── */}
+      {/* Shown only on mobile (block md:hidden); desktop uses the video above  */}
       {HF_POSTER_SRC && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={HF_POSTER_SRC}
           alt=""
           aria-hidden="true"
-          className={`absolute inset-0 z-0 object-cover${HF_VIDEO_SRC ? ' md:hidden' : ''}`}
+          className="absolute inset-0 z-0 object-cover block md:hidden"
           style={{ width: '100%', height: '100vh' }}
         />
       )}
