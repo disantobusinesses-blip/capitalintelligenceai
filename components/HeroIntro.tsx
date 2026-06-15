@@ -39,7 +39,7 @@ export default function HeroIntro() {
           playsInline
           poster={HF_POSTER_SRC || undefined}
           aria-hidden="true"
-          className="absolute inset-0 z-0 object-cover hidden md:block"
+          className="absolute inset-0 z-0 object-cover w-full h-full"
           style={{ width: '100%', height: '100vh' }}
         >
           <source src={HF_VIDEO_SRC} type="video/mp4" />
