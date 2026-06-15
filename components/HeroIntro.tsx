@@ -10,7 +10,7 @@ const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 // Once Higgsfield MCP is authenticated, replace these with the generated URLs:
 //   HF_VIDEO_SRC  – 6-second cinematic loop (aerial Melbourne CBD, .mp4)
 //   HF_POSTER_SRC – matching still frame used as poster + mobile fallback
-const HF_VIDEO_SRC = ''
+const HF_VIDEO_SRC = 'https://d8j0ntlcm91z4.cloudfront.net/user_3D9LlkxvjfIpyy2OuCRHQyhsybu/hf_20260615_031513_4b7e5c29-2a17-4030-8862-fe6f8728649c.mp4'
 const HF_POSTER_SRC = ''
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -99,7 +99,7 @@ export default function HeroIntro() {
             <div className="relative inline-flex self-start w-full sm:w-auto pb-4">
               <Link
                 href="/launch"
-                className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
+                className="relative w-full sm:w-auto bg-white text-[#1A1A1A] font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-white/90 transition-colors duration-200 flex items-center justify-center gap-2"
               >
                 <Rocket className="w-5 h-5" />
                 Launch My Site
