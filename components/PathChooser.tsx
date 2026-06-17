@@ -1,17 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Check, Palette, Rocket } from 'lucide-react'
-
-const TEMPLATE_POINTS = [
-  'Professionally designed industry templates',
-  'Customised with your branding & content',
-  'Live within 24–48 hours',
-]
-
-const CUSTOM_POINTS = [
-  'FREE quote',
-  'Tailored designs for your business',
-  'Landing Pages / Custom Websites / Cinematic Custom Websites',
-]
+import { ArrowRight, Palette, Rocket } from 'lucide-react'
 
 const CUSTOM_TIERS = [
   { label: 'Landing Pages', price: '$599 to $1,999 +GST' },
@@ -36,31 +24,23 @@ export default function PathChooser() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           {/* Path 1 — Template */}
-          <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-5 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-12 h-12 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center">
+          <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-6 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-12 h-12 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center shrink-0">
                 <Rocket className="w-6 h-6" />
               </span>
               <div>
-                <h3 className="text-2xl font-extrabold text-[#1A1A1A]">Pick a Template</h3>
+                <h3 className="text-xl md:text-2xl font-extrabold text-[#1A1A1A]">Pick a Template</h3>
                 <p className="text-[#5C3D2E] font-semibold text-sm">
                   From $850 +GST · Live in 24–48 hrs
                 </p>
               </div>
             </div>
-            <ul className="space-y-2.5 mb-8 flex-1">
-              {TEMPLATE_POINTS.map((point) => (
-                <li key={point} className="flex items-start gap-2 text-[15px] text-[#5A5A5A]">
-                  <Check className="w-4 h-4 mt-1 shrink-0 text-[#1A1A1A]" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
             <Link
               href="/launch?type=template"
-              className="inline-flex items-center justify-center gap-2 bg-[#1A1A1A] text-white font-bold px-6 py-4 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
+              className="mt-auto inline-flex items-center justify-center gap-2 bg-[#1A1A1A] text-white font-bold px-6 py-4 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
             >
               Pick a Template
               <ArrowRight className="w-4 h-4" />
@@ -68,43 +48,37 @@ export default function PathChooser() {
           </div>
 
           {/* Path 2 — Custom */}
-          <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-5 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-12 h-12 rounded-full bg-[#5C3D2E] text-white flex items-center justify-center">
+          <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-6 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-12 h-12 rounded-full bg-[#5C3D2E] text-white flex items-center justify-center shrink-0">
                 <Palette className="w-6 h-6" />
               </span>
               <div>
-                <h3 className="text-2xl font-extrabold text-[#1A1A1A]">Custom Landing Page or Site</h3>
+                <h3 className="text-xl md:text-2xl font-extrabold text-[#1A1A1A]">
+                  Custom Landing Page or Site
+                </h3>
                 <p className="text-[#5C3D2E] font-semibold text-sm">Tailored to your business</p>
               </div>
             </div>
-            {/* Three pricing tiers replacing the old single "From $1,999" line */}
-            <div className="space-y-2 mb-5">
+            {/* Three pricing tiers — full-width rows that always stay inside the card */}
+            <div className="space-y-2 mb-6">
               {CUSTOM_TIERS.map((tier) => (
                 <div
                   key={tier.label}
-                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-0.5 rounded-lg bg-[#F8F7F4] border border-[#E8E4DF] px-3 py-2"
+                  className="flex items-center justify-between gap-3 rounded-lg bg-[#F8F7F4] border border-[#E8E4DF] px-3 py-2"
                 >
                   <span className="text-[13px] font-semibold text-[#1A1A1A] leading-tight">
                     {tier.label}
                   </span>
-                  <span className="text-[13px] font-bold text-[#5C3D2E] whitespace-nowrap">
+                  <span className="text-[13px] font-bold text-[#5C3D2E] text-right">
                     {tier.price}
                   </span>
                 </div>
               ))}
             </div>
-            <ul className="space-y-2.5 mb-8 flex-1">
-              {CUSTOM_POINTS.map((point) => (
-                <li key={point} className="flex items-start gap-2 text-[15px] text-[#5A5A5A]">
-                  <Check className="w-4 h-4 mt-1 shrink-0 text-[#1A1A1A]" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
             <Link
               href="/launch?type=custom"
-              className="inline-flex items-center justify-center gap-2 border-2 border-[#1A1A1A] text-[#1A1A1A] font-bold px-6 py-4 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
+              className="mt-auto inline-flex items-center justify-center gap-2 border-2 border-[#1A1A1A] text-[#1A1A1A] font-bold px-6 py-4 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
             >
               Build Something Custom
               <ArrowRight className="w-4 h-4" />
