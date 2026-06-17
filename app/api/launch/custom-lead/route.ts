@@ -2,9 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 interface CustomLeadBody {
+  siteType?: 'template' | 'custom'
   name: string
   email: string
   phone: string
+  build?: string
   tier?: string
   goLiveDate?: string
   hostingPlan?: string
@@ -50,6 +52,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true })
   }
 
+  // The same pre-payment step is used by both the template and custom flows.
+  const isTemplate = body.siteType === 'template'
+  const leadLabel = isTemplate ? 'Template Site' : 'Custom Site'
+  const buildFieldLabel = isTemplate ? 'Template Selected' : 'Custom Tier Selected'
+  const buildValue = body.build?.trim() || body.tier?.trim() || 'Not specified'
+
   try {
     const transporter = nodemailer.createTransport({
       host: SMTP_HOST,
@@ -59,7 +67,7 @@ export async function POST(request: NextRequest) {
     })
 
     const htmlBody = `
-      <h2>📋 New Custom Site Lead (Pre-Payment) — ${esc(body.name)}</h2>
+      <h2>📋 New ${leadLabel} Lead (Pre-Payment) — ${esc(body.name)}</h2>
       <p><em>This lead submitted their contact details before reaching Stripe checkout.
       Follow up even if no payment comes through.</em></p>
       <h3>Contact Details</h3>
@@ -67,7 +75,8 @@ export async function POST(request: NextRequest) {
         <li><strong>Name:</strong> ${esc(body.name)}</li>
         <li><strong>Email:</strong> ${esc(body.email)}</li>
         <li><strong>Phone:</strong> ${esc(body.phone)}</li>
-        <li><strong>Custom Tier Selected:</strong> ${esc(body.tier?.trim() || 'Not specified')}</li>
+        <li><strong>${buildFieldLabel}:</strong> ${esc(buildValue)}</li>
+        ${isTemplate && body.tier ? `<li><strong>Package:</strong> ${esc(body.tier)}</li>` : ''}
         ${body.hostingPlan ? `<li><strong>Hosting Plan:</strong> ${esc(body.hostingPlan)}</li>` : ''}
         ${body.goLiveDate ? `<li><strong>Go Live Date:</strong> ${esc(body.goLiveDate)}</li>` : ''}
       </ul>
@@ -77,7 +86,7 @@ export async function POST(request: NextRequest) {
       from: SMTP_FROM,
       to: 'sales@intelligentaisystem.com',
       replyTo: body.email.trim(),
-      subject: `📋 New Custom Site Lead (Pre-Payment) — ${body.name.trim()}`,
+      subject: `📋 New ${leadLabel} Lead (Pre-Payment) — ${body.name.trim()}`,
       html: htmlBody,
     })
   } catch (err) {

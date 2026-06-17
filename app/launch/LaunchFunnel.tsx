@@ -454,10 +454,10 @@ export default function LaunchFunnel() {
       {/* Exit to site */}
       <Link
         href="/"
-        aria-label="Exit"
-        className="fixed top-4 right-4 z-[70] flex items-center gap-1.5 rounded-full border border-[#E8E4DF] bg-white/90 px-3 py-1.5 text-xs font-semibold text-[#5A5A5A] hover:text-[#1A1A1A] hover:border-[#5C3D2E] transition-colors duration-200"
+        aria-label="Exit and return to homepage"
+        className="fixed top-4 right-4 z-[70] inline-flex items-center gap-2 rounded-full border border-[#1A1A1A]/15 bg-white px-4 py-2.5 text-sm font-bold text-[#1A1A1A] shadow-[0_4px_16px_rgba(0,0,0,0.12)] hover:bg-[#1A1A1A] hover:text-white hover:border-[#1A1A1A] transition-colors duration-200"
       >
-        <X className="w-3.5 h-3.5" />
+        <X className="w-5 h-5" />
         Exit
       </Link>
 
