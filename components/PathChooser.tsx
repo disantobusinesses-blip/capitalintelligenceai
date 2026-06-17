@@ -8,9 +8,15 @@ const TEMPLATE_POINTS = [
 ]
 
 const CUSTOM_POINTS = [
-  'Custom landing page or full website',
-  'Tailored design built around your business',
-  'Book a free consultation to scope it out',
+  'FREE quote',
+  'Tailored designs for your business',
+  'Landing Pages / Custom Websites / Cinematic Custom Websites',
+]
+
+const CUSTOM_TIERS = [
+  { label: 'Landing Pages', price: '$599 to $1,999 +GST' },
+  { label: 'Custom Websites', price: '$1,999 to $5,999 +GST' },
+  { label: 'Cinematic Custom Website Design', price: '$3,499 to $10,000 +GST' },
 ]
 
 export default function PathChooser() {
@@ -69,10 +75,24 @@ export default function PathChooser() {
               </span>
               <div>
                 <h3 className="text-2xl font-extrabold text-[#1A1A1A]">Custom Landing Page or Site</h3>
-                <p className="text-[#5C3D2E] font-semibold text-sm">
-                  From $1,999 · Tailored to your business
-                </p>
+                <p className="text-[#5C3D2E] font-semibold text-sm">Tailored to your business</p>
               </div>
+            </div>
+            {/* Three pricing tiers replacing the old single "From $1,999" line */}
+            <div className="space-y-2 mb-5">
+              {CUSTOM_TIERS.map((tier) => (
+                <div
+                  key={tier.label}
+                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-0.5 rounded-lg bg-[#F8F7F4] border border-[#E8E4DF] px-3 py-2"
+                >
+                  <span className="text-[13px] font-semibold text-[#1A1A1A] leading-tight">
+                    {tier.label}
+                  </span>
+                  <span className="text-[13px] font-bold text-[#5C3D2E] whitespace-nowrap">
+                    {tier.price}
+                  </span>
+                </div>
+              ))}
             </div>
             <ul className="space-y-2.5 mb-8 flex-1">
               {CUSTOM_POINTS.map((point) => (

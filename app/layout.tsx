@@ -4,8 +4,10 @@ import './globals.css'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 import { QuoteModalProvider } from '@/context/QuoteModalContext'
 import { GetStartedModalProvider } from '@/context/GetStartedModalContext'
+import { QuotePopupProvider } from '@/context/QuotePopupContext'
 import GetStartedFormWrapper from '@/components/GetStartedFormWrapper'
 import QuoteModal from '@/components/QuoteModal'
+import QuotePopup from '@/components/QuotePopup'
 import SiteChrome from '@/components/SiteChrome'
 
 const localBusinessSchema = {
@@ -130,10 +132,13 @@ export default function RootLayout({
         <CurrencyProvider>
           <QuoteModalProvider>
             <GetStartedModalProvider>
-              <SiteChrome />
-              {children}
-              <QuoteModal />
-              <GetStartedFormWrapper />
+              <QuotePopupProvider>
+                <SiteChrome />
+                {children}
+                <QuoteModal />
+                <GetStartedFormWrapper />
+                <QuotePopup />
+              </QuotePopupProvider>
             </GetStartedModalProvider>
           </QuoteModalProvider>
         </CurrencyProvider>

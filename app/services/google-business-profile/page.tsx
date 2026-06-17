@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowLeft, Check, MapPin, Star, QrCode, FileText, Image, Settings } from 'lucide-react'
+import QuotePopupButton from '@/components/QuotePopupButton'
 
 const setupFeatures = [
   {
@@ -87,12 +88,12 @@ export default function GoogleBusinessProfilePage() {
             easier for happy customers to find and review you — all done for you in one hit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+            <QuotePopupButton
+              service="Google Business Profile"
               className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
             >
               Enquire Now — A$299
-            </a>
+            </QuotePopupButton>
             <a
               href="#what-you-get"
               className="px-8 py-4 border border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#1A1A1A] hover:text-white"
@@ -160,12 +161,12 @@ export default function GoogleBusinessProfilePage() {
                 </li>
               ))}
             </ul>
-            <a
-              href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+            <QuotePopupButton
+              service="Google Business Profile"
               className="w-full sm:w-auto px-8 py-4 bg-white text-[#1A1A1A] rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#F8F7F4] inline-block text-center"
             >
               Enquire Now
-            </a>
+            </QuotePopupButton>
           </div>
 
           {/* Add-on card */}
@@ -207,12 +208,12 @@ export default function GoogleBusinessProfilePage() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Management&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+                <QuotePopupButton
+                  service="Google Business Profile"
                   className="w-full sm:w-auto px-6 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-sm transition-colors duration-200 hover:bg-[#2D2D2D] inline-block text-center"
                 >
                   Enquire About the Add-on
-                </a>
+                </QuotePopupButton>
               </div>
             )}
           </div>
@@ -229,12 +230,12 @@ export default function GoogleBusinessProfilePage() {
             A properly set-up Google Business Profile is one of the highest-ROI things a local
             business can do. Get yours done right, once, for A$299.
           </p>
-          <a
-            href="mailto:sales@intelligentaisystem.com?subject=Enquire%20About%20Google%20Business%20Profile%20Setup&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+          <QuotePopupButton
+            service="Google Business Profile"
             className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D] inline-block"
           >
             Enquire Now
-          </a>
+          </QuotePopupButton>
           <p className="text-xs text-[#9E9790] mt-4">No lock-in contracts. Remote-first. Fast turnaround.</p>
         </div>
       </section>

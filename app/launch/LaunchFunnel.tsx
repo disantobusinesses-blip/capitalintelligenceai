@@ -1004,6 +1004,10 @@ export default function LaunchFunnel() {
                   remaining build balance and your hosting plan are invoiced once your site goes
                   live.
                 </p>
+                {/* Deposit incentive (messaging only — no Stripe coupon applied). */}
+                <div className="mt-4 rounded-[6px] bg-[#FFF4E5] border border-[#F0C36D] px-4 py-3 text-sm font-semibold text-[#8A5A00]">
+                  Pay your deposit today and receive 10% off your final build invoice.
+                </div>
                 {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
                 <button
                   type="button"

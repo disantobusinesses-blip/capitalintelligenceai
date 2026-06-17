@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Check, Globe, Package, MapPin, Shield, TrendingUp, Zap, ArrowRight, Bot, X } from 'lucide-react'
+import QuotePopupButton from '@/components/QuotePopupButton'
 
 export const metadata: Metadata = {
   title: 'Our Services – Intelligent AI Systems',
@@ -225,8 +226,7 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+                  <QuotePopupButton
                     className={`w-full text-center font-semibold py-3 rounded-[6px] transition-colors duration-200 text-sm block ${
                       plan.highlight
                         ? 'bg-[#1A1A1A] text-white hover:bg-[#2D2D2D]'
@@ -234,7 +234,7 @@ export default function ServicesPage() {
                     }`}
                   >
                     {plan.cta}
-                  </a>
+                  </QuotePopupButton>
                 </div>
               )
             })}
@@ -492,12 +492,12 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="mailto:sales@intelligentaisystem.com?subject=B2B%20CRM%20AI%20Platform%20-%20Discovery%20Call&body=Hello%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20for%20the%20B2B%20Custom%20CRM%20AI%20Acquisition%20Platform."
+                <QuotePopupButton
+                  service="B2B AI Platform"
                   className="inline-block px-7 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-sm transition-colors duration-200 hover:bg-[#2D2D2D]"
                 >
                   Book a Discovery Call
-                </a>
+                </QuotePopupButton>
               </div>
             </div>
           </div>
@@ -511,12 +511,11 @@ export default function ServicesPage() {
           <p className="text-[#6B6560] mb-8">
             Tell us about your business and we&apos;ll recommend the right combination of services to get you results.
           </p>
-          <a
-            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+          <QuotePopupButton
             className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
           >
             Get a Free Quote
-          </a>
+          </QuotePopupButton>
         </div>
       </section>
     </div>

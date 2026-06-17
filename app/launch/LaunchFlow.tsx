@@ -88,6 +88,13 @@ export default function LaunchFlow({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  // Custom flow only: capture the lead's contact details before Stripe checkout
+  // so we can follow up even if they abandon payment.
+  const [contactName, setContactName] = useState('')
+  const [contactEmail, setContactEmail] = useState('')
+  const [contactPhone, setContactPhone] = useState('')
+  const [leadSent, setLeadSent] = useState(false)
+
   // Always land at the very top of the next step so the heading is the first thing
   // a visitor sees — never the bottom of the previous section.
   const isFirstRender = useRef(true)
@@ -144,13 +151,45 @@ export default function LaunchFlow({
     setSelectedHosting(null)
   }
 
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  const contactComplete =
+    contactName.trim() !== '' &&
+    EMAIL_RE.test(contactEmail.trim()) &&
+    contactPhone.trim() !== ''
+
   async function handleCheckout() {
     const validTemplate =
       siteType === 'template' && Boolean(selectedTemplate && selectedHosting)
     const validCustom = isCustomDeposit && Boolean(selectedHosting)
     if ((!validTemplate && !validCustom) || !goLiveDate || !termsAccepted) return
+    // Custom builds must capture contact details before reaching Stripe.
+    if (siteType === 'custom' && !contactComplete) return
     setLoading(true)
     setError(null)
+
+    // Fire the pre-payment lead email for custom builds as soon as the visitor
+    // commits to checkout — this happens before the Stripe redirect, so the lead
+    // is captured even if payment is abandoned. A failure here never blocks them.
+    if (siteType === 'custom' && !leadSent) {
+      try {
+        await fetch('/api/launch/custom-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: contactName.trim(),
+            email: contactEmail.trim(),
+            phone: contactPhone.trim(),
+            tier: customOption ? `${customOption.label} (${customOption.range})` : '',
+            hostingPlan: hosting ? `${hosting.label} — ${hosting.price}` : selectedHosting,
+            goLiveDate,
+          }),
+        })
+        setLeadSent(true)
+      } catch {
+        // Swallow — never block the user from proceeding to payment.
+      }
+    }
+
     try {
       const body =
         siteType === 'template'
@@ -536,6 +575,37 @@ export default function LaunchFlow({
                   live.
                 </p>
 
+                {/* Custom flow: capture contact details before Stripe so we can
+                    follow up with leads who start checkout but don't pay. */}
+                {siteType === 'custom' && (
+                  <div className="space-y-3 border-t border-[#E8E4DF] pt-4">
+                    <p className="text-sm font-semibold text-[#1A1A1A]">
+                      Your contact details <span className="text-red-500">*</span>
+                    </p>
+                    <input
+                      type="text"
+                      value={contactName}
+                      onChange={(e) => setContactName(e.target.value)}
+                      placeholder="Full name"
+                      className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#8A8A8A] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+                    />
+                    <input
+                      type="email"
+                      value={contactEmail}
+                      onChange={(e) => setContactEmail(e.target.value)}
+                      placeholder="Email address"
+                      className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#8A8A8A] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+                    />
+                    <input
+                      type="tel"
+                      value={contactPhone}
+                      onChange={(e) => setContactPhone(e.target.value)}
+                      placeholder="Phone number"
+                      className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#8A8A8A] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+                    />
+                  </div>
+                )}
+
                 <label className="flex items-start gap-3 text-sm text-[#5A5A5A] cursor-pointer">
                   <input
                     type="checkbox"
@@ -550,11 +620,16 @@ export default function LaunchFlow({
                   </span>
                 </label>
 
+                {/* Deposit incentive (messaging only — no Stripe coupon applied). */}
+                <div className="rounded-[6px] bg-[#FFF4E5] border border-[#F0C36D] px-4 py-3 text-sm font-semibold text-[#8A5A00]">
+                  Pay your deposit today and receive 10% off your final build invoice.
+                </div>
+
                 {error && <p className="text-red-600 text-sm">{error}</p>}
 
                 <button
                   onClick={handleCheckout}
-                  disabled={!termsAccepted || loading}
+                  disabled={!termsAccepted || loading || (siteType === 'custom' && !contactComplete)}
                   className="w-full inline-flex items-center justify-center gap-2 bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   {loading ? (
