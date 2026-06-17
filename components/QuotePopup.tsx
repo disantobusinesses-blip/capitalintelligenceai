@@ -31,6 +31,11 @@ export default function QuotePopup() {
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
 
+  // Slide-in/out animation state. `render` keeps the panel mounted long enough
+  // to animate out; `slideIn` drives the transform.
+  const [render, setRender] = useState(false)
+  const [slideIn, setSlideIn] = useState(false)
+
   // ── Time-delayed auto-open (once per session) ──────────────────────────────
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -47,6 +52,18 @@ export default function QuotePopup() {
     return () => clearTimeout(timer)
   }, [openPopup])
 
+  // Drive the slide animation from the open state.
+  useEffect(() => {
+    if (isOpen) {
+      setRender(true)
+      const t = setTimeout(() => setSlideIn(true), 20)
+      return () => clearTimeout(t)
+    }
+    setSlideIn(false)
+    const t = setTimeout(() => setRender(false), 300)
+    return () => clearTimeout(t)
+  }, [isOpen])
+
   // Keep the dropdown in sync when a button opens the popup with a preselection.
   useEffect(() => {
     if (isOpen) {
@@ -54,7 +71,7 @@ export default function QuotePopup() {
     }
   }, [isOpen, preselectedService])
 
-  if (!isOpen) return null
+  if (!render) return null
 
   const messageLength = message.trim().length
   const canSubmit =
@@ -120,25 +137,35 @@ export default function QuotePopup() {
     }
   }
 
+  // Non-interrupting bottom sheet: no full-screen backdrop, so the visitor can
+  // keep browsing and dismiss whenever they like. Slides up from the bottom,
+  // anchored bottom-right on desktop and full-width on mobile.
+  const shellClass =
+    'fixed z-[70] inset-x-0 bottom-0 sm:inset-x-auto sm:right-5 sm:bottom-5 sm:w-full sm:max-w-md ' +
+    `transition-transform duration-300 ease-out ${slideIn ? 'translate-y-0' : 'translate-y-[calc(100%+2rem)]'}`
+
+  const cardClass =
+    'bg-white border border-[#E8E4DF] rounded-t-2xl sm:rounded-2xl shadow-[0_-8px_40px_rgba(0,0,0,0.18)] sm:shadow-[0_12px_48px_rgba(0,0,0,0.20)] max-h-[85vh] overflow-y-auto'
+
   // ── Success state ───────────────────────────────────────────────────────────
   if (submitted) {
     return (
-      <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-        <div className="bg-white border border-[#E8E4DF] rounded-2xl p-8 max-w-lg w-full text-center relative">
+      <div className={shellClass} role="dialog" aria-label="Quote request sent">
+        <div className={`${cardClass} p-7 text-center relative`}>
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 p-2 rounded-lg hover:bg-[#F8F7F4] smooth-transition"
+            className="absolute top-3 right-3 p-2 rounded-lg hover:bg-[#F8F7F4] smooth-transition"
             aria-label="Close"
           >
             <X className="w-5 h-5 text-[#6B6560]" />
           </button>
-          <div className="w-20 h-20 bg-green-500/15 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-10 h-10 text-green-500" />
+          <div className="w-16 h-16 bg-green-500/15 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-5">
+            <CheckCircle className="w-8 h-8 text-green-500" />
           </div>
-          <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">
+          <h2 className="text-xl font-bold text-[#1A1A1A] mb-3">
             Thanks — we&apos;ll be in touch within 1 hour
           </h2>
-          <p className="text-[#6B6560] mb-6 leading-relaxed">
+          <p className="text-[#6B6560] mb-6 leading-relaxed text-sm">
             Your request is in. A member of our team will reach out shortly to get you a free quote.
           </p>
           <button
@@ -153,12 +180,12 @@ export default function QuotePopup() {
   }
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="bg-white border border-[#E8E4DF] rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+    <div className={shellClass} role="dialog" aria-label="Get a free quote">
+      <div className={cardClass}>
         {/* Header */}
-        <div className="flex items-start justify-between p-6 border-b border-[#E8E4DF] sticky top-0 bg-white rounded-t-2xl z-10">
+        <div className="flex items-start justify-between p-5 border-b border-[#E8E4DF] sticky top-0 bg-white rounded-t-2xl z-10">
           <div>
-            <h2 className="text-xl font-bold text-[#1A1A1A]">Get a Free Quote — No Commitment</h2>
+            <h2 className="text-lg font-bold text-[#1A1A1A]">Get a Free Quote — No Commitment</h2>
             <p className="text-sm text-[#6B6560] mt-0.5">Tell us what you need. We respond within 1 hour.</p>
           </div>
           <button
@@ -171,7 +198,7 @@ export default function QuotePopup() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-5 space-y-3.5">
           {/* Name */}
           <div>
             <label htmlFor="qp-name" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
@@ -262,7 +289,7 @@ export default function QuotePopup() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="What does your business do, and what are you looking to achieve?"
-              rows={4}
+              rows={3}
               required
               className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 resize-none"
             />

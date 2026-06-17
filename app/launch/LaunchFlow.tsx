@@ -665,10 +665,9 @@ export default function LaunchFlow({
                   </li>
                 </ul>
                 <p className="text-xs text-[#8A8A8A] leading-relaxed">
-                  You&apos;ll be charged the ${DEPOSIT_AMOUNT} deposit plus your first month of
-                  hosting in one secure Stripe checkout. We collect your email and phone at checkout
-                  so we can confirm your build. The remaining build balance is invoiced before go
-                  live.
+                  You&apos;ll be charged only the ${DEPOSIT_AMOUNT} deposit today in one secure
+                  Stripe checkout. Your hosting plan and the remaining build balance are invoiced
+                  separately once your site goes live.
                 </p>
 
                 {/* Contact name/email/phone already captured on the previous
@@ -705,7 +704,7 @@ export default function LaunchFlow({
                       Redirecting to Stripe…
                     </>
                   ) : (
-                    <>Pay ${DEPOSIT_AMOUNT} Deposit + Hosting</>
+                    <>Pay ${DEPOSIT_AMOUNT} Deposit</>
                   )}
                 </button>
               </div>
@@ -766,7 +765,7 @@ export default function LaunchFlow({
                   </>
                 ) : (
                   <>
-                    {step === 2 ? 'Continue to Payment' : 'Continue'}
+                    {step === 2 ? 'Next' : 'Continue'}
                     <ArrowRight className="w-4 h-4" />
                   </>
                 )}

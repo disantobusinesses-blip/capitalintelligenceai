@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, Rocket } from 'lucide-react'
+import { useQuotePopup } from '@/context/QuotePopupContext'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -15,6 +16,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const { openPopup } = useQuotePopup()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 300)
@@ -74,12 +76,13 @@ export default function Navbar() {
             <Rocket className="w-4 h-4" />
             Launch My Site
           </Link>
-          <Link
-            href="/#consultation"
+          <button
+            type="button"
+            onClick={() => openPopup()}
             className="bg-[#1A1A1A] text-white text-sm font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
           >
-            Book Free Consultation
-          </Link>
+            Quote
+          </button>
         </div>
       </div>
     </header>
