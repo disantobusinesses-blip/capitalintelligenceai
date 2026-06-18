@@ -453,7 +453,7 @@ export default function LaunchFlow({
                 <h2 className="text-xl md:text-2xl font-bold text-center mb-4">
                   What custom build?
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {CUSTOM_SITE_OPTIONS.map((option) => {
                     const isSelected = selectedCustomOption === option.id
                     return (

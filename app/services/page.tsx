@@ -18,79 +18,79 @@ export const metadata: Metadata = {
   },
 }
 
-/* ─── SEO Plans ─────────────────────────────────────────────────────────── */
-const seoPlans = [
+/* ─── Website Packages ──────────────────────────────────────────────────── */
+const websitePackages = [
   {
-    key: 'website-hosting',
-    icon: Shield,
-    name: 'Website Hosting',
-    price: 'A$99',
-    period: '/month',
+    key: 'landing-starter',
+    icon: Globe,
+    name: 'Landing Page Starter',
+    price: '$599–$999',
+    period: 'one-off',
     badge: null,
-    description: 'Essential hosting and maintenance to keep your site running smoothly and securely.',
+    description: 'A high-converting single-page website built to turn visitors into leads.',
     features: [
-      '1 Monthly content update',
-      'Website maintenance',
-      'Security updates',
-      'Monthly backups',
-      'Up to 1hr tech support/month',
+      'Custom single-page design',
+      'Mobile responsive layout',
+      'Contact form, map & social links',
+      'SEO meta setup',
+      'Fast loading & SSL',
     ],
     highlight: false,
-    cta: 'Get Started',
+    cta: 'Get a Quote',
   },
   {
-    key: 'google-growth',
-    icon: TrendingUp,
-    name: 'Google Growth',
-    price: 'A$199',
-    period: '/month',
+    key: 'landing-premium',
+    icon: Zap,
+    name: 'Landing Page Premium',
+    price: '$1,000–$1,999',
+    period: 'one-off',
     badge: 'Most Popular',
-    description: 'Start ranking on Google with consistent monthly content and keyword strategy.',
+    description: 'A premium single-page experience with cinematic motion and an immersive layout.',
     features: [
-      '4 blogs. Everything from Website Hosting +',
-      'Monthly keyword research',
-      'On-page optimisation',
-      'AI search indexing (ChatGPT, Gemini, Perplexity)',
-      'Monthly performance report',
+      'Everything in Starter',
+      'Cinematic scroll animations',
+      'Premium immersive layout',
+      'Google Analytics setup',
+      'Booking / consultation button wired',
     ],
     highlight: true,
-    cta: 'Start Growing',
+    cta: 'Get a Quote',
   },
   {
-    key: 'super-growth',
-    icon: Zap,
-    name: 'Super Growth',
-    price: 'A$359',
-    period: '/month',
-    badge: 'Best Value',
-    description: 'Double the content output to accelerate your rankings and drive serious organic traffic.',
+    key: 'multipage',
+    icon: Package,
+    name: 'Multi-Page Website',
+    price: '$1,999–$5,999',
+    period: 'one-off',
+    badge: null,
+    description: 'A complete multi-page website tailored to your brand and built to convert.',
     features: [
-      '8 blogs. Everything from Google Growth +',
-      'Expanded keyword research',
-      'Internal linking strategy',
-      'Deep on-page optimisation',
-      'Detailed monthly reporting',
+      'Custom multi-page design (up to 10 pages)',
+      'Mobile responsive & fast loading',
+      'Contact forms, map & social links',
+      'Analytics dashboard setup',
+      'SEO + AI search indexing',
     ],
     highlight: false,
-    cta: 'Supercharge Growth',
+    cta: 'Get a Quote',
   },
   {
-    key: 'market-authority',
-    icon: Zap,
-    name: 'Market Authority',
-    price: 'A$799',
-    period: '/month',
-    badge: 'Ultimate',
-    description: 'Maximum content output, technical SEO, and dedicated strategy to make you the industry leader.',
+    key: 'cinematic',
+    icon: TrendingUp,
+    name: 'Cinematic Website',
+    price: '$3,499–$10,000',
+    period: 'one-off',
+    badge: null,
+    description: 'A flagship, fully bespoke site with full cinematic scroll and immersive media.',
     features: [
-      '12 blogs. Everything from Super Growth +',
-      'Technical SEO audits',
-      'Keyword strategy sessions',
-      'Competitor analysis',
-      'Priority support',
+      'Everything in Multi-Page',
+      'Full cinematic scroll experience',
+      'Immersive full-viewport video & image sections',
+      'Premium custom animations',
+      'Priority build & support',
     ],
     highlight: false,
-    cta: 'Dominate Your Market',
+    cta: 'Get a Quote',
   },
 ]
 
@@ -114,44 +114,6 @@ const oneOffServices = [
       'Handover notes for self-management',
     ],
     addon: 'Optional ongoing management — A$79/month',
-  },
-  {
-    href: '/services/landing-page',
-    icon: Globe,
-    eyebrow: 'Web Design',
-    name: 'Landing Page',
-    price: 'A$599',
-    priceNote: 'one-time',
-    description:
-      'A high-converting single-page website built to turn visitors into leads. Fast, mobile-ready, and SEO-optimised from day one.',
-    features: [
-      'Custom single-page design',
-      'Mobile responsive layout',
-      'Contact form, map & social links included',
-      'Google Analytics setup',
-      'SEO meta setup',
-      'Fast loading & SSL',
-    ],
-    addon: null,
-  },
-  {
-    href: '/services/full-package',
-    icon: Package,
-    eyebrow: 'Web Design',
-    name: 'Custom Website',
-    price: 'Custom quote',
-    priceNote: 'upon request',
-    description:
-      'A complete multi-page website tailored to your brand, with ongoing maintenance and digital strategy built in.',
-    features: [
-      'Custom multi-page design (up to 10 pages)',
-      'Mobile responsive & fast loading',
-      'Contact forms, map & social links included',
-      'Analytics dashboard setup',
-      'SEO + AI search indexing',
-      'Ongoing maintenance options available',
-    ],
-    addon: null,
   },
 ]
 
@@ -179,18 +141,18 @@ export default function ServicesPage() {
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-10">
             <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
-              SEO Packages
+              Website Packages
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
-              Get Found on Google — Every Month
+              Websites That Convert
             </h2>
             <p className="text-[#6B6560] text-base max-w-[560px]">
-              AI-powered blog content published weekly so Google and AI assistants always have something fresh to recommend.
+              From a single high-converting landing page to a fully bespoke cinematic site — choose the build that fits your business.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-            {seoPlans.map((plan) => {
+            {websitePackages.map((plan) => {
               const Icon = plan.icon
               return (
                 <div
