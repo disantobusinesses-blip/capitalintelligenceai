@@ -1,14 +1,16 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { X, Send, CheckCircle, User, Mail, Phone, MessageSquare } from 'lucide-react'
 import { useQuotePopup, QuoteService } from '@/context/QuotePopupContext'
+import { trackConversion, CONVERSION_LEAD } from '@/lib/trackConversion'
+import FlowTrustStrip from '@/components/FlowTrustStrip'
 
 // Session-storage key used to ensure the time-delayed popup only appears once
 // per browser session (after it has been auto-shown or dismissed).
 const SESSION_KEY = 'iasQuotePopupSeen'
 const AUTO_OPEN_DELAY_MS = 10_000
-const MIN_MESSAGE_LENGTH = 20
 
 const SERVICE_OPTIONS: QuoteService[] = [
   'Landing Page',
@@ -20,6 +22,7 @@ const SERVICE_OPTIONS: QuoteService[] = [
 ]
 
 export default function QuotePopup() {
+  const router = useRouter()
   const { isOpen, preselectedService, openPopup, closePopup } = useQuotePopup()
 
   const [name, setName] = useState('')
@@ -73,12 +76,10 @@ export default function QuotePopup() {
 
   if (!render) return null
 
-  const messageLength = message.trim().length
+  // Only Name, Email and Phone are required — the business description is
+  // optional so it never blocks a submission.
   const canSubmit =
-    name.trim() !== '' &&
-    email.trim() !== '' &&
-    phone.trim() !== '' &&
-    messageLength >= MIN_MESSAGE_LENGTH
+    name.trim() !== '' && email.trim() !== '' && phone.trim() !== ''
 
   const markSeen = () => {
     if (typeof window !== 'undefined') {
@@ -123,10 +124,19 @@ export default function QuotePopup() {
       })
       const result = await res.json()
       if (res.ok && result.ok) {
+        // Show the in-popup confirmation immediately as a fallback in case the
+        // redirect is blocked — the visitor always sees a "thanks".
         setSubmitted(true)
-        if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-          window.gtag('event', 'conversion', { send_to: 'AW-17950129824/0hYECPfNlrkcEKD9pO9C' })
-        }
+        // CRITICAL: fire the Google Ads conversion right here in the success
+        // callback — BEFORE any redirect — so it is never gated behind the
+        // deposit step or a page navigation. The redirect to the deposit page
+        // only runs once the conversion beacon has been sent (or times out).
+        const query = service ? `?service=${encodeURIComponent(service)}` : ''
+        trackConversion(CONVERSION_LEAD, () => {
+          markSeen()
+          closePopup()
+          router.push(`/secure-spot${query}`)
+        })
       } else {
         setSubmitError(result.message || 'Something went wrong. Please try again.')
       }
@@ -165,9 +175,12 @@ export default function QuotePopup() {
           <h2 className="text-xl font-bold text-[#1A1A1A] mb-3">
             Thanks — we&apos;ll be in touch within 1 hour
           </h2>
-          <p className="text-[#6B6560] mb-6 leading-relaxed text-sm">
+          <p className="text-[#6B6560] mb-5 leading-relaxed text-sm">
             Your request is in. A member of our team will reach out shortly to get you a free quote.
           </p>
+          <div className="mb-6">
+            <FlowTrustStrip />
+          </div>
           <button
             onClick={handleClose}
             className="px-8 py-3 bg-[#1A1A1A] text-white rounded-[6px] font-semibold smooth-transition hover:bg-[#2D2D2D]"
@@ -195,6 +208,11 @@ export default function QuotePopup() {
           >
             <X className="w-5 h-5 text-[#6B6560]" />
           </button>
+        </div>
+
+        {/* Pricing + Google rating social proof */}
+        <div className="px-5 pt-4">
+          <FlowTrustStrip />
         </div>
 
         {/* Form */}
@@ -281,7 +299,8 @@ export default function QuotePopup() {
             <label htmlFor="qp-message" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
                 <MessageSquare className="w-4 h-4 text-[#5C3D2E]" />
-                Tell us about your business <span className="text-red-400">*</span>
+                Tell us about your business{' '}
+                <span className="font-normal text-[#9E9790]">(optional)</span>
               </span>
             </label>
             <textarea
@@ -290,18 +309,8 @@ export default function QuotePopup() {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="What does your business do, and what are you looking to achieve?"
               rows={3}
-              required
               className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 resize-none"
             />
-            <p
-              className={`mt-1 text-xs ${
-                messageLength >= MIN_MESSAGE_LENGTH ? 'text-green-600' : 'text-[#9E9790]'
-              }`}
-            >
-              {messageLength >= MIN_MESSAGE_LENGTH
-                ? `${messageLength} characters`
-                : `${messageLength}/${MIN_MESSAGE_LENGTH} characters minimum`}
-            </p>
           </div>
 
           {submitError && (

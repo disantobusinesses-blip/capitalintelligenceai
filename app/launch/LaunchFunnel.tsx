@@ -19,6 +19,7 @@ import {
   X,
 } from 'lucide-react'
 import { TEMPLATES, GST_NOTE } from '@/lib/templates'
+import FlowTrustStrip from '@/components/FlowTrustStrip'
 
 const display = Cormorant_Garamond({
   subsets: ['latin'],
@@ -509,6 +510,9 @@ export default function LaunchFunnel() {
               Begin
               <ArrowRight className="w-4 h-4" />
             </button>
+            <div className="mt-10 mx-auto max-w-md">
+              <FlowTrustStrip />
+            </div>
           </div>
         </section>
       )}
@@ -554,6 +558,9 @@ export default function LaunchFunnel() {
                     </button>
                   )
                 })}
+              </div>
+              <div className="mt-8 mx-auto max-w-md">
+                <FlowTrustStrip />
               </div>
             </div>
           </div>
@@ -953,6 +960,10 @@ export default function LaunchFunnel() {
               )}
 
               {error && <p className="mt-5 text-center text-sm text-red-600">{error}</p>}
+
+              <div className="mt-10 mx-auto max-w-md">
+                <FlowTrustStrip />
+              </div>
             </div>
           </div>
 
@@ -1048,6 +1059,9 @@ export default function LaunchFunnel() {
                 </Link>
               </div>
             )}
+            <div className="mt-8">
+              <FlowTrustStrip />
+            </div>
           </div>
         </section>
       )}

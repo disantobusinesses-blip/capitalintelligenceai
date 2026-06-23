@@ -6,7 +6,7 @@ interface QuotePopupBody {
   email: string
   phone: string
   service?: string
-  message: string
+  message?: string
 }
 
 function esc(str: string): string {
@@ -27,7 +27,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
   }
 
-  // Validation — name, email, phone and a 20+ char message are all required.
+  // Validation — only name, email and phone are required. The business
+  // description is optional so it never blocks a submission.
   if (!body.name?.trim()) {
     return NextResponse.json({ ok: false, message: 'Name is required.' }, { status: 400 })
   }
@@ -36,12 +37,6 @@ export async function POST(request: NextRequest) {
   }
   if (!body.phone?.trim()) {
     return NextResponse.json({ ok: false, message: 'Phone number is required.' }, { status: 400 })
-  }
-  if (!body.message || body.message.trim().length < 20) {
-    return NextResponse.json(
-      { ok: false, message: 'Please tell us a little more about your business (at least 20 characters).' },
-      { status: 400 }
-    )
   }
 
   // SMTP configuration — mirrors the onboarding route so GMAIL_USER / SMTP_USER
@@ -76,7 +71,7 @@ export async function POST(request: NextRequest) {
         <li><strong>Service Needed:</strong> ${esc(body.service?.trim() || 'Not specified')}</li>
       </ul>
       <h3>About Their Business</h3>
-      <p>${esc(body.message.trim()).replace(/\n/g, '<br/>')}</p>
+      <p>${body.message?.trim() ? esc(body.message.trim()).replace(/\n/g, '<br/>') : '<em>Not provided</em>'}</p>
     `
 
     await transporter.sendMail({
