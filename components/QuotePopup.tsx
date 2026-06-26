@@ -1,16 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { X, Send, CheckCircle, User, Mail, Phone, MessageSquare } from 'lucide-react'
 import { useQuotePopup, QuoteService } from '@/context/QuotePopupContext'
 import { trackConversion, CONVERSION_LEAD } from '@/lib/trackConversion'
 import FlowTrustStrip from '@/components/FlowTrustStrip'
-
-// Session-storage key used to ensure the time-delayed popup only appears once
-// per browser session (after it has been auto-shown or dismissed).
-const SESSION_KEY = 'iasQuotePopupSeen'
-const AUTO_OPEN_DELAY_MS = 10_000
 
 const SERVICE_OPTIONS: QuoteService[] = [
   'Landing Page',
@@ -23,6 +18,7 @@ const SERVICE_OPTIONS: QuoteService[] = [
 
 export default function QuotePopup() {
   const router = useRouter()
+  const pathname = usePathname()
   const { isOpen, preselectedService, openPopup, closePopup } = useQuotePopup()
 
   const [name, setName] = useState('')
@@ -38,22 +34,6 @@ export default function QuotePopup() {
   // to animate out; `slideIn` drives the transform.
   const [render, setRender] = useState(false)
   const [slideIn, setSlideIn] = useState(false)
-
-  // ── Time-delayed auto-open (once per session) ──────────────────────────────
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    if (sessionStorage.getItem(SESSION_KEY)) return
-
-    const timer = setTimeout(() => {
-      // Don't interrupt if the visitor already opened it via a button.
-      if (!sessionStorage.getItem(SESSION_KEY)) {
-        sessionStorage.setItem(SESSION_KEY, '1')
-        openPopup()
-      }
-    }, AUTO_OPEN_DELAY_MS)
-
-    return () => clearTimeout(timer)
-  }, [openPopup])
 
   // Drive the slide animation from the open state.
   useEffect(() => {
@@ -74,22 +54,30 @@ export default function QuotePopup() {
     }
   }, [isOpen, preselectedService])
 
-  if (!render) return null
+  // When the panel is closed, show a small launcher tab anchored to the bottom
+  // edge. Clicking it slides the quote form up. (The popup no longer auto-opens.)
+  if (!render) {
+    // The immersive /launch funnel manages its own UI — no launcher there.
+    if (pathname === '/launch') return null
+    return (
+      <button
+        type="button"
+        onClick={() => openPopup()}
+        aria-label="Get a free quote"
+        className="fixed z-[60] bottom-5 right-4 sm:right-6 inline-flex items-center gap-2 rounded-full bg-[#1A1A1A] text-white pl-4 pr-5 py-3 text-sm font-semibold shadow-[0_8px_28px_rgba(0,0,0,0.28)] hover:bg-[#2D2D2D] hover:-translate-y-0.5 transition-all duration-200"
+      >
+        <Send className="w-4 h-4" />
+        Get a Free Quote
+      </button>
+    )
+  }
 
   // Only Name, Email and Phone are required — the business description is
   // optional so it never blocks a submission.
   const canSubmit =
     name.trim() !== '' && email.trim() !== '' && phone.trim() !== ''
 
-  const markSeen = () => {
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem(SESSION_KEY, '1')
-    }
-  }
-
   const handleClose = () => {
-    // Dismissing also suppresses the popup for the rest of the session.
-    markSeen()
     closePopup()
     setTimeout(() => {
       if (submitted) {
@@ -109,7 +97,6 @@ export default function QuotePopup() {
     if (!canSubmit || submitting) return
     setSubmitting(true)
     setSubmitError(null)
-    markSeen()
     try {
       const res = await fetch('/api/quote-popup', {
         method: 'POST',
@@ -133,7 +120,6 @@ export default function QuotePopup() {
         // only runs once the conversion beacon has been sent (or times out).
         const query = service ? `?service=${encodeURIComponent(service)}` : ''
         trackConversion(CONVERSION_LEAD, () => {
-          markSeen()
           closePopup()
           router.push(`/secure-spot${query}`)
         })
