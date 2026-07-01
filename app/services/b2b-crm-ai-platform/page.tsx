@@ -1,16 +1,22 @@
 import type { Metadata } from 'next'
+
+export const revalidate = 300
+
 import Link from 'next/link'
 import { ArrowLeft, Check, Bot, Database, Target, Workflow, Lock, Server } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 
 export const metadata: Metadata = {
-  title: 'B2B Custom CRM AI Acquisition Platform – Intelligent AI Systems',
+  title: 'B2B AI CRM & Lead Acquisition Platform | Intelligent AI Systems',
   description:
-    'A fully private, custom-built AI-powered CRM and customer acquisition system designed exclusively for B2B businesses. AI lead scraping, pipeline management, and automated follow-up — built only for your business.',
+    'Private, AI-powered CRM and lead acquisition system built exclusively for your B2B business — AI lead scraping, pipeline management, and automated follow-up.',
   keywords:
     'B2B CRM AI, custom CRM platform, AI lead acquisition, B2B lead generation, custom AI system, CRM pipeline management',
+  alternates: {
+    canonical: 'https://intelligentaisystem.com/services/b2b-crm-ai-platform',
+  },
   openGraph: {
-    title: 'B2B Custom CRM AI Acquisition Platform – Intelligent AI Systems',
+    title: 'B2B AI CRM & Lead Acquisition Platform | Intelligent AI Systems',
     description:
       'Private, AI-powered CRM and lead acquisition system built exclusively for your B2B business — your data, your system, guaranteed results.',
     url: 'https://intelligentaisystem.com/services/b2b-crm-ai-platform',

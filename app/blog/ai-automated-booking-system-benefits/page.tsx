@@ -16,6 +16,7 @@ const post = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
+  image: 'https://intelligentaisystem.com/ias-logo.png',
   headline: post.title,
   description: post.description,
   datePublished: post.publishedAt,
@@ -31,7 +32,7 @@ const jsonLd = {
     url: 'https://intelligentaisystem.com',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://intelligentaisystem.com/images/is-logo.jpg',
+      url: 'https://intelligentaisystem.com/ias-logo.png',
     },
   },
   mainEntityOfPage: {
@@ -317,7 +318,7 @@ export default function BlogPostAIBookingSystem() {
                   </li>
                   <li>
                     <Link
-                      href="/pricing"
+                      href="/services"
                       className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
                     >
                       AI Systems Integration Pricing →

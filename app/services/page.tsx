@@ -5,9 +5,12 @@ import QuotePopupButton from '@/components/QuotePopupButton'
 export const metadata: Metadata = {
   title: 'Our Services – Intelligent AI Systems',
   description:
-    'Website packages and hosting from Intelligent AI Systems — landing pages, multi-page websites, and fully bespoke cinematic sites, plus secure monthly hosting.',
+    'Website packages and hosting from IAS — landing pages, multi-page websites, cinematic sites, and secure monthly hosting for Australian businesses.',
   keywords:
     'landing page design, custom website, multi-page website, cinematic website, website hosting Australia, AI website builder',
+  alternates: {
+    canonical: 'https://intelligentaisystem.com/services',
+  },
   openGraph: {
     title: 'Our Services – Intelligent AI Systems',
     description:
@@ -16,6 +19,8 @@ export const metadata: Metadata = {
     type: 'website',
   },
 }
+
+export const revalidate = 300
 
 /* ─── Website Packages ──────────────────────────────────────────────────── */
 const websitePackages = [

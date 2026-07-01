@@ -24,6 +24,8 @@ const localBusinessSchema = {
   email: 'sales@intelligentaisystem.com',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Melbourne VIC',
+    postalCode: '3000',
     addressLocality: 'Melbourne',
     addressRegion: 'VIC',
     addressCountry: 'AU',
@@ -45,7 +47,11 @@ const localBusinessSchema = {
   openingHours: 'Mo-Fr 09:00-17:00',
   taxID: '38 693 023 371',
   legalName: 'AI Capital Holdings Pty Ltd',
-  sameAs: ['https://intelligentaisystem.com'],
+  sameAs: [
+    'https://intelligentaisystem.com',
+    'https://www.facebook.com/intelligentaisystems',
+    'https://www.linkedin.com/company/intelligent-ai-systems',
+  ],
 }
 
 const orgSchema = {
@@ -73,16 +79,33 @@ const orgSchema = {
 
 export const metadata: Metadata = {
   title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
-  description: 'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by businesses across Australia, the US, the UK, and Singapore to build smarter digital experiences.',
+  description: 'IAS builds premium websites and AI integrations engineered for growth. Trusted by businesses across Australia, the US, the UK, and Singapore.',
   keywords: 'web design Australia, landing page, AI integration, website maintenance, SEO, digital agency, IAS, Intelligent AI Systems',
   metadataBase: new URL('https://intelligentaisystem.com'),
+  alternates: {
+    canonical: 'https://intelligentaisystem.com',
+  },
   openGraph: {
     title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
-    description: 'Premium websites and AI integrations engineered for growth. Trusted by businesses across Australia, the US, the UK, and Singapore to build smarter digital experiences.',
+    description: 'Premium websites and AI integrations engineered for growth. Trusted by businesses across Australia, the US, the UK, and Singapore.',
     url: 'https://intelligentaisystem.com',
     siteName: 'Intelligent AI Systems',
     locale: 'en_AU',
     type: 'website',
+    images: [
+      {
+        url: 'https://intelligentaisystem.com/ias-logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Intelligent AI Systems',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
+    description: 'Premium websites and AI integrations engineered for growth. Trusted by businesses across Australia, the US, the UK, and Singapore.',
+    images: ['https://intelligentaisystem.com/ias-logo.png'],
   },
   robots: {
     index: true,

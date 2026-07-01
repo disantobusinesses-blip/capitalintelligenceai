@@ -37,6 +37,8 @@ export default function Navbar() {
             alt="Intelligent AI Systems"
             width={48}
             height={48}
+            loading="eager"
+            fetchPriority="high"
             className="h-12 w-auto rounded object-cover"
           />
         </Link>
@@ -58,7 +60,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="tel:0370510100"
-            aria-label="Call us"
+            aria-label="Call 03 7051 0100"
             className="flex items-center gap-2 text-[#1A1A1A] hover:text-[#5C3D2E] transition-colors duration-200"
           >
             <Phone className="w-4 h-4" />

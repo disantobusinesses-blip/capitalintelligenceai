@@ -60,6 +60,7 @@ export default async function DynamicBlogPost({ params }: Props) {
     '@type': 'Article',
     headline: post.title,
     description: post.description,
+    image: 'https://intelligentaisystem.com/ias-logo.png',
     datePublished: post.published_at,
     dateModified: post.last_modified,
     author: {
@@ -73,7 +74,7 @@ export default async function DynamicBlogPost({ params }: Props) {
       url: 'https://intelligentaisystem.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://intelligentaisystem.com/images/is-logo.jpg',
+        url: 'https://intelligentaisystem.com/ias-logo.png',
       },
     },
     mainEntityOfPage: {

@@ -371,26 +371,36 @@ export default function Hero() {
                 )}
 
                 {/* Form fields */}
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Your Name *"
-                  required
-                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
-                />
-                
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email Address *"
-                  required
-                  className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
-                />
-                
                 <div>
+                  <label htmlFor="hero-name" className="sr-only">Your Name</label>
                   <input
+                    id="hero-name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your Name *"
+                    required
+                    className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="hero-email" className="sr-only">Email Address</label>
+                  <input
+                    id="hero-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email Address *"
+                    required
+                    className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="hero-phone" className="sr-only">Phone Number</label>
+                  <input
+                    id="hero-phone"
                     type="tel"
                     value={phone}
                     onChange={(e) => {

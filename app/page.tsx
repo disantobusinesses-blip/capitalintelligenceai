@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import Hero from '@/components/Hero'
 import HeroIntro from '@/components/HeroIntro'
 import AIBlogSections from '@/components/AIBlogSections'

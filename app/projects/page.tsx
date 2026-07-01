@@ -4,8 +4,11 @@ import QuotePopupButton from '@/components/QuotePopupButton'
 
 export const metadata: Metadata = {
   title: 'Our Projects – Intelligent AI Systems | Portfolio',
-  description: 'Explore our portfolio of intelligent systems and websites built for businesses across Australia. From electrical services to e-commerce, healthcare, and finance.',
+  description: 'Explore IAS\'s portfolio of websites built for businesses across Australia — electrical, fitness, property, fintech, and more.',
   keywords: 'web design portfolio, AI projects, website examples Australia, IAS projects, Intelligent AI Systems portfolio',
+  alternates: {
+    canonical: 'https://intelligentaisystem.com/projects',
+  },
   openGraph: {
     title: 'Our Projects – Intelligent AI Systems',
     description: 'Intelligent systems implemented across diverse industries.',
