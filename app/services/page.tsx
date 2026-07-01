@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 }
 
-export const revalidate = 300
+export const revalidate = 60
 
 /* ─── Website Packages ──────────────────────────────────────────────────── */
 const websitePackages = [
@@ -100,7 +100,7 @@ const websitePackages = [
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
+    <main className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
 
       {/* Hero */}
       <section className="py-24 px-6 text-center">
@@ -280,6 +280,6 @@ export default function ServicesPage() {
           </QuotePopupButton>
         </div>
       </section>
-    </div>
+    </main>
   )
 }

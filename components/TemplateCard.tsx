@@ -123,6 +123,8 @@ export default function TemplateCard({
                 <img
                   src={src || '/placeholder.svg'}
                   alt={`${template.businessName} — ${template.industry} website preview ${i + 1}`}
+                  width={800}
+                  height={600}
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -134,6 +136,8 @@ export default function TemplateCard({
           <img
             src={template.screenshot || '/placeholder.svg'}
             alt={`${template.businessName} — ${template.industry} website template preview`}
+            width={800}
+            height={600}
             className="w-full h-full object-cover"
             loading="lazy"
           />

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-export const revalidate = 300
+export const revalidate = 60
 
 import Link from 'next/link'
 import { ArrowLeft, Check, Bot, Database, Target, Workflow, Lock, Server } from 'lucide-react'
@@ -72,7 +72,7 @@ const included = [
 
 export default function B2BCrmAiPlatformPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
+    <main className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
       {/* Header */}
       <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -239,6 +239,6 @@ export default function B2BCrmAiPlatformPage() {
           </QuotePopupButton>
         </div>
       </section>
-    </div>
+    </main>
   )
 }

@@ -23,7 +23,7 @@ const jsonLd = {
   dateModified: post.lastModified,
   author: {
     '@type': 'Organization',
-    name: 'Intelligent AI Systems',
+    name: 'Capital Intelligence Group',
     url: 'https://intelligentaisystem.com',
   },
   publisher: {

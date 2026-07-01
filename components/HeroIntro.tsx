@@ -11,7 +11,7 @@ const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 //   HF_VIDEO_SRC  – 6-second cinematic loop (aerial Melbourne CBD, .mp4)
 //   HF_POSTER_SRC – matching still frame used as poster + mobile fallback
 const HF_VIDEO_SRC = 'https://d8j0ntlcm91z4.cloudfront.net/user_3D9LlkxvjfIpyy2OuCRHQyhsybu/hf_20260615_031513_4b7e5c29-2a17-4030-8862-fe6f8728649c.mp4'
-const HF_POSTER_SRC = '/ias-logo.png'
+const HF_POSTER_SRC = '/images/impressionsSEO.jpg'
 // ─────────────────────────────────────────────────────────────────────────────
 
 // SVG fractalNoise grain texture — base64 encoded, tiled at opacity 0.035

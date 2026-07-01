@@ -4,7 +4,7 @@ import LaunchFlow from './LaunchFlow'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: "Launch My Site — Let's Build Something Remarkable | Intelligent AI Systems",
+  title: 'Launch My Site | Intelligent AI Systems',
   description:
     "Tell us what you need — a website, Google Business Profile, more leads, or SEO blogs — and we'll handle the rest. Launch in 24–48 hours.",
   alternates: {

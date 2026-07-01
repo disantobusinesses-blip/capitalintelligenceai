@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Zap, Users, Target, Shield } from 'lucide-react'
 import Link from 'next/link'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'About Us – Intelligent AI Systems | Capital Intelligence Group',
   description: 'IAS builds professional websites and AI integrations for businesses across Australia, the US, the UK, and Singapore. Part of Capital Intelligence Group.',

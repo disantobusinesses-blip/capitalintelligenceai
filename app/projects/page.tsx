@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import ProjectCard from '@/components/ProjectCard'
 import QuotePopupButton from '@/components/QuotePopupButton'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Our Projects – Intelligent AI Systems | Portfolio',
   description: 'Explore IAS\'s portfolio of websites built for businesses across Australia — electrical, fitness, property, fintech, and more.',

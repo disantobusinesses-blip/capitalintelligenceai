@@ -36,13 +36,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       publishedTime: post.published_at,
       modifiedTime: post.last_modified,
-      authors: ['Intelligent AI Systems'],
+      authors: ['Capital Intelligence Group'],
       siteName: 'Intelligent AI Systems',
+      images: [
+        {
+          url: 'https://intelligentaisystem.com/ias-logo.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
+      images: ['https://intelligentaisystem.com/ias-logo.png'],
     },
   }
 }
@@ -65,7 +74,7 @@ export default async function DynamicBlogPost({ params }: Props) {
     dateModified: post.last_modified,
     author: {
       '@type': 'Organization',
-      name: 'Intelligent AI Systems',
+      name: 'Capital Intelligence Group',
       url: 'https://intelligentaisystem.com',
     },
     publisher: {
@@ -96,7 +105,7 @@ export default async function DynamicBlogPost({ params }: Props) {
         />
       )}
 
-      <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
+      <main className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
         {/* Back link */}
         <div className="pt-10 px-6">
           <div className="max-w-3xl mx-auto">
@@ -149,7 +158,7 @@ export default async function DynamicBlogPost({ params }: Props) {
             />
           </div>
         </article>
-      </div>
+      </main>
     </>
   )
 }

@@ -107,6 +107,8 @@ export default function AIBlogSections() {
             <img
               src="/images/impressionsSEO.jpg"
               alt="Real SEO impressions results"
+              width={800}
+              height={600}
               className="w-full h-auto block"
             />
           </div>

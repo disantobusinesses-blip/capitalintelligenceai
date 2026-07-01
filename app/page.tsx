@@ -1,4 +1,4 @@
-export const revalidate = 300
+export const revalidate = 60
 
 import Hero from '@/components/Hero'
 import HeroIntro from '@/components/HeroIntro'
