@@ -6,17 +6,6 @@ import { motion } from 'framer-motion'
 
 const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
 
-// ─── Higgsfield assets ────────────────────────────────────────────────────────
-// Once Higgsfield MCP is authenticated, replace these with the generated URLs:
-//   HF_VIDEO_SRC  – 6-second cinematic loop (aerial Melbourne CBD, .mp4)
-//   HF_POSTER_SRC – matching still frame used as poster + mobile fallback
-const HF_VIDEO_SRC = 'https://d8j0ntlcm91z4.cloudfront.net/user_3D9LlkxvjfIpyy2OuCRHQyhsybu/hf_20260615_031513_4b7e5c29-2a17-4030-8862-fe6f8728649c.mp4'
-const HF_POSTER_SRC = '/images/impressionsSEO.jpg'
-// ─────────────────────────────────────────────────────────────────────────────
-
-// SVG fractalNoise grain texture — base64 encoded, tiled at opacity 0.035
-const NOISE_DATA_URI =
-  'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyMDAnIGhlaWdodD0nMjAwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC43NScgbnVtT2N0YXZlcz0nNCcgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCUyM24pJy8+PC9zdmc+'
 
 const trustBadges = [
   'First SEO Blog Free',
@@ -29,54 +18,8 @@ export default function HeroIntro() {
     <section
       className="relative min-h-screen pt-[100px] pb-[60px] px-6 mt-[74px] overflow-hidden bg-[#0A0A0A]"
     >
-      {/* ── Video background (desktop) ─────────────────────────────────────── */}
-      {/* Hidden on mobile to save bandwidth — poster image renders instead   */}
-      {HF_VIDEO_SRC && (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={HF_POSTER_SRC || undefined}
-          aria-hidden="true"
-          className="absolute inset-0 z-0 object-cover w-full h-full"
-          style={{ width: '100%', height: '100vh' }}
-        >
-          <source src={HF_VIDEO_SRC} type="video/mp4" />
-        </video>
-      )}
-
-      {/* ── Poster / mobile fallback image ─────────────────────────────────── */}
-      {/* Shown only on mobile (block md:hidden); desktop uses the video above  */}
-      {HF_POSTER_SRC && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={HF_POSTER_SRC}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 z-0 object-cover block md:hidden"
-          style={{ width: '100%', height: '100vh' }}
-        />
-      )}
-
-      {/* ── Dark overlay ───────────────────────────────────────────────────── */}
-      <div className="absolute inset-0 bg-black/55 z-10" />
-
-      {/* ── Film-grain noise overlay ───────────────────────────────────────── */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          backgroundImage: `url("${NOISE_DATA_URI}")`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '200px 200px',
-          opacity: 0.035,
-          mixBlendMode: 'overlay',
-        }}
-      />
-
       {/* ── Hero content ───────────────────────────────────────────────────── */}
-      <div className="relative z-20 max-w-[1200px] mx-auto">
+      <div className="relative max-w-[1200px] mx-auto">
         <div className="max-w-[760px] space-y-6">
           {/* Label */}
           <p className="text-amber-400 text-[13px] font-semibold tracking-[1.5px] uppercase">
