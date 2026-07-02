@@ -16,25 +16,25 @@ const trustBadges = [
 export default function HeroIntro() {
   return (
     <section
-      className="relative min-h-screen pt-[100px] pb-[60px] px-6 mt-[74px] overflow-hidden bg-[#0A0A0A]"
+      className="relative min-h-screen pt-[100px] pb-[60px] px-6 mt-[74px] overflow-hidden bg-[#F8F7F4]"
     >
       {/* ── Hero content ───────────────────────────────────────────────────── */}
       <div className="relative max-w-[1200px] mx-auto">
         <div className="max-w-[760px] space-y-6">
           {/* Label */}
-          <p className="text-amber-400 text-[13px] font-semibold tracking-[1.5px] uppercase">
+          <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase">
             AI-Powered Web Agency
           </p>
 
           {/* Headline */}
-          <h1 className="text-[36px] md:text-[52px] leading-[1.15] font-extrabold text-white text-balance">
+          <h1 className="text-[36px] md:text-[52px] leading-[1.15] font-extrabold text-[#1A1A1A] text-balance">
             {HERO_HEADLINE}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-[18px] text-white/80 mt-4 max-w-[520px]">
+          <p className="text-[18px] text-[#6B6560] mt-4 max-w-[520px]">
             We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini, using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.{' '}
-            <span className="font-semibold text-amber-300">Remote-first. Globally delivered.</span>
+            <span className="font-semibold text-[#1A1A1A]">Remote-first. Globally delivered.</span>
           </p>
 
           {/* CTA Buttons */}
@@ -43,7 +43,7 @@ export default function HeroIntro() {
             <div className="relative inline-flex self-start w-full sm:w-auto pb-4">
               <Link
                 href="/launch"
-                className="relative w-full sm:w-auto bg-white text-[#1A1A1A] font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-white/90 transition-colors duration-200 flex items-center justify-center gap-2"
+                className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
               >
                 <Rocket className="w-5 h-5" />
                 Launch My Site
@@ -80,7 +80,7 @@ export default function HeroIntro() {
             {/* Secondary CTA */}
             <a
               href="#our-work"
-              className="border-2 border-white text-white font-semibold px-6 py-3 rounded-[6px] hover:bg-white hover:text-[#1A1A1A] transition-all duration-200 inline-block text-center w-full sm:w-auto"
+              className="border-2 border-[#1A1A1A] text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 inline-block text-center w-full sm:w-auto"
             >
               View Our Work
             </a>
@@ -90,10 +90,10 @@ export default function HeroIntro() {
           <div className="flex flex-wrap gap-4 pt-2">
             {trustBadges.map((badge) => (
               <div key={badge} className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
-                <span className="text-[13px] text-white/70">{badge}</span>
+                <span className="text-[13px] text-[#6B6560]">{badge}</span>
               </div>
             ))}
           </div>
