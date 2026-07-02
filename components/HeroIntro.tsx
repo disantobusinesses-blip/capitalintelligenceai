@@ -40,10 +40,10 @@ export default function HeroIntro() {
           {/* CTA Buttons */}
           <div className="flex flex-col gap-0 pt-2">
             {/* Primary CTA */}
-            <div className="relative inline-flex self-start w-full sm:w-auto pb-1">
+            <div className="relative inline-flex self-start w-full sm:w-[260px] pb-1">
               <Link
                 href="/launch"
-                className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
+                className="relative w-full sm:w-[260px] bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
               >
                 <Rocket className="w-5 h-5" />
                 Launch My Site
@@ -80,7 +80,7 @@ export default function HeroIntro() {
             {/* Secondary CTA */}
             <a
               href="#our-work"
-              className="w-full sm:w-auto border-2 border-[#1A1A1A] text-[#1A1A1A] font-bold px-8 py-4 rounded-[6px] text-base hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 flex items-center justify-center gap-2"
+              className="w-full sm:w-[260px] border-2 border-[#1A1A1A] text-[#1A1A1A] font-bold px-8 py-4 rounded-[6px] text-base hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 flex items-center justify-center gap-2"
             >
               View Our Work
             </a>
