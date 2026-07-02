@@ -38,9 +38,9 @@ export default function HeroIntro() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col gap-3 pt-2">
+          <div className="flex flex-col gap-1 pt-2">
             {/* Primary CTA */}
-            <div className="relative inline-flex self-start w-full sm:w-auto pb-4">
+            <div className="relative inline-flex self-start w-full sm:w-auto pb-2">
               <Link
                 href="/launch"
                 className="relative w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
@@ -80,7 +80,7 @@ export default function HeroIntro() {
             {/* Secondary CTA */}
             <a
               href="#our-work"
-              className="border-2 border-[#1A1A1A] text-[#1A1A1A] font-semibold px-6 py-3 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 inline-block text-center w-full sm:w-auto"
+              className="w-full sm:w-auto bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
             >
               View Our Work
             </a>
