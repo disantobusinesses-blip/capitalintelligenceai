@@ -87,7 +87,7 @@ export default function HeroIntro() {
           </div>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex flex-wrap gap-4 -mt-4">
             {trustBadges.map((badge) => (
               <div key={badge} className="flex items-center gap-1.5">
                 <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
