@@ -16,7 +16,7 @@ const trustBadges = [
 export default function HeroIntro() {
   return (
     <section
-      className="relative min-h-screen pt-[100px] pb-[60px] px-6 mt-[74px] overflow-hidden bg-[#F8F7F4]"
+      className="relative pt-[100px] pb-[60px] px-6 mt-[74px] overflow-hidden bg-[#F8F7F4]"
     >
       {/* ── Hero content ───────────────────────────────────────────────────── */}
       <div className="relative max-w-[1200px] mx-auto">
