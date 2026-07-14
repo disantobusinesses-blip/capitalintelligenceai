@@ -1,13 +1,22 @@
 import Image from 'next/image'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, ImageOff } from 'lucide-react'
 import { display, body } from '@/lib/fonts'
 
-interface PortfolioProject {
+interface LiveProject {
   title: string
   result: string
   image: string
   url: string
+  placeholder?: false
 }
+
+interface PlaceholderProject {
+  title: string
+  placeholderNote: string
+  placeholder: true
+}
+
+type PortfolioProject = LiveProject | PlaceholderProject
 
 // Real client projects — screenshots and links pulled from the /projects page.
 const PORTFOLIO_PROJECTS: PortfolioProject[] = [
@@ -30,22 +39,19 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://rebornphysiques.com',
   },
   {
-    title: 'Your Coach Plus',
-    result: 'Personal training landing page with integrated lead capture.',
-    image: '/projects/yourcoachplus.png',
-    url: 'https://yourcoachplus.com.au',
+    title: 'Onyx Global',
+    placeholder: true,
+    placeholderNote: 'Onyx Global screenshot/logo — pending upload',
   },
   {
-    title: 'My AI Bank',
-    result: 'AI-powered banking platform with personalised financial tools.',
-    image: '/projects/myaibank.png',
-    url: 'https://myaibank.ai',
+    title: 'Certi Sustainability',
+    placeholder: true,
+    placeholderNote: 'Screenshot pending — awaiting client confirmation before this goes live',
   },
   {
-    title: 'Tamar Cabinets',
-    result: 'Bespoke cabinetry & joinery portfolio site.',
-    image: '/projects/tamar-cabinets.jpg',
-    url: 'https://tamarcabinets.com.au',
+    title: 'Estética Sydney',
+    placeholder: true,
+    placeholderNote: 'Screenshot pending — awaiting client confirmation before this goes live',
   },
 ]
 
@@ -53,46 +59,66 @@ export default function PortfolioStrip() {
   return (
     <section
       id="portfolio"
-      className={`${body.className} scroll-mt-[120px] bg-[#0A0A0A] pt-[64px] pb-[80px] px-6 border-t border-white/10`}
+      className={`${body.className} scroll-mt-[120px] bg-[#F8F7F4] pt-[64px] pb-[80px] px-6 border-t border-[#E8E4DF]`}
     >
       <div className="max-w-[1200px] mx-auto">
         <div className="mb-12 max-w-2xl">
           <p className="text-[#C9A07A] text-[13px] font-semibold tracking-[1.5px] uppercase">
             Proof of Work
           </p>
-          <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-white mt-3`}>
+          <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-[#3D2817] mt-3`}>
             Real Projects. Real Businesses.
           </h2>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PORTFOLIO_PROJECTS.map((project) => (
-            <a
-              key={project.title}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block bg-white/[0.03] border border-white/10 rounded-[10px] overflow-hidden hover:border-[#C9A07A]/60 transition-colors duration-200"
-            >
-              <div className="relative aspect-video bg-white/5 overflow-hidden border-b border-white/10">
-                <Image
-                  src={project.image}
-                  alt={`${project.title} website screenshot`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover object-top"
-                />
+          {PORTFOLIO_PROJECTS.map((project) =>
+            project.placeholder ? (
+              <div
+                key={project.title}
+                className="block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden"
+              >
+                <div className="relative aspect-video bg-[#F0EDE7] border-b border-[#E8E4DF] flex flex-col items-center justify-center gap-2 px-6 text-center">
+                  <ImageOff className="w-6 h-6 text-[#9E9790]" strokeWidth={1.5} />
+                  <span className="text-[#9E9790] text-xs font-medium leading-relaxed">
+                    [PLACEHOLDER: {project.placeholderNote}]
+                  </span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-[#3D2817] font-semibold text-lg mb-1.5">{project.title}</h3>
+                  <span className="inline-flex items-center gap-1.5 text-[#9E9790] text-sm font-semibold">
+                    Coming Soon
+                  </span>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-white font-semibold text-lg mb-1.5">{project.title}</h3>
-                <p className="text-white/60 text-sm leading-relaxed mb-4">{project.result}</p>
-                <span className="inline-flex items-center gap-1.5 text-[#C9A07A] text-sm font-semibold group-hover:gap-2.5 transition-all duration-200">
-                  View Live Site
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </a>
-          ))}
+            ) : (
+              <a
+                key={project.title}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden hover:border-[#C9A07A] transition-colors duration-200"
+              >
+                <div className="relative aspect-video bg-[#F0EDE7] overflow-hidden border-b border-[#E8E4DF]">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} website screenshot`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-[#3D2817] font-semibold text-lg mb-1.5">{project.title}</h3>
+                  <p className="text-[#6B6560] text-sm leading-relaxed mb-4">{project.result}</p>
+                  <span className="inline-flex items-center gap-1.5 text-[#C9A07A] text-sm font-semibold group-hover:gap-2.5 transition-all duration-200">
+                    View Live Site
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </a>
+            )
+          )}
         </div>
       </div>
     </section>

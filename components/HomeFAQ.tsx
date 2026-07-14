@@ -39,7 +39,7 @@ const faqSchema = {
 
 export default function HomeFAQ() {
   return (
-    <section id="faq" className={`${body.className} bg-[#0A0A0A] py-[80px] px-6 border-t border-white/10`}>
+    <section id="faq" className={`${body.className} bg-white py-[80px] px-6 border-t border-[#E8E4DF]`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -49,7 +49,7 @@ export default function HomeFAQ() {
           <p className="text-[#C9A07A] text-[13px] font-semibold tracking-[1.5px] uppercase">
             FAQ
           </p>
-          <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-white mt-3`}>
+          <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-[#3D2817] mt-3`}>
             Common Questions
           </h2>
         </div>
@@ -58,13 +58,13 @@ export default function HomeFAQ() {
           {FAQS.map((item) => (
             <details
               key={item.q}
-              className="group bg-white/[0.03] border border-white/10 rounded-[10px] px-6 py-1 open:border-[#C9A07A]/40"
+              className="group bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] px-6 py-1 open:border-[#C9A07A]"
             >
-              <summary className="flex items-center justify-between gap-4 py-4 cursor-pointer list-none text-white font-medium text-[16px]">
+              <summary className="flex items-center justify-between gap-4 py-4 cursor-pointer list-none text-[#3D2817] font-medium text-[16px]">
                 {item.q}
                 <ChevronDown className="w-4 h-4 text-[#C9A07A] flex-shrink-0 transition-transform duration-200 group-open:rotate-180" />
               </summary>
-              <p className="text-white/60 text-sm leading-relaxed pb-5">{item.a}</p>
+              <p className="text-[#6B6560] text-sm leading-relaxed pb-5">{item.a}</p>
             </details>
           ))}
         </div>
