@@ -1,34 +1,18 @@
 export const revalidate = 60
 
-import Hero from '@/components/Hero'
 import HeroIntro from '@/components/HeroIntro'
-import AIBlogSections from '@/components/AIBlogSections'
-import GoogleBusinessProfileBanner from '@/components/GoogleBusinessProfileBanner'
-import ProvenResults from '@/components/ProvenResults'
-import ServiceSelection from '@/components/ServiceSelection'
-import PathChooser from '@/components/PathChooser'
-import OurWork from '@/components/OurWork'
-import Testimonials from '@/components/Testimonials'
-import HowItWorks from '@/components/HowItWorks'
-import SeoGuarantee from '@/components/SeoGuarantee'
-import FinalCta from '@/components/FinalCta'
+import PortfolioStrip from '@/components/PortfolioStrip'
+import BeyondWebsite from '@/components/BeyondWebsite'
+import HomeFAQ from '@/components/HomeFAQ'
 import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="bg-[#F8F7F4] pb-24 md:pb-0">
+    <main className="bg-[#0A0A0A] pb-24 md:pb-0">
       <HeroIntro />
-      <PathChooser />
-      <Hero />
-      <AIBlogSections />
-      <ServiceSelection />
-      <GoogleBusinessProfileBanner />
-      <ProvenResults />
-      <OurWork />
-      <Testimonials />
-      <HowItWorks />
-      <SeoGuarantee />
-      <FinalCta />
+      <PortfolioStrip />
+      <BeyondWebsite />
+      <HomeFAQ />
       <Footer />
     </main>
   )

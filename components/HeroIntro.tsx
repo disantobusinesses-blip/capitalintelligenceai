@@ -1,101 +1,44 @@
 'use client'
 
-import Link from 'next/link'
-import { Rocket } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { display, body } from '@/lib/fonts'
+import QuotePopupButton from '@/components/QuotePopupButton'
 
-const HERO_HEADLINE = 'Get Found on Google. Get Recommended by AI.'
-
-
-const trustBadges = [
-  'First SEO Blog Free',
-  'No Lock-In Contracts',
-  '90-Day Ranking Guarantee',
-]
+const HERO_HEADLINE = "Your Website Shouldn't Look Like Everyone Else's."
+const HERO_SUBHEAD =
+  'Custom-built, SEO-optimised websites for Melbourne businesses — backed by real client results, not templates.'
 
 export default function HeroIntro() {
   return (
     <section
-      className="relative pt-[100px] pb-[60px] px-6 mt-[74px] overflow-hidden bg-[#F8F7F4]"
+      id="hero"
+      className={`${body.className} relative bg-[#0A0A0A] pt-[100px] pb-[80px] px-6 mt-[74px]`}
     >
-      {/* ── Hero content ───────────────────────────────────────────────────── */}
-      <div className="relative max-w-[1200px] mx-auto">
-        <div className="max-w-[760px] space-y-6">
-          {/* Label */}
-          <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase">
-            AI-Powered Web Agency
-          </p>
-
+      <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[760px]">
           {/* Headline */}
-          <h1 className="text-[36px] md:text-[52px] leading-[1.15] font-extrabold text-[#1A1A1A] text-balance">
+          <h1
+            className={`${display.className} text-[40px] md:text-[64px] leading-[1.1] font-semibold text-white text-balance`}
+          >
             {HERO_HEADLINE}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-[18px] text-[#6B6560] mt-4 max-w-[520px]">
-            We build websites that rank on Google and get recommended by AI assistants like ChatGPT and Gemini, using SEO and GEO (Generative Engine Optimisation) to grow your business from every direction.{' '}
-            <span className="font-semibold text-[#1A1A1A]">Remote-first. Globally delivered.</span>
+          <p className="text-[18px] md:text-[20px] text-white/70 mt-6 max-w-[560px] leading-relaxed">
+            {HERO_SUBHEAD}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col gap-0 pt-2">
-            {/* Primary CTA */}
-            <div className="relative inline-flex self-start w-full sm:w-[260px] pb-1">
-              <Link
-                href="/launch"
-                className="relative w-full sm:w-[260px] bg-[#1A1A1A] text-white font-bold px-8 py-4 rounded-[6px] text-base shadow-lg hover:bg-[#2D2D2D] transition-colors duration-200 flex items-center justify-center gap-2"
-              >
-                <Rocket className="w-5 h-5" />
-                Launch My Site
-              </Link>
-              {/* Animated hand-drawn loop */}
-              <motion.svg
-                className="absolute -bottom-1 left-0 w-full overflow-visible pointer-events-none"
-                viewBox="0 0 300 18"
-                height="18"
-                preserveAspectRatio="none"
-                initial="hidden"
-                animate="visible"
-              >
-                <motion.path
-                  d="M 6 10 Q 75 2, 150 10 Q 225 18, 294 10"
-                  fill="none"
-                  stroke="#F59E0B"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  variants={{
-                    hidden: { pathLength: 0, opacity: 0 },
-                    visible: {
-                      pathLength: 1,
-                      opacity: 1,
-                      transition: {
-                        pathLength: { duration: 2, ease: [0.43, 0.13, 0.23, 0.96], repeat: Infinity, repeatDelay: 4 },
-                        opacity: { duration: 0.4 },
-                      },
-                    },
-                  }}
-                />
-              </motion.svg>
-            </div>
-            {/* Secondary CTA */}
-            <a
-              href="#our-work"
-              className="w-full sm:w-[260px] border-2 border-[#1A1A1A] text-[#1A1A1A] font-bold px-8 py-4 rounded-[6px] text-base hover:bg-[#1A1A1A] hover:text-white transition-all duration-200 flex items-center justify-center gap-2"
-            >
-              View Our Work
-            </a>
-          </div>
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-5 mt-10">
+            <QuotePopupButton className="w-full sm:w-auto bg-[#C9A07A] text-[#0A0A0A] font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-[#D9B491] transition-colors duration-200">
+              Get a Free Quote
+            </QuotePopupButton>
 
-          {/* Trust Badges */}
-          <div className="flex flex-wrap gap-4 -mt-4">
-            {trustBadges.map((badge) => (
-              <div key={badge} className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                <span className="text-[13px] text-[#6B6560]">{badge}</span>
-              </div>
-            ))}
+            <a
+              href="#portfolio"
+              className="text-white/60 hover:text-[#C9A07A] font-medium text-[15px] underline underline-offset-4 decoration-white/25 hover:decoration-[#C9A07A] transition-colors duration-200 text-center sm:text-left"
+            >
+              See Our Work
+            </a>
           </div>
         </div>
       </div>
