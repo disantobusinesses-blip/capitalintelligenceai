@@ -1,12 +1,13 @@
-import Image from 'next/image'
 import { ExternalLink, ImageOff } from 'lucide-react'
 import { display, body } from '@/lib/fonts'
+import PortfolioCardImage from '@/components/PortfolioCardImage'
 
 interface LiveProject {
   title: string
   result: string
   image: string
-  url: string
+  /** Omitted when the live URL hasn't been confirmed — card renders without a link. */
+  url?: string
   placeholder?: false
 }
 
@@ -40,16 +41,18 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   },
   {
     title: 'Onyx Global',
-    placeholder: true,
-    placeholderNote: 'Onyx Global screenshot/logo — pending upload',
-  },
-  {
-    title: 'Certi Sustainability',
-    placeholder: true,
-    placeholderNote: 'Screenshot pending — awaiting client confirmation before this goes live',
+    result: 'Waitlist landing page for an Australian multi-currency travel card & digital wallet.',
+    image: '/projects/onyx-global.png',
+    url: 'https://onyxglobal.com.au',
   },
   {
     title: 'Estética Sydney',
+    result: 'Social growth & content site for a Sydney beauty and social media agency.',
+    image: '/projects/estetica-sydney.png',
+    // No confirmed live URL yet — card shows the screenshot without a link.
+  },
+  {
+    title: 'Certi Sustainability',
     placeholder: true,
     placeholderNote: 'Screenshot pending — awaiting client confirmation before this goes live',
   },
@@ -92,31 +95,35 @@ export default function PortfolioStrip() {
                 </div>
               </div>
             ) : (
-              <a
-                key={project.title}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden hover:border-[#C9A07A] transition-colors duration-200"
-              >
-                <div className="relative aspect-video bg-[#F0EDE7] overflow-hidden border-b border-[#E8E4DF]">
-                  <Image
-                    src={project.image}
-                    alt={`${project.title} website screenshot`}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-top"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-[#3D2817] font-semibold text-lg mb-1.5">{project.title}</h3>
-                  <p className="text-[#6B6560] text-sm leading-relaxed mb-4">{project.result}</p>
-                  <span className="inline-flex items-center gap-1.5 text-[#C9A07A] text-sm font-semibold group-hover:gap-2.5 transition-all duration-200">
-                    View Live Site
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </a>
+              (() => {
+                const Wrapper = project.url ? 'a' : 'div'
+                return (
+                  <Wrapper
+                    key={project.title}
+                    {...(project.url
+                      ? { href: project.url, target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                    className="group block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden hover:border-[#C9A07A] transition-colors duration-200"
+                  >
+                    <div className="relative aspect-video bg-[#F0EDE7] overflow-hidden border-b border-[#E8E4DF]">
+                      <PortfolioCardImage
+                        src={project.image}
+                        alt={`${project.title} website screenshot`}
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-[#3D2817] font-semibold text-lg mb-1.5">{project.title}</h3>
+                      <p className="text-[#6B6560] text-sm leading-relaxed mb-4">{project.result}</p>
+                      {project.url && (
+                        <span className="inline-flex items-center gap-1.5 text-[#C9A07A] text-sm font-semibold group-hover:gap-2.5 transition-all duration-200">
+                          View Live Site
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </span>
+                      )}
+                    </div>
+                  </Wrapper>
+                )
+              })()
             )
           )}
         </div>
