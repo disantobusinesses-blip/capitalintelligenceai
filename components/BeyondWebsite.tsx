@@ -39,9 +39,6 @@ export default function BeyondWebsite() {
               We manage and grow your social presence using the same systems behind Onyx
               Global&apos;s results.
             </p>
-            <p className="text-[#9E9790] text-xs italic leading-relaxed mt-3">
-              [PLACEHOLDER: Instagram/Onyx growth stat or screenshot — pending upload]
-            </p>
           </div>
 
           {/* Card B — B2B Lead Generation */}
