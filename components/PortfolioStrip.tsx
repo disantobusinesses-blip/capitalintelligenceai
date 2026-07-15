@@ -41,14 +41,14 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   },
   {
     title: 'Onyx Global',
-    result: 'Waitlist landing page for an Australian multi-currency travel card & digital wallet.',
-    image: '/projects/onyx-global.png',
+    result: 'Fintech card platform website.',
+    image: '/projects/onyx-global.jpg',
     url: 'https://onyxglobal.com.au',
   },
   {
     title: 'Estética Sydney',
-    result: 'Social growth & content site for a Sydney beauty and social media agency.',
-    image: '/projects/estetica-sydney.png',
+    result: 'Beauty and aesthetics business website.',
+    image: '/projects/estetica-sydney.jpg',
     // No confirmed live URL yet — card shows the screenshot without a link.
   },
   {

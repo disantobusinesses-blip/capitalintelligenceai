@@ -1,16 +1,6 @@
-import { ImageOff } from 'lucide-react'
 import { display, body } from '@/lib/fonts'
 import CountUp from '@/components/CountUp'
-
-/** Shared placeholder tile for the client-account screenshots that are pending upload. */
-function ScreenshotPlaceholder({ note }: { note: string }) {
-  return (
-    <div className="mt-6 aspect-[16/10] rounded-[8px] bg-[#F0EDE7] border border-[#E8E4DF] flex flex-col items-center justify-center gap-2 px-5 text-center">
-      <ImageOff className="w-5 h-5 text-[#9E9790]" strokeWidth={1.5} />
-      <span className="text-[#9E9790] text-xs font-medium leading-relaxed">[PLACEHOLDER: {note}]</span>
-    </div>
-  )
-}
+import GrowthProofImage from '@/components/GrowthProofImage'
 
 export default function DigitalGrowthProof() {
   return (
@@ -31,22 +21,26 @@ export default function DigitalGrowthProof() {
 
         {/* Three stat columns */}
         <div className="grid md:grid-cols-3 gap-6">
-          {/* Column 1 — Social Reach (view count + platform both pending) */}
+          {/* Column 1 — Social Reach (view count confirmed; platform still pending) */}
           <div className="flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8">
             <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.2px] uppercase">
               Social Reach
             </p>
-            <p className={`${body.className} text-[40px] md:text-[48px] font-bold text-[#9E9790] leading-none mt-3`}>
-              [view count]
-            </p>
+            <CountUp
+              end={2.0}
+              decimals={1}
+              suffix="M"
+              className={`${body.className} block text-[40px] md:text-[48px] font-bold text-[#3D2817] leading-none mt-3`}
+            />
             <p className="text-[#6B6560] text-sm leading-relaxed mt-4">
               <span className="text-[#9E9790] italic">[PLATFORM: CONFIRM — Instagram or TikTok]</span>{' '}
               views in 30 days for Onyx Global — managed end-to-end by our team.
             </p>
-            <p className="text-[#9E9790] text-xs italic leading-relaxed mt-2">
-              [PLACEHOLDER: final view count — 422K / 575K / 1M / 2M confirmed, 1.3M / 2.5M pending re-upload]
-            </p>
-            <ScreenshotPlaceholder note="dashboard screenshot" />
+            <GrowthProofImage
+              src="/proof/social-reach-2m-views.jpg"
+              alt="Professional dashboard showing 2.0M views in the last 30 days"
+              aspectClassName="aspect-[1320/523]"
+            />
           </div>
 
           {/* Column 2 — Search Growth (confirmed: 892 clicks, 59.4K impressions) */}
@@ -77,7 +71,11 @@ export default function DigitalGrowthProof() {
               <span className="text-[#9E9790] italic">[PLACEHOLDER: CLIENT NAME — confirm]</span> over 5
               weeks — the slow-build SEO curve, not overnight traffic.
             </p>
-            <ScreenshotPlaceholder note="GSC screenshot" />
+            <GrowthProofImage
+              src="/proof/gsc-search-console.jpg"
+              alt="Google Search Console performance report showing 892 total clicks and 59.4K total impressions"
+              aspectClassName="aspect-[970/553]"
+            />
           </div>
 
           {/* Column 3 — Get Mentioned By AI (confirmed: 84 sessions) */}
@@ -97,7 +95,11 @@ export default function DigitalGrowthProof() {
               <span className="text-[#9E9790] italic">[PLACEHOLDER: CLIENT NAME — confirm]</span> — proof
               our GEO work shows up where AI assistants send traffic.
             </p>
-            <ScreenshotPlaceholder note="GA4 screenshot" />
+            <GrowthProofImage
+              src="/proof/ai-referral-ga4.png"
+              alt="Google Analytics 4 session source report showing chatgpt.com referral sessions"
+              aspectClassName="aspect-[1080/1350]"
+            />
           </div>
         </div>
       </div>
