@@ -16,13 +16,14 @@ const post = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
+  image: 'https://intelligentaisystem.com/ias-logo.png',
   headline: post.title,
   description: post.description,
   datePublished: post.publishedAt,
   dateModified: post.lastModified,
   author: {
     '@type': 'Organization',
-    name: 'Intelligent AI Systems',
+    name: 'Capital Intelligence Group',
     url: 'https://intelligentaisystem.com',
   },
   publisher: {
@@ -31,7 +32,7 @@ const jsonLd = {
     url: 'https://intelligentaisystem.com',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://intelligentaisystem.com/images/is-logo.jpg',
+      url: 'https://intelligentaisystem.com/ias-logo.png',
     },
   },
   mainEntityOfPage: {

@@ -43,21 +43,13 @@ function GoogleIcon() {
 }
 
 export default function GoogleReviewsBanner() {
-  // Duplicate reviews for seamless infinite scroll
-  const duplicatedReviews = [...reviews, ...reviews]
-
   return (
-    <div className="bg-white border-b border-[#E8E4DF] py-2 fixed top-[68px] left-0 right-0 z-40 overflow-hidden">
-      {/* Scrolling Reviews - using CSS animation for consistent speed */}
-      <div 
-        className="flex gap-6 animate-scroll hover:[animation-play-state:paused]"
-        style={{
-          width: 'max-content',
-        }}
-      >
-        {duplicatedReviews.map((review, index) => (
+    <div className="bg-white border-b border-[#E8E4DF] py-2 fixed top-[68px] left-0 right-0 z-40 overflow-x-auto">
+      {/* Static reviews — centered, with manual horizontal scroll on narrow screens */}
+      <div className="flex gap-6 justify-center min-w-max mx-auto px-4">
+        {reviews.map((review) => (
           <div
-            key={`${review.author}-${index}`}
+            key={review.author}
             className="flex-shrink-0 flex items-center gap-3 px-4 py-1"
           >
             {/* Stars */}

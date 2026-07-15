@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { ArrowLeft, Check, Zap, Smartphone, Gauge, Search } from 'lucide-react'
+import QuotePopupButton from '@/components/QuotePopupButton'
 
 export default function LandingPageService() {
 
@@ -42,7 +43,7 @@ export default function LandingPageService() {
   ]
 
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pt-[74px]">
+    <main className="min-h-[100dvh] bg-[#F8F7F4] pt-[74px]">
       {/* Header */}
       <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -161,12 +162,12 @@ export default function LandingPageService() {
             <p className="text-gray-400 mb-8">
               Includes design, development, and deployment of your landing page
             </p>
-            <a
-              href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+            <QuotePopupButton
+              service="Landing Page"
               className="w-full px-8 py-4 bg-white text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#F8F7F4] text-center block"
             >
               Get Started Now
-            </a>
+            </QuotePopupButton>
             <p className="text-sm text-gray-400 mt-4">
               Add monthly maintenance package for ongoing support
             </p>
@@ -186,6 +187,6 @@ export default function LandingPageService() {
 
         </div>
       </section>
-    </div>
+    </main>
   )
 }

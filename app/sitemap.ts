@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase'
 export const dynamic = 'force-dynamic'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.intelligentaisystem.com'
+  const baseUrl = 'https://intelligentaisystem.com'
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -26,16 +26,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/pricing`,
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/features`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
     },
     {
       url: `${baseUrl}/projects`,
@@ -56,6 +56,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/pricing`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
       url: `${baseUrl}/services/landing-page`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -63,6 +69,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/services/full-package`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/google-business-profile`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/b2b-crm-ai-platform`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -85,6 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { data: posts } = await supabase
     .from('capitalintelligence_posts')
     .select('slug, created_at')
+    .eq('published', true)
 
   const blogRoutes: MetadataRoute.Sitemap = (posts ?? []).map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,

@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle, Mail, Clock, ArrowRight } from 'lucide-react'
+import QuotePopupButton from '@/components/QuotePopupButton'
 
 const planNames: Record<string, string> = {
   landing_page: 'Landing Page',
@@ -55,13 +56,10 @@ function ThankYouContent() {
           <div className="flex items-start gap-3">
             <ArrowRight className="w-5 h-5 text-emerald-400 mt-0.5 shrink-0" />
             <p className="text-sm text-zinc-400">
-              Questions? Email us at{' '}
-              <a
-                href="mailto:sales@intelligentaisystem.com"
-                className="text-white underline hover:text-emerald-400 transition-colors"
-              >
-                sales@intelligentaisystem.com
-              </a>
+              Questions?{' '}
+              <QuotePopupButton className="text-white underline hover:text-emerald-400 transition-colors">
+                Get in touch
+              </QuotePopupButton>
             </p>
           </div>
         </div>

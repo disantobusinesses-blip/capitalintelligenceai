@@ -1,15 +1,22 @@
 import type { Metadata } from 'next'
+
+export const revalidate = 60
+
 import Link from 'next/link'
 import { ArrowLeft, Check, Bot, Database, Target, Workflow, Lock, Server } from 'lucide-react'
+import QuotePopupButton from '@/components/QuotePopupButton'
 
 export const metadata: Metadata = {
-  title: 'B2B Custom CRM AI Acquisition Platform – Intelligent AI Systems',
+  title: 'B2B AI CRM & Lead Acquisition Platform | Intelligent AI Systems',
   description:
-    'A fully private, custom-built AI-powered CRM and customer acquisition system designed exclusively for B2B businesses. AI lead scraping, pipeline management, and automated follow-up — built only for your business.',
+    'Private, AI-powered CRM and lead acquisition system built exclusively for your B2B business — AI lead scraping, pipeline management, and automated follow-up.',
   keywords:
     'B2B CRM AI, custom CRM platform, AI lead acquisition, B2B lead generation, custom AI system, CRM pipeline management',
+  alternates: {
+    canonical: 'https://intelligentaisystem.com/services/b2b-crm-ai-platform',
+  },
   openGraph: {
-    title: 'B2B Custom CRM AI Acquisition Platform – Intelligent AI Systems',
+    title: 'B2B AI CRM & Lead Acquisition Platform | Intelligent AI Systems',
     description:
       'Private, AI-powered CRM and lead acquisition system built exclusively for your B2B business — your data, your system, guaranteed results.',
     url: 'https://intelligentaisystem.com/services/b2b-crm-ai-platform',
@@ -65,7 +72,7 @@ const included = [
 
 export default function B2BCrmAiPlatformPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
+    <main className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
       {/* Header */}
       <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -224,14 +231,14 @@ export default function B2BCrmAiPlatformPage() {
           <p className="text-[13px] text-[#9E9790] mb-8">
             $2,000 deposit to start · 10–15 day build · balance on completion
           </p>
-          <a
-            href="mailto:sales@intelligentaisystem.com?subject=B2B%20CRM%20AI%20Platform%20-%20Discovery%20Call&body=Hello%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20for%20the%20B2B%20Custom%20CRM%20AI%20Acquisition%20Platform."
+          <QuotePopupButton
+            service="B2B AI Platform"
             className="inline-block px-10 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
           >
             Book a Discovery Call
-          </a>
+          </QuotePopupButton>
         </div>
       </section>
-    </div>
+    </main>
   )
 }

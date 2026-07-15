@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Phone, Rocket } from 'lucide-react'
+import { Phone } from 'lucide-react'
+import { useQuotePopup } from '@/context/QuotePopupContext'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -14,13 +14,7 @@ const navLinks = [
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 300)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const { openPopup } = useQuotePopup()
 
   return (
     <header
@@ -35,6 +29,8 @@ export default function Navbar() {
             alt="Intelligent AI Systems"
             width={48}
             height={48}
+            loading="eager"
+            fetchPriority="high"
             className="h-12 w-auto rounded object-cover"
           />
         </Link>
@@ -56,30 +52,19 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="tel:0370510100"
-            aria-label="Call us"
+            aria-label="Call 03 7051 0100"
             className="flex items-center gap-2 text-[#1A1A1A] hover:text-[#5C3D2E] transition-colors duration-200"
           >
             <Phone className="w-4 h-4" />
             <span className="hidden md:inline font-semibold text-[15px]">03 7051 0100</span>
           </a>
-          {/* Scroll-triggered "Launch My Site" button */}
-          <Link
-            href="/launch"
-            className={`flex items-center gap-1.5 bg-[#1A1A1A] text-white text-sm font-semibold px-4 py-2 rounded-[6px] hover:bg-[#2D2D2D] transition-all duration-300 ${
-              scrolled
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 -translate-y-1 pointer-events-none'
-            }`}
-          >
-            <Rocket className="w-4 h-4" />
-            Launch My Site
-          </Link>
-          <Link
-            href="/#consultation"
+          <button
+            type="button"
+            onClick={() => openPopup()}
             className="bg-[#1A1A1A] text-white text-sm font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
           >
-            Book Free Consultation
-          </Link>
+            Quote
+          </button>
         </div>
       </div>
     </header>

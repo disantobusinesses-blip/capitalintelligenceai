@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: 'Website Templates from $850 | Intelligent AI Systems',
   description:
     'Browse professionally designed industry website templates — construction, skincare, fitness, hospitality, and legal. Live within 24–48 hours from $850 + GST.',
+  alternates: {
+    canonical: 'https://intelligentaisystem.com/templates',
+  },
 }
 
 export default function TemplatesPage() {

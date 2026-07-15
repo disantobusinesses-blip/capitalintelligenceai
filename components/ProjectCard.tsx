@@ -51,6 +51,8 @@ export default function ProjectCard({ project }: { project: Project }) {
               src={project.image}
               alt={project.title}
               loading="lazy"
+              width={640}
+              height={360}
               className="absolute inset-0 w-full h-full object-cover object-top"
               onError={() => setImgFailed(true)}
             />

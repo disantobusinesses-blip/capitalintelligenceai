@@ -2,13 +2,18 @@ import type { Metadata } from 'next'
 import { Zap, Users, Target, Shield } from 'lucide-react'
 import Link from 'next/link'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'About Us – Intelligent AI Systems | Capital Intelligence Group',
-  description: 'Learn about Intelligent AI Systems (IAS), part of Capital Intelligence Group. We build professional websites, AI integrations, and digital solutions for businesses across Australia, the US, the UK, and Singapore.',
+  description: 'IAS builds professional websites and AI integrations for businesses across Australia, the US, the UK, and Singapore. Part of Capital Intelligence Group.',
   keywords: 'about IAS, Intelligent AI Systems, Capital Intelligence Group, web design agency Australia, AI automation, digital solutions',
+  alternates: {
+    canonical: 'https://intelligentaisystem.com/about',
+  },
   openGraph: {
     title: 'About Us – Intelligent AI Systems',
-    description: 'We integrate intelligent systems into businesses so they operate smoother, faster, and smarter.',
+    description: 'IAS builds professional websites and AI integrations for businesses across Australia, the US, the UK, and Singapore.',
     url: 'https://intelligentaisystem.com/about',
     type: 'website',
   },

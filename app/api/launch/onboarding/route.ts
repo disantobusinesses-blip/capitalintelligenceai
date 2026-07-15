@@ -99,6 +99,9 @@ export async function POST(request: NextRequest) {
     })
 
     const htmlBody = `
+      <p style="background:#FFF4E5;border:1px solid #F0C36D;border-radius:6px;padding:10px 14px;font-weight:bold;color:#8A5A00;">
+        ⚠️ 10% DEPOSIT INCENTIVE APPLIES — apply 10% discount when invoicing the final build balance.
+      </p>
       <h2>New Launch My Site Onboarding — ${esc(businessName)}</h2>
       <h3>Order Details</h3>
       <ul>

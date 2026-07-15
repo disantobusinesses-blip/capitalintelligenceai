@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Bot } from 'lucide-react'
+import QuotePopupButton from '@/components/QuotePopupButton'
 
 const services = [
   {
@@ -91,12 +92,12 @@ export default function ServiceSelection() {
                 </ul>
 
                 {/* CTA */}
-                <a
-                  href="mailto:sales@intelligentaisystem.com?subject=B2B%20CRM%20AI%20Platform%20-%20Discovery%20Call&body=Hello%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20for%20the%20B2B%20Custom%20CRM%20AI%20Acquisition%20Platform."
+                <QuotePopupButton
+                  service="B2B AI Platform"
                   className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 mt-auto text-sm text-center block"
                 >
                   {service.cta}
-                </a>
+                </QuotePopupButton>
               </div>
             )
           })}

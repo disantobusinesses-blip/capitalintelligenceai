@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { MapPin, Star, ShieldCheck, TrendingUp, CheckCircle } from 'lucide-react'
+import QuotePopupButton from '@/components/QuotePopupButton'
 
 const trustPoints = [
   {
@@ -104,12 +105,12 @@ export default function GoogleBusinessProfileBanner() {
 
         {/* CTA row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <a
-            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+          <QuotePopupButton
+            service="Google Business Profile"
             className="bg-[#1A1A1A] text-white font-semibold px-7 py-3.5 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 text-[15px]"
           >
             Enquire About GBP Setup — A$299
-          </a>
+          </QuotePopupButton>
           <a
             href="/services/google-business-profile"
             className="text-[14px] font-semibold text-[#5C3D2E] hover:underline underline-offset-2 transition-colors duration-150"

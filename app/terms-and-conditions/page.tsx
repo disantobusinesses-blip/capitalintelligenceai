@@ -63,12 +63,15 @@ export default function TermsAndConditions() {
             3.1 Plan Options
           </h3>
           <p className="text-[#1A1A1A] leading-relaxed mb-4">
-            We offer three monthly subscription plans:
+            We offer the following monthly hosting plans and one-off website packages:
           </p>
           <ul className="list-disc pl-6 text-[#1A1A1A] space-y-2 mb-4">
-            <li><strong>Website Hosting:</strong> $169 AUD per month</li>
-            <li><strong>Revenue Optimisation:</strong> $279 AUD per month</li>
-            <li><strong>Done-For-You Digital Team:</strong> $449 AUD per month</li>
+            <li><strong>Hosting Only:</strong> $59 AUD per month</li>
+            <li><strong>Hosting + Updates:</strong> $99 AUD per month</li>
+            <li><strong>Landing Page Starter:</strong> $599–$999 AUD (one-off)</li>
+            <li><strong>Landing Page Premium:</strong> $1,000–$1,999 AUD (one-off)</li>
+            <li><strong>Multi-Page Website:</strong> $1,999–$5,999 AUD (one-off)</li>
+            <li><strong>Cinematic Website:</strong> $3,499–$10,000 AUD (one-off)</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { ArrowLeft, Check, Package } from 'lucide-react'
+import QuotePopupButton from '@/components/QuotePopupButton'
 
 const features = [
   'Custom multi-page design (up to 10 pages)',
@@ -18,7 +19,7 @@ const features = [
 
 export default function FullPackageService() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pt-[74px]">
+    <main className="min-h-[100dvh] bg-[#F8F7F4] pt-[74px]">
       {/* Header */}
       <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -107,14 +108,14 @@ export default function FullPackageService() {
           <p className="text-[#6B6560] mb-8 text-base">
             Tell us about your business and we&apos;ll put together a tailored proposal — no obligation.
           </p>
-          <a
-            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+          <QuotePopupButton
+            service="Custom Website"
             className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
           >
-            Email for Quote
-          </a>
+            Get a Free Quote
+          </QuotePopupButton>
         </div>
       </section>
-    </div>
+    </main>
   )
 }

@@ -66,7 +66,7 @@ export type CustomBudget = (typeof CUSTOM_BUDGET_OPTIONS)[number]
  * instant payment.
  */
 export interface CustomSiteOption {
-  id: 'landing-starter' | 'landing-premium' | 'multipage'
+  id: 'landing-starter' | 'landing-premium' | 'multipage' | 'cinematic'
   label: string
   range: string
   /**
@@ -79,20 +79,26 @@ export interface CustomSiteOption {
 export const CUSTOM_SITE_OPTIONS: CustomSiteOption[] = [
   {
     id: 'landing-starter',
-    label: 'Landing Page — Starter',
+    label: 'Landing Page Starter',
     range: `$599 to $999 ${GST_NOTE}`,
     flow: 'deposit',
   },
   {
     id: 'landing-premium',
-    label: 'Landing Page — Premium',
+    label: 'Landing Page Premium',
     range: `$1,000 to $1,999 ${GST_NOTE}`,
     flow: 'deposit',
   },
   {
     id: 'multipage',
-    label: 'Multi-Page Site',
+    label: 'Multi-Page Website',
     range: `$1,999 to $5,999 ${GST_NOTE}`,
+    flow: 'quote',
+  },
+  {
+    id: 'cinematic',
+    label: 'Cinematic Website',
+    range: `$3,499 to $10,000 ${GST_NOTE}`,
     flow: 'quote',
   },
 ]

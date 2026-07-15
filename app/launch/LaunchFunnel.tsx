@@ -19,6 +19,7 @@ import {
   X,
 } from 'lucide-react'
 import { TEMPLATES, GST_NOTE } from '@/lib/templates'
+import FlowTrustStrip from '@/components/FlowTrustStrip'
 
 const display = Cormorant_Garamond({
   subsets: ['latin'],
@@ -454,10 +455,10 @@ export default function LaunchFunnel() {
       {/* Exit to site */}
       <Link
         href="/"
-        aria-label="Exit"
-        className="fixed top-4 right-4 z-[70] flex items-center gap-1.5 rounded-full border border-[#E8E4DF] bg-white/90 px-3 py-1.5 text-xs font-semibold text-[#5A5A5A] hover:text-[#1A1A1A] hover:border-[#5C3D2E] transition-colors duration-200"
+        aria-label="Exit and return to homepage"
+        className="fixed top-4 right-4 z-[70] inline-flex items-center gap-2 rounded-full border border-[#1A1A1A]/15 bg-white px-4 py-2.5 text-sm font-bold text-[#1A1A1A] shadow-[0_4px_16px_rgba(0,0,0,0.12)] hover:bg-[#1A1A1A] hover:text-white hover:border-[#1A1A1A] transition-colors duration-200"
       >
-        <X className="w-3.5 h-3.5" />
+        <X className="w-5 h-5" />
         Exit
       </Link>
 
@@ -509,6 +510,9 @@ export default function LaunchFunnel() {
               Begin
               <ArrowRight className="w-4 h-4" />
             </button>
+            <div className="mt-10 mx-auto max-w-md">
+              <FlowTrustStrip />
+            </div>
           </div>
         </section>
       )}
@@ -554,6 +558,9 @@ export default function LaunchFunnel() {
                     </button>
                   )
                 })}
+              </div>
+              <div className="mt-8 mx-auto max-w-md">
+                <FlowTrustStrip />
               </div>
             </div>
           </div>
@@ -953,6 +960,10 @@ export default function LaunchFunnel() {
               )}
 
               {error && <p className="mt-5 text-center text-sm text-red-600">{error}</p>}
+
+              <div className="mt-10 mx-auto max-w-md">
+                <FlowTrustStrip />
+              </div>
             </div>
           </div>
 
@@ -1004,6 +1015,10 @@ export default function LaunchFunnel() {
                   remaining build balance and your hosting plan are invoiced once your site goes
                   live.
                 </p>
+                {/* Deposit incentive (messaging only — no Stripe coupon applied). */}
+                <div className="mt-4 rounded-[6px] bg-[#FFF4E5] border border-[#F0C36D] px-4 py-3 text-sm font-semibold text-[#8A5A00]">
+                  Pay your deposit today and receive 10% off your final build invoice.
+                </div>
                 {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
                 <button
                   type="button"
@@ -1044,6 +1059,9 @@ export default function LaunchFunnel() {
                 </Link>
               </div>
             )}
+            <div className="mt-8">
+              <FlowTrustStrip />
+            </div>
           </div>
         </section>
       )}

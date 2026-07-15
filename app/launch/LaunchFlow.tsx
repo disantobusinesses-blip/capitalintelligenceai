@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
+import Link from 'next/link'
 import {
   ArrowLeft,
   ArrowRight,
@@ -8,8 +9,12 @@ import {
   CheckCircle2,
   CreditCard,
   Loader2,
+  Mail,
   Palette,
+  Phone,
   Rocket,
+  User,
+  X,
 } from 'lucide-react'
 import TemplateCard from '@/components/TemplateCard'
 import { useGetStartedModal } from '@/context/GetStartedModalContext'
@@ -23,10 +28,13 @@ import {
   CustomSiteOption,
 } from '@/lib/templates'
 
-// Each step keeps the compact 1-2-3 indicator at the top.
+// Each step keeps the compact 1-2-3 indicator at the top. Contact details are
+// captured on their own step right before checkout so the lead is sent to us the
+// moment they continue to payment — even if they never complete the deposit.
 const STEPS = [
   { title: 'Your Site' },
   { title: 'Schedule' },
+  { title: 'Your Details' },
   { title: 'Checkout' },
 ]
 
@@ -88,6 +96,14 @@ export default function LaunchFlow({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  // Both flows: capture the lead's contact details on their own step before
+  // Stripe checkout so we can follow up even if they abandon payment.
+  const [contactName, setContactName] = useState('')
+  const [contactEmail, setContactEmail] = useState('')
+  const [contactPhone, setContactPhone] = useState('')
+  const [leadSent, setLeadSent] = useState(false)
+  const [sendingLead, setSendingLead] = useState(false)
+
   // Always land at the very top of the next step so the heading is the first thing
   // a visitor sees — never the bottom of the previous section.
   const isFirstRender = useRef(true)
@@ -144,6 +160,51 @@ export default function LaunchFlow({
     setSelectedHosting(null)
   }
 
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  const contactComplete =
+    contactName.trim() !== '' &&
+    EMAIL_RE.test(contactEmail.trim()) &&
+    contactPhone.trim() !== ''
+
+  // Continue from the "Your Details" step to the Stripe checkout step. This is
+  // where the lead is sent to us — for BOTH template and custom builds — so we
+  // capture every visitor who reaches payment, whether or not they pay.
+  async function goToCheckout() {
+    if (!contactComplete || sendingLead) return
+    setSendingLead(true)
+    setError(null)
+    if (!leadSent) {
+      try {
+        await fetch('/api/launch/custom-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            siteType,
+            name: contactName.trim(),
+            email: contactEmail.trim(),
+            phone: contactPhone.trim(),
+            build: buildName,
+            tier:
+              siteType === 'custom'
+                ? customOption
+                  ? `${customOption.label} (${customOption.range})`
+                  : ''
+                : tier && template?.tiers && template.tiers.length > 1
+                  ? tier.label
+                  : '',
+            hostingPlan: hosting ? `${hosting.label} — ${hosting.price}` : selectedHosting,
+            goLiveDate,
+          }),
+        })
+        setLeadSent(true)
+      } catch {
+        // Swallow — never block the user from proceeding to payment.
+      }
+    }
+    setSendingLead(false)
+    setStep(3)
+  }
+
   async function handleCheckout() {
     const validTemplate =
       siteType === 'template' && Boolean(selectedTemplate && selectedHosting)
@@ -151,6 +212,7 @@ export default function LaunchFlow({
     if ((!validTemplate && !validCustom) || !goLiveDate || !termsAccepted) return
     setLoading(true)
     setError(null)
+
     try {
       const body =
         siteType === 'template'
@@ -184,19 +246,26 @@ export default function LaunchFlow({
   }
 
   // The sticky action bar (with Back / Continue) drives the Stripe path —
-  // template builds and custom landing pages.
+  // template builds and custom landing pages — across the site, schedule and
+  // details steps. The final checkout step has its own pay button.
   const showActionBar =
-    (step === 0 && (siteType === 'template' || isCustomDeposit)) || step === 1
+    (step === 0 && (siteType === 'template' || isCustomDeposit)) ||
+    step === 1 ||
+    step === 2
   const actionHelper =
-    step === 1
-      ? canProceedStep2
+    step === 2
+      ? contactComplete
         ? null
-        : 'Select a go live date to continue.'
-      : canProceedStep1
-        ? null
-        : siteType === 'custom'
-          ? 'Choose a hosting plan to continue.'
-          : 'Select a template and a hosting plan to continue.'
+        : 'Add your name, email and phone to continue.'
+      : step === 1
+        ? canProceedStep2
+          ? null
+          : 'Select a go live date to continue.'
+        : canProceedStep1
+          ? null
+          : siteType === 'custom'
+            ? 'Choose a hosting plan to continue.'
+            : 'Select a template and a hosting plan to continue.'
 
   // Hosting plan picker — shared by the template flow and the custom landing
   // page flow so both choose hosting before checkout.
@@ -247,6 +316,17 @@ export default function LaunchFlow({
         showActionBar ? 'pb-44 sm:pb-32' : 'pb-28'
       }`}
     >
+      {/* Prominent exit — this flow runs without the site navbar, so it needs a
+          large, obvious way back to the homepage. */}
+      <Link
+        href="/"
+        aria-label="Exit and return to homepage"
+        className="fixed top-4 right-4 z-50 inline-flex items-center gap-2 rounded-full border border-[#1A1A1A]/15 bg-white px-4 py-2.5 text-sm font-bold text-[#1A1A1A] shadow-[0_4px_16px_rgba(0,0,0,0.12)] hover:bg-[#1A1A1A] hover:text-white hover:border-[#1A1A1A] transition-colors duration-200"
+      >
+        <X className="w-5 h-5" />
+        Exit
+      </Link>
+
       <div className="max-w-[1040px] mx-auto">
         {/* Compact one-time hero — shown small at the very top, never inside steps */}
         <div className="text-center mb-5 md:mb-7">
@@ -373,7 +453,7 @@ export default function LaunchFlow({
                 <h2 className="text-xl md:text-2xl font-bold text-center mb-4">
                   What custom build?
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {CUSTOM_SITE_OPTIONS.map((option) => {
                     const isSelected = selectedCustomOption === option.id
                     return (
@@ -480,8 +560,63 @@ export default function LaunchFlow({
             </div>
           )}
 
-          {/* Step 3: Payment — template builds and custom landing pages */}
-          {step === 2 && hosting && goLiveDate && (template || isCustomDeposit) && (
+          {/* Step 3: Your Details — captured before checkout for every build so
+              the lead reaches us the moment they continue to payment. */}
+          {step === 2 && (template || isCustomDeposit) && (
+            <div className="max-w-md mx-auto">
+              <div className="flex items-center gap-2 justify-center mb-2">
+                <User className="w-5 h-5 text-[#1A1A1A]" />
+                <h2 className="text-xl md:text-2xl font-bold">Your details</h2>
+              </div>
+              <p className="text-center text-[#8A8A8A] text-sm mb-5">
+                So we can confirm your build and follow up. We respond within 1 hour.
+              </p>
+              <div className="space-y-3 rounded-2xl bg-white border border-[#E8E4DF] p-5 sm:p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                <label className="block">
+                  <span className="mb-1 flex items-center gap-1.5 text-sm font-semibold text-[#1A1A1A]">
+                    <User className="w-4 h-4 text-[#5C3D2E]" />
+                    Name <span className="text-red-500">*</span>
+                  </span>
+                  <input
+                    type="text"
+                    value={contactName}
+                    onChange={(e) => setContactName(e.target.value)}
+                    placeholder="Full name"
+                    className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#8A8A8A] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+                  />
+                </label>
+                <label className="block">
+                  <span className="mb-1 flex items-center gap-1.5 text-sm font-semibold text-[#1A1A1A]">
+                    <Mail className="w-4 h-4 text-[#5C3D2E]" />
+                    Email <span className="text-red-500">*</span>
+                  </span>
+                  <input
+                    type="email"
+                    value={contactEmail}
+                    onChange={(e) => setContactEmail(e.target.value)}
+                    placeholder="you@business.com.au"
+                    className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#8A8A8A] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+                  />
+                </label>
+                <label className="block">
+                  <span className="mb-1 flex items-center gap-1.5 text-sm font-semibold text-[#1A1A1A]">
+                    <Phone className="w-4 h-4 text-[#5C3D2E]" />
+                    Phone <span className="text-red-500">*</span>
+                  </span>
+                  <input
+                    type="tel"
+                    value={contactPhone}
+                    onChange={(e) => setContactPhone(e.target.value)}
+                    placeholder="04xx xxx xxx"
+                    className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#8A8A8A] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+                  />
+                </label>
+              </div>
+            </div>
+          )}
+
+          {/* Step 4: Payment — template builds and custom landing pages */}
+          {step === 3 && hosting && goLiveDate && (template || isCustomDeposit) && (
             <div className="max-w-lg mx-auto">
               <div className="rounded-2xl bg-white border border-[#E8E4DF] p-5 sm:p-6 space-y-4 text-[#1A1A1A] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                 <h2 className="text-xl font-bold flex items-center gap-2">
@@ -530,12 +665,13 @@ export default function LaunchFlow({
                   </li>
                 </ul>
                 <p className="text-xs text-[#8A8A8A] leading-relaxed">
-                  You&apos;ll be charged the ${DEPOSIT_AMOUNT} deposit plus your first month of
-                  hosting in one secure Stripe checkout. We collect your email and phone at checkout
-                  so we can confirm your build. The remaining build balance is invoiced before go
-                  live.
+                  You&apos;ll be charged only the ${DEPOSIT_AMOUNT} deposit today in one secure
+                  Stripe checkout. Your hosting plan and the remaining build balance are invoiced
+                  separately once your site goes live.
                 </p>
 
+                {/* Contact name/email/phone already captured on the previous
+                    step (and emailed to us) before reaching this checkout. */}
                 <label className="flex items-start gap-3 text-sm text-[#5A5A5A] cursor-pointer">
                   <input
                     type="checkbox"
@@ -550,6 +686,11 @@ export default function LaunchFlow({
                   </span>
                 </label>
 
+                {/* Deposit incentive (messaging only — no Stripe coupon applied). */}
+                <div className="rounded-[6px] bg-[#FFF4E5] border border-[#F0C36D] px-4 py-3 text-sm font-semibold text-[#8A5A00]">
+                  Pay your deposit today and receive 10% off your final build invoice.
+                </div>
+
                 {error && <p className="text-red-600 text-sm">{error}</p>}
 
                 <button
@@ -563,13 +704,13 @@ export default function LaunchFlow({
                       Redirecting to Stripe…
                     </>
                   ) : (
-                    <>Pay ${DEPOSIT_AMOUNT} Deposit + Hosting</>
+                    <>Pay ${DEPOSIT_AMOUNT} Deposit</>
                   )}
                 </button>
               </div>
               <div className="flex justify-start mt-5">
                 <button
-                  onClick={() => setStep(1)}
+                  onClick={() => setStep(2)}
                   className="inline-flex items-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
                 >
                   <ArrowLeft className="w-4 h-4" />
@@ -594,19 +735,40 @@ export default function LaunchFlow({
             )}
             <div className="flex gap-3 w-full sm:w-auto">
               <button
-                onClick={() => (step === 1 ? setStep(0) : setSiteType(null))}
-                className="inline-flex items-center justify-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-5 py-3 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200"
+                onClick={() =>
+                  step === 0 ? setSiteType(null) : setStep(step - 1)
+                }
+                disabled={sendingLead}
+                className="inline-flex items-center justify-center gap-2 border border-[#1A1A1A]/30 text-[#1A1A1A] font-semibold px-5 py-3 rounded-[6px] hover:bg-[#1A1A1A]/5 transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back
               </button>
               <button
-                onClick={() => setStep(step === 1 ? 2 : 1)}
-                disabled={step === 1 ? !canProceedStep2 : !canProceedStep1}
+                onClick={() =>
+                  step === 2 ? goToCheckout() : setStep(step + 1)
+                }
+                disabled={
+                  sendingLead ||
+                  (step === 0
+                    ? !canProceedStep1
+                    : step === 1
+                      ? !canProceedStep2
+                      : !contactComplete)
+                }
                 className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-[#1A1A1A] text-white font-bold px-8 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Continue
-                <ArrowRight className="w-4 h-4" />
+                {sendingLead ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Saving…
+                  </>
+                ) : (
+                  <>
+                    {step === 2 ? 'Next' : 'Continue'}
+                    <ArrowRight className="w-4 h-4" />
+                  </>
+                )}
               </button>
             </div>
           </div>

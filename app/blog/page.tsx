@@ -1,5 +1,20 @@
+import type { Metadata } from 'next'
 import { supabase } from '@/lib/supabase'
 import BlogFilter from '@/components/BlogFilter'
+
+export const metadata: Metadata = {
+  title: 'AI & SEO Blog | Intelligent AI Systems',
+  description: 'Practical guides on AI, SEO, and website growth for Australian businesses. Tips on local search, AI automation, and digital marketing.',
+  alternates: {
+    canonical: 'https://intelligentaisystem.com/blog',
+  },
+  openGraph: {
+    title: 'AI & SEO Blog | Intelligent AI Systems',
+    description: 'Practical guides on AI, SEO, and website growth for Australian businesses.',
+    url: 'https://intelligentaisystem.com/blog',
+    type: 'website',
+  },
+}
 
 export const revalidate = 60
 

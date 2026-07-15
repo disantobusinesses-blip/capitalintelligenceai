@@ -1,10 +1,16 @@
 import type { Metadata } from 'next'
 import ProjectCard from '@/components/ProjectCard'
+import QuotePopupButton from '@/components/QuotePopupButton'
+
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Our Projects – Intelligent AI Systems | Portfolio',
-  description: 'Explore our portfolio of intelligent systems and websites built for businesses across Australia. From electrical services to e-commerce, healthcare, and finance.',
+  description: 'Explore IAS\'s portfolio of websites built for businesses across Australia — electrical, fitness, property, fintech, and more.',
   keywords: 'web design portfolio, AI projects, website examples Australia, IAS projects, Intelligent AI Systems portfolio',
+  alternates: {
+    canonical: 'https://intelligentaisystem.com/projects',
+  },
   openGraph: {
     title: 'Our Projects – Intelligent AI Systems',
     description: 'Intelligent systems implemented across diverse industries.',
@@ -120,12 +126,11 @@ export default function ProjectsPage() {
           <p className="text-[#6B6560] mb-8">
             Let us build an intelligent system tailored to your business needs.
           </p>
-          <a
-            href="mailto:sales@intelligentaisystem.com?subject=Get%20a%20Free%20Quote&body=Hello%20IAS%2C%20requesting%20a%20quote%20for%20the%20following%3A%20"
+          <QuotePopupButton
             className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
           >
             Get Started
-          </a>
+          </QuotePopupButton>
         </div>
       </section>
     </div>
