@@ -2,6 +2,14 @@ import { display, body } from '@/lib/fonts'
 import CountUp from '@/components/CountUp'
 import GrowthProofImage from '@/components/GrowthProofImage'
 
+// All four confirmed 30-day view-count snapshots, highest to lowest.
+const SOCIAL_REACH_SNAPSHOTS = [
+  { src: '/proof/social-reach-2m-views.jpg', label: '2.0M views' },
+  { src: '/proof/social-reach-1m-views.jpg', label: '1.0M views' },
+  { src: '/proof/social-reach-575k-views.jpg', label: '575.3K views' },
+  { src: '/proof/social-reach-422k-views.jpg', label: '422.0K views' },
+]
+
 export default function DigitalGrowthProof() {
   return (
     <section className={`${body.className} bg-white py-[80px] px-6 border-t border-[#E8E4DF]`}>
@@ -20,7 +28,7 @@ export default function DigitalGrowthProof() {
         </div>
 
         {/* Three stat columns */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 items-start">
           {/* Column 1 — Social Reach (view count confirmed; platform still pending) */}
           <div className="flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8">
             <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.2px] uppercase">
@@ -36,11 +44,21 @@ export default function DigitalGrowthProof() {
               <span className="text-[#9E9790] italic">[PLATFORM: CONFIRM — Instagram or TikTok]</span>{' '}
               views in 30 days for Onyx Global — managed end-to-end by our team.
             </p>
-            <GrowthProofImage
-              src="/proof/social-reach-2m-views.jpg"
-              alt="Professional dashboard showing 2.0M views in the last 30 days"
-              aspectClassName="aspect-[1320/523]"
-            />
+            <div className="grid grid-cols-2 gap-3 mt-6">
+              {SOCIAL_REACH_SNAPSHOTS.map((snapshot) => (
+                <div key={snapshot.src}>
+                  <GrowthProofImage
+                    src={snapshot.src}
+                    alt={`Professional dashboard showing ${snapshot.label} in the last 30 days`}
+                    aspectClassName="aspect-[3/2]"
+                    wrapperClassName=""
+                    fit="contain"
+                    sizes="(max-width: 768px) 50vw, 16vw"
+                  />
+                  <p className="text-[#9E9790] text-xs font-medium text-center mt-1.5">{snapshot.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Column 2 — Search Growth (confirmed: 892 clicks, 59.4K impressions) */}
