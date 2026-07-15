@@ -29,7 +29,7 @@ export default function DigitalGrowthProof() {
 
         {/* Three stat columns */}
         <div className="grid md:grid-cols-3 gap-6 items-start">
-          {/* Column 1 — Social Reach (view count confirmed; platform still pending) */}
+          {/* Column 1 — Social Reach (Instagram, client results) */}
           <div className="flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8">
             <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.2px] uppercase">
               Social Reach
@@ -41,8 +41,7 @@ export default function DigitalGrowthProof() {
               className={`${body.className} block text-[40px] md:text-[48px] font-bold text-[#3D2817] leading-none mt-3`}
             />
             <p className="text-[#6B6560] text-sm leading-relaxed mt-4">
-              <span className="text-[#9E9790] italic">[PLATFORM: CONFIRM — Instagram or TikTok]</span>{' '}
-              views in 30 days for Onyx Global — managed end-to-end by our team.
+              Client results for Instagram — views in 30 days, managed end-to-end by our team.
             </p>
             <div className="grid grid-cols-2 gap-3 mt-6">
               {SOCIAL_REACH_SNAPSHOTS.map((snapshot) => (
@@ -85,9 +84,8 @@ export default function DigitalGrowthProof() {
               </div>
             </div>
             <p className="text-[#6B6560] text-sm leading-relaxed mt-4">
-              Organic Search Console growth for{' '}
-              <span className="text-[#9E9790] italic">[PLACEHOLDER: CLIENT NAME — confirm]</span> over 5
-              weeks — the slow-build SEO curve, not overnight traffic.
+              Organic Search Console growth for a client over 5 weeks — the slow-build SEO
+              curve, not overnight traffic.
             </p>
             <GrowthProofImage
               src="/proof/gsc-search-console.jpg"
@@ -109,9 +107,8 @@ export default function DigitalGrowthProof() {
               <span className="text-[#9E9790] text-xs font-medium uppercase tracking-wide">Sessions</span>
             </div>
             <p className="text-[#6B6560] text-sm leading-relaxed mt-4">
-              Real sessions sourced from ChatGPT for{' '}
-              <span className="text-[#9E9790] italic">[PLACEHOLDER: CLIENT NAME — confirm]</span> — proof
-              our GEO work shows up where AI assistants send traffic.
+              Real sessions sourced from ChatGPT for a client — proof our GEO work shows up
+              where AI assistants send traffic.
             </p>
             <GrowthProofImage
               src="/proof/ai-referral-ga4.png"
