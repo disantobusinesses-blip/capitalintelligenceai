@@ -16,6 +16,18 @@ const SERVICE_OPTIONS: QuoteService[] = [
   'Other',
 ]
 
+// Display-only price ranges shown next to each service in the dropdown.
+// Matches lib/pricing.ts and each service's live page — does not affect the
+// `value` sent on submit or the preselection logic used elsewhere on the site.
+const SERVICE_PRICE_LABEL: Record<QuoteService, string | null> = {
+  'Landing Page': '$599–$1,999',
+  'Custom Website': '$1,999–$5,999',
+  'Cinematic Custom Website': '$3,499–$10,000',
+  'B2B AI Platform': 'Custom pricing',
+  'Google Business Profile': 'From $299',
+  Other: null,
+}
+
 export default function QuotePopup() {
   const router = useRouter()
   const pathname = usePathname()
@@ -275,6 +287,7 @@ export default function QuotePopup() {
               {SERVICE_OPTIONS.map((opt) => (
                 <option key={opt} value={opt}>
                   {opt}
+                  {SERVICE_PRICE_LABEL[opt] ? ` — ${SERVICE_PRICE_LABEL[opt]}` : ''}
                 </option>
               ))}
             </select>

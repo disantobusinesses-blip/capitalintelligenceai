@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { motion } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { LucideIcon } from "lucide-react"
@@ -58,22 +57,13 @@ export function NavBar({ items, className }: NavBarProps) {
               {/* Mobile and desktop: label only */}
               <span className="text-xs md:text-sm">{item.name}</span>
               {isActive && (
-                <motion.div
-                  layoutId="lamp"
-                  className="absolute inset-0 w-full bg-tech-baby-blue/5 rounded-full -z-10"
-                  initial={false}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                  }}
-                >
+                <div className="absolute inset-0 w-full bg-tech-baby-blue/5 rounded-full -z-10 transition-opacity duration-200">
                   <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-tech-baby-blue rounded-t-full">
                     <div className="absolute w-12 h-6 bg-tech-baby-blue/20 rounded-full blur-md -top-2 -left-2" />
                     <div className="absolute w-8 h-6 bg-tech-baby-blue/20 rounded-full blur-md -top-1" />
                     <div className="absolute w-4 h-4 bg-tech-baby-blue/20 rounded-full blur-sm top-0 left-2" />
                   </div>
-                </motion.div>
+                </div>
               )}
             </Link>
           )

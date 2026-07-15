@@ -36,7 +36,7 @@ export default function DigitalGrowthProof() {
             <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.2px] uppercase">
               Social Reach
             </p>
-            <p className={`${display.className} text-[40px] md:text-[48px] font-semibold text-[#9E9790] leading-none mt-3`}>
+            <p className={`${body.className} text-[40px] md:text-[48px] font-bold text-[#9E9790] leading-none mt-3`}>
               [view count]
             </p>
             <p className="text-[#6B6560] text-sm leading-relaxed mt-4">
@@ -58,7 +58,7 @@ export default function DigitalGrowthProof() {
               <div>
                 <CountUp
                   end={892}
-                  className={`${display.className} block text-[40px] md:text-[48px] font-semibold text-[#3D2817] leading-none`}
+                  className={`${body.className} block text-[40px] md:text-[48px] font-bold text-[#3D2817] leading-none`}
                 />
                 <span className="text-[#9E9790] text-xs font-medium uppercase tracking-wide">Clicks</span>
               </div>
@@ -67,7 +67,7 @@ export default function DigitalGrowthProof() {
                   end={59.4}
                   decimals={1}
                   suffix="K"
-                  className={`${display.className} block text-[40px] md:text-[48px] font-semibold text-[#3D2817] leading-none`}
+                  className={`${body.className} block text-[40px] md:text-[48px] font-bold text-[#3D2817] leading-none`}
                 />
                 <span className="text-[#9E9790] text-xs font-medium uppercase tracking-wide">Impressions</span>
               </div>
@@ -88,7 +88,7 @@ export default function DigitalGrowthProof() {
             <div className="mt-3">
               <CountUp
                 end={84}
-                className={`${display.className} block text-[40px] md:text-[48px] font-semibold text-[#3D2817] leading-none`}
+                className={`${body.className} block text-[40px] md:text-[48px] font-bold text-[#3D2817] leading-none`}
               />
               <span className="text-[#9E9790] text-xs font-medium uppercase tracking-wide">Sessions</span>
             </div>

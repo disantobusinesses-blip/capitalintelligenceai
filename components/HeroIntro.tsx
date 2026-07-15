@@ -7,6 +7,19 @@ const HERO_HEADLINE = "Your Website Shouldn't Look Like Everyone Else's."
 const HERO_SUBHEAD =
   'Custom-built, SEO-optimised websites for Melbourne businesses — backed by real client results, not templates.'
 
+// Real Google review — same quote already used in the site's testimonials.
+const REVIEW_QUOTE =
+  'The experience was incredible. Optimized my businesses presence on Google and helped with growth and insight overall.'
+const REVIEW_AUTHOR = 'Dylan M.'
+
+function StarIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBF24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2l2.9 6.3 6.8.9-5 4.7 1.2 6.8L12 17.6l-5.9 3.1 1.2-6.8-5-4.7 6.8-.9L12 2z" />
+    </svg>
+  )
+}
+
 export default function HeroIntro() {
   return (
     <section
@@ -46,6 +59,18 @@ export default function HeroIntro() {
             >
               See Our Work
             </a>
+          </div>
+
+          {/* Single review snippet, reinforcing trust at the point of decision */}
+          <div className="flex items-start gap-2.5 mt-6 max-w-[420px]">
+            <div className="flex items-center gap-0.5 pt-0.5 flex-shrink-0">
+              {[...Array(5)].map((_, i) => (
+                <StarIcon key={i} />
+              ))}
+            </div>
+            <p className="text-[#6B6560] text-[13px] leading-snug">
+              &ldquo;{REVIEW_QUOTE}&rdquo; <span className="text-[#3D2817] font-semibold">— {REVIEW_AUTHOR}</span>
+            </p>
           </div>
         </div>
       </div>

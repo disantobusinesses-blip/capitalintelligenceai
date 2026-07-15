@@ -1,4 +1,4 @@
-import { Instagram, TrendingUp, PenLine } from 'lucide-react'
+import { Instagram, TrendingUp, PenLine, Check } from 'lucide-react'
 import { display, body } from '@/lib/fonts'
 import QuotePopupButton from '@/components/QuotePopupButton'
 
@@ -7,6 +7,9 @@ const SEO_TIERS = [
   { label: '8 blogs/mo', price: '$179' },
   { label: '12 blogs/mo', price: '$249' },
 ]
+
+const SOCIAL_INCLUDES = ['Content calendar & scheduling', 'Reels, posts & stories', 'Monthly growth reporting']
+const B2B_INCLUDES = ['Curated, ready-to-contact lead lists', 'Custom lead platforms built for your team', 'Sales-ready contact data']
 
 export default function BeyondWebsite() {
   return (
@@ -20,7 +23,7 @@ export default function BeyondWebsite() {
           <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-[#3D2817] mt-3 text-balance`}>
             We Build Websites. Then We Help You Grow.
           </h2>
-          <p className="text-[#6B6560] text-[16px] mt-4">
+          <p className="text-[#6B6560] text-[16px] mt-4 text-balance">
             Most agencies disappear after launch. We don&apos;t.
           </p>
         </div>
@@ -35,10 +38,18 @@ export default function BeyondWebsite() {
             <h3 className="text-[#3D2817] font-semibold text-lg mb-3">
               Instagram &amp; Social Growth Management
             </h3>
-            <p className="text-[#6B6560] text-sm leading-relaxed">
+            <p className="text-[#6B6560] text-sm leading-relaxed mb-5">
               We manage and grow your social presence using the same systems behind Onyx
               Global&apos;s results.
             </p>
+            <ul className="flex flex-col gap-2.5 mt-auto">
+              {SOCIAL_INCLUDES.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-[#6B6560]">
+                  <Check className="w-4 h-4 text-[#C9A07A] flex-shrink-0 mt-0.5" strokeWidth={2} />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Card B — B2B Lead Generation */}
@@ -47,10 +58,18 @@ export default function BeyondWebsite() {
               <TrendingUp className="w-5 h-5 text-[#C9A07A]" strokeWidth={1.5} />
             </div>
             <h3 className="text-[#3D2817] font-semibold text-lg mb-3">B2B Lead Generation</h3>
-            <p className="text-[#6B6560] text-sm leading-relaxed mb-6">
+            <p className="text-[#6B6560] text-sm leading-relaxed mb-5">
               Selling to other businesses? We supply qualified leads — a ready list, or a fully
               custom lead platform built for your sales team.
             </p>
+            <ul className="flex flex-col gap-2.5 mb-6">
+              {B2B_INCLUDES.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-[#6B6560]">
+                  <Check className="w-4 h-4 text-[#C9A07A] flex-shrink-0 mt-0.5" strokeWidth={2} />
+                  {item}
+                </li>
+              ))}
+            </ul>
             <QuotePopupButton
               service="B2B AI Platform"
               className="mt-auto self-start border border-[#C9A07A] text-[#3D2817] font-semibold px-5 py-2.5 rounded-[6px] text-sm hover:bg-[#C9A07A] transition-colors duration-200"
