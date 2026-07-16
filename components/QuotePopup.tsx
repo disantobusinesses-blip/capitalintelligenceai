@@ -2,7 +2,17 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { X, Send, CheckCircle, User, Mail, Phone, MessageSquare } from 'lucide-react'
+import {
+  X,
+  Send,
+  CheckCircle,
+  User,
+  Mail,
+  Phone,
+  MessageSquare,
+  ChevronDown,
+  ChevronUp,
+} from 'lucide-react'
 import { useQuotePopup, QuoteService } from '@/context/QuotePopupContext'
 import { trackConversion, CONVERSION_LEAD } from '@/lib/trackConversion'
 import FlowTrustStrip from '@/components/FlowTrustStrip'
@@ -15,6 +25,22 @@ const SERVICE_OPTIONS: QuoteService[] = [
   'Google Business Profile',
   'Other',
 ]
+
+// Optional add-ons shown in the collapsed "Interested in add-ons?" section.
+// Purely additive to the quote request — never required to submit.
+const ADDON_OPTIONS = [
+  'SEO Blog Content',
+  'Instagram & Social Growth Management',
+  'B2B Lead Generation',
+] as const
+type AddonOption = (typeof ADDON_OPTIONS)[number]
+
+const BLOG_TIER_OPTIONS = [
+  '4 blogs/mo ($99)',
+  '8 blogs/mo ($179)',
+  '12 blogs/mo ($249)',
+] as const
+type BlogTier = (typeof BLOG_TIER_OPTIONS)[number]
 
 // Display-only price ranges shown next to each service in the dropdown.
 // Matches lib/pricing.ts and each service's live page — does not affect the
@@ -38,9 +64,22 @@ export default function QuotePopup() {
   const [phone, setPhone] = useState('')
   const [service, setService] = useState<QuoteService | ''>('')
   const [message, setMessage] = useState('')
+  const [addonsOpen, setAddonsOpen] = useState(false)
+  const [selectedAddons, setSelectedAddons] = useState<AddonOption[]>([])
+  const [blogTier, setBlogTier] = useState<BlogTier | ''>('')
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+
+  const toggleAddon = (addon: AddonOption) => {
+    const isSelected = selectedAddons.includes(addon)
+    if (isSelected) {
+      setSelectedAddons(selectedAddons.filter((a) => a !== addon))
+      if (addon === 'SEO Blog Content') setBlogTier('')
+    } else {
+      setSelectedAddons([...selectedAddons, addon])
+    }
+  }
 
   // Slide-in/out animation state. `render` keeps the panel mounted long enough
   // to animate out; `slideIn` drives the transform.
@@ -98,6 +137,9 @@ export default function QuotePopup() {
         setPhone('')
         setService('')
         setMessage('')
+        setAddonsOpen(false)
+        setSelectedAddons([])
+        setBlogTier('')
         setSubmitted(false)
       }
       setSubmitError(null)
@@ -119,6 +161,8 @@ export default function QuotePopup() {
           phone: phone.trim(),
           service: service || 'Not specified',
           message: message.trim(),
+          addons: selectedAddons,
+          blogTier: selectedAddons.includes('SEO Blog Content') ? blogTier || undefined : undefined,
         }),
       })
       const result = await res.json()
@@ -310,6 +354,62 @@ export default function QuotePopup() {
               rows={3}
               className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 resize-none"
             />
+          </div>
+
+          {/* Add-ons — optional, collapsed by default. Never blocks submission. */}
+          <div className="border border-[#E8E4DF] rounded-lg overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setAddonsOpen((v) => !v)}
+              aria-expanded={addonsOpen}
+              className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-semibold text-[#1A1A1A] hover:bg-[#F8F7F4] transition-colors duration-200"
+            >
+              Interested in add-ons? (optional)
+              {addonsOpen ? (
+                <ChevronUp className="w-4 h-4 text-[#6B6560]" />
+              ) : (
+                <ChevronDown className="w-4 h-4 text-[#6B6560]" />
+              )}
+            </button>
+
+            {addonsOpen && (
+              <div className="px-4 pb-4 pt-1 space-y-3 border-t border-[#E8E4DF]">
+                {ADDON_OPTIONS.map((addon) => (
+                  <div key={addon}>
+                    <label className="flex items-center gap-2.5 text-sm text-[#1A1A1A] cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={selectedAddons.includes(addon)}
+                        onChange={() => toggleAddon(addon)}
+                        className="w-4 h-4 rounded border-[#E8E4DF] text-[#5C3D2E] focus:ring-[#5C3D2E] cursor-pointer"
+                      />
+                      {addon}
+                    </label>
+
+                    {addon === 'SEO Blog Content' && selectedAddons.includes('SEO Blog Content') && (
+                      <div className="ml-6 mt-2 space-y-1.5">
+                        {BLOG_TIER_OPTIONS.map((tier) => (
+                          <label
+                            key={tier}
+                            className="flex items-center gap-2.5 text-sm text-[#6B6560] cursor-pointer"
+                          >
+                            <input
+                              type="radio"
+                              name="qp-blog-tier"
+                              value={tier}
+                              checked={blogTier === tier}
+                              onChange={() => setBlogTier(tier)}
+                              className="w-4 h-4 border-[#E8E4DF] text-[#5C3D2E] focus:ring-[#5C3D2E] cursor-pointer"
+                            />
+                            {tier}
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {submitError && (

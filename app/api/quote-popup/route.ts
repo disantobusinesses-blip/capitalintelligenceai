@@ -7,6 +7,10 @@ interface QuotePopupBody {
   phone: string
   service?: string
   message?: string
+  /** Optional add-ons selected in the collapsed "Interested in add-ons?" section. */
+  addons?: unknown
+  /** Blog frequency tier — only meaningful when 'SEO Blog Content' is in addons. */
+  blogTier?: unknown
 }
 
 function esc(str: string): string {
@@ -53,6 +57,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true })
   }
 
+  // Add-ons are optional and client-supplied — validate shape defensively
+  // rather than trusting the request body.
+  const addons: string[] = Array.isArray(body.addons)
+    ? body.addons.filter((a): a is string => typeof a === 'string' && a.trim() !== '')
+    : []
+  const blogTier = typeof body.blogTier === 'string' && body.blogTier.trim() !== '' ? body.blogTier.trim() : null
+
   try {
     const transporter = nodemailer.createTransport({
       host: SMTP_HOST,
@@ -60,6 +71,20 @@ export async function POST(request: NextRequest) {
       secure: Number(SMTP_PORT) === 465,
       auth: { user: SMTP_USER, pass: SMTP_PASS },
     })
+
+    const addonsHtml = addons.length
+      ? `
+      <h3>Add-Ons Requested</h3>
+      <ul>
+        ${addons
+          .map((addon) => {
+            const tierSuffix = addon === 'SEO Blog Content' && blogTier ? ` — ${esc(blogTier)}` : ''
+            return `<li><strong>${esc(addon)}</strong>${tierSuffix}</li>`
+          })
+          .join('')}
+      </ul>
+    `
+      : ''
 
     const htmlBody = `
       <h2>🔔 New Quote Request — ${esc(body.name)}</h2>
@@ -72,6 +97,7 @@ export async function POST(request: NextRequest) {
       </ul>
       <h3>About Their Business</h3>
       <p>${body.message?.trim() ? esc(body.message.trim()).replace(/\n/g, '<br/>') : '<em>Not provided</em>'}</p>
+      ${addonsHtml}
     `
 
     await transporter.sendMail({

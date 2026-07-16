@@ -53,8 +53,9 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   },
   {
     title: 'Certi Sustainability',
-    placeholder: true,
-    placeholderNote: 'Screenshot pending — awaiting client confirmation before this goes live',
+    result: 'ESD and building compliance consultancy website.',
+    image: '/projects/certi-sustainability.jpg',
+    // No confirmed live URL yet — card shows the screenshot without a link.
   },
 ]
 
