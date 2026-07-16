@@ -42,7 +42,7 @@ const BLOG_TIER_OPTIONS = [
 ] as const
 type BlogTier = (typeof BLOG_TIER_OPTIONS)[number]
 
-// Display-only price ranges shown next to each service in the dropdown.
+// Display-only price ranges shown next to each service checkbox.
 // Matches lib/pricing.ts and each service's live page — does not affect the
 // `value` sent on submit or the preselection logic used elsewhere on the site.
 const SERVICE_PRICE_LABEL: Record<QuoteService, string | null> = {
@@ -62,7 +62,7 @@ export default function QuotePopup() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [service, setService] = useState<QuoteService | ''>('')
+  const [services, setServices] = useState<QuoteService[]>([])
   const [message, setMessage] = useState('')
   const [addonsOpen, setAddonsOpen] = useState(false)
   const [selectedAddons, setSelectedAddons] = useState<AddonOption[]>([])
@@ -79,6 +79,10 @@ export default function QuotePopup() {
     } else {
       setSelectedAddons([...selectedAddons, addon])
     }
+  }
+
+  const toggleService = (opt: QuoteService) => {
+    setServices((prev) => (prev.includes(opt) ? prev.filter((s) => s !== opt) : [...prev, opt]))
   }
 
   // Slide-in/out animation state. `render` keeps the panel mounted long enough
@@ -98,10 +102,10 @@ export default function QuotePopup() {
     return () => clearTimeout(t)
   }, [isOpen])
 
-  // Keep the dropdown in sync when a button opens the popup with a preselection.
+  // Keep the selection in sync when a button opens the popup with a preselection.
   useEffect(() => {
     if (isOpen) {
-      setService(preselectedService)
+      setServices(preselectedService ? [preselectedService] : [])
     }
   }, [isOpen, preselectedService])
 
@@ -135,7 +139,7 @@ export default function QuotePopup() {
         setName('')
         setEmail('')
         setPhone('')
-        setService('')
+        setServices([])
         setMessage('')
         setAddonsOpen(false)
         setSelectedAddons([])
@@ -159,7 +163,7 @@ export default function QuotePopup() {
           name: name.trim(),
           email: email.trim(),
           phone: phone.trim(),
-          service: service || 'Not specified',
+          service: services.length ? services.join(', ') : 'Not specified',
           message: message.trim(),
           addons: selectedAddons,
           blogTier: selectedAddons.includes('SEO Blog Content') ? blogTier || undefined : undefined,
@@ -174,7 +178,7 @@ export default function QuotePopup() {
         // callback — BEFORE any redirect — so it is never gated behind the
         // deposit step or a page navigation. The redirect to the deposit page
         // only runs once the conversion beacon has been sent (or times out).
-        const query = service ? `?service=${encodeURIComponent(service)}` : ''
+        const query = services.length ? `?service=${encodeURIComponent(services.join(', '))}` : ''
         trackConversion(CONVERSION_LEAD, () => {
           closePopup()
           router.push(`/secure-spot${query}`)
@@ -255,6 +259,9 @@ export default function QuotePopup() {
         {/* Pricing + Google rating social proof */}
         <div className="px-5 pt-4">
           <FlowTrustStrip />
+          <p className="text-center text-[11px] text-[#9E9790] mt-2">
+            *All websites require hosting add-on
+          </p>
         </div>
 
         {/* Form */}
@@ -316,25 +323,33 @@ export default function QuotePopup() {
             />
           </div>
 
-          {/* Service */}
+          {/* Service (multi-select) */}
           <div>
-            <label htmlFor="qp-service" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
-              What service do you need?
+            <label className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
+              What service do you need?{' '}
+              <span className="font-normal text-[#9E9790]">(select all that apply)</span>
             </label>
-            <select
-              id="qp-service"
-              value={service}
-              onChange={(e) => setService(e.target.value as QuoteService | '')}
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 cursor-pointer"
-            >
-              <option value="">Select a service…</option>
+            <div className="border border-[#E8E4DF] rounded-lg p-3 space-y-2">
               {SERVICE_OPTIONS.map((opt) => (
-                <option key={opt} value={opt}>
-                  {opt}
-                  {SERVICE_PRICE_LABEL[opt] ? ` — ${SERVICE_PRICE_LABEL[opt]}` : ''}
-                </option>
+                <label
+                  key={opt}
+                  className="flex items-center gap-2.5 text-sm text-[#1A1A1A] cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    checked={services.includes(opt)}
+                    onChange={() => toggleService(opt)}
+                    className="w-4 h-4 rounded border-[#E8E4DF] text-[#5C3D2E] focus:ring-[#5C3D2E] cursor-pointer"
+                  />
+                  <span>
+                    {opt}
+                    {SERVICE_PRICE_LABEL[opt] && (
+                      <span className="text-[#9E9790]"> — {SERVICE_PRICE_LABEL[opt]}</span>
+                    )}
+                  </span>
+                </label>
               ))}
-            </select>
+            </div>
           </div>
 
           {/* Message */}
