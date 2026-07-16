@@ -116,10 +116,6 @@ export default function BeyondWebsite() {
                 that became a $10,000+ apartment block installation. Most content takes 3+ months
                 to gain traction — Google limits visibility on new domains while trust builds.
               </p>
-              <p className="text-[#9E9790] text-xs italic leading-relaxed mt-2">
-                [PLACEHOLDER: screenshot of the EAY blog post or the resulting enquiry/traffic
-                data — pending upload]
-              </p>
             </blockquote>
           </div>
         </div>
