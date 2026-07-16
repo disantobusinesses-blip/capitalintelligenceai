@@ -52,11 +52,6 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Contact</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="tel:0370510100" className="hover:text-white transition-colors duration-200">
-                  03 7051 0100
-                </a>
-              </li>
-              <li>
                 <Link href="/privacy-policy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link>
               </li>
               <li>

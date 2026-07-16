@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Phone } from 'lucide-react'
 import { useQuotePopup } from '@/context/QuotePopupContext'
 
 const navLinks = [
@@ -48,16 +47,8 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* RIGHT: Phone + CTAs */}
+        {/* RIGHT: CTAs */}
         <div className="flex items-center gap-3">
-          <a
-            href="tel:0370510100"
-            aria-label="Call 03 7051 0100"
-            className="flex items-center gap-2 text-[#1A1A1A] hover:text-[#5C3D2E] transition-colors duration-200"
-          >
-            <Phone className="w-4 h-4" />
-            <span className="hidden md:inline font-semibold text-[15px]">03 7051 0100</span>
-          </a>
           <button
             type="button"
             onClick={() => openPopup()}
