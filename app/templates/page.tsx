@@ -1,6 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { Rocket } from 'lucide-react'
 import TemplateCard from '@/components/TemplateCard'
 import Footer from '@/components/Footer'
 import { TEMPLATES, GLOBAL_ADDONS_DISCLAIMER } from '@/lib/templates'
@@ -41,16 +39,6 @@ export default function TemplatesPage() {
           <p className="text-center text-[#8A8A8A] text-[13px] leading-relaxed max-w-3xl mx-auto mt-10">
             {GLOBAL_ADDONS_DISCLAIMER}
           </p>
-
-          <div className="flex justify-center mt-12">
-            <Link
-              href="/launch"
-              className="inline-flex items-center gap-2 bg-[#1A1A1A] text-white font-bold px-10 py-4 rounded-[6px] text-lg hover:bg-[#2D2D2D] transition-colors duration-200"
-            >
-              <Rocket className="w-5 h-5" />
-              Launch My Site
-            </Link>
-          </div>
         </div>
       </main>
       <Footer />

@@ -7,7 +7,7 @@ import { useQuotePopup } from '@/context/QuotePopupContext'
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Services', href: '/#services' },
+  { label: 'Services', href: '/services' },
   { label: 'Templates', href: '/templates' },
   { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Check, Globe, Package, Shield, TrendingUp, Zap, X } from 'lucide-react'
+import { Check, FileText, Globe, Package, Shield, TrendingUp, Zap, X } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 
 export const metadata: Metadata = {
@@ -95,6 +95,34 @@ const websitePackages = [
     ],
     highlight: false,
     cta: 'Get a Quote',
+  },
+]
+
+/* ─── SEO Blog Content Add-On ───────────────────────────────────────────── */
+const blogTiers = [
+  {
+    key: 'blog-4',
+    name: '4 Blogs / Month',
+    price: '$99',
+    description: 'A steady drip of SEO content to keep your site fresh and climbing in search.',
+    features: ['4 SEO-optimised blog posts/mo', 'Keyword research included', 'Published directly to your site'],
+    highlight: false,
+  },
+  {
+    key: 'blog-8',
+    name: '8 Blogs / Month',
+    price: '$179',
+    description: 'Double the content velocity for businesses serious about organic growth.',
+    features: ['8 SEO-optimised blog posts/mo', 'Keyword research included', 'Published directly to your site'],
+    highlight: true,
+  },
+  {
+    key: 'blog-12',
+    name: '12 Blogs / Month',
+    price: '$249',
+    description: 'Maximum content output for the fastest path to search visibility.',
+    features: ['12 SEO-optimised blog posts/mo', 'Keyword research included', 'Published directly to your site'],
+    highlight: false,
   },
 ]
 
@@ -262,6 +290,68 @@ export default function ServicesPage() {
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SEO Blog Content ────────────────────────────────────────────────── */}
+      <section className="py-16 px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="mb-10">
+            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+              SEO Blog Content
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
+              Grow Your Organic Traffic Every Month
+            </h2>
+            <p className="text-[#6B6560] text-base max-w-[560px]">
+              Ongoing SEO-optimised blog posts published straight to your site, written to build
+              search visibility over time. Choose the monthly frequency that fits your goals.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {blogTiers.map((tier) => (
+              <div
+                key={tier.key}
+                className={`relative bg-white rounded-[10px] p-7 flex flex-col transition-shadow duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)] ${
+                  tier.highlight ? 'border-2 border-[#1A1A1A]' : 'border border-[#E8E4DF]'
+                }`}
+              >
+                {tier.highlight && (
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#1A1A1A] text-white text-[11px] font-bold px-4 py-1 rounded-full whitespace-nowrap">
+                    Most Popular
+                  </span>
+                )}
+                <div className="mb-4">
+                  <FileText className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-1">{tier.name}</h3>
+                <p className="text-[22px] font-bold text-[#5C3D2E] mb-0.5">
+                  {tier.price}
+                  <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
+                  <span className="text-[13px] font-normal text-[#9E9790] ml-1">/month</span>
+                </p>
+                <p className="text-sm text-[#6B6560] mb-5 leading-relaxed mt-2">{tier.description}</p>
+                <ul className="space-y-2 mb-6 flex-1">
+                  {tier.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
+                      <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <QuotePopupButton
+                  className={`w-full text-center font-semibold py-3 rounded-[6px] transition-colors duration-200 text-sm block ${
+                    tier.highlight
+                      ? 'bg-[#1A1A1A] text-white hover:bg-[#2D2D2D]'
+                      : 'border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white'
+                  }`}
+                >
+                  Get a Quote
+                </QuotePopupButton>
+              </div>
+            ))}
           </div>
         </div>
       </section>
