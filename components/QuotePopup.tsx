@@ -259,8 +259,9 @@ export default function QuotePopup() {
         {/* Pricing + Google rating social proof */}
         <div className="px-5 pt-4">
           <FlowTrustStrip />
-          <p className="text-center text-[11px] text-[#9E9790] mt-2">
-            *All websites require hosting add-on
+          <p className="text-center text-[11px] text-[#9E9790] mt-2 leading-relaxed">
+            *All websites require a separate monthly hosting plan (from $59/mo) to stay live
+            online — not included in the one-off build price above.
           </p>
         </div>
 
