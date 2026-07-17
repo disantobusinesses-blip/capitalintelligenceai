@@ -49,13 +49,13 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     title: 'Estética Sydney',
     result: 'Beauty and aesthetics business website.',
     image: '/projects/estetica-sydney.jpg',
-    // No confirmed live URL yet — card shows the screenshot without a link.
+    url: 'https://esteticasydney.com/',
   },
   {
     title: 'Certi Sustainability',
     result: 'ESD and building compliance consultancy website.',
     image: '/projects/certi-sustainability.jpg',
-    // No confirmed live URL yet — card shows the screenshot without a link.
+    url: 'https://www.certisustainability.com/',
   },
 ]
 
