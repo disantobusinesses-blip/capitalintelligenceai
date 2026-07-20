@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
-import { Check, FileText, Globe, Package, Shield, TrendingUp, Zap, X } from 'lucide-react'
+import Link from 'next/link'
+import { Check, FileText, Globe, Package, Shield, Zap } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 
 export const metadata: Metadata = {
   title: 'Our Services – Intelligent AI Systems',
   description:
-    'Website packages and hosting from IAS — landing pages, multi-page websites, cinematic sites, and secure monthly hosting for Australian businesses.',
+    'Fixed-price website packages and hosting from IAS — Foundation, Growth, and Bespoke builds plus secure monthly hosting for Australian businesses.',
   keywords:
-    'landing page design, custom website, multi-page website, cinematic website, website hosting Australia, AI website builder',
+    'fixed price website, custom website Australia, website packages, website hosting Australia, AI website builder',
   alternates: {
     canonical: 'https://intelligentaisystem.com/services',
   },
   openGraph: {
     title: 'Our Services – Intelligent AI Systems',
     description:
-      'Landing pages, multi-page websites, cinematic sites, and secure hosting — everything a local business needs to launch online.',
+      'Foundation, Growth, and Bespoke website packages — fixed prices, custom builds, no templates — plus secure hosting.',
     url: 'https://intelligentaisystem.com/services',
     type: 'website',
   },
@@ -23,78 +24,65 @@ export const metadata: Metadata = {
 export const revalidate = 60
 
 /* ─── Website Packages ──────────────────────────────────────────────────── */
+// TODO: paste the live Bespoke demo URL here. Until this is set, the Bespoke
+// card falls back to the same disabled "Example coming soon" state as the
+// other two tiers instead of shipping a dead link.
+const BESPOKE_DEMO_URL = ''
+
 const websitePackages = [
   {
-    key: 'landing-starter',
+    key: 'foundation',
     icon: Globe,
-    name: 'Landing Page Starter',
-    price: '$599–$999',
+    name: 'Foundation',
+    price: '$1,999',
     period: 'one-off',
     badge: null,
-    description: 'A high-converting single-page website built to turn visitors into leads.',
+    description: 'A mobile-responsive site built to get a small business found and trusted online.',
     features: [
-      'Custom single-page design',
-      'Mobile responsive layout',
-      'Contact form, map & social links',
-      'SEO meta setup',
-      'Fast loading & SSL',
+      '1–3 pages',
+      'Mobile-responsive design',
+      'On-page SEO foundations',
+      'Google Business Profile setup',
     ],
+    bonus: '1 free month of our 4 Blogs/Month plan — $99 value, free',
+    exampleUrl: '',
+    cta: 'Get Started',
     highlight: false,
-    cta: 'Get a Quote',
   },
   {
-    key: 'landing-premium',
+    key: 'growth',
     icon: Zap,
-    name: 'Landing Page Premium',
-    price: '$1,000–$1,999',
+    name: 'Growth',
+    price: '$2,999',
     period: 'one-off',
     badge: 'Most Popular',
-    description: 'A premium single-page experience with cinematic motion and an immersive layout.',
+    description: 'A conversion-focused build for businesses ready to turn traffic into leads.',
     features: [
-      'Everything in Starter',
-      'Cinematic scroll animations',
-      'Premium immersive layout',
-      'Google Analytics setup',
-      'Booking / consultation button wired',
+      '5–8 pages',
+      'CRO-focused copywriting',
+      'Google Ads conversion tracking',
     ],
+    bonus: '2 free months of our 8 Blogs/Month plan — $358 value, free',
+    exampleUrl: '',
+    cta: 'Get Started',
     highlight: true,
-    cta: 'Get a Quote',
   },
   {
-    key: 'multipage',
+    key: 'bespoke',
     icon: Package,
-    name: 'Multi-Page Website',
-    price: '$1,999–$5,999',
+    name: 'Bespoke',
+    price: '$6,999',
     period: 'one-off',
     badge: null,
-    description: 'A complete multi-page website tailored to your brand and built to convert.',
+    description: 'A fully custom build with integrations and dedicated support through launch.',
     features: [
-      'Custom multi-page design (up to 10 pages)',
-      'Mobile responsive & fast loading',
-      'Contact forms, map & social links',
-      'Analytics dashboard setup',
-      'SEO + AI search indexing',
+      '10+ pages / custom integrations (booking, forms, animation)',
+      'Dedicated launch support',
     ],
+    bonus: '3 free months of our 12 Blogs/Month plan — $747 value, free',
+    exampleUrl: BESPOKE_DEMO_URL,
+    cta: 'Get Started',
     highlight: false,
-    cta: 'Get a Quote',
-  },
-  {
-    key: 'cinematic',
-    icon: TrendingUp,
-    name: 'Cinematic Website',
-    price: '$3,499–$10,000',
-    period: 'one-off',
-    badge: null,
-    description: 'A flagship, fully bespoke site with full cinematic scroll and immersive media.',
-    features: [
-      'Everything in Multi-Page',
-      'Full cinematic scroll experience',
-      'Immersive full-viewport video & image sections',
-      'Premium custom animations',
-      'Priority build & support',
-    ],
-    highlight: false,
-    cta: 'Get a Quote',
   },
 ]
 
@@ -155,12 +143,15 @@ export default function ServicesPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
               Websites That Convert
             </h2>
-            <p className="text-[#6B6560] text-base max-w-[560px]">
-              From a single high-converting landing page to a fully bespoke cinematic site — choose the build that fits your business.
+            <p className="text-[#6B6560] text-base max-w-[560px] mb-4">
+              Three fixed-price packages — choose the build that fits your business.
+            </p>
+            <p className="text-[#1A1A1A] text-sm font-medium max-w-[640px] bg-[#F3EFE9] border border-[#E8E4DF] rounded-[6px] px-4 py-3">
+              Most Australian agencies charge $5,000–$25,000+ for a custom-built website. Our packages start at $1,999 — same custom build, no templates, no agency overhead.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             {websitePackages.map((plan) => {
               const Icon = plan.icon
               return (
@@ -180,7 +171,7 @@ export default function ServicesPage() {
                   <div className="mb-4">
                     <Icon className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-1">{plan.name}</h3>
+                  <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-1 uppercase tracking-wide">{plan.name}</h3>
                   <div className="mb-0.5">
                     <p className="text-[22px] font-bold text-[#5C3D2E]">
                       {plan.price}
@@ -189,7 +180,7 @@ export default function ServicesPage() {
                     </p>
                   </div>
                   <p className="text-sm text-[#6B6560] mb-5 leading-relaxed mt-2">{plan.description}</p>
-                  <ul className="space-y-2 mb-6 flex-1">
+                  <ul className="space-y-2 mb-5">
                     {plan.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
                         <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
@@ -197,6 +188,25 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
+                  <div className="bg-[#F8F7F4] border border-[#E8E4DF] rounded-[6px] px-3.5 py-3 mb-5">
+                    <p className="text-xs font-semibold text-[#1A1A1A] mb-0.5">Includes</p>
+                    <p className="text-xs text-[#6B6560] leading-relaxed">{plan.bonus}</p>
+                  </div>
+                  <div className="flex-1" />
+                  {plan.exampleUrl ? (
+                    <a
+                      href={plan.exampleUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-[#5C3D2E] underline underline-offset-2 hover:text-[#1A1A1A] mb-4 inline-block"
+                    >
+                      See example
+                    </a>
+                  ) : (
+                    <span className="text-xs font-medium text-[#9E9790] cursor-not-allowed mb-4 inline-block select-none">
+                      Example coming soon
+                    </span>
+                  )}
                   <QuotePopupButton
                     className={`w-full text-center font-semibold py-3 rounded-[6px] transition-colors duration-200 text-sm block ${
                       plan.highlight
@@ -209,6 +219,19 @@ export default function ServicesPage() {
                 </div>
               )
             })}
+          </div>
+
+          {/* Flat text link — deliberately not styled as a pricing card */}
+          <div className="mt-8 text-center">
+            <p className="text-[#6B6560] text-sm">
+              Need something bigger?{' '}
+              <Link
+                href="/services/b2b-crm-ai-platform"
+                className="text-[#1A1A1A] font-semibold underline underline-offset-2 hover:text-[#5C3D2E]"
+              >
+                Custom builds &amp; platforms — from $7,000, request a quote
+              </Link>
+            </p>
           </div>
         </div>
       </section>
@@ -224,12 +247,12 @@ export default function ServicesPage() {
               Keep Your Site Live &amp; Secure
             </h2>
             <p className="text-[#6B6560] text-base max-w-[560px]">
-              Every website we build runs on a monthly hosting plan. Choose hosting only, or add a monthly update to keep your content fresh.
+              Every website we build runs on a monthly hosting plan. Choose minor maintenance, or a monthly content refresh to keep your site fresh.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-            {/* Hosting Only */}
+            {/* Hosting + Minor Maintenance */}
             <div
               className="bg-white rounded-[10px] p-7 flex flex-col"
               style={{ border: '1px solid #E8E4DF' }}
@@ -237,31 +260,29 @@ export default function ServicesPage() {
               <div className="mb-4">
                 <Shield className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
               </div>
-              <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-1">Hosting Only</h3>
+              <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-1">Hosting + Minor Maintenance</h3>
               <p className="text-[22px] font-bold text-[#5C3D2E] mb-5">
                 $59
                 <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
                 <span className="text-[13px] font-normal text-[#9E9790] ml-1">/month</span>
               </p>
               <p className="text-sm font-semibold text-[#1A1A1A] mb-2">Includes</p>
-              <ul className="space-y-2 mb-5">
-                {['Secure Vercel hosting', 'SSL certificate', 'Uptime monitoring'].map((f) => (
+              <ul className="space-y-2">
+                {[
+                  'Secure Vercel hosting',
+                  'SSL certificate',
+                  'Uptime monitoring',
+                  '1 minor change request/month (typo/grammar fix, contact info update, 1 image or link swap, short text/CTA edit under 15 words), no rollover',
+                ].map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
                     <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
                     {f}
                   </li>
                 ))}
               </ul>
-              <p className="text-sm font-semibold text-[#1A1A1A] mb-2 mt-auto">Does not include</p>
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2 text-sm text-[#9E9790]">
-                  <X className="w-4 h-4 text-[#9E9790] flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                  Monthly updates
-                </li>
-              </ul>
             </div>
 
-            {/* Hosting + Updates */}
+            {/* Hosting + Content Refresh */}
             <div
               className="bg-white rounded-[10px] p-7 flex flex-col"
               style={{ border: '2px solid #1A1A1A' }}
@@ -269,7 +290,7 @@ export default function ServicesPage() {
               <div className="mb-4">
                 <Shield className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
               </div>
-              <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-1">Hosting + Updates</h3>
+              <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-1">Hosting + Content Refresh</h3>
               <p className="text-[22px] font-bold text-[#5C3D2E] mb-5">
                 $99
                 <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
@@ -281,7 +302,7 @@ export default function ServicesPage() {
                   'Secure Vercel hosting',
                   'SSL certificate',
                   'Uptime monitoring',
-                  '1 minor content or design update per month',
+                  '1 monthly content batch — reviews, testimonials, project/portfolio photos, up to 10 items, no rollover',
                 ].map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
                     <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
@@ -291,6 +312,10 @@ export default function ServicesPage() {
               </ul>
             </div>
           </div>
+
+          <p className="text-[#6B6560] text-sm mt-6 max-w-[720px]">
+            Major changes (new fonts, sitewide colour/style, new pages, new integrations) billed at $99+GST/hour, rounded up to the next full hour.
+          </p>
         </div>
       </section>
 

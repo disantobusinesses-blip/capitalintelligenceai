@@ -66,12 +66,12 @@ export default function TermsAndConditions() {
             We offer the following monthly hosting plans and one-off website packages:
           </p>
           <ul className="list-disc pl-6 text-[#1A1A1A] space-y-2 mb-4">
-            <li><strong>Hosting Only:</strong> $59 AUD per month</li>
-            <li><strong>Hosting + Updates:</strong> $99 AUD per month</li>
-            <li><strong>Landing Page Starter:</strong> $599–$999 AUD (one-off)</li>
-            <li><strong>Landing Page Premium:</strong> $1,000–$1,999 AUD (one-off)</li>
-            <li><strong>Multi-Page Website:</strong> $1,999–$5,999 AUD (one-off)</li>
-            <li><strong>Cinematic Website:</strong> $3,499–$10,000 AUD (one-off)</li>
+            <li><strong>Hosting + Minor Maintenance:</strong> $59 AUD per month</li>
+            <li><strong>Hosting + Content Refresh:</strong> $99 AUD per month</li>
+            <li><strong>Foundation:</strong> $1,999 AUD (one-off)</li>
+            <li><strong>Growth:</strong> $2,999 AUD (one-off)</li>
+            <li><strong>Bespoke:</strong> $6,999 AUD (one-off)</li>
+            <li><strong>Custom builds &amp; platforms:</strong> from $7,000 AUD (one-off, quoted individually)</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">
@@ -89,6 +89,24 @@ export default function TermsAndConditions() {
           </h3>
           <p className="text-[#1A1A1A] leading-relaxed">
             Your subscription will automatically renew each month unless you cancel prior to the renewal date. By subscribing, you authorize us to charge your payment method on a recurring monthly basis.
+          </p>
+
+          <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3 mt-6">
+            3.4 Included Blog Content (Package Bundles)
+          </h3>
+          <p className="text-[#1A1A1A] leading-relaxed mb-4">
+            Our Foundation, Growth, and Bespoke website packages each include a complimentary period of our SEO Blog Content subscription, credited automatically at the time of purchase:
+          </p>
+          <ul className="list-disc pl-6 text-[#1A1A1A] space-y-2 mb-4">
+            <li><strong>Foundation:</strong> 1 free month of the 4 Blogs/Month plan (a $99 AUD value)</li>
+            <li><strong>Growth:</strong> 2 free months of the 8 Blogs/Month plan (a $358 AUD value)</li>
+            <li><strong>Bespoke:</strong> 3 free months of the 12 Blogs/Month plan (a $747 AUD value)</li>
+          </ul>
+          <p className="text-[#1A1A1A] leading-relaxed mb-4">
+            This complimentary blog content is a promotional bonus tied to the purchase of the relevant website package. It has no cash value and cannot be exchanged, redeemed, or refunded for cash or credit, applied to a different service, or transferred to another client or account. Unused blog posts do not roll over from month to month, and any unused portion of the complimentary period is forfeited once it ends.
+          </p>
+          <p className="text-[#1A1A1A] leading-relaxed">
+            At the end of the complimentary period, the Blog Content subscription will automatically continue at the applicable standard monthly rate (currently $99, $179, or $249 AUD per month for the 4, 8, and 12 Blogs/Month plans respectively) unless cancelled in accordance with Section 4.1. We will provide reasonable notice before the first paid charge is applied.
           </p>
         </section>
 

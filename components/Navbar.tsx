@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Templates', href: '/templates' },
   { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Other Services', href: '/services/b2b-crm-ai-platform' },
 ]
 
 export default function Navbar() {

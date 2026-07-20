@@ -6,6 +6,7 @@ import DigitalGrowthProof from '@/components/DigitalGrowthProof'
 import WhyWorkWithUs from '@/components/WhyWorkWithUs'
 import Hero from '@/components/Hero'
 import BeyondWebsite from '@/components/BeyondWebsite'
+import WhyIntelligentAISystem from '@/components/WhyIntelligentAISystem'
 import HomeFAQ from '@/components/HomeFAQ'
 import Footer from '@/components/Footer'
 
@@ -21,6 +22,7 @@ export default function Home() {
           (AW-17950129824/ZA2zCPTNlrkcEKD9pO9C). Not a primary CTA. */}
       <Hero />
       <BeyondWebsite />
+      <WhyIntelligentAISystem />
       <HomeFAQ />
       <Footer />
     </main>
