@@ -1,11 +1,11 @@
 'use client'
 
+import Link from 'next/link'
 import { display, body } from '@/lib/fonts'
 import QuotePopupButton from '@/components/QuotePopupButton'
 
-const HERO_HEADLINE = "Your Website Shouldn't Look Like Everyone Else's."
 const HERO_SUBHEAD =
-  'Custom-built, SEO-optimised websites for Melbourne businesses — backed by real client results, not templates.'
+  'No templates, no shortcuts — every site backed by the same AI-driven audits and optimization we run on our own systems.'
 
 // Real Google review — same quote already used in the site's testimonials.
 const REVIEW_QUOTE =
@@ -28,29 +28,34 @@ export default function HeroIntro() {
     >
       <div className="max-w-[1200px] mx-auto">
         <div className="max-w-[760px]">
-          {/* Headline */}
+          {/* Headline — bold serif caps statement */}
           <h1
-            className={`${display.className} text-[40px] md:text-[64px] leading-[1.1] font-semibold text-[#3D2817] text-balance`}
+            className={`${display.className} text-[52px] md:text-[80px] leading-[0.95] font-bold uppercase tracking-[-0.01em] text-[#3D2817]`}
           >
-            {HERO_HEADLINE}
+            Built Different.
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-[18px] md:text-[20px] text-[#6B6560] mt-6 max-w-[560px] leading-relaxed">
+          {/* Supporting line (normal weight) */}
+          <p className="text-[18px] md:text-[20px] text-[#6B6560] mt-6 max-w-[600px] leading-relaxed">
             {HERO_SUBHEAD}
           </p>
 
-          {/* Pricing line — visible up front, not buried in the Quote panel */}
+          {/* Compact pricing teaser → links through to the full /services pricing */}
           <p className="text-[15px] text-[#3D2817] font-semibold mt-5 flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span>Landing Pages from $599</span>
+            <span>Packages from $1,999</span>
             <span className="text-[#C9A07A]" aria-hidden="true">|</span>
-            <span>Custom Websites from $1,999</span>
+            <Link
+              href="/services"
+              className="text-[#5C3D2E] underline underline-offset-4 decoration-[#C9A07A]/50 hover:decoration-[#C9A07A] transition-colors duration-200"
+            >
+              View packages
+            </Link>
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-5 mt-9">
             <QuotePopupButton className="w-full sm:w-auto bg-[#C9A07A] text-[#3D2817] font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-[#B98D64] transition-colors duration-200">
-              Get a Free Quote
+              Request Quote/Call
             </QuotePopupButton>
 
             <a

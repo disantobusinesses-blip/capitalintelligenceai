@@ -12,17 +12,23 @@ import {
   MessageSquare,
   ChevronDown,
   ChevronUp,
+  FileText,
+  CalendarClock,
+  ArrowRight,
+  ArrowLeft,
 } from 'lucide-react'
 import { useQuotePopup, QuoteService } from '@/context/QuotePopupContext'
 import { trackConversion, CONVERSION_LEAD } from '@/lib/trackConversion'
 import FlowTrustStrip from '@/components/FlowTrustStrip'
 
 const SERVICE_OPTIONS: QuoteService[] = [
-  'Landing Page',
-  'Custom Website',
-  'Cinematic Custom Website',
-  'B2B AI Platform',
+  'Foundation',
+  'Growth',
+  'Bespoke',
+  'Custom Build / Platform',
+  'SEO Blog Content',
   'Google Business Profile',
+  'B2B AI Platform',
   'Other',
 ]
 
@@ -42,15 +48,17 @@ const BLOG_TIER_OPTIONS = [
 ] as const
 type BlogTier = (typeof BLOG_TIER_OPTIONS)[number]
 
-// Display-only price ranges shown next to each service checkbox.
-// Matches lib/pricing.ts and each service's live page — does not affect the
-// `value` sent on submit or the preselection logic used elsewhere on the site.
+// Display-only price labels shown next to each service checkbox. These mirror
+// the packages on /services — they do not affect the `value` sent on submit or
+// the preselection logic used elsewhere on the site.
 const SERVICE_PRICE_LABEL: Record<QuoteService, string | null> = {
-  'Landing Page': '$599–$1,999',
-  'Custom Website': '$1,999–$5,999',
-  'Cinematic Custom Website': '$3,499–$10,000',
+  Foundation: '$1,999',
+  Growth: '$2,999',
+  Bespoke: '$6,999',
+  'Custom Build / Platform': 'from $7,000',
+  'SEO Blog Content': 'from $99/mo',
+  'Google Business Profile': 'from $299',
   'B2B AI Platform': 'Custom pricing',
-  'Google Business Profile': 'From $299',
   Other: null,
 }
 
@@ -70,6 +78,9 @@ export default function QuotePopup() {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+  // 'choose' shows the two-option chooser (quote vs call); 'form' shows the
+  // quote request form. Opening with a preselected service skips to 'form'.
+  const [view, setView] = useState<'choose' | 'form'>('choose')
 
   const toggleAddon = (addon: AddonOption) => {
     const isSelected = selectedAddons.includes(addon)
@@ -103,14 +114,32 @@ export default function QuotePopup() {
   }, [isOpen])
 
   // Keep the selection in sync when a button opens the popup with a preselection.
+  // A preselected service means the visitor already picked a package, so jump
+  // straight to the form; otherwise show the quote-or-call chooser first.
   useEffect(() => {
     if (isOpen) {
       setServices(preselectedService ? [preselectedService] : [])
+      setView(preselectedService ? 'form' : 'choose')
     }
   }, [isOpen, preselectedService])
 
+  // "Book a Call" reuses the existing 15-minute consultation booking form that
+  // lives on the homepage (components/Hero.tsx, id="consultation"). We never
+  // build a second booking flow — we route the visitor to that one.
+  const goToBooking = () => {
+    closePopup()
+    if (pathname === '/') {
+      setTimeout(() => {
+        document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth' })
+      }, 320)
+    } else {
+      router.push('/#consultation')
+    }
+  }
+
   // When the panel is closed, show a small launcher tab anchored to the bottom
-  // edge. Clicking it slides the quote form up. (The popup no longer auto-opens.)
+  // edge. On mobile it sits above the pill nav so the two never overlap; on
+  // desktop (where the pill nav is hidden) it drops back to the corner.
   if (!render) {
     // The immersive /launch funnel manages its own UI — no launcher there.
     if (pathname === '/launch') return null
@@ -118,11 +147,11 @@ export default function QuotePopup() {
       <button
         type="button"
         onClick={() => openPopup()}
-        aria-label="Get a free quote"
-        className="fixed z-[60] bottom-5 right-4 sm:right-6 inline-flex items-center gap-2 rounded-full bg-[#1A1A1A] text-white pl-4 pr-5 py-3 text-sm font-semibold shadow-[0_8px_28px_rgba(0,0,0,0.28)] hover:bg-[#2D2D2D] hover:-translate-y-0.5 transition-all duration-200"
+        aria-label="Request a quote or call"
+        className="fixed z-[60] bottom-24 right-4 sm:bottom-5 sm:right-6 inline-flex items-center gap-2 rounded-full bg-[#1A1A1A] text-white pl-4 pr-5 py-3 text-sm font-semibold shadow-[0_8px_28px_rgba(0,0,0,0.28)] hover:bg-[#2D2D2D] hover:-translate-y-0.5 transition-all duration-200"
       >
         <Send className="w-4 h-4" />
-        Get a Free Quote
+        Request Quote/Call
       </button>
     )
   }
@@ -147,6 +176,7 @@ export default function QuotePopup() {
         setSubmitted(false)
       }
       setSubmitError(null)
+      setView('choose')
     }, 300)
   }
 
@@ -238,14 +268,93 @@ export default function QuotePopup() {
     )
   }
 
+  // ── Chooser: get a quote vs book a call ─────────────────────────────────────
+  if (view === 'choose') {
+    return (
+      <div className={shellClass} role="dialog" aria-label="Request a quote or a call">
+        <div className={cardClass}>
+          {/* Premium header with brand accent bar */}
+          <div className="relative sticky top-0 z-10 rounded-t-2xl bg-gradient-to-br from-[#1A1A1A] to-[#2D2317] px-6 pt-6 pb-5">
+            <button
+              onClick={handleClose}
+              className="absolute top-4 right-4 p-2 rounded-lg hover:bg-white/10 transition-colors"
+              aria-label="Close"
+            >
+              <X className="w-5 h-5 text-white/80" />
+            </button>
+            <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.5px] uppercase">
+              Let&apos;s talk
+            </p>
+            <h2 className="text-xl font-bold text-white mt-1">How can we help?</h2>
+            <p className="text-white/70 text-sm mt-1">Two easy ways to start — both free, no commitment.</p>
+          </div>
+
+          <div className="p-5 space-y-3">
+            {/* Option 1 — Quote */}
+            <button
+              type="button"
+              onClick={() => setView('form')}
+              className="group w-full flex items-center gap-4 rounded-xl border border-[#E8E4DF] bg-white p-4 text-left transition-all duration-200 hover:border-[#5C3D2E] hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]"
+            >
+              <span className="flex-shrink-0 w-11 h-11 rounded-full bg-[#F3EFE9] flex items-center justify-center">
+                <FileText className="w-5 h-5 text-[#5C3D2E]" strokeWidth={1.75} />
+              </span>
+              <span className="flex-1">
+                <span className="block font-bold text-[#1A1A1A]">Get a Quote</span>
+                <span className="block text-sm text-[#6B6560] mt-0.5">
+                  Tell us about your project and get a tailored quote within 1 hour.
+                </span>
+              </span>
+              <ArrowRight className="w-5 h-5 text-[#9E9790] group-hover:text-[#5C3D2E] group-hover:translate-x-0.5 transition-all" />
+            </button>
+
+            {/* Option 2 — Book a Call (reuses existing 15-min consultation booking) */}
+            <button
+              type="button"
+              onClick={goToBooking}
+              className="group w-full flex items-center gap-4 rounded-xl border border-[#E8E4DF] bg-white p-4 text-left transition-all duration-200 hover:border-[#5C3D2E] hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]"
+            >
+              <span className="flex-shrink-0 w-11 h-11 rounded-full bg-[#F3EFE9] flex items-center justify-center">
+                <CalendarClock className="w-5 h-5 text-[#5C3D2E]" strokeWidth={1.75} />
+              </span>
+              <span className="flex-1">
+                <span className="block font-bold text-[#1A1A1A]">Book a Call</span>
+                <span className="block text-sm text-[#6B6560] mt-0.5">
+                  Grab a free 15-minute phone consultation at a time that suits you.
+                </span>
+              </span>
+              <ArrowRight className="w-5 h-5 text-[#9E9790] group-hover:text-[#5C3D2E] group-hover:translate-x-0.5 transition-all" />
+            </button>
+
+            <div className="pt-1">
+              <FlowTrustStrip />
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={shellClass} role="dialog" aria-label="Get a free quote">
       <div className={cardClass}>
         {/* Header */}
         <div className="flex items-start justify-between p-5 border-b border-[#E8E4DF] sticky top-0 bg-white rounded-t-2xl z-10">
-          <div>
-            <h2 className="text-lg font-bold text-[#1A1A1A]">Get a Free Quote — No Commitment</h2>
-            <p className="text-sm text-[#6B6560] mt-0.5">Tell us what you need. We respond within 1 hour.</p>
+          <div className="flex items-start gap-2.5">
+            {!preselectedService && (
+              <button
+                type="button"
+                onClick={() => setView('choose')}
+                className="mt-0.5 p-1 -ml-1 rounded-md hover:bg-[#F8F7F4] transition-colors flex-shrink-0"
+                aria-label="Back to options"
+              >
+                <ArrowLeft className="w-4 h-4 text-[#6B6560]" />
+              </button>
+            )}
+            <div>
+              <h2 className="text-lg font-bold text-[#1A1A1A]">Get a Free Quote — No Commitment</h2>
+              <p className="text-sm text-[#6B6560] mt-0.5">Tell us what you need. We respond within 1 hour.</p>
+            </div>
           </div>
           <button
             onClick={handleClose}

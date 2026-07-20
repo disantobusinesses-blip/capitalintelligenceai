@@ -26,6 +26,12 @@ const nextConfig = {
         destination: '/services',
         permanent: true,
       },
+      {
+        // The template gallery now lives as the "Browse Styles" section on /projects.
+        source: '/templates',
+        destination: '/projects#browse-styles',
+        permanent: true,
+      },
     ]
   },
 }

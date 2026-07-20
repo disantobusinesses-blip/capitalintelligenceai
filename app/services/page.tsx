@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { Check, FileText, Globe, Package, Shield, Zap } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 
@@ -118,29 +117,30 @@ export default function ServicesPage() {
   return (
     <main className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
 
-      {/* Hero */}
-      <section className="py-24 px-6 text-center">
+      {/* Hero — kept compact so the pricing cards sit within the first
+          viewport (or a single short scroll) on both desktop and mobile. */}
+      <section className="pt-8 pb-6 md:pt-10 md:pb-8 px-6 text-center">
         <div className="max-w-4xl mx-auto">
-          <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
+          <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
             Everything We Offer
           </p>
-          <h1 className="text-5xl md:text-6xl font-bold text-[#1A1A1A] mb-6 leading-tight">
+          <h1 className="text-3xl md:text-5xl font-bold text-[#1A1A1A] mb-3 leading-tight">
             Our Services
           </h1>
-          <p className="text-xl text-[#6B6560] max-w-2xl mx-auto">
-            From a single high-converting landing page to a fully bespoke cinematic site — plus the hosting to keep it live and secure. Here&apos;s everything we do.
+          <p className="text-base md:text-lg text-[#6B6560] max-w-2xl mx-auto">
+            Fixed-price website packages and hosting to keep your site live and secure — here&apos;s everything we do.
           </p>
         </div>
       </section>
 
       {/* ── Website Packages ──────────────────────────────────────────────── */}
-      <section className="py-16 px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section className="pt-4 pb-14 px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="mb-10">
+          <div className="mb-6">
             <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
               Website Packages
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-3">
               Websites That Convert
             </h2>
             <p className="text-[#6B6560] text-base max-w-[560px] mb-4">
@@ -221,16 +221,17 @@ export default function ServicesPage() {
             })}
           </div>
 
-          {/* Flat text link — deliberately not styled as a pricing card */}
+          {/* Flat text card — deliberately not styled as a pricing card. Opens
+              the Request Quote/Call chooser rather than linking to another
+              service page. */}
           <div className="mt-8 text-center">
             <p className="text-[#6B6560] text-sm">
               Need something bigger?{' '}
-              <Link
-                href="/services/b2b-crm-ai-platform"
+              <QuotePopupButton
                 className="text-[#1A1A1A] font-semibold underline underline-offset-2 hover:text-[#5C3D2E]"
               >
                 Custom builds &amp; platforms — from $7,000, request a quote
-              </Link>
+              </QuotePopupButton>
             </p>
           </div>
         </div>
@@ -391,7 +392,7 @@ export default function ServicesPage() {
           <QuotePopupButton
             className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
           >
-            Get a Free Quote
+            Request Quote/Call
           </QuotePopupButton>
         </div>
       </section>

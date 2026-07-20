@@ -33,7 +33,7 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
     >
-      <div className="flex items-center gap-0.5 bg-tech-black/80 border border-tech-baby-blue/30 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+      <div className="flex items-center gap-0 bg-tech-black/80 border border-tech-baby-blue/30 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -46,8 +46,8 @@ export function NavBar({ items, className }: NavBarProps) {
               aria-label={item.name}
               className={cn(
                 "relative cursor-pointer font-semibold rounded-full transition-colors",
-                // Mobile: label only, compact padding
-                "px-3 py-2",
+                // Mobile: label only, compact padding so all items fit at 375px
+                "px-2.5 py-2",
                 // Desktop: label with more padding
                 "md:px-5 md:py-2",
                 "text-tech-platinum hover:text-tech-white",

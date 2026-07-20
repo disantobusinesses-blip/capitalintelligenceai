@@ -109,10 +109,10 @@ export default function FullPackageService() {
             Tell us about your business and we&apos;ll put together a tailored proposal — no obligation.
           </p>
           <QuotePopupButton
-            service="Custom Website"
+            service="Growth"
             className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
           >
-            Get a Free Quote
+            Request Quote/Call
           </QuotePopupButton>
         </div>
       </section>

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import ProjectCard from '@/components/ProjectCard'
+import TemplateCard from '@/components/TemplateCard'
 import QuotePopupButton from '@/components/QuotePopupButton'
+import { TEMPLATES } from '@/lib/templates'
 
 export const revalidate = 60
 
@@ -90,56 +92,6 @@ const projects = [
     color: '#2C3E50',
     features: ['Modern design', 'Project showcase', 'Mobile responsive', 'Contact form', 'SEO optimised'],
   },
-  {
-    id: 7,
-    title: 'Construction Template — Premium Cinematic',
-    industry: 'Template Demo — Construction & Trades',
-    description: 'Live demo of our premium cinematic-scroll build for construction & trades businesses. Browse the full range on our Templates page.',
-    image: '/templates/apex-premium.jpeg',
-    url: 'https://demo1.intelligentaisystem.com',
-    color: '#2C2A27',
-    features: ['Cinematic scroll animations', 'Immersive full-viewport sections', 'Mobile responsive', 'SEO optimised', 'Consultation booking button'],
-  },
-  {
-    id: 8,
-    title: 'Skincare & Beauty Template',
-    industry: 'Template Demo — Skincare & Beauty',
-    description: 'Live demo of our skincare & beauty studio template. Browse the full range on our Templates page.',
-    image: '/templates/skincare.png',
-    url: 'https://demo2.intelligentaisystem.com',
-    color: '#B08968',
-    features: ['Custom landing page design', 'Mobile responsive', 'SEO optimised', 'Fresha booking integration', 'Custom domain connection'],
-  },
-  {
-    id: 9,
-    title: 'Fitness & Personal Training Template',
-    industry: 'Template Demo — Fitness',
-    description: 'Live demo of our fitness & personal training template. Browse the full range on our Templates page.',
-    image: '/templates/fitness.png',
-    url: 'https://demo3.intelligentaisystem.com',
-    color: '#1A1A1A',
-    features: ['Custom landing page design', 'Mobile responsive', 'SEO optimised', 'Fresha booking integration', 'Custom domain connection'],
-  },
-  {
-    id: 10,
-    title: 'Hospitality & Restaurant Template',
-    industry: 'Template Demo — Hospitality',
-    description: 'Live demo of our hospitality & restaurant template. Browse the full range on our Templates page.',
-    image: '/templates/hospitality.png',
-    url: 'https://demo4.intelligentaisystem.com',
-    color: '#7A2E2E',
-    features: ['Custom landing page design', 'Menu PDF embed', 'OpenTable/Google Reserve integration', 'Mobile responsive', 'SEO optimised'],
-  },
-  {
-    id: 11,
-    title: 'Legal & Accounting Template',
-    industry: 'Template Demo — Legal & Accounting',
-    description: 'Live demo of our legal & accounting firm template. Browse the full range on our Templates page.',
-    image: '/templates/legal.png',
-    url: 'https://demo5.intelligentaisystem.com',
-    color: '#1A3A5C',
-    features: ['Custom landing page design', 'Consultation booking button', 'Phone call CTA', 'Mobile responsive', 'SEO optimised'],
-  },
 ]
 
 export default function ProjectsPage() {
@@ -158,12 +110,49 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Projects Grid */}
+      {/* Client Work — real businesses we've built for */}
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+              Client Work
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">
+              Real Businesses, Real Sites
+            </h2>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Browse Styles — the design template gallery (no pricing here; see /services) */}
+      <section id="browse-styles" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+              Browse Styles
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
+              Explore Our Design Range
+            </h2>
+            <p className="text-[#6B6560] text-base max-w-2xl">
+              A look at the industry styles we design in — each one fully customised with your
+              branding and content. Open a live demo to see it in action.{' '}
+              <span className="text-[#3D2817] font-medium">
+                For package pricing, see our{' '}
+                <a href="/services" className="underline underline-offset-2 hover:text-[#5C3D2E]">
+                  Services page
+                </a>.
+              </span>
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {TEMPLATES.map((t) => (
+              <TemplateCard key={t.id} template={t} hidePrice />
             ))}
           </div>
         </div>

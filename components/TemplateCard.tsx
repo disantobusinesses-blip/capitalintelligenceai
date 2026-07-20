@@ -19,6 +19,8 @@ interface TemplateCardProps {
   compact?: boolean
   /** Home mode: shows a "Select & Continue" button that starts the launch flow. */
   startFlow?: boolean
+  /** Gallery mode (e.g. the Projects "Browse Styles" section): hide all pricing. */
+  hidePrice?: boolean
 }
 
 /** Add-ons disclaimer tooltip — hover on desktop, tap-to-reveal on mobile. */
@@ -78,6 +80,7 @@ export default function TemplateCard({
   onSelectTier,
   compact = false,
   startFlow = false,
+  hidePrice = false,
 }: TemplateCardProps) {
   const tiers = template.tiers
   const defaultTier = tiers?.[0]?.id ?? null
@@ -154,9 +157,11 @@ export default function TemplateCard({
               {template.businessName}
             </h3>
           </div>
-          <p className={`text-[#1A1A1A] font-extrabold whitespace-nowrap ${compact ? 'text-sm' : 'text-lg'}`}>
-            ${displayPrice.toLocaleString()} {GST_NOTE}
-          </p>
+          {!hidePrice && (
+            <p className={`text-[#1A1A1A] font-extrabold whitespace-nowrap ${compact ? 'text-sm' : 'text-lg'}`}>
+              ${displayPrice.toLocaleString()} {GST_NOTE}
+            </p>
+          )}
         </div>
 
         {/* Tier selector (e.g. Basic / Premium) */}
@@ -182,9 +187,11 @@ export default function TemplateCard({
                   }`}
                 >
                   <span className={`font-semibold ${compact ? 'text-[13px]' : 'text-sm'}`}>{tier.label}</span>
-                  <span className={`font-bold whitespace-nowrap ${compact ? 'text-[13px]' : 'text-sm'}`}>
-                    ${tier.price.toLocaleString()} {GST_NOTE}
-                  </span>
+                  {!hidePrice && (
+                    <span className={`font-bold whitespace-nowrap ${compact ? 'text-[13px]' : 'text-sm'}`}>
+                      ${tier.price.toLocaleString()} {GST_NOTE}
+                    </span>
+                  )}
                 </button>
               )
             })}

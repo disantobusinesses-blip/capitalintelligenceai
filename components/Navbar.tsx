@@ -7,7 +7,6 @@ import { useQuotePopup } from '@/context/QuotePopupContext'
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
-  { label: 'Templates', href: '/templates' },
   { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
   { label: 'Other Services', href: '/services/b2b-crm-ai-platform' },
@@ -53,9 +52,9 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => openPopup()}
-            className="bg-[#1A1A1A] text-white text-sm font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
+            className="bg-[#1A1A1A] text-white text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 whitespace-nowrap"
           >
-            Quote
+            Request Quote/Call
           </button>
         </div>
       </div>

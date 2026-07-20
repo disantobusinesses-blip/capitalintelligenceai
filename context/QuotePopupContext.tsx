@@ -2,14 +2,18 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react'
 
-// The service values shown in the popup's "What service do you need?" dropdown.
-// Buttons across the site open the popup with one of these pre-selected.
+// The service values shown in the popup's "What service do you need?" list.
+// These mirror the packages on /services so the quote panel and the pricing
+// page always offer the same choices. Buttons across the site open the popup
+// with one of these pre-selected.
 export type QuoteService =
-  | 'Landing Page'
-  | 'Custom Website'
-  | 'Cinematic Custom Website'
-  | 'B2B AI Platform'
+  | 'Foundation'
+  | 'Growth'
+  | 'Bespoke'
+  | 'Custom Build / Platform'
+  | 'SEO Blog Content'
   | 'Google Business Profile'
+  | 'B2B AI Platform'
   | 'Other'
 
 interface QuotePopupContextValue {

@@ -88,7 +88,7 @@ export default function PathChooser() {
 
         <p className="text-center text-[#8A8A8A] text-sm mt-8">
           Just browsing?{' '}
-          <Link href="/templates" className="font-semibold text-[#1A1A1A] underline">
+          <Link href="/projects#browse-styles" className="font-semibold text-[#1A1A1A] underline">
             View all templates
           </Link>
         </p>

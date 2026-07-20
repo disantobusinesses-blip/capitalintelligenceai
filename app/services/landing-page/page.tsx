@@ -163,7 +163,7 @@ export default function LandingPageService() {
               Includes design, development, and deployment of your landing page
             </p>
             <QuotePopupButton
-              service="Landing Page"
+              service="Foundation"
               className="w-full px-8 py-4 bg-white text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#F8F7F4] text-center block"
             >
               Get Started Now

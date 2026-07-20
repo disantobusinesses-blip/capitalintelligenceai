@@ -7,9 +7,9 @@ export interface FlowPricingTier {
 }
 
 export const FLOW_PRICING_TIERS: FlowPricingTier[] = [
-  { name: 'Landing Page', range: '$599–$1,999' },
-  { name: 'Custom Website', range: '$1,999–$5,999' },
-  { name: 'Cinematic', range: '$3,499–$10,000' },
+  { name: 'Foundation', range: '$1,999' },
+  { name: 'Growth', range: '$2,999' },
+  { name: 'Bespoke', range: '$6,999' },
 ]
 
 // Single +GST note rendered once next to the tiers.
