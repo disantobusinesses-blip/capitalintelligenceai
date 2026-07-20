@@ -40,9 +40,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Services</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/services/landing-page" className="hover:text-white transition-colors duration-200">Landing Page</Link></li>
-              <li><Link href="/services/full-package" className="hover:text-white transition-colors duration-200">Full Package</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors duration-200">SEO Plans</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors duration-200">Website Packages</Link></li>
               <li><Link href="/services/b2b-crm-ai-platform" className="hover:text-white transition-colors duration-200">Other Services</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors duration-200">Blog</Link></li>
             </ul>

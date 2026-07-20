@@ -31,7 +31,7 @@ const trustPoints = [
 
 const services = [
   { label: 'B2B AI Acquisition', href: '/services/b2b-crm-ai-platform' },
-  { label: 'Website Creation', href: '/services/full-package' },
+  { label: 'Website Creation', href: '/services' },
   { label: 'SEO Blog Content', href: '/services' },
   { label: 'Google Profile Setup', href: '/services/google-business-profile' },
 ]
