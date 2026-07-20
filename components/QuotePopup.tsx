@@ -20,6 +20,7 @@ import {
 import { useQuotePopup, QuoteService } from '@/context/QuotePopupContext'
 import { trackConversion, CONVERSION_LEAD } from '@/lib/trackConversion'
 import FlowTrustStrip from '@/components/FlowTrustStrip'
+import ConsultationBooking from '@/components/ConsultationBooking'
 
 const SERVICE_OPTIONS: QuoteService[] = [
   'Foundation',
@@ -78,9 +79,10 @@ export default function QuotePopup() {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
-  // 'choose' shows the two-option chooser (quote vs call); 'form' shows the
-  // quote request form. Opening with a preselected service skips to 'form'.
-  const [view, setView] = useState<'choose' | 'form'>('choose')
+  // 'choose' shows the two-option chooser; 'form' shows the quote request form;
+  // 'call' shows the 15-minute consultation booking in-panel. Opening with a
+  // preselected service skips straight to 'form'.
+  const [view, setView] = useState<'choose' | 'form' | 'call'>('choose')
 
   const toggleAddon = (addon: AddonOption) => {
     const isSelected = selectedAddons.includes(addon)
@@ -123,19 +125,10 @@ export default function QuotePopup() {
     }
   }, [isOpen, preselectedService])
 
-  // "Book a Call" reuses the existing 15-minute consultation booking form that
-  // lives on the homepage (components/Hero.tsx, id="consultation"). We never
-  // build a second booking flow — we route the visitor to that one.
-  const goToBooking = () => {
-    closePopup()
-    if (pathname === '/') {
-      setTimeout(() => {
-        document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth' })
-      }, 320)
-    } else {
-      router.push('/#consultation')
-    }
-  }
+  // "Book a Call" opens the exact same 15-minute consultation booking flow
+  // (components/ConsultationBooking, posting to /api/consultation) right inside
+  // this panel — no second booking flow, no navigating away.
+  const goToBooking = () => setView('call')
 
   // When the panel is closed, show a small launcher tab anchored to the bottom
   // edge. On mobile it sits above the pill nav so the two never overlap; on
@@ -329,6 +322,44 @@ export default function QuotePopup() {
             <div className="pt-1">
               <FlowTrustStrip />
             </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // ── Book a Call: the 15-minute consultation booking, in-panel ───────────────
+  if (view === 'call') {
+    return (
+      <div className={shellClass} role="dialog" aria-label="Book a 15-minute call">
+        <div className={cardClass}>
+          {/* Premium header with brand accent + back to the chooser */}
+          <div className="relative sticky top-0 z-10 rounded-t-2xl bg-gradient-to-br from-[#1A1A1A] to-[#2D2317] px-6 pt-5 pb-5">
+            <button
+              onClick={() => setView('choose')}
+              className="absolute top-4 left-3 p-2 rounded-lg hover:bg-white/10 transition-colors"
+              aria-label="Back to options"
+            >
+              <ArrowLeft className="w-5 h-5 text-white/80" />
+            </button>
+            <button
+              onClick={handleClose}
+              className="absolute top-4 right-4 p-2 rounded-lg hover:bg-white/10 transition-colors"
+              aria-label="Close"
+            >
+              <X className="w-5 h-5 text-white/80" />
+            </button>
+            <div className="text-center px-6">
+              <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.5px] uppercase">
+                Book a Call
+              </p>
+              <h2 className="text-xl font-bold text-white mt-1">Free 15-Minute Consultation</h2>
+              <p className="text-white/70 text-sm mt-1">Pick a time that suits you — no commitment.</p>
+            </div>
+          </div>
+
+          <div className="p-5">
+            <ConsultationBooking showHeading={false} />
           </div>
         </div>
       </div>
