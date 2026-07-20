@@ -39,8 +39,8 @@ export default function BeyondWebsite() {
               Instagram &amp; Social Growth Management
             </h3>
             <p className="text-[#6B6560] text-sm leading-relaxed mb-5">
-              We manage and grow your social presence using the same systems behind Onyx
-              Global&apos;s results.
+              We manage and grow your social presence using the same systems behind our
+              clients&apos; results.
             </p>
             <ul className="flex flex-col gap-2.5 mt-auto">
               {SOCIAL_INCLUDES.map((item) => (
