@@ -14,7 +14,7 @@ export default function LaunchTemplatesSection() {
           </h2>
           <p className="text-[#5A5A5A] max-w-2xl mx-auto">
             Choose a professionally designed industry template. We customise it with your
-            branding, content, and services — live within 24–48 hours of onboarding. Pick one to
+            branding, content, and services, live within 24–48 hours of onboarding. Pick one to
             start your build instantly.
           </p>
         </div>

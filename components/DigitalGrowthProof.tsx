@@ -23,13 +23,13 @@ export default function DigitalGrowthProof() {
             We Don&apos;t Just Build Websites. We Grow Them.
           </h2>
           <p className="text-[#6B6560] text-[16px] mt-4">
-            Real numbers from real client accounts — not stock case studies.
+            Real numbers from real client accounts, not stock case studies.
           </p>
         </div>
 
         {/* Three stat columns */}
         <div className="grid md:grid-cols-3 gap-6 items-start">
-          {/* Column 1 — Social Reach (Instagram, client results) */}
+          {/* Column 1, Social Reach (Instagram, client results) */}
           <div className="flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8">
             <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.2px] uppercase">
               Social Reach
@@ -41,7 +41,7 @@ export default function DigitalGrowthProof() {
               className={`${body.className} block text-[40px] md:text-[48px] font-bold text-[#3D2817] leading-none mt-3`}
             />
             <p className="text-[#6B6560] text-sm leading-relaxed mt-4">
-              Client results for Instagram — views in 30 days, managed end-to-end by our team.
+              Client results for Instagram, views in 30 days, managed end-to-end by our team.
             </p>
             <div className="grid grid-cols-2 gap-3 mt-6">
               {SOCIAL_REACH_SNAPSHOTS.map((snapshot) => (
@@ -60,7 +60,7 @@ export default function DigitalGrowthProof() {
             </div>
           </div>
 
-          {/* Column 2 — Search Growth (confirmed: 892 clicks, 59.4K impressions) */}
+          {/* Column 2, Search Growth (confirmed: 892 clicks, 59.4K impressions) */}
           <div className="flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8">
             <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.2px] uppercase">
               Search Growth
@@ -84,7 +84,7 @@ export default function DigitalGrowthProof() {
               </div>
             </div>
             <p className="text-[#6B6560] text-sm leading-relaxed mt-4">
-              Organic Search Console growth for a client over 5 weeks — the slow-build SEO
+              Organic Search Console growth for a client over 5 weeks, the slow-build SEO
               curve, not overnight traffic.
             </p>
             <GrowthProofImage
@@ -94,7 +94,7 @@ export default function DigitalGrowthProof() {
             />
           </div>
 
-          {/* Column 3 — Get Mentioned By AI (confirmed: 84 sessions) */}
+          {/* Column 3, Get Mentioned By AI (confirmed: 84 sessions) */}
           <div className="flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8">
             <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.2px] uppercase">
               Get Mentioned By AI
@@ -107,7 +107,7 @@ export default function DigitalGrowthProof() {
               <span className="text-[#9E9790] text-xs font-medium uppercase tracking-wide">Sessions</span>
             </div>
             <p className="text-[#6B6560] text-sm leading-relaxed mt-4">
-              Real sessions sourced from ChatGPT for a client — proof our GEO work shows up
+              Real sessions sourced from ChatGPT for a client, proof our GEO work shows up
               where AI assistants send traffic.
             </p>
             <GrowthProofImage

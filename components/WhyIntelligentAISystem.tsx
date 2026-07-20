@@ -6,19 +6,19 @@ const POINTS = [
   {
     icon: ScanSearch,
     title: 'Audited, Not Guessed',
-    body: 'Every client site runs through automated AI-powered technical audits — SEO health, Core Web Vitals, on-page scoring — before and after launch.',
+    body: 'Every client site runs through automated AI-powered technical audits, SEO health, Core Web Vitals, on-page scoring, before and after launch.',
     link: null as { label: string; href: string } | null,
   },
   {
     icon: Target,
     title: 'The Engine Behind Our Own Growth',
-    body: "Our in-house lead intelligence engine sources and qualifies local business leads at scale. It's the same system behind our own growth — and available to B2B clients who sell to other businesses.",
+    body: "Our in-house lead intelligence engine sources and qualifies local business leads at scale. It's the same system behind our own growth, and available to B2B clients who sell to other businesses.",
     link: { label: 'See how it works', href: '/services/b2b-crm-ai-platform' },
   },
   {
     icon: Layers,
     title: 'Enterprise-Grade Stack',
-    body: 'Built on the same production stack as our enterprise builds — Next.js, Supabase, Vercel — no templated agency toolkit.',
+    body: 'Built on the same production stack as our enterprise builds, Next.js, Supabase, Vercel, no templated agency toolkit.',
     link: null,
   },
 ]

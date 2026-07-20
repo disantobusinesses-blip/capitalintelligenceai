@@ -9,7 +9,7 @@ interface QuotePopupBody {
   message?: string
   /** Optional add-ons selected in the collapsed "Interested in add-ons?" section. */
   addons?: unknown
-  /** Blog frequency tier — only meaningful when 'SEO Blog Content' is in addons. */
+  /** Blog frequency tier, only meaningful when 'SEO Blog Content' is in addons. */
   blogTier?: unknown
 }
 
@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
   }
 
-  // Validation — only name, email and phone are required. The business
+  // Validation, only name, email and phone are required. The business
   // description is optional so it never blocks a submission.
   if (!body.name?.trim()) {
     return NextResponse.json({ ok: false, message: 'Name is required.' }, { status: 400 })
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, message: 'Phone number is required.' }, { status: 400 })
   }
 
-  // SMTP configuration — mirrors the onboarding route so GMAIL_USER / SMTP_USER
+  // SMTP configuration, mirrors the onboarding route so GMAIL_USER / SMTP_USER
   // both work and existing email delivery is never broken.
   const SMTP_HOST = process.env.SMTP_HOST
   const SMTP_PASS = process.env.SMTP_PASS
@@ -52,12 +52,12 @@ export async function POST(request: NextRequest) {
   const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER
 
   if (!SMTP_HOST || !SMTP_PASS || !SMTP_USER) {
-    console.error('SMTP not configured — quote request logged only')
+    console.error('SMTP not configured, quote request logged only')
     // Still return success so the visitor is not blocked.
     return NextResponse.json({ ok: true })
   }
 
-  // Add-ons are optional and client-supplied — validate shape defensively
+  // Add-ons are optional and client-supplied, validate shape defensively
   // rather than trusting the request body.
   const addons: string[] = Array.isArray(body.addons)
     ? body.addons.filter((a): a is string => typeof a === 'string' && a.trim() !== '')
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
       <ul>
         ${addons
           .map((addon) => {
-            const tierSuffix = addon === 'SEO Blog Content' && blogTier ? ` — ${esc(blogTier)}` : ''
+            const tierSuffix = addon === 'SEO Blog Content' && blogTier ? `, ${esc(blogTier)}` : ''
             return `<li><strong>${esc(addon)}</strong>${tierSuffix}</li>`
           })
           .join('')}
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
       : ''
 
     const htmlBody = `
-      <h2>🔔 New Quote Request — ${esc(body.name)}</h2>
+      <h2>🔔 New Quote Request, ${esc(body.name)}</h2>
       <h3>Contact Details</h3>
       <ul>
         <li><strong>Name:</strong> ${esc(body.name)}</li>
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
       from: SMTP_FROM,
       to: 'sales@intelligentaisystem.com',
       replyTo: body.email.trim(),
-      subject: `🔔 New Quote Request — ${body.name.trim()}`,
+      subject: `🔔 New Quote Request, ${body.name.trim()}`,
       html: htmlBody,
     })
   } catch (err) {

@@ -11,7 +11,7 @@ const samplePosts = [
     category: 'AI & Search',
     title: 'How AI Can Boost Your SEO in 2026',
     excerpt:
-      'From generative search to ChatGPT recommendations — learn how AI is reshaping the way customers find local businesses online.',
+      'From generative search to ChatGPT recommendations, learn how AI is reshaping the way customers find local businesses online.',
   },
   {
     slug: 'how-ai-improves-local-seo-google-business-profile',
@@ -23,7 +23,7 @@ const samplePosts = [
 ]
 
 const trustPoints = [
-  { label: 'Published weekly — automatically' },
+  { label: 'Published weekly, automatically' },
   { label: 'Every post SEO & GEO optimised' },
   { label: 'Indexed by Google and AI assistants' },
   { label: 'Up to 144 blogs per year included' },
@@ -72,7 +72,7 @@ export default function AIBlogSections() {
               We Write the Blogs.<br className="hidden md:block" /> You Get the Traffic.
             </h2>
             <p className="text-[18px] text-[#6B6560] max-w-[560px] mb-8">
-              Our AI publishes SEO-optimised blog posts for your business every week —
+              Our AI publishes SEO-optimised blog posts for your business every week,
               so Google and AI assistants like ChatGPT always have something new to recommend.
             </p>
 

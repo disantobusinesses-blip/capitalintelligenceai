@@ -131,9 +131,9 @@ export default function SeoLeadForm() {
             className="w-full px-4 py-3 bg-[#0A0F1E] border border-white/15 rounded-lg text-white focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
           >
             <option value="" disabled>Select a plan…</option>
-            <option value="Google Growth">Google Growth — $199/month</option>
-            <option value="Super Growth">Super Growth — $359/month</option>
-            <option value="Google Authority">Google Authority — $799/month</option>
+            <option value="Google Growth">Google Growth, $199/month</option>
+            <option value="Super Growth">Super Growth, $359/month</option>
+            <option value="Google Authority">Google Authority, $799/month</option>
             <option value="Not sure yet">Not sure yet</option>
           </select>
         </div>

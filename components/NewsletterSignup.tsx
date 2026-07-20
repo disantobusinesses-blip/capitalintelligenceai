@@ -35,7 +35,7 @@ export default function NewsletterSignup() {
           See how we can grow your business
         </h2>
         <p className="text-[15px] text-[#6B6560] mb-6">
-          Drop your name and email — we&apos;ll reach out with a personalised growth plan.
+          Drop your name and email, we&apos;ll reach out with a personalised growth plan.
         </p>
 
         {status === 'success' ? (

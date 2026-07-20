@@ -23,7 +23,7 @@ interface TemplateCardProps {
   hidePrice?: boolean
 }
 
-/** Add-ons disclaimer tooltip — hover on desktop, tap-to-reveal on mobile. */
+/** Add-ons disclaimer tooltip, hover on desktop, tap-to-reveal on mobile. */
 function AddOnsTooltip({ text }: { text: string }) {
   const [open, setOpen] = useState(false)
   const wrapperRef = useRef<HTMLSpanElement>(null)
@@ -125,7 +125,7 @@ export default function TemplateCard({
               <div key={src} className="relative h-full w-1/2">
                 <img
                   src={src || '/placeholder.svg'}
-                  alt={`${template.businessName} — ${template.industry} website preview ${i + 1}`}
+                  alt={`${template.businessName}, ${template.industry} website preview ${i + 1}`}
                   width={800}
                   height={600}
                   className="w-full h-full object-cover"
@@ -138,7 +138,7 @@ export default function TemplateCard({
         ) : (
           <img
             src={template.screenshot || '/placeholder.svg'}
-            alt={`${template.businessName} — ${template.industry} website template preview`}
+            alt={`${template.businessName}, ${template.industry} website template preview`}
             width={800}
             height={600}
             className="w-full h-full object-cover"
@@ -198,7 +198,7 @@ export default function TemplateCard({
           </div>
         )}
 
-        {/* What's included — hidden in compact mode to keep cards tight */}
+        {/* What's included, hidden in compact mode to keep cards tight */}
         {!compact && included && included.length > 0 && (
           <ul className="space-y-1.5">
             {included.map((item) => (
@@ -210,10 +210,10 @@ export default function TemplateCard({
           </ul>
         )}
 
-        {/* Add-ons disclaimer tooltip — hidden in compact mode */}
+        {/* Add-ons disclaimer tooltip, hidden in compact mode */}
         {!compact && tooltip && <AddOnsTooltip text={tooltip} />}
 
-        {/* Demo links — tiered templates show one button per tier */}
+        {/* Demo links, tiered templates show one button per tier */}
         {tiers && tiers.length > 1 ? (
           <div className="flex flex-wrap gap-2">
             {tiers.map((tier) => (

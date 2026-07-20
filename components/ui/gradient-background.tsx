@@ -4,15 +4,15 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 type GradientBackgroundProps = React.ComponentProps<'div'> & {
-	// Animation customization
+	// Animation customisation
 	gradients?: string[];
 	animationDuration?: number;
 	animationDelay?: number;
 
-	// Layout customization
+	// Layout customisation
 	enableCenterContent?: boolean;
 
-	// Visual customization
+	// Visual customisation
 	overlay?: boolean;
 	overlayOpacity?: number;
 };

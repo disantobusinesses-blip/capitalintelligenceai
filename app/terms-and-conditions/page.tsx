@@ -49,7 +49,7 @@ export default function TermsAndConditions() {
           <ul className="list-disc pl-6 text-[#1A1A1A] space-y-2">
             <li>Website design, development, and maintenance</li>
             <li>AI-powered business solutions and integrations</li>
-            <li>Digital optimization and revenue enhancement services</li>
+            <li>Digital optimisation and revenue enhancement services</li>
             <li>Ongoing technical support and strategic consulting</li>
           </ul>
         </section>
@@ -88,7 +88,7 @@ export default function TermsAndConditions() {
             3.3 Automatic Renewal
           </h3>
           <p className="text-[#1A1A1A] leading-relaxed">
-            Your subscription will automatically renew each month unless you cancel prior to the renewal date. By subscribing, you authorize us to charge your payment method on a recurring monthly basis.
+            Your subscription will automatically renew each month unless you cancel prior to the renewal date. By subscribing, you authorise us to charge your payment method on a recurring monthly basis.
           </p>
 
           <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3 mt-6">
@@ -146,10 +146,10 @@ export default function TermsAndConditions() {
           <ul className="list-disc pl-6 text-[#1A1A1A] space-y-2">
             <li>Provide accurate and complete information during registration and onboarding</li>
             <li>Maintain the confidentiality of your account credentials</li>
-            <li>Notify us immediately of any unauthorized use of your account</li>
+            <li>Notify us immediately of any unauthorised use of your account</li>
             <li>Use our services only for lawful purposes and in compliance with all applicable laws</li>
             <li>Not interfere with or disrupt the integrity or performance of our services</li>
-            <li>Not attempt to gain unauthorized access to our systems or networks</li>
+            <li>Not attempt to gain unauthorised access to our systems or networks</li>
             <li>Provide necessary brand assets, content, and approvals in a timely manner</li>
           </ul>
         </section>
@@ -173,7 +173,7 @@ export default function TermsAndConditions() {
             6.2 Client-Provided Content
           </h3>
           <p className="text-[#1A1A1A] leading-relaxed mb-4">
-            You retain ownership of all content, materials, and intellectual property you provide to us (including logos, brand assets, text, and images). By providing these materials, you grant us a non-exclusive, worldwide, royalty-free license to use, reproduce, modify, and display your content solely for the purpose of providing our services.
+            You retain ownership of all content, materials, and intellectual property you provide to us (including logos, brand assets, text, and images). By providing these materials, you grant us a non-exclusive, worldwide, royalty-free licence to use, reproduce, modify, and display your content solely for the purpose of providing our services.
           </p>
           <p className="text-[#1A1A1A] leading-relaxed">
             You represent and warrant that you have all necessary rights to the content you provide and that your content does not infringe on the intellectual property rights of any third party.
@@ -197,7 +197,7 @@ export default function TermsAndConditions() {
           <ul className="list-disc pl-6 text-[#1A1A1A] space-y-2 mb-4">
             <li>Your access to or use of (or inability to access or use) our services</li>
             <li>Any conduct or content of any third party on our services</li>
-            <li>Unauthorized access to or alteration of your transmissions or content</li>
+            <li>Unauthorised access to or alteration of your transmissions or content</li>
             <li>Statements or conduct of any third party on our services</li>
           </ul>
           <p className="text-[#1A1A1A] leading-relaxed">
@@ -258,7 +258,7 @@ export default function TermsAndConditions() {
             12. Force Majeure
           </h2>
           <p className="text-[#1A1A1A] leading-relaxed">
-            We shall not be liable for any failure or delay in performing our obligations due to circumstances beyond our reasonable control, including but not limited to acts of God, natural disasters, pandemics, government actions, terrorism, labor disputes, or failures of third-party service providers.
+            We shall not be liable for any failure or delay in performing our obligations due to circumstances beyond our reasonable control, including but not limited to acts of God, natural disasters, pandemics, government actions, terrorism, labour disputes, or failures of third-party service providers.
           </p>
         </section>
 

@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from 'react'
 
-// Shader source — blue/cyan themed
+// Shader source, blue/cyan themed
 const shaderSource = `#version 300 es
 precision highp float;
 out vec4 O;

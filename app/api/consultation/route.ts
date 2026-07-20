@@ -140,7 +140,7 @@ Please call the client at the scheduled time.`,
       const response = await calendar.events.insert({
         calendarId: googleAuth.calendarId,
         requestBody: event,
-        sendUpdates: 'none', // No guest invitations — owner calendar only
+        sendUpdates: 'none', // No guest invitations, owner calendar only
       })
 
       calendarEventId = response.data.id || null
@@ -169,7 +169,7 @@ Please call the client at the scheduled time.`,
 
       // Email to sales team
       const salesHtmlBody = `
-        <h2>New Consultation Booking — ${esc(body.name)}</h2>
+        <h2>New Consultation Booking, ${esc(body.name)}</h2>
         <h3>Booking Details</h3>
         <ul>
           <li><strong>Date:</strong> ${esc(displayDate)}</li>
@@ -190,7 +190,7 @@ Please call the client at the scheduled time.`,
       await transporter.sendMail({
         from: SMTP_FROM,
         to: 'sales@intelligentaisystem.com',
-        subject: `New Consultation Booking — ${body.name} — ${displayDate} at ${displayTime}`,
+        subject: `New Consultation Booking, ${body.name}, ${displayDate} at ${displayTime}`,
         html: salesHtmlBody,
       })
 
@@ -216,7 +216,7 @@ Please call the client at the scheduled time.`,
       await transporter.sendMail({
         from: SMTP_FROM,
         to: body.email,
-        subject: `Your IAS Consultation is Confirmed — ${displayDate} at ${displayTime}`,
+        subject: `Your IAS Consultation is Confirmed, ${displayDate} at ${displayTime}`,
         html: customerHtmlBody,
       })
 
@@ -225,7 +225,7 @@ Please call the client at the scheduled time.`,
       // Still return success so user is not blocked
     }
   } else {
-    console.error('SMTP not configured — consultation logged only')
+    console.error('SMTP not configured, consultation logged only')
   }
 
   return NextResponse.json({ 

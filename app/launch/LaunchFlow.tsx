@@ -30,7 +30,7 @@ import {
 
 // Each step keeps the compact 1-2-3 indicator at the top. Contact details are
 // captured on their own step right before checkout so the lead is sent to us the
-// moment they continue to payment — even if they never complete the deposit.
+// moment they continue to payment, even if they never complete the deposit.
 const STEPS = [
   { title: 'Your Site' },
   { title: 'Schedule' },
@@ -105,7 +105,7 @@ export default function LaunchFlow({
   const [sendingLead, setSendingLead] = useState(false)
 
   // Always land at the very top of the next step so the heading is the first thing
-  // a visitor sees — never the bottom of the previous section.
+  // a visitor sees, never the bottom of the previous section.
   const isFirstRender = useRef(true)
   useEffect(() => {
     if (isFirstRender.current) {
@@ -167,7 +167,7 @@ export default function LaunchFlow({
     contactPhone.trim() !== ''
 
   // Continue from the "Your Details" step to the Stripe checkout step. This is
-  // where the lead is sent to us — for BOTH template and custom builds — so we
+  // where the lead is sent to us, for BOTH template and custom builds, so we
   // capture every visitor who reaches payment, whether or not they pay.
   async function goToCheckout() {
     if (!contactComplete || sendingLead) return
@@ -192,13 +192,13 @@ export default function LaunchFlow({
                 : tier && template?.tiers && template.tiers.length > 1
                   ? tier.label
                   : '',
-            hostingPlan: hosting ? `${hosting.label} — ${hosting.price}` : selectedHosting,
+            hostingPlan: hosting ? `${hosting.label}, ${hosting.price}` : selectedHosting,
             goLiveDate,
           }),
         })
         setLeadSent(true)
       } catch {
-        // Swallow — never block the user from proceeding to payment.
+        // Swallow, never block the user from proceeding to payment.
       }
     }
     setSendingLead(false)
@@ -245,8 +245,8 @@ export default function LaunchFlow({
     }
   }
 
-  // The sticky action bar (with Back / Continue) drives the Stripe path —
-  // template builds and custom landing pages — across the site, schedule and
+  // The sticky action bar (with Back / Continue) drives the Stripe path,
+  // template builds and custom landing pages, across the site, schedule and
   // details steps. The final checkout step has its own pay button.
   const showActionBar =
     (step === 0 && (siteType === 'template' || isCustomDeposit)) ||
@@ -267,7 +267,7 @@ export default function LaunchFlow({
             ? 'Choose a hosting plan to continue.'
             : 'Select a template and a hosting plan to continue.'
 
-  // Hosting plan picker — shared by the template flow and the custom landing
+  // Hosting plan picker, shared by the template flow and the custom landing
   // page flow so both choose hosting before checkout.
   function renderHostingPicker() {
     return (
@@ -316,7 +316,7 @@ export default function LaunchFlow({
         showActionBar ? 'pb-44 sm:pb-32' : 'pb-28'
       }`}
     >
-      {/* Prominent exit — this flow runs without the site navbar, so it needs a
+      {/* Prominent exit, this flow runs without the site navbar, so it needs a
           large, obvious way back to the homepage. */}
       <Link
         href="/"
@@ -328,7 +328,7 @@ export default function LaunchFlow({
       </Link>
 
       <div className="max-w-[1040px] mx-auto">
-        {/* Compact one-time hero — shown small at the very top, never inside steps */}
+        {/* Compact one-time hero, shown small at the very top, never inside steps */}
         <div className="text-center mb-5 md:mb-7">
           <p className="text-[#1A1A1A] text-[11px] font-semibold tracking-[1.5px] uppercase mb-1">
             Launch My Site
@@ -338,7 +338,7 @@ export default function LaunchFlow({
           </h1>
         </div>
 
-        {/* Compact step indicator — small, unobtrusive 1-2-3 at the top */}
+        {/* Compact step indicator, small, unobtrusive 1-2-3 at the top */}
         <div className="flex items-center justify-center gap-2 mb-6 md:mb-8">
           {STEPS.map((stepInfo, i) => (
             <div key={stepInfo.title} className="flex items-center gap-2">
@@ -560,7 +560,7 @@ export default function LaunchFlow({
             </div>
           )}
 
-          {/* Step 3: Your Details — captured before checkout for every build so
+          {/* Step 3: Your Details, captured before checkout for every build so
               the lead reaches us the moment they continue to payment. */}
           {step === 2 && (template || isCustomDeposit) && (
             <div className="max-w-md mx-auto">
@@ -615,7 +615,7 @@ export default function LaunchFlow({
             </div>
           )}
 
-          {/* Step 4: Payment — template builds and custom landing pages */}
+          {/* Step 4: Payment, template builds and custom landing pages */}
           {step === 3 && hosting && goLiveDate && (template || isCustomDeposit) && (
             <div className="max-w-lg mx-auto">
               <div className="rounded-2xl bg-white border border-[#E8E4DF] p-5 sm:p-6 space-y-4 text-[#1A1A1A] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
@@ -645,7 +645,7 @@ export default function LaunchFlow({
                   <li className="flex justify-between gap-4">
                     <span>Hosting plan</span>
                     <span className="text-[#1A1A1A] font-semibold text-right">
-                      {hosting.label} — {hosting.price}
+                      {hosting.label}, {hosting.price}
                     </span>
                   </li>
                   <li className="flex justify-between gap-4">
@@ -686,7 +686,7 @@ export default function LaunchFlow({
                   </span>
                 </label>
 
-                {/* Deposit incentive (messaging only — no Stripe coupon applied). */}
+                {/* Deposit incentive (messaging only, no Stripe coupon applied). */}
                 <div className="rounded-[6px] bg-[#FFF4E5] border border-[#F0C36D] px-4 py-3 text-sm font-semibold text-[#8A5A00]">
                   Pay your deposit today and receive 10% off your final build invoice.
                 </div>
@@ -722,7 +722,7 @@ export default function LaunchFlow({
         </div>
       </div>
 
-      {/* Sticky action bar — keeps Back / Continue in view on the template selection steps. */}
+      {/* Sticky action bar, keeps Back / Continue in view on the template selection steps. */}
       {showActionBar && (
         <div className="fixed bottom-0 inset-x-0 z-40 border-t border-[#E8E4DF] bg-white/95 backdrop-blur px-4 sm:px-6 pt-3 pb-20 sm:pb-4 shadow-[0_-2px_12px_rgba(0,0,0,0.06)]">
           <div className="max-w-[1040px] mx-auto flex items-center gap-3 justify-between">
@@ -730,7 +730,7 @@ export default function LaunchFlow({
               <p className="hidden sm:block text-[#8A8A8A] text-sm">{actionHelper}</p>
             ) : (
               <p className="hidden sm:block text-[#1A1A1A] text-sm font-semibold">
-                All set — click Continue
+                All set, click Continue
               </p>
             )}
             <div className="flex gap-3 w-full sm:w-auto">

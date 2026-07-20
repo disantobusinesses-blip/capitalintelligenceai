@@ -20,7 +20,7 @@ const reviews = [
     initial: 'R',
   },
   {
-    author: 'Antonio — Your Coach Plus',
+    author: 'Antonio, Your Coach Plus',
     initial: 'A',
   },
 ]
@@ -81,7 +81,7 @@ export default function GoogleReviewsBanner() {
         hidden ? '-translate-y-full' : 'translate-y-0'
       }`}
     >
-      {/* Auto-scrolling marquee — slow and continuous, no manual scroll needed */}
+      {/* Auto-scrolling marquee, slow and continuous, no manual scroll needed */}
       <div className="flex w-max gap-4 animate-scroll">
         {loopedReviews.map((review, i) => (
           <div

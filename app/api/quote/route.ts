@@ -87,14 +87,14 @@ export async function POST(request: NextRequest) {
       })
     } catch (err) {
       console.error('Supabase insert failed:', err)
-      // Continue — fall through to email
+      // Continue, fall through to email
     }
   }
 
   // ── 2. Send notification email ─────────────────────────────────────────────
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM } = process.env
   if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !SMTP_FROM) {
-    console.error('SMTP not configured — quote logged only')
+    console.error('SMTP not configured, quote logged only')
     // Still return success so user is not blocked
     return NextResponse.json({ ok: true })
   }
@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
 
     // Build HTML body - handle both new simplified form and legacy detailed form
     let htmlBody = `
-      <h2>New Quote Request — ${esc(body.businessName)}</h2>
+      <h2>New Quote Request, ${esc(body.businessName)}</h2>
       <h3>Contact Details</h3>
       <ul>
         <li><strong>Name:</strong> ${esc(body.name)}</li>
@@ -159,9 +159,9 @@ export async function POST(request: NextRequest) {
       const seoPlanLabel = (() => {
         switch (body.seoPlan) {
           case 'none': return 'No SEO plan (free blog only)'
-          case 'google': return `Google Growth — $299/mo`
-          case 'super': return `Super Growth — $359/mo`
-          case 'market': return `Market Authority — $799/mo`
+          case 'google': return `Google Growth, $299/mo`
+          case 'super': return `Super Growth, $359/mo`
+          case 'market': return `Market Authority, $799/mo`
           default: return body.seoPlan || 'Not specified'
         }
       })()
@@ -190,7 +190,7 @@ export async function POST(request: NextRequest) {
       from: SMTP_FROM,
       to: 'sales@intelligentaisystem.com',
       replyTo: body.email.trim(),
-      subject: `New Quote Request — ${body.businessName}`,
+      subject: `New Quote Request, ${body.businessName}`,
       html: htmlBody,
     })
   } catch (err) {

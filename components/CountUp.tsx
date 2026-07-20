@@ -13,7 +13,7 @@ interface CountUpProps {
 
 /**
  * Animates a number from 0 to `end` exactly ONCE, the first time it scrolls
- * into view. There is no looping or repeating motion — the IntersectionObserver
+ * into view. There is no looping or repeating motion, the IntersectionObserver
  * disconnects after the single run. Respects prefers-reduced-motion by rendering
  * the final value immediately with no animation.
  */
@@ -49,7 +49,7 @@ export default function CountUp({
         const start = performance.now()
         const step = (now: number) => {
           const progress = Math.min((now - start) / durationMs, 1)
-          // easeOutCubic — fast then settling, feels natural and stops cleanly.
+          // easeOutCubic, fast then settling, feels natural and stops cleanly.
           const eased = 1 - Math.pow(1 - progress, 3)
           setValue(end * eased)
           if (progress < 1) requestAnimationFrame(step)

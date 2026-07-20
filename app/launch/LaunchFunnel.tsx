@@ -27,7 +27,7 @@ const display = Cormorant_Garamond({
   display: 'swap',
 })
 
-// Brand accent (dark leather brown) — matches the rest of the site.
+// Brand accent (dark leather brown), matches the rest of the site.
 const ACCENT = '#5C3D2E'
 
 // Higgsfield cinematic image slots. Drop a generated image URL into the matching
@@ -211,7 +211,7 @@ export default function LaunchFunnel() {
         push('website-logo')
         push('website-date')
       } else if (websiteChoice === 'custom') {
-        // Full custom builds are quote-only — no instant deposit/date.
+        // Full custom builds are quote-only, no instant deposit/date.
         push('website-industry')
         push('website-goal')
         push('website-logo')
@@ -310,7 +310,7 @@ export default function LaunchFunnel() {
         ? tpl.tiers.find((t) => t.id === selectedTier)
         : undefined
     return tier
-      ? `${tpl.businessName} (${tpl.industry}) — ${tier.label}`
+      ? `${tpl.businessName} (${tpl.industry}), ${tier.label}`
       : `${tpl.businessName} (${tpl.industry})`
   }
 
@@ -465,7 +465,7 @@ export default function LaunchFunnel() {
       {/* ---------------- INTRO ---------------- */}
       {view === 'intro' && (
         <section className="relative min-h-full flex items-center justify-center overflow-hidden px-5 py-24 bg-[#F8F7F4]">
-          {/* Higgsfield launch hero background — full-bleed cinematic image with dark overlay. */}
+          {/* Higgsfield launch hero background, full-bleed cinematic image with dark overlay. */}
           {HF_LAUNCH_HERO_SRC && (
             <>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -500,7 +500,7 @@ export default function LaunchFunnel() {
                 HF_LAUNCH_HERO_SRC ? 'text-white/80' : 'text-[#5A5A5A]'
               }`}
             >
-              Tell us what you need — we&apos;ll handle the rest.
+              Tell us what you need, we&apos;ll handle the rest.
             </p>
             <button
               type="button"
@@ -660,7 +660,7 @@ export default function LaunchFunnel() {
                       <span className="font-semibold text-[#1A1A1A]">{logoFile.name}</span>
                     ) : (
                       <span className="text-[#8A8A8A]">
-                        Tap to upload (PNG, JPG, SVG). Optional — you can send it later.
+                        Tap to upload (PNG, JPG, SVG). Optional, you can send it later.
                       </span>
                     )}
                   </label>
@@ -668,7 +668,7 @@ export default function LaunchFunnel() {
               )}
               {current.key === 'website-templates' && (
                 <div>
-                  {/* Higgsfield plan banner — cinematic wide strip above the pricing cards. */}
+                  {/* Higgsfield plan banner, cinematic wide strip above the pricing cards. */}
                   {HF_PLAN_SRC && (
                     <div
                       className="relative mb-6 w-full overflow-hidden rounded-2xl"
@@ -798,7 +798,7 @@ export default function LaunchFunnel() {
                     Pick your go-live date
                   </h2>
                   <p className="mb-6 text-center text-sm text-[#8A8A8A]">
-                    Hosting is billed separately once your site goes live — nothing extra today.
+                    Hosting is billed separately once your site goes live, nothing extra today.
                   </p>
                   <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
                     {dates.map((d) => {
@@ -1015,7 +1015,7 @@ export default function LaunchFunnel() {
                   remaining build balance and your hosting plan are invoiced once your site goes
                   live.
                 </p>
-                {/* Deposit incentive (messaging only — no Stripe coupon applied). */}
+                {/* Deposit incentive (messaging only, no Stripe coupon applied). */}
                 <div className="mt-4 rounded-[6px] bg-[#FFF4E5] border border-[#F0C36D] px-4 py-3 text-sm font-semibold text-[#8A5A00]">
                   Pay your deposit today and receive 10% off your final build invoice.
                 </div>
@@ -1048,7 +1048,7 @@ export default function LaunchFunnel() {
                   We&apos;ll be in touch within 1 hour.
                 </h2>
                 <p className="mx-auto max-w-md text-[#5A5A5A] leading-relaxed">
-                  Thanks{contactName ? `, ${contactName.split(' ')[0]}` : ''} — your enquiry is in.
+                  Thanks{contactName ? `, ${contactName.split(' ')[0]}` : ''}, your enquiry is in.
                   Our team will reach out shortly to get you moving.
                 </p>
                 <Link

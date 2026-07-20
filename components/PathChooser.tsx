@@ -19,13 +19,13 @@ export default function PathChooser() {
             Choose how you&apos;d like to start
           </h2>
           <p className="text-[#5A5A5A] max-w-2xl mx-auto">
-            Two simple paths — pick a ready-made template and go live fast, or have us build
+            Two simple paths, pick a ready-made template and go live fast, or have us build
             something custom for your business.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-          {/* Path 1 — Template */}
+          {/* Path 1, Template */}
           <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-6 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-12 h-12 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center shrink-0">
@@ -47,7 +47,7 @@ export default function PathChooser() {
             </Link>
           </div>
 
-          {/* Path 2 — Custom */}
+          {/* Path 2, Custom */}
           <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-6 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-12 h-12 rounded-full bg-[#5C3D2E] text-white flex items-center justify-center shrink-0">
@@ -60,7 +60,7 @@ export default function PathChooser() {
                 <p className="text-[#5C3D2E] font-semibold text-sm">Tailored to your business</p>
               </div>
             </div>
-            {/* Three pricing tiers — full-width rows that always stay inside the card */}
+            {/* Three pricing tiers, full-width rows that always stay inside the card */}
             <div className="space-y-2 mb-6">
               {CUSTOM_TIERS.map((tier) => (
                 <div

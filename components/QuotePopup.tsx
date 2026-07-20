@@ -34,7 +34,7 @@ const SERVICE_OPTIONS: QuoteService[] = [
 ]
 
 // Optional add-ons shown in the collapsed "Interested in add-ons?" section.
-// Purely additive to the quote request — never required to submit.
+// Purely additive to the quote request, never required to submit.
 const ADDON_OPTIONS = [
   'SEO Blog Content',
   'Instagram & Social Growth Management',
@@ -50,7 +50,7 @@ const BLOG_TIER_OPTIONS = [
 type BlogTier = (typeof BLOG_TIER_OPTIONS)[number]
 
 // Display-only price labels shown next to each service checkbox. These mirror
-// the packages on /services — they do not affect the `value` sent on submit or
+// the packages on /services, they do not affect the `value` sent on submit or
 // the preselection logic used elsewhere on the site.
 const SERVICE_PRICE_LABEL: Record<QuoteService, string | null> = {
   Foundation: '$1,999',
@@ -127,14 +127,14 @@ export default function QuotePopup() {
 
   // "Book a Call" opens the exact same 15-minute consultation booking flow
   // (components/ConsultationBooking, posting to /api/consultation) right inside
-  // this panel — no second booking flow, no navigating away.
+  // this panel, no second booking flow, no navigating away.
   const goToBooking = () => setView('call')
 
   // When the panel is closed, show a small launcher tab anchored to the bottom
   // edge. On mobile it sits above the pill nav so the two never overlap; on
   // desktop (where the pill nav is hidden) it drops back to the corner.
   if (!render) {
-    // The immersive /launch funnel manages its own UI — no launcher there.
+    // The immersive /launch funnel manages its own UI, no launcher there.
     if (pathname === '/launch') return null
     return (
       <button
@@ -149,7 +149,7 @@ export default function QuotePopup() {
     )
   }
 
-  // Only Name, Email and Phone are required — the business description is
+  // Only Name, Email and Phone are required, the business description is
   // optional so it never blocks a submission.
   const canSubmit =
     name.trim() !== '' && email.trim() !== '' && phone.trim() !== ''
@@ -195,10 +195,10 @@ export default function QuotePopup() {
       const result = await res.json()
       if (res.ok && result.ok) {
         // Show the in-popup confirmation immediately as a fallback in case the
-        // redirect is blocked — the visitor always sees a "thanks".
+        // redirect is blocked, the visitor always sees a "thanks".
         setSubmitted(true)
         // CRITICAL: fire the Google Ads conversion right here in the success
-        // callback — BEFORE any redirect — so it is never gated behind the
+        // callback, BEFORE any redirect, so it is never gated behind the
         // deposit step or a page navigation. The redirect to the deposit page
         // only runs once the conversion beacon has been sent (or times out).
         const query = services.length ? `?service=${encodeURIComponent(services.join(', '))}` : ''
@@ -242,7 +242,7 @@ export default function QuotePopup() {
             <CheckCircle className="w-8 h-8 text-green-500" />
           </div>
           <h2 className="text-xl font-bold text-[#1A1A1A] mb-3">
-            Thanks — we&apos;ll be in touch within 1 hour
+            Thanks, we&apos;ll be in touch within 1 hour
           </h2>
           <p className="text-[#6B6560] mb-5 leading-relaxed text-sm">
             Your request is in. A member of our team will reach out shortly to get you a free quote.
@@ -279,11 +279,11 @@ export default function QuotePopup() {
               Let&apos;s talk
             </p>
             <h2 className="text-xl font-bold text-white mt-1">How can we help?</h2>
-            <p className="text-white/70 text-sm mt-1">Two easy ways to start — both free, no commitment.</p>
+            <p className="text-white/70 text-sm mt-1">Two easy ways to start, both free, no commitment.</p>
           </div>
 
           <div className="p-5 space-y-3">
-            {/* Option 1 — Quote */}
+            {/* Option 1, Quote */}
             <button
               type="button"
               onClick={() => setView('form')}
@@ -301,7 +301,7 @@ export default function QuotePopup() {
               <ArrowRight className="w-5 h-5 text-[#9E9790] group-hover:text-[#5C3D2E] group-hover:translate-x-0.5 transition-all" />
             </button>
 
-            {/* Option 2 — Book a Call (reuses existing 15-min consultation booking) */}
+            {/* Option 2, Book a Call (reuses existing 15-min consultation booking) */}
             <button
               type="button"
               onClick={goToBooking}
@@ -354,7 +354,7 @@ export default function QuotePopup() {
                 Book a Call
               </p>
               <h2 className="text-xl font-bold text-white mt-1">Free 15-Minute Consultation</h2>
-              <p className="text-white/70 text-sm mt-1">Pick a time that suits you — no commitment.</p>
+              <p className="text-white/70 text-sm mt-1">Pick a time that suits you, no commitment.</p>
             </div>
           </div>
 
@@ -383,7 +383,7 @@ export default function QuotePopup() {
               </button>
             )}
             <div>
-              <h2 className="text-lg font-bold text-[#1A1A1A]">Get a Free Quote — No Commitment</h2>
+              <h2 className="text-lg font-bold text-[#1A1A1A]">Get a Free Quote, No Commitment</h2>
               <p className="text-sm text-[#6B6560] mt-0.5">Tell us what you need. We respond within 1 hour.</p>
             </div>
           </div>
@@ -401,7 +401,7 @@ export default function QuotePopup() {
           <FlowTrustStrip />
           <p className="text-center text-[11px] text-[#9E9790] mt-2 leading-relaxed">
             *All websites require a separate monthly hosting plan (from $59/mo) to stay live
-            online — not included in the one-off build price above.
+            online, not included in the one-off build price above.
           </p>
         </div>
 
@@ -485,7 +485,7 @@ export default function QuotePopup() {
                   <span>
                     {opt}
                     {SERVICE_PRICE_LABEL[opt] && (
-                      <span className="text-[#9E9790]"> — {SERVICE_PRICE_LABEL[opt]}</span>
+                      <span className="text-[#9E9790]">, {SERVICE_PRICE_LABEL[opt]}</span>
                     )}
                   </span>
                 </label>
@@ -512,7 +512,7 @@ export default function QuotePopup() {
             />
           </div>
 
-          {/* Add-ons — optional, collapsed by default. Never blocks submission. */}
+          {/* Add-ons, optional, collapsed by default. Never blocks submission. */}
           <div className="border border-[#E8E4DF] rounded-lg overflow-hidden">
             <button
               type="button"

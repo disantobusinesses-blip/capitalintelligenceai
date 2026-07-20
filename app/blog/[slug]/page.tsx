@@ -151,7 +151,7 @@ export default async function DynamicBlogPost({ params }: Props) {
               </div>
             </header>
 
-            {/* Body — HTML content from Supabase */}
+            {/* Body, HTML content from Supabase */}
             <div
               className="prose-custom space-y-8 text-[#6B6560] leading-relaxed"
               dangerouslySetInnerHTML={{ __html: post.content }}

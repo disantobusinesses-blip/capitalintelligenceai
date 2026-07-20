@@ -20,7 +20,7 @@ function Star({ size = 13 }: { size?: number }) {
 }
 
 /**
- * Google 5.0 star rating badge — five gold stars, a 5.0 rating and the Google
+ * Google 5.0 star rating badge, five gold stars, a 5.0 rating and the Google
  * mark. No review count is shown (we don't store an aggregate), so nothing is
  * fabricated. `dark` flips the text colours for dark backgrounds.
  */

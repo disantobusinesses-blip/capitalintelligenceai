@@ -74,7 +74,7 @@ export default function AboutPage() {
                   automate their operations and grow their online presence.
                 </p>
                 <p>
-                  We work with businesses across Australia, the United States, the United Kingdom, and Singapore — fully remote. From startups and small businesses to established companies across diverse industries, from electrical services to healthcare, finance, and retail.
+                  We work with businesses across Australia, the United States, the United Kingdom, and Singapore, fully remote. From startups and small businesses to established companies across diverse industries, from electrical services to healthcare, finance, and retail.
                 </p>
                 <p>
                   Our mission is simple: deliver intelligent, scalable systems that make businesses run better.
@@ -133,7 +133,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
-                  Full multi-page websites — custom price upon request
+                  Full multi-page websites, custom price upon request
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />

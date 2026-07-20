@@ -42,13 +42,13 @@ function SecureSpotContent() {
   return (
     <main className="min-h-[100dvh] bg-[#F8F7F4] text-[#1A1A1A] flex items-center justify-center px-5 py-20 pt-[120px]">
       <div className="w-full max-w-lg">
-        {/* Always-on confirmation — their details are captured regardless of
+        {/* Always-on confirmation, their details are captured regardless of
             whatever happens with the deposit below. */}
         <div className="text-center">
           <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/15 border border-green-500/30">
             <CheckCircle className="h-8 w-8 text-green-500" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">Thanks — we&apos;ve got your details</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3">Thanks, we&apos;ve got your details</h1>
           <p className="text-[#6B6560] leading-relaxed max-w-md mx-auto">
             Your request is in and our team will be in touch within 1 hour. Want to jump the queue?
             Secure your spot below with a fully refundable deposit.
@@ -63,12 +63,12 @@ function SecureSpotContent() {
           </div>
           <p className="text-sm text-[#6B6560] mb-5">
             Lock in your place in our build queue with a {DEPOSIT_LABEL}. It comes straight off your
-            final invoice — and if we&apos;re not the right fit, you get it back in full.
+            final invoice, and if we&apos;re not the right fit, you get it back in full.
           </p>
 
           <ul className="space-y-2.5 mb-6">
             {[
-              'Fully refundable — no risk',
+              'Fully refundable, no risk',
               'Comes off your final build invoice',
               'Priority position in our build queue',
             ].map((item) => (
@@ -81,7 +81,7 @@ function SecureSpotContent() {
 
           {canceled && (
             <div className="mb-4 rounded-lg bg-[#FFF4E5] border border-[#F0C36D] px-4 py-3 text-sm text-[#8A5A00]">
-              No worries — your details are still saved and we&apos;ll be in touch. You can secure your
+              No worries, your details are still saved and we&apos;ll be in touch. You can secure your
               spot any time.
             </div>
           )}
@@ -106,7 +106,7 @@ function SecureSpotContent() {
             ) : (
               <>
                 <CreditCard className="h-4 w-4" />
-                Secure my spot — {DEPOSIT_LABEL}
+                Secure my spot, {DEPOSIT_LABEL}
               </>
             )}
           </button>

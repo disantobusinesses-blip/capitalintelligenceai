@@ -13,7 +13,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'how-ai-can-boost-seo',
     title: 'How AI Can Boost SEO and AI Search Engine Optimisation for Modern Businesses',
     description:
-      'Learn how AI transforms traditional SEO — from keyword clustering and content planning to technical audits and AI search visibility. A practical guide for businesses ready to scale their organic presence.',
+      'Learn how AI transforms traditional SEO, from keyword clustering and content planning to technical audits and AI search visibility. A practical guide for businesses ready to scale their organic presence.',
     publishedAt: '2026-03-07',
     lastModified: '2026-03-07',
     readingTime: '9 min read',
@@ -93,7 +93,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'newsletter-signup-email-marketing-benefits',
     title: 'Why a Newsletter Signup Is the Most Valuable Marketing Asset Your Website Can Have',
     description:
-      'Your email list is the one marketing channel you fully own. A newsletter signup on your website builds a direct line to your best prospects and customers — and keeps your business top of mind long after they leave your site.',
+      'Your email list is the one marketing channel you fully own. A newsletter signup on your website builds a direct line to your best prospects and customers, and keeps your business top of mind long after they leave your site.',
     publishedAt: '2026-03-09',
     lastModified: '2026-03-09',
     readingTime: '7 min read',
@@ -101,9 +101,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'google-growth-plan-199-per-month',
-    title: 'Google Growth Plan — Foundational SEO for $199 Per Month',
+    title: 'Google Growth Plan, Foundational SEO for $199 Per Month',
     description:
-      'Our Google Growth Plan delivers consistent SEO content, keyword targeting, and technical optimisation every month for $199 — a fraction of what traditional agencies charge. Here is what is included and why it works.',
+      'Our Google Growth Plan delivers consistent SEO content, keyword targeting, and technical optimisation every month for $199, a fraction of what traditional agencies charge. Here is what is included and why it works.',
     publishedAt: '2026-03-10',
     lastModified: '2026-03-10',
     readingTime: '6 min read',
@@ -111,7 +111,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'super-growth-plan-359-per-month',
-    title: 'Super Growth Plan — Accelerated SEO Content Coverage for $359 Per Month',
+    title: 'Super Growth Plan, Accelerated SEO Content Coverage for $359 Per Month',
     description:
       'The Super Growth Plan expands your content footprint faster with broader keyword coverage, more monthly articles, and deeper optimisation. Ideal for businesses ready to seriously compete in their market.',
     publishedAt: '2026-03-10',
@@ -121,7 +121,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'market-authority-plan-599-per-month',
-    title: 'Market Authority Plan — Maximum SEO Growth for $599 Per Month',
+    title: 'Market Authority Plan, Maximum SEO Growth for $599 Per Month',
     description:
       'For businesses that want to dominate their niche, the Market Authority Plan delivers high-volume content, deep keyword coverage, and authority-building at a cost that is still 80% less than typical SEO agencies.',
     publishedAt: '2026-03-10',

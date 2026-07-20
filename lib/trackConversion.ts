@@ -1,7 +1,7 @@
 // Centralised Google Ads conversion tracking.
 //
 // IMPORTANT (conversion-tracking bug fix): the conversion event MUST fire
-// programmatically from the JS success-callback of a form POST — never gated
+// programmatically from the JS success-callback of a form POST, never gated
 // behind a full page navigation to a /thank-you URL. When a form submits via
 // fetch/AJAX without navigating, a navigation-triggered conversion would never
 // fire, which is why real leads were not being recorded in Google Ads.
@@ -38,7 +38,7 @@ export function trackConversion(sendTo: string, onDone?: () => void): void {
     // Fallback: never block the user if the callback doesn't return.
     if (onDone) window.setTimeout(finish, 1200)
   } else {
-    // gtag not loaded — don't block the flow.
+    // gtag not loaded, don't block the flow.
     finish()
   }
 }

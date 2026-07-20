@@ -21,7 +21,7 @@ const packages = [
     recommended: true,
     features: [
       'Everything in Website Hosting',
-      'Conversion rate optimization',
+      'Conversion rate optimisation',
       'A/B testing & analytics',
       'SEO enhancements',
       'Lead generation tools',

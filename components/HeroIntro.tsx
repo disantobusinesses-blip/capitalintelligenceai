@@ -5,9 +5,9 @@ import { display, body } from '@/lib/fonts'
 import QuotePopupButton from '@/components/QuotePopupButton'
 
 const HERO_SUBHEAD =
-  'No templates, no shortcuts — every site backed by the same AI-driven audits and optimization we run on our own systems.'
+  'No templates, no shortcuts, every site backed by the same AI-driven audits and optimisation we run on our own systems.'
 
-// Real Google review — same quote already used in the site's testimonials.
+// Real Google review, same quote already used in the site's testimonials.
 const REVIEW_QUOTE =
   'The experience was incredible. Optimized my businesses presence on Google and helped with growth and insight overall.'
 const REVIEW_AUTHOR = 'Dylan M.'
@@ -28,11 +28,11 @@ export default function HeroIntro() {
     >
       <div className="max-w-[1200px] mx-auto">
         <div className="max-w-[760px]">
-          {/* Headline — bold serif caps statement */}
+          {/* Headline, bold serif caps statement */}
           <h1
             className={`${display.className} text-[52px] md:text-[80px] leading-[0.95] font-bold uppercase tracking-[-0.01em] text-[#3D2817]`}
           >
-            Built Different.
+            Websites Built Different.
           </h1>
 
           {/* Supporting line (normal weight) */}
@@ -74,7 +74,7 @@ export default function HeroIntro() {
               ))}
             </div>
             <p className="text-[#6B6560] text-[13px] leading-snug">
-              &ldquo;{REVIEW_QUOTE}&rdquo; <span className="text-[#3D2817] font-semibold">— {REVIEW_AUTHOR}</span>
+              &ldquo;{REVIEW_QUOTE}&rdquo;, <span className="text-[#3D2817] font-semibold">{REVIEW_AUTHOR}</span>
             </p>
           </div>
         </div>

@@ -3,11 +3,11 @@ import { CheckCircle, ArrowRight, Smartphone, Globe, Phone, Zap, ShieldCheck, Re
 import TradieLeadForm from './TradieLeadForm'
 
 export const metadata: Metadata = {
-  title: 'Free Tradie Website | $0 Upfront — Capital Intelligence Group',
+  title: 'Free Tradie Website | $0 Upfront, Capital Intelligence Group',
   description:
     'We build your tradie website for free. $0 upfront, $119/month. Electricians, plumbers, builders and more. Live in 1 day.',
   openGraph: {
-    title: 'Free Tradie Website | $0 Upfront — Capital Intelligence Group',
+    title: 'Free Tradie Website | $0 Upfront, Capital Intelligence Group',
     description:
       'We build your tradie website for free. $0 upfront, $119/month. Electricians, plumbers, builders and more. Live in 1 day.',
     url: 'https://intelligentaisystem.com/free-tradie-website',
@@ -33,7 +33,7 @@ const steps = [
   {
     num: '02',
     title: 'We build your site in 1 day',
-    desc: 'Our Melbourne-based team builds your professional website — completely free.',
+    desc: 'Our Melbourne-based team builds your professional website, completely free.',
   },
   {
     num: '03',
@@ -60,7 +60,7 @@ export default function FreeTradieWebsitePage() {
             Limited spots available each month
           </p>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-5">
-            Free Website for Tradies<br className="hidden md:block" /> — Built in 1 Day
+            Free Website for Tradies,<br className="hidden md:block" /> Built in 1 Day
           </h1>
           <p className="text-[#94A3B8] text-lg leading-relaxed max-w-2xl mx-auto mb-8">
             $0 upfront. Just $119/month to keep it live, updated, and working hard for you.

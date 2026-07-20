@@ -33,7 +33,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        // Standalone Landing Page / Full Package pages were removed — the
+        // Standalone Landing Page / Full Package pages were removed, the
         // Foundation/Growth/Bespoke package cards on /services replace them.
         source: '/services/landing-page',
         destination: '/services',

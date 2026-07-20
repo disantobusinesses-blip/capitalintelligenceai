@@ -38,13 +38,13 @@ export const TEMPLATE_PRICE = 850
 export const TEMPLATE_PREMIUM_PRICE = 1750
 
 export const GLOBAL_ADDONS_DISCLAIMER =
-  'All template prices are + GST and include design, development, and hosting setup only. Clients are responsible for supplying their own logo, photos, written content, and any third-party account credentials (Fresha, OpenTable, Stripe). We connect and embed — we do not create or manage third-party accounts on your behalf. Need something custom? Contact us for a tailored quote.'
+  'All template prices are + GST and include design, development, and hosting setup only. Clients are responsible for supplying their own logo, photos, written content, and any third-party account credentials (Fresha, OpenTable, Stripe). We connect and embed, we do not create or manage third-party accounts on your behalf. Need something custom? Contact us for a tailored quote.'
 
 const STANDARD_TOOLTIP =
   'Price includes design and development only. Client must supply their own logo, photos, and written content. We do not design logos, create content, or set up third-party accounts.'
 
 const FRESHA_TOOLTIP =
-  'Fresha linking requires client to have an active Fresha account. We link to it — we do not create or manage your Fresha account. Client must supply logo, photos, and content.'
+  'Fresha linking requires client to have an active Fresha account. We link to it, we do not create or manage your Fresha account. Client must supply logo, photos, and content.'
 export const DEPOSIT_AMOUNT = 200
 export const CUSTOM_SITE_FROM_PRICE = 599
 
@@ -152,7 +152,7 @@ export const TEMPLATES: TemplateOption[] = [
   {
     id: 'construction-premium',
     industry: 'Construction & Trades',
-    businessName: 'Apex Built Co — Premium Cinematic',
+    businessName: 'Apex Built Co, Premium Cinematic',
     demoUrl: 'https://demo1.intelligentaisystem.com',
     screenshot: '/templates/apex-premium.jpeg',
     price: 1750,

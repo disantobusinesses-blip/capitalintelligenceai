@@ -68,7 +68,7 @@ function isValidAustralianPhone(phone: string): boolean {
 
 /**
  * The 15-minute consultation booking form. Extracted from the homepage Hero so
- * it can be reused verbatim inside the quote panel's "Book a Call" view — one
+ * it can be reused verbatim inside the quote panel's "Book a Call" view, one
  * booking flow, one API (/api/consultation), one conversion label.
  *
  * `showHeading` hides the built-in title when the surrounding container already

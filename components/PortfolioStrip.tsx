@@ -6,7 +6,7 @@ interface LiveProject {
   title: string
   result: string
   image: string
-  /** Omitted when the live URL hasn't been confirmed — card renders without a link. */
+  /** Omitted when the live URL hasn't been confirmed, card renders without a link. */
   url?: string
   placeholder?: false
 }
@@ -19,7 +19,7 @@ interface PlaceholderProject {
 
 type PortfolioProject = LiveProject | PlaceholderProject
 
-// Real client projects — screenshots and links pulled from the /projects page.
+// Real client projects, screenshots and links pulled from the /projects page.
 const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
     title: 'EAY Electrical',

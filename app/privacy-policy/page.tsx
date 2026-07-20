@@ -87,8 +87,8 @@ export default function PrivacyPolicy() {
             <li>To process your transactions and manage your subscriptions</li>
             <li>To communicate with you about our services, updates, and promotional offers</li>
             <li>To respond to your inquiries and provide customer support</li>
-            <li>To personalize your experience and deliver relevant content</li>
-            <li>To analyze usage patterns and optimize our website performance</li>
+            <li>To personalise your experience and deliver relevant content</li>
+            <li>To analyse usage patterns and optimise our website performance</li>
             <li>To detect, prevent, and address technical issues or security vulnerabilities</li>
             <li>To comply with legal obligations and enforce our terms and conditions</li>
           </ul>
@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
             4. Data Storage and Hosting
           </h2>
           <p className="text-[#1A1A1A] leading-relaxed mb-4">
-            Your data is stored securely using industry-standard hosting services. We implement appropriate technical and organizational measures to protect your information against unauthorized access, alteration, disclosure, or destruction.
+            Your data is stored securely using industry-standard hosting services. We implement appropriate technical and organisational measures to protect your information against unauthorised access, alteration, disclosure, or destruction.
           </p>
           <p className="text-[#1A1A1A] leading-relaxed">
             Website files, brand assets, and customer data are hosted on secure servers with regular backups. We use encryption for data transmission and storage where appropriate.
@@ -135,7 +135,7 @@ export default function PrivacyPolicy() {
             <li><strong>Service Providers:</strong> With trusted third-party vendors who assist us in operating our website and providing services (e.g., payment processors, hosting providers)</li>
             <li><strong>Legal Requirements:</strong> When required by law or to protect our rights, property, or safety</li>
             <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
-            <li><strong>With Your Consent:</strong> When you explicitly authorize us to share your information</li>
+            <li><strong>With Your Consent:</strong> When you explicitly authorise us to share your information</li>
           </ul>
         </section>
 
@@ -150,7 +150,7 @@ export default function PrivacyPolicy() {
             <li>Remember your preferences and settings</li>
             <li>Understand how you use our website</li>
             <li>Improve our services and user experience</li>
-            <li>Provide personalized content and recommendations</li>
+            <li>Provide personalised content and recommendations</li>
           </ul>
           <p className="text-[#1A1A1A] leading-relaxed">
             You can control cookie preferences through your browser settings. However, disabling cookies may limit certain features of our website.
@@ -182,7 +182,7 @@ export default function PrivacyPolicy() {
             9. Data Retention
           </h2>
           <p className="text-[#1A1A1A] leading-relaxed">
-            We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. When we no longer need your information, we will securely delete or anonymize it.
+            We retain your personal information for as long as necessary to fulfil the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. When we no longer need your information, we will securely delete or anonymise it.
           </p>
         </section>
 
@@ -191,7 +191,7 @@ export default function PrivacyPolicy() {
             10. Security
           </h2>
           <p className="text-[#1A1A1A] leading-relaxed">
-            We implement reasonable security measures to protect your information from unauthorized access, use, or disclosure. However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee absolute security.
+            We implement reasonable security measures to protect your information from unauthorised access, use, or disclosure. However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee absolute security.
           </p>
         </section>
 

@@ -28,7 +28,7 @@ export default function SuperGrowthPlanPage() {
             Website Growth
           </span>
           <h1 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] leading-tight mb-4 text-balance">
-            Super Growth Plan: Accelerated SEO Content Coverage —{' '}
+            Super Growth Plan: Accelerated SEO Content Coverage,{' '}
             <span className="line-through text-[#9E9790]">$499 AUD</span>{' '}
             <span className="text-[#5C3D2E]">On Sale Now: $359/month</span>{' '}
             <span className="inline-block bg-[#5C3D2E] text-white text-sm font-semibold px-2 py-0.5 rounded-full align-middle">28% off</span>
@@ -74,7 +74,7 @@ export default function SuperGrowthPlanPage() {
 
         <div className="prose prose-invert prose-lg max-w-none space-y-6 text-[#6B6560] leading-relaxed">
           <p>
-            When the foundational tier is producing results but you want to accelerate faster, the Super Growth Plan expands your monthly content output to 8 SEO-optimised articles and increases keyword coverage to capture a broader share of search traffic. At <span className="line-through">$499</span> <strong className="text-[#1A1A1A]">$359 per month</strong> (on sale now — 28% off), you are getting a volume and depth of SEO work that would cost $1,500 to $2,500 per month at a traditional content marketing agency.
+            When the foundational tier is producing results but you want to accelerate faster, the Super Growth Plan expands your monthly content output to 8 SEO-optimised articles and increases keyword coverage to capture a broader share of search traffic. At <span className="line-through">$499</span> <strong className="text-[#1A1A1A]">$359 per month</strong> (on sale now, 28% off), you are getting a volume and depth of SEO work that would cost $1,500 to $2,500 per month at a traditional content marketing agency.
           </p>
 
           <h2 className="text-2xl font-bold text-[#1A1A1A] mt-10 mb-4">What Makes This Plan Different</h2>
@@ -118,9 +118,9 @@ export default function SuperGrowthPlanPage() {
           <h3 className="text-xl font-bold text-[#1A1A1A] mb-3">Ready to accelerate your SEO growth?</h3>
           <p className="text-[#6B6560] text-sm mb-1">
             <span className="line-through text-[#9E9790]">$499 AUD</span>{' '}
-            <strong className="text-[#1A1A1A]">$359/month</strong> — on sale now. No lock-in contracts.
+            <strong className="text-[#1A1A1A]">$359/month</strong>, on sale now. No lock-in contracts.
           </p>
-          <p className="text-xs text-[#5C3D2E] font-semibold mb-6">Save 28% — limited time pricing</p>
+          <p className="text-xs text-[#5C3D2E] font-semibold mb-6">Save 28%, limited time pricing</p>
           <QuotePopupButton
             className="inline-flex items-center gap-2 px-8 py-3 bg-[#1A1A1A] text-white rounded-full font-bold smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
           >

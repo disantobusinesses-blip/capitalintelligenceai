@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
   // Send lead email to sales@intelligentaisystem.com
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM } = process.env
   if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !SMTP_FROM) {
-    console.error('SMTP not configured — newsletter signup logged to Supabase only')
+    console.error('SMTP not configured, newsletter signup logged to Supabase only')
     return NextResponse.json({ ok: true })
   }
 
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
       await transporter.sendMail({
         from: SMTP_FROM,
         to: 'sales@intelligentaisystem.com',
-        subject: `New Newsletter Signup — ${esc(name)} (${esc(email)})`,
+        subject: `New Newsletter Signup, ${esc(name)} (${esc(email)})`,
         html: htmlBody,
       })
     } finally {

@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
   // Send email notification
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM } = process.env
   if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !SMTP_FROM) {
-    console.error('SMTP not configured — lead logged to Supabase only')
+    console.error('SMTP not configured, lead logged to Supabase only')
     return NextResponse.json({ ok: true })
   }
 
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     const htmlBody = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #0A0F1E; border-bottom: 2px solid #2563EB; padding-bottom: 12px;">
-          New Lead — ${esc(isTradie ? 'Free Tradie Website' : 'Free Website + SEO')}
+          New Lead, ${esc(isTradie ? 'Free Tradie Website' : 'Free Website + SEO')}
         </h2>
         <ul style="line-height: 1.8;">${rows}</ul>
         <p style="color: #666; font-size: 13px; margin-top: 20px;">
@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
       await transporter.sendMail({
         from: SMTP_FROM,
         to: 'disantobusinesses@gmail.com',
-        subject: `New Lead — ${isTradie ? 'Free Tradie Website' : 'Free Website + SEO'} (${esc(body.name || 'Unknown')})`,
+        subject: `New Lead, ${isTradie ? 'Free Tradie Website' : 'Free Website + SEO'} (${esc(body.name || 'Unknown')})`,
         html: htmlBody,
       })
     } finally {

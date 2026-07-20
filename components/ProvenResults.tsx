@@ -39,7 +39,7 @@ export default function ProvenResults() {
                           border-b border-[#2D2D2D] sm:border-b sm:border-r
                           md:border-b-0 md:border-r">
             <p className="text-[42px] font-extrabold text-white leading-none">24/7</p>
-            <p className="text-[13px] text-[#9E9790] mt-2">Support — Always On, Always Available</p>
+            <p className="text-[13px] text-[#9E9790] mt-2">Support, Always On, Always Available</p>
           </div>
 
           {/* STAT 4: 90-Day Guarantee */}

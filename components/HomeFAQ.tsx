@@ -4,15 +4,15 @@ import { display, body } from '@/lib/fonts'
 const FAQS = [
   {
     q: 'How long does a website build take?',
-    a: "Landing pages and templates are live within 24–48 hours. Custom multi-page websites typically take around 10–15 business days depending on scope — you'll get a clear timeline before any work begins.",
+    a: "Landing pages and templates are live within 24–48 hours. Custom multi-page websites typically take around 10–15 business days depending on scope, you'll get a clear timeline before any work begins.",
   },
   {
     q: "Do I own the website once it's built?",
-    a: 'Yes. Once your invoice is paid in full, you own the final website built for you. We retain ownership of our own pre-existing tools, templates, and methodologies used to build it — but the finished site is yours.',
+    a: 'Yes. Once your invoice is paid in full, you own the final website built for you. We retain ownership of our own pre-existing tools, templates, and methodologies used to build it, but the finished site is yours.',
   },
   {
     q: 'What if I need changes after launch?',
-    a: "Most agencies disappear after handover — we don't. Ongoing maintenance and update plans are available so your site keeps evolving as your business does.",
+    a: "Most agencies disappear after handover, we don't. Ongoing maintenance and update plans are available so your site keeps evolving as your business does.",
   },
   {
     q: 'Do you handle hosting?',

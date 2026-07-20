@@ -9,7 +9,7 @@ import QuotePopupButton from '@/components/QuotePopupButton'
 export const metadata: Metadata = {
   title: 'B2B AI CRM & Lead Acquisition Platform | Intelligent AI Systems',
   description:
-    'Private, AI-powered CRM and lead acquisition system built exclusively for your B2B business — AI lead scraping, pipeline management, and automated follow-up.',
+    'Private, AI-powered CRM and lead acquisition system built exclusively for your B2B business, AI lead scraping, pipeline management, and automated follow-up.',
   keywords:
     'B2B CRM AI, custom CRM platform, AI lead acquisition, B2B lead generation, custom AI system, CRM pipeline management',
   alternates: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'B2B AI CRM & Lead Acquisition Platform | Intelligent AI Systems',
     description:
-      'Private, AI-powered CRM and lead acquisition system built exclusively for your B2B business — your data, your system, guaranteed results.',
+      'Private, AI-powered CRM and lead acquisition system built exclusively for your B2B business, your data, your system, guaranteed results.',
     url: 'https://intelligentaisystem.com/services/b2b-crm-ai-platform',
     type: 'website',
   },
@@ -28,12 +28,12 @@ const features = [
   {
     icon: Bot,
     title: 'AI Trained on Your Market',
-    description: 'The AI is configured and trained specifically on your industry, target market, and ideal customer profile — not a generic model.',
+    description: 'The AI is configured and trained specifically on your industry, target market, and ideal customer profile, not a generic model.',
   },
   {
     icon: Database,
     title: 'Private Lead Database',
-    description: 'All scraped leads are stored in your own dedicated database. Your data stays yours — never shared, never accessible to competitors.',
+    description: 'All scraped leads are stored in your own dedicated database. Your data stays yours, never shared, never accessible to competitors.',
   },
   {
     icon: Target,
@@ -43,12 +43,12 @@ const features = [
   {
     icon: Workflow,
     title: 'Automated Follow-Up Workflows',
-    description: 'Set and forget follow-up sequences that keep your pipeline active — leads are tracked and nurtured automatically.',
+    description: 'Set and forget follow-up sequences that keep your pipeline active, leads are tracked and nurtured automatically.',
   },
   {
     icon: Lock,
     title: 'Exclusively Yours',
-    description: 'No two clients get the same system. Your platform is built around your business only — competitors cannot access the same tool.',
+    description: 'No two clients get the same system. Your platform is built around your business only, competitors cannot access the same tool.',
   },
   {
     icon: Server,
@@ -60,7 +60,7 @@ const features = [
 const included = [
   'AI trained specifically on your industry and target market',
   'Private lead scraping engine built for your niche',
-  'Dedicated lead storage database — your data only',
+  'Dedicated lead storage database, your data only',
   'Full CRM pipeline management system',
   'Automated lead tracking and follow-up workflows',
   'Custom onboarding and system walkthrough',
@@ -189,7 +189,7 @@ export default function B2BCrmAiPlatformPage() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-[#1A1A1A] mb-3 text-center">What&apos;s Included</h2>
           <p className="text-[#6B6560] text-center mb-10 text-base">
-            Every build includes everything below — no hidden extras, no upsells after signing.
+            Every build includes everything below, no hidden extras, no upsells after signing.
           </p>
           <div className="bg-white rounded-[10px] p-8" style={{ border: '1px solid #E8E4DF' }}>
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
@@ -213,7 +213,7 @@ export default function B2BCrmAiPlatformPage() {
               Results or Full Refund
             </p>
             <p className="text-[#9E9790] text-base max-w-xl mx-auto">
-              We stand behind every platform we build. If your system doesn&apos;t deliver qualified leads from your target market, you get your money back — no questions asked.
+              We stand behind every platform we build. If your system doesn&apos;t deliver qualified leads from your target market, you get your money back, no questions asked.
             </p>
           </div>
         </div>

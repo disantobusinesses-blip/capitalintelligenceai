@@ -81,7 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Blog posts — fetched dynamically from Supabase
+  // Blog posts, fetched dynamically from Supabase
   const { data: posts } = await supabase
     .from('capitalintelligence_posts')
     .select('slug, created_at')

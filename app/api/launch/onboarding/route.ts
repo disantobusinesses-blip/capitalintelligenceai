@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
   const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER
 
   if (!SMTP_HOST || !SMTP_PASS || !SMTP_USER) {
-    console.error('SMTP not configured — onboarding submission logged only')
+    console.error('SMTP not configured, onboarding submission logged only')
     return NextResponse.json({ ok: true })
   }
 
@@ -100,9 +100,9 @@ export async function POST(request: NextRequest) {
 
     const htmlBody = `
       <p style="background:#FFF4E5;border:1px solid #F0C36D;border-radius:6px;padding:10px 14px;font-weight:bold;color:#8A5A00;">
-        ⚠️ 10% DEPOSIT INCENTIVE APPLIES — apply 10% discount when invoicing the final build balance.
+        ⚠️ 10% DEPOSIT INCENTIVE APPLIES, apply 10% discount when invoicing the final build balance.
       </p>
-      <h2>New Launch My Site Onboarding — ${esc(businessName)}</h2>
+      <h2>New Launch My Site Onboarding, ${esc(businessName)}</h2>
       <h3>Order Details</h3>
       <ul>
         <li><strong>Selected Template:</strong> ${esc(template || 'Not provided')}</li>
@@ -133,14 +133,14 @@ export async function POST(request: NextRequest) {
       from: SMTP_FROM,
       to: 'sales@intelligentaisystem.com',
       replyTo: email,
-      subject: `New Launch My Site Onboarding — ${businessName}`,
+      subject: `New Launch My Site Onboarding, ${businessName}`,
       html: htmlBody,
       attachments: logoAttachment ? [logoAttachment] : [],
     })
 
     // Confirmation email to the customer so they know their details were received.
     const customerHtmlBody = `
-      <h2>Thanks ${esc(fullName)} — we&rsquo;ve got your details!</h2>
+      <h2>Thanks ${esc(fullName)}, we&rsquo;ve got your details!</h2>
       <p>Your onboarding details for <strong>${esc(businessName)}</strong> have been received and our team is starting on your build.</p>
       <h3>Your Order</h3>
       <ul>
@@ -163,7 +163,7 @@ export async function POST(request: NextRequest) {
     await transporter.sendMail({
       from: SMTP_FROM,
       to: email,
-      subject: `We've received your details — Intelligent AI Systems`,
+      subject: `We've received your details, Intelligent AI Systems`,
       html: customerHtmlBody,
     })
   } catch (err) {

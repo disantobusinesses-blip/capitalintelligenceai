@@ -1,6 +1,6 @@
 import { Cormorant_Garamond, Inter } from 'next/font/google'
 
-// Display font for headlines — used across the redesigned homepage sections only.
+// Display font for headlines, used across the redesigned homepage sections only.
 export const display = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['500', '600', '700'],

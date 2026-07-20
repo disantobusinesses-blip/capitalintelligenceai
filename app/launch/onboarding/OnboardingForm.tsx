@@ -38,7 +38,7 @@ function OnboardingContent() {
       : undefined
   const templateLabel = template
     ? tier
-      ? `${template.businessName} (${template.industry}) — ${tier.label}`
+      ? `${template.businessName} (${template.industry}), ${tier.label}`
       : `${template.businessName} (${template.industry})`
     : customBuild
       ? `${customBuild.label} (${customBuild.range})`
@@ -59,7 +59,7 @@ function OnboardingContent() {
       formData.set('goLiveDate', goLiveDate)
       formData.set(
         'hostingPlan',
-        hosting ? `${hosting.label} — ${hosting.price}` : hostingId
+        hosting ? `${hosting.label}, ${hosting.price}` : hostingId
       )
       const res = await fetch('/api/launch/onboarding', {
         method: 'POST',
@@ -112,10 +112,10 @@ function OnboardingContent() {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10">
           <p className="text-[#1A1A1A] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
-            Step 4 — Onboarding
+            Step 4, Onboarding
           </p>
           <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
-            Payment received — let&apos;s build your site
+            Payment received, let&apos;s build your site
           </h1>
           <p className="text-[#5A5A5A]">
             Tell us about your business so we can launch your site on time.
@@ -134,7 +134,7 @@ function OnboardingContent() {
               <p>
                 <span className="text-[#8A8A8A]">Hosting plan:</span>{' '}
                 <span className="font-semibold text-[#1A1A1A]">
-                  {hosting.label} — {hosting.price}
+                  {hosting.label}, {hosting.price}
                 </span>
               </p>
             )}
@@ -253,7 +253,7 @@ function OnboardingContent() {
               name="notes"
               rows={4}
               className={inputClass}
-              placeholder="Anything else we should know — existing website, social links, opening hours…"
+              placeholder="Anything else we should know, existing website, social links, opening hours…"
             />
           </div>
 

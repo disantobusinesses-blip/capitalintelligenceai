@@ -21,14 +21,14 @@ const pricingDetails = [
     icon: TrendingUp,
     includes: [
       'Everything in Website Hosting, plus:',
-      'Conversion rate optimization strategies',
+      'Conversion rate optimisation strategies',
       'A/B testing setup and analysis',
       'Advanced SEO enhancements and monitoring',
       'Lead generation tool integration',
       'Google Analytics setup and reporting',
       'Monthly performance reports with insights',
       'Priority email support (24-hour response)',
-      'Landing page optimization',
+      'Landing page optimisation',
     ],
   },
   {
@@ -146,7 +146,7 @@ export default function PricingDetails() {
               <TrendingUp className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-lg font-bold text-luxury-charcoal mb-2">
-              Continuous Optimization
+              Continuous Optimisation
             </h3>
             <p className="text-luxury-silver-dark">
               Your website improves every month with our ongoing enhancements.

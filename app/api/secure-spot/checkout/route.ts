@@ -1,7 +1,7 @@
 import Stripe from 'stripe'
 import { NextRequest, NextResponse } from 'next/server'
 
-// Secure Your Spot — takes the same refundable $200 deposit as the launch
+// Secure Your Spot, takes the same refundable $200 deposit as the launch
 // flow (Stripe price STRIPE_PRICE_DEPOSIT). This is an optional upsell after a
 // lead submits their details; their enquiry is already captured and emailed, so
 // nothing here gates the lead or the conversion event.
@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
       const body = await req.json()
       if (typeof body?.service === 'string') service = body.service
     } catch {
-      // No body is fine — the deposit is generic.
+      // No body is fine, the deposit is generic.
     }
 
     const depositPriceId = process.env.STRIPE_PRICE_DEPOSIT

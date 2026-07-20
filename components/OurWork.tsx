@@ -71,7 +71,7 @@ export default function OurWork() {
           <p className="text-[18px] text-[#6B6560]">Real websites. Real results.</p>
         </div>
 
-        {/* Project Cards — 3 columns max, centred */}
+        {/* Project Cards, 3 columns max, centred */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1140px] mx-auto">
           {projects.map((project) => (
             <div

@@ -17,7 +17,7 @@ export default function Home() {
       <PortfolioStrip />
       <DigitalGrowthProof />
       <WhyWorkWithUs />
-      {/* "Book a Free Consultation" — kept as its own section, unmodified, so it
+      {/* "Book a Free Consultation", kept as its own section, unmodified, so it
           preserves its own distinct Google Ads conversion label
           (AW-17950129824/ZA2zCPTNlrkcEKD9pO9C). Not a primary CTA. */}
       <Hero />

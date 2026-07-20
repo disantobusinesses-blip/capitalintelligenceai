@@ -11,7 +11,7 @@ const services = [
     title: 'B2B Custom CRM AI Acquisition Platform',
     price: 'Custom Pricing',
     priceNote: 'book a discovery call',
-    description: 'A fully private, custom-built AI-powered CRM and customer acquisition system — built exclusively around your industry, niche, and sales process.',
+    description: 'A fully private, custom-built AI-powered CRM and customer acquisition system, built exclusively around your industry, niche, and sales process.',
     features: [
       'AI trained on your industry & target market',
       'Private lead scraping & storage',

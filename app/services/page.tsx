@@ -5,7 +5,7 @@ import QuotePopupButton from '@/components/QuotePopupButton'
 export const metadata: Metadata = {
   title: 'Our Services – Intelligent AI Systems',
   description:
-    'Fixed-price website packages and hosting from IAS — Foundation, Growth, and Bespoke builds plus secure monthly hosting for Australian businesses.',
+    'Fixed-price website packages and hosting from IAS, Foundation, Growth, and Bespoke builds plus secure monthly hosting for Australian businesses.',
   keywords:
     'fixed price website, custom website Australia, website packages, website hosting Australia, AI website builder',
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Our Services – Intelligent AI Systems',
     description:
-      'Foundation, Growth, and Bespoke website packages — fixed prices, custom builds, no templates — plus secure hosting.',
+      'Foundation, Growth, and Bespoke website packages, fixed prices, custom builds, no templates, plus secure hosting.',
     url: 'https://intelligentaisystem.com/services',
     type: 'website',
   },
@@ -43,7 +43,7 @@ const websitePackages = [
       'On-page SEO foundations',
       'Google Business Profile setup',
     ],
-    bonus: '1 free month of our 4 Blogs/Month plan — $99 value, free',
+    bonus: '1 free month of our 4 Blogs/Month plan, $99 value, free',
     exampleUrl: '',
     cta: 'Get Started',
     highlight: false,
@@ -61,7 +61,7 @@ const websitePackages = [
       'CRO-focused copywriting',
       'Google Ads conversion tracking',
     ],
-    bonus: '2 free months of our 4 Blogs/Month plan (8 posts total) — $198 value, free',
+    bonus: '2 free months of our 4 Blogs/Month plan (8 posts total), $198 value, free',
     exampleUrl: '',
     cta: 'Get Started',
     highlight: true,
@@ -78,7 +78,7 @@ const websitePackages = [
       '10+ pages / custom integrations (booking, forms, animation)',
       'Dedicated launch support',
     ],
-    bonus: '3 free months of our 4 Blogs/Month plan (12 posts total) — $297 value, free',
+    bonus: '3 free months of our 4 Blogs/Month plan (12 posts total), $297 value, free',
     exampleUrl: BESPOKE_DEMO_URL,
     cta: 'Get Started',
     highlight: false,
@@ -117,7 +117,7 @@ export default function ServicesPage() {
   return (
     <main className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
 
-      {/* Hero — kept compact so the pricing cards sit within the first
+      {/* Hero, kept compact so the pricing cards sit within the first
           viewport (or a single short scroll) on both desktop and mobile. */}
       <section className="pt-8 pb-6 md:pt-10 md:pb-8 px-6 text-center">
         <div className="max-w-4xl mx-auto">
@@ -128,7 +128,7 @@ export default function ServicesPage() {
             Our Services
           </h1>
           <p className="text-base md:text-lg text-[#6B6560] max-w-2xl mx-auto">
-            Fixed-price website packages and hosting to keep your site live and secure — here&apos;s everything we do.
+            Fixed-price website packages and hosting to keep your site live and secure, here&apos;s everything we do.
           </p>
         </div>
       </section>
@@ -144,10 +144,10 @@ export default function ServicesPage() {
               Websites That Convert
             </h2>
             <p className="text-[#6B6560] text-base max-w-[560px] mb-4">
-              Three fixed-price packages — choose the build that fits your business.
+              Three fixed-price packages, choose the build that fits your business.
             </p>
             <p className="text-[#1A1A1A] text-sm font-medium max-w-[640px] bg-[#F3EFE9] border border-[#E8E4DF] rounded-[6px] px-4 py-3">
-              Most Australian agencies charge $5,000–$25,000+ for a custom-built website. Our packages start at $1,999 — same custom build, no templates, no agency overhead.
+              Most Australian agencies charge $5,000–$25,000+ for a custom-built website. Our packages start at $1,999, same custom build, no templates, no agency overhead.
             </p>
           </div>
 
@@ -221,7 +221,7 @@ export default function ServicesPage() {
             })}
           </div>
 
-          {/* Flat text card — deliberately not styled as a pricing card. Opens
+          {/* Flat text card, deliberately not styled as a pricing card. Opens
               the Request Quote/Call chooser rather than linking to another
               service page. */}
           <div className="mt-8 text-center">
@@ -230,7 +230,7 @@ export default function ServicesPage() {
               <QuotePopupButton
                 className="text-[#1A1A1A] font-semibold underline underline-offset-2 hover:text-[#5C3D2E]"
               >
-                Custom builds &amp; platforms — from $7,000, request a quote
+                Custom builds &amp; platforms, from $7,000, request a quote
               </QuotePopupButton>
             </p>
           </div>
@@ -303,7 +303,7 @@ export default function ServicesPage() {
                   'Secure Vercel hosting',
                   'SSL certificate',
                   'Uptime monitoring',
-                  '1 monthly content batch — reviews, testimonials, project/portfolio photos, up to 10 items, no rollover',
+                  '1 monthly content batch, reviews, testimonials, project/portfolio photos, up to 10 items, no rollover',
                 ].map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
                     <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />

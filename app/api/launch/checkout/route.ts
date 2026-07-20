@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
       template?.tiers?.find((t) => t.id === tier) ?? template?.tiers?.[0] ?? null
     const templateName = template
       ? selectedTier && template.tiers && template.tiers.length > 1
-        ? `${template.businessName} (${template.industry}) — ${selectedTier.label}`
+        ? `${template.businessName} (${template.industry}), ${selectedTier.label}`
         : `${template.businessName} (${template.industry})`
       : ''
 

@@ -16,7 +16,7 @@ export default function GrowthProofImage({
   src: string
   alt: string
   aspectClassName: string
-  /** Spacing/layout classes for the wrapper — defaults to the standalone column spacing. */
+  /** Spacing/layout classes for the wrapper, defaults to the standalone column spacing. */
   wrapperClassName?: string
   /** 'cover' crops to fill (use when aspectClassName matches the image's native ratio).
    *  'contain' letterboxes to show the full frame (use in a shared grid where ratios vary). */

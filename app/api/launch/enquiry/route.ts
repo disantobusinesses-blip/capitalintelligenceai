@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
   const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER
 
   if (!SMTP_HOST || !SMTP_PASS || !SMTP_USER) {
-    console.error('SMTP not configured — launch enquiry logged only', {
+    console.error('SMTP not configured, launch enquiry logged only', {
       paths,
       businessName,
       email,
@@ -119,7 +119,7 @@ export async function POST(request: NextRequest) {
     : ''
 
   const htmlBody = `
-    <h2>New IAS Enquiry — ${esc(businessName)}</h2>
+    <h2>New IAS Enquiry, ${esc(businessName)}</h2>
     <p><strong>Services requested:</strong> ${esc(paths.join(', ') || 'Not specified')}</p>
     ${websiteSection}
     ${googleSection}
@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
       from: SMTP_FROM,
       to: 'sales@intelligentaisystem.com',
       replyTo: email,
-      subject: `New IAS Enquiry — ${paths.join(', ') || 'General'} — ${businessName}`,
+      subject: `New IAS Enquiry, ${paths.join(', ') || 'General'}, ${businessName}`,
       html: htmlBody,
     })
 
@@ -154,9 +154,9 @@ export async function POST(request: NextRequest) {
     await transporter.sendMail({
       from: SMTP_FROM,
       to: email,
-      subject: `We've received your enquiry — Intelligent AI Systems`,
+      subject: `We've received your enquiry, Intelligent AI Systems`,
       html: `
-        <h2>Thanks ${esc(name)} — we&rsquo;ve got it!</h2>
+        <h2>Thanks ${esc(name)}, we&rsquo;ve got it!</h2>
         <p>Your enquiry for <strong>${esc(businessName)}</strong> has landed with our team and we&rsquo;ll be in touch within the hour.</p>
         <p><strong>Services requested:</strong> ${esc(paths.join(', ') || 'Not specified')}</p>
         <p>If anything is urgent, reply to this email or call us on 03 7051 0100.</p>

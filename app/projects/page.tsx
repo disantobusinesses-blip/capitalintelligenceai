@@ -8,7 +8,7 @@ export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Our Projects – Intelligent AI Systems | Portfolio',
-  description: 'Explore IAS\'s portfolio of websites built for businesses across Australia — electrical, fitness, property, fintech, and more.',
+  description: 'Explore IAS\'s portfolio of websites built for businesses across Australia, electrical, fitness, property, fintech, and more.',
   keywords: 'web design portfolio, AI projects, website examples Australia, IAS projects, Intelligent AI Systems portfolio',
   alternates: {
     canonical: 'https://intelligentaisystem.com/projects',
@@ -110,7 +110,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Client Work — real businesses we've built for */}
+      {/* Client Work, real businesses we've built for */}
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
@@ -129,7 +129,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Browse Styles — the design template gallery (no pricing here; see /services) */}
+      {/* Browse Styles, the design template gallery (no pricing here; see /services) */}
       <section id="browse-styles" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
@@ -140,7 +140,7 @@ export default function ProjectsPage() {
               Explore Our Design Range
             </h2>
             <p className="text-[#6B6560] text-base max-w-2xl">
-              A look at the industry styles we design in — each one fully customised with your
+              A look at the industry styles we design in, each one fully customised with your
               branding and content. Open a live demo to see it in action.{' '}
               <span className="text-[#3D2817] font-medium">
                 For package pricing, see our{' '}

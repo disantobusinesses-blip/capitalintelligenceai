@@ -30,7 +30,7 @@ export default function BeyondWebsite() {
 
         {/* Three equal-weight cards */}
         <div className="grid md:grid-cols-3 gap-6">
-          {/* Card A — Instagram & Social Growth */}
+          {/* Card A, Instagram & Social Growth */}
           <div className="flex flex-col bg-white border border-[#E8E4DF] rounded-[10px] p-8">
             <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-5">
               <Instagram className="w-5 h-5 text-[#C9A07A]" strokeWidth={1.5} />
@@ -52,14 +52,14 @@ export default function BeyondWebsite() {
             </ul>
           </div>
 
-          {/* Card B — B2B Lead Generation */}
+          {/* Card B, B2B Lead Generation */}
           <div className="flex flex-col bg-white border border-[#E8E4DF] rounded-[10px] p-8">
             <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-5">
               <TrendingUp className="w-5 h-5 text-[#C9A07A]" strokeWidth={1.5} />
             </div>
             <h3 className="text-[#3D2817] font-semibold text-lg mb-3">B2B Lead Generation</h3>
             <p className="text-[#6B6560] text-sm leading-relaxed mb-5">
-              Selling to other businesses? We supply qualified leads — a ready list, or a fully
+              Selling to other businesses? We supply qualified leads, a ready list, or a fully
               custom lead platform built for your sales team.
             </p>
             <ul className="flex flex-col gap-2.5 mb-6">
@@ -78,7 +78,7 @@ export default function BeyondWebsite() {
             </QuotePopupButton>
           </div>
 
-          {/* Card C — SEO Blog Content */}
+          {/* Card C, SEO Blog Content */}
           <div className="flex flex-col bg-white border border-[#E8E4DF] rounded-[10px] p-8">
             <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-5">
               <PenLine className="w-5 h-5 text-[#C9A07A]" strokeWidth={1.5} />
@@ -114,7 +114,7 @@ export default function BeyondWebsite() {
               <p className="text-[#6B6560] text-xs italic leading-relaxed">
                 An EV charger installation blog we wrote for EAY Electrical generated an enquiry
                 that became a $10,000+ apartment block installation. Most content takes 3+ months
-                to gain traction — Google limits visibility on new domains while trust builds.
+                to gain traction, Google limits visibility on new domains while trust builds.
               </p>
             </blockquote>
           </div>

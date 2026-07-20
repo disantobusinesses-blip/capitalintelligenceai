@@ -18,7 +18,7 @@ export default function WhyWorkWithUs() {
           A Small Team. Not a Big Agency Markup.
         </h2>
         <p className="text-[#6B6560] text-[16px] md:text-[18px] leading-relaxed mt-5 max-w-[620px] mx-auto">
-          We&apos;re intentionally small — no bloated overhead, no account managers passing your
+          We&apos;re intentionally small, no bloated overhead, no account managers passing your
           project between departments. You get direct access to the people building your site, at
           a fraction of what larger agencies charge for the same quality.
         </p>

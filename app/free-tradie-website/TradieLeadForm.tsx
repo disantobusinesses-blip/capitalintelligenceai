@@ -117,8 +117,8 @@ export default function TradieLeadForm() {
         {/* Phone is made prominent as per spec */}
         <div>
           <label className="block text-sm font-semibold text-[#CBD5E1] mb-1.5">
-            Phone Number *{' '}
-            <span className="text-[#2563EB] font-normal text-xs">— we&apos;ll call you</span>
+            Phone Number *,{' '}
+            <span className="text-[#2563EB] font-normal text-xs">we&apos;ll call you</span>
           </label>
           <input
             name="phone"

@@ -11,14 +11,14 @@ const SERVICE_OPTIONS = [
 ]
 
 const ADD_ON_OPTIONS = [
-  { id: 'hosting-updates', label: '$99 Hosting + Updates', description: 'Limited to 1 update per month — keeps websites looking fresh with new content you provide us.' },
+  { id: 'hosting-updates', label: '$99 Hosting + Updates', description: 'Limited to 1 update per month, keeps websites looking fresh with new content you provide us.' },
 ]
 
 const SEO_PACKAGE_OPTIONS = [
   { value: '', label: 'Select an SEO package (optional)' },
-  { value: 'google-growth', label: 'Google Growth — A$199/month' },
-  { value: 'super-growth', label: 'Super Growth — A$359/month' },
-  { value: 'market-authority', label: 'Market Authority — A$799/month' },
+  { value: 'google-growth', label: 'Google Growth, A$199/month' },
+  { value: 'super-growth', label: 'Super Growth, A$359/month' },
+  { value: 'market-authority', label: 'Market Authority, A$799/month' },
 ]
 
 const BUDGET_OPTIONS = [

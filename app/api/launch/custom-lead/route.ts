@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
   const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER
 
   if (!SMTP_HOST || !SMTP_PASS || !SMTP_USER) {
-    console.error('SMTP not configured — custom lead logged only')
+    console.error('SMTP not configured, custom lead logged only')
     // Never block the user from proceeding to checkout.
     return NextResponse.json({ ok: true })
   }
@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
     })
 
     const htmlBody = `
-      <h2>📋 New ${leadLabel} Lead (Pre-Payment) — ${esc(body.name)}</h2>
+      <h2>📋 New ${leadLabel} Lead (Pre-Payment), ${esc(body.name)}</h2>
       <p><em>This lead submitted their contact details before reaching Stripe checkout.
       Follow up even if no payment comes through.</em></p>
       <h3>Contact Details</h3>
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
       from: SMTP_FROM,
       to: 'sales@intelligentaisystem.com',
       replyTo: body.email.trim(),
-      subject: `📋 New ${leadLabel} Lead (Pre-Payment) — ${body.name.trim()}`,
+      subject: `📋 New ${leadLabel} Lead (Pre-Payment), ${body.name.trim()}`,
       html: htmlBody,
     })
   } catch (err) {

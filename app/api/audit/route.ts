@@ -97,7 +97,7 @@ export async function POST(req: NextRequest) {
                 <a href="https://intelligentaisystem.com/projects" style="color: #1A1A1A;">intelligentaisystem.com</a>.
               </p>
               <br/>
-              <p style="color: #666; font-size: 14px;">— The IAS Team</p>
+              <p style="color: #666; font-size: 14px;">The IAS Team</p>
             </div>
           `,
         }),

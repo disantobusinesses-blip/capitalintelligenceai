@@ -30,7 +30,7 @@ const steps = [
   {
     number: 5,
     title: 'Launch + Ongoing Plan',
-    description: 'Go live and enjoy continuous optimization and support',
+    description: 'Go live and enjoy continuous optimisation and support',
     icon: Rocket,
   },
 ]

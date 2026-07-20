@@ -39,7 +39,7 @@ const testimonials = [
   {
     quote:
       'Great experience with IAS. They got my PT landing page done the same day, set up my Google Business Profile, and walked me through getting my domain sorted. They also linked my Fresha booking so clients can book easily. Super smooth process, would definitely recommend.',
-    author: 'Antonio — Your Coach Plus',
+    author: 'Antonio, Your Coach Plus',
     role: 'Personal Training, Australia',
     initial: 'A',
     avatarColor: 'bg-emerald-500',
@@ -104,7 +104,7 @@ export default function Testimonials() {
             What Our Clients Are Saying
           </h2>
           <p className="mt-2 text-sm text-gray-500">
-            Clients prefer to stay private — results speak for themselves.
+            Clients prefer to stay private, results speak for themselves.
           </p>
         </div>
 
@@ -140,7 +140,7 @@ export default function Testimonials() {
                         {t.initial}
                       </div>
                       <div>
-                        <p className="text-[#1A1A1A] font-semibold text-sm">— {t.author}</p>
+                        <p className="text-[#1A1A1A] font-semibold text-sm">{t.author}</p>
                         <p className="text-[#6B6560] text-xs">{t.role}</p>
                       </div>
                       {/* Google branding */}

@@ -125,7 +125,7 @@ export default function BlogPostGalleryPortfolio() {
 
               <section>
                 <p className="text-lg leading-relaxed">
-                  When a potential customer arrives on your website, they are making a judgment
+                  When a potential customer arrives on your website, they are making a judgement
                   about whether to trust you. Words help, but images do the heavy lifting. A
                   well-built gallery or portfolio section lets your work speak for itself, and
                   in most cases, that is more persuasive than anything you could write about

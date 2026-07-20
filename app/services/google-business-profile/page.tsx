@@ -9,7 +9,7 @@ const setupFeatures = [
   {
     icon: Settings,
     title: 'Full Setup or Optimisation',
-    description: 'We create or fully optimise your Google Business Profile from the ground up — categories, services, hours, and more.',
+    description: 'We create or fully optimise your Google Business Profile from the ground up, categories, services, hours, and more.',
   },
   {
     icon: FileText,
@@ -85,14 +85,14 @@ export default function GoogleBusinessProfilePage() {
           </h1>
           <p className="text-lg md:text-xl text-[#6B6560] leading-relaxed mb-10 max-w-2xl mx-auto">
             Look more legitimate online, improve your local visibility, and make it
-            easier for happy customers to find and review you — all done for you in one hit.
+            easier for happy customers to find and review you, all done for you in one hit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <QuotePopupButton
               service="Google Business Profile"
               className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
             >
-              Enquire Now — A$299
+              Enquire Now, A$299
             </QuotePopupButton>
             <a
               href="#what-you-get"
@@ -104,7 +104,7 @@ export default function GoogleBusinessProfilePage() {
         </div>
       </section>
 
-      {/* What you get — feature cards */}
+      {/* What you get, feature cards */}
       <section id="what-you-get" className="py-16 md:py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">

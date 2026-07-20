@@ -13,7 +13,7 @@ const trustPoints = [
   {
     icon: Star,
     heading: 'Ready to collect reviews',
-    body: 'We give you a custom review QR code plus done-for-you SMS and email templates — so happy customers can leave a review in seconds.',
+    body: 'We give you a custom review QR code plus done-for-you SMS and email templates, so happy customers can leave a review in seconds.',
   },
   {
     icon: ShieldCheck,
@@ -23,7 +23,7 @@ const trustPoints = [
   {
     icon: TrendingUp,
     heading: 'Stronger local visibility',
-    body: 'Show up in Google Maps, local search results, and "near me" queries — putting your business in front of people who are ready to buy.',
+    body: 'Show up in Google Maps, local search results, and "near me" queries, putting your business in front of people who are ready to buy.',
   },
 ]
 
@@ -48,7 +48,7 @@ export default function GoogleBusinessProfileBanner() {
                 Get Found on Google.<br className="hidden md:block" /> Build Trust Before They Even Click.
               </h2>
               <p className="text-[17px] text-[#6B6560] leading-relaxed">
-                We get your Google Business Profile set up, optimised, and connected to your website —
+                We get your Google Business Profile set up, optimised, and connected to your website,
                 so it&apos;s working as a trust signal and lead source from day one.
               </p>
             </div>
@@ -109,7 +109,7 @@ export default function GoogleBusinessProfileBanner() {
             service="Google Business Profile"
             className="bg-[#1A1A1A] text-white font-semibold px-7 py-3.5 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 text-[15px]"
           >
-            Enquire About GBP Setup — A$299
+            Enquire About GBP Setup, A$299
           </QuotePopupButton>
           <a
             href="/services/google-business-profile"

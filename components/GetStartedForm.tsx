@@ -18,9 +18,9 @@ const hostingPlanOptions = [
 
 const seoPackageOptions = [
   { value: '', label: 'Select an SEO package (optional)' },
-  { value: 'google-growth', label: 'Google Growth — A$199/month' },
-  { value: 'super-growth', label: 'Super Growth — A$359/month' },
-  { value: 'market-authority', label: 'Market Authority — A$799/month' },
+  { value: 'google-growth', label: 'Google Growth, A$199/month' },
+  { value: 'super-growth', label: 'Super Growth, A$359/month' },
+  { value: 'market-authority', label: 'Market Authority, A$799/month' },
 ]
 
 const budgetOptions = [
@@ -111,7 +111,7 @@ export default function GetStartedForm({
 
     const hostingPlanOption = hostingPlanOptions.find((h) => h.id === formData.hostingPlan)
     const hostingPlanLabel = hostingPlanOption
-      ? `${hostingPlanOption.label} — ${hostingPlanOption.price}`
+      ? `${hostingPlanOption.label}, ${hostingPlanOption.price}`
       : ''
 
     try {
