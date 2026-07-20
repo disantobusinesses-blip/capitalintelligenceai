@@ -98,15 +98,15 @@ export default function TermsAndConditions() {
             Our Foundation, Growth, and Bespoke website packages each include a complimentary period of our SEO Blog Content subscription, credited automatically at the time of purchase:
           </p>
           <ul className="list-disc pl-6 text-[#1A1A1A] space-y-2 mb-4">
-            <li><strong>Foundation:</strong> 1 free month of the 4 Blogs/Month plan (a $99 AUD value)</li>
-            <li><strong>Growth:</strong> 2 free months of the 8 Blogs/Month plan (a $358 AUD value)</li>
-            <li><strong>Bespoke:</strong> 3 free months of the 12 Blogs/Month plan (a $747 AUD value)</li>
+            <li><strong>Foundation:</strong> 1 free month of the 4 Blogs/Month plan, 4 posts total (a $99 AUD value)</li>
+            <li><strong>Growth:</strong> 2 free months of the 4 Blogs/Month plan, 8 posts total (a $198 AUD value)</li>
+            <li><strong>Bespoke:</strong> 3 free months of the 4 Blogs/Month plan, 12 posts total (a $297 AUD value)</li>
           </ul>
           <p className="text-[#1A1A1A] leading-relaxed mb-4">
             This complimentary blog content is a promotional bonus tied to the purchase of the relevant website package. It has no cash value and cannot be exchanged, redeemed, or refunded for cash or credit, applied to a different service, or transferred to another client or account. Unused blog posts do not roll over from month to month, and any unused portion of the complimentary period is forfeited once it ends.
           </p>
           <p className="text-[#1A1A1A] leading-relaxed">
-            At the end of the complimentary period, the Blog Content subscription will automatically continue at the applicable standard monthly rate (currently $99, $179, or $249 AUD per month for the 4, 8, and 12 Blogs/Month plans respectively) unless cancelled in accordance with Section 4.1. We will provide reasonable notice before the first paid charge is applied.
+            At the end of the complimentary period, the Blog Content subscription will automatically continue at the standard monthly rate for the 4 Blogs/Month plan (currently $99 AUD per month) unless cancelled in accordance with Section 4.1. We will provide reasonable notice before the first paid charge is applied.
           </p>
         </section>
 
