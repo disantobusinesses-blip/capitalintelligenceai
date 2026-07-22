@@ -11,7 +11,6 @@ export type QuoteService =
   | 'Growth'
   | 'Bespoke'
   | 'Custom Build / Platform'
-  | 'SEO Blog Content'
   | 'Google Business Profile'
   | 'B2B AI Platform'
   | 'Other'

@@ -19,8 +19,19 @@ export const metadata: Metadata = {
   },
 }
 
+interface Project {
+  id: number
+  title: string
+  industry: string
+  description: string
+  image: string | null
+  url: string
+  color: string
+  features: string[]
+}
+
 // Examples for the Foundation package ($1,999) — linked from /services#foundation.
-const foundationProjects = [
+const foundationProjects: Project[] = [
   {
     id: 0,
     title: 'Tamar Cabinets PTY LTD',
@@ -33,26 +44,6 @@ const foundationProjects = [
   },
   {
     id: 1,
-    title: 'EAY Electrical',
-    industry: 'Electrical Services',
-    description: 'Professional electrical services website for residential and commercial clients across Australia. Modern design with service showcase and contact integration.',
-    image: '/projects/eay-electrical.png',
-    url: 'https://www.eayelectrical.com.au',
-    color: '#1A3A5C',
-    features: ['Responsive design', 'Service showcase', 'Contact form', 'SEO optimised', 'Fast loading'],
-  },
-  {
-    id: 2,
-    title: 'Reborn Physiques',
-    industry: 'Health & Fitness',
-    description: 'Custom fitness and physique coaching website built to convert visitors into clients, with service showcases and seamless contact integration.',
-    image: '/projects/rebornphysiques.png',
-    url: 'https://rebornphysiques.com',
-    color: '#1A1A1A',
-    features: ['Custom modern design', 'Mobile responsive', 'Service showcase', 'Contact form', 'SEO optimised'],
-  },
-  {
-    id: 3,
     title: 'Your Coach Plus',
     industry: 'Health & Fitness',
     description: 'Personal training landing page built to convert visitors into clients, showcasing coaching services with a clean modern design and seamless contact integration.',
@@ -62,7 +53,7 @@ const foundationProjects = [
     features: ['PT landing page', 'Mobile responsive', 'Lead capture', 'Contact form', 'SEO optimised'],
   },
   {
-    id: 4,
+    id: 2,
     title: 'Senator Developments',
     industry: 'Property Development',
     description: 'Professional property development website showcasing residential and commercial projects across Australia, with a modern design built to attract buyers and investors.',
@@ -72,7 +63,7 @@ const foundationProjects = [
     features: ['Modern design', 'Project showcase', 'Mobile responsive', 'Contact form', 'SEO optimised'],
   },
   {
-    id: 5,
+    id: 3,
     title: 'Lumière Skin Studio',
     industry: 'Skincare & Beauty',
     description: 'Skincare & beauty studio landing page with a Fresha booking button linked to the client\'s existing profile, custom domain, and mobile-responsive design.',
@@ -82,7 +73,7 @@ const foundationProjects = [
     features: ['Custom landing page design', 'Mobile responsive', 'SEO optimised', 'Fresha booking integration'],
   },
   {
-    id: 6,
+    id: 4,
     title: 'Certi Sustainability',
     industry: 'ESD & Building Compliance',
     description: 'Consultancy website for an ESD and building compliance specialist, built to establish credibility and generate enquiries.',
@@ -94,7 +85,7 @@ const foundationProjects = [
 ]
 
 // Examples for the Growth package ($2,999) — linked from /services#growth.
-const growthProjects = [
+const growthProjects: Project[] = [
   {
     id: 0,
     title: 'Live Demo Website',
@@ -116,10 +107,30 @@ const growthProjects = [
     color: '#8A5A44',
     features: ['CRO-focused copywriting', 'Mobile responsive', 'Contact form', 'SEO optimised'],
   },
+  {
+    id: 2,
+    title: 'EAY Electrical',
+    industry: 'Electrical Services',
+    description: 'Professional electrical services website for residential and commercial clients across Australia. Modern design with service showcase and contact integration.',
+    image: '/projects/eay-electrical.png',
+    url: 'https://www.eayelectrical.com.au',
+    color: '#1A3A5C',
+    features: ['Responsive design', 'Service showcase', 'Contact form', 'SEO optimised', 'Fast loading'],
+  },
+  {
+    id: 3,
+    title: 'Reborn Physiques',
+    industry: 'Health & Fitness',
+    description: 'Custom fitness and physique coaching website built to convert visitors into clients, with service showcases and seamless contact integration.',
+    image: '/projects/rebornphysiques.png',
+    url: 'https://rebornphysiques.com',
+    color: '#1A1A1A',
+    features: ['Custom modern design', 'Mobile responsive', 'Service showcase', 'Contact form', 'SEO optimised'],
+  },
 ]
 
 // Examples for the Bespoke package ($6,999) — linked from /services#bespoke.
-const bespokeProjects = [
+const bespokeProjects: Project[] = [
   {
     id: 0,
     // TODO: confirm a client-facing title/description for this build — placeholder copy below.
@@ -131,7 +142,30 @@ const bespokeProjects = [
     color: '#4C3A78',
     features: ['10+ pages / custom integrations', 'Dedicated launch support', 'Mobile responsive', 'SEO optimised'],
   },
+  {
+    id: 1,
+    title: 'Onyx Global',
+    industry: 'FinTech',
+    description: 'Fintech card platform website built for a global card issuing business, with a custom design suited to a financial services audience.',
+    image: '/projects/onyx-global.jpg',
+    url: 'https://onyxglobal.com.au',
+    color: '#0F172A',
+    features: ['Custom platform build', 'Fintech-grade design', 'Mobile responsive', 'SEO optimised'],
+  },
 ]
+
+/** Horizontal-scroll row of project cards, snap-scrolling, fixed card width. */
+function ProjectRow({ projects }: { projects: Project[] }) {
+  return (
+    <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scroll-smooth">
+      {projects.map((project) => (
+        <div key={project.id} className="flex-shrink-0 snap-start w-[280px] sm:w-[340px]">
+          <ProjectCard project={project} />
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export default function ProjectsPage() {
   return (
@@ -153,18 +187,14 @@ export default function ProjectsPage() {
       <section id="foundation" className="py-16 px-6 scroll-mt-24">
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
-            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+            <p className="text-[#5C3D2E] text-lg font-semibold tracking-[1.5px] uppercase mb-2">
               Foundation Examples
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
               Real Sites Built on the Foundation Package
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {foundationProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+          <ProjectRow projects={foundationProjects} />
         </div>
       </section>
 
@@ -172,18 +202,14 @@ export default function ProjectsPage() {
       <section id="growth" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
-            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+            <p className="text-[#5C3D2E] text-lg font-semibold tracking-[1.5px] uppercase mb-2">
               Growth Examples
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
               Real Sites Built on the Growth Package
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {growthProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+          <ProjectRow projects={growthProjects} />
         </div>
       </section>
 
@@ -191,18 +217,14 @@ export default function ProjectsPage() {
       <section id="bespoke" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
-            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+            <p className="text-[#5C3D2E] text-lg font-semibold tracking-[1.5px] uppercase mb-2">
               Bespoke Examples
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
               Real Sites Built on the Bespoke Package
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {bespokeProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+          <ProjectRow projects={bespokeProjects} />
         </div>
       </section>
 
