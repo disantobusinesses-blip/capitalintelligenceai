@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import ProjectCard from '@/components/ProjectCard'
-import TemplateCard from '@/components/TemplateCard'
 import QuotePopupButton from '@/components/QuotePopupButton'
-import { TEMPLATES } from '@/lib/templates'
 
 export const revalidate = 60
 
@@ -21,7 +19,8 @@ export const metadata: Metadata = {
   },
 }
 
-const projects = [
+// Examples for the Foundation package ($1,999) — linked from /services#foundation.
+const foundationProjects = [
   {
     id: 0,
     title: 'Tamar Cabinets PTY LTD',
@@ -34,16 +33,6 @@ const projects = [
   },
   {
     id: 1,
-    title: 'Live Demo Website',
-    industry: 'Landing Page Demo',
-    description: 'See what a premium landing page looks like before you commit. This live demo showcases our design quality, mobile responsiveness, and conversion-focused layout.',
-    image: '/projects/live-demo.jpg',
-    url: 'https://demo.intelligentaisystem.com',
-    color: '#2C2A27',
-    features: ['Live preview', 'Mobile responsive', 'Modern design', 'Conversion focused', 'Fast loading'],
-  },
-  {
-    id: 2,
     title: 'EAY Electrical',
     industry: 'Electrical Services',
     description: 'Professional electrical services website for residential and commercial clients across Australia. Modern design with service showcase and contact integration.',
@@ -53,17 +42,7 @@ const projects = [
     features: ['Responsive design', 'Service showcase', 'Contact form', 'SEO optimised', 'Fast loading'],
   },
   {
-    id: 3,
-    title: 'My AI Bank',
-    industry: 'FinTech',
-    description: 'AI-powered banking platform delivering intelligent financial tools and personalised banking experiences.',
-    image: '/projects/myaibank.png',
-    url: 'https://myaibank.ai',
-    color: '#0F172A',
-    features: ['AI-powered tools', 'Personalised banking', 'Intelligent insights', 'Secure platform', 'Modern UX'],
-  },
-  {
-    id: 4,
+    id: 2,
     title: 'Reborn Physiques',
     industry: 'Health & Fitness',
     description: 'Custom fitness and physique coaching website built to convert visitors into clients, with service showcases and seamless contact integration.',
@@ -73,7 +52,7 @@ const projects = [
     features: ['Custom modern design', 'Mobile responsive', 'Service showcase', 'Contact form', 'SEO optimised'],
   },
   {
-    id: 5,
+    id: 3,
     title: 'Your Coach Plus',
     industry: 'Health & Fitness',
     description: 'Personal training landing page built to convert visitors into clients, showcasing coaching services with a clean modern design and seamless contact integration.',
@@ -83,7 +62,7 @@ const projects = [
     features: ['PT landing page', 'Mobile responsive', 'Lead capture', 'Contact form', 'SEO optimised'],
   },
   {
-    id: 6,
+    id: 4,
     title: 'Senator Developments',
     industry: 'Property Development',
     description: 'Professional property development website showcasing residential and commercial projects across Australia, with a modern design built to attract buyers and investors.',
@@ -91,6 +70,66 @@ const projects = [
     url: 'https://senatordevelopments.com.au',
     color: '#2C3E50',
     features: ['Modern design', 'Project showcase', 'Mobile responsive', 'Contact form', 'SEO optimised'],
+  },
+  {
+    id: 5,
+    title: 'Lumière Skin Studio',
+    industry: 'Skincare & Beauty',
+    description: 'Skincare & beauty studio landing page with a Fresha booking button linked to the client\'s existing profile, custom domain, and mobile-responsive design.',
+    image: '/templates/skincare.png',
+    url: 'https://demo2.intelligentaisystem.com',
+    color: '#B08968',
+    features: ['Custom landing page design', 'Mobile responsive', 'SEO optimised', 'Fresha booking integration'],
+  },
+  {
+    id: 6,
+    title: 'Certi Sustainability',
+    industry: 'ESD & Building Compliance',
+    description: 'Consultancy website for an ESD and building compliance specialist, built to establish credibility and generate enquiries.',
+    image: '/projects/certi-sustainability.jpg',
+    url: 'https://www.certisustainability.com/',
+    color: '#2F5233',
+    features: ['Modern design', 'Mobile responsive', 'Contact form', 'SEO optimised'],
+  },
+]
+
+// Examples for the Growth package ($2,999) — linked from /services#growth.
+const growthProjects = [
+  {
+    id: 0,
+    title: 'Live Demo Website',
+    industry: 'Cinematic Scroll Demo',
+    // TODO: swap this description/image for an embedded video walkthrough once one is recorded.
+    description: 'A cinematic full-scroll build with immersive video and image sections. Video walkthrough coming soon — for now, open the live demo below.',
+    image: null,
+    url: 'https://demo1.intelligentaisystem.com/',
+    color: '#2C2A27',
+    features: ['Cinematic scroll animations', 'Immersive full-viewport sections', 'Mobile responsive', 'CRO-focused copywriting'],
+  },
+  {
+    id: 1,
+    title: 'Estética Sydney',
+    industry: 'Beauty & Aesthetics',
+    description: 'Beauty and aesthetics business website built to convert visitors into bookings, with a polished, conversion-focused layout.',
+    image: '/projects/estetica-sydney.jpg',
+    url: 'https://esteticasydney.com/',
+    color: '#8A5A44',
+    features: ['CRO-focused copywriting', 'Mobile responsive', 'Contact form', 'SEO optimised'],
+  },
+]
+
+// Examples for the Bespoke package ($6,999) — linked from /services#bespoke.
+const bespokeProjects = [
+  {
+    id: 0,
+    // TODO: confirm a client-facing title/description for this build — placeholder copy below.
+    title: 'Bespoke Platform Build',
+    industry: 'Custom Platform',
+    description: 'A fully custom, multi-page platform build with bespoke integrations, showcasing what our Bespoke tier delivers.',
+    image: null,
+    url: 'https://ias-build.vercel.app',
+    color: '#4C3A78',
+    features: ['10+ pages / custom integrations', 'Dedicated launch support', 'Mobile responsive', 'SEO optimised'],
   },
 ]
 
@@ -104,55 +143,64 @@ export default function ProjectsPage() {
             Our Projects
           </h1>
           <p className="text-xl text-[#6B6560] max-w-2xl mx-auto">
-            Intelligent systems implemented across diverse industries. 
+            Intelligent systems implemented across diverse industries.
             See how we have helped businesses operate smoother, faster, and smarter.
           </p>
         </div>
       </section>
 
-      {/* Client Work, real businesses we've built for */}
-      <section className="py-16 px-6">
+      {/* Foundation examples */}
+      <section id="foundation" className="py-16 px-6 scroll-mt-24">
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
             <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
-              Client Work
+              Foundation Examples
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">
-              Real Businesses, Real Sites
+              Real Sites Built on the Foundation Package
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
+            {foundationProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Browse Styles, the design template gallery (no pricing here; see /services) */}
-      <section id="browse-styles" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
+      {/* Growth examples */}
+      <section id="growth" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
             <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
-              Browse Styles
+              Growth Examples
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
-              Explore Our Design Range
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">
+              Real Sites Built on the Growth Package
             </h2>
-            <p className="text-[#6B6560] text-base max-w-2xl">
-              A look at the industry styles we design in, each one fully customised with your
-              branding and content. Open a live demo to see it in action.{' '}
-              <span className="text-[#3D2817] font-medium">
-                For package pricing, see our{' '}
-                <a href="/services" className="underline underline-offset-2 hover:text-[#5C3D2E]">
-                  Services page
-                </a>.
-              </span>
-            </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TEMPLATES.map((t) => (
-              <TemplateCard key={t.id} template={t} hidePrice />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {growthProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bespoke examples */}
+      <section id="bespoke" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+              Bespoke Examples
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">
+              Real Sites Built on the Bespoke Package
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {bespokeProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </div>

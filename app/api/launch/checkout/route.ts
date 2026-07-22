@@ -59,8 +59,8 @@ export async function POST(req: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items: [{ price: depositPriceId, quantity: 1 }],
-      success_url: `${baseUrl}/launch/onboarding?${successParams.toString()}&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/launch`,
+      success_url: `${baseUrl}/services?${successParams.toString()}&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/services`,
       metadata: {
         flow: 'launch_my_site',
         siteType: isCustom ? 'custom' : 'template',

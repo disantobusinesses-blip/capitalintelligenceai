@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Check, FileText, Globe, Package, Shield, Zap } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 
@@ -23,11 +24,6 @@ export const metadata: Metadata = {
 export const revalidate = 60
 
 /* ─── Website Packages ──────────────────────────────────────────────────── */
-// TODO: paste the live Bespoke demo URL here. Until this is set, the Bespoke
-// card falls back to the same disabled "Example coming soon" state as the
-// other two tiers instead of shipping a dead link.
-const BESPOKE_DEMO_URL = ''
-
 const websitePackages = [
   {
     key: 'foundation',
@@ -44,7 +40,6 @@ const websitePackages = [
       'Google Business Profile setup',
     ],
     bonus: '1 free month of our 4 Blogs/Month plan, $99 value, free',
-    exampleUrl: '',
     cta: 'Get Started',
     highlight: false,
   },
@@ -62,7 +57,6 @@ const websitePackages = [
       'Google Ads conversion tracking',
     ],
     bonus: '2 free months of our 4 Blogs/Month plan (8 posts total), $198 value, free',
-    exampleUrl: '',
     cta: 'Get Started',
     highlight: true,
   },
@@ -79,7 +73,6 @@ const websitePackages = [
       'Dedicated launch support',
     ],
     bonus: '3 free months of our 4 Blogs/Month plan (12 posts total), $297 value, free',
-    exampleUrl: BESPOKE_DEMO_URL,
     cta: 'Get Started',
     highlight: false,
   },
@@ -193,20 +186,12 @@ export default function ServicesPage() {
                     <p className="text-xs text-[#6B6560] leading-relaxed">{plan.bonus}</p>
                   </div>
                   <div className="flex-1" />
-                  {plan.exampleUrl ? (
-                    <a
-                      href={plan.exampleUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-semibold text-[#5C3D2E] underline underline-offset-2 hover:text-[#1A1A1A] mb-4 inline-block"
-                    >
-                      See example
-                    </a>
-                  ) : (
-                    <span className="text-xs font-medium text-[#9E9790] cursor-not-allowed mb-4 inline-block select-none">
-                      Example coming soon
-                    </span>
-                  )}
+                  <Link
+                    href={`/projects#${plan.key}`}
+                    className="w-full text-center font-semibold py-3 rounded-[6px] transition-colors duration-200 text-sm block mb-3 border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white"
+                  >
+                    See Examples
+                  </Link>
                   <QuotePopupButton
                     className={`w-full text-center font-semibold py-3 rounded-[6px] transition-colors duration-200 text-sm block ${
                       plan.highlight

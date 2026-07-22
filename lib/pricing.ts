@@ -1,6 +1,6 @@
-// Headline pricing tiers shown as social proof throughout the quote / launch
-// flow (popup, /launch, and the Secure Your Spot deposit page). Keep these in
-// sync with /services and lib/templates.ts.
+// Headline pricing tiers shown as social proof throughout the quote flow
+// (popup and the Secure Your Spot deposit page). Keep these in sync with
+// /services and lib/templates.ts.
 export interface FlowPricingTier {
   name: string
   range: string

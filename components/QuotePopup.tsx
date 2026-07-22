@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import {
   X,
   Send,
@@ -65,7 +65,6 @@ const SERVICE_PRICE_LABEL: Record<QuoteService, string | null> = {
 
 export default function QuotePopup() {
   const router = useRouter()
-  const pathname = usePathname()
   const { isOpen, preselectedService, openPopup, closePopup } = useQuotePopup()
 
   const [name, setName] = useState('')
@@ -134,8 +133,6 @@ export default function QuotePopup() {
   // edge. On mobile it sits above the pill nav so the two never overlap; on
   // desktop (where the pill nav is hidden) it drops back to the corner.
   if (!render) {
-    // The immersive /launch funnel manages its own UI, no launcher there.
-    if (pathname === '/launch') return null
     return (
       <button
         type="button"

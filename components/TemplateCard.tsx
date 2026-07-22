@@ -247,10 +247,10 @@ export default function TemplateCard({
           </a>
         )}
 
-        {/* Home mode: start the launch flow with this template preselected */}
+        {/* Home mode: send visitors to the fixed-price packages on /services */}
         {startFlow && (
           <Link
-            href={`/launch?template=${template.id}${activeTier ? `&tier=${activeTier}` : ''}`}
+            href="/services"
             onClick={(e) => e.stopPropagation()}
             className="mt-auto inline-flex items-center justify-center gap-2 bg-[#1A1A1A] text-white font-bold px-4 py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
           >

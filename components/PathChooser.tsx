@@ -39,7 +39,7 @@ export default function PathChooser() {
               </div>
             </div>
             <Link
-              href="/launch?type=template"
+              href="/services"
               className="mt-auto inline-flex items-center justify-center gap-2 bg-[#1A1A1A] text-white font-bold px-6 py-4 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200"
             >
               Pick a Template
@@ -77,7 +77,7 @@ export default function PathChooser() {
               ))}
             </div>
             <Link
-              href="/launch?type=custom"
+              href="/services"
               className="mt-auto inline-flex items-center justify-center gap-2 border-2 border-[#1A1A1A] text-[#1A1A1A] font-bold px-6 py-4 rounded-[6px] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
             >
               Build Something Custom
@@ -88,8 +88,8 @@ export default function PathChooser() {
 
         <p className="text-center text-[#8A8A8A] text-sm mt-8">
           Just browsing?{' '}
-          <Link href="/projects#browse-styles" className="font-semibold text-[#1A1A1A] underline">
-            View all templates
+          <Link href="/projects" className="font-semibold text-[#1A1A1A] underline">
+            View all projects
           </Link>
         </p>
       </div>

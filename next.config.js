@@ -27,9 +27,11 @@ const nextConfig = {
         permanent: true,
       },
       {
-        // The template gallery now lives as the "Browse Styles" section on /projects.
+        // The "Browse Styles" template gallery on /projects has since been
+        // removed too (folded into the per-package #foundation/#growth/#bespoke
+        // examples), so this now lands on /projects generally.
         source: '/templates',
-        destination: '/projects#browse-styles',
+        destination: '/projects',
         permanent: true,
       },
       {
@@ -41,6 +43,13 @@ const nextConfig = {
       },
       {
         source: '/services/full-package',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        // The /launch multi-step funnel is retired. Its role (browsing package
+        // examples and starting a build) is now covered by /services directly.
+        source: '/launch/:path*',
         destination: '/services',
         permanent: true,
       },
