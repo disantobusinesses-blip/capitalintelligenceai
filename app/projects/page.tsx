@@ -100,17 +100,6 @@ const foundationProjects: Project[] = [
 const growthProjects: Project[] = [
   {
     id: 0,
-    title: 'Live Demo Website',
-    industry: 'Cinematic Scroll Demo',
-    // TODO: swap this description/image for an embedded video walkthrough once one is recorded.
-    description: 'A cinematic full-scroll build with immersive video and image sections. Video walkthrough coming soon — for now, open the live demo below.',
-    image: null,
-    url: 'https://demo1.intelligentaisystem.com/',
-    color: '#2C2A27',
-    features: ['Cinematic scroll animations', 'Immersive full-viewport sections', 'Mobile responsive', 'CRO-focused copywriting'],
-  },
-  {
-    id: 1,
     title: 'Estética Sydney',
     industry: 'Beauty & Aesthetics',
     description: 'Beauty and aesthetics business website built to convert visitors into bookings, with a polished, conversion-focused layout.',
@@ -127,7 +116,7 @@ const growthProjects: Project[] = [
     ],
   },
   {
-    id: 2,
+    id: 1,
     title: 'EAY Electrical',
     industry: 'Electrical Services',
     description: 'Professional electrical services website for residential and commercial clients across Australia. Modern design with service showcase and contact integration.',
@@ -144,7 +133,7 @@ const growthProjects: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: 2,
     title: 'Reborn Physiques',
     industry: 'Health & Fitness',
     description: 'Custom fitness and physique coaching website built to convert visitors into clients, with service showcases and seamless contact integration.',
@@ -171,7 +160,9 @@ const bespokeProjects: Project[] = [
     title: 'Bespoke Platform Build',
     industry: 'Custom Platform',
     description: 'A fully custom, multi-page platform build with bespoke integrations, showcasing what our Bespoke tier delivers.',
-    image: null,
+    // TODO: drop the "IAS Build Group" screenshot in at public/projects/ias-build.jpg
+    // (or update this path) — couldn't pull the attached image in automatically.
+    image: '/projects/ias-build.jpg',
     url: 'https://ias-build.vercel.app',
     color: '#4C3A78',
     features: [
@@ -202,6 +193,17 @@ const bespokeProjects: Project[] = [
       'Dedicated launch support',
     ],
     additionalNote: 'Fintech-grade design',
+  },
+  {
+    id: 2,
+    title: 'Live Demo Website',
+    industry: 'Cinematic Scroll Demo',
+    // TODO: swap this description/image for an embedded video walkthrough once one is recorded.
+    description: 'A cinematic full-scroll build with immersive video and image sections. Video walkthrough coming soon, for now, open the live demo below.',
+    image: null,
+    url: 'https://demo1.intelligentaisystem.com/',
+    color: '#2C2A27',
+    features: ['Cinematic scroll animations', 'Immersive full-viewport sections', 'Mobile responsive', 'CRO-focused copywriting'],
   },
 ]
 

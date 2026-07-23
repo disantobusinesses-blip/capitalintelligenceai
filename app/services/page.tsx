@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Check, FileText, Globe, Package, Shield, Zap } from 'lucide-react'
+import { Check, FileText, Globe, Package, Shield, X, Zap } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
 
@@ -25,77 +25,6 @@ export const metadata: Metadata = {
 export const revalidate = 60
 
 /* ─── Website Packages ──────────────────────────────────────────────────── */
-const websitePackages = [
-  {
-    key: 'foundation',
-    icon: Globe,
-    name: 'Foundation',
-    price: '$1,999',
-    period: 'one-off',
-    badge: null,
-    description: 'A mobile-responsive site built to get a small business found and trusted online.',
-    features: [
-      '1–3 pages',
-      'Mobile responsive',
-      'SEO foundations',
-      'Contact form / lead capture',
-      'Google Analytics tracking',
-      'Full Website SEO Audit, Quarterly, 4x/year',
-    ],
-    bonus: '1 free month of our 4 Blogs/Month plan, $99 value, free',
-    cta: 'Get Started',
-    highlight: false,
-  },
-  {
-    key: 'growth',
-    icon: Zap,
-    name: 'Growth',
-    price: '$2,999',
-    period: 'one-off',
-    badge: 'Most Popular',
-    description: 'A conversion-focused build for businesses ready to turn traffic into leads.',
-    features: [
-      '5–8 pages',
-      'Mobile responsive',
-      'SEO foundations',
-      'Contact form / lead capture',
-      'Google Analytics tracking',
-      'Full Website SEO Audit, Quarterly, 4x/year',
-      'Google Search Console tracking',
-      'Google Business Profile setup',
-      'CRO-focused copywriting',
-    ],
-    bonus: '2 free months of our 4 Blogs/Month plan (8 posts total), $198 value, free',
-    cta: 'Get Started',
-    highlight: true,
-  },
-  {
-    key: 'bespoke',
-    icon: Package,
-    name: 'Bespoke',
-    price: '$6,999',
-    period: 'one-off',
-    badge: null,
-    description: 'A fully custom build with integrations and dedicated support through launch.',
-    features: [
-      '10+ pages',
-      'Mobile responsive',
-      'SEO foundations',
-      'Contact form / lead capture',
-      'Google Analytics tracking',
-      'Full Website SEO Audit, Quarterly, 4x/year',
-      'Google Search Console tracking',
-      'Google Business Profile setup',
-      'CRO-focused copywriting',
-      'Custom integrations',
-      'Dedicated launch support',
-    ],
-    bonus: '3 free months of our 4 Blogs/Month plan (12 posts total), $297 value, free',
-    cta: 'Get Started',
-    highlight: false,
-  },
-]
-
 const SERVICES_FEATURE_ROWS: FeatureRow[] = [
   { label: 'Pages', values: ['1–3', '5–8', '10+'] },
   { label: 'Mobile responsive', values: [true, true, true] },
@@ -109,6 +38,64 @@ const SERVICES_FEATURE_ROWS: FeatureRow[] = [
   { label: 'Custom integrations', values: [false, false, true] },
   { label: 'Dedicated launch support', values: [false, false, true] },
   { label: 'Free SEO blog content', values: ['1 month (4 posts)', '2 months (8 posts)', '3 months (12 posts)'] },
+]
+
+// Card checklists mirror the table above (minus "Free SEO blog content", which
+// is already shown in each card's highlighted "Includes" box below) — every
+// card lists the same rows, in the same order, with a cross for anything that
+// tier doesn't include, so all three cards come out the same length.
+const CARD_FEATURE_ROWS = SERVICES_FEATURE_ROWS.filter((r) => r.label !== 'Free SEO blog content')
+
+function cardFeatures(planIndex: 0 | 1 | 2): { label: string; included: boolean }[] {
+  return CARD_FEATURE_ROWS.map((row) => {
+    const value = row.values[planIndex]
+    if (row.label === 'Pages') {
+      return { label: `${value} pages`, included: true }
+    }
+    return { label: row.label, included: value !== false }
+  })
+}
+
+const websitePackages = [
+  {
+    key: 'foundation',
+    icon: Globe,
+    name: 'Foundation',
+    price: '$1,999',
+    period: 'one-off',
+    badge: null,
+    description: 'A mobile-responsive site built to get a small business found and trusted online.',
+    features: cardFeatures(0),
+    bonus: '1 free month of our 4 Blogs/Month plan, $99 value, free',
+    cta: 'Get Started',
+    highlight: false,
+  },
+  {
+    key: 'growth',
+    icon: Zap,
+    name: 'Growth',
+    price: '$2,999',
+    period: 'one-off',
+    badge: 'Most Popular',
+    description: 'A conversion-focused build for businesses ready to turn traffic into leads.',
+    features: cardFeatures(1),
+    bonus: '2 free months of our 4 Blogs/Month plan (8 posts total), $198 value, free',
+    cta: 'Get Started',
+    highlight: true,
+  },
+  {
+    key: 'bespoke',
+    icon: Package,
+    name: 'Bespoke',
+    price: '$6,999',
+    period: 'one-off',
+    badge: null,
+    description: 'A fully custom build with integrations and dedicated support through launch.',
+    features: cardFeatures(2),
+    bonus: '3 free months of our 4 Blogs/Month plan (12 posts total), $297 value, free',
+    cta: 'Get Started',
+    highlight: false,
+  },
 ]
 
 /* ─── SEO Blog Content Add-On ───────────────────────────────────────────── */
@@ -208,9 +195,16 @@ export default function ServicesPage() {
                   <p className="text-sm text-[#6B6560] mb-5 leading-relaxed mt-2">{plan.description}</p>
                   <ul className="space-y-2 mb-5">
                     {plan.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
-                        <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                        {f}
+                      <li
+                        key={f.label}
+                        className={`flex items-start gap-2 text-sm ${f.included ? 'text-[#1A1A1A]' : 'text-[#9E9790]'}`}
+                      >
+                        {f.included ? (
+                          <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                        ) : (
+                          <X className="w-4 h-4 text-[#9E9790] flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                        )}
+                        {f.label}
                       </li>
                     ))}
                   </ul>
