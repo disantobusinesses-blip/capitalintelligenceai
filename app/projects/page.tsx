@@ -197,9 +197,7 @@ const bespokeProjects: Project[] = [
     title: 'Live Demo Website',
     industry: 'Cinematic Scroll Demo',
     description: 'A cinematic full-scroll build with immersive video and image sections.',
-    // TODO: drop the "IAS Build Group" screenshot in at public/projects/ias-build.jpg
-    // (or update this path) — couldn't pull the attached image in automatically.
-    image: '/projects/ias-build.jpg',
+    image: '/projects/CinematicScrollDemo.png',
     url: 'https://demo1.intelligentaisystem.com/',
     color: '#2C2A27',
     features: ['Cinematic scroll animations', 'Immersive full-viewport sections', 'Mobile responsive', 'CRO-focused copywriting'],
