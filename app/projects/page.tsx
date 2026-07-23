@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ProjectCard from '@/components/ProjectCard'
 import QuotePopupButton from '@/components/QuotePopupButton'
+import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
 
 export const revalidate = 60
 
@@ -28,7 +29,18 @@ interface Project {
   url: string
   color: string
   features: string[]
+  additionalNote?: string
 }
+
+const FEATURE_ROWS: FeatureRow[] = [
+  { label: 'Mobile responsive', values: [true, true, true] },
+  { label: 'SEO optimised', values: [true, true, true] },
+  { label: 'Contact form / lead capture', values: [true, true, true] },
+  { label: 'CRO-focused copywriting', values: [false, true, true] },
+  { label: 'Google Ads conversion tracking', values: [false, true, true] },
+  { label: 'Custom integrations (booking, payments, etc.)', values: [false, false, true] },
+  { label: 'Dedicated launch support', values: [false, false, true] },
+]
 
 // Examples for the Foundation package ($1,999) — linked from /services#foundation.
 const foundationProjects: Project[] = [
@@ -40,7 +52,7 @@ const foundationProjects: Project[] = [
     image: '/projects/tamar-cabinets.jpg',
     url: 'https://tamarcabinets.com.au',
     color: '#E8A54B',
-    features: ['Modern design', 'Portfolio showcase', 'Mobile responsive', 'Contact form', 'SEO optimised'],
+    features: ['Mobile responsive', 'SEO optimised', 'Contact form', 'Portfolio showcase'],
   },
   {
     id: 1,
@@ -50,7 +62,7 @@ const foundationProjects: Project[] = [
     image: '/projects/yourcoachplus.png',
     url: 'https://yourcoachplus.com.au',
     color: '#2D5016',
-    features: ['PT landing page', 'Mobile responsive', 'Lead capture', 'Contact form', 'SEO optimised'],
+    features: ['Mobile responsive', 'SEO optimised', 'Contact form', 'Lead capture (PT landing page)'],
   },
   {
     id: 2,
@@ -60,7 +72,7 @@ const foundationProjects: Project[] = [
     image: '/projects/senator-developments.png',
     url: 'https://senatordevelopments.com.au',
     color: '#2C3E50',
-    features: ['Modern design', 'Project showcase', 'Mobile responsive', 'Contact form', 'SEO optimised'],
+    features: ['Mobile responsive', 'SEO optimised', 'Contact form', 'Project showcase'],
   },
   {
     id: 3,
@@ -70,7 +82,7 @@ const foundationProjects: Project[] = [
     image: '/templates/skincare.png',
     url: 'https://demo2.intelligentaisystem.com',
     color: '#B08968',
-    features: ['Custom landing page design', 'Mobile responsive', 'SEO optimised', 'Fresha booking integration'],
+    features: ['Mobile responsive', 'SEO optimised', 'Contact form', 'Fresha booking integration'],
   },
   {
     id: 4,
@@ -80,7 +92,7 @@ const foundationProjects: Project[] = [
     image: '/projects/certi-sustainability.jpg',
     url: 'https://www.certisustainability.com/',
     color: '#2F5233',
-    features: ['Modern design', 'Mobile responsive', 'Contact form', 'SEO optimised'],
+    features: ['Mobile responsive', 'SEO optimised', 'Contact form'],
   },
 ]
 
@@ -105,7 +117,14 @@ const growthProjects: Project[] = [
     image: '/projects/estetica-sydney.jpg',
     url: 'https://esteticasydney.com/',
     color: '#8A5A44',
-    features: ['CRO-focused copywriting', 'Mobile responsive', 'Contact form', 'SEO optimised'],
+    features: [
+      'Mobile responsive',
+      'SEO optimised',
+      'Contact form',
+      'CRO-focused copywriting',
+      'Google Ads conversion tracking',
+      'Ongoing SEO blog content (4 posts/month)',
+    ],
   },
   {
     id: 2,
@@ -115,7 +134,14 @@ const growthProjects: Project[] = [
     image: '/projects/eay-electrical.png',
     url: 'https://www.eayelectrical.com.au',
     color: '#1A3A5C',
-    features: ['Responsive design', 'Service showcase', 'Contact form', 'SEO optimised', 'Fast loading'],
+    features: [
+      'Mobile responsive',
+      'SEO optimised',
+      'Contact form',
+      'CRO-focused copywriting',
+      'Google Ads conversion tracking',
+      'Ongoing SEO blog content (4 posts/month)',
+    ],
   },
   {
     id: 3,
@@ -125,7 +151,15 @@ const growthProjects: Project[] = [
     image: '/projects/rebornphysiques.png',
     url: 'https://rebornphysiques.com',
     color: '#1A1A1A',
-    features: ['Custom modern design', 'Mobile responsive', 'Service showcase', 'Contact form', 'SEO optimised'],
+    features: [
+      'Mobile responsive',
+      'SEO optimised',
+      'Contact form',
+      'CRO-focused copywriting',
+      'Google Ads conversion tracking',
+      'Stripe checkout integration',
+      'Ongoing SEO blog content (4 posts/month)',
+    ],
   },
 ]
 
@@ -140,7 +174,15 @@ const bespokeProjects: Project[] = [
     image: null,
     url: 'https://ias-build.vercel.app',
     color: '#4C3A78',
-    features: ['10+ pages / custom integrations', 'Dedicated launch support', 'Mobile responsive', 'SEO optimised'],
+    features: [
+      'Mobile responsive',
+      'SEO optimised',
+      'Contact form',
+      'CRO-focused copywriting',
+      'Google Ads conversion tracking',
+      'Custom integrations',
+      'Dedicated launch support',
+    ],
   },
   {
     id: 1,
@@ -150,7 +192,16 @@ const bespokeProjects: Project[] = [
     image: '/projects/onyx-global.jpg',
     url: 'https://onyxglobal.com.au',
     color: '#0F172A',
-    features: ['Custom platform build', 'Fintech-grade design', 'Mobile responsive', 'SEO optimised'],
+    features: [
+      'Mobile responsive',
+      'SEO optimised',
+      'Contact form',
+      'CRO-focused copywriting',
+      'Google Ads conversion tracking',
+      'Custom integrations',
+      'Dedicated launch support',
+    ],
+    additionalNote: 'Fintech-grade design',
   },
 ]
 
@@ -183,8 +234,23 @@ export default function ProjectsPage() {
         </div>
       </section>
 
+      {/* Feature comparison */}
+      <section className="py-16 px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <p className="text-[#5C3D2E] text-lg font-semibold tracking-[1.5px] uppercase mb-2">
+              Compare Packages
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
+              What Each Package Includes
+            </h2>
+          </div>
+          <FeatureTable rows={FEATURE_ROWS} />
+        </div>
+      </section>
+
       {/* Foundation examples */}
-      <section id="foundation" className="py-16 px-6 scroll-mt-24">
+      <section id="foundation" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
             <p className="text-[#5C3D2E] text-lg font-semibold tracking-[1.5px] uppercase mb-2">

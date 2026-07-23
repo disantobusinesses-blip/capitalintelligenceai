@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Check, FileText, Globe, Package, Shield, Zap } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
+import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
 
 export const metadata: Metadata = {
   title: 'Our Services – Intelligent AI Systems',
@@ -35,9 +36,11 @@ const websitePackages = [
     description: 'A mobile-responsive site built to get a small business found and trusted online.',
     features: [
       '1–3 pages',
-      'Mobile-responsive design',
-      'On-page SEO foundations',
-      'Google Business Profile setup',
+      'Mobile responsive',
+      'SEO foundations',
+      'Contact form / lead capture',
+      'Google Analytics tracking',
+      'Full Website SEO Audit, Quarterly, 4x/year',
     ],
     bonus: '1 free month of our 4 Blogs/Month plan, $99 value, free',
     cta: 'Get Started',
@@ -53,8 +56,14 @@ const websitePackages = [
     description: 'A conversion-focused build for businesses ready to turn traffic into leads.',
     features: [
       '5–8 pages',
+      'Mobile responsive',
+      'SEO foundations',
+      'Contact form / lead capture',
+      'Google Analytics tracking',
+      'Full Website SEO Audit, Quarterly, 4x/year',
+      'Google Search Console tracking',
+      'Google Business Profile setup',
       'CRO-focused copywriting',
-      'Google Ads conversion tracking',
     ],
     bonus: '2 free months of our 4 Blogs/Month plan (8 posts total), $198 value, free',
     cta: 'Get Started',
@@ -69,13 +78,37 @@ const websitePackages = [
     badge: null,
     description: 'A fully custom build with integrations and dedicated support through launch.',
     features: [
-      '10+ pages / custom integrations (booking, forms, animation)',
+      '10+ pages',
+      'Mobile responsive',
+      'SEO foundations',
+      'Contact form / lead capture',
+      'Google Analytics tracking',
+      'Full Website SEO Audit, Quarterly, 4x/year',
+      'Google Search Console tracking',
+      'Google Business Profile setup',
+      'CRO-focused copywriting',
+      'Custom integrations',
       'Dedicated launch support',
     ],
     bonus: '3 free months of our 4 Blogs/Month plan (12 posts total), $297 value, free',
     cta: 'Get Started',
     highlight: false,
   },
+]
+
+const SERVICES_FEATURE_ROWS: FeatureRow[] = [
+  { label: 'Pages', values: ['1–3', '5–8', '10+'] },
+  { label: 'Mobile responsive', values: [true, true, true] },
+  { label: 'SEO foundations', values: [true, true, true] },
+  { label: 'Contact form / lead capture', values: [true, true, true] },
+  { label: 'Google Analytics tracking', values: [true, true, true] },
+  { label: 'Full Website SEO Audit, Quarterly, 4x/year', values: [true, true, true] },
+  { label: 'Google Search Console tracking', values: [false, true, true] },
+  { label: 'Google Business Profile setup', values: [false, true, true] },
+  { label: 'CRO-focused copywriting', values: [false, true, true] },
+  { label: 'Custom integrations', values: [false, false, true] },
+  { label: 'Dedicated launch support', values: [false, false, true] },
+  { label: 'Free SEO blog content', values: ['1 month (4 posts)', '2 months (8 posts)', '3 months (12 posts)'] },
 ]
 
 /* ─── SEO Blog Content Add-On ───────────────────────────────────────────── */
@@ -204,6 +237,11 @@ export default function ServicesPage() {
                 </div>
               )
             })}
+          </div>
+
+          {/* Feature comparison table */}
+          <div className="mt-10">
+            <FeatureTable rows={SERVICES_FEATURE_ROWS} />
           </div>
 
           {/* Flat text card, deliberately not styled as a pricing card. Opens

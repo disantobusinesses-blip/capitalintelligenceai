@@ -1,6 +1,6 @@
 'use client'
 
-import { ExternalLink } from 'lucide-react'
+import { Check, ExternalLink } from 'lucide-react'
 import { useState } from 'react'
 
 interface Project {
@@ -12,6 +12,8 @@ interface Project {
   url?: string
   color: string
   features: string[]
+  /** A style/descriptive line shown under the ticked features, without a checkmark. */
+  additionalNote?: string
 }
 
 /** Branded gradient placeholder shown when a static screenshot isn't available or fails to load */
@@ -73,14 +75,17 @@ export default function ProjectCard({ project }: { project: Project }) {
         <p className="text-[#6B6560] text-sm mb-4 leading-relaxed">{project.description}</p>
         
         {/* Features */}
-        <ul className="space-y-1 mb-4">
+        <ul className={`space-y-1.5 ${project.additionalNote ? 'mb-2' : 'mb-4'}`}>
           {project.features.map((feature, idx) => (
-            <li key={idx} className="flex items-center gap-2 text-xs text-[#6B6560]">
-              <div className="w-1 h-1 bg-[#5C3D2E] rounded-full" />
+            <li key={idx} className="flex items-start gap-2 text-xs text-[#6B6560]">
+              <Check className="w-3.5 h-3.5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
               {feature}
             </li>
           ))}
         </ul>
+        {project.additionalNote && (
+          <p className="text-xs text-[#9E9790] italic mb-4">{project.additionalNote}</p>
+        )}
 
         {project.url ? (
           <a
