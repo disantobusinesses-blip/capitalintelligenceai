@@ -1,4 +1,5 @@
-import { ExternalLink, ImageOff } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, ExternalLink, ImageOff } from 'lucide-react'
 import { display, body } from '@/lib/fonts'
 import PortfolioCardImage from '@/components/PortfolioCardImage'
 
@@ -66,13 +67,22 @@ export default function PortfolioStrip() {
       className={`${body.className} scroll-mt-[120px] bg-[#F8F7F4] pt-[64px] pb-[80px] px-6 border-t border-[#E8E4DF]`}
     >
       <div className="max-w-[1200px] mx-auto">
-        <div className="mb-12 max-w-2xl">
-          <p className="text-[#C9A07A] text-[13px] font-semibold tracking-[1.5px] uppercase">
-            Proof of Work
-          </p>
-          <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-[#3D2817] mt-3`}>
-            Real Projects. Real Businesses.
-          </h2>
+        <div className="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+          <div className="max-w-2xl">
+            <p className="text-[#C9A07A] text-[13px] font-semibold tracking-[1.5px] uppercase">
+              Proof of Work
+            </p>
+            <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-[#3D2817] mt-3`}>
+              Real Projects. Real Businesses.
+            </h2>
+          </div>
+          <Link
+            href="/projects"
+            className="flex-shrink-0 inline-flex items-center gap-2 border border-[#3D2817] text-[#3D2817] font-semibold px-5 py-2.5 rounded-[6px] hover:bg-[#3D2817] hover:text-white transition-colors duration-200"
+          >
+            View All Work
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

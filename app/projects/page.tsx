@@ -160,9 +160,7 @@ const bespokeProjects: Project[] = [
     title: 'Bespoke Platform Build',
     industry: 'Custom Platform',
     description: 'A fully custom, multi-page platform build with bespoke integrations, showcasing what our Bespoke tier delivers.',
-    // TODO: drop the "IAS Build Group" screenshot in at public/projects/ias-build.jpg
-    // (or update this path) — couldn't pull the attached image in automatically.
-    image: '/projects/ias-build.jpg',
+    image: null,
     url: 'https://ias-build.vercel.app',
     color: '#4C3A78',
     features: [
@@ -198,9 +196,10 @@ const bespokeProjects: Project[] = [
     id: 2,
     title: 'Live Demo Website',
     industry: 'Cinematic Scroll Demo',
-    // TODO: swap this description/image for an embedded video walkthrough once one is recorded.
-    description: 'A cinematic full-scroll build with immersive video and image sections. Video walkthrough coming soon, for now, open the live demo below.',
-    image: null,
+    description: 'A cinematic full-scroll build with immersive video and image sections.',
+    // TODO: drop the "IAS Build Group" screenshot in at public/projects/ias-build.jpg
+    // (or update this path) — couldn't pull the attached image in automatically.
+    image: '/projects/ias-build.jpg',
     url: 'https://demo1.intelligentaisystem.com/',
     color: '#2C2A27',
     features: ['Cinematic scroll animations', 'Immersive full-viewport sections', 'Mobile responsive', 'CRO-focused copywriting'],
