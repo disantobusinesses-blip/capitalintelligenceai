@@ -178,7 +178,7 @@ const bespokeProjects: Project[] = [
     title: 'Onyx Global',
     industry: 'FinTech',
     description: 'Fintech card platform website built for a global card issuing business, with a custom design suited to a financial services audience.',
-    image: '/projects/onyx-global.jpg',
+    image: null,
     url: 'https://onyxglobal.com.au',
     color: '#0F172A',
     features: [

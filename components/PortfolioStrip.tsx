@@ -42,9 +42,8 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   },
   {
     title: 'Onyx Global',
-    result: 'Fintech card platform website.',
-    image: '/projects/onyx-global.jpg',
-    url: 'https://onyxglobal.com.au',
+    placeholderNote: 'Updated screenshot coming soon',
+    placeholder: true,
   },
   {
     title: 'Estética Sydney',
