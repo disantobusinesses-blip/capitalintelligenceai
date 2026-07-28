@@ -1,7 +1,16 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { motion, MotionConfig, type Transition, type Variants } from 'framer-motion'
+import {
+  motion,
+  MotionConfig,
+  useAnimationControls,
+  useInView,
+  useReducedMotion,
+  type Transition,
+  type Variants,
+} from 'framer-motion'
 import { Check, Globe, Package, Zap, type LucideIcon } from 'lucide-react'
 import { display, body } from '@/lib/fonts'
 import QuotePopupButton from '@/components/QuotePopupButton'
@@ -103,7 +112,7 @@ interface Palette {
 const PALETTES: Record<SquishyTone, Palette> = {
   dark: {
     background: 'var(--ias-brown-dark)',
-    shape: 'fill-white/10',
+    shape: 'fill-white/5 sm:fill-white/10',
     text: 'text-white',
     muted: 'text-white/65',
     feature: 'text-white/90',
@@ -118,7 +127,7 @@ const PALETTES: Record<SquishyTone, Palette> = {
   },
   mid: {
     background: 'var(--ias-brown-mid)',
-    shape: 'fill-white/10',
+    shape: 'fill-white/5 sm:fill-white/10',
     text: 'text-white',
     muted: 'text-white/70',
     feature: 'text-white/90',
@@ -133,7 +142,7 @@ const PALETTES: Record<SquishyTone, Palette> = {
   },
   light: {
     background: 'var(--ias-brown-light)',
-    shape: 'fill-white/25',
+    shape: 'fill-white/10 sm:fill-white/25',
     text: 'text-[#2E1B12]',
     muted: 'text-[#2E1B12]/75',
     feature: 'text-[#2E1B12]',
@@ -176,16 +185,40 @@ function BGComponent({ shape }: { shape: string }) {
   )
 }
 
-function PricingCard({ plan }: { plan: SquishyPlan }) {
+function PricingCard({ plan, index }: { plan: SquishyPlan; index: number }) {
   const p = PALETTES[plan.tone]
   const Icon = ICONS[plan.icon]
+  const ref = useRef<HTMLDivElement>(null)
+  const reduceMotion = useReducedMotion()
+  // Not `once`, so the squish replays each time the card is scrolled back over.
+  const inView = useInView(ref, { amount: 0.4 })
+  const controls = useAnimationControls()
+
+  /* iPhones and other touch devices have no hover, so scrolling a card into
+     view plays the squish on its own. Staggered by column so the three don't
+     pulse in unison on desktop, where they enter the viewport together. */
+  useEffect(() => {
+    if (!inView || reduceMotion) return
+    let cancelled = false
+    ;(async () => {
+      await new Promise((r) => setTimeout(r, index * 130))
+      if (cancelled) return
+      await controls.start('squish')
+      if (cancelled) return
+      await controls.start('rest')
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [inView, reduceMotion, controls, index])
 
   return (
     <motion.div
+      ref={ref}
       initial="rest"
-      animate="rest"
-      // whileHover never fires on touch devices, so whileTap mirrors it
-      // exactly, giving phones the same squish/morph as a desktop hover.
+      // Driven by the in-view pulse above; the gesture props below take over
+      // whenever the user actually interacts and hand back to this on release.
+      animate={controls}
       whileHover="squish"
       whileTap="squish"
       variants={cardVariants}
@@ -252,12 +285,12 @@ function PricingCard({ plan }: { plan: SquishyPlan }) {
 
         <Link
           href={`/projects#${plan.key}`}
-          className={`${body.className} mb-2 block w-full rounded-[6px] py-2.5 text-center text-[13px] font-semibold transition-colors duration-200 ${p.outlineBtn}`}
+          className={`${body.className} mb-2 block w-full rounded-[6px] py-3 text-center sm:py-2.5 text-[13px] font-semibold transition-colors duration-200 ${p.outlineBtn}`}
         >
           See Examples
         </Link>
         <QuotePopupButton
-          className={`${body.className} block w-full rounded-[6px] py-2.5 text-center text-[13px] font-semibold transition-colors duration-200 ${p.solidBtn}`}
+          className={`${body.className} block w-full rounded-[6px] py-3 text-center text-[13px] font-semibold transition-colors duration-200 sm:py-2.5 ${p.solidBtn}`}
         >
           {plan.cta}
         </QuotePopupButton>
@@ -273,8 +306,8 @@ export default function SquishyPricing({ plans }: { plans: SquishyPlan[] }) {
     <MotionConfig reducedMotion="user">
       {/* Single full-width column on mobile, 3 columns from md: up. */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {plans.map((plan) => (
-          <PricingCard key={plan.key} plan={plan} />
+        {plans.map((plan, i) => (
+          <PricingCard key={plan.key} plan={plan} index={i} />
         ))}
       </div>
     </MotionConfig>
