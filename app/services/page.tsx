@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Check, FileText, Globe, Package, Shield, X, Zap } from 'lucide-react'
+import { Check, FileText, Globe, Package, Shield, Zap } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
+import { display, body } from '@/lib/fonts'
 
 export const metadata: Metadata = {
   title: 'Our Services – Intelligent AI Systems',
@@ -25,6 +26,9 @@ export const metadata: Metadata = {
 export const revalidate = 60
 
 /* ─── Website Packages ──────────────────────────────────────────────────── */
+// Full comparison table (unchanged) — still the single source of truth. The
+// pricing cards below derive their per-tier checklists from this data rather
+// than hardcoding a second copy, so the two can never drift out of sync.
 const SERVICES_FEATURE_ROWS: FeatureRow[] = [
   { label: 'Pages', values: ['1–3', '5–8', '10+'] },
   { label: 'Mobile responsive', values: [true, true, true] },
@@ -40,21 +44,19 @@ const SERVICES_FEATURE_ROWS: FeatureRow[] = [
   { label: 'Free SEO blog content', values: ['1 month (4 posts)', '2 months (8 posts)', '3 months (12 posts)'] },
 ]
 
-// Card checklists mirror the table above (minus "Free SEO blog content", which
-// is already shown in each card's highlighted "Includes" box below) — every
-// card lists the same rows, in the same order, with a cross for anything that
-// tier doesn't include, so all three cards come out the same length.
-const CARD_FEATURE_ROWS = SERVICES_FEATURE_ROWS.filter((r) => r.label !== 'Free SEO blog content')
+// Boolean feature rows only (Pages and Free SEO blog content are surfaced
+// elsewhere on each card, not as checklist items).
+const BOOLEAN_FEATURE_ROWS = SERVICES_FEATURE_ROWS.filter(
+  (r) => r.label !== 'Pages' && r.label !== 'Free SEO blog content'
+)
 
-function cardFeatures(planIndex: 0 | 1 | 2): { label: string; included: boolean }[] {
-  return CARD_FEATURE_ROWS.map((row) => {
-    const value = row.values[planIndex]
-    if (row.label === 'Pages') {
-      return { label: `${value} pages`, included: true }
-    }
-    return { label: row.label, included: value !== false }
-  })
-}
+// Each tier is a strict superset of the one before it (verified), so a card
+// only needs to list what's NEW at that tier, plus a pointer to what it
+// inherits. Foundation = everything it includes. Growth/Bespoke = only the
+// rows that flip from false to true at that tier.
+const foundationFeatures = BOOLEAN_FEATURE_ROWS.filter((r) => r.values[0] === true).map((r) => r.label)
+const growthAddedFeatures = BOOLEAN_FEATURE_ROWS.filter((r) => r.values[1] === true && r.values[0] === false).map((r) => r.label)
+const bespokeAddedFeatures = BOOLEAN_FEATURE_ROWS.filter((r) => r.values[2] === true && r.values[1] === false).map((r) => r.label)
 
 const websitePackages = [
   {
@@ -65,7 +67,9 @@ const websitePackages = [
     period: 'one-off',
     badge: null,
     description: 'A mobile-responsive site built to get a small business found and trusted online.',
-    features: cardFeatures(0),
+    pages: '1–3 pages',
+    inheritsFrom: null as string | null,
+    features: foundationFeatures,
     bonus: '1 free month of our 4 Blogs/Month plan, $99 value, free',
     cta: 'Get Started',
     highlight: false,
@@ -78,7 +82,9 @@ const websitePackages = [
     period: 'one-off',
     badge: 'Most Popular',
     description: 'A conversion-focused build for businesses ready to turn traffic into leads.',
-    features: cardFeatures(1),
+    pages: '5–8 pages',
+    inheritsFrom: 'Foundation',
+    features: growthAddedFeatures,
     bonus: '2 free months of our 4 Blogs/Month plan (8 posts total), $198 value, free',
     cta: 'Get Started',
     highlight: true,
@@ -91,7 +97,9 @@ const websitePackages = [
     period: 'one-off',
     badge: null,
     description: 'A fully custom build with integrations and dedicated support through launch.',
-    features: cardFeatures(2),
+    pages: '10+ pages',
+    inheritsFrom: 'Growth',
+    features: bespokeAddedFeatures,
     bonus: '3 free months of our 4 Blogs/Month plan (12 posts total), $297 value, free',
     cta: 'Get Started',
     highlight: false,
@@ -164,67 +172,69 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          {/* Flex row that scrolls sideways on mobile (so all 3 cards stay
+              short enough to view without vertical scrolling) and becomes a
+              normal 3-column grid from sm: up. */}
+          <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-6 px-6 sm:grid sm:grid-cols-3 sm:overflow-visible sm:mx-0 sm:px-0 sm:pb-0">
             {websitePackages.map((plan) => {
               const Icon = plan.icon
               return (
                 <div
                   key={plan.key}
-                  className={`relative bg-white rounded-[10px] p-7 flex flex-col transition-shadow duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)] ${
+                  className={`relative flex-shrink-0 snap-start w-[82vw] max-w-[320px] sm:w-auto sm:max-w-none bg-[#0A0A0A] rounded-[10px] p-6 flex flex-col transition-shadow duration-200 ${
                     plan.highlight
-                      ? 'border-2 border-[#1A1A1A]'
-                      : 'border border-[#E8E4DF]'
+                      ? 'border-2 border-[#C9A07A] shadow-[0_8px_32px_rgba(201,160,122,0.15)]'
+                      : 'border border-white/10'
                   }`}
                 >
                   {plan.badge && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#1A1A1A] text-white text-[11px] font-bold px-4 py-1 rounded-full whitespace-nowrap">
+                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#C9A07A] text-[#0A0A0A] text-[11px] font-bold px-4 py-1 rounded-full whitespace-nowrap">
                       {plan.badge}
                     </span>
                   )}
-                  <div className="mb-4">
-                    <Icon className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-1 uppercase tracking-wide">{plan.name}</h3>
-                  <div className="mb-0.5">
-                    <p className="text-[22px] font-bold text-[#5C3D2E]">
-                      {plan.price}
-                      <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
-                      <span className="text-[13px] font-normal text-[#9E9790] ml-1">{plan.period}</span>
+                  <Icon className="w-6 h-6 text-[#C9A07A] mb-3" strokeWidth={1.5} />
+                  <h3 className={`${display.className} text-[21px] font-semibold text-white mb-0.5 uppercase tracking-wide`}>
+                    {plan.name}
+                  </h3>
+                  <p className="text-[21px] font-bold text-[#C9A07A] mb-2.5">
+                    {plan.price}
+                    <span className="text-[10px] font-normal text-white/40 ml-1">+ GST</span>
+                    <span className="text-[12px] font-normal text-white/40 ml-1">{plan.period}</span>
+                  </p>
+                  <p className={`${body.className} text-[13px] text-white/60 leading-relaxed mb-3`}>
+                    {plan.description}
+                  </p>
+                  <p className={`${body.className} text-xs font-semibold text-white/80 mb-3 pb-3 border-b border-white/10`}>
+                    {plan.pages}
+                  </p>
+
+                  {plan.inheritsFrom && (
+                    <p className={`${body.className} text-[11px] text-white/40 italic mb-2`}>
+                      Everything in {plan.inheritsFrom}, plus:
                     </p>
-                  </div>
-                  <p className="text-sm text-[#6B6560] mb-5 leading-relaxed mt-2">{plan.description}</p>
-                  <ul className="space-y-2 mb-5">
+                  )}
+                  <ul className="space-y-1.5 mb-4 flex-1">
                     {plan.features.map((f) => (
-                      <li
-                        key={f.label}
-                        className={`flex items-start gap-2 text-sm ${f.included ? 'text-[#1A1A1A]' : 'text-[#9E9790]'}`}
-                      >
-                        {f.included ? (
-                          <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                        ) : (
-                          <X className="w-4 h-4 text-[#9E9790] flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                        )}
-                        {f.label}
+                      <li key={f} className={`${body.className} flex items-start gap-2 text-[13px] text-white/90`}>
+                        <Check className="w-3.5 h-3.5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                        {f}
                       </li>
                     ))}
                   </ul>
-                  <div className="bg-[#F8F7F4] border border-[#E8E4DF] rounded-[6px] px-3.5 py-3 mb-5">
-                    <p className="text-xs font-semibold text-[#1A1A1A] mb-0.5">Includes</p>
-                    <p className="text-xs text-[#6B6560] leading-relaxed">{plan.bonus}</p>
+
+                  <div className="bg-white/5 border border-white/10 rounded-[6px] px-3 py-2.5 mb-4">
+                    <p className={`${body.className} text-[11px] font-semibold text-white mb-0.5`}>Includes</p>
+                    <p className={`${body.className} text-[11px] text-white/60 leading-relaxed`}>{plan.bonus}</p>
                   </div>
-                  <div className="flex-1" />
+
                   <Link
                     href={`/projects#${plan.key}`}
-                    className="w-full text-center font-semibold py-3 rounded-[6px] transition-colors duration-200 text-sm block mb-3 border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white"
+                    className={`${body.className} w-full text-center font-semibold py-2.5 rounded-[6px] transition-colors duration-200 text-[13px] block mb-2 border border-white/20 text-white hover:bg-white/10`}
                   >
                     See Examples
                   </Link>
                   <QuotePopupButton
-                    className={`w-full text-center font-semibold py-3 rounded-[6px] transition-colors duration-200 text-sm block ${
-                      plan.highlight
-                        ? 'bg-[#1A1A1A] text-white hover:bg-[#2D2D2D]'
-                        : 'border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white'
-                    }`}
+                    className={`${body.className} w-full text-center font-semibold py-2.5 rounded-[6px] transition-colors duration-200 text-[13px] block bg-[#C9A07A] text-[#0A0A0A] hover:bg-[#B98D64]`}
                   >
                     {plan.cta}
                   </QuotePopupButton>
