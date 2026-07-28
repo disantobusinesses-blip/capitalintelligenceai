@@ -2,6 +2,7 @@ export const revalidate = 60
 
 import HeroIntro from '@/components/HeroIntro'
 import PortfolioStrip from '@/components/PortfolioStrip'
+import SquishyPricing from '@/components/ui/squishy-pricing'
 import DigitalGrowthProof from '@/components/DigitalGrowthProof'
 import WhyWorkWithUs from '@/components/WhyWorkWithUs'
 import Hero from '@/components/Hero'
@@ -15,6 +16,8 @@ export default function Home() {
     <main className="bg-[#F8F7F4] pb-24 md:pb-0">
       <HeroIntro />
       <PortfolioStrip />
+      {/* Pricing teaser only. The full comparison cards live on /services. */}
+      <SquishyPricing />
       <DigitalGrowthProof />
       <WhyWorkWithUs />
       {/* "Book a Free Consultation", kept as its own section, unmodified, so it

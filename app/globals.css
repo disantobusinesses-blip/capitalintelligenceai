@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  /* The three brown tones taken from the IAS logo, used by the homepage
+     pricing teaser cards. These are close approximations rather than exact
+     pixel samples of the logo PNG — if precise matching is needed, resample
+     the logo and update these three values, since every consumer references
+     the variables rather than hardcoding the hex. */
+  :root {
+    --ias-brown-dark: #4A2F23;
+    --ias-brown-mid: #8B5A3C;
+    --ias-brown-light: #C9A07A;
+  }
   html {
     scroll-behavior: smooth;
     background-color: #F8F7F4;
