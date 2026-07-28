@@ -19,6 +19,18 @@
   .text-balance {
     text-wrap: balance;
   }
+  /* Clearance for the fixed mobile chrome so page content is never trapped
+     underneath it: the bottom pill nav (~42px pill + its 24px offset) and the
+     floating CTA above it, plus the iOS home-indicator inset. Both are
+     mobile-only, so from md: up this falls back to the standard 6rem. */
+  .pb-bottom-nav {
+    padding-bottom: calc(9.5rem + env(safe-area-inset-bottom, 0px));
+  }
+  @media (min-width: 768px) {
+    .pb-bottom-nav {
+      padding-bottom: 6rem;
+    }
+  }
   .smooth-transition {
     transition: all 0.2s ease;
   }

@@ -136,7 +136,7 @@ const blogTiers = [
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
+    <main className="min-h-[100dvh] bg-[#F8F7F4] pb-bottom-nav pt-[74px]">
 
       {/* Hero, kept compact so the pricing cards sit within the first
           viewport (or a single short scroll) on both desktop and mobile. */}
@@ -172,16 +172,15 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          {/* Flex row that scrolls sideways on mobile (so all 3 cards stay
-              short enough to view without vertical scrolling) and becomes a
-              normal 3-column grid from sm: up. */}
-          <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-6 px-6 sm:grid sm:grid-cols-3 sm:overflow-visible sm:mx-0 sm:px-0 sm:pb-0">
+          {/* Single full-width column on mobile (cards stack and the page
+              scrolls down, never sideways), 3 columns from md: up. */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {websitePackages.map((plan) => {
               const Icon = plan.icon
               return (
                 <div
                   key={plan.key}
-                  className={`relative flex-shrink-0 snap-start w-[82vw] max-w-[320px] sm:w-auto sm:max-w-none bg-[#0A0A0A] rounded-[10px] p-6 flex flex-col transition-shadow duration-200 ${
+                  className={`relative w-full bg-[#0A0A0A] rounded-[10px] p-6 flex flex-col transition-shadow duration-200 ${
                     plan.highlight
                       ? 'border-2 border-[#C9A07A] shadow-[0_8px_32px_rgba(201,160,122,0.15)]'
                       : 'border border-white/10'
