@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { Check, FileText, Globe, Package, Shield, Zap } from 'lucide-react'
+import { Check, FileText, Shield } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
-import { display, body } from '@/lib/fonts'
+import SquishyPricing, { type SquishyIcon, type SquishyTone } from '@/components/ui/squishy-pricing'
 
 export const metadata: Metadata = {
   title: 'Our Services – Intelligent AI Systems',
@@ -61,13 +60,14 @@ const bespokeAddedFeatures = BOOLEAN_FEATURE_ROWS.filter((r) => r.values[2] === 
 const websitePackages = [
   {
     key: 'foundation',
-    icon: Globe,
+    icon: 'globe' as SquishyIcon,
     name: 'Foundation',
     price: '$1,999',
     period: 'one-off',
     badge: null,
     description: 'A mobile-responsive site built to get a small business found and trusted online.',
     pages: '1–3 pages',
+    tone: 'dark' as SquishyTone,
     inheritsFrom: null as string | null,
     features: foundationFeatures,
     bonus: '1 free month of our 4 Blogs/Month plan, $99 value, free',
@@ -76,14 +76,15 @@ const websitePackages = [
   },
   {
     key: 'growth',
-    icon: Zap,
+    icon: 'zap' as SquishyIcon,
     name: 'Growth',
     price: '$2,999',
     period: 'one-off',
     badge: 'Most Popular',
     description: 'A conversion-focused build for businesses ready to turn traffic into leads.',
     pages: '5–8 pages',
-    inheritsFrom: 'Foundation',
+    tone: 'mid' as SquishyTone,
+    inheritsFrom: 'Foundation' as string | null,
     features: growthAddedFeatures,
     bonus: '2 free months of our 4 Blogs/Month plan (8 posts total), $198 value, free',
     cta: 'Get Started',
@@ -91,14 +92,15 @@ const websitePackages = [
   },
   {
     key: 'bespoke',
-    icon: Package,
+    icon: 'package' as SquishyIcon,
     name: 'Bespoke',
     price: '$6,999',
     period: 'one-off',
     badge: null,
     description: 'A fully custom build with integrations and dedicated support through launch.',
     pages: '10+ pages',
-    inheritsFrom: 'Growth',
+    tone: 'light' as SquishyTone,
+    inheritsFrom: 'Growth' as string | null,
     features: bespokeAddedFeatures,
     bonus: '3 free months of our 4 Blogs/Month plan (12 posts total), $297 value, free',
     cta: 'Get Started',
@@ -172,75 +174,7 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          {/* Single full-width column on mobile (cards stack and the page
-              scrolls down, never sideways), 3 columns from md: up. */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {websitePackages.map((plan) => {
-              const Icon = plan.icon
-              return (
-                <div
-                  key={plan.key}
-                  className={`relative w-full bg-[#0A0A0A] rounded-[10px] p-6 flex flex-col transition-shadow duration-200 ${
-                    plan.highlight
-                      ? 'border-2 border-[#C9A07A] shadow-[0_8px_32px_rgba(201,160,122,0.15)]'
-                      : 'border border-white/10'
-                  }`}
-                >
-                  {plan.badge && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#C9A07A] text-[#0A0A0A] text-[11px] font-bold px-4 py-1 rounded-full whitespace-nowrap">
-                      {plan.badge}
-                    </span>
-                  )}
-                  <Icon className="w-6 h-6 text-[#C9A07A] mb-3" strokeWidth={1.5} />
-                  <h3 className={`${display.className} text-[21px] font-semibold text-white mb-0.5 uppercase tracking-wide`}>
-                    {plan.name}
-                  </h3>
-                  <p className="text-[21px] font-bold text-[#C9A07A] mb-2.5">
-                    {plan.price}
-                    <span className="text-[10px] font-normal text-white/40 ml-1">+ GST</span>
-                    <span className="text-[12px] font-normal text-white/40 ml-1">{plan.period}</span>
-                  </p>
-                  <p className={`${body.className} text-[13px] text-white/60 leading-relaxed mb-3`}>
-                    {plan.description}
-                  </p>
-                  <p className={`${body.className} text-xs font-semibold text-white/80 mb-3 pb-3 border-b border-white/10`}>
-                    {plan.pages}
-                  </p>
-
-                  {plan.inheritsFrom && (
-                    <p className={`${body.className} text-[11px] text-white/40 italic mb-2`}>
-                      Everything in {plan.inheritsFrom}, plus:
-                    </p>
-                  )}
-                  <ul className="space-y-1.5 mb-4 flex-1">
-                    {plan.features.map((f) => (
-                      <li key={f} className={`${body.className} flex items-start gap-2 text-[13px] text-white/90`}>
-                        <Check className="w-3.5 h-3.5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="bg-white/5 border border-white/10 rounded-[6px] px-3 py-2.5 mb-4">
-                    <p className={`${body.className} text-[11px] font-semibold text-white mb-0.5`}>Includes</p>
-                    <p className={`${body.className} text-[11px] text-white/60 leading-relaxed`}>{plan.bonus}</p>
-                  </div>
-
-                  <Link
-                    href={`/projects#${plan.key}`}
-                    className={`${body.className} w-full text-center font-semibold py-2.5 rounded-[6px] transition-colors duration-200 text-[13px] block mb-2 border border-white/20 text-white hover:bg-white/10`}
-                  >
-                    See Examples
-                  </Link>
-                  <QuotePopupButton
-                    className={`${body.className} w-full text-center font-semibold py-2.5 rounded-[6px] transition-colors duration-200 text-[13px] block bg-[#C9A07A] text-[#0A0A0A] hover:bg-[#B98D64]`}
-                  >
-                    {plan.cta}
-                  </QuotePopupButton>
-                </div>
-              )
-            })}
-          </div>
+          <SquishyPricing plans={websitePackages} />
 
           {/* Feature comparison table */}
           <div className="mt-10">
