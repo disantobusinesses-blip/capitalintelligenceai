@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ScanSearch, Target, Layers } from 'lucide-react'
 import { display, body } from '@/lib/fonts'
+import { SpotlightCard } from '@/components/ui/spotlight-card'
 
 const POINTS = [
   {
@@ -40,7 +41,10 @@ export default function WhyIntelligentAISystem() {
           {POINTS.map((point) => {
             const Icon = point.icon
             return (
-              <div key={point.title} className="flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8">
+              <SpotlightCard
+                key={point.title}
+                className="w-full flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8"
+              >
                 <div className="w-11 h-11 bg-white rounded-[6px] flex items-center justify-center mb-5">
                   <Icon className="w-5 h-5 text-[#C9A07A]" strokeWidth={1.5} />
                 </div>
@@ -54,7 +58,7 @@ export default function WhyIntelligentAISystem() {
                     {point.link.label}
                   </Link>
                 )}
-              </div>
+              </SpotlightCard>
             )
           })}
         </div>

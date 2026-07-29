@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { display, body } from '@/lib/fonts'
 import QuotePopupButton from '@/components/QuotePopupButton'
+import SoftBlurIn from '@/components/ui/soft-blur-in'
+import { Magnetic } from '@/components/ui/magnetic'
 
 const HERO_SUBHEAD =
   'No templates, no shortcuts, every site backed by the same AI-driven audits and optimisation we run on our own systems.'
@@ -32,7 +34,7 @@ export default function HeroIntro() {
           <h1
             className={`${display.className} text-[52px] md:text-[80px] leading-[0.95] font-bold uppercase tracking-[-0.01em] text-[#3D2817]`}
           >
-            Websites Built Different.
+            <SoftBlurIn>Websites Built Different.</SoftBlurIn>
           </h1>
 
           {/* Supporting line (normal weight) */}
@@ -54,9 +56,13 @@ export default function HeroIntro() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-5 mt-9">
-            <QuotePopupButton className="w-full sm:w-auto bg-[#C9A07A] text-[#3D2817] font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-[#B98D64] transition-colors duration-200">
-              Request Quote/Call
-            </QuotePopupButton>
+            {/* Magnetic pull on desktop; the wrapper keeps the button's
+                full-width-on-mobile behaviour rather than shrink-wrapping it. */}
+            <Magnetic intensity={0.35} range={120} className="w-full sm:w-auto">
+              <QuotePopupButton className="w-full sm:w-auto bg-[#C9A07A] text-[#3D2817] font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-[#B98D64] transition-colors duration-200">
+                Request Quote/Call
+              </QuotePopupButton>
+            </Magnetic>
 
             <a
               href="#portfolio"
