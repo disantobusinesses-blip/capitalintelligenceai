@@ -129,11 +129,11 @@ export default function AboutPage() {
               <ul className="space-y-2 text-[#6B6560] text-sm">
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
-                  Landing pages from $599 AUD
+                  Fixed-price packages from $1,999 AUD
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
-                  Full multi-page websites, custom price upon request
+                  Foundation, Growth &amp; Bespoke tiers, 1 to 10+ pages
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
@@ -144,6 +144,12 @@ export default function AboutPage() {
                   Modern, fast-loading designs
                 </li>
               </ul>
+              <Link
+                href="/services"
+                className="inline-block mt-4 text-sm font-semibold text-[#5C3D2E] underline underline-offset-2 hover:text-[#3D2817]"
+              >
+                View packages
+              </Link>
             </div>
             <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
               <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">AI Integrations</h3>

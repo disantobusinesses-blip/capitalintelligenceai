@@ -233,7 +233,6 @@ export default function ServicesPage() {
                   'Secure Vercel hosting',
                   'SSL certificate',
                   'Uptime monitoring',
-                  '1 minor change request/month (typo/grammar fix, contact info update, 1 image or link swap, short text/CTA edit under 15 words), no rollover',
                 ].map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
                     <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
