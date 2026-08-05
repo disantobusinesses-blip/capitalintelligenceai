@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { display, body } from '@/lib/fonts'
 import QuotePopupButton from '@/components/QuotePopupButton'
-import SoftBlurIn from '@/components/ui/soft-blur-in'
+import TypingEffect from '@/components/ui/typing-effect'
 import { Magnetic } from '@/components/ui/magnetic'
 
 const HERO_SUBHEAD =
@@ -34,7 +34,7 @@ export default function HeroIntro() {
           <h1
             className={`${display.className} text-[52px] md:text-[80px] leading-[0.95] font-bold uppercase tracking-[-0.01em] text-[#3D2817]`}
           >
-            <SoftBlurIn>Websites Built Different.</SoftBlurIn>
+            <TypingEffect texts={['Websites Built Different.']} typingSpeed={45} loop={false} />
           </h1>
 
           {/* Supporting line (normal weight) */}
