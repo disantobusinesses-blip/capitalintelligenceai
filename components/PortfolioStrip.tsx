@@ -43,13 +43,13 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
     title: 'Onyx Global',
     result: 'Fintech card platform website.',
-    image: '/projects/onyx-global.jpg',
+    image: '/projects/onyx-global-v2.png',
     url: 'https://onyxglobal.com.au',
   },
   {
     title: 'Estética Sydney',
     result: 'Beauty and aesthetics business website.',
-    image: '/projects/estetica-sydney.jpg',
+    image: '/projects/estetica-sydney-v2.png',
     url: 'https://esteticasydney.com/',
   },
   {

@@ -94,7 +94,7 @@ const growthProjects: Project[] = [
     title: 'Estética Sydney',
     industry: 'Beauty & Aesthetics',
     description: 'Beauty and aesthetics business website built to convert visitors into bookings, with a polished, conversion-focused layout.',
-    image: '/projects/estetica-sydney.jpg',
+    image: '/projects/estetica-sydney-v2.png',
     url: 'https://esteticasydney.com/',
     color: '#8A5A44',
     features: [
@@ -148,7 +148,7 @@ const growthProjects: Project[] = [
     title: 'Azzura Consulting',
     industry: 'Consulting',
     description: 'Consulting firm website built to establish credibility and turn visitors into enquiries.',
-    image: null,
+    image: '/projects/azzura-consulting.png',
     url: 'https://www.azzuraconsulting.com.au/',
     color: '#1E4B7B',
     features: [
@@ -187,7 +187,7 @@ const bespokeProjects: Project[] = [
     title: 'Onyx Global',
     industry: 'FinTech',
     description: 'Fintech card platform website built for a global card issuing business, with a custom design suited to a financial services audience.',
-    image: null,
+    image: '/projects/onyx-global-v2.png',
     url: 'https://onyxglobal.com.au',
     color: '#0F172A',
     features: [
