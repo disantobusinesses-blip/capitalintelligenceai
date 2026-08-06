@@ -103,14 +103,17 @@ export const TypingEffect = ({
       {active && (
         <span aria-hidden="true" className="absolute inset-0">
           {displayedText}
+          {/* Blinks only while there is still typing to do. Once the last
+              phrase lands the caret fades out and the animation stops, rather
+              than flickering on a finished heading forever. */}
           <motion.span
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              repeat: Infinity,
-              repeatType: 'reverse',
-            }}
+            animate={finished ? { opacity: 0 } : { opacity: 1 }}
+            transition={
+              finished
+                ? { duration: 0.35, ease: 'easeOut' }
+                : { duration: 0.8, repeat: Infinity, repeatType: 'reverse' }
+            }
             className="ml-1 inline-block h-[0.8em] w-[0.06em] translate-y-[0.02em] rounded-sm bg-current align-middle"
           />
         </span>

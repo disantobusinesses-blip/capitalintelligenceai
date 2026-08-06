@@ -57,16 +57,6 @@ const foundationProjects: Project[] = [
   },
   {
     id: 1,
-    title: 'Your Coach Plus',
-    industry: 'Health & Fitness',
-    description: 'Personal training landing page built to convert visitors into clients, showcasing coaching services with a clean modern design and seamless contact integration.',
-    image: '/projects/yourcoachplus.png',
-    url: 'https://yourcoachplus.com.au',
-    color: '#2D5016',
-    features: ['Mobile responsive', 'SEO optimised', 'Contact form', 'Lead capture (PT landing page)'],
-  },
-  {
-    id: 2,
     title: 'Senator Developments',
     industry: 'Property Development',
     description: 'Professional property development website showcasing residential and commercial projects across Australia, with a modern design built to attract buyers and investors.',
@@ -76,7 +66,7 @@ const foundationProjects: Project[] = [
     features: ['Mobile responsive', 'SEO optimised', 'Contact form', 'Project showcase'],
   },
   {
-    id: 3,
+    id: 2,
     title: 'Lumière Skin Studio',
     industry: 'Skincare & Beauty',
     description: 'Skincare & beauty studio landing page with a Fresha booking button linked to the client\'s existing profile, custom domain, and mobile-responsive design.',
@@ -86,7 +76,7 @@ const foundationProjects: Project[] = [
     features: ['Mobile responsive', 'SEO optimised', 'Contact form', 'Fresha booking integration'],
   },
   {
-    id: 4,
+    id: 3,
     title: 'Certi Sustainability',
     industry: 'ESD & Building Compliance',
     description: 'Consultancy website for an ESD and building compliance specialist, built to establish credibility and generate enquiries.',
@@ -149,6 +139,24 @@ const growthProjects: Project[] = [
       'Google Ads conversion tracking',
       'Stripe checkout integration',
       'Ongoing SEO blog content (4 posts/month)',
+    ],
+  },
+  {
+    id: 3,
+    // TODO: confirm the industry and description with the client. The site was
+    // unreachable from the build environment, so the copy below is generic.
+    title: 'Azzura Consulting',
+    industry: 'Consulting',
+    description: 'Consulting firm website built to establish credibility and turn visitors into enquiries.',
+    image: null,
+    url: 'https://www.azzuraconsulting.com.au/',
+    color: '#1E4B7B',
+    features: [
+      'Mobile responsive',
+      'SEO optimised',
+      'Contact form',
+      'CRO-focused copywriting',
+      'Google Ads conversion tracking',
     ],
   },
 ]
