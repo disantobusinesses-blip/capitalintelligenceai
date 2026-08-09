@@ -11,16 +11,12 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/blog/Best-Website-Designer-in-Essendon',
-        destination: '/blog/best-website-designer-in-essendon',
-        permanent: true,
-      },
-      {
-        source: '/blog/Web-Design-strathmore-Essendon-pascoevale-melbourne',
-        destination: '/blog/web-design-strathmore-essendon-pascoevale-melbourne',
-        permanent: true,
-      },
+      // Legacy mixed-case blog slugs moved to middleware.ts: Next's
+      // path-to-regexp source matching is case-insensitive, so a rule here
+      // written against the uppercase slug also matches the lowercase
+      // destination and redirects it to itself, an infinite loop. Middleware
+      // does a plain string comparison instead, which can't match its own
+      // output.
       {
         source: '/pricing',
         destination: '/services',

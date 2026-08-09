@@ -13,7 +13,7 @@ interface Props {
 async function getPost(slug: string) {
   const { data } = await supabase
     .from('capitalintelligence_posts')
-    .select('id, slug, title, description, published_at, last_modified, reading_time, category, content, published, faq_schema')
+    .select('id, slug, title, description, meta_title, meta_description, published_at, last_modified, reading_time, category, content, published, faq_schema')
     .eq('slug', slug)
     .single()
   return data
@@ -23,15 +23,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = await getPost(slug)
   if (!post || !post.published) return {}
+
+  // meta_title/meta_description are optional SEO overrides for the <title>
+  // tag and meta description; the on-page headline always renders post.title
+  // regardless of these.
+  const metaTitle = post.meta_title || post.title
+  const metaDescription = post.meta_description || post.description
+
   return {
-    title: `${post.title} | IAS Blog`,
-    description: post.description,
+    title: `${metaTitle} | IAS Blog`,
+    description: metaDescription,
     alternates: {
       canonical: `https://intelligentaisystem.com/blog/${post.slug}`,
     },
     openGraph: {
-      title: post.title,
-      description: post.description,
+      title: metaTitle,
+      description: metaDescription,
       url: `https://intelligentaisystem.com/blog/${post.slug}`,
       type: 'article',
       publishedTime: post.published_at,
@@ -43,14 +50,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: 'https://intelligentaisystem.com/ias-logo.png',
           width: 1200,
           height: 630,
-          alt: post.title,
+          alt: metaTitle,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.description,
+      title: metaTitle,
+      description: metaDescription,
       images: ['https://intelligentaisystem.com/ias-logo.png'],
     },
   }
