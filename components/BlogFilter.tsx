@@ -31,7 +31,7 @@ export default function BlogFilter({ posts, categories }: Props) {
                 className={`px-4 py-1.5 rounded-full text-sm font-semibold smooth-transition border ${
                   activeCategory === cat
                     ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
-                    : 'bg-transparent text-[#6B6560] border-[#E8E4DF] hover:border-[#5C3D2E] hover:text-[#1A1A1A]'
+                    : 'bg-transparent text-[#6B6560] border-[#E8E4DF] hover:border-ias-brown-dark hover:text-[#1A1A1A]'
                 }`}
               >
                 {cat}
@@ -47,12 +47,12 @@ export default function BlogFilter({ posts, categories }: Props) {
           <div className="grid md:grid-cols-2 gap-6">
             {filtered.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-                <article className="bg-white border border-[#E8E4DF] rounded-[6px] overflow-hidden smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col h-full p-6">
+                <article className="bg-white border border-[#E8E4DF] rounded-[6px] overflow-hidden smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col h-full p-6">
                   {/* Category badge */}
                   <span
                     className={`inline-block self-start px-3 py-1 rounded-full text-xs font-semibold mb-3 border ${
                       post.category === 'Website Growth'
-                        ? 'bg-[#F8F7F4] border-[#5C3D2E] text-[#5C3D2E]'
+                        ? 'bg-[#F8F7F4] border-ias-brown-dark text-ias-brown-dark'
                         : 'bg-[#F8F7F4] border-[#E8E4DF] text-[#1A1A1A]'
                     }`}
                   >
@@ -60,7 +60,7 @@ export default function BlogFilter({ posts, categories }: Props) {
                   </span>
 
                   {/* Title */}
-                  <h2 className="text-lg font-bold text-[#1A1A1A] mb-3 leading-snug group-hover:text-[#5C3D2E] smooth-transition">
+                  <h2 className="text-lg font-bold text-[#1A1A1A] mb-3 leading-snug group-hover:text-ias-brown-dark smooth-transition">
                     {post.title}
                   </h2>
 

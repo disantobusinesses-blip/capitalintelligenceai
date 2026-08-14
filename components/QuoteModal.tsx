@@ -125,14 +125,14 @@ export default function QuoteModal() {
           <div>
             <label className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-[#5C3D2E]" />
+                <Clock className="w-4 h-4 text-ias-brown-dark" />
                 Preferred call time <span className="text-red-400">*</span>
               </span>
             </label>
             <select
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] focus:outline-none focus:border-ias-brown-dark smooth-transition"
             >
               <option value="">Select a time (9 AM – 5 PM)</option>
               {TIME_SLOTS.map((slot) => (
@@ -151,7 +151,7 @@ export default function QuoteModal() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Your full name"
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9CA3AF] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9CA3AF] focus:outline-none focus:border-ias-brown-dark smooth-transition"
             />
           </div>
 
@@ -159,7 +159,7 @@ export default function QuoteModal() {
           <div>
             <label className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <Phone className="w-4 h-4 text-[#5C3D2E]" />
+                <Phone className="w-4 h-4 text-ias-brown-dark" />
                 Phone number <span className="text-red-400">*</span>
               </span>
             </label>
@@ -168,7 +168,7 @@ export default function QuoteModal() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="e.g. 0412 345 678"
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9CA3AF] focus:outline-none focus:border-[#5C3D2E] smooth-transition"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9CA3AF] focus:outline-none focus:border-ias-brown-dark smooth-transition"
             />
           </div>
 

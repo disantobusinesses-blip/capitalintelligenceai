@@ -76,8 +76,11 @@ export default function B2BCrmAiPlatformPage() {
       {/* Header */}
       <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* This page is no longer in the top nav, its summary lives at
+              /services#b2b. Kept live so existing search traffic and external
+              links do not 404, and this crumb returns to that section. */}
           <Link
-            href="/services"
+            href="/services#b2b"
             className="flex items-center gap-2 text-[#6B6560] hover:text-[#1A1A1A] transition-colors duration-200"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -85,7 +88,7 @@ export default function B2BCrmAiPlatformPage() {
           </Link>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-[6px] bg-[#F8F7F4] border border-[#E8E4DF] flex items-center justify-center">
-              <Bot className="w-5 h-5 text-[#5C3D2E]" />
+              <Bot className="w-5 h-5 text-ias-brown-dark" />
             </div>
             <div>
               <h3 className="text-sm font-bold text-[#1A1A1A]">Intelligent AI Systems</h3>
@@ -97,7 +100,7 @@ export default function B2BCrmAiPlatformPage() {
       {/* Hero */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
+          <p className="text-ias-brown-dark text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
             B2B AI Platform
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6 leading-tight">
@@ -121,7 +124,7 @@ export default function B2BCrmAiPlatformPage() {
               className="bg-[#F8F7F4] rounded-[10px] px-8 py-6 text-center"
               style={{ border: '1px solid #E8E4DF' }}
             >
-              <p className="text-[12px] font-semibold text-[#5C3D2E] uppercase tracking-widest mb-1">Market Value</p>
+              <p className="text-[12px] font-semibold text-ias-brown-dark uppercase tracking-widest mb-1">Market Value</p>
               <p className="text-[28px] font-extrabold text-[#1A1A1A] leading-none">$5,000 – $35,000</p>
               <p className="text-[13px] text-[#9E9790] mt-2">depending on lead volume & acquisition value</p>
             </div>
@@ -173,7 +176,7 @@ export default function B2BCrmAiPlatformPage() {
                   className="bg-white border border-[#E8E4DF] rounded-[10px] p-6 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-shadow duration-200"
                 >
                   <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-[#5C3D2E]" strokeWidth={1.5} />
+                    <Icon className="w-5 h-5 text-ias-brown-dark" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-2">{feature.title}</h3>
                   <p className="text-[#6B6560] text-sm leading-relaxed">{feature.description}</p>
@@ -233,7 +236,7 @@ export default function B2BCrmAiPlatformPage() {
           </p>
           <QuotePopupButton
             service="B2B AI Platform"
-            className="inline-block px-10 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
+            className="inline-block px-10 py-4 bg-ias-brown-dark text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-ias-brown-mid"
           >
             Book a Discovery Call
           </QuotePopupButton>

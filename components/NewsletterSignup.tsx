@@ -28,7 +28,7 @@ export default function NewsletterSignup() {
   return (
     <section className="bg-white py-[48px] px-6" style={{ borderTop: '1px solid #E8E4DF', borderBottom: '1px solid #E8E4DF' }}>
       <div className="max-w-[560px] mx-auto text-center">
-        <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
+        <p className="text-ias-brown-dark text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
           Free Business Growth Consultation
         </p>
         <h2 className="text-[24px] md:text-[32px] font-extrabold text-[#1A1A1A] leading-tight mb-3">

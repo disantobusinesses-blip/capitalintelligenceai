@@ -12,8 +12,9 @@ import React, { useEffect, useRef, useState } from 'react'
  *    (`border-neutral-800 bg-neutral-900 text-neutral-200`, `rounded-xl`),
  *    which would have overridden the section's own tokens. The base class is
  *    now structural only, so the caller supplies surface, border and radius.
- *  - Default spotlight is the brand accent (#C9A07A) rather than white, so it
- *    reads on the light surfaces this site uses.
+ *  - Default spotlight is the mid brand brown rather than white, so it reads on
+ *    the light surfaces this site uses. Driven by the --ias-brown-mid-rgb
+ *    channels so it tracks the palette instead of pinning a hex.
  *  - Pointer events instead of mouse events. The stock handlers are
  *    mouse-only, leaving the effect dead on touch; pointer events give phones
  *    the same spotlight on tap that a desktop gets on hover.
@@ -27,7 +28,7 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const SpotlightCard = ({
   children,
   className,
-  spotlightColor = 'rgba(201, 160, 122, 0.28)',
+  spotlightColor = 'rgb(var(--ias-brown-mid-rgb) / 0.28)',
   ...props
 }: SpotlightCardProps) => {
   const divRef = useRef<HTMLDivElement>(null)

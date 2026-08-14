@@ -16,7 +16,7 @@ export default function DigitalGrowthProof() {
       <div className="max-w-[1200px] mx-auto">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className="text-[#C9A07A] text-[13px] font-semibold tracking-[1.5px] uppercase">
+          <p className="text-ias-brown-mid text-[13px] font-semibold tracking-[1.5px] uppercase">
             Results, Not Promises
           </p>
           <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-[#3D2817] mt-3 text-balance`}>
@@ -31,7 +31,7 @@ export default function DigitalGrowthProof() {
         <div className="grid md:grid-cols-3 gap-6 items-start">
           {/* Column 1, Social Reach (Instagram, client results) */}
           <div className="flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8">
-            <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.2px] uppercase">
+            <p className="text-ias-brown-mid text-[12px] font-semibold tracking-[1.2px] uppercase">
               Social Reach
             </p>
             <CountUp
@@ -62,7 +62,7 @@ export default function DigitalGrowthProof() {
 
           {/* Column 2, Search Growth (confirmed: 892 clicks, 59.4K impressions) */}
           <div className="flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8">
-            <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.2px] uppercase">
+            <p className="text-ias-brown-mid text-[12px] font-semibold tracking-[1.2px] uppercase">
               Search Growth
             </p>
             <div className="flex items-end gap-6 mt-3">
@@ -96,7 +96,7 @@ export default function DigitalGrowthProof() {
 
           {/* Column 3, Get Mentioned By AI (confirmed: 84 sessions) */}
           <div className="flex flex-col bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] p-8">
-            <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.2px] uppercase">
+            <p className="text-ias-brown-mid text-[12px] font-semibold tracking-[1.2px] uppercase">
               Get Mentioned By AI
             </p>
             <div className="mt-3">

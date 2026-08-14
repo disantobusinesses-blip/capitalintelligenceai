@@ -3,15 +3,28 @@
 @tailwind utilities;
 
 @layer base {
-  /* The three brown tones taken from the IAS logo, used by the homepage
-     pricing teaser cards. These are close approximations rather than exact
-     pixel samples of the logo PNG — if precise matching is needed, resample
-     the logo and update these three values, since every consumer references
-     the variables rather than hardcoding the hex. */
+  /* The three brown tones sourced from the IAS monogram logo. Every consumer
+     references these variables (or the matching Tailwind `ias-brown-*` tokens)
+     rather than hardcoding hex, so the whole palette is swappable here.
+
+     Usage rules:
+       dark  #473126 - primary text links, active nav states, primary button
+                       backgrounds, icon strokes
+       mid   #724935 - secondary accents, hover states, section dividers
+       light #9E684C - large display backgrounds, card backgrounds, section
+                       wash colours, and display headline text ONLY.
+                       Never use light for body copy or any text under 18px:
+                       it fails contrast against the #F8F7F4 page background. */
   :root {
-    --ias-brown-dark: #4A2F23;
-    --ias-brown-mid: #8B5A3C;
-    --ias-brown-light: #C9A07A;
+    --ias-brown-dark: #473126;
+    --ias-brown-mid: #724935;
+    --ias-brown-light: #9E684C;
+    /* Same three tones as space separated RGB channels. The Tailwind tokens
+       consume these so utilities can take an opacity modifier, e.g.
+       `border-ias-brown-mid/40`, which is not possible with a hex variable. */
+    --ias-brown-dark-rgb: 71 49 38;
+    --ias-brown-mid-rgb: 114 73 53;
+    --ias-brown-light-rgb: 158 104 76;
   }
   html {
     scroll-behavior: smooth;
@@ -45,7 +58,7 @@
     transition: all 0.2s ease;
   }
   .btn-primary {
-    background-color: #1A1A1A;
+    background-color: var(--ias-brown-dark);
     color: #FFFFFF;
     border-radius: 6px;
     padding: 12px 24px;
@@ -53,19 +66,19 @@
     transition: background-color 0.2s ease;
   }
   .btn-primary:hover {
-    background-color: #2D2D2D;
+    background-color: var(--ias-brown-mid);
   }
   .btn-secondary {
     background-color: transparent;
-    border: 2px solid #1A1A1A;
-    color: #1A1A1A;
+    border: 2px solid var(--ias-brown-dark);
+    color: var(--ias-brown-dark);
     border-radius: 6px;
     padding: 12px 24px;
     font-weight: 600;
     transition: all 0.2s ease;
   }
   .btn-secondary:hover {
-    background-color: #1A1A1A;
+    background-color: var(--ias-brown-dark);
     color: #FFFFFF;
   }
   .card-base {
@@ -77,7 +90,7 @@
   }
   .card-base:hover {
     border: 1px solid #E8E4DF;
-    border-top: 3px solid #5C3D2E;
+    border-top: 3px solid var(--ias-brown-mid);
     box-shadow: 0 8px 32px rgba(0,0,0,0.10);
   }
 }

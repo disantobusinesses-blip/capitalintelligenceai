@@ -341,7 +341,7 @@ export default function BlogPostAISEO() {
                     'Authoritative: having a clear author, organisation, and publication date signals that your content can be trusted',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-2 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-2 flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -444,7 +444,7 @@ export default function BlogPostAISEO() {
                   <li>
                     <Link
                       href="/blog/how-ai-can-boost-business-performance"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       How AI Can Boost Business Performance, Save Time, and Increase Revenue →
                     </Link>
@@ -452,7 +452,7 @@ export default function BlogPostAISEO() {
                   <li>
                     <Link
                       href="/features"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       Website Features & AI Add-Ons →
                     </Link>
@@ -460,7 +460,7 @@ export default function BlogPostAISEO() {
                   <li>
                     <Link
                       href="/services"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       SEO & AI Visibility Plans →
                     </Link>

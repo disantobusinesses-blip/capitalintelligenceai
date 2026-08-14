@@ -252,7 +252,7 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
             href={bookingResult.calendarLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-[#5C3D2E] hover:underline text-sm font-medium"
+            className="flex items-center gap-2 text-ias-brown-dark hover:underline text-sm font-medium"
           >
             <ExternalLink className="w-4 h-4" />
             Add to Google Calendar
@@ -268,7 +268,7 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
             setConsultStatus('idle')
             setBookingResult(null)
           }}
-          className="text-sm text-[#5C3D2E] hover:underline"
+          className="text-sm text-ias-brown-dark hover:underline"
         >
           Book another consultation
         </button>
@@ -433,7 +433,7 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-1 ${
                 selectedServices.includes(service.id)
                   ? 'bg-[#1A1A1A] text-white'
-                  : 'bg-[#F8F7F4] text-[#1A1A1A] border border-[#E8E4DF] hover:border-[#5C3D2E]'
+                  : 'bg-[#F8F7F4] text-[#1A1A1A] border border-[#E8E4DF] hover:border-ias-brown-dark'
               }`}
             >
               {selectedServices.includes(service.id) && (

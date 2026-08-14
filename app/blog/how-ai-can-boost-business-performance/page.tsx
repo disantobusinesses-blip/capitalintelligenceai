@@ -444,7 +444,7 @@ export default function BlogPostAIBusiness() {
                     'Using AI to accelerate content production for your blog and social channels',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-2 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-2 flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -492,7 +492,7 @@ export default function BlogPostAIBusiness() {
                   <li>
                     <Link
                       href="/blog/how-ai-can-boost-seo"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       How AI Can Boost SEO and AI Search Engine Optimisation →
                     </Link>
@@ -500,7 +500,7 @@ export default function BlogPostAIBusiness() {
                   <li>
                     <Link
                       href="/features"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       Website Features & AI Add-Ons →
                     </Link>
@@ -508,7 +508,7 @@ export default function BlogPostAIBusiness() {
                   <li>
                     <Link
                       href="/services"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       AI Systems Integration Pricing →
                     </Link>

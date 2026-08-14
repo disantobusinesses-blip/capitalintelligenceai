@@ -21,7 +21,7 @@ export default function SeoGuarantee() {
       >
         {/* Shield Icon */}
         <div className="flex justify-center mb-6">
-          <ShieldCheck className="w-12 h-12 text-[#5C3D2E]" strokeWidth={1.5} />
+          <ShieldCheck className="w-12 h-12 text-ias-brown-dark" strokeWidth={1.5} />
         </div>
 
         {/* Heading */}

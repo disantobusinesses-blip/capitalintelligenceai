@@ -30,6 +30,7 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/" className="hover:text-white transition-colors duration-200">Home</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors duration-200">About</Link></li>
               <li><Link href="/services" className="hover:text-white transition-colors duration-200">Services</Link></li>
               <li><Link href="/projects" className="hover:text-white transition-colors duration-200">Projects</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors duration-200">Blog</Link></li>
@@ -40,9 +41,11 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Services</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/services" className="hover:text-white transition-colors duration-200">Website Packages</Link></li>
-              <li><Link href="/services/b2b-crm-ai-platform" className="hover:text-white transition-colors duration-200">Other Services</Link></li>
-              <li><Link href="/blog" className="hover:text-white transition-colors duration-200">Blog</Link></li>
+              <li><Link href="/services#website-packages" className="hover:text-white transition-colors duration-200">Website Packages</Link></li>
+              <li><Link href="/services#hosting" className="hover:text-white transition-colors duration-200">Website Hosting</Link></li>
+              <li><Link href="/services#seo-blog-content" className="hover:text-white transition-colors duration-200">SEO Blog Content</Link></li>
+              <li><Link href="/services#social-growth" className="hover:text-white transition-colors duration-200">Instagram &amp; Social Growth</Link></li>
+              <li><Link href="/services#b2b" className="hover:text-white transition-colors duration-200">B2B Lead Generation</Link></li>
             </ul>
           </div>
 

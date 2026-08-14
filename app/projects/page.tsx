@@ -253,7 +253,7 @@ export default function ProjectsPage() {
       <section className="py-16 px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
-            <p className="text-[#5C3D2E] text-lg font-semibold tracking-[1.5px] uppercase mb-2">
+            <p className="text-ias-brown-dark text-lg font-semibold tracking-[1.5px] uppercase mb-2">
               Compare Packages
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
@@ -268,7 +268,7 @@ export default function ProjectsPage() {
       <section id="foundation" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
-            <p className="text-[#5C3D2E] text-lg font-semibold tracking-[1.5px] uppercase mb-2">
+            <p className="text-ias-brown-dark text-lg font-semibold tracking-[1.5px] uppercase mb-2">
               Foundation Examples
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
@@ -283,7 +283,7 @@ export default function ProjectsPage() {
       <section id="growth" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
-            <p className="text-[#5C3D2E] text-lg font-semibold tracking-[1.5px] uppercase mb-2">
+            <p className="text-ias-brown-dark text-lg font-semibold tracking-[1.5px] uppercase mb-2">
               Growth Examples
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
@@ -298,7 +298,7 @@ export default function ProjectsPage() {
       <section id="bespoke" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
-            <p className="text-[#5C3D2E] text-lg font-semibold tracking-[1.5px] uppercase mb-2">
+            <p className="text-ias-brown-dark text-lg font-semibold tracking-[1.5px] uppercase mb-2">
               Bespoke Examples
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">

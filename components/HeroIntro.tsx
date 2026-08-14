@@ -45,10 +45,10 @@ export default function HeroIntro() {
           {/* Compact pricing teaser → links through to the full /services pricing */}
           <p className="text-[15px] text-[#3D2817] font-semibold mt-5 flex flex-wrap items-center gap-x-3 gap-y-1">
             <span>Packages from $1,999</span>
-            <span className="text-[#C9A07A]" aria-hidden="true">|</span>
+            <span className="text-ias-brown-mid" aria-hidden="true">|</span>
             <Link
               href="/services"
-              className="text-[#5C3D2E] underline underline-offset-4 decoration-[#C9A07A]/50 hover:decoration-[#C9A07A] transition-colors duration-200"
+              className="text-ias-brown-dark underline underline-offset-4 decoration-ias-brown-mid/50 hover:decoration-ias-brown-mid transition-colors duration-200"
             >
               View packages
             </Link>
@@ -59,14 +59,14 @@ export default function HeroIntro() {
             {/* Magnetic pull on desktop; the wrapper keeps the button's
                 full-width-on-mobile behaviour rather than shrink-wrapping it. */}
             <Magnetic intensity={0.35} range={120} className="w-full sm:w-auto">
-              <QuotePopupButton className="w-full sm:w-auto bg-[#C9A07A] text-[#3D2817] font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-[#B98D64] transition-colors duration-200">
+              <QuotePopupButton className="w-full sm:w-auto bg-ias-brown-mid text-[#3D2817] font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-ias-brown-dark transition-colors duration-200">
                 Request Quote/Call
               </QuotePopupButton>
             </Magnetic>
 
             <a
               href="#portfolio"
-              className="text-[#6B6560] hover:text-[#C9A07A] font-medium text-[15px] underline underline-offset-4 decoration-[#C9A07A]/40 hover:decoration-[#C9A07A] transition-colors duration-200 text-center sm:text-left"
+              className="text-[#6B6560] hover:text-ias-brown-mid font-medium text-[15px] underline underline-offset-4 decoration-ias-brown-mid/40 hover:decoration-ias-brown-mid transition-colors duration-200 text-center sm:text-left"
             >
               See Our Work
             </a>

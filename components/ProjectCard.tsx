@@ -43,7 +43,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   const [imgFailed, setImgFailed] = useState(false)
 
   return (
-    <div className="bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+    <div className="bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
       {/* Project Image or Placeholder */}
       <div className="aspect-video bg-[#E8E4DF] relative overflow-hidden">
         {project.image && !imgFailed ? (
@@ -63,7 +63,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         ) : (
           <ProjectPlaceholder title={project.title} color={project.color} url={project.url} />
         )}
-        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#5C3D2E] to-transparent opacity-50" />
+        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-ias-brown-dark to-transparent opacity-50" />
       </div>
 
       {/* Project Info */}

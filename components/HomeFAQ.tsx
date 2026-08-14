@@ -46,7 +46,7 @@ export default function HomeFAQ() {
       />
       <div className="max-w-[800px] mx-auto">
         <div className="text-center mb-12">
-          <p className="text-[#C9A07A] text-[13px] font-semibold tracking-[1.5px] uppercase">
+          <p className="text-ias-brown-mid text-[13px] font-semibold tracking-[1.5px] uppercase">
             FAQ
           </p>
           <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-[#3D2817] mt-3`}>
@@ -58,11 +58,11 @@ export default function HomeFAQ() {
           {FAQS.map((item) => (
             <details
               key={item.q}
-              className="group bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] px-6 py-1 open:border-[#C9A07A]"
+              className="group bg-[#F8F7F4] border border-[#E8E4DF] rounded-[10px] px-6 py-1 open:border-ias-brown-mid"
             >
               <summary className="flex items-center justify-between gap-4 py-4 cursor-pointer list-none text-[#3D2817] font-medium text-[16px]">
                 {item.q}
-                <ChevronDown className="w-4 h-4 text-[#C9A07A] flex-shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                <ChevronDown className="w-4 h-4 text-ias-brown-mid flex-shrink-0 transition-transform duration-200 group-open:rotate-180" />
               </summary>
               <p className="text-[#6B6560] text-sm leading-relaxed pb-5">{item.a}</p>
             </details>

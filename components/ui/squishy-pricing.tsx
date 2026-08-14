@@ -122,7 +122,7 @@ const PALETTES: Record<SquishyTone, Palette> = {
     includesTitle: 'text-white',
     includesBody: 'text-white/70',
     outlineBtn: 'border border-white/30 text-white hover:bg-white/10',
-    solidBtn: 'bg-white text-[#4A2F23] hover:bg-white/90',
+    solidBtn: 'bg-white text-ias-brown-dark hover:bg-white/90',
     ring: 'ring-2 ring-[#2E1B12]',
   },
   mid: {
@@ -137,7 +137,7 @@ const PALETTES: Record<SquishyTone, Palette> = {
     includesTitle: 'text-white',
     includesBody: 'text-white/75',
     outlineBtn: 'border border-white/30 text-white hover:bg-white/10',
-    solidBtn: 'bg-white text-[#8B5A3C] hover:bg-white/90',
+    solidBtn: 'bg-white text-ias-brown-mid hover:bg-white/90',
     ring: 'ring-2 ring-[#2E1B12]',
   },
   light: {

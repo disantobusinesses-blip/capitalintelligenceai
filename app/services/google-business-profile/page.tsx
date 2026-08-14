@@ -67,7 +67,7 @@ export default function GoogleBusinessProfilePage() {
           </Link>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-[6px] bg-[#F8F7F4] border border-[#E8E4DF] flex items-center justify-center">
-              <MapPin className="w-5 h-5 text-[#5C3D2E]" strokeWidth={1.5} />
+              <MapPin className="w-5 h-5 text-ias-brown-dark" strokeWidth={1.5} />
             </div>
             <span className="text-sm font-bold text-[#1A1A1A] hidden sm:block">Intelligent AI Systems</span>
           </div>
@@ -77,7 +77,7 @@ export default function GoogleBusinessProfilePage() {
       {/* Hero */}
       <section className="py-16 md:py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 bg-white border border-[#E8E4DF] rounded-full text-xs font-semibold text-[#5C3D2E] uppercase tracking-wide mb-6">
+          <span className="inline-block px-4 py-1.5 bg-white border border-[#E8E4DF] rounded-full text-xs font-semibold text-ias-brown-dark uppercase tracking-wide mb-6">
             Local Visibility
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A1A1A] leading-tight mb-6">
@@ -122,7 +122,7 @@ export default function GoogleBusinessProfilePage() {
                   className="bg-[#F8F7F4] border border-[#E8E4DF] rounded-[8px] p-6 transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)]"
                 >
                   <div className="w-10 h-10 bg-white border border-[#E8E4DF] rounded-[6px] flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-[#5C3D2E]" strokeWidth={1.5} />
+                    <Icon className="w-5 h-5 text-ias-brown-dark" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-base font-bold text-[#1A1A1A] mb-2">{feature.title}</h3>
                   <p className="text-sm text-[#6B6560] leading-relaxed">{feature.description}</p>
@@ -177,7 +177,7 @@ export default function GoogleBusinessProfilePage() {
               className="w-full flex items-center justify-between px-7 py-5 text-left hover:bg-[#F8F7F4] transition-colors duration-150"
             >
               <div>
-                <span className="text-xs font-bold text-[#5C3D2E] uppercase tracking-widest block mb-0.5">
+                <span className="text-xs font-bold text-ias-brown-dark uppercase tracking-widest block mb-0.5">
                   Optional Add-on
                 </span>
                 <span className="text-base font-bold text-[#1A1A1A]">

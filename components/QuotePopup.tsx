@@ -270,7 +270,7 @@ export default function QuotePopup() {
             >
               <X className="w-5 h-5 text-white/80" />
             </button>
-            <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.5px] uppercase">
+            <p className="text-ias-brown-mid text-[12px] font-semibold tracking-[1.5px] uppercase">
               Let&apos;s talk
             </p>
             <h2 className="text-xl font-bold text-white mt-1">How can we help?</h2>
@@ -282,10 +282,10 @@ export default function QuotePopup() {
             <button
               type="button"
               onClick={() => setView('form')}
-              className="group w-full flex items-center gap-4 rounded-xl border border-[#E8E4DF] bg-white p-4 text-left transition-all duration-200 hover:border-[#5C3D2E] hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]"
+              className="group w-full flex items-center gap-4 rounded-xl border border-[#E8E4DF] bg-white p-4 text-left transition-all duration-200 hover:border-ias-brown-dark hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]"
             >
               <span className="flex-shrink-0 w-11 h-11 rounded-full bg-[#F3EFE9] flex items-center justify-center">
-                <FileText className="w-5 h-5 text-[#5C3D2E]" strokeWidth={1.75} />
+                <FileText className="w-5 h-5 text-ias-brown-dark" strokeWidth={1.75} />
               </span>
               <span className="flex-1">
                 <span className="block font-bold text-[#1A1A1A]">Get a Quote</span>
@@ -293,17 +293,17 @@ export default function QuotePopup() {
                   Tell us about your project and get a tailored quote within 1 hour.
                 </span>
               </span>
-              <ArrowRight className="w-5 h-5 text-[#9E9790] group-hover:text-[#5C3D2E] group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-5 h-5 text-[#9E9790] group-hover:text-ias-brown-dark group-hover:translate-x-0.5 transition-all" />
             </button>
 
             {/* Option 2, Book a Call (reuses existing 15-min consultation booking) */}
             <button
               type="button"
               onClick={goToBooking}
-              className="group w-full flex items-center gap-4 rounded-xl border border-[#E8E4DF] bg-white p-4 text-left transition-all duration-200 hover:border-[#5C3D2E] hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]"
+              className="group w-full flex items-center gap-4 rounded-xl border border-[#E8E4DF] bg-white p-4 text-left transition-all duration-200 hover:border-ias-brown-dark hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]"
             >
               <span className="flex-shrink-0 w-11 h-11 rounded-full bg-[#F3EFE9] flex items-center justify-center">
-                <CalendarClock className="w-5 h-5 text-[#5C3D2E]" strokeWidth={1.75} />
+                <CalendarClock className="w-5 h-5 text-ias-brown-dark" strokeWidth={1.75} />
               </span>
               <span className="flex-1">
                 <span className="block font-bold text-[#1A1A1A]">Book a Call</span>
@@ -311,7 +311,7 @@ export default function QuotePopup() {
                   Grab a free 15-minute phone consultation at a time that suits you.
                 </span>
               </span>
-              <ArrowRight className="w-5 h-5 text-[#9E9790] group-hover:text-[#5C3D2E] group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-5 h-5 text-[#9E9790] group-hover:text-ias-brown-dark group-hover:translate-x-0.5 transition-all" />
             </button>
 
             <div className="pt-1">
@@ -345,7 +345,7 @@ export default function QuotePopup() {
               <X className="w-5 h-5 text-white/80" />
             </button>
             <div className="text-center px-6">
-              <p className="text-[#C9A07A] text-[12px] font-semibold tracking-[1.5px] uppercase">
+              <p className="text-ias-brown-mid text-[12px] font-semibold tracking-[1.5px] uppercase">
                 Book a Call
               </p>
               <h2 className="text-xl font-bold text-white mt-1">Free 15-Minute Consultation</h2>
@@ -406,7 +406,7 @@ export default function QuotePopup() {
           <div>
             <label htmlFor="qp-name" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <User className="w-4 h-4 text-[#5C3D2E]" />
+                <User className="w-4 h-4 text-ias-brown-dark" />
                 Name <span className="text-red-400">*</span>
               </span>
             </label>
@@ -417,7 +417,7 @@ export default function QuotePopup() {
               onChange={(e) => setName(e.target.value)}
               placeholder="Your full name"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -425,7 +425,7 @@ export default function QuotePopup() {
           <div>
             <label htmlFor="qp-email" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <Mail className="w-4 h-4 text-[#5C3D2E]" />
+                <Mail className="w-4 h-4 text-ias-brown-dark" />
                 Email <span className="text-red-400">*</span>
               </span>
             </label>
@@ -436,7 +436,7 @@ export default function QuotePopup() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -444,7 +444,7 @@ export default function QuotePopup() {
           <div>
             <label htmlFor="qp-phone" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <Phone className="w-4 h-4 text-[#5C3D2E]" />
+                <Phone className="w-4 h-4 text-ias-brown-dark" />
                 Phone <span className="text-red-400">*</span>
               </span>
             </label>
@@ -455,7 +455,7 @@ export default function QuotePopup() {
               onChange={(e) => setPhone(e.target.value)}
               placeholder="0412 345 678"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -475,7 +475,7 @@ export default function QuotePopup() {
                     type="checkbox"
                     checked={services.includes(opt)}
                     onChange={() => toggleService(opt)}
-                    className="w-4 h-4 rounded border-[#E8E4DF] text-[#5C3D2E] focus:ring-[#5C3D2E] cursor-pointer"
+                    className="w-4 h-4 rounded border-[#E8E4DF] text-ias-brown-dark focus:ring-ias-brown-dark cursor-pointer"
                   />
                   <span>
                     {opt}
@@ -492,7 +492,7 @@ export default function QuotePopup() {
           <div>
             <label htmlFor="qp-message" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <MessageSquare className="w-4 h-4 text-[#5C3D2E]" />
+                <MessageSquare className="w-4 h-4 text-ias-brown-dark" />
                 Tell us about your business{' '}
                 <span className="font-normal text-[#9E9790]">(optional)</span>
               </span>
@@ -503,7 +503,7 @@ export default function QuotePopup() {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="What does your business do, and what are you looking to achieve?"
               rows={3}
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 resize-none"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200 resize-none"
             />
           </div>
 
@@ -532,7 +532,7 @@ export default function QuotePopup() {
                         type="checkbox"
                         checked={selectedAddons.includes(addon)}
                         onChange={() => toggleAddon(addon)}
-                        className="w-4 h-4 rounded border-[#E8E4DF] text-[#5C3D2E] focus:ring-[#5C3D2E] cursor-pointer"
+                        className="w-4 h-4 rounded border-[#E8E4DF] text-ias-brown-dark focus:ring-ias-brown-dark cursor-pointer"
                       />
                       {addon}
                     </label>
@@ -550,7 +550,7 @@ export default function QuotePopup() {
                               value={tier}
                               checked={blogTier === tier}
                               onChange={() => setBlogTier(tier)}
-                              className="w-4 h-4 border-[#E8E4DF] text-[#5C3D2E] focus:ring-[#5C3D2E] cursor-pointer"
+                              className="w-4 h-4 border-[#E8E4DF] text-ias-brown-dark focus:ring-ias-brown-dark cursor-pointer"
                             />
                             {tier}
                           </label>

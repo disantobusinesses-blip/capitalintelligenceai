@@ -220,7 +220,7 @@ export default function GetStartedForm({
           <div>
             <label htmlFor="name" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <User className="w-4 h-4 text-[#5C3D2E]" />
+                <User className="w-4 h-4 text-ias-brown-dark" />
                 Your Name <span className="text-red-400">*</span>
               </span>
             </label>
@@ -231,7 +231,7 @@ export default function GetStartedForm({
               onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
               placeholder="John Smith"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -239,7 +239,7 @@ export default function GetStartedForm({
           <div>
             <label htmlFor="businessName" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <Building2 className="w-4 h-4 text-[#5C3D2E]" />
+                <Building2 className="w-4 h-4 text-ias-brown-dark" />
                 Business Name <span className="text-red-400">*</span>
               </span>
             </label>
@@ -250,7 +250,7 @@ export default function GetStartedForm({
               onChange={(e) => setFormData((prev) => ({ ...prev, businessName: e.target.value }))}
               placeholder="Your Business Name"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -258,7 +258,7 @@ export default function GetStartedForm({
           <div>
             <label htmlFor="email" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <Mail className="w-4 h-4 text-[#5C3D2E]" />
+                <Mail className="w-4 h-4 text-ias-brown-dark" />
                 Email Address <span className="text-red-400">*</span>
               </span>
             </label>
@@ -269,7 +269,7 @@ export default function GetStartedForm({
               onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
               placeholder="john@example.com"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -277,7 +277,7 @@ export default function GetStartedForm({
           <div>
             <label htmlFor="phone" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <Phone className="w-4 h-4 text-[#5C3D2E]" />
+                <Phone className="w-4 h-4 text-ias-brown-dark" />
                 Phone Number
               </span>
             </label>
@@ -287,7 +287,7 @@ export default function GetStartedForm({
               value={formData.phone}
               onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
               placeholder="0412 345 678"
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -305,7 +305,7 @@ export default function GetStartedForm({
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     formData.services.includes(service.id)
                       ? 'bg-[#1A1A1A] text-white'
-                      : 'bg-[#F8F7F4] text-[#1A1A1A] border border-[#E8E4DF] hover:border-[#5C3D2E]'
+                      : 'bg-[#F8F7F4] text-[#1A1A1A] border border-[#E8E4DF] hover:border-ias-brown-dark'
                   }`}
                 >
                   {formData.services.includes(service.id) && (
@@ -333,15 +333,15 @@ export default function GetStartedForm({
                     aria-pressed={isSelected}
                     className={`rounded-lg border px-4 py-3 text-left transition-all duration-200 ${
                       isSelected
-                        ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E] bg-white'
-                        : 'bg-white border-[#E8E4DF] hover:border-[#5C3D2E]'
+                        ? 'border-ias-brown-dark ring-2 ring-ias-brown-dark bg-white'
+                        : 'bg-white border-[#E8E4DF] hover:border-ias-brown-dark'
                     }`}
                   >
                     <span className="flex items-center gap-1.5 font-semibold text-sm text-[#1A1A1A]">
                       {isSelected && <Check className="w-3.5 h-3.5 flex-shrink-0" />}
                       {plan.label}
                     </span>
-                    <span className="block mt-0.5 text-sm font-semibold text-[#5C3D2E]">
+                    <span className="block mt-0.5 text-sm font-semibold text-ias-brown-dark">
                       {plan.price}
                     </span>
                   </button>
@@ -374,7 +374,7 @@ export default function GetStartedForm({
                     className={`w-full px-4 py-3 rounded-lg text-left text-sm font-medium transition-all duration-200 ${
                       formData.addOns.includes(addOn.id)
                         ? 'bg-[#1A1A1A] text-white'
-                        : 'bg-white text-[#1A1A1A] border border-[#E8E4DF] hover:border-[#5C3D2E]'
+                        : 'bg-white text-[#1A1A1A] border border-[#E8E4DF] hover:border-ias-brown-dark'
                     }`}
                   >
                     <span className="flex items-center gap-2">
@@ -402,7 +402,7 @@ export default function GetStartedForm({
                       id="seoPackage"
                       value={formData.seoPackage}
                       onChange={(e) => setFormData((prev) => ({ ...prev, seoPackage: e.target.value }))}
-                      className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 appearance-none cursor-pointer"
+                      className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200 appearance-none cursor-pointer"
                     >
                       {seoPackageOptions.map((option) => (
                         <option key={option.value} value={option.value}>
@@ -428,7 +428,7 @@ export default function GetStartedForm({
                 id="budget"
                 value={formData.budget}
                 onChange={(e) => setFormData((prev) => ({ ...prev, budget: e.target.value }))}
-                className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 appearance-none cursor-pointer"
+                className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200 appearance-none cursor-pointer"
               >
                 {budgetOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -444,7 +444,7 @@ export default function GetStartedForm({
           <div>
             <label htmlFor="message" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
-                <MessageSquare className="w-4 h-4 text-[#5C3D2E]" />
+                <MessageSquare className="w-4 h-4 text-ias-brown-dark" />
                 Tell us about your project
               </span>
             </label>
@@ -454,7 +454,7 @@ export default function GetStartedForm({
               onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
               placeholder="What kind of website do you need? Any specific features or requirements?"
               rows={3}
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-[#5C3D2E] transition-colors duration-200 resize-none"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200 resize-none"
             />
           </div>
 

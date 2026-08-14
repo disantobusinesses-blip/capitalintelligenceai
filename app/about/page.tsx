@@ -106,7 +106,7 @@ export default function AboutPage() {
               return (
                 <div
                   key={index}
-                  className="bg-white border border-[#E8E4DF] rounded-[6px] p-6 smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
+                  className="bg-white border border-[#E8E4DF] rounded-[6px] p-6 smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
                 >
                   <div className="w-12 h-12 bg-[#F8F7F4] rounded-[6px] border border-[#E8E4DF] flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-[#1A1A1A]" />
@@ -125,71 +125,71 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-[#1A1A1A] text-center mb-12">What We Offer</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+            <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
               <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">Professional Websites</h3>
               <ul className="space-y-2 text-[#6B6560] text-sm">
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   Fixed-price packages from $1,999 AUD
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   Foundation, Growth &amp; Bespoke tiers, 1 to 10+ pages
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   Mobile responsive & SEO optimised
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   Modern, fast-loading designs
                 </li>
               </ul>
               <Link
                 href="/services"
-                className="inline-block mt-4 text-sm font-semibold text-[#5C3D2E] underline underline-offset-2 hover:text-[#3D2817]"
+                className="inline-block mt-4 text-sm font-semibold text-ias-brown-dark underline underline-offset-2 hover:text-[#3D2817]"
               >
                 View packages
               </Link>
             </div>
-            <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+            <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
               <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">AI Integrations</h3>
               <ul className="space-y-2 text-[#6B6560] text-sm">
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   24/7 AI chat support for your website
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   Automated booking systems
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   AI-powered customer email replies
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   Custom AI workflows & automation
                 </li>
               </ul>
             </div>
-            <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-[#5C3D2E] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+            <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
               <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">Ongoing Support</h3>
               <ul className="space-y-2 text-[#6B6560] text-sm">
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   Monthly hosting & maintenance plans
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   SEO & AI visibility packages
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   Security updates & backups
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-1.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
                   Dedicated tech support
                 </li>
               </ul>

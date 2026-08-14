@@ -69,7 +69,7 @@ export default function PortfolioStrip() {
       <div className="max-w-[1200px] mx-auto">
         <div className="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
           <div className="max-w-2xl">
-            <p className="text-[#C9A07A] text-[13px] font-semibold tracking-[1.5px] uppercase">
+            <p className="text-ias-brown-mid text-[13px] font-semibold tracking-[1.5px] uppercase">
               Proof of Work
             </p>
             <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-[#3D2817] mt-3`}>
@@ -114,7 +114,7 @@ export default function PortfolioStrip() {
                     {...(project.url
                       ? { href: project.url, target: '_blank', rel: 'noopener noreferrer' }
                       : {})}
-                    className="group block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden hover:border-[#C9A07A] transition-colors duration-200"
+                    className="group block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden hover:border-ias-brown-mid transition-colors duration-200"
                   >
                     <div className="relative aspect-video bg-[#F0EDE7] overflow-hidden border-b border-[#E8E4DF]">
                       <PortfolioCardImage
@@ -126,7 +126,7 @@ export default function PortfolioStrip() {
                       <h3 className="text-[#3D2817] font-semibold text-lg mb-1.5">{project.title}</h3>
                       <p className="text-[#6B6560] text-sm leading-relaxed mb-4">{project.result}</p>
                       {project.url && (
-                        <span className="inline-flex items-center gap-1.5 text-[#C9A07A] text-sm font-semibold group-hover:gap-2.5 transition-all duration-200">
+                        <span className="inline-flex items-center gap-1.5 text-ias-brown-mid text-sm font-semibold group-hover:gap-2.5 transition-all duration-200">
                           View Live Site
                           <ExternalLink className="w-3.5 h-3.5" />
                         </span>

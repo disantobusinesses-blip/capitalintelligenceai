@@ -24,7 +24,7 @@ export default function MarketAuthorityPlanPage() {
 
         {/* Header */}
         <header className="mb-10">
-          <span className="inline-block px-3 py-1 bg-[#F8F7F4] border border-[#5C3D2E] text-[#5C3D2E] rounded-full text-xs font-semibold mb-4">
+          <span className="inline-block px-3 py-1 bg-[#F8F7F4] border border-ias-brown-dark text-ias-brown-dark rounded-full text-xs font-semibold mb-4">
             Website Growth
           </span>
           <h1 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] leading-tight mb-4 text-balance">
@@ -38,7 +38,7 @@ export default function MarketAuthorityPlanPage() {
 
         {/* Comparison table */}
         <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-6 mb-10">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#5C3D2E] mb-4">What Others Charge vs What We Charge</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-ias-brown-dark mb-4">What Others Charge vs What We Charge</p>
           <div className="space-y-3">
             <div className="flex justify-between items-center text-sm border-b border-[#E8E4DF] pb-3">
               <span className="text-[#6B6560]">Typical SEO Agencies</span>
@@ -49,8 +49,8 @@ export default function MarketAuthorityPlanPage() {
               <span className="text-[#1A1A1A] font-semibold">$800 – $2,500+ / month</span>
             </div>
             <div className="flex justify-between items-center text-sm">
-              <span className="text-[#5C3D2E] font-semibold">Market Authority Plan</span>
-              <span className="text-[#5C3D2E] font-bold text-base">$599 / month</span>
+              <span className="text-ias-brown-dark font-semibold">Market Authority Plan</span>
+              <span className="text-ias-brown-dark font-bold text-base">$599 / month</span>
             </div>
           </div>
           <div className="mt-4 pt-3 border-t border-[#E8E4DF] bg-[#F8F7F4] rounded-[6px] p-3">
@@ -84,7 +84,7 @@ export default function MarketAuthorityPlanPage() {
               'Full monthly reporting with traffic, rankings, and ROI visibility',
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-[#5C3D2E] flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-ias-brown-dark flex-shrink-0 mt-0.5" />
                 <span>{item}</span>
               </li>
             ))}
