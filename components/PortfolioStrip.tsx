@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowRight, ExternalLink, ImageOff } from 'lucide-react'
 import { display, body } from '@/lib/fonts'
 import PortfolioCardImage from '@/components/PortfolioCardImage'
+import DragCarousel from '@/components/ui/drag-carousel'
 
 interface LiveProject {
   title: string
@@ -85,12 +86,12 @@ export default function PortfolioStrip() {
           </Link>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <DragCarousel label="Client projects">
           {PORTFOLIO_PROJECTS.map((project) =>
             project.placeholder ? (
               <div
                 key={project.title}
-                className="block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden"
+                className="w-[85%] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] flex-shrink-0 snap-start block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden"
               >
                 <div className="relative aspect-video bg-[#F0EDE7] border-b border-[#E8E4DF] flex flex-col items-center justify-center gap-2 px-6 text-center">
                   <ImageOff className="w-6 h-6 text-[#9E9790]" strokeWidth={1.5} />
@@ -114,7 +115,7 @@ export default function PortfolioStrip() {
                     {...(project.url
                       ? { href: project.url, target: '_blank', rel: 'noopener noreferrer' }
                       : {})}
-                    className="group block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden hover:border-ias-brown-mid transition-colors duration-200"
+                    className="w-[85%] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] flex-shrink-0 snap-start group block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden hover:border-ias-brown-mid transition-colors duration-200"
                   >
                     <div className="relative aspect-video bg-[#F0EDE7] overflow-hidden border-b border-[#E8E4DF]">
                       <PortfolioCardImage
@@ -137,7 +138,7 @@ export default function PortfolioStrip() {
               })()
             )
           )}
-        </div>
+        </DragCarousel>
       </div>
     </section>
   )

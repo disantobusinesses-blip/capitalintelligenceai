@@ -30,9 +30,39 @@ function Cell({ value }: { value: FeatureValue }) {
  * Foundation / Growth / Bespoke feature comparison table. Shared between
  * /services and /projects so the ✓ / ✗ styling matches on both pages.
  */
+/** Column order matches FeatureRow.values. */
+const PACKAGES = ['Foundation', 'Growth', 'Bespoke'] as const
+
 export default function FeatureTable({ rows }: { rows: FeatureRow[] }) {
   return (
-    <div className="overflow-x-auto rounded-[10px] border border-[#E8E4DF] bg-white">
+    <>
+      {/* Mobile: one block per package. A 4-column table can't fit 390px without
+          a horizontal scroller that hides the Growth and Bespoke columns, which
+          defeats the point of a comparison, so below `md` the same data is
+          pivoted into stacked per-package lists. */}
+      <div className="flex flex-col gap-4 md:hidden">
+        {PACKAGES.map((pkg, col) => (
+          <div key={pkg} className="rounded-[10px] border border-[#E8E4DF] bg-white overflow-hidden">
+            <p className="px-4 py-3 text-sm font-semibold text-[#1A1A1A] bg-[#FAF9F7] border-b border-[#E8E4DF]">
+              {pkg}
+            </p>
+            <ul className="divide-y divide-[#E8E4DF]">
+              {rows.map((row) => (
+                <li key={row.label} className="flex items-center justify-between gap-4 px-4 py-3">
+                  <span className="text-[13.5px] leading-snug text-[#1A1A1A]">{row.label}</span>
+                  <span className="flex-shrink-0">
+                    <Cell value={row.values[col]} />
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop keeps the real table: side-by-side columns are the clearest
+          way to compare once there is room for them. */}
+      <div className="hidden md:block overflow-x-auto rounded-[10px] border border-[#E8E4DF] bg-white">
       <table className="w-full min-w-[560px] border-collapse">
         <thead>
           <tr className="border-b border-[#E8E4DF]">
@@ -57,6 +87,7 @@ export default function FeatureTable({ rows }: { rows: FeatureRow[] }) {
           ))}
         </tbody>
       </table>
-    </div>
+      </div>
+    </>
   )
 }
