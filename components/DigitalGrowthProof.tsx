@@ -54,7 +54,7 @@ export default function DigitalGrowthProof() {
                     fit="contain"
                     sizes="(max-width: 768px) 50vw, 16vw"
                   />
-                  <p className="text-[#9E9790] text-xs font-medium text-center mt-1.5">{snapshot.label}</p>
+                  <p className="text-[#9E684C] text-xs font-medium text-center mt-1.5">{snapshot.label}</p>
                 </div>
               ))}
             </div>
@@ -71,7 +71,7 @@ export default function DigitalGrowthProof() {
                   end={892}
                   className={`${body.className} block text-[40px] md:text-[48px] font-bold text-[#3D2817] leading-none`}
                 />
-                <span className="text-[#9E9790] text-xs font-medium uppercase tracking-wide">Clicks</span>
+                <span className="text-[#9E684C] text-xs font-medium uppercase tracking-wide">Clicks</span>
               </div>
               <div>
                 <CountUp
@@ -80,7 +80,7 @@ export default function DigitalGrowthProof() {
                   suffix="K"
                   className={`${body.className} block text-[40px] md:text-[48px] font-bold text-[#3D2817] leading-none`}
                 />
-                <span className="text-[#9E9790] text-xs font-medium uppercase tracking-wide">Impressions</span>
+                <span className="text-[#9E684C] text-xs font-medium uppercase tracking-wide">Impressions</span>
               </div>
             </div>
             <p className="text-[#6B6560] text-sm leading-relaxed mt-4">
@@ -104,7 +104,7 @@ export default function DigitalGrowthProof() {
                 end={84}
                 className={`${body.className} block text-[40px] md:text-[48px] font-bold text-[#3D2817] leading-none`}
               />
-              <span className="text-[#9E9790] text-xs font-medium uppercase tracking-wide">Sessions</span>
+              <span className="text-[#9E684C] text-xs font-medium uppercase tracking-wide">Sessions</span>
             </div>
             <p className="text-[#6B6560] text-sm leading-relaxed mt-4">
               Real sessions sourced from ChatGPT for a client, proof our GEO work shows up

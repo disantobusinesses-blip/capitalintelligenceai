@@ -10,15 +10,17 @@ module.exports = {
       colors: {
         // Three-tone brown system sourced from the IAS monogram logo.
         // Values live in app/globals.css as CSS variables so the palette is
-        // swappable in one place. See that file for the per-tone usage rules:
-        // `light` is for large display surfaces and 18px+ display text only.
+        // swappable in one place. See that file for the per-tone usage rules.
         ias: {
           'brown-dark': 'rgb(var(--ias-brown-dark-rgb) / <alpha-value>)',
           'brown-mid': 'rgb(var(--ias-brown-mid-rgb) / <alpha-value>)',
+          // Muted/secondary text on the light page surfaces.
           'brown-light': 'rgb(var(--ias-brown-light-rgb) / <alpha-value>)',
           // Pale tint of `light`, for brown-tinted surfaces that must carry
           // small body copy. `light` itself cannot: see globals.css.
           'brown-pale': 'rgb(var(--ias-brown-pale-rgb) / <alpha-value>)',
+          // Muted text on the dark footer/panels, where `light` is too dark.
+          'brown-on-dark': 'rgb(var(--ias-brown-on-dark-rgb) / <alpha-value>)',
         },
         // Luxury dark brown leather theme
         // Note: Token names retain 'baby-blue' prefix for backward compatibility

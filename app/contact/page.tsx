@@ -249,7 +249,7 @@ export default function ContactPage() {
                       </button>
                     ))}
                   </div>
-                  <p className="text-[11px] text-[#9E9790] mt-2">
+                  <p className="text-[11px] text-[#9E684C] mt-2">
                     All websites require a hosting plan to stay live and secure.
                   </p>
                 </div>
@@ -284,7 +284,7 @@ export default function ContactPage() {
                             )}
                             <span>
                               <span className="block font-semibold">{addOn.label}</span>
-                              <span className={`block text-xs mt-0.5 ${form.addOns.includes(addOn.id) ? 'text-white/70' : 'text-[#9E9790]'}`}>
+                              <span className={`block text-xs mt-0.5 ${form.addOns.includes(addOn.id) ? 'text-white/70' : 'text-[#9E684C]'}`}>
                                 {addOn.description}
                               </span>
                             </span>
@@ -296,7 +296,7 @@ export default function ContactPage() {
                       <div>
                         <label htmlFor="seoPackage" className="block text-sm font-semibold text-[#1A1A1A] mb-1">
                           SEO Packages
-                          <span className="text-[10px] font-normal text-[#9E9790] ml-1">(+GST)</span>
+                          <span className="text-[10px] font-normal text-[#9E684C] ml-1">(+GST)</span>
                         </label>
                         <div className="relative">
                           <select
@@ -324,7 +324,7 @@ export default function ContactPage() {
                   <label htmlFor="budget" className="block text-sm font-semibold text-[#1A1A1A] mb-1">
                     Estimated Budget <span className="text-red-500">*</span>
                   </label>
-                  <p className="text-[10px] text-[#9E9790] mb-2">All prices are + GST</p>
+                  <p className="text-[10px] text-[#9E684C] mb-2">All prices are + GST</p>
                   <select
                     id="budget"
                     name="budget"

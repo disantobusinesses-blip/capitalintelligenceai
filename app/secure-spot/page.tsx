@@ -111,7 +111,7 @@ function SecureSpotContent() {
             )}
           </button>
 
-          <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-[#9E9790]">
+          <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-[#9E684C]">
             <Clock className="w-3.5 h-3.5" />
             Secure checkout by Stripe · refundable any time
           </p>

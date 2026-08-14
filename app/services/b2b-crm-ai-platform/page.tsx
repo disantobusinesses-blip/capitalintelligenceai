@@ -116,9 +116,9 @@ export default function B2BCrmAiPlatformPage() {
               className="bg-white rounded-[10px] px-8 py-6 text-center"
               style={{ border: '1px solid #E8E4DF' }}
             >
-              <p className="text-[12px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Pricing</p>
-              <p className="text-[28px] font-extrabold text-[#1A1A1A] leading-none">Custom Pricing <span className="text-[12px] font-normal text-[#9E9790]">+ GST</span></p>
-              <p className="text-[13px] text-[#9E9790] mt-2">Book a discovery call to get your quote</p>
+              <p className="text-[12px] font-semibold text-[#9E684C] uppercase tracking-widest mb-1">Pricing</p>
+              <p className="text-[28px] font-extrabold text-[#1A1A1A] leading-none">Custom Pricing <span className="text-[12px] font-normal text-[#9E684C]">+ GST</span></p>
+              <p className="text-[13px] text-[#9E684C] mt-2">Book a discovery call to get your quote</p>
             </div>
             <div
               className="bg-[#F8F7F4] rounded-[10px] px-8 py-6 text-center"
@@ -126,7 +126,7 @@ export default function B2BCrmAiPlatformPage() {
             >
               <p className="text-[12px] font-semibold text-ias-brown-dark uppercase tracking-widest mb-1">Market Value</p>
               <p className="text-[28px] font-extrabold text-[#1A1A1A] leading-none">$5,000 – $35,000</p>
-              <p className="text-[13px] text-[#9E9790] mt-2">depending on lead volume & acquisition value</p>
+              <p className="text-[13px] text-[#9E684C] mt-2">depending on lead volume & acquisition value</p>
             </div>
           </div>
         </div>
@@ -137,24 +137,24 @@ export default function B2BCrmAiPlatformPage() {
         <div className="max-w-[1200px] mx-auto py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <p className="text-[11px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Deposit to Begin</p>
+              <p className="text-[11px] font-semibold text-[#9E684C] uppercase tracking-widest mb-1">Deposit to Begin</p>
               <p className="text-[20px] font-bold text-[#1A1A1A]">$2,000</p>
-              <p className="text-[12px] text-[#9E9790]">balance due on completion</p>
+              <p className="text-[12px] text-[#9E684C]">balance due on completion</p>
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Build Timeline</p>
+              <p className="text-[11px] font-semibold text-[#9E684C] uppercase tracking-widest mb-1">Build Timeline</p>
               <p className="text-[20px] font-bold text-[#1A1A1A]">10–15 Days</p>
-              <p className="text-[12px] text-[#9E9790]">depending on complexity</p>
+              <p className="text-[12px] text-[#9E684C]">depending on complexity</p>
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Guarantee</p>
+              <p className="text-[11px] font-semibold text-[#9E684C] uppercase tracking-widest mb-1">Guarantee</p>
               <p className="text-[20px] font-bold text-[#1A1A1A]">Results or Refund</p>
-              <p className="text-[12px] text-[#9E9790]">full money back guarantee</p>
+              <p className="text-[12px] text-[#9E684C]">full money back guarantee</p>
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">After Launch</p>
+              <p className="text-[11px] font-semibold text-[#9E684C] uppercase tracking-widest mb-1">After Launch</p>
               <p className="text-[20px] font-bold text-[#1A1A1A]">Monthly Plan</p>
-              <p className="text-[12px] text-[#9E9790]">hosting & system management</p>
+              <p className="text-[12px] text-[#9E684C]">hosting & system management</p>
             </div>
           </div>
         </div>
@@ -211,11 +211,11 @@ export default function B2BCrmAiPlatformPage() {
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="bg-[#1A1A1A] rounded-[10px] p-10 text-center">
-            <p className="text-[13px] font-semibold text-[#9E9790] uppercase tracking-widest mb-3">Our Guarantee</p>
+            <p className="text-[13px] font-semibold text-[#9E684C] uppercase tracking-widest mb-3">Our Guarantee</p>
             <p className="text-[38px] md:text-[48px] font-extrabold text-white leading-none mb-3">
               Results or Full Refund
             </p>
-            <p className="text-[#9E9790] text-base max-w-xl mx-auto">
+            <p className="text-[#9E684C] text-base max-w-xl mx-auto">
               We stand behind every platform we build. If your system doesn&apos;t deliver qualified leads from your target market, you get your money back, no questions asked.
             </p>
           </div>
@@ -231,7 +231,7 @@ export default function B2BCrmAiPlatformPage() {
           <p className="text-[#6B6560] mb-3 text-base">
             Book a discovery call and we&apos;ll map out exactly how the platform will be built for your business.
           </p>
-          <p className="text-[13px] text-[#9E9790] mb-8">
+          <p className="text-[13px] text-[#9E684C] mb-8">
             $2,000 deposit to start · 10–15 day build · balance on completion
           </p>
           <QuotePopupButton

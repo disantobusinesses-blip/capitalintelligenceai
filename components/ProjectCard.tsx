@@ -84,7 +84,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           ))}
         </ul>
         {project.additionalNote && (
-          <p className="text-xs text-[#9E9790] italic mb-4">{project.additionalNote}</p>
+          <p className="text-xs text-[#9E684C] italic mb-4">{project.additionalNote}</p>
         )}
 
         {project.url ? (

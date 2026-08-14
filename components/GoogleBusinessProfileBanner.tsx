@@ -58,9 +58,9 @@ export default function GoogleBusinessProfileBanner() {
               className="flex-shrink-0 bg-white rounded-[10px] px-6 py-5 text-center self-start md:self-auto"
               style={{ border: '1px solid #E8E4DF' }}
             >
-              <p className="text-[12px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">One-time setup</p>
+              <p className="text-[12px] font-semibold text-[#9E684C] uppercase tracking-widest mb-1">One-time setup</p>
               <p className="text-[32px] font-extrabold text-[#1A1A1A] leading-none">A$299</p>
-              <p className="text-[12px] text-[#9E9790] mt-1">+optional A$79/mo management</p>
+              <p className="text-[12px] text-[#9E684C] mt-1">+optional A$79/mo management</p>
             </div>
           </div>
 

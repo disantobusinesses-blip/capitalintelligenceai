@@ -256,8 +256,8 @@ export default function ServicesPage() {
               <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-1">Hosting + Minor Maintenance</h3>
               <p className="text-[22px] font-bold text-ias-brown-dark mb-5">
                 $59
-                <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
-                <span className="text-[13px] font-normal text-[#9E9790] ml-1">/month</span>
+                <span className="text-[10px] font-normal text-[#9E684C] ml-1">+ GST</span>
+                <span className="text-[13px] font-normal text-[#9E684C] ml-1">/month</span>
               </p>
               <p className="text-sm font-semibold text-[#1A1A1A] mb-2">Includes</p>
               <ul className="space-y-2">
@@ -285,8 +285,8 @@ export default function ServicesPage() {
               <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-1">Hosting + Content Refresh</h3>
               <p className="text-[22px] font-bold text-ias-brown-dark mb-5">
                 $99
-                <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
-                <span className="text-[13px] font-normal text-[#9E9790] ml-1">/month</span>
+                <span className="text-[10px] font-normal text-[#9E684C] ml-1">+ GST</span>
+                <span className="text-[13px] font-normal text-[#9E684C] ml-1">/month</span>
               </p>
               <p className="text-sm font-semibold text-[#1A1A1A] mb-2">Includes</p>
               <ul className="space-y-2">
@@ -346,8 +346,8 @@ export default function ServicesPage() {
                 <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-1">{tier.name}</h3>
                 <p className="text-[22px] font-bold text-ias-brown-dark mb-0.5">
                   {tier.price}
-                  <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
-                  <span className="text-[13px] font-normal text-[#9E9790] ml-1">/month</span>
+                  <span className="text-[10px] font-normal text-[#9E684C] ml-1">+ GST</span>
+                  <span className="text-[13px] font-normal text-[#9E684C] ml-1">/month</span>
                 </p>
                 <p className="text-sm text-[#6B6560] mb-5 leading-relaxed mt-2">{tier.description}</p>
                 <ul className="space-y-2 mb-6 flex-1">
@@ -462,14 +462,14 @@ export default function ServicesPage() {
               className="bg-white rounded-[10px] p-7 flex flex-col"
               style={{ border: '1px solid #E8E4DF' }}
             >
-              <p className="text-[12px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">
+              <p className="text-[12px] font-semibold text-[#9E684C] uppercase tracking-widest mb-1">
                 Pricing
               </p>
               <p className="text-[24px] font-extrabold text-[#1A1A1A] leading-none mb-1">
                 Custom
-                <span className="text-[11px] font-normal text-[#9E9790] ml-1">+ GST</span>
+                <span className="text-[11px] font-normal text-[#9E684C] ml-1">+ GST</span>
               </p>
-              <p className="text-[13px] text-[#9E9790] mb-5">
+              <p className="text-[13px] text-[#9E684C] mb-5">
                 $2,000 deposit to begin, 10 to 15 day build, balance on completion.
               </p>
 

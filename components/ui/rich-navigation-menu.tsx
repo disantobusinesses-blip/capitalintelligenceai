@@ -171,7 +171,7 @@ function NavItem({ entry }: { entry: NavEntry }) {
         >
           {entry.columns!.map((col) => (
             <div key={col.heading} className="w-[236px]">
-              {/* #9E9790 only reaches 2.88:1 at 11px; this darker grey clears AA. */}
+              {/* #9E684C only reaches 2.88:1 at 11px; this darker grey clears AA. */}
               <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-[1.2px] text-[#6B6560]">
                 {col.heading}
               </p>

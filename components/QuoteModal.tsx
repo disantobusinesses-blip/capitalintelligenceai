@@ -189,7 +189,7 @@ export default function QuoteModal() {
             {submitting ? 'Booking...' : 'Book Consultation'}
             {!submitting && <Check className="w-4 h-4" />}
           </button>
-          <p className="text-center text-xs text-[#9E9790] mt-3">
+          <p className="text-center text-xs text-[#9E684C] mt-3">
             We'll confirm your time via phone within 24 hours.
           </p>
         </div>

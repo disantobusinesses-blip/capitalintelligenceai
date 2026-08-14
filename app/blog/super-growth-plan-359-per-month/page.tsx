@@ -29,7 +29,7 @@ export default function SuperGrowthPlanPage() {
           </span>
           <h1 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] leading-tight mb-4 text-balance">
             Super Growth Plan: Accelerated SEO Content Coverage,{' '}
-            <span className="line-through text-[#9E9790]">$499 AUD</span>{' '}
+            <span className="line-through text-[#9E684C]">$499 AUD</span>{' '}
             <span className="text-ias-brown-dark">On Sale Now: $359/month</span>{' '}
             <span className="inline-block bg-ias-brown-dark text-white text-sm font-semibold px-2 py-0.5 rounded-full align-middle">28% off</span>
           </h1>
@@ -46,17 +46,17 @@ export default function SuperGrowthPlanPage() {
             <div className="flex justify-between items-center text-sm border-b border-[#E8E4DF] pb-3">
               <div>
                 <span className="text-[#6B6560]">Google Growth Plan</span>
-                <span className="ml-2 text-xs text-[#9E9790]">4 blogs / month</span>
+                <span className="ml-2 text-xs text-[#9E684C]">4 blogs / month</span>
               </div>
               <span className="text-[#1A1A1A] font-semibold">$199 / month</span>
             </div>
             <div className="flex justify-between items-center text-sm border-b border-[#E8E4DF] pb-3">
               <div>
                 <span className="text-ias-brown-dark font-semibold">Super Growth Plan</span>
-                <span className="ml-2 text-xs text-[#9E9790]">8 blogs / month</span>
+                <span className="ml-2 text-xs text-[#9E684C]">8 blogs / month</span>
               </div>
               <div className="text-right">
-                <span className="line-through text-[#9E9790] text-xs mr-1">$499</span>
+                <span className="line-through text-[#9E684C] text-xs mr-1">$499</span>
                 <span className="text-ias-brown-dark font-bold text-base">$359 / month</span>
                 <span className="ml-1.5 bg-ias-brown-dark text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">28% off</span>
               </div>
@@ -64,7 +64,7 @@ export default function SuperGrowthPlanPage() {
             <div className="flex justify-between items-center text-sm">
               <div>
                 <span className="text-[#6B6560]">Market Authority Plan</span>
-                <span className="ml-2 text-xs text-[#9E9790]">12 blogs / month</span>
+                <span className="ml-2 text-xs text-[#9E684C]">12 blogs / month</span>
               </div>
               <span className="text-[#1A1A1A] font-semibold">$799 / month</span>
             </div>
@@ -117,7 +117,7 @@ export default function SuperGrowthPlanPage() {
         <div className="mt-12 bg-white border border-[#E8E4DF] rounded-[10px] p-8 text-center">
           <h3 className="text-xl font-bold text-[#1A1A1A] mb-3">Ready to accelerate your SEO growth?</h3>
           <p className="text-[#6B6560] text-sm mb-1">
-            <span className="line-through text-[#9E9790]">$499 AUD</span>{' '}
+            <span className="line-through text-[#9E684C]">$499 AUD</span>{' '}
             <strong className="text-[#1A1A1A]">$359/month</strong>, on sale now. No lock-in contracts.
           </p>
           <p className="text-xs text-ias-brown-dark font-semibold mb-6">Save 28%, limited time pricing</p>

@@ -4,8 +4,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export default function Footer() {
+  // Muted text here uses the lighter `on-dark` brown, not the standard
+  // `ias-brown-light`. The latter reads well on the pale page surfaces but
+  // drops to 3.76:1 against this #1A1A1A panel; the lighter tint holds 6.0:1
+  // while staying in the same brown family.
   return (
-    <footer className="bg-[#1A1A1A] text-[#9E9790] pt-16 pb-8 px-6">
+    <footer className="bg-[#1A1A1A] text-ias-brown-on-dark pt-16 pb-8 px-6">
       <div className="max-w-[1200px] mx-auto">
         <div className="grid md:grid-cols-4 gap-10 mb-10">
           {/* Column 1: Brand */}
@@ -19,7 +23,7 @@ export default function Footer() {
                 className="h-14 w-auto rounded object-cover"
               />
             </div>
-            <p className="text-[#9E9790] text-sm leading-relaxed mb-3">
+            <p className="text-ias-brown-on-dark text-sm leading-relaxed mb-3">
               Serving clients globally from Melbourne, Australia, helping businesses get found on Google and recommended by AI, so you get more leads, more calls, and more growth.
             </p>
             <p className="text-xs text-[#6B6560]">ABN: 38 693 023 371</p>

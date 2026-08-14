@@ -11,10 +11,15 @@
        dark  #473126 - primary text links, active nav states, primary button
                        backgrounds, icon strokes
        mid   #724935 - secondary accents, hover states, section dividers
-       light #9E684C - large display backgrounds, card backgrounds, section
-                       wash colours, and display headline text ONLY.
-                       Never use light for body copy or any text under 18px:
-                       it fails contrast against the #F8F7F4 page background. */
+       light #9E684C - muted/secondary TEXT on the light page surfaces
+                       (4.63:1 on white, 4.37:1 on the #F8F7F4 cream), plus
+                       large display type and icon accents.
+
+     The distinction that matters: `light` works as a text colour on pale
+     surfaces, but NOT as a background fill behind small text. As a fill it
+     tops out at 4.54:1 against even pure black, so nothing can sit on it
+     legibly at body size — use `pale` for tinted panels that hold copy, and
+     `on-dark` for muted text placed on the dark footer/panels. */
   :root {
     --ias-brown-dark: #473126;
     --ias-brown-mid: #724935;
@@ -32,6 +37,12 @@
        ~12.7:1. Keeps the dark -> mid -> pale card progression intact. */
     --ias-brown-pale: #ECE1DB;
     --ias-brown-pale-rgb: 236 225 219;
+    /* Muted text on the dark surfaces (the #1A1A1A footer and dark panels).
+       `light` only manages 3.76:1 there, so it cannot carry small print. This
+       lighter tint of the same hue gives 6.0:1 — matching the legibility of the
+       neutral grey it replaced, while keeping the text in the brown family. */
+    --ias-brown-on-dark: #C08D6B;
+    --ias-brown-on-dark-rgb: 192 141 107;
   }
   html {
     scroll-behavior: smooth;

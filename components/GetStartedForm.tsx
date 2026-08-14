@@ -231,7 +231,7 @@ export default function GetStartedForm({
               onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
               placeholder="John Smith"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -250,7 +250,7 @@ export default function GetStartedForm({
               onChange={(e) => setFormData((prev) => ({ ...prev, businessName: e.target.value }))}
               placeholder="Your Business Name"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -269,7 +269,7 @@ export default function GetStartedForm({
               onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
               placeholder="john@example.com"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -287,7 +287,7 @@ export default function GetStartedForm({
               value={formData.phone}
               onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
               placeholder="0412 345 678"
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -348,7 +348,7 @@ export default function GetStartedForm({
                 )
               })}
             </div>
-            <p className="text-[11px] text-[#9E9790] mt-2">
+            <p className="text-[11px] text-[#9E684C] mt-2">
               All websites require a hosting plan to stay live and secure.
             </p>
           </div>
@@ -383,7 +383,7 @@ export default function GetStartedForm({
                       )}
                       <span>
                         <span className="block font-semibold">{addOn.label}</span>
-                        <span className={`block text-xs mt-0.5 ${formData.addOns.includes(addOn.id) ? 'text-white/70' : 'text-[#9E9790]'}`}>
+                        <span className={`block text-xs mt-0.5 ${formData.addOns.includes(addOn.id) ? 'text-white/70' : 'text-[#9E684C]'}`}>
                           {addOn.description}
                         </span>
                       </span>
@@ -395,7 +395,7 @@ export default function GetStartedForm({
                 <div>
                   <label htmlFor="seoPackage" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
                     SEO Packages
-                    <span className="text-[10px] font-normal text-[#9E9790] ml-1">(+GST)</span>
+                    <span className="text-[10px] font-normal text-[#9E684C] ml-1">(+GST)</span>
                   </label>
                   <div className="relative">
                     <select
@@ -410,7 +410,7 @@ export default function GetStartedForm({
                         </option>
                       ))}
                     </select>
-                    <ChevronDown className="w-4 h-4 text-[#9E9790] absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    <ChevronDown className="w-4 h-4 text-[#9E684C] absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                   </div>
                 </div>
               </div>
@@ -421,7 +421,7 @@ export default function GetStartedForm({
           <div>
             <label htmlFor="budget" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               Estimated Budget <span className="text-red-400">*</span>
-              <span className="text-[10px] font-normal text-[#9E9790] ml-1">(+GST)</span>
+              <span className="text-[10px] font-normal text-[#9E684C] ml-1">(+GST)</span>
             </label>
             <div className="relative">
               <select
@@ -436,7 +436,7 @@ export default function GetStartedForm({
                   </option>
                 ))}
               </select>
-              <ChevronDown className="w-4 h-4 text-[#9E9790] absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <ChevronDown className="w-4 h-4 text-[#9E684C] absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
           </div>
 
@@ -454,7 +454,7 @@ export default function GetStartedForm({
               onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
               placeholder="What kind of website do you need? Any specific features or requirements?"
               rows={3}
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E9790] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200 resize-none"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200 resize-none"
             />
           </div>
 
@@ -478,7 +478,7 @@ export default function GetStartedForm({
             )}
           </button>
 
-          <p className="text-center text-xs text-[#9E9790]">
+          <p className="text-center text-xs text-[#9E684C]">
             We typically respond within 24 hours.
           </p>
         </form>
