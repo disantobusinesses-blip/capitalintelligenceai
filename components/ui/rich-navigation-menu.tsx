@@ -171,7 +171,8 @@ function NavItem({ entry }: { entry: NavEntry }) {
         >
           {entry.columns!.map((col) => (
             <div key={col.heading} className="w-[236px]">
-              <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-[1.2px] text-[#9E9790]">
+              {/* #9E9790 only reaches 2.88:1 at 11px; this darker grey clears AA. */}
+              <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-[1.2px] text-[#6B6560]">
                 {col.heading}
               </p>
               <ul className="flex flex-col gap-0.5">
@@ -185,11 +186,13 @@ function NavItem({ entry }: { entry: NavEntry }) {
           ))}
 
           {entry.feature && (
+            /* Pale brown tint, not `--ias-brown-light`. That mid-tone only
+               reaches 3.54:1 behind this 12.5px copy (and 4.54:1 even against
+               pure black), so it cannot carry small text at AA. */
             <div
               className="flex w-[220px] flex-col rounded-[8px] p-4"
-              style={{ backgroundColor: 'var(--ias-brown-light)' }}
+              style={{ backgroundColor: 'var(--ias-brown-pale)' }}
             >
-              {/* Dark ink on the light brown wash: white would fail contrast. */}
               <p className="text-[15px] font-bold leading-snug text-[#2E1B12]">
                 {entry.feature.title}
               </p>

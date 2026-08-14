@@ -105,10 +105,10 @@ interface Palette {
   ring: string
 }
 
-/* Foreground colours are picked per tone rather than shared: white clears AA
-   on the two darker browns (12.2:1 and 5.8:1) but manages only 2.4:1 on the
-   lightest, which therefore takes dark ink instead (6.9:1). The tick icons
-   follow the same logic against the 3:1 bar for graphical objects. */
+/* Foreground colours are picked per tone rather than shared: white clears AA on
+   the two darker browns (12.2:1 and 5.8:1), while the third card uses a pale
+   brown tint carrying dark ink (~12.7:1). The tick icons follow the same logic
+   against the 3:1 bar for graphical objects. */
 const PALETTES: Record<SquishyTone, Palette> = {
   dark: {
     background: 'var(--ias-brown-dark)',
@@ -141,14 +141,18 @@ const PALETTES: Record<SquishyTone, Palette> = {
     ring: 'ring-2 ring-[#2E1B12]',
   },
   light: {
-    background: 'var(--ias-brown-light)',
-    shape: 'fill-white/10 sm:fill-white/25',
+    /* Pale tint rather than `--ias-brown-light`. The mid-tone light brown tops
+       out at 4.54:1 against *pure black*, so no ink could carry this card's
+       13px feature list at AA. The tint keeps the brown family and the
+       dark -> mid -> pale progression while giving body copy ~12.7:1. */
+    background: 'var(--ias-brown-pale)',
+    shape: 'fill-[#2E1B12]/5 sm:fill-[#2E1B12]/10',
     text: 'text-[#2E1B12]',
     muted: 'text-[#2E1B12]/75',
     feature: 'text-[#2E1B12]',
     check: 'text-green-800',
     divider: 'border-[#2E1B12]/20',
-    includesBox: 'bg-[#2E1B12]/10 border-[#2E1B12]/15',
+    includesBox: 'bg-[#2E1B12]/[0.07] border-[#2E1B12]/15',
     includesTitle: 'text-[#2E1B12]',
     includesBody: 'text-[#2E1B12]/75',
     outlineBtn: 'border border-[#2E1B12]/40 text-[#2E1B12] hover:bg-[#2E1B12]/10',

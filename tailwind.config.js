@@ -16,6 +16,9 @@ module.exports = {
           'brown-dark': 'rgb(var(--ias-brown-dark-rgb) / <alpha-value>)',
           'brown-mid': 'rgb(var(--ias-brown-mid-rgb) / <alpha-value>)',
           'brown-light': 'rgb(var(--ias-brown-light-rgb) / <alpha-value>)',
+          // Pale tint of `light`, for brown-tinted surfaces that must carry
+          // small body copy. `light` itself cannot: see globals.css.
+          'brown-pale': 'rgb(var(--ias-brown-pale-rgb) / <alpha-value>)',
         },
         // Luxury dark brown leather theme
         // Note: Token names retain 'baby-blue' prefix for backward compatibility

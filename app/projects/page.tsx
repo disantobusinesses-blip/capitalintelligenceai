@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ProjectCard from '@/components/ProjectCard'
 import QuotePopupButton from '@/components/QuotePopupButton'
 import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
-import TypingEffect from '@/components/ui/typing-effect'
+import FadeRiseText from '@/components/ui/fade-rise-text'
 
 export const revalidate = 60
 
@@ -240,7 +240,7 @@ export default function ProjectsPage() {
       <section className="py-24 px-6 text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative">
           <h1 className="text-5xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
-            <TypingEffect texts={['Our Projects']} typingSpeed={55} loop={false} />
+            <FadeRiseText text="Our Projects" />
           </h1>
           <p className="text-xl text-[#6B6560] max-w-2xl mx-auto">
             Intelligent systems implemented across diverse industries.

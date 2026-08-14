@@ -4,7 +4,7 @@ import { Bot, Check, FileText, Instagram, Shield } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
 import SquishyPricing, { type SquishyIcon, type SquishyTone } from '@/components/ui/squishy-pricing'
-import TypingEffect from '@/components/ui/typing-effect'
+import FadeRiseText from '@/components/ui/fade-rise-text'
 
 export const metadata: Metadata = {
   title: 'Our Services – Intelligent AI Systems',
@@ -178,7 +178,7 @@ export default function ServicesPage() {
             Everything We Offer
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-[#1A1A1A] mb-3 leading-tight">
-            <TypingEffect texts={['Our Services']} typingSpeed={55} loop={false} />
+            <FadeRiseText text="Our Services" />
           </h1>
           <p className="text-base md:text-lg text-[#6B6560] max-w-2xl mx-auto">
             Fixed-price website packages and hosting to keep your site live and secure, here&apos;s everything we do.

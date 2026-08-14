@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Zap, Users, Target, Shield } from 'lucide-react'
 import Link from 'next/link'
-import TypingEffect from '@/components/ui/typing-effect'
+import FadeRiseText from '@/components/ui/fade-rise-text'
 
 export const revalidate = 60
 
@@ -50,7 +50,7 @@ export default function AboutPage() {
       <section className="py-24 px-6 text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative">
           <h1 className="text-5xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
-            <TypingEffect texts={['About Intelligent Systems']} typingSpeed={45} loop={false} />
+            <FadeRiseText text="About Intelligent Systems" />
           </h1>
           <p className="text-xl text-[#6B6560] leading-relaxed mb-4">
             Capital Intelligence Group

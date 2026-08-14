@@ -25,6 +25,13 @@
     --ias-brown-dark-rgb: 71 49 38;
     --ias-brown-mid-rgb: 114 73 53;
     --ias-brown-light-rgb: 158 104 76;
+    /* A 20% tint of `light` over white. `light` is a mid-tone, so it caps out
+       at 4.54:1 even against pure black and cannot legally carry body text as a
+       fill. This pale step is the surface to use when a brown-tinted panel has
+       to hold small copy: it reads as the same brown family but gives dark ink
+       ~12.7:1. Keeps the dark -> mid -> pale card progression intact. */
+    --ias-brown-pale: #ECE1DB;
+    --ias-brown-pale-rgb: 236 225 219;
   }
   html {
     scroll-behavior: smooth;
@@ -107,5 +114,34 @@
 
 .animate-scroll {
   animation: scroll 90s linear infinite;
+}
+
+/* Headline entrance, replaces the old typewriter effect.
+   The text is present in the DOM and laid out from the first paint, only its
+   opacity and offset animate. That keeps the heading available to crawlers and
+   avoids the layout thrash (and delayed LCP) that character-by-character typing
+   caused. Words are staggered via an inline animation-delay from FadeRiseText. */
+@keyframes ias-fade-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.4em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.ias-fade-rise-word {
+  /* backwards fill so staggered words stay hidden through their delay rather
+     than flashing at full opacity before their turn. */
+  animation: ias-fade-rise 0.62s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* Anyone who has asked their OS to reduce motion just gets the final state. */
+@media (prefers-reduced-motion: reduce) {
+  .ias-fade-rise-word {
+    animation: none;
+  }
 }
 
