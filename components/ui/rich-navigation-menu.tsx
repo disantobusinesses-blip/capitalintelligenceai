@@ -186,23 +186,23 @@ function NavItem({ entry }: { entry: NavEntry }) {
           ))}
 
           {entry.feature && (
-            /* Pale brown tint, not `--ias-brown-light`. That mid-tone only
-               reaches 3.54:1 behind this 12.5px copy (and 4.54:1 even against
-               pure black), so it cannot carry small text at AA. */
+            /* White on this brown is 4.63:1, clearing AA. It is the only
+               foreground that does, so the body copy below stays full-strength
+               white rather than a tint. Dark ink here would be 3.54:1. */
             <div
               className="flex w-[220px] flex-col rounded-[8px] p-4"
-              style={{ backgroundColor: 'var(--ias-brown-pale)' }}
+              style={{ backgroundColor: 'var(--ias-brown-light)' }}
             >
-              <p className="text-[15px] font-bold leading-snug text-[#2E1B12]">
+              <p className="text-[15px] font-bold leading-snug text-white">
                 {entry.feature.title}
               </p>
-              <p className="mt-2 text-[12.5px] leading-relaxed text-[#2E1B12]/80">
+              <p className="mt-2 text-[12.5px] leading-relaxed text-white">
                 {entry.feature.body}
               </p>
               <Link
                 href={entry.feature.href}
                 onClick={() => setOpen(false)}
-                className="mt-auto pt-4 text-[13px] font-semibold text-[#2E1B12] underline underline-offset-2"
+                className="mt-auto pt-4 text-[13px] font-semibold text-white underline underline-offset-2"
               >
                 {entry.feature.cta}
               </Link>

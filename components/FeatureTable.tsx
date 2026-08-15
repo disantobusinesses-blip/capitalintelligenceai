@@ -1,4 +1,5 @@
 import { Check, X } from 'lucide-react'
+import FadeSlideTabs, { type FadeSlideTab } from '@/components/ui/fade-slide-tabs'
 
 /** true = included (✓), false = not included (✗), string = a literal value (e.g. "1–3", "2 months (8 posts)"). */
 export type FeatureValue = boolean | string
@@ -26,68 +27,50 @@ function Cell({ value }: { value: FeatureValue }) {
   return <span className="text-[13px] font-semibold text-[#1A1A1A]">{value}</span>
 }
 
-/**
- * Foundation / Growth / Bespoke feature comparison table. Shared between
- * /services and /projects so the ✓ / ✗ styling matches on both pages.
- */
-/** Column order matches FeatureRow.values. */
-const PACKAGES = ['Foundation', 'Growth', 'Bespoke'] as const
+/** Column order matches FeatureRow.values, and the tier ladder's tone order. */
+const PACKAGES = [
+  { name: 'Foundation', indicatorClass: 'bg-ias-brown-dark' },
+  { name: 'Growth', indicatorClass: 'bg-ias-brown-mid' },
+  { name: 'Bespoke', indicatorClass: 'bg-ias-brown-light' },
+] as const
 
-export default function FeatureTable({ rows }: { rows: FeatureRow[] }) {
+/** One package's feature list, as label/value rows. */
+function PackagePanel({ rows, col }: { rows: FeatureRow[]; col: number }) {
   return (
-    <>
-      {/* Mobile: one block per package. A 4-column table can't fit 390px without
-          a horizontal scroller that hides the Growth and Bespoke columns, which
-          defeats the point of a comparison, so below `md` the same data is
-          pivoted into stacked per-package lists. */}
-      <div className="flex flex-col gap-4 md:hidden">
-        {PACKAGES.map((pkg, col) => (
-          <div key={pkg} className="rounded-[10px] border border-[#E8E4DF] bg-white overflow-hidden">
-            <p className="px-4 py-3 text-sm font-semibold text-[#1A1A1A] bg-[#FAF9F7] border-b border-[#E8E4DF]">
-              {pkg}
-            </p>
-            <ul className="divide-y divide-[#E8E4DF]">
-              {rows.map((row) => (
-                <li key={row.label} className="flex items-center justify-between gap-4 px-4 py-3">
-                  <span className="text-[13.5px] leading-snug text-[#1A1A1A]">{row.label}</span>
-                  <span className="flex-shrink-0">
-                    <Cell value={row.values[col]} />
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <div className="overflow-hidden rounded-[10px] border border-[#E8E4DF] bg-white">
+      <ul className="divide-y divide-[#E8E4DF]">
+        {rows.map((row) => (
+          <li key={row.label} className="flex items-center justify-between gap-4 px-4 py-3 md:px-5">
+            <span className="text-[13.5px] leading-snug text-[#1A1A1A] md:text-sm">{row.label}</span>
+            <span className="flex-shrink-0">
+              <Cell value={row.values[col]} />
+            </span>
+          </li>
         ))}
-      </div>
-
-      {/* Desktop keeps the real table: side-by-side columns are the clearest
-          way to compare once there is room for them. */}
-      <div className="hidden md:block overflow-x-auto rounded-[10px] border border-[#E8E4DF] bg-white">
-      <table className="w-full min-w-[560px] border-collapse">
-        <thead>
-          <tr className="border-b border-[#E8E4DF]">
-            <th className="text-left px-5 py-3.5 text-sm font-semibold text-[#1A1A1A]">Feature</th>
-            <th className="text-center px-5 py-3.5 text-sm font-semibold text-[#1A1A1A]">Foundation</th>
-            <th className="text-center px-5 py-3.5 text-sm font-semibold text-[#1A1A1A]">Growth</th>
-            <th className="text-center px-5 py-3.5 text-sm font-semibold text-[#1A1A1A]">Bespoke</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, i) => (
-            <tr key={row.label} className={i % 2 === 1 ? 'bg-[#FAF9F7]' : undefined}>
-              <td className="text-left px-5 py-3 text-sm text-[#1A1A1A] border-t border-[#E8E4DF]">
-                {row.label}
-              </td>
-              {row.values.map((value, idx) => (
-                <td key={idx} className="text-center px-5 py-3 border-t border-[#E8E4DF]">
-                  <Cell value={value} />
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      </div>
-    </>
+      </ul>
+    </div>
   )
+}
+
+/**
+ * Foundation / Growth / Bespoke feature comparison, shared between /services
+ * and /projects.
+ *
+ * Tabbed at every breakpoint rather than stacked. Stacking all three lists ran
+ * to roughly nine screens on a 375px viewport before the user reached anything
+ * else on the page, and a 4-column table cannot fit that width without a
+ * horizontal scroller that hides the very columns being compared.
+ *
+ * Defaults to Growth, the Most Popular tier, so the tab that opens is the one
+ * most visitors want.
+ */
+export default function FeatureTable({ rows }: { rows: FeatureRow[] }) {
+  const tabs: FadeSlideTab[] = PACKAGES.map((pkg, col) => ({
+    id: pkg.name.toLowerCase(),
+    label: pkg.name,
+    indicatorClass: pkg.indicatorClass,
+    content: <PackagePanel rows={rows} col={col} />,
+  }))
+
+  return <FadeSlideTabs tabs={tabs} defaultTabId="growth" label="Compare packages" />
 }

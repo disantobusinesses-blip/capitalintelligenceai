@@ -3,6 +3,7 @@ import ProjectCard from '@/components/ProjectCard'
 import QuotePopupButton from '@/components/QuotePopupButton'
 import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
 import FadeRiseText from '@/components/ui/fade-rise-text'
+import TierSectionHeader from '@/components/TierSectionHeader'
 
 export const revalidate = 60
 
@@ -236,13 +237,14 @@ function ProjectRow({ projects }: { projects: Project[] }) {
 export default function ProjectsPage() {
   return (
     <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
-      {/* Hero */}
-      <section className="py-24 px-6 text-center relative overflow-hidden">
+      {/* Hero. Mobile padding runs ~1/3 tighter than desktop: the desktop
+          py-24 was carried down unchanged and pushed content below the fold. */}
+      <section className="py-14 px-6 text-center relative overflow-hidden md:py-24">
         <div className="max-w-4xl mx-auto relative">
-          <h1 className="text-5xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
+          <h1 className="text-[38px] leading-[1.1] md:text-6xl font-bold text-[#1A1A1A] mb-5 md:mb-6">
             <FadeRiseText text="Our Projects" />
           </h1>
-          <p className="text-xl text-[#6B6560] max-w-2xl mx-auto">
+          <p className="text-[17px] md:text-xl text-[#6B6560] max-w-2xl mx-auto">
             Intelligent systems implemented across diverse industries.
             See how we have helped businesses operate smoother, faster, and smarter.
           </p>
@@ -250,13 +252,13 @@ export default function ProjectsPage() {
       </section>
 
       {/* Feature comparison */}
-      <section className="py-16 px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section className="py-10 px-6 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <p className="text-ias-brown-dark text-lg font-semibold tracking-[1.5px] uppercase mb-2">
+          <div className="mb-6 md:mb-8">
+            <p className="text-ias-brown-dark text-[13px] md:text-lg font-semibold tracking-[1.5px] uppercase mb-2">
               Compare Packages
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
+            <h2 className="text-[26px] md:text-5xl font-bold text-[#1A1A1A] text-balance">
               What Each Package Includes
             </h2>
           </div>
@@ -265,46 +267,37 @@ export default function ProjectsPage() {
       </section>
 
       {/* Foundation examples */}
-      <section id="foundation" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section id="foundation" className="py-10 px-6 scroll-mt-24 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="mb-10">
-            <p className="text-ias-brown-dark text-lg font-semibold tracking-[1.5px] uppercase mb-2">
-              Foundation Examples
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
-              Real Sites Built on the Foundation Package
-            </h2>
-          </div>
+          <TierSectionHeader
+            tier="foundation"
+            eyebrow="Foundation Examples"
+            title="Real Sites Built on the Foundation Package"
+          />
           <ProjectRow projects={foundationProjects} />
         </div>
       </section>
 
       {/* Growth examples */}
-      <section id="growth" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section id="growth" className="py-10 px-6 scroll-mt-24 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="mb-10">
-            <p className="text-ias-brown-dark text-lg font-semibold tracking-[1.5px] uppercase mb-2">
-              Growth Examples
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
-              Real Sites Built on the Growth Package
-            </h2>
-          </div>
+          <TierSectionHeader
+            tier="growth"
+            eyebrow="Growth Examples"
+            title="Real Sites Built on the Growth Package"
+          />
           <ProjectRow projects={growthProjects} />
         </div>
       </section>
 
       {/* Bespoke examples */}
-      <section id="bespoke" className="py-16 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section id="bespoke" className="py-10 px-6 scroll-mt-24 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="mb-10">
-            <p className="text-ias-brown-dark text-lg font-semibold tracking-[1.5px] uppercase mb-2">
-              Bespoke Examples
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A]">
-              Real Sites Built on the Bespoke Package
-            </h2>
-          </div>
+          <TierSectionHeader
+            tier="bespoke"
+            eyebrow="Bespoke Examples"
+            title="Real Sites Built on the Bespoke Package"
+          />
           <ProjectRow projects={bespokeProjects} />
         </div>
       </section>

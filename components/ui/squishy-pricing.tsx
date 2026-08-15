@@ -105,10 +105,12 @@ interface Palette {
   ring: string
 }
 
-/* Foreground colours are picked per tone rather than shared: white clears AA on
-   the two darker browns (12.2:1 and 5.8:1), while the third card uses a pale
-   brown tint carrying dark ink (~12.7:1). The tick icons follow the same logic
-   against the 3:1 bar for graphical objects. */
+/* The three tones form a deliberate tonal ladder: Foundation #473126, Growth
+   #724935, Bespoke #9E684C. All three take white text, measured at 12.10:1,
+   7.72:1 and 4.63:1 respectively, so every card clears AA for normal text.
+   The ladder is the reason opacity budgets differ per tone: the two darker
+   cards have contrast headroom to spare and can mute secondary rows, while
+   Bespoke has only 0.13 above the 4.5 threshold and must stay at full white. */
 const PALETTES: Record<SquishyTone, Palette> = {
   dark: {
     background: 'var(--ias-brown-dark)',
@@ -141,22 +143,23 @@ const PALETTES: Record<SquishyTone, Palette> = {
     ring: 'ring-2 ring-[#2E1B12]',
   },
   light: {
-    /* Pale tint rather than `--ias-brown-light`. The mid-tone light brown tops
-       out at 4.54:1 against *pure black*, so no ink could carry this card's
-       13px feature list at AA. The tint keeps the brown family and the
-       dark -> mid -> pale progression while giving body copy ~12.7:1. */
-    background: 'var(--ias-brown-pale)',
-    shape: 'fill-[#2E1B12]/5 sm:fill-[#2E1B12]/10',
-    text: 'text-[#2E1B12]',
-    muted: 'text-[#2E1B12]/75',
-    feature: 'text-[#2E1B12]',
-    check: 'text-green-800',
-    divider: 'border-[#2E1B12]/20',
-    includesBox: 'bg-[#2E1B12]/[0.07] border-[#2E1B12]/15',
-    includesTitle: 'text-[#2E1B12]',
-    includesBody: 'text-[#2E1B12]/75',
-    outlineBtn: 'border border-[#2E1B12]/40 text-[#2E1B12] hover:bg-[#2E1B12]/10',
-    solidBtn: 'bg-[#2E1B12] text-white hover:bg-[#1F120B]',
+    /* Pure white on this brown measures 4.63:1, which clears AA for normal
+       text. It is also the ONLY foreground that does: cream #F8F7F4 drops to
+       4.32:1 and dark ink #2E1B12 to 3.54:1, both failing. So the muted and
+       feature rows below stay at full-strength white rather than the /70 and
+       /90 opacities the two darker cards use, since any tint lands under 4.5. */
+    background: 'var(--ias-brown-light)',
+    shape: 'fill-white/10 sm:fill-white/20',
+    text: 'text-white',
+    muted: 'text-white',
+    feature: 'text-white',
+    check: 'text-white',
+    divider: 'border-white/25',
+    includesBox: 'bg-white/15 border-white/25',
+    includesTitle: 'text-white',
+    includesBody: 'text-white',
+    outlineBtn: 'border border-white/50 text-white hover:bg-white/15',
+    solidBtn: 'bg-white text-[#7A4E36] hover:bg-white/90',
     ring: 'ring-2 ring-[#2E1B12]',
   },
 }

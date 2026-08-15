@@ -7,19 +7,24 @@
      references these variables (or the matching Tailwind `ias-brown-*` tokens)
      rather than hardcoding hex, so the whole palette is swappable here.
 
+     The three tones form the pricing tier ladder: Foundation = dark,
+     Growth = mid, Bespoke = light.
+
      Usage rules:
        dark  #473126 - primary text links, active nav states, primary button
-                       backgrounds, icon strokes
-       mid   #724935 - secondary accents, hover states, section dividers
-       light #9E684C - muted/secondary TEXT on the light page surfaces
-                       (4.63:1 on white, 4.37:1 on the #F8F7F4 cream), plus
-                       large display type and icon accents.
+                       backgrounds, icon strokes. White on it: 12.10:1
+       mid   #724935 - secondary accents, hover states, section dividers,
+                       the Growth tier surface. White on it: 7.72:1
+       light #9E684C - the Bespoke tier surface, muted/secondary text on light
+                       page surfaces, large display type, icon accents
 
-     The distinction that matters: `light` works as a text colour on pale
-     surfaces, but NOT as a background fill behind small text. As a fill it
-     tops out at 4.54:1 against even pure black, so nothing can sit on it
-     legibly at body size — use `pale` for tinted panels that hold copy, and
-     `on-dark` for muted text placed on the dark footer/panels. */
+     The one rule to remember for `light`: when used as a background it takes
+     PURE WHITE text and nothing else. White is 4.63:1 (passes AA), while cream
+     #F8F7F4 is 4.32:1 and dark ink #2E1B12 is 3.54:1 (both fail). Because the
+     margin over 4.5 is only 0.13, never apply an opacity tint to white text
+     sitting on `light` — `text-white/90` already drops it below the threshold.
+
+     Use `on-dark` for muted text placed on the dark #1A1A1A footer/panels. */
   :root {
     --ias-brown-dark: #473126;
     --ias-brown-mid: #724935;
@@ -30,13 +35,6 @@
     --ias-brown-dark-rgb: 71 49 38;
     --ias-brown-mid-rgb: 114 73 53;
     --ias-brown-light-rgb: 158 104 76;
-    /* A 20% tint of `light` over white. `light` is a mid-tone, so it caps out
-       at 4.54:1 even against pure black and cannot legally carry body text as a
-       fill. This pale step is the surface to use when a brown-tinted panel has
-       to hold small copy: it reads as the same brown family but gives dark ink
-       ~12.7:1. Keeps the dark -> mid -> pale card progression intact. */
-    --ias-brown-pale: #ECE1DB;
-    --ias-brown-pale-rgb: 236 225 219;
     /* Muted text on the dark surfaces (the #1A1A1A footer and dark panels).
        `light` only manages 3.76:1 there, so it cannot carry small print. This
        lighter tint of the same hue gives 6.0:1 — matching the legibility of the
