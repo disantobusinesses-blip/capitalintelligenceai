@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useId, useState, type ReactNode } from 'react'
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 
@@ -41,6 +41,8 @@ export default function OngoingServicePanel({
 }: OngoingServicePanelProps) {
   const [open, setOpen] = useState(defaultOpen)
   const panelId = useId()
+  /** True while this panel is open because a deep link opened it. */
+  const openedByHash = useRef(false)
 
   /* These anchors are deep-linked from the navbar, footer, BeyondWebsite and
      WhyIntelligentAISystem, so a collapsed panel would leave those links
@@ -58,27 +60,55 @@ export default function OngoingServicePanel({
      container and scrolls *inside* the panel instead of moving the page. That
      failure is silent: it reports success and the viewport never moves.
 
-     Only the trigger row's position is needed, since the panel expands
-     downward from below it and cannot displace its own top edge. NAV_OFFSET
-     mirrors the `scroll-mt-24` (6rem) that keeps the row clear of the fixed
-     navbar. */
+     NAV_OFFSET mirrors the `scroll-mt-24` (6rem) that keeps the row clear of
+     the fixed navbar.
+
+     The scroll runs as several corrective passes rather than once. A single
+     pass measured ~200px short: everything above this panel — the hero image,
+     the logo marquee, the three pricing cards — is still settling when the
+     effect first fires, so the target position keeps moving after we have
+     committed to it. Each pass re-measures and only nudges if we are more than
+     a couple of pixels out, so once the layout is stable the passes are no-ops.
+     The passes also straddle the panel's own 300ms expand animation. */
   useEffect(() => {
     const NAV_OFFSET = 96
+    const timers: number[] = []
 
-    const syncToHash = () => {
-      if (window.location.hash !== `#${id}`) return
-      setOpen(true)
+    const scrollToPanel = (behavior: ScrollBehavior) => {
       const el = document.getElementById(id)
       if (!el) return
-      window.scrollTo({
-        top: el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET,
-        behavior: 'smooth',
-      })
+      const target = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
+      if (Math.abs(target - window.scrollY) < 2) return
+      window.scrollTo({ top: target, behavior })
+    }
+
+    const syncToHash = () => {
+      if (window.location.hash !== `#${id}`) {
+        /* The hash has moved to a different panel. Collapse this one only if a
+           previous deep link is what opened it, so that following several nav
+           links in a row doesn't leave every panel expanded and undo the
+           grouping. A panel the visitor opened by hand is left alone. */
+        if (openedByHash.current) {
+          openedByHash.current = false
+          setOpen(false)
+        }
+        return
+      }
+      openedByHash.current = true
+      setOpen(true)
+      requestAnimationFrame(() => scrollToPanel('smooth'))
+      // 'auto' for the corrections so they land instantly instead of racing
+      // the smooth animation from the pass before.
+      timers.push(window.setTimeout(() => scrollToPanel('auto'), 450))
+      timers.push(window.setTimeout(() => scrollToPanel('auto'), 1000))
     }
 
     syncToHash()
     window.addEventListener('hashchange', syncToHash)
-    return () => window.removeEventListener('hashchange', syncToHash)
+    return () => {
+      window.removeEventListener('hashchange', syncToHash)
+      timers.forEach(clearTimeout)
+    }
   }, [id])
 
   return (
@@ -88,7 +118,12 @@ export default function OngoingServicePanel({
     >
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          // Hand control to the visitor: once they touch this panel, a later
+          // hash change elsewhere must not collapse it underneath them.
+          openedByHash.current = false
+          setOpen((v) => !v)
+        }}
         aria-expanded={open}
         aria-controls={`${panelId}-content`}
         className="flex w-full items-start gap-4 p-5 text-left transition-colors duration-200 hover:bg-[#FAF9F7] focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ias-brown-dark md:p-6"
