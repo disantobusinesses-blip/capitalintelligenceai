@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Bot, Check, FileText, Instagram, Shield } from 'lucide-react'
+import { Bot, Check, FileText, Shield } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
 import SquishyPricing, { type SquishyIcon, type SquishyTone } from '@/components/ui/squishy-pricing'
@@ -136,22 +136,6 @@ const blogTiers = [
     description: 'Maximum content output for the fastest path to search visibility.',
     features: ['12 SEO-optimised blog posts/mo', 'Keyword research included', 'Published directly to your site'],
     highlight: false,
-  },
-]
-
-/* ─── Instagram & Social Growth ─────────────────────────────────────────── */
-const SOCIAL_INCLUDES = [
-  {
-    title: 'Content Calendar & Scheduling',
-    description: 'A planned month of content, scheduled and published for you so posting never slips.',
-  },
-  {
-    title: 'Reels, Posts & Stories',
-    description: 'Short-form video and static content produced in your brand voice, built for reach.',
-  },
-  {
-    title: 'Monthly Growth Reporting',
-    description: 'Clear reporting on follower growth, reach, and engagement, so you can see what is working.',
   },
 ]
 
@@ -372,39 +356,6 @@ export default function ServicesPage() {
                 </QuotePopupButton>
               </div>
             ))}
-              </div>
-            </OngoingServicePanel>
-
-            {/* Folded in from the retired standalone "Other Services" page so
-                every service lives on this one route. */}
-            <OngoingServicePanel
-              id="social-growth"
-              eyebrow="Instagram & Social Growth"
-              title="Social Presence, Managed End to End"
-              summary="We manage and grow your social presence using the same systems behind our clients' results."
-            >
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {SOCIAL_INCLUDES.map((item) => (
-              <div
-                key={item.title}
-                className="bg-white rounded-[10px] p-7 flex flex-col"
-                style={{ border: '1px solid #E8E4DF' }}
-              >
-                <div className="mb-4">
-                  <Instagram className="w-7 h-7 text-ias-brown-dark" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-2">{item.title}</h3>
-                <p className="text-sm text-[#6B6560] leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-
-              <div className="mt-8">
-                <QuotePopupButton
-                  className="inline-block px-7 py-3.5 bg-ias-brown-dark text-white rounded-[6px] font-semibold text-sm transition-colors duration-200 hover:bg-ias-brown-mid"
-                >
-                  Enquire About Social Growth
-                </QuotePopupButton>
               </div>
             </OngoingServicePanel>
 

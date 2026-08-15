@@ -38,6 +38,16 @@ export default function Footer() {
               <li><Link href="/services" className="hover:text-white transition-colors duration-200">Services</Link></li>
               <li><Link href="/projects" className="hover:text-white transition-colors duration-200">Projects</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors duration-200">Blog</Link></li>
+              <li>
+                <a
+                  href="https://instagram.com/builtwithias"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  Instagram @builtwithias
+                </a>
+              </li>
             </ul>
           </div>
 
