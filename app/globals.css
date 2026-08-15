@@ -15,14 +15,21 @@
                        backgrounds, icon strokes. White on it: 12.10:1
        mid   #724935 - secondary accents, hover states, section dividers,
                        the Growth tier surface. White on it: 7.72:1
-       light #9E684C - the Bespoke tier surface, muted/secondary text on light
-                       page surfaces, large display type, icon accents
+       light #9E684C - the Bespoke tier SURFACE, large display type, icon
+                       accents. Not for small text: see `muted` below.
+       muted #8A5A40 - muted/secondary small text on light page surfaces
 
      The one rule to remember for `light`: when used as a background it takes
      PURE WHITE text and nothing else. White is 4.63:1 (passes AA), while cream
      #F8F7F4 is 4.32:1 and dark ink #2E1B12 is 3.54:1 (both fail). Because the
      margin over 4.5 is only 0.13, never apply an opacity tint to white text
      sitting on `light` — `text-white/90` already drops it below the threshold.
+
+     `light` is also 4.32:1 the other way round — as text ON cream — so it fails
+     AA for anything under 24px. It was previously hardcoded as `text-ias-brown-muted`
+     in 85 places, almost all of them small print, which is what `muted` now
+     replaces. Reach for `muted` for any secondary copy on light surfaces and
+     keep `light` for surfaces and large type.
 
      Use `on-dark` for muted text placed on the dark #1A1A1A footer/panels. */
   :root {
@@ -35,6 +42,11 @@
     --ias-brown-dark-rgb: 71 49 38;
     --ias-brown-mid-rgb: 114 73 53;
     --ias-brown-light-rgb: 158 104 76;
+    /* Secondary small text on the cream/white page surfaces. A shade darker
+       than `light` purely to clear AA: 5.42:1 on cream and 5.81:1 on white,
+       versus `light`'s failing 4.32:1 / 4.63:1 at small sizes. */
+    --ias-brown-muted: #8A5A40;
+    --ias-brown-muted-rgb: 138 90 64;
     /* Muted text on the dark surfaces (the #1A1A1A footer and dark panels).
        `light` only manages 3.76:1 there, so it cannot carry small print. This
        lighter tint of the same hue gives 6.0:1 — matching the legibility of the

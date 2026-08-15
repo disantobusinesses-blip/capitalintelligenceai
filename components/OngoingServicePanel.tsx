@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useState, type ReactNode } from 'react'
+import { useEffect, useId, useState, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 
@@ -41,6 +41,45 @@ export default function OngoingServicePanel({
 }: OngoingServicePanelProps) {
   const [open, setOpen] = useState(defaultOpen)
   const panelId = useId()
+
+  /* These anchors are deep-linked from the navbar, footer, BeyondWebsite and
+     WhyIntelligentAISystem, so a collapsed panel would leave those links
+     landing on a closed row that looks broken. Open this panel whenever the
+     hash points at it.
+
+     The `hashchange` listener matters as much as the initial read: moving from
+     /services#hosting to /services#b2b keeps the same page mounted, so without
+     it only the first deep link of a session would open.
+
+     Scrolling is done manually with `window.scrollTo` rather than the more
+     obvious `scrollIntoView`. This wrapper needs `overflow-hidden` to clip the
+     collapse animation, and that makes it a programmatically scrollable box in
+     its own right, so `scrollIntoView` resolves it as the nearest scroll
+     container and scrolls *inside* the panel instead of moving the page. That
+     failure is silent: it reports success and the viewport never moves.
+
+     Only the trigger row's position is needed, since the panel expands
+     downward from below it and cannot displace its own top edge. NAV_OFFSET
+     mirrors the `scroll-mt-24` (6rem) that keeps the row clear of the fixed
+     navbar. */
+  useEffect(() => {
+    const NAV_OFFSET = 96
+
+    const syncToHash = () => {
+      if (window.location.hash !== `#${id}`) return
+      setOpen(true)
+      const el = document.getElementById(id)
+      if (!el) return
+      window.scrollTo({
+        top: el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET,
+        behavior: 'smooth',
+      })
+    }
+
+    syncToHash()
+    window.addEventListener('hashchange', syncToHash)
+    return () => window.removeEventListener('hashchange', syncToHash)
+  }, [id])
 
   return (
     <div

@@ -126,7 +126,7 @@ export default function QuoteModal() {
             <label className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-ias-brown-dark" />
-                Preferred call time <span className="text-red-400">*</span>
+                Preferred call time <span className="text-red-700">*</span>
               </span>
             </label>
             <select
@@ -144,7 +144,7 @@ export default function QuoteModal() {
           {/* Name */}
           <div>
             <label className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
-              Your name <span className="text-red-400">*</span>
+              Your name <span className="text-red-700">*</span>
             </label>
             <input
               type="text"
@@ -160,7 +160,7 @@ export default function QuoteModal() {
             <label className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
                 <Phone className="w-4 h-4 text-ias-brown-dark" />
-                Phone number <span className="text-red-400">*</span>
+                Phone number <span className="text-red-700">*</span>
               </span>
             </label>
             <input
@@ -189,7 +189,7 @@ export default function QuoteModal() {
             {submitting ? 'Booking...' : 'Book Consultation'}
             {!submitting && <Check className="w-4 h-4" />}
           </button>
-          <p className="text-center text-xs text-[#9E684C] mt-3">
+          <p className="text-center text-xs text-ias-brown-muted mt-3">
             We'll confirm your time via phone within 24 hours.
           </p>
         </div>

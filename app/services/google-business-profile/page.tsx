@@ -145,12 +145,12 @@ export default function GoogleBusinessProfilePage() {
           <div className="bg-[#1A1A1A] rounded-[10px] p-8 md:p-10 mb-6">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
               <div>
-                <p className="text-xs font-bold text-[#9E684C] uppercase tracking-widest mb-1">One-time setup</p>
+                <p className="text-xs font-bold text-ias-brown-muted uppercase tracking-widest mb-1">One-time setup</p>
                 <h3 className="text-2xl md:text-3xl font-bold text-white">Google Business Profile Setup</h3>
               </div>
               <div className="sm:text-right shrink-0">
-                <span className="text-4xl md:text-5xl font-bold text-white">A$299 <span className="text-sm font-normal text-[#9E684C]">+ GST</span></span>
-                <p className="text-sm text-[#9E684C] mt-1">one-time · no monthly fees</p>
+                <span className="text-4xl md:text-5xl font-bold text-white">A$299 <span className="text-sm font-normal text-ias-brown-muted">+ GST</span></span>
+                <p className="text-sm text-ias-brown-muted mt-1">one-time · no monthly fees</p>
               </div>
             </div>
             <ul className="grid sm:grid-cols-2 gap-3 mb-8">
@@ -185,7 +185,7 @@ export default function GoogleBusinessProfilePage() {
                 </span>
               </div>
               <div className="flex items-center gap-3 shrink-0 ml-4">
-                <span className="text-lg font-bold text-[#1A1A1A]">A$79<span className="text-sm font-normal text-[#6B6560]">/month</span> <span className="text-[10px] font-normal text-[#9E684C]">+ GST</span></span>
+                <span className="text-lg font-bold text-[#1A1A1A]">A$79<span className="text-sm font-normal text-[#6B6560]">/month</span> <span className="text-[10px] font-normal text-ias-brown-muted">+ GST</span></span>
                 <svg
                   className={`w-5 h-5 text-[#6B6560] transition-transform duration-200 ${addonExpanded ? 'rotate-180' : ''}`}
                   fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
@@ -236,7 +236,7 @@ export default function GoogleBusinessProfilePage() {
           >
             Enquire Now
           </QuotePopupButton>
-          <p className="text-xs text-[#9E684C] mt-4">No lock-in contracts. Remote-first. Fast turnaround.</p>
+          <p className="text-xs text-ias-brown-muted mt-4">No lock-in contracts. Remote-first. Fast turnaround.</p>
         </div>
       </section>
 

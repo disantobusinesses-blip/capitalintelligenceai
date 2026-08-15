@@ -137,7 +137,8 @@ const PALETTES: Record<SquishyTone, Palette> = {
     divider: 'border-white/15',
     includesBox: 'bg-white/10 border-white/15',
     includesTitle: 'text-white',
-    includesBody: 'text-white/75',
+    /* /75 measured 4.18:1 against this box's lightened background. */
+    includesBody: 'text-white/90',
     outlineBtn: 'border border-white/30 text-white hover:bg-white/10',
     solidBtn: 'bg-white text-ias-brown-mid hover:bg-white/90',
     ring: 'ring-2 ring-[#2E1B12]',
@@ -147,7 +148,12 @@ const PALETTES: Record<SquishyTone, Palette> = {
        text. It is also the ONLY foreground that does: cream #F8F7F4 drops to
        4.32:1 and dark ink #2E1B12 to 3.54:1, both failing. So the muted and
        feature rows below stay at full-strength white rather than the /70 and
-       /90 opacities the two darker cards use, since any tint lands under 4.5. */
+       /90 opacities the two darker cards use, since any tint lands under 4.5.
+
+       The same 0.13 margin is why `includesBox` darkens rather than lightens.
+       A white veil raises the box's own luminance, which cuts the white text on
+       it to 3.51:1 — the tint only has to come from the background side to do
+       identical damage. `bg-black/15` moves the box the other way, to 5.99:1. */
     background: 'var(--ias-brown-light)',
     shape: 'fill-white/10 sm:fill-white/20',
     text: 'text-white',
@@ -155,7 +161,7 @@ const PALETTES: Record<SquishyTone, Palette> = {
     feature: 'text-white',
     check: 'text-white',
     divider: 'border-white/25',
-    includesBox: 'bg-white/15 border-white/25',
+    includesBox: 'bg-black/15 border-white/30',
     includesTitle: 'text-white',
     includesBody: 'text-white',
     outlineBtn: 'border border-white/50 text-white hover:bg-white/15',

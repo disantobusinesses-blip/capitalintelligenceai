@@ -51,7 +51,7 @@ export default function NewsletterSignup() {
               onChange={(e) => setName(e.target.value)}
               placeholder="Your Name"
               required
-              className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+              className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-ias-brown-muted focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
             />
             <input
               type="email"
@@ -59,7 +59,7 @@ export default function NewsletterSignup() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your Email"
               required
-              className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+              className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-ias-brown-muted focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
             />
             <button
               type="submit"

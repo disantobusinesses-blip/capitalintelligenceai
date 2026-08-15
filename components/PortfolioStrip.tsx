@@ -122,14 +122,14 @@ export default function PortfolioStrip() {
                 className="w-[85%] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] flex-shrink-0 snap-start block bg-white border border-[#E8E4DF] rounded-[10px] overflow-hidden"
               >
                 <div className="relative aspect-video bg-[#F0EDE7] border-b border-[#E8E4DF] flex flex-col items-center justify-center gap-2 px-6 text-center">
-                  <ImageOff className="w-6 h-6 text-[#9E684C]" strokeWidth={1.5} />
-                  <span className="text-[#9E684C] text-xs font-medium leading-relaxed">
+                  <ImageOff className="w-6 h-6 text-ias-brown-muted" strokeWidth={1.5} />
+                  <span className="text-ias-brown-muted text-xs font-medium leading-relaxed">
                     [PLACEHOLDER: {project.placeholderNote}]
                   </span>
                 </div>
                 <div className="p-6">
                   <h3 className="text-[#3D2817] font-semibold text-lg mb-1.5">{project.title}</h3>
-                  <span className="inline-flex items-center gap-1.5 text-[#9E684C] text-sm font-semibold">
+                  <span className="inline-flex items-center gap-1.5 text-ias-brown-muted text-sm font-semibold">
                     Coming Soon
                   </span>
                 </div>

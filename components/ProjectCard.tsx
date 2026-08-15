@@ -123,7 +123,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 ))}
               </ul>
               {project.additionalNote && (
-                <p className="mt-2.5 text-[12.5px] italic text-[#9E684C]">{project.additionalNote}</p>
+                <p className="mt-2.5 text-[12.5px] italic text-ias-brown-muted">{project.additionalNote}</p>
               )}
             </Disclosure>
           </div>

@@ -19,6 +19,9 @@ module.exports = {
           // As a background this takes pure white text only, with no opacity
           // tint: the margin over AA is 0.13. See globals.css.
           'brown-light': 'rgb(var(--ias-brown-light-rgb) / <alpha-value>)',
+          // Secondary small text on cream/white. Use instead of `brown-light`,
+          // which fails AA as text at small sizes.
+          'brown-muted': 'rgb(var(--ias-brown-muted-rgb) / <alpha-value>)',
           // Muted text on the dark footer/panels, where `light` is too dark.
           'brown-on-dark': 'rgb(var(--ias-brown-on-dark-rgb) / <alpha-value>)',
         },

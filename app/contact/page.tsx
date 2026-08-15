@@ -149,7 +149,7 @@ export default function ContactPage() {
                 {/* Your Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                    Your Name <span className="text-red-500">*</span>
+                    Your Name <span className="text-red-700">*</span>
                   </label>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#999]" />
@@ -169,7 +169,7 @@ export default function ContactPage() {
                 {/* Business Name */}
                 <div>
                   <label htmlFor="businessName" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                    Business Name <span className="text-red-500">*</span>
+                    Business Name <span className="text-red-700">*</span>
                   </label>
                   <div className="relative">
                     <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#999]" />
@@ -189,7 +189,7 @@ export default function ContactPage() {
                 {/* Email Address */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                    Email Address <span className="text-red-500">*</span>
+                    Email Address <span className="text-red-700">*</span>
                   </label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#999]" />
@@ -228,7 +228,7 @@ export default function ContactPage() {
                 {/* What do you need? */}
                 <div>
                   <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                    What do you need? <span className="text-red-500">*</span>
+                    What do you need? <span className="text-red-700">*</span>
                   </label>
                   <div className="flex flex-wrap gap-2">
                     {SERVICE_OPTIONS.map((service) => (
@@ -249,7 +249,7 @@ export default function ContactPage() {
                       </button>
                     ))}
                   </div>
-                  <p className="text-[11px] text-[#9E684C] mt-2">
+                  <p className="text-[11px] text-ias-brown-muted mt-2">
                     All websites require a hosting plan to stay live and secure.
                   </p>
                 </div>
@@ -284,7 +284,7 @@ export default function ContactPage() {
                             )}
                             <span>
                               <span className="block font-semibold">{addOn.label}</span>
-                              <span className={`block text-xs mt-0.5 ${form.addOns.includes(addOn.id) ? 'text-white/70' : 'text-[#9E684C]'}`}>
+                              <span className={`block text-xs mt-0.5 ${form.addOns.includes(addOn.id) ? 'text-white/70' : 'text-ias-brown-muted'}`}>
                                 {addOn.description}
                               </span>
                             </span>
@@ -296,7 +296,7 @@ export default function ContactPage() {
                       <div>
                         <label htmlFor="seoPackage" className="block text-sm font-semibold text-[#1A1A1A] mb-1">
                           SEO Packages
-                          <span className="text-[10px] font-normal text-[#9E684C] ml-1">(+GST)</span>
+                          <span className="text-[10px] font-normal text-ias-brown-muted ml-1">(+GST)</span>
                         </label>
                         <div className="relative">
                           <select
@@ -322,9 +322,9 @@ export default function ContactPage() {
                 {/* Estimated Budget */}
                 <div>
                   <label htmlFor="budget" className="block text-sm font-semibold text-[#1A1A1A] mb-1">
-                    Estimated Budget <span className="text-red-500">*</span>
+                    Estimated Budget <span className="text-red-700">*</span>
                   </label>
-                  <p className="text-[10px] text-[#9E684C] mb-2">All prices are + GST</p>
+                  <p className="text-[10px] text-ias-brown-muted mb-2">All prices are + GST</p>
                   <select
                     id="budget"
                     name="budget"

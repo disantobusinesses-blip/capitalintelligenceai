@@ -293,7 +293,7 @@ export default function QuotePopup() {
                   Tell us about your project and get a tailored quote within 1 hour.
                 </span>
               </span>
-              <ArrowRight className="w-5 h-5 text-[#9E684C] group-hover:text-ias-brown-dark group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-5 h-5 text-ias-brown-muted group-hover:text-ias-brown-dark group-hover:translate-x-0.5 transition-all" />
             </button>
 
             {/* Option 2, Book a Call (reuses existing 15-min consultation booking) */}
@@ -311,7 +311,7 @@ export default function QuotePopup() {
                   Grab a free 15-minute phone consultation at a time that suits you.
                 </span>
               </span>
-              <ArrowRight className="w-5 h-5 text-[#9E684C] group-hover:text-ias-brown-dark group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-5 h-5 text-ias-brown-muted group-hover:text-ias-brown-dark group-hover:translate-x-0.5 transition-all" />
             </button>
 
             <div className="pt-1">
@@ -394,7 +394,7 @@ export default function QuotePopup() {
         {/* Pricing + Google rating social proof */}
         <div className="px-5 pt-4">
           <FlowTrustStrip />
-          <p className="text-center text-[11px] text-[#9E684C] mt-2 leading-relaxed">
+          <p className="text-center text-[11px] text-ias-brown-muted mt-2 leading-relaxed">
             *All websites require a separate monthly hosting plan (from $59/mo) to stay live
             online, not included in the one-off build price above.
           </p>
@@ -407,7 +407,7 @@ export default function QuotePopup() {
             <label htmlFor="qp-name" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
                 <User className="w-4 h-4 text-ias-brown-dark" />
-                Name <span className="text-red-400">*</span>
+                Name <span className="text-red-700">*</span>
               </span>
             </label>
             <input
@@ -417,7 +417,7 @@ export default function QuotePopup() {
               onChange={(e) => setName(e.target.value)}
               placeholder="Your full name"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-ias-brown-muted focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -426,7 +426,7 @@ export default function QuotePopup() {
             <label htmlFor="qp-email" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
                 <Mail className="w-4 h-4 text-ias-brown-dark" />
-                Email <span className="text-red-400">*</span>
+                Email <span className="text-red-700">*</span>
               </span>
             </label>
             <input
@@ -436,7 +436,7 @@ export default function QuotePopup() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-ias-brown-muted focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -445,7 +445,7 @@ export default function QuotePopup() {
             <label htmlFor="qp-phone" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               <span className="flex items-center gap-1.5">
                 <Phone className="w-4 h-4 text-ias-brown-dark" />
-                Phone <span className="text-red-400">*</span>
+                Phone <span className="text-red-700">*</span>
               </span>
             </label>
             <input
@@ -455,7 +455,7 @@ export default function QuotePopup() {
               onChange={(e) => setPhone(e.target.value)}
               placeholder="0412 345 678"
               required
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-ias-brown-muted focus:outline-none focus:border-ias-brown-dark transition-colors duration-200"
             />
           </div>
 
@@ -463,7 +463,7 @@ export default function QuotePopup() {
           <div>
             <label className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">
               What service do you need?{' '}
-              <span className="font-normal text-[#9E684C]">(select all that apply)</span>
+              <span className="font-normal text-ias-brown-muted">(select all that apply)</span>
             </label>
             <div className="border border-[#E8E4DF] rounded-lg p-3 space-y-2">
               {SERVICE_OPTIONS.map((opt) => (
@@ -480,7 +480,7 @@ export default function QuotePopup() {
                   <span>
                     {opt}
                     {SERVICE_PRICE_LABEL[opt] && (
-                      <span className="text-[#9E684C]">, {SERVICE_PRICE_LABEL[opt]}</span>
+                      <span className="text-ias-brown-muted">, {SERVICE_PRICE_LABEL[opt]}</span>
                     )}
                   </span>
                 </label>
@@ -494,7 +494,7 @@ export default function QuotePopup() {
               <span className="flex items-center gap-1.5">
                 <MessageSquare className="w-4 h-4 text-ias-brown-dark" />
                 Tell us about your business{' '}
-                <span className="font-normal text-[#9E684C]">(optional)</span>
+                <span className="font-normal text-ias-brown-muted">(optional)</span>
               </span>
             </label>
             <textarea
@@ -503,7 +503,7 @@ export default function QuotePopup() {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="What does your business do, and what are you looking to achieve?"
               rows={3}
-              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-ias-brown-dark transition-colors duration-200 resize-none"
+              className="w-full px-4 py-2.5 bg-white border border-[#E8E4DF] rounded-lg text-[#1A1A1A] placeholder-ias-brown-muted focus:outline-none focus:border-ias-brown-dark transition-colors duration-200 resize-none"
             />
           </div>
 
@@ -583,7 +583,7 @@ export default function QuotePopup() {
               </>
             )}
           </button>
-          <p className="text-center text-xs text-[#9E684C]">We respond within 1 hour.</p>
+          <p className="text-center text-xs text-ias-brown-muted">We respond within 1 hour.</p>
         </form>
       </div>
     </div>

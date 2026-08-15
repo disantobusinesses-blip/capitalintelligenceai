@@ -71,8 +71,8 @@ export default function ServiceSelection() {
                 <div className="mb-0.5">
                   <p className="text-[17px] font-bold text-ias-brown-dark">
                     {service.price}
-                    <span className="text-[10px] font-normal text-[#9E684C] ml-1">+ GST</span>
-                    <span className="text-[13px] font-normal text-[#9E684C] ml-1">{service.priceNote}</span>
+                    <span className="text-[10px] font-normal text-ias-brown-muted ml-1">+ GST</span>
+                    <span className="text-[13px] font-normal text-ias-brown-muted ml-1">{service.priceNote}</span>
                   </p>
                 </div>
 

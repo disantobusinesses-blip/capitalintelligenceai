@@ -31,8 +31,8 @@ export default function GrowthProofImage({
       <div
         className={`${wrapperClassName} ${aspectClassName} rounded-[8px] bg-[#F0EDE7] border border-[#E8E4DF] flex flex-col items-center justify-center gap-2 px-5 text-center`}
       >
-        <ImageOff className="w-5 h-5 text-[#9E684C]" strokeWidth={1.5} />
-        <span className="text-[#9E684C] text-xs font-medium leading-relaxed">[PLACEHOLDER: image pending upload]</span>
+        <ImageOff className="w-5 h-5 text-ias-brown-muted" strokeWidth={1.5} />
+        <span className="text-ias-brown-muted text-xs font-medium leading-relaxed">[PLACEHOLDER: image pending upload]</span>
       </div>
     )
   }

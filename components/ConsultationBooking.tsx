@@ -292,15 +292,15 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
           onClick={() => setShowCalendar((v) => !v)}
           className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-sm text-left flex items-center gap-2 focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200"
         >
-          <CalendarDays className="w-4 h-4 text-[#9E684C] flex-shrink-0" />
-          <span className={selectedDate ? 'text-[#1A1A1A]' : 'text-[#9E684C]'}>
+          <CalendarDays className="w-4 h-4 text-ias-brown-muted flex-shrink-0" />
+          <span className={selectedDate ? 'text-[#1A1A1A]' : 'text-ias-brown-muted'}>
             {selectedDate ? format(selectedDate, 'EEEE, d MMMM yyyy') : 'Select a date'}
           </span>
         </button>
 
         {showCalendar && (
           <div className="absolute left-0 right-0 z-50 mt-1 bg-white rounded-lg shadow-xl border border-[#E8E4DF] p-4 max-h-[300px] overflow-y-auto">
-            <p className="text-xs text-[#9E684C] mb-2">Mon–Fri 9am–5pm, Sat 9am–12pm AEST</p>
+            <p className="text-xs text-ias-brown-muted mb-2">Mon–Fri 9am–5pm, Sat 9am–12pm AEST</p>
             <div className="grid grid-cols-2 gap-2">
               {availableDates.map((date) => {
                 const isSelected = selectedDate && format(selectedDate, 'yyyy-MM-dd') === format(date, 'yyyy-MM-dd')
@@ -334,7 +334,7 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
       {selectedDate && (
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <Clock className="w-4 h-4 text-[#9E684C]" />
+            <Clock className="w-4 h-4 text-ias-brown-muted" />
             <span className="text-sm text-[#6B6560]">Select a time slot</span>
           </div>
 
@@ -381,7 +381,7 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
           onChange={(e) => setName(e.target.value)}
           placeholder="Your Name *"
           required
-          className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+          className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-ias-brown-muted focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
         />
       </div>
 
@@ -394,7 +394,7 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email Address *"
           required
-          className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
+          className="w-full px-4 py-3 border border-[#E8E4DF] rounded-[6px] text-[#1A1A1A] placeholder-ias-brown-muted focus:outline-none focus:border-[#1A1A1A] transition-colors duration-200 text-sm"
         />
       </div>
 
@@ -410,7 +410,7 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
           }}
           placeholder="Phone Number * (04XX XXX XXX or +61 XXX XXX XXX)"
           required
-          className={`w-full px-4 py-3 border rounded-[6px] text-[#1A1A1A] placeholder-[#9E684C] focus:outline-none transition-colors duration-200 text-sm ${
+          className={`w-full px-4 py-3 border rounded-[6px] text-[#1A1A1A] placeholder-ias-brown-muted focus:outline-none transition-colors duration-200 text-sm ${
             phoneError ? 'border-red-400 focus:border-red-400' : 'border-[#E8E4DF] focus:border-[#1A1A1A]'
           }`}
         />
@@ -422,7 +422,7 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
       {/* What do you need - Multi select */}
       <div>
         <label className="block text-sm font-medium text-[#1A1A1A] mb-2">
-          What do you need? <span className="text-red-400">*</span>
+          What do you need? <span className="text-red-700">*</span>
         </label>
         <div className="flex flex-wrap gap-2">
           {SERVICE_OPTIONS.map((service) => (

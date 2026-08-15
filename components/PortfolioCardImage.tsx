@@ -15,8 +15,8 @@ export default function PortfolioCardImage({ src, alt }: { src: string; alt: str
   if (failed) {
     return (
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center">
-        <ImageOff className="w-6 h-6 text-[#9E684C]" strokeWidth={1.5} />
-        <span className="text-[#9E684C] text-xs font-medium leading-relaxed">
+        <ImageOff className="w-6 h-6 text-ias-brown-muted" strokeWidth={1.5} />
+        <span className="text-ias-brown-muted text-xs font-medium leading-relaxed">
           [PLACEHOLDER: image pending upload]
         </span>
       </div>

@@ -20,7 +20,7 @@ function Cell({ value }: { value: FeatureValue }) {
   if (value === false) {
     return (
       <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#F0EDE8] mx-auto">
-        <X className="w-3.5 h-3.5 text-[#9E684C]" strokeWidth={3} />
+        <X className="w-3.5 h-3.5 text-ias-brown-muted" strokeWidth={3} />
       </span>
     )
   }
