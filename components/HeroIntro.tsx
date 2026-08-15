@@ -59,7 +59,11 @@ export default function HeroIntro() {
             {/* Magnetic pull on desktop; the wrapper keeps the button's
                 full-width-on-mobile behaviour rather than shrink-wrapping it. */}
             <Magnetic intensity={0.35} range={120} className="w-full sm:w-auto">
-              <QuotePopupButton className="w-full sm:w-auto bg-ias-brown-mid text-[#3D2817] font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-ias-brown-dark transition-colors duration-200">
+              {/* White text, not the dark #3D2817 this used to carry: dark ink
+                  on brown-mid measures 1.80:1, the worst contrast on the site
+                  and effectively illegible. White on the same fill is 7.72:1,
+                  and 12.10:1 after the darker hover. */}
+              <QuotePopupButton className="w-full sm:w-auto bg-ias-brown-mid text-white font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-ias-brown-dark transition-colors duration-200">
                 Request Quote/Call
               </QuotePopupButton>
             </Magnetic>

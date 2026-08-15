@@ -382,7 +382,11 @@ export default function ContactPage() {
                   )}
                 </button>
 
-                <p className="text-center text-xs text-[#999] pt-1">
+                {/* #6B6560, the palette's body grey, rather than #999: at 12px
+                    this needs 4.5:1 on the cream and #999 gives 2.66:1. The
+                    #999 input icons above are left alone, being decorative
+                    glyphs next to already-labelled fields. */}
+                <p className="text-center text-xs text-[#6B6560] pt-1">
                   We typically respond within 1-2 business days. No spam, ever.
                 </p>
               </form>

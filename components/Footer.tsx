@@ -26,7 +26,7 @@ export default function Footer() {
             <p className="text-ias-brown-on-dark text-sm leading-relaxed mb-3">
               Serving clients globally from Melbourne, Australia, helping businesses get found on Google and recommended by AI, so you get more leads, more calls, and more growth.
             </p>
-            <p className="text-xs text-[#6B6560]">ABN: 38 693 023 371</p>
+            <p className="text-xs text-ias-brown-on-dark">ABN: 38 693 023 371</p>
           </div>
 
           {/* Column 2: Quick Links */}
@@ -69,7 +69,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div
-          className="pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-[13px] text-[#6B6560]"
+          className="pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-[13px] text-ias-brown-on-dark"
           style={{ borderTop: '1px solid #2D2D2D' }}
         >
           <p>© 2026 Intelligent AI Systems. All rights reserved.</p>

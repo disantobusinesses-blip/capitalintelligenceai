@@ -92,7 +92,12 @@ export default function FreeWebsiteSeoPage() {
       {/* ── Hero ── */}
       <section className="py-20 px-6 text-center">
         <div className="max-w-3xl mx-auto">
-          <p className="text-sm font-semibold tracking-widest uppercase text-[#2563EB] mb-4">
+          {/* Lighter blue than the #2563EB used elsewhere on this page. At 14px
+              this is normal-size text and needs 4.5:1 on the navy, where
+              #2563EB gives only 3.69:1. The big step numbers and the check
+              icons below keep #2563EB, since large text and graphics only need
+              3:1 and it clears that. */}
+          <p className="text-sm font-semibold tracking-widest uppercase text-[#60A5FA] mb-4">
             Limited Spots Available
           </p>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">

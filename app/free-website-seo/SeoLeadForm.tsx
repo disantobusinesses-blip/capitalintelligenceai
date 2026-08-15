@@ -69,7 +69,7 @@ export default function SeoLeadForm() {
             placeholder="Jane Smith"
             value={form.name}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#475569] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
           />
         </div>
         <div>
@@ -81,7 +81,7 @@ export default function SeoLeadForm() {
             placeholder="Acme Digital"
             value={form.business_name}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#475569] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
           />
         </div>
         <div>
@@ -93,7 +93,7 @@ export default function SeoLeadForm() {
             placeholder="jane@yourbusiness.com"
             value={form.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#475569] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
           />
         </div>
         <div>
@@ -105,12 +105,12 @@ export default function SeoLeadForm() {
             placeholder="04xx xxx xxx"
             value={form.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#475569] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
           />
         </div>
         <div>
           <label className="block text-sm font-semibold text-[#CBD5E1] mb-1.5">
-            Current Website <span className="text-[#475569] font-normal">(optional)</span>
+            Current Website <span className="text-[#94A3B8] font-normal">(optional)</span>
           </label>
           <input
             name="existing_website"
@@ -118,7 +118,7 @@ export default function SeoLeadForm() {
             placeholder="https://yoursite.com"
             value={form.existing_website}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#475569] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
           />
         </div>
         <div>
@@ -157,7 +157,7 @@ export default function SeoLeadForm() {
           )}
         </button>
 
-        <p className="text-center text-xs text-[#475569] pt-1">
+        <p className="text-center text-xs text-[#94A3B8] pt-1">
           No credit card required. No lock-in contracts. Melbourne-based team.
         </p>
       </form>
