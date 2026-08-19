@@ -1,226 +1,171 @@
 import type { Metadata } from 'next'
-import { Zap, Users, Target, Shield } from 'lucide-react'
-import Link from 'next/link'
+import { display, body } from '@/lib/fonts'
 import FadeRiseText from '@/components/ui/fade-rise-text'
+import QuotePopupButton from '@/components/QuotePopupButton'
 
 export const revalidate = 60
 
 export const metadata: Metadata = {
-  title: 'About Us – Intelligent AI Systems | Capital Intelligence Group',
-  description: 'IAS builds professional websites and AI integrations for businesses across Australia, the US, the UK, and Singapore. Part of Capital Intelligence Group.',
-  keywords: 'about IAS, Intelligent AI Systems, Capital Intelligence Group, web design agency Australia, AI automation, digital solutions',
+  title: 'About IAS – Melbourne Web Design Studio | Built Different',
+  description:
+    'IAS is a Melbourne-based web design and development studio, built and run by its founder, Stefano. Premium, fast, technically sound websites at a fixed price.',
+  keywords:
+    'about IAS, Stefano, Melbourne web design studio, web development Melbourne, technical SEO, fixed price websites',
   alternates: {
     canonical: 'https://intelligentaisystem.com/about',
   },
   openGraph: {
-    title: 'About Us – Intelligent AI Systems',
-    description: 'IAS builds professional websites and AI integrations for businesses across Australia, the US, the UK, and Singapore.',
+    title: 'About IAS – Melbourne Web Design Studio',
+    description:
+      'A Melbourne-based web design and development studio, built and run by its founder, Stefano.',
     url: 'https://intelligentaisystem.com/about',
     type: 'website',
   },
 }
 
-const values = [
+/* The three things that actually distinguish an IAS build, pulled straight
+   from the studio's positioning rather than generic agency values. */
+const APPROACH = [
   {
-    icon: Zap,
-    title: 'Innovation',
-    description: 'We leverage cutting-edge AI and web technologies to deliver solutions that keep your business ahead of the curve.',
+    title: 'A Real Technical Foundation',
+    description:
+      'Every website starts with a real technical foundation, not a template with your logo dropped in. Structured data, correct heading hierarchy, fast load times, and SEO built in from day one. Not sold as an add-on afterward.',
   },
   {
-    icon: Users,
-    title: 'Client-First Approach',
-    description: 'Every project starts with understanding your unique business needs. We build solutions tailored specifically to you.',
+    title: 'Three Fixed-Price Packages',
+    description:
+      'Foundation, Growth, and Bespoke. No vague quotes, no scope creep, no surprises on the invoice.',
   },
   {
-    icon: Target,
-    title: 'Results-Driven',
-    description: 'Our focus is on measurable outcomes: faster load times, higher conversions, and streamlined operations.',
+    title: 'Real Results, Not Promises',
+    description:
+      'Every site IAS builds is designed to rank, load fast, and convert, backed by genuine client outcomes across Melbourne and beyond.',
   },
-  {
-    icon: Shield,
-    title: 'Reliability',
-    description: 'From secure hosting to ongoing maintenance, we ensure your digital presence is always performing at its best.',
-  },
+]
+
+/* Clients already featured across the portfolio and testimonials. */
+const CLIENTS = [
+  'EAY Electrical',
+  'Reborn Physiques',
+  'Estética Sydney',
+  'Onyx Global',
+  'Azzura Consulting',
+  'Tamar Cabinets',
+  'Certi Sustainability',
+  'Senator Developments',
 ]
 
 export default function AboutPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
+    <main className={`${body.className} min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]`}>
       {/* Hero */}
-      <section className="py-24 px-6 text-center relative overflow-hidden">
-        <div className="max-w-4xl mx-auto relative">
-          <h1 className="text-5xl md:text-6xl font-bold text-[#1A1A1A] mb-6">
-            <FadeRiseText text="About Intelligent Systems" />
-          </h1>
-          <p className="text-xl text-[#6B6560] leading-relaxed mb-4">
-            Capital Intelligence Group
-          </p>
-          <p className="text-lg text-[#6B6560] max-w-2xl mx-auto leading-relaxed">
-            We integrate intelligent systems into businesses so they operate smoother, faster, and smarter. 
-            From professional websites to AI-powered automation, we help businesses across Australia, the US, the UK, and Singapore thrive in the digital age.
-          </p>
+      <section className="pt-[80px] pb-[72px] px-6">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="max-w-[760px]">
+            <h1
+              className={`${display.className} text-[52px] md:text-[80px] leading-[0.95] font-bold uppercase tracking-[-0.01em] text-[#3D2817] text-balance`}
+            >
+              <FadeRiseText text="Built Different" />
+            </h1>
+            <p className="text-[18px] md:text-[20px] text-[#6B6560] mt-6 max-w-[620px] leading-relaxed text-pretty">
+              IAS is a Melbourne-based web design and development studio, built and run by its
+              founder, Stefano.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Who We Are */}
-      <section className="py-16 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6">Who We Are</h2>
-              <div className="space-y-4 text-[#6B6560] leading-relaxed">
-                <p>
-                  Intelligent AI Systems (IAS) is a digital solutions agency under the Capital Intelligence Group. 
-                  We specialise in building high-performance websites and integrating AI-powered tools that help businesses 
-                  automate their operations and grow their online presence.
-                </p>
-                <p>
-                  We work with businesses across Australia, the United States, the United Kingdom, and Singapore, fully remote. From startups and small businesses to established companies across diverse industries, from electrical services to healthcare, finance, and retail.
-                </p>
-                <p>
-                  Our mission is simple: deliver intelligent, scalable systems that make businesses run better.
-                </p>
-              </div>
-              <p className="text-sm text-[#6B6560] mt-6">
-                ABN: 38 693 023 371
+      {/* Founder */}
+      <section className="bg-white py-[80px] px-6 border-t border-[#E8E4DF]">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="max-w-[760px]">
+            <h2 className="text-[32px] md:text-[40px] font-bold text-[#1A1A1A] leading-tight mb-8 text-balance">
+              Meet Stefano
+            </h2>
+            <div className="flex flex-col gap-5 text-[17px] text-[#6B6560] leading-relaxed">
+              <p>
+                I started IAS to fix a problem I kept seeing: businesses paying traditional agency
+                prices for slow builds, generic templates, and SEO treated as an afterthought.
+              </p>
+              <p>
+                IAS runs differently. Every website is built using an AI-accelerated workflow,
+                design, development, and technical SEO handled in a fraction of the time a
+                traditional agency takes, without cutting corners on quality. I&apos;m directly
+                involved in every build, from the first consultation through to the site going live.
+              </p>
+              {/* The studio's core promise, given visual weight as the one
+                  signature element on the page. */}
+              <p className="text-[19px] md:text-[21px] text-[#3D2817] font-semibold leading-relaxed border-l-2 border-ias-brown-mid pl-6 mt-1">
+                The result is simple: premium, fast, technically sound websites at a fixed price,
+                delivered in days, not months.
               </p>
             </div>
-            <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 text-center">
-              <div className="w-20 h-20 bg-[#F8F7F4] rounded-[10px] border border-[#E8E4DF] flex items-center justify-center mx-auto mb-6">
-                <Zap className="w-10 h-10 text-[#1A1A1A]" />
-              </div>
-              <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2">Systems That Think.</h3>
-              <p className="text-xl font-bold text-[#1A1A1A]">Businesses That Scale.</p>
-            </div>
+            <p className="text-sm text-[#6B6560] mt-10">ABN: 38 693 023 371</p>
           </div>
         </div>
       </section>
 
-      {/* Our Values */}
-      <section className="py-16 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#1A1A1A] text-center mb-12">What Drives Us</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => {
-              const Icon = value.icon
-              return (
-                <div
-                  key={index}
-                  className="bg-white border border-[#E8E4DF] rounded-[6px] p-6 smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
-                >
-                  <div className="w-12 h-12 bg-[#F8F7F4] rounded-[6px] border border-[#E8E4DF] flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-[#1A1A1A]" />
-                  </div>
-                  <h3 className="text-lg font-bold text-[#1A1A1A] mb-2">{value.title}</h3>
-                  <p className="text-sm text-[#6B6560] leading-relaxed">{value.description}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* What We Offer */}
-      <section className="py-16 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#1A1A1A] text-center mb-12">What We Offer</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-              <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">Professional Websites</h3>
-              <ul className="space-y-2 text-[#6B6560] text-sm">
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  Fixed-price packages from $1,999 AUD
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  Foundation, Growth &amp; Bespoke tiers, 1 to 10+ pages
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  Mobile responsive & SEO optimised
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  Modern, fast-loading designs
-                </li>
-              </ul>
-              <Link
-                href="/services"
-                className="inline-block mt-4 text-sm font-semibold text-ias-brown-dark underline underline-offset-2 hover:text-[#3D2817]"
+      {/* Approach */}
+      <section className="py-[80px] px-6 border-t border-[#E8E4DF]">
+        <div className="max-w-[1200px] mx-auto">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#1A1A1A] leading-tight mb-12 max-w-[620px] text-balance">
+            How IAS Builds Different
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6 items-start">
+            {APPROACH.map((item) => (
+              <div
+                key={item.title}
+                className="bg-white rounded-[10px] p-7 border border-[#E8E4DF] smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
               >
-                View packages
-              </Link>
-            </div>
-            <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-              <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">AI Integrations</h3>
-              <ul className="space-y-2 text-[#6B6560] text-sm">
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  24/7 AI chat support for your website
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  Automated booking systems
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  AI-powered customer email replies
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  Custom AI workflows & automation
-                </li>
-              </ul>
-            </div>
-            <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-8 smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-              <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">Ongoing Support</h3>
-              <ul className="space-y-2 text-[#6B6560] text-sm">
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  Monthly hosting & maintenance plans
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  SEO & AI visibility packages
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  Security updates & backups
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-1.5 flex-shrink-0" />
-                  Dedicated tech support
-                </li>
-              </ul>
-            </div>
+                <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-3 text-balance">
+                  {item.title}
+                </h3>
+                <p className="text-[15px] text-[#6B6560] leading-relaxed">{item.description}</p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* Proof */}
+      <section className="bg-white py-[80px] px-6 border-t border-[#E8E4DF]">
+        <div className="max-w-[1200px] mx-auto">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#1A1A1A] leading-tight mb-6 max-w-[620px] text-balance">
+            Real Businesses, Built Different
+          </h2>
+          <p className="text-[17px] text-[#6B6560] leading-relaxed max-w-[720px] text-pretty">
+            IAS has built and grown websites for businesses across trades, fitness, beauty,
+            professional services, and fintech.
+          </p>
+          <ul className="flex flex-wrap gap-3 mt-8">
+            {CLIENTS.map((client) => (
+              <li
+                key={client}
+                className="text-[14px] font-semibold text-[#3D2817] bg-[#F8F7F4] border border-[#E8E4DF] rounded-[6px] px-4 py-2.5"
+              >
+                {client}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6">Ready to Get Started?</h2>
-          <p className="text-[#6B6560] mb-8">
-            Let us build an intelligent system tailored to your business.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/"
-              className="px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
-            >
-              Explore Services
-            </Link>
-            <Link
-              href="/services"
-              className="px-8 py-4 border-2 border-[#1A1A1A] text-[#1A1A1A] rounded-[6px] font-semibold text-lg smooth-transition hover:bg-[#1A1A1A] hover:text-white"
-            >
-              View Services
-            </Link>
+      <section className="py-[80px] px-6 border-t border-[#E8E4DF]">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="max-w-[620px]">
+            <h2 className="text-[32px] md:text-[40px] font-bold text-[#1A1A1A] leading-tight mb-5 text-balance">
+              Ready to Build Different?
+            </h2>
+            <p className="text-[17px] text-[#6B6560] leading-relaxed mb-9 text-pretty">
+              Book a free 15-minute consultation and see what IAS can build for your business.
+            </p>
+            <QuotePopupButton className="w-full sm:w-auto inline-block bg-ias-brown-mid text-white font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-ias-brown-dark transition-colors duration-200">
+              Request Quote/Call
+            </QuotePopupButton>
           </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }
