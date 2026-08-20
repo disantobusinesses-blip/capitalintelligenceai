@@ -27,10 +27,7 @@ export const metadata: Metadata = {
   },
 }
 
-/* Set this to the founder photo path once the image lands in /public/images —
-   one line, no JSX surgery. While it is empty the frame renders as a labelled
-   placeholder rather than a broken image. */
-const FOUNDER_PHOTO = ''
+const FOUNDER_PHOTO = '/images/founder-stefano.jpg'
 
 export default function AboutPage() {
   return (
