@@ -58,18 +58,21 @@ export default function AboutPage() {
               aria-hidden="true"
               className="absolute -bottom-4 -left-4 hidden h-[70%] w-[60%] rounded-[10px] border border-ias-brown-mid/25 bg-ias-brown-dark/[0.04] sm:block"
             />
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[10px] border border-[#E8E4DF] bg-white">
+            {/* The frame takes its height from the photo's own ratio rather than
+                forcing a fixed aspect box, so the portrait is never cropped. */}
+            <div className="relative overflow-hidden rounded-[10px] border border-[#E8E4DF] bg-white">
               {FOUNDER_PHOTO ? (
                 <Image
                   src={FOUNDER_PHOTO}
                   alt="Stefano, founder of IAS"
-                  fill
+                  width={1080}
+                  height={1350}
                   priority
                   sizes="(max-width: 768px) 90vw, 440px"
-                  className="object-cover"
+                  className="block h-auto w-full"
                 />
               ) : (
-                <div className="flex h-full w-full items-center justify-center bg-ias-brown-dark/[0.04]">
+                <div className="flex aspect-[4/5] w-full items-center justify-center bg-ias-brown-dark/[0.04]">
                   <span className="text-[13px] font-medium tracking-[0.08em] text-ias-brown-muted uppercase">
                     Founder photo
                   </span>
