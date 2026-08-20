@@ -1,7 +1,11 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
+
 import { display, body } from '@/lib/fonts'
-import FadeRiseText from '@/components/ui/fade-rise-text'
 import QuotePopupButton from '@/components/QuotePopupButton'
+import AboutProcess from '@/components/about/AboutProcess'
+import AboutStats from '@/components/about/AboutStats'
+import AboutClientCarousel from '@/components/about/AboutClientCarousel'
 
 export const revalidate = 60
 
@@ -23,144 +27,136 @@ export const metadata: Metadata = {
   },
 }
 
-/* The three things that actually distinguish an IAS build, pulled straight
-   from the studio's positioning rather than generic agency values. */
-const APPROACH = [
-  {
-    title: 'A Real Technical Foundation',
-    description:
-      'Every website starts with a real technical foundation, not a template with your logo dropped in. Structured data, correct heading hierarchy, fast load times, and SEO built in from day one. Not sold as an add-on afterward.',
-  },
-  {
-    title: 'Three Fixed-Price Packages',
-    description:
-      'Foundation, Growth, and Bespoke. No vague quotes, no scope creep, no surprises on the invoice.',
-  },
-  {
-    title: 'Real Results, Not Promises',
-    description:
-      'Every site IAS builds is designed to rank, load fast, and convert, backed by genuine client outcomes across Melbourne and beyond.',
-  },
-]
-
-/* Clients already featured across the portfolio and testimonials. */
-const CLIENTS = [
-  'EAY Electrical',
-  'Reborn Physiques',
-  'Estética Sydney',
-  'Onyx Global',
-  'Azzura Consulting',
-  'Tamar Cabinets',
-  'Certi Sustainability',
-  'Senator Developments',
-]
+/* Set this to the founder photo path once the image lands in /public/images —
+   one line, no JSX surgery. While it is empty the frame renders as a labelled
+   placeholder rather than a broken image. */
+const FOUNDER_PHOTO = ''
 
 export default function AboutPage() {
   return (
     <main className={`${body.className} min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]`}>
-      {/* Hero */}
-      <section className="pt-[80px] pb-[72px] px-6">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="max-w-[760px]">
+      {/* SECTION 1 — Hero. Split layout: copy left, founder photo right, stacked
+          on mobile with the photo second so the headline still leads. */}
+      <section className="px-6 pt-[64px] pb-[72px] md:pt-[80px]">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-12 md:grid-cols-2 md:gap-16">
+          <div>
             <h1
-              className={`${display.className} text-[52px] md:text-[80px] leading-[0.95] font-bold uppercase tracking-[-0.01em] text-[#3D2817] text-balance`}
+              className={`${display.className} text-[52px] leading-[0.95] font-bold tracking-[-0.01em] text-ias-brown-dark text-balance uppercase md:text-[76px]`}
             >
-              <FadeRiseText text="Built Different" />
+              Built Different
             </h1>
-            <p className="text-[18px] md:text-[20px] text-[#6B6560] mt-6 max-w-[620px] leading-relaxed text-pretty">
+            <p className="mt-6 max-w-[520px] text-[18px] leading-relaxed text-ias-brown-muted text-pretty md:text-[20px]">
               IAS is a Melbourne-based web design and development studio, built and run by its
               founder, Stefano.
             </p>
+            <QuotePopupButton className="mt-9 w-full rounded-[6px] bg-ias-brown-dark px-9 py-4 text-center text-base font-bold text-white transition-colors duration-200 hover:bg-ias-brown-mid sm:w-auto">
+              Request Quote/Call
+            </QuotePopupButton>
+          </div>
+
+          {/* Two offset frames rather than one flat image: the smaller card
+              behind gives the portrait depth without any decorative filler. */}
+          <div className="relative mx-auto w-full max-w-[440px] md:mx-0">
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-4 -left-4 hidden h-[70%] w-[60%] rounded-[10px] border border-ias-brown-mid/25 bg-ias-brown-dark/[0.04] sm:block"
+            />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[10px] border border-[#E8E4DF] bg-white">
+              {FOUNDER_PHOTO ? (
+                <Image
+                  src={FOUNDER_PHOTO}
+                  alt="Stefano, founder of IAS"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 90vw, 440px"
+                  className="object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-ias-brown-dark/[0.04]">
+                  <span className="text-[13px] font-medium tracking-[0.08em] text-ias-brown-muted uppercase">
+                    Founder photo
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Founder */}
-      <section className="bg-white py-[80px] px-6 border-t border-[#E8E4DF]">
-        <div className="max-w-[1200px] mx-auto">
+      {/* SECTION 2 — Founder story */}
+      <section className="border-t border-[#E8E4DF] bg-white px-6 py-[72px] md:py-[88px]">
+        <div className="mx-auto max-w-[1200px]">
           <div className="max-w-[760px]">
-            <h2 className="text-[32px] md:text-[40px] font-bold text-[#1A1A1A] leading-tight mb-8 text-balance">
+            <h2
+              className={`${display.className} text-[36px] leading-tight font-semibold text-ias-brown-dark text-balance md:text-[48px]`}
+            >
               Meet Stefano
             </h2>
-            <div className="flex flex-col gap-5 text-[17px] text-[#6B6560] leading-relaxed">
+            <div className="mt-8 flex flex-col gap-5 text-[17px] leading-relaxed text-ias-brown-muted">
               <p>
-                I started IAS to fix a problem I kept seeing: businesses paying traditional agency
-                prices for slow builds, generic templates, and SEO treated as an afterthought.
+                Most agencies sell slow builds, generic templates, and SEO as an afterthought, at
+                agency prices. IAS exists to do it properly instead.
               </p>
-              <p>
-                IAS runs differently. Every website is built using an AI-accelerated workflow,
-                design, development, and technical SEO handled in a fraction of the time a
-                traditional agency takes, without cutting corners on quality. I&apos;m directly
-                involved in every build, from the first consultation through to the site going live.
+              {/* The studio's method, given the page's one accent treatment so it
+                  reads as the takeaway rather than another paragraph. */}
+              <p className="mt-1 border-l-2 border-ias-brown-mid pl-6 text-[19px] leading-relaxed font-medium text-ias-brown-dark md:text-[21px]">
+                Every website is built through an AI-accelerated workflow that compresses design,
+                development, and technical SEO into days, not months, without cutting quality.
               </p>
-              {/* The studio's core promise, given visual weight as the one
-                  signature element on the page. */}
-              <p className="text-[19px] md:text-[21px] text-[#3D2817] font-semibold leading-relaxed border-l-2 border-ias-brown-mid pl-6 mt-1">
-                The result is simple: premium, fast, technically sound websites at a fixed price,
-                delivered in days, not months.
-              </p>
+              <p>I oversee every build personally, start to finish.</p>
             </div>
-            <p className="text-sm text-[#6B6560] mt-10">ABN: 38 693 023 371</p>
+            <p className="mt-10 text-sm text-ias-brown-muted">ABN: 38 693 023 371</p>
           </div>
         </div>
       </section>
 
-      {/* Approach */}
-      <section className="py-[80px] px-6 border-t border-[#E8E4DF]">
-        <div className="max-w-[1200px] mx-auto">
-          <h2 className="text-[32px] md:text-[40px] font-bold text-[#1A1A1A] leading-tight mb-12 max-w-[620px] text-balance">
+      {/* SECTION 3 — Process */}
+      <section className="border-t border-[#E8E4DF] px-6 py-[72px] md:py-[88px]">
+        <div className="mx-auto max-w-[1200px]">
+          <h2
+            className={`${display.className} mb-12 max-w-[620px] text-[36px] leading-tight font-semibold text-ias-brown-dark text-balance md:mb-16 md:text-[48px]`}
+          >
             How IAS Builds Different
           </h2>
-          <div className="grid md:grid-cols-3 gap-6 items-start">
-            {APPROACH.map((item) => (
-              <div
-                key={item.title}
-                className="bg-white rounded-[10px] p-7 border border-[#E8E4DF] smooth-transition hover:border-ias-brown-dark hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
-              >
-                <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-3 text-balance">
-                  {item.title}
-                </h3>
-                <p className="text-[15px] text-[#6B6560] leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
+          <AboutProcess />
         </div>
       </section>
 
-      {/* Proof */}
-      <section className="bg-white py-[80px] px-6 border-t border-[#E8E4DF]">
-        <div className="max-w-[1200px] mx-auto">
-          <h2 className="text-[32px] md:text-[40px] font-bold text-[#1A1A1A] leading-tight mb-6 max-w-[620px] text-balance">
+      {/* SECTION 4 — Stats */}
+      <section className="border-t border-[#E8E4DF] bg-white px-6 py-[72px] md:py-[88px]">
+        <div className="mx-auto max-w-[1200px]">
+          <AboutStats />
+        </div>
+      </section>
+
+      {/* SECTION 5 — Client proof */}
+      <section className="border-t border-[#E8E4DF] px-6 py-[72px] md:py-[88px]">
+        <div className="mx-auto max-w-[1200px]">
+          <h2
+            className={`${display.className} mb-4 max-w-[620px] text-[36px] leading-tight font-semibold text-ias-brown-dark text-balance md:text-[48px]`}
+          >
             Real Businesses, Built Different
           </h2>
-          <p className="text-[17px] text-[#6B6560] leading-relaxed max-w-[720px] text-pretty">
-            IAS has built and grown websites for businesses across trades, fitness, beauty,
-            professional services, and fintech.
+          <p className="mb-10 max-w-[660px] text-[17px] leading-relaxed text-ias-brown-muted text-pretty">
+            Trades, fitness, beauty, professional services, property, and fintech.
           </p>
-          <ul className="flex flex-wrap gap-3 mt-8">
-            {CLIENTS.map((client) => (
-              <li
-                key={client}
-                className="text-[14px] font-semibold text-[#3D2817] bg-[#F8F7F4] border border-[#E8E4DF] rounded-[6px] px-4 py-2.5"
-              >
-                {client}
-              </li>
-            ))}
-          </ul>
+          <AboutClientCarousel />
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-[80px] px-6 border-t border-[#E8E4DF]">
-        <div className="max-w-[1200px] mx-auto">
+      {/* SECTION 6 — CTA */}
+      <section className="border-t border-[#E8E4DF] px-6 py-[72px] md:py-[88px]">
+        <div className="mx-auto max-w-[1200px]">
           <div className="max-w-[620px]">
-            <h2 className="text-[32px] md:text-[40px] font-bold text-[#1A1A1A] leading-tight mb-5 text-balance">
+            <h2
+              className={`${display.className} text-[36px] leading-tight font-semibold text-ias-brown-dark text-balance md:text-[48px]`}
+            >
               Ready to Build Different?
             </h2>
-            <p className="text-[17px] text-[#6B6560] leading-relaxed mb-9 text-pretty">
+            <p className="mt-5 mb-9 text-[17px] leading-relaxed text-ias-brown-muted text-pretty">
               Book a free 15-minute consultation and see what IAS can build for your business.
             </p>
-            <QuotePopupButton className="w-full sm:w-auto inline-block bg-ias-brown-mid text-white font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-ias-brown-dark transition-colors duration-200">
+            <QuotePopupButton className="w-full rounded-[6px] bg-ias-brown-dark px-9 py-4 text-center text-base font-bold text-white transition-colors duration-200 hover:bg-ias-brown-mid sm:w-auto">
               Request Quote/Call
             </QuotePopupButton>
           </div>
