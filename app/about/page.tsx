@@ -60,13 +60,13 @@ export default function AboutPage() {
                   src={FOUNDER_PHOTO}
                   alt="Stefano, founder of IAS"
                   width={1080}
-                  height={1350}
+                  height={1080}
                   priority
                   sizes="(max-width: 768px) 90vw, 440px"
                   className="block h-auto w-full"
                 />
               ) : (
-                <div className="flex aspect-[4/5] w-full items-center justify-center bg-ias-brown-dark/[0.04]">
+                <div className="flex aspect-square w-full items-center justify-center bg-ias-brown-dark/[0.04]">
                   <span className="text-[13px] font-medium tracking-[0.08em] text-ias-brown-muted uppercase">
                     Founder photo
                   </span>
