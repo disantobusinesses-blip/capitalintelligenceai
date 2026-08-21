@@ -23,11 +23,9 @@ const SEO_PACKAGE_OPTIONS = [
 
 const BUDGET_OPTIONS = [
   { value: '', label: 'Select your budget' },
-  { value: '600-1000', label: '$600 – $1,000' },
-  { value: '1000-2000', label: '$1,000 – $2,000' },
-  { value: '2000-5000', label: '$2,000 – $5,000' },
-  { value: '5000+', label: '$5,000+' },
-  { value: 'not-sure', label: 'Not sure' },
+  { value: '2000-3000', label: 'A$2,000 – A$3,000' },
+  { value: '3000-5000', label: 'A$3,000 – A$5,000' },
+  { value: '5000-7000', label: 'A$5,000 – A$7,000' },
 ]
 
 export default function ContactPage() {
