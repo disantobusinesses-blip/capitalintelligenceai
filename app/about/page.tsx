@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
 }
 
-const FOUNDER_PHOTO = '/images/founder-stefano.jpg'
+const FOUNDER_PHOTO = '/images/founder-stefano.png'
 
 export default function AboutPage() {
   return (
@@ -51,15 +51,9 @@ export default function AboutPage() {
             </QuotePopupButton>
           </div>
 
-          {/* Two offset frames rather than one flat image: the smaller card
-              behind gives the portrait depth without any decorative filler. */}
+          {/* The frame takes its height from the photo's own ratio rather than
+              forcing a fixed aspect box, so the portrait is never cropped. */}
           <div className="relative mx-auto w-full max-w-[440px] md:mx-0">
-            <div
-              aria-hidden="true"
-              className="absolute -bottom-4 -left-4 hidden h-[70%] w-[60%] rounded-[10px] border border-ias-brown-mid/25 bg-ias-brown-dark/[0.04] sm:block"
-            />
-            {/* The frame takes its height from the photo's own ratio rather than
-                forcing a fixed aspect box, so the portrait is never cropped. */}
             <div className="relative overflow-hidden rounded-[10px] border border-[#E8E4DF] bg-white">
               {FOUNDER_PHOTO ? (
                 <Image
@@ -95,7 +89,8 @@ export default function AboutPage() {
             <div className="mt-8 flex flex-col gap-5 text-[17px] leading-relaxed text-ias-brown-muted">
               <p>
                 Most agencies sell slow builds, generic templates, and SEO as an afterthought, at
-                agency prices. IAS exists to do it properly instead.
+                agency prices. IAS exists to do it properly instead — and I oversee every build
+                personally, from first draft to final launch.
               </p>
               {/* The studio's method, given the page's one accent treatment so it
                   reads as the takeaway rather than another paragraph. */}
@@ -103,7 +98,6 @@ export default function AboutPage() {
                 Every website is built through an AI-accelerated workflow that compresses design,
                 development, and technical SEO into days, not months, without cutting quality.
               </p>
-              <p>I oversee every build personally, start to finish.</p>
             </div>
             <p className="mt-10 text-sm text-ias-brown-muted">ABN: 38 693 023 371</p>
           </div>
