@@ -33,7 +33,7 @@ export default function PathChooser() {
               </span>
               <div>
                 <h3 className="text-xl md:text-2xl font-extrabold text-[#1A1A1A]">Pick a Template</h3>
-                <p className="text-[#5C3D2E] font-semibold text-sm">
+                <p className="text-ias-brown-dark font-semibold text-sm">
                   From $850 +GST · Live in 24–48 hrs
                 </p>
               </div>
@@ -50,14 +50,14 @@ export default function PathChooser() {
           {/* Path 2, Custom */}
           <div className="flex flex-col rounded-2xl bg-white border border-[#E8E4DF] p-6 md:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-12 h-12 rounded-full bg-[#5C3D2E] text-white flex items-center justify-center shrink-0">
+              <span className="w-12 h-12 rounded-full bg-ias-brown-dark text-white flex items-center justify-center shrink-0">
                 <Palette className="w-6 h-6" />
               </span>
               <div>
                 <h3 className="text-xl md:text-2xl font-extrabold text-[#1A1A1A]">
                   Custom Landing Page or Site
                 </h3>
-                <p className="text-[#5C3D2E] font-semibold text-sm">Tailored to your business</p>
+                <p className="text-ias-brown-dark font-semibold text-sm">Tailored to your business</p>
               </div>
             </div>
             {/* Three pricing tiers, full-width rows that always stay inside the card */}
@@ -70,7 +70,7 @@ export default function PathChooser() {
                   <span className="text-[13px] font-semibold text-[#1A1A1A] leading-tight">
                     {tier.label}
                   </span>
-                  <span className="text-[13px] font-bold text-[#5C3D2E] text-right">
+                  <span className="text-[13px] font-bold text-ias-brown-dark text-right">
                     {tier.price}
                   </span>
                 </div>

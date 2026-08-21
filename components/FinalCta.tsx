@@ -9,7 +9,7 @@ export default function FinalCta() {
         <h2 className="text-[48px] font-extrabold text-white leading-tight mb-4">
           Ready to Get Found on Google?
         </h2>
-        <p className="text-[18px] text-[#9E9790] mt-4 mb-10 max-w-xl mx-auto">
+        <p className="text-[18px] text-ias-brown-muted mt-4 mb-10 max-w-xl mx-auto">
           Join businesses across Australia, the US, the UK, and Singapore getting more leads every month with AI-powered SEO websites.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">

@@ -3,15 +3,56 @@
 @tailwind utilities;
 
 @layer base {
-  /* The three brown tones taken from the IAS logo, used by the homepage
-     pricing teaser cards. These are close approximations rather than exact
-     pixel samples of the logo PNG — if precise matching is needed, resample
-     the logo and update these three values, since every consumer references
-     the variables rather than hardcoding the hex. */
+  /* The three brown tones sourced from the IAS monogram logo. Every consumer
+     references these variables (or the matching Tailwind `ias-brown-*` tokens)
+     rather than hardcoding hex, so the whole palette is swappable here.
+
+     The three tones form the pricing tier ladder: Foundation = dark,
+     Growth = mid, Bespoke = light.
+
+     Usage rules:
+       dark  #473126 - primary text links, active nav states, primary button
+                       backgrounds, icon strokes. White on it: 12.10:1
+       mid   #724935 - secondary accents, hover states, section dividers,
+                       the Growth tier surface. White on it: 7.72:1
+       light #9E684C - the Bespoke tier SURFACE, large display type, icon
+                       accents. Not for small text: see `muted` below.
+       muted #8A5A40 - muted/secondary small text on light page surfaces
+
+     The one rule to remember for `light`: when used as a background it takes
+     PURE WHITE text and nothing else. White is 4.63:1 (passes AA), while cream
+     #F8F7F4 is 4.32:1 and dark ink #2E1B12 is 3.54:1 (both fail). Because the
+     margin over 4.5 is only 0.13, never apply an opacity tint to white text
+     sitting on `light` — `text-white/90` already drops it below the threshold.
+
+     `light` is also 4.32:1 the other way round — as text ON cream — so it fails
+     AA for anything under 24px. It was previously hardcoded as `text-ias-brown-muted`
+     in 85 places, almost all of them small print, which is what `muted` now
+     replaces. Reach for `muted` for any secondary copy on light surfaces and
+     keep `light` for surfaces and large type.
+
+     Use `on-dark` for muted text placed on the dark #1A1A1A footer/panels. */
   :root {
-    --ias-brown-dark: #4A2F23;
-    --ias-brown-mid: #8B5A3C;
-    --ias-brown-light: #C9A07A;
+    --ias-brown-dark: #473126;
+    --ias-brown-mid: #724935;
+    --ias-brown-light: #9E684C;
+    /* Same three tones as space separated RGB channels. The Tailwind tokens
+       consume these so utilities can take an opacity modifier, e.g.
+       `border-ias-brown-mid/40`, which is not possible with a hex variable. */
+    --ias-brown-dark-rgb: 71 49 38;
+    --ias-brown-mid-rgb: 114 73 53;
+    --ias-brown-light-rgb: 158 104 76;
+    /* Secondary small text on the cream/white page surfaces. A shade darker
+       than `light` purely to clear AA: 5.42:1 on cream and 5.81:1 on white,
+       versus `light`'s failing 4.32:1 / 4.63:1 at small sizes. */
+    --ias-brown-muted: #8A5A40;
+    --ias-brown-muted-rgb: 138 90 64;
+    /* Muted text on the dark surfaces (the #1A1A1A footer and dark panels).
+       `light` only manages 3.76:1 there, so it cannot carry small print. This
+       lighter tint of the same hue gives 6.0:1 — matching the legibility of the
+       neutral grey it replaced, while keeping the text in the brown family. */
+    --ias-brown-on-dark: #C08D6B;
+    --ias-brown-on-dark-rgb: 192 141 107;
   }
   html {
     scroll-behavior: smooth;
@@ -45,7 +86,7 @@
     transition: all 0.2s ease;
   }
   .btn-primary {
-    background-color: #1A1A1A;
+    background-color: var(--ias-brown-dark);
     color: #FFFFFF;
     border-radius: 6px;
     padding: 12px 24px;
@@ -53,19 +94,19 @@
     transition: background-color 0.2s ease;
   }
   .btn-primary:hover {
-    background-color: #2D2D2D;
+    background-color: var(--ias-brown-mid);
   }
   .btn-secondary {
     background-color: transparent;
-    border: 2px solid #1A1A1A;
-    color: #1A1A1A;
+    border: 2px solid var(--ias-brown-dark);
+    color: var(--ias-brown-dark);
     border-radius: 6px;
     padding: 12px 24px;
     font-weight: 600;
     transition: all 0.2s ease;
   }
   .btn-secondary:hover {
-    background-color: #1A1A1A;
+    background-color: var(--ias-brown-dark);
     color: #FFFFFF;
   }
   .card-base {
@@ -77,7 +118,7 @@
   }
   .card-base:hover {
     border: 1px solid #E8E4DF;
-    border-top: 3px solid #5C3D2E;
+    border-top: 3px solid var(--ias-brown-mid);
     box-shadow: 0 8px 32px rgba(0,0,0,0.10);
   }
 }
@@ -94,5 +135,34 @@
 
 .animate-scroll {
   animation: scroll 90s linear infinite;
+}
+
+/* Headline entrance, replaces the old typewriter effect.
+   The text is present in the DOM and laid out from the first paint, only its
+   opacity and offset animate. That keeps the heading available to crawlers and
+   avoids the layout thrash (and delayed LCP) that character-by-character typing
+   caused. Words are staggered via an inline animation-delay from FadeRiseText. */
+@keyframes ias-fade-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.4em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.ias-fade-rise-word {
+  /* backwards fill so staggered words stay hidden through their delay rather
+     than flashing at full opacity before their turn. */
+  animation: ias-fade-rise 0.62s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* Anyone who has asked their OS to reduce motion just gets the final state. */
+@media (prefers-reduced-motion: reduce) {
+  .ias-fade-rise-word {
+    animation: none;
+  }
 }
 

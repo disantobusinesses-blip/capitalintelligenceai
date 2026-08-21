@@ -67,7 +67,7 @@ export default function GoogleBusinessProfilePage() {
           </Link>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-[6px] bg-[#F8F7F4] border border-[#E8E4DF] flex items-center justify-center">
-              <MapPin className="w-5 h-5 text-[#5C3D2E]" strokeWidth={1.5} />
+              <MapPin className="w-5 h-5 text-ias-brown-dark" strokeWidth={1.5} />
             </div>
             <span className="text-sm font-bold text-[#1A1A1A] hidden sm:block">Intelligent AI Systems</span>
           </div>
@@ -77,7 +77,7 @@ export default function GoogleBusinessProfilePage() {
       {/* Hero */}
       <section className="py-16 md:py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 bg-white border border-[#E8E4DF] rounded-full text-xs font-semibold text-[#5C3D2E] uppercase tracking-wide mb-6">
+          <span className="inline-block px-4 py-1.5 bg-white border border-[#E8E4DF] rounded-full text-xs font-semibold text-ias-brown-dark uppercase tracking-wide mb-6">
             Local Visibility
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A1A1A] leading-tight mb-6">
@@ -122,7 +122,7 @@ export default function GoogleBusinessProfilePage() {
                   className="bg-[#F8F7F4] border border-[#E8E4DF] rounded-[8px] p-6 transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)]"
                 >
                   <div className="w-10 h-10 bg-white border border-[#E8E4DF] rounded-[6px] flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-[#5C3D2E]" strokeWidth={1.5} />
+                    <Icon className="w-5 h-5 text-ias-brown-dark" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-base font-bold text-[#1A1A1A] mb-2">{feature.title}</h3>
                   <p className="text-sm text-[#6B6560] leading-relaxed">{feature.description}</p>
@@ -145,12 +145,12 @@ export default function GoogleBusinessProfilePage() {
           <div className="bg-[#1A1A1A] rounded-[10px] p-8 md:p-10 mb-6">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
               <div>
-                <p className="text-xs font-bold text-[#9E9790] uppercase tracking-widest mb-1">One-time setup</p>
+                <p className="text-xs font-bold text-ias-brown-muted uppercase tracking-widest mb-1">One-time setup</p>
                 <h3 className="text-2xl md:text-3xl font-bold text-white">Google Business Profile Setup</h3>
               </div>
               <div className="sm:text-right shrink-0">
-                <span className="text-4xl md:text-5xl font-bold text-white">A$299 <span className="text-sm font-normal text-[#9E9790]">+ GST</span></span>
-                <p className="text-sm text-[#9E9790] mt-1">one-time · no monthly fees</p>
+                <span className="text-4xl md:text-5xl font-bold text-white">A$299 <span className="text-sm font-normal text-ias-brown-muted">+ GST</span></span>
+                <p className="text-sm text-ias-brown-muted mt-1">one-time · no monthly fees</p>
               </div>
             </div>
             <ul className="grid sm:grid-cols-2 gap-3 mb-8">
@@ -177,7 +177,7 @@ export default function GoogleBusinessProfilePage() {
               className="w-full flex items-center justify-between px-7 py-5 text-left hover:bg-[#F8F7F4] transition-colors duration-150"
             >
               <div>
-                <span className="text-xs font-bold text-[#5C3D2E] uppercase tracking-widest block mb-0.5">
+                <span className="text-xs font-bold text-ias-brown-dark uppercase tracking-widest block mb-0.5">
                   Optional Add-on
                 </span>
                 <span className="text-base font-bold text-[#1A1A1A]">
@@ -185,7 +185,7 @@ export default function GoogleBusinessProfilePage() {
                 </span>
               </div>
               <div className="flex items-center gap-3 shrink-0 ml-4">
-                <span className="text-lg font-bold text-[#1A1A1A]">A$79<span className="text-sm font-normal text-[#6B6560]">/month</span> <span className="text-[10px] font-normal text-[#9E9790]">+ GST</span></span>
+                <span className="text-lg font-bold text-[#1A1A1A]">A$79<span className="text-sm font-normal text-[#6B6560]">/month</span> <span className="text-[10px] font-normal text-ias-brown-muted">+ GST</span></span>
                 <svg
                   className={`w-5 h-5 text-[#6B6560] transition-transform duration-200 ${addonExpanded ? 'rotate-180' : ''}`}
                   fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
@@ -236,7 +236,7 @@ export default function GoogleBusinessProfilePage() {
           >
             Enquire Now
           </QuotePopupButton>
-          <p className="text-xs text-[#9E9790] mt-4">No lock-in contracts. Remote-first. Fast turnaround.</p>
+          <p className="text-xs text-ias-brown-muted mt-4">No lock-in contracts. Remote-first. Fast turnaround.</p>
         </div>
       </section>
 

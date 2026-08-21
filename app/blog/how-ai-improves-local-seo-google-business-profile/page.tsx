@@ -292,7 +292,7 @@ export default function BlogPostLocalSEO() {
                   <li>
                     <Link
                       href="/blog/how-ai-can-boost-seo"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       How AI Can Boost SEO and AI Search Engine Optimisation →
                     </Link>
@@ -300,7 +300,7 @@ export default function BlogPostLocalSEO() {
                   <li>
                     <Link
                       href="/blog/ai-chatbots-automation-more-leads"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       How AI Chatbots and Automation Can Turn Website Traffic Into More Leads →
                     </Link>
@@ -308,7 +308,7 @@ export default function BlogPostLocalSEO() {
                   <li>
                     <Link
                       href="/features"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       Website Features & AI Add-Ons →
                     </Link>

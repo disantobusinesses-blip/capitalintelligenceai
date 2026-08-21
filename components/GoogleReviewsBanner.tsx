@@ -19,10 +19,6 @@ const reviews = [
     author: 'Reborn Physiques',
     initial: 'R',
   },
-  {
-    author: 'Antonio, Your Coach Plus',
-    initial: 'A',
-  },
 ]
 
 // Duplicated once so the marquee (translateX 0 -> -50%, see .animate-scroll in

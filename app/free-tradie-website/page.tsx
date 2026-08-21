@@ -56,7 +56,10 @@ export default function FreeTradieWebsitePage() {
       {/* ── Hero ── */}
       <section className="py-20 px-6 text-center">
         <div className="max-w-3xl mx-auto">
-          <p className="text-sm font-semibold tracking-widest uppercase text-[#2563EB] mb-4">
+          {/* #60A5FA rather than the #2563EB used for large type and icons on
+              this page: at 14px this needs 4.5:1 on the navy and #2563EB is
+              3.69:1. See the matching note on /free-website-seo. */}
+          <p className="text-sm font-semibold tracking-widest uppercase text-[#60A5FA] mb-4">
             Limited spots available each month
           </p>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-5">
@@ -71,7 +74,7 @@ export default function FreeTradieWebsitePage() {
           >
             Claim My Free Website <ArrowRight className="w-5 h-5" />
           </a>
-          <p className="mt-4 text-sm text-[#475569]">Limited spots available each month.</p>
+          <p className="mt-4 text-sm text-[#94A3B8]">Limited spots available each month.</p>
         </div>
       </section>
 

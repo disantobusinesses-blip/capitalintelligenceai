@@ -24,14 +24,14 @@ export default function SuperGrowthPlanPage() {
 
         {/* Header */}
         <header className="mb-10">
-          <span className="inline-block px-3 py-1 bg-[#F8F7F4] border border-[#5C3D2E] text-[#5C3D2E] rounded-full text-xs font-semibold mb-4">
+          <span className="inline-block px-3 py-1 bg-[#F8F7F4] border border-ias-brown-dark text-ias-brown-dark rounded-full text-xs font-semibold mb-4">
             Website Growth
           </span>
           <h1 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] leading-tight mb-4 text-balance">
             Super Growth Plan: Accelerated SEO Content Coverage,{' '}
-            <span className="line-through text-[#9E9790]">$499 AUD</span>{' '}
-            <span className="text-[#5C3D2E]">On Sale Now: $359/month</span>{' '}
-            <span className="inline-block bg-[#5C3D2E] text-white text-sm font-semibold px-2 py-0.5 rounded-full align-middle">28% off</span>
+            <span className="line-through text-ias-brown-muted">$499 AUD</span>{' '}
+            <span className="text-ias-brown-dark">On Sale Now: $359/month</span>{' '}
+            <span className="inline-block bg-ias-brown-dark text-white text-sm font-semibold px-2 py-0.5 rounded-full align-middle">28% off</span>
           </h1>
           <div className="flex items-center gap-4 text-sm text-[#6B6560]">
             <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> 10 Mar 2026</span>
@@ -41,30 +41,30 @@ export default function SuperGrowthPlanPage() {
 
         {/* Plan comparison */}
         <div className="bg-white border border-[#E8E4DF] rounded-[10px] p-6 mb-10">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#5C3D2E] mb-4">SEO Growth Plans</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-ias-brown-dark mb-4">SEO Growth Plans</p>
           <div className="space-y-3">
             <div className="flex justify-between items-center text-sm border-b border-[#E8E4DF] pb-3">
               <div>
                 <span className="text-[#6B6560]">Google Growth Plan</span>
-                <span className="ml-2 text-xs text-[#9E9790]">4 blogs / month</span>
+                <span className="ml-2 text-xs text-ias-brown-muted">4 blogs / month</span>
               </div>
               <span className="text-[#1A1A1A] font-semibold">$199 / month</span>
             </div>
             <div className="flex justify-between items-center text-sm border-b border-[#E8E4DF] pb-3">
               <div>
-                <span className="text-[#5C3D2E] font-semibold">Super Growth Plan</span>
-                <span className="ml-2 text-xs text-[#9E9790]">8 blogs / month</span>
+                <span className="text-ias-brown-dark font-semibold">Super Growth Plan</span>
+                <span className="ml-2 text-xs text-ias-brown-muted">8 blogs / month</span>
               </div>
               <div className="text-right">
-                <span className="line-through text-[#9E9790] text-xs mr-1">$499</span>
-                <span className="text-[#5C3D2E] font-bold text-base">$359 / month</span>
-                <span className="ml-1.5 bg-[#5C3D2E] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">28% off</span>
+                <span className="line-through text-ias-brown-muted text-xs mr-1">$499</span>
+                <span className="text-ias-brown-dark font-bold text-base">$359 / month</span>
+                <span className="ml-1.5 bg-ias-brown-dark text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">28% off</span>
               </div>
             </div>
             <div className="flex justify-between items-center text-sm">
               <div>
                 <span className="text-[#6B6560]">Market Authority Plan</span>
-                <span className="ml-2 text-xs text-[#9E9790]">12 blogs / month</span>
+                <span className="ml-2 text-xs text-ias-brown-muted">12 blogs / month</span>
               </div>
               <span className="text-[#1A1A1A] font-semibold">$799 / month</span>
             </div>
@@ -93,7 +93,7 @@ export default function SuperGrowthPlanPage() {
               'Detailed monthly reporting with keyword movement tracking',
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-[#5C3D2E] flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-ias-brown-dark flex-shrink-0 mt-0.5" />
                 <span>{item}</span>
               </li>
             ))}
@@ -117,10 +117,10 @@ export default function SuperGrowthPlanPage() {
         <div className="mt-12 bg-white border border-[#E8E4DF] rounded-[10px] p-8 text-center">
           <h3 className="text-xl font-bold text-[#1A1A1A] mb-3">Ready to accelerate your SEO growth?</h3>
           <p className="text-[#6B6560] text-sm mb-1">
-            <span className="line-through text-[#9E9790]">$499 AUD</span>{' '}
+            <span className="line-through text-ias-brown-muted">$499 AUD</span>{' '}
             <strong className="text-[#1A1A1A]">$359/month</strong>, on sale now. No lock-in contracts.
           </p>
-          <p className="text-xs text-[#5C3D2E] font-semibold mb-6">Save 28%, limited time pricing</p>
+          <p className="text-xs text-ias-brown-dark font-semibold mb-6">Save 28%, limited time pricing</p>
           <QuotePopupButton
             className="inline-flex items-center gap-2 px-8 py-3 bg-[#1A1A1A] text-white rounded-full font-bold smooth-transition hover:bg-[#2D2D2D] hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
           >

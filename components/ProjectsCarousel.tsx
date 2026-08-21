@@ -97,7 +97,7 @@ export default function ProjectsCarousel() {
     >
       {/* Background effects */}
       <div className="absolute inset-0 tech-grid opacity-10" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#5C3D2E] rounded-full blur-3xl opacity-5" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-ias-brown-dark rounded-full blur-3xl opacity-5" />
       
       <div className="max-w-7xl mx-auto relative">
         {/* Section Header */}
@@ -109,7 +109,7 @@ export default function ProjectsCarousel() {
             Intelligent systems implemented across diverse industries
           </p>
           <div className="mt-4 flex items-center justify-center gap-2 text-sm text-[#1A1A1A]">
-            <div className="w-2 h-2 bg-[#5C3D2E] rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-ias-brown-dark rounded-full animate-pulse" />
             Auto-rotating • Hover to pause
           </div>
         </div>
@@ -186,7 +186,7 @@ export default function ProjectsCarousel() {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white border border-[#5C3D2E] rounded-full p-3  smooth-transition hover:bg-[#2D2D2D] hover:border-[#5C3D2E]"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white border border-ias-brown-dark rounded-full p-3  smooth-transition hover:bg-[#2D2D2D] hover:border-ias-brown-dark"
             aria-label="Previous project"
           >
             <ChevronLeft className="w-6 h-6 text-[#1A1A1A]" />
@@ -194,7 +194,7 @@ export default function ProjectsCarousel() {
           
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white border border-[#5C3D2E] rounded-full p-3  smooth-transition hover:bg-[#2D2D2D] hover:border-[#5C3D2E]"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white border border-ias-brown-dark rounded-full p-3  smooth-transition hover:bg-[#2D2D2D] hover:border-ias-brown-dark"
             aria-label="Next project"
           >
             <ChevronRight className="w-6 h-6 text-[#1A1A1A]" />

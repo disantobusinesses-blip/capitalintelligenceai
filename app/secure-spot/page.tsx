@@ -58,7 +58,7 @@ function SecureSpotContent() {
         {/* Deposit card */}
         <div className="mt-8 rounded-2xl border border-[#E8E4DF] bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
           <div className="flex items-center gap-2 mb-1">
-            <ShieldCheck className="h-5 w-5 text-[#5C3D2E]" />
+            <ShieldCheck className="h-5 w-5 text-ias-brown-dark" />
             <h2 className="text-xl font-bold">Secure Your Spot</h2>
           </div>
           <p className="text-sm text-[#6B6560] mb-5">
@@ -111,7 +111,7 @@ function SecureSpotContent() {
             )}
           </button>
 
-          <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-[#9E9790]">
+          <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-ias-brown-muted">
             <Clock className="w-3.5 h-3.5" />
             Secure checkout by Stripe · refundable any time
           </p>

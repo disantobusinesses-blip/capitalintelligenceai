@@ -113,7 +113,7 @@ export default function TemplateCard({
         selectable ? 'cursor-pointer' : ''
       } ${
         selected
-          ? 'border-[#5C3D2E] ring-2 ring-[#5C3D2E]'
+          ? 'border-ias-brown-dark ring-2 ring-ias-brown-dark'
           : 'border-[#E8E4DF] hover:border-[#1A1A1A]'
       }`}
     >
@@ -267,7 +267,7 @@ export default function TemplateCard({
                 compact ? 'px-3 py-2 text-[13px]' : 'px-4 py-3 text-sm'
               } ${
                 selected
-                  ? 'bg-[#5C3D2E] text-white'
+                  ? 'bg-ias-brown-dark text-white'
                   : 'border border-[#1A1A1A]/30 text-[#1A1A1A]'
               }`}
             >

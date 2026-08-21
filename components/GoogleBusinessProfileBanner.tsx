@@ -41,7 +41,7 @@ export default function GoogleBusinessProfileBanner() {
           {/* Left: text + price badge */}
           <div className="flex-1 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div className="max-w-[600px]">
-              <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
+              <p className="text-ias-brown-dark text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
                 Google Business Profile
               </p>
               <h2 className="text-[30px] md:text-[40px] font-extrabold text-[#1A1A1A] leading-[1.15] mb-4">
@@ -58,9 +58,9 @@ export default function GoogleBusinessProfileBanner() {
               className="flex-shrink-0 bg-white rounded-[10px] px-6 py-5 text-center self-start md:self-auto"
               style={{ border: '1px solid #E8E4DF' }}
             >
-              <p className="text-[12px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">One-time setup</p>
+              <p className="text-[12px] font-semibold text-ias-brown-muted uppercase tracking-widest mb-1">One-time setup</p>
               <p className="text-[32px] font-extrabold text-[#1A1A1A] leading-none">A$299</p>
-              <p className="text-[12px] text-[#9E9790] mt-1">+optional A$79/mo management</p>
+              <p className="text-[12px] text-ias-brown-muted mt-1">+optional A$79/mo management</p>
             </div>
           </div>
 
@@ -94,7 +94,7 @@ export default function GoogleBusinessProfileBanner() {
                 style={{ border: '1px solid #E8E4DF' }}
               >
                 <div className="mb-4">
-                  <Icon className="w-6 h-6 text-[#5C3D2E]" strokeWidth={1.5} />
+                  <Icon className="w-6 h-6 text-ias-brown-dark" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-[15px] font-bold text-[#1A1A1A] mb-2 leading-snug">{point.heading}</h3>
                 <p className="text-[13px] text-[#6B6560] leading-relaxed flex-1">{point.body}</p>
@@ -113,7 +113,7 @@ export default function GoogleBusinessProfileBanner() {
           </QuotePopupButton>
           <a
             href="/services/google-business-profile"
-            className="text-[14px] font-semibold text-[#5C3D2E] hover:underline underline-offset-2 transition-colors duration-150"
+            className="text-[14px] font-semibold text-ias-brown-dark hover:underline underline-offset-2 transition-colors duration-150"
           >
             See everything that&apos;s included →
           </a>

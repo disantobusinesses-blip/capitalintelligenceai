@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Instagram, TrendingUp, PenLine, Check } from 'lucide-react'
 import { display, body } from '@/lib/fonts'
 import QuotePopupButton from '@/components/QuotePopupButton'
@@ -17,7 +18,7 @@ export default function BeyondWebsite() {
       <div className="max-w-[1200px] mx-auto">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className="text-[#C9A07A] text-[13px] font-semibold tracking-[1.5px] uppercase">
+          <p className="text-ias-brown-mid text-[13px] font-semibold tracking-[1.5px] uppercase">
             More Than a Website
           </p>
           <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-[#3D2817] mt-3 text-balance`}>
@@ -33,7 +34,7 @@ export default function BeyondWebsite() {
           {/* Card A, Instagram & Social Growth */}
           <div className="flex flex-col bg-white border border-[#E8E4DF] rounded-[10px] p-8">
             <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-5">
-              <Instagram className="w-5 h-5 text-[#C9A07A]" strokeWidth={1.5} />
+              <Instagram className="w-5 h-5 text-ias-brown-mid" strokeWidth={1.5} />
             </div>
             <h3 className="text-[#3D2817] font-semibold text-lg mb-3">
               Instagram &amp; Social Growth Management
@@ -42,20 +43,26 @@ export default function BeyondWebsite() {
               We manage and grow your social presence using the same systems behind our
               clients&apos; results.
             </p>
-            <ul className="flex flex-col gap-2.5 mt-auto">
+            <ul className="flex flex-col gap-2.5 mb-6">
               {SOCIAL_INCLUDES.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-[#6B6560]">
-                  <Check className="w-4 h-4 text-[#C9A07A] flex-shrink-0 mt-0.5" strokeWidth={2} />
+                  <Check className="w-4 h-4 text-ias-brown-mid flex-shrink-0 mt-0.5" strokeWidth={2} />
                   {item}
                 </li>
               ))}
             </ul>
+            <Link
+              href="/services#social-growth"
+              className="mt-auto self-start text-sm font-semibold text-ias-brown-dark underline underline-offset-2 hover:text-ias-brown-mid"
+            >
+              See social growth details
+            </Link>
           </div>
 
           {/* Card B, B2B Lead Generation */}
           <div className="flex flex-col bg-white border border-[#E8E4DF] rounded-[10px] p-8">
             <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-5">
-              <TrendingUp className="w-5 h-5 text-[#C9A07A]" strokeWidth={1.5} />
+              <TrendingUp className="w-5 h-5 text-ias-brown-mid" strokeWidth={1.5} />
             </div>
             <h3 className="text-[#3D2817] font-semibold text-lg mb-3">B2B Lead Generation</h3>
             <p className="text-[#6B6560] text-sm leading-relaxed mb-5">
@@ -65,23 +72,31 @@ export default function BeyondWebsite() {
             <ul className="flex flex-col gap-2.5 mb-6">
               {B2B_INCLUDES.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-[#6B6560]">
-                  <Check className="w-4 h-4 text-[#C9A07A] flex-shrink-0 mt-0.5" strokeWidth={2} />
+                  <Check className="w-4 h-4 text-ias-brown-mid flex-shrink-0 mt-0.5" strokeWidth={2} />
                   {item}
                 </li>
               ))}
             </ul>
-            <QuotePopupButton
-              service="B2B AI Platform"
-              className="mt-auto self-start border border-[#C9A07A] text-[#3D2817] font-semibold px-5 py-2.5 rounded-[6px] text-sm hover:bg-[#C9A07A] transition-colors duration-200"
-            >
-              Enquire for Pricing
-            </QuotePopupButton>
+            <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-3">
+              <QuotePopupButton
+                service="B2B AI Platform"
+                className="border border-ias-brown-dark text-ias-brown-dark font-semibold px-5 py-2.5 rounded-[6px] text-sm hover:bg-ias-brown-dark hover:text-white transition-colors duration-200"
+              >
+                Enquire for Pricing
+              </QuotePopupButton>
+              <Link
+                href="/services#b2b"
+                className="text-sm font-semibold text-ias-brown-dark underline underline-offset-2 hover:text-ias-brown-mid"
+              >
+                See details
+              </Link>
+            </div>
           </div>
 
           {/* Card C, SEO Blog Content */}
           <div className="flex flex-col bg-white border border-[#E8E4DF] rounded-[10px] p-8">
             <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-5">
-              <PenLine className="w-5 h-5 text-[#C9A07A]" strokeWidth={1.5} />
+              <PenLine className="w-5 h-5 text-ias-brown-mid" strokeWidth={1.5} />
             </div>
             <h3 className="text-[#3D2817] font-semibold text-lg mb-3">SEO Blog Content</h3>
             <p className="text-[#6B6560] text-sm leading-relaxed mb-5">
@@ -89,7 +104,7 @@ export default function BeyondWebsite() {
               site. Want a specific topic covered?{' '}
               <a
                 href="mailto:sales@intelligentaisystem.com"
-                className="text-[#C9A07A] underline underline-offset-2 hover:text-[#B98D64]"
+                className="text-ias-brown-mid underline underline-offset-2 hover:text-ias-brown-dark"
               >
                 Just email us
               </a>
@@ -97,20 +112,27 @@ export default function BeyondWebsite() {
             </p>
 
             {/* Pricing tiers */}
-            <div className="flex flex-col gap-2 mb-5">
+            <div className="flex flex-col gap-2 mb-4">
               {SEO_TIERS.map((tier) => (
                 <div
                   key={tier.label}
                   className="flex items-center justify-between px-3.5 py-2.5 rounded-[6px] border border-[#E8E4DF]"
                 >
                   <span className="text-[#3D2817] text-sm font-medium">{tier.label}</span>
-                  <span className="text-[#C9A07A] text-sm font-semibold">{tier.price}</span>
+                  <span className="text-ias-brown-mid text-sm font-semibold">{tier.price}</span>
                 </div>
               ))}
             </div>
 
+            <Link
+              href="/services#seo-blog-content"
+              className="mb-5 self-start text-sm font-semibold text-ias-brown-dark underline underline-offset-2 hover:text-ias-brown-mid"
+            >
+              See blog content plans
+            </Link>
+
             {/* Real result callout */}
-            <blockquote className="border-l-2 border-[#C9A07A] pl-4 mt-auto">
+            <blockquote className="border-l-2 border-ias-brown-mid pl-4 mt-auto">
               <p className="text-[#6B6560] text-xs italic leading-relaxed">
                 An EV charger installation blog we wrote for EAY Electrical generated an enquiry
                 that became a $10,000+ apartment block installation. Most content takes 3+ months

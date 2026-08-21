@@ -42,7 +42,7 @@ export default function HowItWorks() {
         {/* Steps */}
         <div className="grid md:grid-cols-4 gap-0 relative">
           {/* Connecting line (desktop) */}
-          <div className="hidden md:block absolute top-[36px] left-[12.5%] right-[12.5%] h-px bg-[#5C3D2E] opacity-30" />
+          <div className="hidden md:block absolute top-[36px] left-[12.5%] right-[12.5%] h-px bg-ias-brown-dark opacity-30" />
 
           {steps.map((step) => {
             const Icon = step.icon
@@ -50,7 +50,7 @@ export default function HowItWorks() {
               <div key={step.number} className="relative flex flex-col items-center text-center px-4 mb-10 md:mb-0">
                 {/* Icon circle */}
                 <div className="relative z-10 w-[72px] h-[72px] bg-white rounded-full flex items-center justify-center mb-4 border-2 border-[#E8E4DF] shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
-                  <Icon className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
+                  <Icon className="w-7 h-7 text-ias-brown-dark" strokeWidth={1.5} />
                 </div>
 
                 {/* Step number */}

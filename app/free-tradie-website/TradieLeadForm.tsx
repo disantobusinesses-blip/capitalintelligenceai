@@ -69,7 +69,7 @@ export default function TradieLeadForm() {
             placeholder="John Smith"
             value={form.name}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#475569] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
           />
         </div>
         <div>
@@ -99,7 +99,7 @@ export default function TradieLeadForm() {
             placeholder="Smith Electrical"
             value={form.business_name}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#475569] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
           />
         </div>
         <div>
@@ -111,14 +111,17 @@ export default function TradieLeadForm() {
             placeholder="Richmond"
             value={form.suburb}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#475569] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
           />
         </div>
         {/* Phone is made prominent as per spec */}
         <div>
           <label className="block text-sm font-semibold text-[#CBD5E1] mb-1.5">
             Phone Number *,{' '}
-            <span className="text-[#2563EB] font-normal text-xs">we&apos;ll call you</span>
+            {/* #60A5FA: #2563EB is 3.69:1 on the navy, short of the 4.5:1 this
+                12px hint needs. The input's #2563EB border below is fine, being
+                a graphical object at the 3:1 bar. */}
+            <span className="text-[#60A5FA] font-normal text-xs">we&apos;ll call you</span>
           </label>
           <input
             name="phone"
@@ -127,7 +130,7 @@ export default function TradieLeadForm() {
             placeholder="04xx xxx xxx"
             value={form.phone}
             onChange={handleChange}
-            className="w-full px-4 py-4 bg-white/5 border-2 border-[#2563EB]/50 rounded-lg text-white placeholder-[#475569] focus:outline-none focus:border-[#2563EB] transition-colors text-base font-semibold"
+            className="w-full px-4 py-4 bg-white/5 border-2 border-[#2563EB]/50 rounded-lg text-white placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] transition-colors text-base font-semibold"
           />
         </div>
         <div>
@@ -139,7 +142,7 @@ export default function TradieLeadForm() {
             placeholder="john@smithelectrical.com.au"
             value={form.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#475569] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] transition-colors text-sm"
           />
         </div>
 
@@ -162,7 +165,7 @@ export default function TradieLeadForm() {
           )}
         </button>
 
-        <p className="text-center text-xs text-[#475569] pt-1">
+        <p className="text-center text-xs text-[#94A3B8] pt-1">
           $0 upfront. $119/month to keep it live. Cancel anytime.
         </p>
       </form>

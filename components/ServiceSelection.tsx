@@ -53,7 +53,7 @@ export default function ServiceSelection() {
                 className="bg-white rounded-[10px] p-7 flex flex-col h-full transition-all duration-200"
                 style={{
                   border: '1px solid #E8E4DF',
-                  borderTop: isHovered ? '3px solid #5C3D2E' : '1px solid #E8E4DF',
+                  borderTop: isHovered ? '3px solid var(--ias-brown-mid)' : '1px solid #E8E4DF',
                   boxShadow: isHovered ? '0 8px 32px rgba(0,0,0,0.10)' : '0 2px 12px rgba(0,0,0,0.06)',
                 }}
                 onMouseEnter={() => setHoveredId(service.id)}
@@ -61,7 +61,7 @@ export default function ServiceSelection() {
               >
                 {/* Icon */}
                 <div className="mb-5">
-                  <Icon className="w-8 h-8 text-[#5C3D2E]" strokeWidth={1.5} />
+                  <Icon className="w-8 h-8 text-ias-brown-dark" strokeWidth={1.5} />
                 </div>
 
                 {/* Title */}
@@ -69,10 +69,10 @@ export default function ServiceSelection() {
 
                 {/* Price */}
                 <div className="mb-0.5">
-                  <p className="text-[17px] font-bold text-[#5C3D2E]">
+                  <p className="text-[17px] font-bold text-ias-brown-dark">
                     {service.price}
-                    <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
-                    <span className="text-[13px] font-normal text-[#9E9790] ml-1">{service.priceNote}</span>
+                    <span className="text-[10px] font-normal text-ias-brown-muted ml-1">+ GST</span>
+                    <span className="text-[13px] font-normal text-ias-brown-muted ml-1">{service.priceNote}</span>
                   </p>
                 </div>
 
@@ -94,7 +94,7 @@ export default function ServiceSelection() {
                 {/* CTA */}
                 <QuotePopupButton
                   service="B2B AI Platform"
-                  className="w-full bg-[#1A1A1A] text-white font-semibold py-3 rounded-[6px] hover:bg-[#2D2D2D] transition-colors duration-200 mt-auto text-sm text-center block"
+                  className="w-full bg-ias-brown-dark text-white font-semibold py-3 rounded-[6px] hover:bg-ias-brown-mid transition-colors duration-200 mt-auto text-sm text-center block"
                 >
                   {service.cta}
                 </QuotePopupButton>

@@ -50,7 +50,7 @@ export default function FlowTrustStrip({ dark = false }: { dark?: boolean }) {
   const border = dark ? 'border-white/15' : 'border-[#E8E4DF]'
   const tierName = dark ? 'text-white' : 'text-[#1A1A1A]'
   const tierRange = dark ? 'text-white/70' : 'text-[#6B6560]'
-  const note = dark ? 'text-white/50' : 'text-[#9E9790]'
+  const note = dark ? 'text-white/50' : 'text-ias-brown-muted'
 
   return (
     <div className={`flex flex-col items-center gap-2 rounded-xl border ${border} ${dark ? 'bg-white/5' : 'bg-[#F8F7F4]'} px-4 py-3`}>

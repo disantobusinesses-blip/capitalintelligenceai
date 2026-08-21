@@ -30,9 +30,9 @@ const trustPoints = [
 ]
 
 const services = [
-  { label: 'B2B AI Acquisition', href: '/services/b2b-crm-ai-platform' },
-  { label: 'Website Creation', href: '/services' },
-  { label: 'SEO Blog Content', href: '/services' },
+  { label: 'B2B AI Acquisition', href: '/services#b2b' },
+  { label: 'Website Creation', href: '/services#website-packages' },
+  { label: 'SEO Blog Content', href: '/services#seo-blog-content' },
   { label: 'Google Profile Setup', href: '/services/google-business-profile' },
 ]
 
@@ -50,7 +50,7 @@ export default function AIBlogSections() {
             <a
               key={s.label}
               href={s.href}
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E8E4DF] rounded-full text-[13px] font-semibold text-[#1A1A1A] hover:border-[#5C3D2E] hover:text-[#5C3D2E] transition-colors duration-200"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E8E4DF] rounded-full text-[13px] font-semibold text-[#1A1A1A] hover:border-ias-brown-dark hover:text-ias-brown-dark transition-colors duration-200"
             >
               {s.label}
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -65,7 +65,7 @@ export default function AIBlogSections() {
 
           {/* Left: text + trust points */}
           <div className="flex-1">
-            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
+            <p className="text-ias-brown-dark text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
               AI-Powered Content Engine
             </p>
             <h2 className="text-[32px] md:text-[44px] font-extrabold text-[#1A1A1A] leading-[1.15] mb-4">
@@ -99,7 +99,7 @@ export default function AIBlogSections() {
             style={{ border: '1px solid #E8E4DF' }}
           >
             <div
-              className="px-4 py-2 text-[12px] font-semibold tracking-[1.2px] uppercase text-[#5C3D2E]"
+              className="px-4 py-2 text-[12px] font-semibold tracking-[1.2px] uppercase text-ias-brown-dark"
               style={{ borderBottom: '1px solid #E8E4DF', background: '#F8F7F4' }}
             >
               Real Results
@@ -125,12 +125,12 @@ export default function AIBlogSections() {
               style={{ border: '1px solid #E8E4DF' }}
             >
               {/* Category badge */}
-              <span className="inline-block text-[11px] font-semibold text-[#5C3D2E] tracking-[1px] uppercase mb-3">
+              <span className="inline-block text-[11px] font-semibold text-ias-brown-dark tracking-[1px] uppercase mb-3">
                 {post.category}
               </span>
 
               {/* Title */}
-              <h3 className="text-[17px] font-bold text-[#1A1A1A] leading-snug mb-3 group-hover:text-[#5C3D2E] transition-colors duration-200">
+              <h3 className="text-[17px] font-bold text-[#1A1A1A] leading-snug mb-3 group-hover:text-ias-brown-dark transition-colors duration-200">
                 {post.title}
               </h3>
 
@@ -140,7 +140,7 @@ export default function AIBlogSections() {
               </p>
 
               {/* Read more */}
-              <div className="mt-5 flex items-center gap-1.5 text-[13px] font-semibold text-[#1A1A1A] group-hover:text-[#5C3D2E] transition-colors duration-200">
+              <div className="mt-5 flex items-center gap-1.5 text-[13px] font-semibold text-[#1A1A1A] group-hover:text-ias-brown-dark transition-colors duration-200">
                 Read article
                 <svg className="w-4 h-4 translate-x-0 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { display, body } from '@/lib/fonts'
 import QuotePopupButton from '@/components/QuotePopupButton'
-import TypingEffect from '@/components/ui/typing-effect'
+import FadeRiseText from '@/components/ui/fade-rise-text'
 import { Magnetic } from '@/components/ui/magnetic'
 
 const HERO_SUBHEAD =
@@ -34,7 +34,7 @@ export default function HeroIntro() {
           <h1
             className={`${display.className} text-[52px] md:text-[80px] leading-[0.95] font-bold uppercase tracking-[-0.01em] text-[#3D2817]`}
           >
-            <TypingEffect texts={['Websites Built Different.']} typingSpeed={45} loop={false} />
+            <FadeRiseText text="Websites Built Different." />
           </h1>
 
           {/* Supporting line (normal weight) */}
@@ -45,10 +45,10 @@ export default function HeroIntro() {
           {/* Compact pricing teaser → links through to the full /services pricing */}
           <p className="text-[15px] text-[#3D2817] font-semibold mt-5 flex flex-wrap items-center gap-x-3 gap-y-1">
             <span>Packages from $1,999</span>
-            <span className="text-[#C9A07A]" aria-hidden="true">|</span>
+            <span className="text-ias-brown-mid" aria-hidden="true">|</span>
             <Link
               href="/services"
-              className="text-[#5C3D2E] underline underline-offset-4 decoration-[#C9A07A]/50 hover:decoration-[#C9A07A] transition-colors duration-200"
+              className="text-ias-brown-dark underline underline-offset-4 decoration-ias-brown-mid/50 hover:decoration-ias-brown-mid transition-colors duration-200"
             >
               View packages
             </Link>
@@ -59,14 +59,18 @@ export default function HeroIntro() {
             {/* Magnetic pull on desktop; the wrapper keeps the button's
                 full-width-on-mobile behaviour rather than shrink-wrapping it. */}
             <Magnetic intensity={0.35} range={120} className="w-full sm:w-auto">
-              <QuotePopupButton className="w-full sm:w-auto bg-[#C9A07A] text-[#3D2817] font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-[#B98D64] transition-colors duration-200">
+              {/* White text, not the dark #3D2817 this used to carry: dark ink
+                  on brown-mid measures 1.80:1, the worst contrast on the site
+                  and effectively illegible. White on the same fill is 7.72:1,
+                  and 12.10:1 after the darker hover. */}
+              <QuotePopupButton className="w-full sm:w-auto bg-ias-brown-mid text-white font-bold px-9 py-4 rounded-[6px] text-base text-center hover:bg-ias-brown-dark transition-colors duration-200">
                 Request Quote/Call
               </QuotePopupButton>
             </Magnetic>
 
             <a
               href="#portfolio"
-              className="text-[#6B6560] hover:text-[#C9A07A] font-medium text-[15px] underline underline-offset-4 decoration-[#C9A07A]/40 hover:decoration-[#C9A07A] transition-colors duration-200 text-center sm:text-left"
+              className="text-[#6B6560] hover:text-ias-brown-mid font-medium text-[15px] underline underline-offset-4 decoration-ias-brown-mid/40 hover:decoration-ias-brown-mid transition-colors duration-200 text-center sm:text-left"
             >
               See Our Work
             </a>

@@ -11,7 +11,7 @@ export default function WhyWorkWithUs() {
   return (
     <section className={`${body.className} bg-white py-[80px] px-6 border-t border-[#E8E4DF]`}>
       <div className="max-w-[800px] mx-auto text-center">
-        <p className="text-[#C9A07A] text-[13px] font-semibold tracking-[1.5px] uppercase">
+        <p className="text-ias-brown-mid text-[13px] font-semibold tracking-[1.5px] uppercase">
           Why Work With Us
         </p>
         <h2 className={`${display.className} text-[32px] md:text-[42px] font-semibold text-[#3D2817] mt-3 text-balance`}>
@@ -31,7 +31,7 @@ export default function WhyWorkWithUs() {
                 key={point.label}
                 className="flex items-center gap-2.5 bg-[#F8F7F4] border border-[#E8E4DF] rounded-full px-5 py-3"
               >
-                <Icon className="w-4 h-4 text-[#C9A07A]" strokeWidth={1.75} />
+                <Icon className="w-4 h-4 text-ias-brown-mid" strokeWidth={1.75} />
                 <span className="text-[#3D2817] text-sm font-semibold">{point.label}</span>
               </div>
             )

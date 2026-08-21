@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
-import { Check, FileText, Shield } from 'lucide-react'
+import Link from 'next/link'
+import { Bot, Check, FileText, Shield } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
 import SquishyPricing, { type SquishyIcon, type SquishyTone } from '@/components/ui/squishy-pricing'
-import TypingEffect from '@/components/ui/typing-effect'
+import FadeRiseText from '@/components/ui/fade-rise-text'
+import OngoingServicePanel from '@/components/OngoingServicePanel'
 
 export const metadata: Metadata = {
   title: 'Our Services – Intelligent AI Systems',
@@ -137,6 +139,18 @@ const blogTiers = [
   },
 ]
 
+/* ─── B2B Lead Generation & AI CRM ──────────────────────────────────────── */
+const B2B_INCLUDES = [
+  'AI trained on your industry and target market',
+  'Private lead scraping engine built for your niche',
+  'Dedicated lead database, your data only',
+  'Full CRM pipeline management system',
+  'Automated lead tracking and follow-up workflows',
+  'Curated, ready-to-contact lead lists',
+  'Custom onboarding and system walkthrough',
+  'Ongoing hosting and system management',
+]
+
 export default function ServicesPage() {
   return (
     <main className="min-h-[100dvh] bg-[#F8F7F4] pb-bottom-nav pt-[74px]">
@@ -145,11 +159,11 @@ export default function ServicesPage() {
           viewport (or a single short scroll) on both desktop and mobile. */}
       <section className="pt-8 pb-6 md:pt-10 md:pb-8 px-6 text-center">
         <div className="max-w-4xl mx-auto">
-          <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+          <p className="text-ias-brown-dark text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
             Everything We Offer
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-[#1A1A1A] mb-3 leading-tight">
-            <TypingEffect texts={['Our Services']} typingSpeed={55} loop={false} />
+            <FadeRiseText text="Our Services" />
           </h1>
           <p className="text-base md:text-lg text-[#6B6560] max-w-2xl mx-auto">
             Fixed-price website packages and hosting to keep your site live and secure, here&apos;s everything we do.
@@ -158,10 +172,12 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Website Packages ──────────────────────────────────────────────── */}
-      <section className="pt-4 pb-14 px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
+      {/* scroll-mt-24 clears the 68px fixed header so anchored jumps from the
+          nav dropdown do not land underneath it. */}
+      <section id="website-packages" className="pt-4 pb-14 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-6">
-            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+            <p className="text-ias-brown-dark text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
               Website Packages
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-3">
@@ -189,7 +205,7 @@ export default function ServicesPage() {
             <p className="text-[#6B6560] text-sm">
               Need something bigger?{' '}
               <QuotePopupButton
-                className="text-[#1A1A1A] font-semibold underline underline-offset-2 hover:text-[#5C3D2E]"
+                className="text-[#1A1A1A] font-semibold underline underline-offset-2 hover:text-ias-brown-dark"
               >
                 Custom builds &amp; platforms, from $7,000, request a quote
               </QuotePopupButton>
@@ -198,35 +214,45 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── Website Hosting ──────────────────────────────────────────────── */}
-      <section className="py-16 px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
+      {/* ── Ongoing Services ─────────────────────────────────────────────────
+          These four were previously four full-height stacked sections, so a
+          visitor scrolled through every hosting, blog, social and B2B price
+          before reaching the closing CTA. Grouped into one collapsible list
+          they read as a menu instead, and each panel keeps its original anchor
+          id so the existing deep links from the navbar and footer still work. */}
+      <section className="py-10 px-6 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="mb-10">
-            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
-              Website Hosting
+          <div className="mb-6 md:mb-8">
+            <p className="text-ias-brown-dark text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
+              Ongoing Services
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
-              Keep Your Site Live &amp; Secure
+            <h2 className="text-[26px] md:text-4xl font-bold text-[#1A1A1A] text-balance">
+              Keep Growing After Launch
             </h2>
-            <p className="text-[#6B6560] text-base max-w-[560px]">
-              Every website we build runs on a monthly hosting plan. Choose minor maintenance, or a monthly content refresh to keep your site fresh.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+          <div className="flex flex-col gap-4">
+            <OngoingServicePanel
+              id="hosting"
+              eyebrow="Website Hosting"
+              title="Keep Your Site Live & Secure"
+              summary="Every website we build runs on a monthly hosting plan. Choose minor maintenance, or a monthly content refresh."
+              priceHint="from $59/mo"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
             {/* Hosting + Minor Maintenance */}
             <div
               className="bg-white rounded-[10px] p-7 flex flex-col"
               style={{ border: '1px solid #E8E4DF' }}
             >
               <div className="mb-4">
-                <Shield className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
+                <Shield className="w-7 h-7 text-ias-brown-dark" strokeWidth={1.5} />
               </div>
               <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-1">Hosting + Minor Maintenance</h3>
-              <p className="text-[22px] font-bold text-[#5C3D2E] mb-5">
+              <p className="text-[22px] font-bold text-ias-brown-dark mb-5">
                 $59
-                <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
-                <span className="text-[13px] font-normal text-[#9E9790] ml-1">/month</span>
+                <span className="text-[10px] font-normal text-ias-brown-muted ml-1">+ GST</span>
+                <span className="text-[13px] font-normal text-ias-brown-muted ml-1">/month</span>
               </p>
               <p className="text-sm font-semibold text-[#1A1A1A] mb-2">Includes</p>
               <ul className="space-y-2">
@@ -249,13 +275,13 @@ export default function ServicesPage() {
               style={{ border: '2px solid #1A1A1A' }}
             >
               <div className="mb-4">
-                <Shield className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
+                <Shield className="w-7 h-7 text-ias-brown-dark" strokeWidth={1.5} />
               </div>
               <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-1">Hosting + Content Refresh</h3>
-              <p className="text-[22px] font-bold text-[#5C3D2E] mb-5">
+              <p className="text-[22px] font-bold text-ias-brown-dark mb-5">
                 $99
-                <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
-                <span className="text-[13px] font-normal text-[#9E9790] ml-1">/month</span>
+                <span className="text-[10px] font-normal text-ias-brown-muted ml-1">+ GST</span>
+                <span className="text-[13px] font-normal text-ias-brown-muted ml-1">/month</span>
               </p>
               <p className="text-sm font-semibold text-[#1A1A1A] mb-2">Includes</p>
               <ul className="space-y-2">
@@ -274,29 +300,21 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          <p className="text-[#6B6560] text-sm mt-6 max-w-[720px]">
-            Major changes (new fonts, sitewide colour/style, new pages, new integrations) billed at $99+GST/hour, rounded up to the next full hour.
-          </p>
-        </div>
-      </section>
+              <p className="text-[#6B6560] text-sm mt-6 max-w-[720px]">
+                Major changes (new fonts, sitewide colour/style, new pages, new integrations) billed at $99+GST/hour, rounded up to the next full hour.
+              </p>
+            </OngoingServicePanel>
 
-      {/* ── SEO Blog Content ────────────────────────────────────────────────── */}
-      <section className="py-16 px-6" style={{ borderTop: '1px solid #E8E4DF' }}>
-        <div className="max-w-[1200px] mx-auto">
-          <div className="mb-10">
-            <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">
-              SEO Blog Content
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
-              Grow Your Organic Traffic Every Month
-            </h2>
-            <p className="text-[#6B6560] text-base max-w-[560px]">
-              Ongoing SEO-optimised blog posts published straight to your site, written to build
-              search visibility over time. Choose the monthly frequency that fits your goals.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <OngoingServicePanel
+              id="seo-blog-content"
+              eyebrow="SEO Blog Content"
+              title="Grow Your Organic Traffic Every Month"
+              summary="Ongoing SEO-optimised blog posts published straight to your site, written to build search visibility over time."
+              priceHint="3 plans"
+            >
+              {/* pt-4 clears the -top-3.5 "Most Popular" badge on the middle card,
+                  which would otherwise be clipped by the panel's overflow-hidden. */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
             {blogTiers.map((tier) => (
               <div
                 key={tier.key}
@@ -310,13 +328,13 @@ export default function ServicesPage() {
                   </span>
                 )}
                 <div className="mb-4">
-                  <FileText className="w-7 h-7 text-[#5C3D2E]" strokeWidth={1.5} />
+                  <FileText className="w-7 h-7 text-ias-brown-dark" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-1">{tier.name}</h3>
-                <p className="text-[22px] font-bold text-[#5C3D2E] mb-0.5">
+                <p className="text-[22px] font-bold text-ias-brown-dark mb-0.5">
                   {tier.price}
-                  <span className="text-[10px] font-normal text-[#9E9790] ml-1">+ GST</span>
-                  <span className="text-[13px] font-normal text-[#9E9790] ml-1">/month</span>
+                  <span className="text-[10px] font-normal text-ias-brown-muted ml-1">+ GST</span>
+                  <span className="text-[13px] font-normal text-ias-brown-muted ml-1">/month</span>
                 </p>
                 <p className="text-sm text-[#6B6560] mb-5 leading-relaxed mt-2">{tier.description}</p>
                 <ul className="space-y-2 mb-6 flex-1">
@@ -338,6 +356,84 @@ export default function ServicesPage() {
                 </QuotePopupButton>
               </div>
             ))}
+              </div>
+            </OngoingServicePanel>
+
+            {/* Summary of the B2B platform. The full detail page still exists at
+                /services/b2b-crm-ai-platform and is linked inside, it is just no
+                longer a top-level nav item. */}
+            <OngoingServicePanel
+              id="b2b"
+              eyebrow="B2B Lead Generation"
+              title="Custom CRM & AI Acquisition Platform"
+              summary="A fully private, AI-powered CRM and lead acquisition system built around your industry and sales process."
+              priceHint="Custom"
+            >
+              <p className="text-[#6B6560] text-base max-w-[640px] mb-6">
+                Selling to other businesses? We build a fully private, AI-powered CRM and lead
+                acquisition system around your industry and sales process. No generic tools, no
+                shared databases.
+              </p>
+
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+            {/* What's inside */}
+            <div
+              className="lg:col-span-2 bg-white rounded-[10px] p-7"
+              style={{ border: '1px solid #E8E4DF' }}
+            >
+              <div className="mb-4">
+                <Bot className="w-7 h-7 text-ias-brown-dark" strokeWidth={1.5} />
+              </div>
+              <p className="text-sm font-semibold text-[#1A1A1A] mb-3">What&apos;s included</p>
+              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                {B2B_INCLUDES.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Pricing / guarantee */}
+            <div
+              className="bg-white rounded-[10px] p-7 flex flex-col"
+              style={{ border: '1px solid #E8E4DF' }}
+            >
+              <p className="text-[12px] font-semibold text-ias-brown-muted uppercase tracking-widest mb-1">
+                Pricing
+              </p>
+              <p className="text-[24px] font-extrabold text-[#1A1A1A] leading-none mb-1">
+                Custom
+                <span className="text-[11px] font-normal text-ias-brown-muted ml-1">+ GST</span>
+              </p>
+              <p className="text-[13px] text-ias-brown-muted mb-5">
+                $2,000 deposit to begin, 10 to 15 day build, balance on completion.
+              </p>
+
+              <div className="bg-[#F3EFE9] border border-[#E8E4DF] rounded-[6px] px-4 py-3 mb-5">
+                <p className="text-[11px] font-semibold text-ias-brown-dark uppercase tracking-widest mb-0.5">
+                  Our Guarantee
+                </p>
+                <p className="text-sm font-bold text-[#1A1A1A]">Results or full refund</p>
+              </div>
+
+              <QuotePopupButton
+                service="B2B AI Platform"
+                className="w-full text-center px-6 py-3.5 bg-ias-brown-dark text-white rounded-[6px] font-semibold text-sm transition-colors duration-200 hover:bg-ias-brown-mid block"
+              >
+                Book a Discovery Call
+              </QuotePopupButton>
+
+              <Link
+                href="/services/b2b-crm-ai-platform"
+                className="mt-3 text-center text-sm font-semibold text-ias-brown-dark underline underline-offset-2 hover:text-ias-brown-mid"
+              >
+                See full platform details
+              </Link>
+            </div>
+              </div>
+            </OngoingServicePanel>
           </div>
         </div>
       </section>
@@ -350,7 +446,7 @@ export default function ServicesPage() {
             Tell us about your business and we&apos;ll recommend the right combination of services to get you results.
           </p>
           <QuotePopupButton
-            className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
+            className="inline-block px-8 py-4 bg-ias-brown-dark text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-ias-brown-mid"
           >
             Request Quote/Call
           </QuotePopupButton>

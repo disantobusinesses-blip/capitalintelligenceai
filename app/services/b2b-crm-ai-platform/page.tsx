@@ -76,8 +76,11 @@ export default function B2BCrmAiPlatformPage() {
       {/* Header */}
       <header className="py-6 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* This page is no longer in the top nav, its summary lives at
+              /services#b2b. Kept live so existing search traffic and external
+              links do not 404, and this crumb returns to that section. */}
           <Link
-            href="/services"
+            href="/services#b2b"
             className="flex items-center gap-2 text-[#6B6560] hover:text-[#1A1A1A] transition-colors duration-200"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -85,7 +88,7 @@ export default function B2BCrmAiPlatformPage() {
           </Link>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-[6px] bg-[#F8F7F4] border border-[#E8E4DF] flex items-center justify-center">
-              <Bot className="w-5 h-5 text-[#5C3D2E]" />
+              <Bot className="w-5 h-5 text-ias-brown-dark" />
             </div>
             <div>
               <h3 className="text-sm font-bold text-[#1A1A1A]">Intelligent AI Systems</h3>
@@ -97,7 +100,7 @@ export default function B2BCrmAiPlatformPage() {
       {/* Hero */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-[#5C3D2E] text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
+          <p className="text-ias-brown-dark text-[13px] font-semibold tracking-[1.5px] uppercase mb-3">
             B2B AI Platform
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6 leading-tight">
@@ -113,17 +116,17 @@ export default function B2BCrmAiPlatformPage() {
               className="bg-white rounded-[10px] px-8 py-6 text-center"
               style={{ border: '1px solid #E8E4DF' }}
             >
-              <p className="text-[12px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Pricing</p>
-              <p className="text-[28px] font-extrabold text-[#1A1A1A] leading-none">Custom Pricing <span className="text-[12px] font-normal text-[#9E9790]">+ GST</span></p>
-              <p className="text-[13px] text-[#9E9790] mt-2">Book a discovery call to get your quote</p>
+              <p className="text-[12px] font-semibold text-ias-brown-muted uppercase tracking-widest mb-1">Pricing</p>
+              <p className="text-[28px] font-extrabold text-[#1A1A1A] leading-none">Custom Pricing <span className="text-[12px] font-normal text-ias-brown-muted">+ GST</span></p>
+              <p className="text-[13px] text-ias-brown-muted mt-2">Book a discovery call to get your quote</p>
             </div>
             <div
               className="bg-[#F8F7F4] rounded-[10px] px-8 py-6 text-center"
               style={{ border: '1px solid #E8E4DF' }}
             >
-              <p className="text-[12px] font-semibold text-[#5C3D2E] uppercase tracking-widest mb-1">Market Value</p>
+              <p className="text-[12px] font-semibold text-ias-brown-dark uppercase tracking-widest mb-1">Market Value</p>
               <p className="text-[28px] font-extrabold text-[#1A1A1A] leading-none">$5,000 – $35,000</p>
-              <p className="text-[13px] text-[#9E9790] mt-2">depending on lead volume & acquisition value</p>
+              <p className="text-[13px] text-ias-brown-muted mt-2">depending on lead volume & acquisition value</p>
             </div>
           </div>
         </div>
@@ -134,24 +137,24 @@ export default function B2BCrmAiPlatformPage() {
         <div className="max-w-[1200px] mx-auto py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <p className="text-[11px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Deposit to Begin</p>
+              <p className="text-[11px] font-semibold text-ias-brown-muted uppercase tracking-widest mb-1">Deposit to Begin</p>
               <p className="text-[20px] font-bold text-[#1A1A1A]">$2,000</p>
-              <p className="text-[12px] text-[#9E9790]">balance due on completion</p>
+              <p className="text-[12px] text-ias-brown-muted">balance due on completion</p>
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Build Timeline</p>
+              <p className="text-[11px] font-semibold text-ias-brown-muted uppercase tracking-widest mb-1">Build Timeline</p>
               <p className="text-[20px] font-bold text-[#1A1A1A]">10–15 Days</p>
-              <p className="text-[12px] text-[#9E9790]">depending on complexity</p>
+              <p className="text-[12px] text-ias-brown-muted">depending on complexity</p>
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">Guarantee</p>
+              <p className="text-[11px] font-semibold text-ias-brown-muted uppercase tracking-widest mb-1">Guarantee</p>
               <p className="text-[20px] font-bold text-[#1A1A1A]">Results or Refund</p>
-              <p className="text-[12px] text-[#9E9790]">full money back guarantee</p>
+              <p className="text-[12px] text-ias-brown-muted">full money back guarantee</p>
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-[#9E9790] uppercase tracking-widest mb-1">After Launch</p>
+              <p className="text-[11px] font-semibold text-ias-brown-muted uppercase tracking-widest mb-1">After Launch</p>
               <p className="text-[20px] font-bold text-[#1A1A1A]">Monthly Plan</p>
-              <p className="text-[12px] text-[#9E9790]">hosting & system management</p>
+              <p className="text-[12px] text-ias-brown-muted">hosting & system management</p>
             </div>
           </div>
         </div>
@@ -173,7 +176,7 @@ export default function B2BCrmAiPlatformPage() {
                   className="bg-white border border-[#E8E4DF] rounded-[10px] p-6 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-shadow duration-200"
                 >
                   <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-[#5C3D2E]" strokeWidth={1.5} />
+                    <Icon className="w-5 h-5 text-ias-brown-dark" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-[17px] font-bold text-[#1A1A1A] mb-2">{feature.title}</h3>
                   <p className="text-[#6B6560] text-sm leading-relaxed">{feature.description}</p>
@@ -208,11 +211,11 @@ export default function B2BCrmAiPlatformPage() {
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="bg-[#1A1A1A] rounded-[10px] p-10 text-center">
-            <p className="text-[13px] font-semibold text-[#9E9790] uppercase tracking-widest mb-3">Our Guarantee</p>
+            <p className="text-[13px] font-semibold text-ias-brown-muted uppercase tracking-widest mb-3">Our Guarantee</p>
             <p className="text-[38px] md:text-[48px] font-extrabold text-white leading-none mb-3">
               Results or Full Refund
             </p>
-            <p className="text-[#9E9790] text-base max-w-xl mx-auto">
+            <p className="text-ias-brown-muted text-base max-w-xl mx-auto">
               We stand behind every platform we build. If your system doesn&apos;t deliver qualified leads from your target market, you get your money back, no questions asked.
             </p>
           </div>
@@ -228,12 +231,12 @@ export default function B2BCrmAiPlatformPage() {
           <p className="text-[#6B6560] mb-3 text-base">
             Book a discovery call and we&apos;ll map out exactly how the platform will be built for your business.
           </p>
-          <p className="text-[13px] text-[#9E9790] mb-8">
+          <p className="text-[13px] text-ias-brown-muted mb-8">
             $2,000 deposit to start · 10–15 day build · balance on completion
           </p>
           <QuotePopupButton
             service="B2B AI Platform"
-            className="inline-block px-10 py-4 bg-[#1A1A1A] text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-[#2D2D2D]"
+            className="inline-block px-10 py-4 bg-ias-brown-dark text-white rounded-[6px] font-semibold text-base transition-colors duration-200 hover:bg-ias-brown-mid"
           >
             Book a Discovery Call
           </QuotePopupButton>

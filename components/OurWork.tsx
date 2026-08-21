@@ -104,7 +104,7 @@ export default function OurWork() {
               {/* Card content */}
               <div className="bg-white p-5">
                 <h3 className="font-bold text-[#1A1A1A] text-base mb-2">{project.name}</h3>
-                <span className="inline-block bg-[#F8F7F4] text-[#5C3D2E] text-[12px] font-medium px-3 py-1 rounded-full mb-3">
+                <span className="inline-block bg-[#F8F7F4] text-ias-brown-dark text-[12px] font-medium px-3 py-1 rounded-full mb-3">
                   {project.industry}
                 </span>
                 {project.metric && (
@@ -114,7 +114,7 @@ export default function OurWork() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#5C3D2E] font-semibold text-sm hover:underline transition-colors duration-200"
+                  className="text-ias-brown-dark font-semibold text-sm hover:underline transition-colors duration-200"
                 >
                   View Project →
                 </a>

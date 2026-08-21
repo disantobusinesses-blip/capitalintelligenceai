@@ -105,10 +105,12 @@ interface Palette {
   ring: string
 }
 
-/* Foreground colours are picked per tone rather than shared: white clears AA
-   on the two darker browns (12.2:1 and 5.8:1) but manages only 2.4:1 on the
-   lightest, which therefore takes dark ink instead (6.9:1). The tick icons
-   follow the same logic against the 3:1 bar for graphical objects. */
+/* The three tones form a deliberate tonal ladder: Foundation #473126, Growth
+   #724935, Bespoke #9E684C. All three take white text, measured at 12.10:1,
+   7.72:1 and 4.63:1 respectively, so every card clears AA for normal text.
+   The ladder is the reason opacity budgets differ per tone: the two darker
+   cards have contrast headroom to spare and can mute secondary rows, while
+   Bespoke has only 0.13 above the 4.5 threshold and must stay at full white. */
 const PALETTES: Record<SquishyTone, Palette> = {
   dark: {
     background: 'var(--ias-brown-dark)',
@@ -122,7 +124,7 @@ const PALETTES: Record<SquishyTone, Palette> = {
     includesTitle: 'text-white',
     includesBody: 'text-white/70',
     outlineBtn: 'border border-white/30 text-white hover:bg-white/10',
-    solidBtn: 'bg-white text-[#4A2F23] hover:bg-white/90',
+    solidBtn: 'bg-white text-ias-brown-dark hover:bg-white/90',
     ring: 'ring-2 ring-[#2E1B12]',
   },
   mid: {
@@ -135,24 +137,35 @@ const PALETTES: Record<SquishyTone, Palette> = {
     divider: 'border-white/15',
     includesBox: 'bg-white/10 border-white/15',
     includesTitle: 'text-white',
-    includesBody: 'text-white/75',
+    /* /75 measured 4.18:1 against this box's lightened background. */
+    includesBody: 'text-white/90',
     outlineBtn: 'border border-white/30 text-white hover:bg-white/10',
-    solidBtn: 'bg-white text-[#8B5A3C] hover:bg-white/90',
+    solidBtn: 'bg-white text-ias-brown-mid hover:bg-white/90',
     ring: 'ring-2 ring-[#2E1B12]',
   },
   light: {
+    /* Pure white on this brown measures 4.63:1, which clears AA for normal
+       text. It is also the ONLY foreground that does: cream #F8F7F4 drops to
+       4.32:1 and dark ink #2E1B12 to 3.54:1, both failing. So the muted and
+       feature rows below stay at full-strength white rather than the /70 and
+       /90 opacities the two darker cards use, since any tint lands under 4.5.
+
+       The same 0.13 margin is why `includesBox` darkens rather than lightens.
+       A white veil raises the box's own luminance, which cuts the white text on
+       it to 3.51:1 — the tint only has to come from the background side to do
+       identical damage. `bg-black/15` moves the box the other way, to 5.99:1. */
     background: 'var(--ias-brown-light)',
-    shape: 'fill-white/10 sm:fill-white/25',
-    text: 'text-[#2E1B12]',
-    muted: 'text-[#2E1B12]/75',
-    feature: 'text-[#2E1B12]',
-    check: 'text-green-800',
-    divider: 'border-[#2E1B12]/20',
-    includesBox: 'bg-[#2E1B12]/10 border-[#2E1B12]/15',
-    includesTitle: 'text-[#2E1B12]',
-    includesBody: 'text-[#2E1B12]/75',
-    outlineBtn: 'border border-[#2E1B12]/40 text-[#2E1B12] hover:bg-[#2E1B12]/10',
-    solidBtn: 'bg-[#2E1B12] text-white hover:bg-[#1F120B]',
+    shape: 'fill-white/10 sm:fill-white/20',
+    text: 'text-white',
+    muted: 'text-white',
+    feature: 'text-white',
+    check: 'text-white',
+    divider: 'border-white/25',
+    includesBox: 'bg-black/15 border-white/30',
+    includesTitle: 'text-white',
+    includesBody: 'text-white',
+    outlineBtn: 'border border-white/50 text-white hover:bg-white/15',
+    solidBtn: 'bg-white text-[#7A4E36] hover:bg-white/90',
     ring: 'ring-2 ring-[#2E1B12]',
   },
 }

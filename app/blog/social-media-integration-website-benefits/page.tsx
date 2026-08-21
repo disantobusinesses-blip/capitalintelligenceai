@@ -235,7 +235,7 @@ export default function BlogPostSocialMediaIntegration() {
                     'X (formerly Twitter): useful for thought leadership and staying visible in fast-moving industries',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#5C3D2E] rounded-full mt-2 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-ias-brown-dark rounded-full mt-2 flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -296,7 +296,7 @@ export default function BlogPostSocialMediaIntegration() {
                   <li>
                     <Link
                       href="/blog/how-blogs-generate-millions-of-website-visits"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       How Blogs Can Generate Millions of Website Visits →
                     </Link>
@@ -304,7 +304,7 @@ export default function BlogPostSocialMediaIntegration() {
                   <li>
                     <Link
                       href="/blog/how-ai-can-boost-business-performance"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       How AI Can Boost Business Performance, Save Time, and Increase Revenue →
                     </Link>
@@ -312,7 +312,7 @@ export default function BlogPostSocialMediaIntegration() {
                   <li>
                     <Link
                       href="/blog/how-ai-can-boost-seo"
-                      className="text-[#5C3D2E] hover:text-[#5C3D2E] smooth-transition font-medium"
+                      className="text-ias-brown-dark hover:text-ias-brown-dark smooth-transition font-medium"
                     >
                       How AI Can Boost SEO and AI Search Engine Optimisation →
                     </Link>
