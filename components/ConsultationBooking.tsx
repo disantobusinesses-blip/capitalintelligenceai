@@ -203,6 +203,10 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
         if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
           window.gtag('event', 'conversion', {'send_to': 'AW-17950129824/ZA2zCPTNlrkcEKD9pO9C'})
         }
+        // Fire Meta Pixel Lead event
+        if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead')
+        }
         // Clear form
         setName('')
         setEmail('')

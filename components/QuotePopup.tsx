@@ -196,6 +196,9 @@ export default function QuotePopup() {
         // callback, BEFORE any redirect, so it is never gated behind the
         // deposit step or a page navigation. The redirect to the deposit page
         // only runs once the conversion beacon has been sent (or times out).
+        if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead')
+        }
         const query = services.length ? `?service=${encodeURIComponent(services.join(', '))}` : ''
         trackConversion(CONVERSION_LEAD, () => {
           closePopup()
