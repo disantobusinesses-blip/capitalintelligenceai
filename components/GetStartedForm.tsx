@@ -6,7 +6,6 @@ import { X, Check, Send, Building2, User, Mail, Phone, MessageSquare, ChevronDow
 const serviceOptions = [
   { id: 'website-build-redesign', label: 'Website Build/Redesign' },
   { id: 'google-profile-setup', label: 'Google Profile Setup' },
-  { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
 ]
 
 const addOnOptions: { id: string; label: string; description: string }[] = []

@@ -6,7 +6,6 @@ import { format, addDays, isSunday, isSaturday, isToday, isBefore, startOfDay } 
 
 const SERVICE_OPTIONS = [
   { id: 'website-build', label: 'Website Build' },
-  { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
   { id: 'google-profile-setup', label: 'Google Profile Setup' },
 ]
 

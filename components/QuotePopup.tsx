@@ -28,7 +28,6 @@ const SERVICE_OPTIONS: QuoteService[] = [
   'Bespoke',
   'Custom Build / Platform',
   'Google Business Profile',
-  'B2B AI Platform',
   'Other',
 ]
 
@@ -37,7 +36,6 @@ const SERVICE_OPTIONS: QuoteService[] = [
 const ADDON_OPTIONS = [
   'SEO Blog Content',
   'Instagram & Social Growth Management',
-  'B2B Lead Generation',
 ] as const
 type AddonOption = (typeof ADDON_OPTIONS)[number]
 
@@ -57,7 +55,6 @@ const SERVICE_PRICE_LABEL: Record<QuoteService, string | null> = {
   Bespoke: '$6,999',
   'Custom Build / Platform': 'from $7,000',
   'Google Business Profile': 'from $299',
-  'B2B AI Platform': 'Custom pricing',
   Other: null,
 }
 
