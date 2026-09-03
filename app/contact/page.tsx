@@ -7,7 +7,6 @@ import { CheckCircle, AlertCircle, Loader2, ArrowRight, User, Building2, Mail, P
 const SERVICE_OPTIONS = [
   { id: 'website-build-redesign', label: 'Website Build/Redesign' },
   { id: 'google-profile-setup', label: 'Google Profile Setup' },
-  { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
 ]
 
 const ADD_ON_OPTIONS = [

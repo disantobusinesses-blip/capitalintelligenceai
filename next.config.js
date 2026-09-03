@@ -43,6 +43,14 @@ const nextConfig = {
         permanent: true,
       },
       {
+        // B2B Lead Generation is no longer an offered service. Its detail page
+        // and the /services#b2b panel are both gone, so existing search traffic
+        // and external links land on the current service list instead of a 404.
+        source: '/services/b2b-crm-ai-platform',
+        destination: '/services',
+        permanent: true,
+      },
+      {
         // The /launch multi-step funnel is retired. Its role (browsing package
         // examples and starting a build) is now covered by /services directly.
         source: '/launch/:path*',

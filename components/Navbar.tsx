@@ -43,7 +43,6 @@ const navEntries: NavEntry[] = [
         items: [
           { label: 'SEO Blog Content', href: '/services#seo-blog-content', description: 'Ongoing posts that build search visibility.' },
           { label: 'Instagram & Social Growth', href: '/services#social-growth', description: 'Content, scheduling, and monthly reporting.' },
-          { label: 'B2B Lead Generation', href: '/services#b2b', description: 'Private AI CRM and acquisition platform.' },
         ],
       },
     ],

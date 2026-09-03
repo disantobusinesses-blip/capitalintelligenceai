@@ -22,10 +22,10 @@ interface OngoingServicePanelProps {
 /**
  * One collapsible service inside the Ongoing Services group on /services.
  *
- * These four sections were previously fully expanded and stacked, so a mobile
- * visitor scrolled through all of the hosting, blog, social and B2B pricing
- * before reaching anything else. Collapsed, the group becomes a four-row menu
- * the visitor can scan and open selectively.
+ * These sections were previously fully expanded and stacked, so a mobile
+ * visitor scrolled through all of the hosting and blog pricing before reaching
+ * anything else. Collapsed, the group becomes a short menu the visitor can scan
+ * and open selectively.
  *
  * `scroll-mt` keeps the existing #hosting / #seo-blog-content style deep links
  * landing below the fixed navbar rather than under it.
@@ -44,14 +44,13 @@ export default function OngoingServicePanel({
   /** True while this panel is open because a deep link opened it. */
   const openedByHash = useRef(false)
 
-  /* These anchors are deep-linked from the navbar, footer, BeyondWebsite and
-     WhyIntelligentAISystem, so a collapsed panel would leave those links
-     landing on a closed row that looks broken. Open this panel whenever the
-     hash points at it.
+  /* These anchors are deep-linked from the navbar, footer and BeyondWebsite,
+     so a collapsed panel would leave those links landing on a closed row that
+     looks broken. Open this panel whenever the hash points at it.
 
      The `hashchange` listener matters as much as the initial read: moving from
-     /services#hosting to /services#b2b keeps the same page mounted, so without
-     it only the first deep link of a session would open.
+     /services#hosting to /services#seo-blog-content keeps the same page
+     mounted, so without it only the first deep link of a session would open.
 
      Scrolling is done manually with `window.scrollTo` rather than the more
      obvious `scrollIntoView`. This wrapper needs `overflow-hidden` to clip the
