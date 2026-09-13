@@ -47,13 +47,6 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://www.eayelectrical.com.au',
   },
   {
-    order: 3,
-    title: 'Estética Sydney',
-    result: 'Beauty and aesthetics business website.',
-    image: '/projects/estetica-sydney-v2.png',
-    url: 'https://esteticasydney.com/',
-  },
-  {
     order: 4,
     title: 'Azzura Consulting',
     result: 'Business consulting website built to win enquiries.',
