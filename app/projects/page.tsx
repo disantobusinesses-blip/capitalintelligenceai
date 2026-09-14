@@ -118,6 +118,23 @@ const foundationProjects: Project[] = [
 // Examples for the Growth package ($2,999) — linked from /services#growth.
 const growthProjects: Project[] = [
   {
+    id: 0,
+    title: 'Estética Socials Sydney',
+    industry: 'Social Media Management',
+    description: 'Andrea runs one shoot day a month for women\'s brands across Sydney. The site sells the result rather than the service: a dedicated Results page carrying real campaign numbers, autoplaying reels from recent shoots, and a blog publishing four SEO posts a month.',
+    image: '/projects/estetica-sydney-v2.png',
+    url: 'https://esteticasydney.com/',
+    color: '#8A5A44',
+    features: [
+      'Seven-page structure with a standalone Results page',
+      'Live campaign metrics: +228.8% reach, +267.6% engagement, 187K reel plays',
+      'Autoplaying reel grid from recent client shoots',
+      'Database-backed blog, 4 posts per month',
+      'Consultation-first enquiry with a one business day response promise',
+      'Custom animations',
+    ],
+  },
+  {
     id: 1,
     title: 'EAY Electrical',
     industry: 'Electrical Services',
