@@ -67,37 +67,6 @@ const foundationProjects: Project[] = [
     ],
   },
   {
-    id: 1,
-    title: 'Senator Developments',
-    industry: 'Renovations & Carpentry',
-    description: 'A renovation builder whose leads come from the phone, not from forms. Every CTA is a tap: SMS with the message already written, direct call, or WhatsApp. The work sells itself through a hero slider and three on-site project videos.',
-    image: '/projects/senator-developments.png',
-    url: 'https://senatordevelopments.com.au',
-    color: '#2C3E50',
-    features: [
-      'SMS-to-quote with pre-filled message body',
-      'Click-to-call and WhatsApp handoff',
-      'Hero slider plus three project videos',
-      'Animated counters: 10+ years, 65+ projects',
-      'Six service cards across domestic, commercial and industrial',
-    ],
-  },
-  {
-    id: 2,
-    title: 'Lumière Skin Studio (DEMO ONLY)',
-    industry: 'Skincare & Beauty',
-    description: 'A concept build showing what Foundation looks like for a booking-led studio: single page, treatment menu, and a Fresha button wired to a live profile on a custom domain.',
-    image: '/templates/skincare.png',
-    url: 'https://demo2.intelligentaisystem.com',
-    color: '#B08968',
-    features: [
-      'Fresha booking integration on a live profile',
-      'Custom subdomain deployment',
-      'Treatment menu and studio gallery layout',
-      'Built as a Foundation concept, not a client site',
-    ],
-  },
-  {
     id: 3,
     title: 'Certi Sustainability',
     industry: 'ESD & Building Compliance',
@@ -112,6 +81,7 @@ const foundationProjects: Project[] = [
       'Counters: 24 to 48 hour turnaround, 1000+ projects delivered',
       'Plans-by-email intake, no form friction',
     ],
+    additionalNote: 'Design supplied by the client, IAS built and implemented the site to the provided design.',
   },
 ]
 
@@ -203,21 +173,6 @@ const bespokeProjects: Project[] = [
       'Dark fintech UI with custom card renders',
     ],
     additionalNote: 'Fintech-grade design',
-  },
-  {
-    id: 2,
-    title: 'Live Demo Website',
-    industry: 'Cinematic Scroll Reference',
-    description: 'The motion standard every Bespoke build is designed to. Full-viewport scroll sections, pinned image sequences, a horizontal project rail and an embedded film reel, all running at 60fps on mobile.',
-    image: '/projects/CinematicScrollDemo.png',
-    url: 'https://demo1.intelligentaisystem.com/',
-    color: '#2C2A27',
-    features: [
-      'Scroll-pinned full-viewport sections',
-      'Horizontal project rail and embedded film reel',
-      'Smooth scroll with scroll-triggered stat counters',
-      'Built as the Bespoke motion reference, not a client site',
-    ],
   },
 ]
 

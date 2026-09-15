@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { Bot, Check, FileText, Shield } from 'lucide-react'
+import { Check, FileText, Shield } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
 import SquishyPricing, { type SquishyIcon, type SquishyTone } from '@/components/ui/squishy-pricing'
@@ -139,18 +138,6 @@ const blogTiers = [
   },
 ]
 
-/* ─── B2B Lead Generation & AI CRM ──────────────────────────────────────── */
-const B2B_INCLUDES = [
-  'AI trained on your industry and target market',
-  'Private lead scraping engine built for your niche',
-  'Dedicated lead database, your data only',
-  'Full CRM pipeline management system',
-  'Automated lead tracking and follow-up workflows',
-  'Curated, ready-to-contact lead lists',
-  'Custom onboarding and system walkthrough',
-  'Ongoing hosting and system management',
-]
-
 export default function ServicesPage() {
   return (
     <main className="min-h-[100dvh] bg-[#F8F7F4] pb-bottom-nav pt-[74px]">
@@ -215,11 +202,11 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Ongoing Services ─────────────────────────────────────────────────
-          These four were previously four full-height stacked sections, so a
-          visitor scrolled through every hosting, blog, social and B2B price
-          before reaching the closing CTA. Grouped into one collapsible list
-          they read as a menu instead, and each panel keeps its original anchor
-          id so the existing deep links from the navbar and footer still work. */}
+          These were previously full-height stacked sections, so a visitor
+          scrolled through every hosting and blog price before reaching the
+          closing CTA. Grouped into one collapsible list they read as a menu
+          instead, and each panel keeps its original anchor id so the existing
+          deep links from the navbar and footer still work. */}
       <section className="py-10 px-6 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-6 md:mb-8">
@@ -356,82 +343,6 @@ export default function ServicesPage() {
                 </QuotePopupButton>
               </div>
             ))}
-              </div>
-            </OngoingServicePanel>
-
-            {/* Summary of the B2B platform. The full detail page still exists at
-                /services/b2b-crm-ai-platform and is linked inside, it is just no
-                longer a top-level nav item. */}
-            <OngoingServicePanel
-              id="b2b"
-              eyebrow="B2B Lead Generation"
-              title="Custom CRM & AI Acquisition Platform"
-              summary="A fully private, AI-powered CRM and lead acquisition system built around your industry and sales process."
-              priceHint="Custom"
-            >
-              <p className="text-[#6B6560] text-base max-w-[640px] mb-6">
-                Selling to other businesses? We build a fully private, AI-powered CRM and lead
-                acquisition system around your industry and sales process. No generic tools, no
-                shared databases.
-              </p>
-
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-            {/* What's inside */}
-            <div
-              className="lg:col-span-2 bg-white rounded-[10px] p-7"
-              style={{ border: '1px solid #E8E4DF' }}
-            >
-              <div className="mb-4">
-                <Bot className="w-7 h-7 text-ias-brown-dark" strokeWidth={1.5} />
-              </div>
-              <p className="text-sm font-semibold text-[#1A1A1A] mb-3">What&apos;s included</p>
-              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                {B2B_INCLUDES.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
-                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Pricing / guarantee */}
-            <div
-              className="bg-white rounded-[10px] p-7 flex flex-col"
-              style={{ border: '1px solid #E8E4DF' }}
-            >
-              <p className="text-[12px] font-semibold text-ias-brown-muted uppercase tracking-widest mb-1">
-                Pricing
-              </p>
-              <p className="text-[24px] font-extrabold text-[#1A1A1A] leading-none mb-1">
-                Custom
-                <span className="text-[11px] font-normal text-ias-brown-muted ml-1">+ GST</span>
-              </p>
-              <p className="text-[13px] text-ias-brown-muted mb-5">
-                $2,000 deposit to begin, 10 to 15 day build, balance on completion.
-              </p>
-
-              <div className="bg-[#F3EFE9] border border-[#E8E4DF] rounded-[6px] px-4 py-3 mb-5">
-                <p className="text-[11px] font-semibold text-ias-brown-dark uppercase tracking-widest mb-0.5">
-                  Our Guarantee
-                </p>
-                <p className="text-sm font-bold text-[#1A1A1A]">Results or full refund</p>
-              </div>
-
-              <QuotePopupButton
-                service="B2B AI Platform"
-                className="w-full text-center px-6 py-3.5 bg-ias-brown-dark text-white rounded-[6px] font-semibold text-sm transition-colors duration-200 hover:bg-ias-brown-mid block"
-              >
-                Book a Discovery Call
-              </QuotePopupButton>
-
-              <Link
-                href="/services/b2b-crm-ai-platform"
-                className="mt-3 text-center text-sm font-semibold text-ias-brown-dark underline underline-offset-2 hover:text-ias-brown-mid"
-              >
-                See full platform details
-              </Link>
-            </div>
               </div>
             </OngoingServicePanel>
           </div>

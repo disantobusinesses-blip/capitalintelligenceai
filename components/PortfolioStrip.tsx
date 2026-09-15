@@ -61,13 +61,6 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://www.azzuraconsulting.com.au/',
   },
   {
-    order: 5,
-    title: 'Senator Developments',
-    result: 'Property development site showcasing projects to buyers & investors.',
-    image: '/projects/senator-developments.png',
-    url: 'https://senatordevelopments.com.au',
-  },
-  {
     order: 6,
     title: 'Reborn Physiques',
     result: 'Fitness coaching site built to convert visitors into clients.',
