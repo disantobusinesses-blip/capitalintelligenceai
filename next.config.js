@@ -9,6 +9,37 @@ const nextConfig = {
       },
     ],
   },
+  /* Static assets under /public shipped with no Cache-Control at all, so every
+     visit refetched them. Next already fingerprints and caches its own
+     /_next/static output, this covers the files we serve directly.
+
+     Images get a month with stale-while-revalidate rather than `immutable`:
+     they are replaced in place under the same filename (swapping a portfolio
+     screenshot, say), and immutable would strand visitors on the old bytes for
+     the full year. Fonts genuinely never change under a given name, so those
+     take the long immutable cache. */
+  async headers() {
+    return [
+      {
+        source: '/:path*.(png|jpg|jpeg|gif|svg|webp|avif|ico)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/:path*.(woff|woff2|ttf|otf|eot)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ]
+  },
   async redirects() {
     return [
       // Legacy mixed-case blog slugs moved to middleware.ts: Next's
