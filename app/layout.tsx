@@ -9,73 +9,7 @@ import GetStartedFormWrapper from '@/components/GetStartedFormWrapper'
 import QuoteModal from '@/components/QuoteModal'
 import QuotePopup from '@/components/QuotePopup'
 import SiteChrome from '@/components/SiteChrome'
-
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Capital Intelligence Group / Intelligent AI Systems',
-  alternateName: 'IAS',
-  url: 'https://intelligentaisystem.com',
-  logo: 'https://intelligentaisystem.com/ias-logo.png',
-  image: 'https://intelligentaisystem.com/ias-logo.png',
-  description:
-    'AI-powered web design and SEO agency based in Melbourne, Australia. Building fast websites and delivering SEO content for ambitious businesses globally.',
-  telephone: '+61-3-7051-0100',
-  email: 'sales@intelligentaisystem.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Melbourne VIC',
-    postalCode: '3000',
-    addressLocality: 'Melbourne',
-    addressRegion: 'VIC',
-    addressCountry: 'AU',
-  },
-  areaServed: [
-    'Moonee Ponds',
-    'Essendon',
-    'Coburg',
-    'Brunswick West',
-    'Strathmore',
-    'Pascoe Vale',
-    'Flemington',
-    'Ascot Vale',
-    'Melbourne',
-  ],
-  priceRange: '$$',
-  currenciesAccepted: 'AUD',
-  paymentAccepted: 'Credit Card, Bank Transfer',
-  openingHours: 'Mo-Fr 09:00-17:00',
-  taxID: '38 693 023 371',
-  legalName: 'AI Capital Holdings Pty Ltd',
-  sameAs: [
-    'https://intelligentaisystem.com',
-    'https://www.facebook.com/intelligentaisystems',
-    'https://www.linkedin.com/company/intelligent-ai-systems',
-  ],
-}
-
-const orgSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Intelligent AI Systems',
-  alternateName: 'IAS',
-  url: 'https://intelligentaisystem.com',
-  logo: 'https://intelligentaisystem.com/ias-logo.png',
-  description:
-    'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by businesses across Australia, the US, the UK, and Singapore to build smarter digital experiences.',
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'AU',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+61-3-7051-0100',
-    contactType: 'customer service',
-    availableLanguage: 'English',
-  },
-  sameAs: ['https://intelligentaisystem.com'],
-  taxID: '38 693 023 371',
-}
+import { organisationSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
@@ -174,13 +108,11 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Meta Pixel Code */}
+        {/* One canonical business node for the whole site. Everything else
+            references it by @id, see lib/schema.ts. */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationSchema) }}
         />
         <CurrencyProvider>
           <QuoteModalProvider>

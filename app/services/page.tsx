@@ -7,18 +7,18 @@ import FadeRiseText from '@/components/ui/fade-rise-text'
 import OngoingServicePanel from '@/components/OngoingServicePanel'
 
 export const metadata: Metadata = {
-  title: 'Our Services – Intelligent AI Systems',
+  title: 'Website Packages & Pricing from $1,999 | Intelligent AI Systems',
   description:
-    'Fixed-price website packages and hosting from IAS, Foundation, Growth, and Bespoke builds plus secure monthly hosting for Australian businesses.',
+    'Three fixed-price website packages: Foundation $1,999, Growth $2,999 and Bespoke $6,999, compared line by line. Plus hosting from $59/mo and monthly SEO blog content plans.',
   keywords:
-    'fixed price website, custom website Australia, website packages, website hosting Australia, AI website builder',
+    'fixed price website, website packages Australia, website pricing Melbourne, website hosting Australia, SEO blog content plans',
   alternates: {
     canonical: 'https://intelligentaisystem.com/services',
   },
   openGraph: {
-    title: 'Our Services – Intelligent AI Systems',
+    title: 'Website Packages & Pricing from $1,999 | Intelligent AI Systems',
     description:
-      'Foundation, Growth, and Bespoke website packages, fixed prices, custom builds, no templates, plus secure hosting.',
+      'Foundation, Growth and Bespoke website packages at fixed prices, with a full feature comparison, hosting plans and monthly SEO content.',
     url: 'https://intelligentaisystem.com/services',
     type: 'website',
   },

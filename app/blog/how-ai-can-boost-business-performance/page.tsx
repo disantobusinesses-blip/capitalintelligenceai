@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
+import { organisationRef } from '@/lib/schema'
 
 const post = {
   slug: 'how-ai-can-boost-business-performance',
@@ -21,20 +22,8 @@ const jsonLd = {
   description: post.description,
   datePublished: post.publishedAt,
   dateModified: post.lastModified,
-  author: {
-    '@type': 'Organization',
-    name: 'Capital Intelligence Group',
-    url: 'https://intelligentaisystem.com',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Intelligent AI Systems',
-    url: 'https://intelligentaisystem.com',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://intelligentaisystem.com/ias-logo.png',
-    },
-  },
+  author: organisationRef,
+  publisher: organisationRef,
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `https://intelligentaisystem.com/blog/${post.slug}`,
