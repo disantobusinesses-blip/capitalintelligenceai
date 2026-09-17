@@ -124,7 +124,10 @@ export default function OngoingServicePanel({
           setOpen((v) => !v)
         }}
         aria-expanded={open}
-        aria-controls={`${panelId}-content`}
+        // Only referenced while the panel is mounted: the content below is
+        // unmounted when collapsed, so pointing at its id unconditionally left
+        // a dangling aria-controls reference in the default state.
+        aria-controls={open ? `${panelId}-content` : undefined}
         className="flex w-full items-start gap-4 p-5 text-left transition-colors duration-200 hover:bg-[#FAF9F7] focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ias-brown-dark md:p-6"
       >
         <span className="min-w-0 flex-1">

@@ -127,15 +127,19 @@ export default function QuotePopup() {
   // When the panel is closed, show a small launcher tab anchored to the bottom
   // edge. On mobile it sits above the pill nav so the two never overlap; on
   // desktop (where the pill nav is hidden) it drops back to the corner.
+  //
+  // Deliberately carries no aria-label: the visible text is the accessible
+  // name, so the two cannot disagree. An aria-label that reworded it
+  // ("Request a quote or call") broke WCAG 2.5.3, because voice control users
+  // speaking the label they can see could not activate the button.
   if (!render) {
     return (
       <button
         type="button"
         onClick={() => openPopup()}
-        aria-label="Request a quote or call"
         className="fixed z-[60] bottom-24 right-4 sm:bottom-5 sm:right-6 inline-flex items-center gap-2 rounded-full bg-[#1A1A1A] text-white pl-4 pr-5 py-3 text-sm font-semibold shadow-[0_8px_28px_rgba(0,0,0,0.28)] hover:bg-[#2D2D2D] hover:-translate-y-0.5 transition-all duration-200"
       >
-        <Send className="w-4 h-4" />
+        <Send className="w-4 h-4" aria-hidden="true" />
         Request Quote/Call
       </button>
     )

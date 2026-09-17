@@ -163,6 +163,11 @@ function NavItem({ entry }: { entry: NavEntry }) {
             ? 'pointer-events-auto translate-y-0 opacity-100'
             : 'pointer-events-none -translate-y-1 opacity-0'
         }`}
+        // `inert` is what actually takes the collapsed panel's links out of the
+        // tab order. aria-hidden alone hid them from screen readers while
+        // leaving them keyboard focusable, so tabbing through any page walked
+        // into invisible nav links.
+        inert={!open}
         aria-hidden={!open}
       >
         <div
