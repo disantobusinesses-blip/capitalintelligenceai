@@ -9,73 +9,7 @@ import GetStartedFormWrapper from '@/components/GetStartedFormWrapper'
 import QuoteModal from '@/components/QuoteModal'
 import QuotePopup from '@/components/QuotePopup'
 import SiteChrome from '@/components/SiteChrome'
-
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Capital Intelligence Group / Intelligent AI Systems',
-  alternateName: 'IAS',
-  url: 'https://intelligentaisystem.com',
-  logo: 'https://intelligentaisystem.com/ias-logo.png',
-  image: 'https://intelligentaisystem.com/ias-logo.png',
-  description:
-    'AI-powered web design and SEO agency based in Melbourne, Australia. Building fast websites and delivering SEO content for ambitious businesses globally.',
-  telephone: '+61-3-7051-0100',
-  email: 'sales@intelligentaisystem.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Melbourne VIC',
-    postalCode: '3000',
-    addressLocality: 'Melbourne',
-    addressRegion: 'VIC',
-    addressCountry: 'AU',
-  },
-  areaServed: [
-    'Moonee Ponds',
-    'Essendon',
-    'Coburg',
-    'Brunswick West',
-    'Strathmore',
-    'Pascoe Vale',
-    'Flemington',
-    'Ascot Vale',
-    'Melbourne',
-  ],
-  priceRange: '$$',
-  currenciesAccepted: 'AUD',
-  paymentAccepted: 'Credit Card, Bank Transfer',
-  openingHours: 'Mo-Fr 09:00-17:00',
-  taxID: '38 693 023 371',
-  legalName: 'AI Capital Holdings Pty Ltd',
-  sameAs: [
-    'https://intelligentaisystem.com',
-    'https://www.facebook.com/intelligentaisystems',
-    'https://www.linkedin.com/company/intelligent-ai-systems',
-  ],
-}
-
-const orgSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Intelligent AI Systems',
-  alternateName: 'IAS',
-  url: 'https://intelligentaisystem.com',
-  logo: 'https://intelligentaisystem.com/ias-logo.png',
-  description:
-    'Intelligent AI Systems (IAS) delivers premium websites, AI integrations, and digital solutions engineered for growth. Trusted by businesses across Australia, the US, the UK, and Singapore to build smarter digital experiences.',
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'AU',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+61-3-7051-0100',
-    contactType: 'customer service',
-    availableLanguage: 'English',
-  },
-  sameAs: ['https://intelligentaisystem.com'],
-  taxID: '38 693 023 371',
-}
+import { organisationSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title: 'IAS – Intelligent AI Systems | Premium Web & AI Solutions',
@@ -120,6 +54,11 @@ export const metadata: Metadata = {
     shortcut: '/favicon.png',
     apple: '/favicon.png',
   },
+  verification: {
+    other: {
+      'facebook-domain-verification': 'a8gkgy29dbjfs32qb3jl256rvx8joj',
+    },
+  },
 }
 
 export default function RootLayout({
@@ -144,13 +83,36 @@ export default function RootLayout({
             gtag('config', 'AW-17950129824');
           `}
         </Script>
+        {/* Meta Pixel Code */}
+        <Script id="meta-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1321184083426061');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+        <noscript>
+          <img
+            height={1}
+            width={1}
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1321184083426061&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+        {/* End Meta Pixel Code */}
+        {/* One canonical business node for the whole site. Everything else
+            references it by @id, see lib/schema.ts. */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationSchema) }}
         />
         <CurrencyProvider>
           <QuoteModalProvider>

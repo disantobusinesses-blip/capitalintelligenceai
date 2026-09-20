@@ -6,7 +6,6 @@ import { format, addDays, isSunday, isSaturday, isToday, isBefore, startOfDay } 
 
 const SERVICE_OPTIONS = [
   { id: 'website-build', label: 'Website Build' },
-  { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
   { id: 'google-profile-setup', label: 'Google Profile Setup' },
 ]
 
@@ -202,6 +201,10 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
         // Fire Google Ads conversion tracking
         if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
           window.gtag('event', 'conversion', {'send_to': 'AW-17950129824/ZA2zCPTNlrkcEKD9pO9C'})
+        }
+        // Fire Meta Pixel Lead event
+        if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead')
         }
         // Clear form
         setName('')

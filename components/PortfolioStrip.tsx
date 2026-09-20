@@ -43,7 +43,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     order: 2,
     title: 'EAY Electrical',
     result: 'Residential & commercial electrical services website.',
-    image: '/projects/eay-electrical.png',
+    image: '/projects/eay-electrical.jpg',
     url: 'https://www.eayelectrical.com.au',
   },
   {
@@ -59,13 +59,6 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     result: 'Business consulting website built to win enquiries.',
     image: '/projects/azzura-consulting.png',
     url: 'https://www.azzuraconsulting.com.au/',
-  },
-  {
-    order: 5,
-    title: 'Senator Developments',
-    result: 'Property development site showcasing projects to buyers & investors.',
-    image: '/projects/senator-developments.png',
-    url: 'https://senatordevelopments.com.au',
   },
   {
     order: 6,

@@ -3,10 +3,6 @@ import { display, body } from '@/lib/fonts'
 
 const FAQS = [
   {
-    q: 'How long does a website build take?',
-    a: "Landing pages and templates are live within 24–48 hours. Custom multi-page websites typically take around 10–15 business days depending on scope, you'll get a clear timeline before any work begins.",
-  },
-  {
     q: "Do I own the website once it's built?",
     a: 'Yes. Once your invoice is paid in full, you own the final website built for you. We retain ownership of our own pre-existing tools, templates, and methodologies used to build it, but the finished site is yours.',
   },
@@ -21,6 +17,22 @@ const FAQS = [
   {
     q: 'Do you only work with Melbourne businesses?',
     a: "We're based in Melbourne, but we're remote-first and work with businesses across Australia and internationally.",
+  },
+  {
+    q: "Why isn't my new website ranking on Google yet?",
+    a: "Google's own team has confirmed new websites lack the trust signals, such as backlinks, user engagement history and content depth, that older domains have built up. Their systems make assumptions about where a new site belongs until enough data accumulates. This is a natural process, not a penalty.",
+  },
+  {
+    q: 'How long does it actually take for a new website to rank?',
+    a: "A 2025 study by Ahrefs analysing over 1 million newly published pages found only 1.74% reached Google's top 10 within a year, and the average page holding the number 1 position was around 5 years old. For most Australian small businesses this means 3 to 6 months for lower competition keywords, such as suburb based searches, and 6 to 12 months for more competitive terms.",
+  },
+  {
+    q: "Does your 90-day guarantee mean I'll be on page 1 by then?",
+    a: 'The 90-day guarantee applies only to clients on a monthly SEO blog content plan and covers measurable improvement in keyword rankings, not guaranteed page 1 placement. Full page 1 rankings for competitive terms genuinely take longer than 90 days industry wide. What you should see within 90 days is upward movement: more keywords tracked, better positions, and growing impressions in Search Console.',
+  },
+  {
+    q: 'What speeds up the process?',
+    a: 'Consistent content publication, solid technical SEO (speed, mobile experience, structured data), and genuine backlinks all accelerate the timeline. Sites that publish regularly move faster than sites that launch and go static.',
   },
 ]
 

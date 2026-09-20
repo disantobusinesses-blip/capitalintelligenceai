@@ -43,7 +43,9 @@ export default function Disclosure({
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        aria-controls={`${id}-panel`}
+        // The panel is unmounted when closed (see the note above), so the
+        // reference is only valid while it is open.
+        aria-controls={open ? `${id}-panel` : undefined}
         className={`flex w-full items-center justify-between gap-3 text-left transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ias-brown-dark ${triggerClassName}`}
       >
         <span>{label}</span>
