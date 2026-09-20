@@ -43,7 +43,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     order: 2,
     title: 'EAY Electrical',
     result: 'Residential & commercial electrical services website.',
-    image: '/projects/eay-electrical.png',
+    image: '/projects/eay-electrical.jpg',
     url: 'https://www.eayelectrical.com.au',
   },
   {

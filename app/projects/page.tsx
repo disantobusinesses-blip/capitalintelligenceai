@@ -109,7 +109,7 @@ const growthProjects: Project[] = [
     title: 'EAY Electrical',
     industry: 'Electrical Services',
     description: 'A licensed electrician competing for “electrician melbourne” across two halves of Melbourne. Video hero, a dedicated service-area page for northern and southern suburbs, a quote form that captures the job type upfront, and an emergency block that puts call and SMS one tap away.',
-    image: '/projects/eay-electrical.png',
+    image: '/projects/eay-electrical.jpg',
     url: 'https://www.eayelectrical.com.au',
     color: '#1A3A5C',
     features: [

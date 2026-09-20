@@ -7,10 +7,17 @@
  * "Capital Intelligence Group" as the blog author) with no shared @id, so
  * search engines had no way to tell they were one business.
  *
- * There is now one node, typed LocalBusiness (a subtype of Organization, so it
- * satisfies both roles), carrying ORGANISATION_ID. Every other schema block on
- * the site points at that id via `organisationRef` instead of restating the
+ * There is now one node, carrying ORGANISATION_ID, that every other schema
+ * block on the site points at via `organisationRef` instead of restating the
  * business, which is what keeps the name consistent sitewide.
+ *
+ * It carries BOTH types rather than picking one: schema.org allows @type to
+ * be an array, and this entity genuinely is a LocalBusiness (it has an
+ * address, phone and opening hours) that also needs to satisfy Article's
+ * author/publisher fields, which expect Organization. ORGANISATION_TYPE is
+ * the one array literal both `organisationSchema` and `organisationRef`
+ * spread from, so the two declarations cannot drift apart the way the old
+ * "LocalBusiness in one place, Organization in another" split did.
  *
  * The trading names that are no longer canonical are kept on `alternateName`
  * so the association is not lost.
@@ -24,6 +31,13 @@ export const ORGANISATION_NAME = 'Intelligent AI Systems'
 /** Referenced sitewide. The fragment keeps it distinct from the page URL. */
 export const ORGANISATION_ID = `${SITE_URL}/#organization`
 
+/**
+ * Shared by every declaration of this entity, see the file-level note above.
+ * Order matters for readability only, schema.org does not treat array order
+ * as significant.
+ */
+export const ORGANISATION_TYPE = ['Organization', 'LocalBusiness']
+
 const LOGO_URL = `${SITE_URL}/ias-logo.png`
 
 /**
@@ -35,7 +49,7 @@ const LOGO_URL = `${SITE_URL}/ias-logo.png`
  * still get a usable name.
  */
 export const organisationRef = {
-  '@type': 'Organization',
+  '@type': ORGANISATION_TYPE,
   '@id': ORGANISATION_ID,
   name: ORGANISATION_NAME,
   url: SITE_URL,
@@ -47,7 +61,7 @@ export const organisationRef = {
 
 export const organisationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': ORGANISATION_TYPE,
   '@id': ORGANISATION_ID,
   name: ORGANISATION_NAME,
   alternateName: ['IAS', 'Capital Intelligence Group'],
