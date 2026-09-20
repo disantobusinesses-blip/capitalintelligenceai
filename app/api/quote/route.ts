@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
 
 interface QuoteFormData {
   // New form fields
@@ -34,6 +35,11 @@ function esc(str: string): string {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request)
+  if (await isIpBlocked(ip)) {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+
   let body: QuoteFormData
   try {
     body = await request.json()
@@ -51,6 +57,16 @@ export async function POST(request: NextRequest) {
   if (!body.email || !EMAIL_RE.test(body.email.trim())) {
     return NextResponse.json({ ok: false, message: 'A valid email address is required.' }, { status: 400 })
   }
+
+  await logSubmission({
+    source: 'quote',
+    ip,
+    userAgent: request.headers.get('user-agent'),
+    name: body.name.trim(),
+    email: body.email.trim(),
+    phone: body.phone?.trim(),
+    payload: body,
+  })
 
   // ── 1. Try Supabase insert ──────────────────────────────────────────────────
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -185,6 +201,8 @@ export async function POST(request: NextRequest) {
     if (messageContent) {
       htmlBody += `<h3>Project Details / Message</h3><p>${esc(messageContent)}</p>`
     }
+
+    htmlBody += `<p style="color:#888;font-size:12px;margin-top:16px;">Submitted from IP: ${esc(ip)}</p>`
 
     await transporter.sendMail({
       from: SMTP_FROM,

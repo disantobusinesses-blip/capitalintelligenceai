@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { google } from 'googleapis'
 import { TIMEZONE, melbourneWallTimeToUTC } from '@/lib/timezone'
+import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
 
 function esc(str: string): string {
   return str
@@ -49,6 +50,11 @@ interface ConsultationBody {
 }
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request)
+  if (await isIpBlocked(ip)) {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+
   let body: ConsultationBody
   try {
     body = await request.json()
@@ -75,6 +81,16 @@ export async function POST(request: NextRequest) {
   if (!body.services || body.services.length === 0) {
     return NextResponse.json({ ok: false, message: 'Please select at least one service.' }, { status: 400 })
   }
+
+  await logSubmission({
+    source: 'consultation',
+    ip,
+    userAgent: request.headers.get('user-agent'),
+    name: body.name.trim(),
+    email: body.email.trim(),
+    phone: body.phone.trim(),
+    payload: body,
+  })
 
   const servicesText = body.services.join(', ')
   
@@ -185,6 +201,7 @@ Please call the client at the scheduled time.`,
         </ul>
         ${calendarEventLink ? `<p><a href="${calendarEventLink}">View in Google Calendar</a></p>` : ''}
         <p>Please call the client at their scheduled time.</p>
+        <p style="color:#888;font-size:12px;margin-top:16px;">Submitted from IP: ${esc(ip)}</p>
       `
 
       await transporter.sendMail({

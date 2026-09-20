@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
 
 interface QuotePopupBody {
   name: string
@@ -24,6 +25,11 @@ function esc(str: string): string {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request)
+  if (await isIpBlocked(ip)) {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+
   let body: QuotePopupBody
   try {
     body = await request.json()
@@ -42,6 +48,16 @@ export async function POST(request: NextRequest) {
   if (!body.phone?.trim()) {
     return NextResponse.json({ ok: false, message: 'Phone number is required.' }, { status: 400 })
   }
+
+  await logSubmission({
+    source: 'quote-popup',
+    ip,
+    userAgent: request.headers.get('user-agent'),
+    name: body.name.trim(),
+    email: body.email.trim(),
+    phone: body.phone.trim(),
+    payload: body,
+  })
 
   // SMTP configuration, mirrors the onboarding route so GMAIL_USER / SMTP_USER
   // both work and existing email delivery is never broken.
@@ -98,6 +114,7 @@ export async function POST(request: NextRequest) {
       <h3>About Their Business</h3>
       <p>${body.message?.trim() ? esc(body.message.trim()).replace(/\n/g, '<br/>') : '<em>Not provided</em>'}</p>
       ${addonsHtml}
+      <p style="color:#888;font-size:12px;margin-top:16px;">Submitted from IP: ${esc(ip)}</p>
     `
 
     await transporter.sendMail({

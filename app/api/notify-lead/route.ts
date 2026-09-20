@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { createClient } from '@supabase/supabase-js'
+import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
 
 function esc(str: string): string {
   return str
@@ -12,12 +13,27 @@ function esc(str: string): string {
 }
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request)
+  if (await isIpBlocked(ip)) {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+
   let body: Record<string, string>
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
   }
+
+  await logSubmission({
+    source: `notify-lead:${body.source || 'unknown'}`,
+    ip,
+    userAgent: request.headers.get('user-agent'),
+    name: body.name,
+    email: body.email,
+    phone: body.phone,
+    payload: body,
+  })
 
   // Insert into Supabase cig_leads table
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -67,7 +83,7 @@ export async function POST(request: NextRequest) {
         </h2>
         <ul style="line-height: 1.8;">${rows}</ul>
         <p style="color: #666; font-size: 13px; margin-top: 20px;">
-          Source: ${esc(source)} · ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' })}
+          Source: ${esc(source)} · ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' })} · IP: ${esc(ip)}
         </p>
       </div>
     `

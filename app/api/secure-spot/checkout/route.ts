@@ -1,11 +1,17 @@
 import Stripe from 'stripe'
 import { NextRequest, NextResponse } from 'next/server'
+import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
 
 // Secure Your Spot, takes the same refundable $200 deposit as the launch
 // flow (Stripe price STRIPE_PRICE_DEPOSIT). This is an optional upsell after a
 // lead submits their details; their enquiry is already captured and emailed, so
 // nothing here gates the lead or the conversion event.
 export async function POST(req: NextRequest) {
+  const ip = getClientIp(req)
+  if (await isIpBlocked(ip)) {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+
   try {
     let service = ''
     try {
@@ -37,6 +43,13 @@ export async function POST(req: NextRequest) {
       },
       billing_address_collection: 'required',
       phone_number_collection: { enabled: true },
+    })
+
+    await logSubmission({
+      source: 'secure-spot-checkout',
+      ip,
+      userAgent: req.headers.get('user-agent'),
+      payload: { service },
     })
 
     return NextResponse.json({ url: session.url })
