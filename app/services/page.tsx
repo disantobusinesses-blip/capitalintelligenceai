@@ -64,7 +64,8 @@ const websitePackages = [
     key: 'foundation',
     icon: 'globe' as SquishyIcon,
     name: 'Foundation',
-    price: '$1,999',
+    price: '$1,899',
+    originalPrice: '$1,999',
     period: 'one-off',
     badge: null,
     description: 'A mobile-responsive site built to get a small business found and trusted online.',
@@ -80,7 +81,8 @@ const websitePackages = [
     key: 'growth',
     icon: 'zap' as SquishyIcon,
     name: 'Growth',
-    price: '$2,999',
+    price: '$2,799',
+    originalPrice: '$2,999',
     period: 'one-off',
     badge: 'Most Popular',
     description: 'A conversion-focused build for businesses ready to turn traffic into leads.',
@@ -140,7 +142,7 @@ const blogTiers = [
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-[100dvh] bg-[#F8F7F4] pb-bottom-nav pt-[74px]">
+    <main className="min-h-[100dvh] bg-[#F8F7F4] pb-bottom-nav pt-[110px]">
 
       {/* Hero, kept compact so the pricing cards sit within the first
           viewport (or a single short scroll) on both desktop and mobile. */}
@@ -159,9 +161,10 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Website Packages ──────────────────────────────────────────────── */}
-      {/* scroll-mt-24 clears the 68px fixed header so anchored jumps from the
-          nav dropdown do not land underneath it. */}
-      <section id="website-packages" className="pt-4 pb-14 px-6 scroll-mt-24" style={{ borderTop: '1px solid #E8E4DF' }}>
+      {/* scroll-mt-[132px] clears the fixed header (68px navbar + 36px promo
+          bar, with headroom for the reviews marquee) so anchored jumps from
+          the nav dropdown do not land underneath it. */}
+      <section id="website-packages" className="pt-4 pb-14 px-6 scroll-mt-[132px]" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-6">
             <p className="text-ias-brown-dark text-[13px] font-semibold tracking-[1.5px] uppercase mb-2">

@@ -53,7 +53,7 @@ export default function GoogleBusinessProfilePage() {
   const [addonExpanded, setAddonExpanded] = useState(false)
 
   return (
-    <main className="min-h-[100dvh] bg-[#F8F7F4] pt-[74px]">
+    <main className="min-h-[100dvh] bg-[#F8F7F4] pt-[110px]">
 
       {/* Header */}
       <header className="py-6 px-6">

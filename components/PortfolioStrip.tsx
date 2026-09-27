@@ -86,7 +86,7 @@ export default function PortfolioStrip() {
   return (
     <section
       id="portfolio"
-      className={`${body.className} scroll-mt-[120px] bg-[#F8F7F4] pt-[64px] pb-[80px] px-6 border-t border-[#E8E4DF]`}
+      className={`${body.className} scroll-mt-[156px] bg-[#F8F7F4] pt-[64px] pb-[80px] px-6 border-t border-[#E8E4DF]`}
     >
       <div className="max-w-[1200px] mx-auto">
         <div className="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">

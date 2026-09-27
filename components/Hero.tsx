@@ -20,7 +20,7 @@ export default function Hero() {
           {/* Free Consultation Booking */}
           <div
             id="consultation"
-            className="bg-white rounded-[12px] p-6 md:p-8 scroll-mt-24"
+            className="bg-white rounded-[12px] p-6 md:p-8 scroll-mt-[132px]"
             style={{ border: '1px solid #E8E4DF', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}
           >
             <ConsultationBooking />

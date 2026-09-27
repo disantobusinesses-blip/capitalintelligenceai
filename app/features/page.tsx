@@ -294,7 +294,7 @@ function FeatureGroupSection({ group }: { group: FeatureGroup }) {
   return (
     <section
       id={group.id}
-      className="scroll-mt-24 border-t border-[#E8E4DF] px-6 py-12 md:py-16"
+      className="scroll-mt-[132px] border-t border-[#E8E4DF] px-6 py-12 md:py-16"
     >
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-8 max-w-[680px]">
@@ -344,7 +344,7 @@ function FeatureGroupSection({ group }: { group: FeatureGroup }) {
 
 export default function FeaturesPage() {
   return (
-    <main className={`${body.className} min-h-[100dvh] bg-[#F8F7F4] pb-bottom-nav pt-[74px]`}>
+    <main className={`${body.className} min-h-[100dvh] bg-[#F8F7F4] pb-bottom-nav pt-[110px]`}>
       {/* Hero */}
       <section className="px-6 pt-10 pb-8 text-center md:pt-14 md:pb-10">
         <div className="mx-auto max-w-4xl">

@@ -31,7 +31,7 @@ const FOUNDER_PHOTO = '/images/founder-stefano.png'
 
 export default function AboutPage() {
   return (
-    <main className={`${body.className} min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]`}>
+    <main className={`${body.className} min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[110px]`}>
       {/* SECTION 1 — Hero. Split layout: copy left, founder photo right, stacked
           on mobile with the photo second so the headline still leads. */}
       <section className="px-6 pt-[64px] pb-[72px] md:pt-[80px]">

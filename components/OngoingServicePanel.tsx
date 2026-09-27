@@ -59,8 +59,9 @@ export default function OngoingServicePanel({
      container and scrolls *inside* the panel instead of moving the page. That
      failure is silent: it reports success and the viewport never moves.
 
-     NAV_OFFSET mirrors the `scroll-mt-24` (6rem) that keeps the row clear of
-     the fixed navbar.
+     NAV_OFFSET mirrors the `scroll-mt-[132px]` that keeps the row clear of
+     the fixed header (navbar + promo bar, with headroom for the reviews
+     marquee).
 
      The scroll runs as several corrective passes rather than once. A single
      pass measured ~200px short: everything above this panel — the hero image,
@@ -70,7 +71,7 @@ export default function OngoingServicePanel({
      a couple of pixels out, so once the layout is stable the passes are no-ops.
      The passes also straddle the panel's own 300ms expand animation. */
   useEffect(() => {
-    const NAV_OFFSET = 96
+    const NAV_OFFSET = 132
     const timers: number[] = []
 
     const scrollToPanel = (behavior: ScrollBehavior) => {
@@ -113,7 +114,7 @@ export default function OngoingServicePanel({
   return (
     <div
       id={id}
-      className="scroll-mt-24 overflow-hidden rounded-[10px] border border-[#E8E4DF] bg-white"
+      className="scroll-mt-[132px] overflow-hidden rounded-[10px] border border-[#E8E4DF] bg-white"
     >
       <button
         type="button"

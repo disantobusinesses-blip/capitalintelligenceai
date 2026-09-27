@@ -191,7 +191,7 @@ function ProjectRow({ projects }: { projects: Project[] }) {
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
+    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[110px]">
       {/* Hero. Mobile padding runs ~1/3 tighter than desktop: the desktop
           py-24 was carried down unchanged and pushed content below the fold. */}
       <section className="py-14 px-6 text-center relative overflow-hidden md:py-24">
@@ -222,7 +222,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Foundation examples */}
-      <section id="foundation" className="py-10 px-6 scroll-mt-24 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section id="foundation" className="py-10 px-6 scroll-mt-[132px] md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <TierSectionHeader
             tier="foundation"
@@ -234,7 +234,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Growth examples */}
-      <section id="growth" className="py-10 px-6 scroll-mt-24 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section id="growth" className="py-10 px-6 scroll-mt-[132px] md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <TierSectionHeader
             tier="growth"
@@ -246,7 +246,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Bespoke examples */}
-      <section id="bespoke" className="py-10 px-6 scroll-mt-24 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section id="bespoke" className="py-10 px-6 scroll-mt-[132px] md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <TierSectionHeader
             tier="bespoke"
