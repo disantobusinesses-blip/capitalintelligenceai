@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
-import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
+import {
+  getClientIp,
+  runSpamChecks,
+  logSubmission,
+  BLOCKED_RESPONSE,
+  RATE_LIMITED_RESPONSE,
+  HONEYPOT_FIELD_NAME,
+} from '@/lib/spamGuard'
+import { checkEnquiryContent } from '@/lib/contentFilter'
 
 interface QuoteFormData {
   // New form fields
@@ -22,6 +30,7 @@ interface QuoteFormData {
   businessName: string
   email: string
   phone?: string
+  [HONEYPOT_FIELD_NAME]?: string
 }
 
 function esc(str: string): string {
@@ -36,15 +45,23 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request)
-  if (await isIpBlocked(ip)) {
-    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
-  }
 
   let body: QuoteFormData
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
+  }
+
+  const spamCheck = await runSpamChecks(ip, body[HONEYPOT_FIELD_NAME])
+  if (spamCheck === 'honeypot') {
+    return NextResponse.json({ ok: true })
+  }
+  if (spamCheck === 'blocked') {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+  if (spamCheck === 'rate-limited') {
+    return NextResponse.json(RATE_LIMITED_RESPONSE, { status: 429 })
   }
 
   // Validate required fields
@@ -56,6 +73,16 @@ export async function POST(request: NextRequest) {
   }
   if (!body.email || !EMAIL_RE.test(body.email.trim())) {
     return NextResponse.json({ ok: false, message: 'A valid email address is required.' }, { status: 400 })
+  }
+
+  const contentIssue = checkEnquiryContent([
+    body.name,
+    body.businessName,
+    body.message,
+    body.notes,
+  ])
+  if (contentIssue) {
+    return NextResponse.json({ ok: false, message: contentIssue }, { status: 400 })
   }
 
   await logSubmission({

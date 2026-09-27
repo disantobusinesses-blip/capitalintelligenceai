@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
-import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
+import {
+  getClientIp,
+  runSpamChecks,
+  logSubmission,
+  BLOCKED_RESPONSE,
+  RATE_LIMITED_RESPONSE,
+  HONEYPOT_FIELD_NAME,
+} from '@/lib/spamGuard'
+import { checkEnquiryContent } from '@/lib/contentFilter'
 
 interface QuotePopupBody {
   name: string
@@ -12,6 +20,7 @@ interface QuotePopupBody {
   addons?: unknown
   /** Blog frequency tier, only meaningful when 'SEO Blog Content' is in addons. */
   blogTier?: unknown
+  [HONEYPOT_FIELD_NAME]?: string
 }
 
 function esc(str: string): string {
@@ -26,15 +35,24 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request)
-  if (await isIpBlocked(ip)) {
-    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
-  }
 
   let body: QuotePopupBody
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
+  }
+
+  const spamCheck = await runSpamChecks(ip, body[HONEYPOT_FIELD_NAME])
+  if (spamCheck === 'honeypot') {
+    // Say nothing that reveals the trap, just don't do any real work.
+    return NextResponse.json({ ok: true })
+  }
+  if (spamCheck === 'blocked') {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+  if (spamCheck === 'rate-limited') {
+    return NextResponse.json(RATE_LIMITED_RESPONSE, { status: 429 })
   }
 
   // Validation, only name, email and phone are required. The business
@@ -47,6 +65,11 @@ export async function POST(request: NextRequest) {
   }
   if (!body.phone?.trim()) {
     return NextResponse.json({ ok: false, message: 'Phone number is required.' }, { status: 400 })
+  }
+
+  const contentIssue = checkEnquiryContent([body.name, body.message])
+  if (contentIssue) {
+    return NextResponse.json({ ok: false, message: contentIssue }, { status: 400 })
   }
 
   await logSubmission({

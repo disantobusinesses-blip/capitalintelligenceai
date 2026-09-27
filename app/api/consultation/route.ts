@@ -2,7 +2,15 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { google } from 'googleapis'
 import { TIMEZONE, melbourneWallTimeToUTC } from '@/lib/timezone'
-import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
+import {
+  getClientIp,
+  runSpamChecks,
+  logSubmission,
+  BLOCKED_RESPONSE,
+  RATE_LIMITED_RESPONSE,
+  HONEYPOT_FIELD_NAME,
+} from '@/lib/spamGuard'
+import { checkEnquiryContent } from '@/lib/contentFilter'
 
 function esc(str: string): string {
   return str
@@ -47,19 +55,28 @@ interface ConsultationBody {
   date: string // ISO date string like "2025-01-15"
   time: string // 24h format like "14:30"
   services: string[] // Array of selected services
+  [HONEYPOT_FIELD_NAME]?: string
 }
 
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request)
-  if (await isIpBlocked(ip)) {
-    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
-  }
 
   let body: ConsultationBody
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
+  }
+
+  const spamCheck = await runSpamChecks(ip, body[HONEYPOT_FIELD_NAME])
+  if (spamCheck === 'honeypot') {
+    return NextResponse.json({ ok: true })
+  }
+  if (spamCheck === 'blocked') {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+  if (spamCheck === 'rate-limited') {
+    return NextResponse.json(RATE_LIMITED_RESPONSE, { status: 429 })
   }
 
   // Validation
@@ -80,6 +97,11 @@ export async function POST(request: NextRequest) {
   }
   if (!body.services || body.services.length === 0) {
     return NextResponse.json({ ok: false, message: 'Please select at least one service.' }, { status: 400 })
+  }
+
+  const contentIssue = checkEnquiryContent([body.name])
+  if (contentIssue) {
+    return NextResponse.json({ ok: false, message: contentIssue }, { status: 400 })
   }
 
   await logSubmission({

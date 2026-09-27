@@ -1,6 +1,6 @@
 import Stripe from 'stripe'
 import { NextRequest, NextResponse } from 'next/server'
-import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
+import { getClientIp, runSpamChecks, logSubmission, BLOCKED_RESPONSE, RATE_LIMITED_RESPONSE } from '@/lib/spamGuard'
 
 // Secure Your Spot, takes the same refundable $200 deposit as the launch
 // flow (Stripe price STRIPE_PRICE_DEPOSIT). This is an optional upsell after a
@@ -8,8 +8,17 @@ import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib
 // nothing here gates the lead or the conversion event.
 export async function POST(req: NextRequest) {
   const ip = getClientIp(req)
-  if (await isIpBlocked(ip)) {
+
+  // No honeypot here: this route has no typed-content form of its own, it's
+  // a button click after the real enquiry was already captured elsewhere.
+  // Still worth the blocklist and rate-limit checks, since it's a public
+  // POST endpoint that creates real Stripe checkout sessions.
+  const spamCheck = await runSpamChecks(ip, undefined)
+  if (spamCheck === 'blocked') {
     return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+  if (spamCheck === 'rate-limited') {
+    return NextResponse.json(RATE_LIMITED_RESPONSE, { status: 429 })
   }
 
   try {

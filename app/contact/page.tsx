@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { CheckCircle, AlertCircle, Loader2, ArrowRight, User, Building2, Mail, Phone, MessageSquare, Check, ChevronDown } from 'lucide-react'
+import { HONEYPOT_FIELD_NAME } from '@/lib/honeypot'
+import HoneypotField from '@/components/HoneypotField'
 
 const SERVICE_OPTIONS = [
   { id: 'website-build-redesign', label: 'Website Build/Redesign' },
@@ -41,6 +43,7 @@ export default function ContactPage() {
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const [honeypot, setHoneypot] = useState('')
   const [addOnsOpen, setAddOnsOpen] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -84,6 +87,7 @@ export default function ContactPage() {
           seoPackage: SEO_PACKAGE_OPTIONS.find(s => s.value === form.seoPackage)?.label || '',
           budget: BUDGET_OPTIONS.find(b => b.value === form.budget)?.label || form.budget,
           message: form.message,
+          [HONEYPOT_FIELD_NAME]: honeypot,
         }),
       })
       const data = await res.json()
@@ -143,6 +147,7 @@ export default function ContactPage() {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
+                <HoneypotField value={honeypot} onChange={setHoneypot} />
                 {/* Your Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">

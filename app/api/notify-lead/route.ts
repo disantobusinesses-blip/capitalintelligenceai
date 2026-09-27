@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { createClient } from '@supabase/supabase-js'
-import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
+import {
+  getClientIp,
+  runSpamChecks,
+  logSubmission,
+  BLOCKED_RESPONSE,
+  RATE_LIMITED_RESPONSE,
+  HONEYPOT_FIELD_NAME,
+} from '@/lib/spamGuard'
+import { checkEnquiryContent } from '@/lib/contentFilter'
 
 function esc(str: string): string {
   return str
@@ -14,15 +22,28 @@ function esc(str: string): string {
 
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request)
-  if (await isIpBlocked(ip)) {
-    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
-  }
 
   let body: Record<string, string>
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
+  }
+
+  const spamCheck = await runSpamChecks(ip, body[HONEYPOT_FIELD_NAME])
+  if (spamCheck === 'honeypot') {
+    return NextResponse.json({ ok: true })
+  }
+  if (spamCheck === 'blocked') {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+  if (spamCheck === 'rate-limited') {
+    return NextResponse.json(RATE_LIMITED_RESPONSE, { status: 429 })
+  }
+
+  const contentIssue = checkEnquiryContent([body.name, body.business_name])
+  if (contentIssue) {
+    return NextResponse.json({ ok: false, message: contentIssue }, { status: 400 })
   }
 
   await logSubmission({
@@ -40,9 +61,10 @@ export async function POST(request: NextRequest) {
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   if (supabaseUrl && supabaseKey) {
     try {
+      const { [HONEYPOT_FIELD_NAME]: _honeypot, ...leadFields } = body
       const supabase = createClient(supabaseUrl, supabaseKey)
       await supabase.from('cig_leads').insert({
-        ...body,
+        ...leadFields,
         created_at: new Date().toISOString(),
       })
     } catch (err) {
@@ -72,7 +94,7 @@ export async function POST(request: NextRequest) {
     const isTradie = source === 'free-tradie-website'
 
     const rows = Object.entries(body)
-      .filter(([k]) => k !== 'source')
+      .filter(([k]) => k !== 'source' && k !== HONEYPOT_FIELD_NAME)
       .map(([k, v]) => `<li><strong>${esc(k.replace(/_/g, ' '))}:</strong> ${esc(String(v))}</li>`)
       .join('')
 

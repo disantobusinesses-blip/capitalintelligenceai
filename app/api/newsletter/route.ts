@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { createClient } from '@supabase/supabase-js'
-import { getClientIp, isIpBlocked, logSubmission, BLOCKED_RESPONSE } from '@/lib/spamGuard'
+import {
+  getClientIp,
+  runSpamChecks,
+  logSubmission,
+  BLOCKED_RESPONSE,
+  RATE_LIMITED_RESPONSE,
+  HONEYPOT_FIELD_NAME,
+} from '@/lib/spamGuard'
+import { checkEnquiryContent } from '@/lib/contentFilter'
 
 function esc(str: string): string {
   return str
@@ -14,9 +22,6 @@ function esc(str: string): string {
 
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request)
-  if (await isIpBlocked(ip)) {
-    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
-  }
 
   let body: Record<string, string>
   try {
@@ -25,9 +30,25 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
   }
 
+  const spamCheck = await runSpamChecks(ip, body[HONEYPOT_FIELD_NAME])
+  if (spamCheck === 'honeypot') {
+    return NextResponse.json({ ok: true })
+  }
+  if (spamCheck === 'blocked') {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+  if (spamCheck === 'rate-limited') {
+    return NextResponse.json(RATE_LIMITED_RESPONSE, { status: 429 })
+  }
+
   const { name, email } = body
   if (!name || !email) {
     return NextResponse.json({ ok: false, message: 'Name and email are required.' }, { status: 400 })
+  }
+
+  const contentIssue = checkEnquiryContent([name])
+  if (contentIssue) {
+    return NextResponse.json({ ok: false, message: contentIssue }, { status: 400 })
   }
 
   await logSubmission({

@@ -19,8 +19,10 @@ import {
 } from 'lucide-react'
 import { useQuotePopup, QuoteService } from '@/context/QuotePopupContext'
 import { trackConversion, CONVERSION_LEAD } from '@/lib/trackConversion'
+import { HONEYPOT_FIELD_NAME } from '@/lib/honeypot'
 import FlowTrustStrip from '@/components/FlowTrustStrip'
 import ConsultationBooking from '@/components/ConsultationBooking'
+import HoneypotField from '@/components/HoneypotField'
 
 const SERVICE_OPTIONS: QuoteService[] = [
   'Foundation',
@@ -62,6 +64,7 @@ export default function QuotePopup() {
   const router = useRouter()
   const { isOpen, preselectedService, openPopup, closePopup } = useQuotePopup()
 
+  const [honeypot, setHoneypot] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -186,6 +189,7 @@ export default function QuotePopup() {
           message: message.trim(),
           addons: selectedAddons,
           blogTier: selectedAddons.includes('SEO Blog Content') ? blogTier || undefined : undefined,
+          [HONEYPOT_FIELD_NAME]: honeypot,
         }),
       })
       const result = await res.json()
@@ -406,6 +410,7 @@ export default function QuotePopup() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-5 space-y-3.5">
+          <HoneypotField value={honeypot} onChange={setHoneypot} />
           {/* Name */}
           <div>
             <label htmlFor="qp-name" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">

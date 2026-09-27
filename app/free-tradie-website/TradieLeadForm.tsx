@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { ArrowRight, Loader2, AlertCircle, CheckCircle } from 'lucide-react'
+import { HONEYPOT_FIELD_NAME } from '@/lib/honeypot'
+import HoneypotField from '@/components/HoneypotField'
 
 export default function TradieLeadForm() {
   const [form, setForm] = useState({
@@ -12,6 +14,7 @@ export default function TradieLeadForm() {
     phone: '',
     email: '',
   })
+  const [honeypot, setHoneypot] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -27,7 +30,7 @@ export default function TradieLeadForm() {
       const res = await fetch('/api/notify-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, source: 'free-tradie-website' }),
+        body: JSON.stringify({ ...form, source: 'free-tradie-website', [HONEYPOT_FIELD_NAME]: honeypot }),
       })
       const data = await res.json()
       if (!res.ok || !data.ok) throw new Error(data.message || 'Something went wrong')
@@ -60,6 +63,7 @@ export default function TradieLeadForm() {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        <HoneypotField value={honeypot} onChange={setHoneypot} />
         <div>
           <label className="block text-sm font-semibold text-[#CBD5E1] mb-1.5">Full Name *</label>
           <input

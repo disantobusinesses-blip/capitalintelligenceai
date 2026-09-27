@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { X, Check, Phone, Clock, CheckCircle } from 'lucide-react'
 import { useQuoteModal } from '@/context/QuoteModalContext'
+import { HONEYPOT_FIELD_NAME } from '@/lib/honeypot'
+import HoneypotField from '@/components/HoneypotField'
 
 // ─── Time slots: 9:00 AM – 5:00 PM in 15-minute increments ───────────────────
 
@@ -29,6 +31,7 @@ export default function QuoteModal() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [time, setTime] = useState('')
+  const [honeypot, setHoneypot] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
@@ -56,7 +59,7 @@ export default function QuoteModal() {
       const res = await fetch('/api/consultation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, time }),
+        body: JSON.stringify({ name, phone, time, [HONEYPOT_FIELD_NAME]: honeypot }),
       })
       const result = await res.json()
       if (res.ok && result.ok) {
@@ -120,6 +123,7 @@ export default function QuoteModal() {
 
         {/* Body */}
         <div className="px-6 py-5 space-y-4">
+          <HoneypotField value={honeypot} onChange={setHoneypot} />
 
           {/* Preferred time */}
           <div>
