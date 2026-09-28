@@ -67,37 +67,6 @@ const foundationProjects: Project[] = [
     ],
   },
   {
-    id: 1,
-    title: 'Senator Developments',
-    industry: 'Renovations & Carpentry',
-    description: 'A renovation builder whose leads come from the phone, not from forms. Every CTA is a tap: SMS with the message already written, direct call, or WhatsApp. The work sells itself through a hero slider and three on-site project videos.',
-    image: '/projects/senator-developments.png',
-    url: 'https://senatordevelopments.com.au',
-    color: '#2C3E50',
-    features: [
-      'SMS-to-quote with pre-filled message body',
-      'Click-to-call and WhatsApp handoff',
-      'Hero slider plus three project videos',
-      'Animated counters: 10+ years, 65+ projects',
-      'Six service cards across domestic, commercial and industrial',
-    ],
-  },
-  {
-    id: 2,
-    title: 'Lumière Skin Studio (DEMO ONLY)',
-    industry: 'Skincare & Beauty',
-    description: 'A concept build showing what Foundation looks like for a booking-led studio: single page, treatment menu, and a Fresha button wired to a live profile on a custom domain.',
-    image: '/templates/skincare.png',
-    url: 'https://demo2.intelligentaisystem.com',
-    color: '#B08968',
-    features: [
-      'Fresha booking integration on a live profile',
-      'Custom subdomain deployment',
-      'Treatment menu and studio gallery layout',
-      'Built as a Foundation concept, not a client site',
-    ],
-  },
-  {
     id: 3,
     title: 'Certi Sustainability',
     industry: 'ESD & Building Compliance',
@@ -112,6 +81,7 @@ const foundationProjects: Project[] = [
       'Counters: 24 to 48 hour turnaround, 1000+ projects delivered',
       'Plans-by-email intake, no form friction',
     ],
+    additionalNote: 'Design supplied by the client, IAS built and implemented the site to the provided design.',
   },
 ]
 
@@ -139,7 +109,7 @@ const growthProjects: Project[] = [
     title: 'EAY Electrical',
     industry: 'Electrical Services',
     description: 'A licensed electrician competing for “electrician melbourne” across two halves of Melbourne. Video hero, a dedicated service-area page for northern and southern suburbs, a quote form that captures the job type upfront, and an emergency block that puts call and SMS one tap away.',
-    image: '/projects/eay-electrical.png',
+    image: '/projects/eay-electrical.jpg',
     url: 'https://www.eayelectrical.com.au',
     color: '#1A3A5C',
     features: [
@@ -148,6 +118,22 @@ const growthProjects: Project[] = [
       '24/7 emergency callout block, call and SMS',
       'Video hero and ten-image work gallery with SEO alt text',
       'Supabase-backed blog, 4 posts per month',
+    ],
+  },
+  {
+    id: 3,
+    title: 'Earthborne By Design',
+    industry: 'Interior Design',
+    description: 'An award-winning interior design practice led by Paul Coulson, serving the Gold Coast, Brisbane and Northern NSW. Built as a cinematic, scroll-driven site with Lenis smooth-scroll and motion-based reveals, a three-project portfolio with dedicated detail pages, and a multi-step enquiry form that qualifies each lead by project type before it reaches the studio.',
+    image: '/projects/EarthborneCoverIAS.png',
+    url: 'https://earthbornebydesign.com.au',
+    color: '#7C8B72',
+    features: [
+      'Cinematic, scroll-driven build: Lenis smooth-scroll and motion-powered reveals',
+      'Three-project portfolio with dedicated project detail pages',
+      'Multi-step enquiry form, qualifying by project type: renovation, new build, kitchen, bathroom and more',
+      'Dedicated Services page: Design, New Build Interiors, Decorate, Style, Small Commercial',
+      'HIA Gold Coast / Northern Rivers Bathroom Design of the Year, 2026 Finalist, credential surfaced on-site',
     ],
   },
   {
@@ -204,21 +190,6 @@ const bespokeProjects: Project[] = [
     ],
     additionalNote: 'Fintech-grade design',
   },
-  {
-    id: 2,
-    title: 'Live Demo Website',
-    industry: 'Cinematic Scroll Reference',
-    description: 'The motion standard every Bespoke build is designed to. Full-viewport scroll sections, pinned image sequences, a horizontal project rail and an embedded film reel, all running at 60fps on mobile.',
-    image: '/projects/CinematicScrollDemo.png',
-    url: 'https://demo1.intelligentaisystem.com/',
-    color: '#2C2A27',
-    features: [
-      'Scroll-pinned full-viewport sections',
-      'Horizontal project rail and embedded film reel',
-      'Smooth scroll with scroll-triggered stat counters',
-      'Built as the Bespoke motion reference, not a client site',
-    ],
-  },
 ]
 
 /** Horizontal-scroll row of project cards, snap-scrolling, fixed card width. */
@@ -236,7 +207,7 @@ function ProjectRow({ projects }: { projects: Project[] }) {
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
+    <div className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[110px]">
       {/* Hero. Mobile padding runs ~1/3 tighter than desktop: the desktop
           py-24 was carried down unchanged and pushed content below the fold. */}
       <section className="py-14 px-6 text-center relative overflow-hidden md:py-24">
@@ -267,7 +238,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Foundation examples */}
-      <section id="foundation" className="py-10 px-6 scroll-mt-24 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section id="foundation" className="py-10 px-6 scroll-mt-[132px] md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <TierSectionHeader
             tier="foundation"
@@ -279,7 +250,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Growth examples */}
-      <section id="growth" className="py-10 px-6 scroll-mt-24 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section id="growth" className="py-10 px-6 scroll-mt-[132px] md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <TierSectionHeader
             tier="growth"
@@ -291,7 +262,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Bespoke examples */}
-      <section id="bespoke" className="py-10 px-6 scroll-mt-24 md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
+      <section id="bespoke" className="py-10 px-6 scroll-mt-[132px] md:py-16" style={{ borderTop: '1px solid #E8E4DF' }}>
         <div className="max-w-7xl mx-auto">
           <TierSectionHeader
             tier="bespoke"

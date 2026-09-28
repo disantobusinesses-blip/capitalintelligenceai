@@ -26,7 +26,7 @@ export default function HeroIntro() {
   return (
     <section
       id="hero"
-      className={`${body.className} relative bg-[#F8F7F4] pt-[100px] pb-[80px] px-6 mt-[74px]`}
+      className={`${body.className} relative bg-[#F8F7F4] pt-[100px] pb-[80px] px-6 mt-[110px]`}
     >
       <div className="max-w-[1200px] mx-auto">
         <div className="max-w-[760px]">

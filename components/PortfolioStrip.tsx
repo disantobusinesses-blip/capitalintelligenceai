@@ -43,7 +43,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     order: 2,
     title: 'EAY Electrical',
     result: 'Residential & commercial electrical services website.',
-    image: '/projects/eay-electrical.png',
+    image: '/projects/eay-electrical.jpg',
     url: 'https://www.eayelectrical.com.au',
   },
   {
@@ -62,10 +62,10 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   },
   {
     order: 5,
-    title: 'Senator Developments',
-    result: 'Property development site showcasing projects to buyers & investors.',
-    image: '/projects/senator-developments.png',
-    url: 'https://senatordevelopments.com.au',
+    title: 'Earthborne By Design',
+    result: 'Interior design studio website, cinematic scroll-driven build.',
+    image: '/projects/EarthborneCoverIAS.png',
+    url: 'https://earthbornebydesign.com.au',
   },
   {
     order: 6,
@@ -93,7 +93,7 @@ export default function PortfolioStrip() {
   return (
     <section
       id="portfolio"
-      className={`${body.className} scroll-mt-[120px] bg-[#F8F7F4] pt-[64px] pb-[80px] px-6 border-t border-[#E8E4DF]`}
+      className={`${body.className} scroll-mt-[156px] bg-[#F8F7F4] pt-[64px] pb-[80px] px-6 border-t border-[#E8E4DF]`}
     >
       <div className="max-w-[1200px] mx-auto">
         <div className="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">

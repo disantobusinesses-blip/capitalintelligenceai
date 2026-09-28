@@ -2,11 +2,12 @@
 
 import { useState } from 'react'
 import { X, Check, Send, Building2, User, Mail, Phone, MessageSquare, ChevronDown } from 'lucide-react'
+import { HONEYPOT_FIELD_NAME } from '@/lib/honeypot'
+import HoneypotField from '@/components/HoneypotField'
 
 const serviceOptions = [
   { id: 'website-build-redesign', label: 'Website Build/Redesign' },
   { id: 'google-profile-setup', label: 'Google Profile Setup' },
-  { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
 ]
 
 const addOnOptions: { id: string; label: string; description: string }[] = []
@@ -67,6 +68,7 @@ export default function GetStartedForm({
   preselectedService?: 'landing-page' | 'full-package' | null
 }) {
   const [formData, setFormData] = useState<FormData>(initialFormData)
+  const [honeypot, setHoneypot] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
@@ -136,6 +138,7 @@ export default function GetStartedForm({
           colourLabel: '',
           seoPlan: '',
           seoPrice: 0,
+          [HONEYPOT_FIELD_NAME]: honeypot,
         }),
       })
 
@@ -216,6 +219,7 @@ export default function GetStartedForm({
 
         {/* Form Content */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
+          <HoneypotField value={honeypot} onChange={setHoneypot} />
           {/* Name */}
           <div>
             <label htmlFor="name" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">

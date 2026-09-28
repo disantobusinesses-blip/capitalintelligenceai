@@ -1,6 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { createClient } from '@supabase/supabase-js'
+import {
+  getClientIp,
+  runSpamChecks,
+  logSubmission,
+  BLOCKED_RESPONSE,
+  RATE_LIMITED_RESPONSE,
+  HONEYPOT_FIELD_NAME,
+} from '@/lib/spamGuard'
+import { checkEnquiryContent } from '@/lib/contentFilter'
 
 function esc(str: string): string {
   return str
@@ -12,6 +21,8 @@ function esc(str: string): string {
 }
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request)
+
   let body: Record<string, string>
   try {
     body = await request.json()
@@ -19,10 +30,35 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
   }
 
+  const spamCheck = await runSpamChecks(ip, body[HONEYPOT_FIELD_NAME])
+  if (spamCheck === 'honeypot') {
+    return NextResponse.json({ ok: true })
+  }
+  if (spamCheck === 'blocked') {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+  if (spamCheck === 'rate-limited') {
+    return NextResponse.json(RATE_LIMITED_RESPONSE, { status: 429 })
+  }
+
   const { name, email } = body
   if (!name || !email) {
     return NextResponse.json({ ok: false, message: 'Name and email are required.' }, { status: 400 })
   }
+
+  const contentIssue = checkEnquiryContent([name])
+  if (contentIssue) {
+    return NextResponse.json({ ok: false, message: contentIssue }, { status: 400 })
+  }
+
+  await logSubmission({
+    source: 'newsletter',
+    ip,
+    userAgent: request.headers.get('user-agent'),
+    name,
+    email,
+    payload: body,
+  })
 
   // Insert into Supabase ias_newsletter_signup table
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -68,7 +104,7 @@ export async function POST(request: NextRequest) {
           <li><strong>Email:</strong> ${esc(email)}</li>
         </ul>
         <p style="color: #666; font-size: 13px; margin-top: 20px;">
-          Source: newsletter · ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' })}
+          Source: newsletter · ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' })} · IP: ${esc(ip)}
         </p>
       </div>
     `

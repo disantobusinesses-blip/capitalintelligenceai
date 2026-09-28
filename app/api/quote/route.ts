@@ -1,5 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import {
+  getClientIp,
+  runSpamChecks,
+  logSubmission,
+  BLOCKED_RESPONSE,
+  RATE_LIMITED_RESPONSE,
+  HONEYPOT_FIELD_NAME,
+} from '@/lib/spamGuard'
+import { checkEnquiryContent } from '@/lib/contentFilter'
 
 interface QuoteFormData {
   // New form fields
@@ -21,6 +30,7 @@ interface QuoteFormData {
   businessName: string
   email: string
   phone?: string
+  [HONEYPOT_FIELD_NAME]?: string
 }
 
 function esc(str: string): string {
@@ -34,11 +44,24 @@ function esc(str: string): string {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request)
+
   let body: QuoteFormData
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
+  }
+
+  const spamCheck = await runSpamChecks(ip, body[HONEYPOT_FIELD_NAME])
+  if (spamCheck === 'honeypot') {
+    return NextResponse.json({ ok: true })
+  }
+  if (spamCheck === 'blocked') {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+  if (spamCheck === 'rate-limited') {
+    return NextResponse.json(RATE_LIMITED_RESPONSE, { status: 429 })
   }
 
   // Validate required fields
@@ -51,6 +74,26 @@ export async function POST(request: NextRequest) {
   if (!body.email || !EMAIL_RE.test(body.email.trim())) {
     return NextResponse.json({ ok: false, message: 'A valid email address is required.' }, { status: 400 })
   }
+
+  const contentIssue = checkEnquiryContent([
+    body.name,
+    body.businessName,
+    body.message,
+    body.notes,
+  ])
+  if (contentIssue) {
+    return NextResponse.json({ ok: false, message: contentIssue }, { status: 400 })
+  }
+
+  await logSubmission({
+    source: 'quote',
+    ip,
+    userAgent: request.headers.get('user-agent'),
+    name: body.name.trim(),
+    email: body.email.trim(),
+    phone: body.phone?.trim(),
+    payload: body,
+  })
 
   // ── 1. Try Supabase insert ──────────────────────────────────────────────────
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -185,6 +228,8 @@ export async function POST(request: NextRequest) {
     if (messageContent) {
       htmlBody += `<h3>Project Details / Message</h3><p>${esc(messageContent)}</p>`
     }
+
+    htmlBody += `<p style="color:#888;font-size:12px;margin-top:16px;">Submitted from IP: ${esc(ip)}</p>`
 
     await transporter.sendMail({
       from: SMTP_FROM,

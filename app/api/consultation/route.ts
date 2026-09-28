@@ -2,6 +2,15 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { google } from 'googleapis'
 import { TIMEZONE, melbourneWallTimeToUTC } from '@/lib/timezone'
+import {
+  getClientIp,
+  runSpamChecks,
+  logSubmission,
+  BLOCKED_RESPONSE,
+  RATE_LIMITED_RESPONSE,
+  HONEYPOT_FIELD_NAME,
+} from '@/lib/spamGuard'
+import { checkEnquiryContent } from '@/lib/contentFilter'
 
 function esc(str: string): string {
   return str
@@ -46,14 +55,28 @@ interface ConsultationBody {
   date: string // ISO date string like "2025-01-15"
   time: string // 24h format like "14:30"
   services: string[] // Array of selected services
+  [HONEYPOT_FIELD_NAME]?: string
 }
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request)
+
   let body: ConsultationBody
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
+  }
+
+  const spamCheck = await runSpamChecks(ip, body[HONEYPOT_FIELD_NAME])
+  if (spamCheck === 'honeypot') {
+    return NextResponse.json({ ok: true })
+  }
+  if (spamCheck === 'blocked') {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+  if (spamCheck === 'rate-limited') {
+    return NextResponse.json(RATE_LIMITED_RESPONSE, { status: 429 })
   }
 
   // Validation
@@ -75,6 +98,21 @@ export async function POST(request: NextRequest) {
   if (!body.services || body.services.length === 0) {
     return NextResponse.json({ ok: false, message: 'Please select at least one service.' }, { status: 400 })
   }
+
+  const contentIssue = checkEnquiryContent([body.name])
+  if (contentIssue) {
+    return NextResponse.json({ ok: false, message: contentIssue }, { status: 400 })
+  }
+
+  await logSubmission({
+    source: 'consultation',
+    ip,
+    userAgent: request.headers.get('user-agent'),
+    name: body.name.trim(),
+    email: body.email.trim(),
+    phone: body.phone.trim(),
+    payload: body,
+  })
 
   const servicesText = body.services.join(', ')
   
@@ -185,6 +223,7 @@ Please call the client at the scheduled time.`,
         </ul>
         ${calendarEventLink ? `<p><a href="${calendarEventLink}">View in Google Calendar</a></p>` : ''}
         <p>Please call the client at their scheduled time.</p>
+        <p style="color:#888;font-size:12px;margin-top:16px;">Submitted from IP: ${esc(ip)}</p>
       `
 
       await transporter.sendMail({

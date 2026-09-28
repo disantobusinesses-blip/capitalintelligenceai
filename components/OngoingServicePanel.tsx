@@ -22,10 +22,10 @@ interface OngoingServicePanelProps {
 /**
  * One collapsible service inside the Ongoing Services group on /services.
  *
- * These four sections were previously fully expanded and stacked, so a mobile
- * visitor scrolled through all of the hosting, blog, social and B2B pricing
- * before reaching anything else. Collapsed, the group becomes a four-row menu
- * the visitor can scan and open selectively.
+ * These sections were previously fully expanded and stacked, so a mobile
+ * visitor scrolled through all of the hosting and blog pricing before reaching
+ * anything else. Collapsed, the group becomes a short menu the visitor can scan
+ * and open selectively.
  *
  * `scroll-mt` keeps the existing #hosting / #seo-blog-content style deep links
  * landing below the fixed navbar rather than under it.
@@ -44,14 +44,13 @@ export default function OngoingServicePanel({
   /** True while this panel is open because a deep link opened it. */
   const openedByHash = useRef(false)
 
-  /* These anchors are deep-linked from the navbar, footer, BeyondWebsite and
-     WhyIntelligentAISystem, so a collapsed panel would leave those links
-     landing on a closed row that looks broken. Open this panel whenever the
-     hash points at it.
+  /* These anchors are deep-linked from the navbar, footer and BeyondWebsite,
+     so a collapsed panel would leave those links landing on a closed row that
+     looks broken. Open this panel whenever the hash points at it.
 
      The `hashchange` listener matters as much as the initial read: moving from
-     /services#hosting to /services#b2b keeps the same page mounted, so without
-     it only the first deep link of a session would open.
+     /services#hosting to /services#seo-blog-content keeps the same page
+     mounted, so without it only the first deep link of a session would open.
 
      Scrolling is done manually with `window.scrollTo` rather than the more
      obvious `scrollIntoView`. This wrapper needs `overflow-hidden` to clip the
@@ -60,8 +59,9 @@ export default function OngoingServicePanel({
      container and scrolls *inside* the panel instead of moving the page. That
      failure is silent: it reports success and the viewport never moves.
 
-     NAV_OFFSET mirrors the `scroll-mt-24` (6rem) that keeps the row clear of
-     the fixed navbar.
+     NAV_OFFSET mirrors the `scroll-mt-[132px]` that keeps the row clear of
+     the fixed header (navbar + promo bar, with headroom for the reviews
+     marquee).
 
      The scroll runs as several corrective passes rather than once. A single
      pass measured ~200px short: everything above this panel — the hero image,
@@ -71,7 +71,7 @@ export default function OngoingServicePanel({
      a couple of pixels out, so once the layout is stable the passes are no-ops.
      The passes also straddle the panel's own 300ms expand animation. */
   useEffect(() => {
-    const NAV_OFFSET = 96
+    const NAV_OFFSET = 132
     const timers: number[] = []
 
     const scrollToPanel = (behavior: ScrollBehavior) => {
@@ -114,7 +114,7 @@ export default function OngoingServicePanel({
   return (
     <div
       id={id}
-      className="scroll-mt-24 overflow-hidden rounded-[10px] border border-[#E8E4DF] bg-white"
+      className="scroll-mt-[132px] overflow-hidden rounded-[10px] border border-[#E8E4DF] bg-white"
     >
       <button
         type="button"
@@ -125,7 +125,10 @@ export default function OngoingServicePanel({
           setOpen((v) => !v)
         }}
         aria-expanded={open}
-        aria-controls={`${panelId}-content`}
+        // Only referenced while the panel is mounted: the content below is
+        // unmounted when collapsed, so pointing at its id unconditionally left
+        // a dangling aria-controls reference in the default state.
+        aria-controls={open ? `${panelId}-content` : undefined}
         className="flex w-full items-start gap-4 p-5 text-left transition-colors duration-200 hover:bg-[#FAF9F7] focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ias-brown-dark md:p-6"
       >
         <span className="min-w-0 flex-1">

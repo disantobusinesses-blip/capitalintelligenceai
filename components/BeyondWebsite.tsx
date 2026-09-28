@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import { Instagram, TrendingUp, PenLine, Check } from 'lucide-react'
+import { Instagram, PenLine, Check } from 'lucide-react'
 import { display, body } from '@/lib/fonts'
-import QuotePopupButton from '@/components/QuotePopupButton'
 
 const SEO_TIERS = [
   { label: '4 blogs/mo', price: '$99' },
@@ -10,7 +9,6 @@ const SEO_TIERS = [
 ]
 
 const SOCIAL_INCLUDES = ['Content calendar & scheduling', 'Reels, posts & stories', 'Monthly growth reporting']
-const B2B_INCLUDES = ['Curated, ready-to-contact lead lists', 'Custom lead platforms built for your team', 'Sales-ready contact data']
 
 export default function BeyondWebsite() {
   return (
@@ -29,8 +27,9 @@ export default function BeyondWebsite() {
           </p>
         </div>
 
-        {/* Three equal-weight cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Two equal-weight cards, capped so each keeps the width it had as one
+            of three across the 1200px container. */}
+        <div className="grid md:grid-cols-2 gap-6 max-w-[800px] mx-auto">
           {/* Card A, Instagram & Social Growth */}
           <div className="flex flex-col bg-white border border-[#E8E4DF] rounded-[10px] p-8">
             <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-5">
@@ -59,41 +58,7 @@ export default function BeyondWebsite() {
             </Link>
           </div>
 
-          {/* Card B, B2B Lead Generation */}
-          <div className="flex flex-col bg-white border border-[#E8E4DF] rounded-[10px] p-8">
-            <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-5">
-              <TrendingUp className="w-5 h-5 text-ias-brown-mid" strokeWidth={1.5} />
-            </div>
-            <h3 className="text-[#3D2817] font-semibold text-lg mb-3">B2B Lead Generation</h3>
-            <p className="text-[#6B6560] text-sm leading-relaxed mb-5">
-              Selling to other businesses? We supply qualified leads, a ready list, or a fully
-              custom lead platform built for your sales team.
-            </p>
-            <ul className="flex flex-col gap-2.5 mb-6">
-              {B2B_INCLUDES.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-[#6B6560]">
-                  <Check className="w-4 h-4 text-ias-brown-mid flex-shrink-0 mt-0.5" strokeWidth={2} />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-3">
-              <QuotePopupButton
-                service="B2B AI Platform"
-                className="border border-ias-brown-dark text-ias-brown-dark font-semibold px-5 py-2.5 rounded-[6px] text-sm hover:bg-ias-brown-dark hover:text-white transition-colors duration-200"
-              >
-                Enquire for Pricing
-              </QuotePopupButton>
-              <Link
-                href="/services#b2b"
-                className="text-sm font-semibold text-ias-brown-dark underline underline-offset-2 hover:text-ias-brown-mid"
-              >
-                See details
-              </Link>
-            </div>
-          </div>
-
-          {/* Card C, SEO Blog Content */}
+          {/* Card B, SEO Blog Content */}
           <div className="flex flex-col bg-white border border-[#E8E4DF] rounded-[10px] p-8">
             <div className="w-11 h-11 bg-[#F8F7F4] rounded-[6px] flex items-center justify-center mb-5">
               <PenLine className="w-5 h-5 text-ias-brown-mid" strokeWidth={1.5} />

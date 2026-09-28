@@ -11,7 +11,7 @@ import { display } from '@/lib/fonts'
  * rather than introducing a second set of assets.
  */
 const CLIENTS = [
-  { name: 'EAY Electrical', industry: 'Electrical trade', image: '/projects/eay-electrical.png' },
+  { name: 'EAY Electrical', industry: 'Electrical trade', image: '/projects/eay-electrical.jpg' },
   { name: 'Reborn Physiques', industry: 'Fitness', image: '/projects/rebornphysiques.png' },
   { name: 'Estética Sydney', industry: 'Beauty', image: '/projects/estetica-sydney-v2.png' },
   { name: 'Onyx Global', industry: 'Fintech', image: '/projects/onyx-global-v2.png' },

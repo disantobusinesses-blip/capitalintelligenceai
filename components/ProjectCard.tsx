@@ -2,6 +2,7 @@
 
 import { Check, ExternalLink } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 import BrowserFrame from '@/components/ui/browser-frame'
 import Disclosure from '@/components/ui/disclosure'
 import { domainFromUrl } from '@/lib/domain'
@@ -58,14 +59,17 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div className="p-3 pb-0">
         <BrowserFrame domain={project.url ? domainFromUrl(project.url) : project.title}>
           {project.image && !imgFailed ? (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
+            /* next/image rather than a raw <img>: these screenshots are the
+               heaviest assets on the site (the largest is 1.4MB of PNG) and a
+               raw tag shipped the full-size original to every visitor. This
+               serves a resized, modern-format version sized to the card, which
+               is what the carousel on the homepage was already doing. */
+            <Image
               src={project.image}
               alt={`${project.title} website screenshot`}
-              loading="lazy"
-              width={640}
-              height={400}
-              className="absolute inset-0 w-full h-full object-cover object-top"
+              fill
+              sizes="(max-width: 640px) 280px, 340px"
+              className="object-cover object-top"
               onError={() => setImgFailed(true)}
             />
           ) : (

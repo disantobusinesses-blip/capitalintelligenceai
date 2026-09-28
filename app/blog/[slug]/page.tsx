@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
+import { organisationRef } from '@/lib/schema'
 
 export const revalidate = 60
 
@@ -79,20 +80,8 @@ export default async function DynamicBlogPost({ params }: Props) {
     image: 'https://intelligentaisystem.com/ias-logo.png',
     datePublished: post.published_at,
     dateModified: post.last_modified,
-    author: {
-      '@type': 'Organization',
-      name: 'Capital Intelligence Group',
-      url: 'https://intelligentaisystem.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Intelligent AI Systems',
-      url: 'https://intelligentaisystem.com',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://intelligentaisystem.com/ias-logo.png',
-      },
-    },
+    author: organisationRef,
+    publisher: organisationRef,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://intelligentaisystem.com/blog/${post.slug}`,
@@ -112,7 +101,7 @@ export default async function DynamicBlogPost({ params }: Props) {
         />
       )}
 
-      <main className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[74px]">
+      <main className="min-h-[100dvh] bg-[#F8F7F4] pb-24 pt-[110px]">
         {/* Back link */}
         <div className="pt-10 px-6">
           <div className="max-w-3xl mx-auto">

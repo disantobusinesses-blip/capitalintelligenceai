@@ -1,5 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import {
+  getClientIp,
+  runSpamChecks,
+  logSubmission,
+  BLOCKED_RESPONSE,
+  RATE_LIMITED_RESPONSE,
+  HONEYPOT_FIELD_NAME,
+} from '@/lib/spamGuard'
+import { checkEnquiryContent } from '@/lib/contentFilter'
 
 interface QuotePopupBody {
   name: string
@@ -11,6 +20,7 @@ interface QuotePopupBody {
   addons?: unknown
   /** Blog frequency tier, only meaningful when 'SEO Blog Content' is in addons. */
   blogTier?: unknown
+  [HONEYPOT_FIELD_NAME]?: string
 }
 
 function esc(str: string): string {
@@ -24,11 +34,25 @@ function esc(str: string): string {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request)
+
   let body: QuotePopupBody
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ ok: false, message: 'Invalid request body.' }, { status: 400 })
+  }
+
+  const spamCheck = await runSpamChecks(ip, body[HONEYPOT_FIELD_NAME])
+  if (spamCheck === 'honeypot') {
+    // Say nothing that reveals the trap, just don't do any real work.
+    return NextResponse.json({ ok: true })
+  }
+  if (spamCheck === 'blocked') {
+    return NextResponse.json(BLOCKED_RESPONSE, { status: 403 })
+  }
+  if (spamCheck === 'rate-limited') {
+    return NextResponse.json(RATE_LIMITED_RESPONSE, { status: 429 })
   }
 
   // Validation, only name, email and phone are required. The business
@@ -42,6 +66,21 @@ export async function POST(request: NextRequest) {
   if (!body.phone?.trim()) {
     return NextResponse.json({ ok: false, message: 'Phone number is required.' }, { status: 400 })
   }
+
+  const contentIssue = checkEnquiryContent([body.name, body.message])
+  if (contentIssue) {
+    return NextResponse.json({ ok: false, message: contentIssue }, { status: 400 })
+  }
+
+  await logSubmission({
+    source: 'quote-popup',
+    ip,
+    userAgent: request.headers.get('user-agent'),
+    name: body.name.trim(),
+    email: body.email.trim(),
+    phone: body.phone.trim(),
+    payload: body,
+  })
 
   // SMTP configuration, mirrors the onboarding route so GMAIL_USER / SMTP_USER
   // both work and existing email delivery is never broken.
@@ -98,6 +137,7 @@ export async function POST(request: NextRequest) {
       <h3>About Their Business</h3>
       <p>${body.message?.trim() ? esc(body.message.trim()).replace(/\n/g, '<br/>') : '<em>Not provided</em>'}</p>
       ${addonsHtml}
+      <p style="color:#888;font-size:12px;margin-top:16px;">Submitted from IP: ${esc(ip)}</p>
     `
 
     await transporter.sendMail({

@@ -51,7 +51,7 @@ const trust = [
 
 export default function FreeTradieWebsitePage() {
   return (
-    <main className="min-h-screen bg-[#0A0F1E] text-white pt-[68px]">
+    <main className="min-h-screen bg-[#0A0F1E] text-white pt-[104px]">
 
       {/* ── Hero ── */}
       <section className="py-20 px-6 text-center">

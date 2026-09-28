@@ -43,7 +43,6 @@ const navEntries: NavEntry[] = [
         items: [
           { label: 'SEO Blog Content', href: '/services#seo-blog-content', description: 'Ongoing posts that build search visibility.' },
           { label: 'Instagram & Social Growth', href: '/services#social-growth', description: 'Content, scheduling, and monthly reporting.' },
-          { label: 'B2B Lead Generation', href: '/services#b2b', description: 'Private AI CRM and acquisition platform.' },
         ],
       },
     ],
@@ -91,7 +90,8 @@ export default function Navbar() {
   return (
     <header
       style={{ boxShadow: '0 1px 8px rgba(0,0,0,0.08)' }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white h-[68px] flex items-center"
+      // top-9 (36px) clears the fixed PromoCountdownBar sitting above it.
+      className="fixed top-9 left-0 right-0 z-50 bg-white h-[68px] flex items-center"
     >
       <div className="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
         {/* LEFT: Logo */}

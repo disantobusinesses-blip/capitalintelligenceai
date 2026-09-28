@@ -82,7 +82,9 @@ export default function FadeSlideTabs({ tabs, defaultTabId, label }: FadeSlideTa
               role="tab"
               id={`${groupId}-tab-${tab.id}`}
               aria-selected={isActive}
-              aria-controls={`${groupId}-panel-${tab.id}`}
+              // Only the active panel is rendered, so an inactive tab has no
+              // panel to point at.
+              aria-controls={isActive ? `${groupId}-panel-${tab.id}` : undefined}
               /* Only the active tab stays in the tab order; arrows do the rest. */
               tabIndex={isActive ? 0 : -1}
               onClick={() => select(tab.id)}

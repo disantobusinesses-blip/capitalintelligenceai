@@ -2,10 +2,13 @@
 
 import { useState } from 'react'
 import { CheckCircle, Send } from 'lucide-react'
+import { HONEYPOT_FIELD_NAME } from '@/lib/honeypot'
+import HoneypotField from '@/components/HoneypotField'
 
 export default function NewsletterSignup() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [honeypot, setHoneypot] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -16,7 +19,7 @@ export default function NewsletterSignup() {
       await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ name, email, [HONEYPOT_FIELD_NAME]: honeypot }),
       })
     } catch (err) {
       console.error('Newsletter signup request failed:', err)
@@ -45,6 +48,7 @@ export default function NewsletterSignup() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            <HoneypotField value={honeypot} onChange={setHoneypot} />
             <input
               type="text"
               value={name}

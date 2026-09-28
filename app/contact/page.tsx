@@ -3,11 +3,12 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { CheckCircle, AlertCircle, Loader2, ArrowRight, User, Building2, Mail, Phone, MessageSquare, Check, ChevronDown } from 'lucide-react'
+import { HONEYPOT_FIELD_NAME } from '@/lib/honeypot'
+import HoneypotField from '@/components/HoneypotField'
 
 const SERVICE_OPTIONS = [
   { id: 'website-build-redesign', label: 'Website Build/Redesign' },
   { id: 'google-profile-setup', label: 'Google Profile Setup' },
-  { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
 ]
 
 const ADD_ON_OPTIONS = [
@@ -42,6 +43,7 @@ export default function ContactPage() {
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const [honeypot, setHoneypot] = useState('')
   const [addOnsOpen, setAddOnsOpen] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -85,6 +87,7 @@ export default function ContactPage() {
           seoPackage: SEO_PACKAGE_OPTIONS.find(s => s.value === form.seoPackage)?.label || '',
           budget: BUDGET_OPTIONS.find(b => b.value === form.budget)?.label || form.budget,
           message: form.message,
+          [HONEYPOT_FIELD_NAME]: honeypot,
         }),
       })
       const data = await res.json()
@@ -101,7 +104,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F8F7F4] pt-[74px]">
+    <main className="min-h-screen bg-[#F8F7F4] pt-[110px]">
       {/* Hero */}
       <section className="bg-[#1A1A1A] text-white py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
@@ -144,6 +147,7 @@ export default function ContactPage() {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
+                <HoneypotField value={honeypot} onChange={setHoneypot} />
                 {/* Your Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">

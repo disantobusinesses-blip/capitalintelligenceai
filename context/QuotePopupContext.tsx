@@ -12,7 +12,6 @@ export type QuoteService =
   | 'Bespoke'
   | 'Custom Build / Platform'
   | 'Google Business Profile'
-  | 'B2B AI Platform'
   | 'Other'
 
 interface QuotePopupContextValue {

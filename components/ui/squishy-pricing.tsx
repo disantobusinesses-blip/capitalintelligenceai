@@ -77,6 +77,7 @@ export interface SquishyPlan {
   icon: SquishyIcon
   name: string
   price: string
+  originalPrice?: string
   period: string
   badge: string | null
   description: string
@@ -265,6 +266,11 @@ function PricingCard({ plan, index }: { plan: SquishyPlan; index: number }) {
         </h3>
 
         <p className={`${display.className} mb-2.5 text-[26px] font-semibold ${p.text}`}>
+          {plan.originalPrice && (
+            <span className={`${body.className} mr-2 text-[17px] font-normal line-through ${p.muted}`}>
+              {plan.originalPrice}
+            </span>
+          )}
           {plan.price}
           <span className={`${body.className} ml-1 text-[10px] font-normal ${p.muted}`}>+ GST</span>
           <span className={`${body.className} ml-1 text-[12px] font-normal ${p.muted}`}>{plan.period}</span>

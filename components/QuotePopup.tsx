@@ -19,8 +19,10 @@ import {
 } from 'lucide-react'
 import { useQuotePopup, QuoteService } from '@/context/QuotePopupContext'
 import { trackConversion, CONVERSION_LEAD } from '@/lib/trackConversion'
+import { HONEYPOT_FIELD_NAME } from '@/lib/honeypot'
 import FlowTrustStrip from '@/components/FlowTrustStrip'
 import ConsultationBooking from '@/components/ConsultationBooking'
+import HoneypotField from '@/components/HoneypotField'
 
 const SERVICE_OPTIONS: QuoteService[] = [
   'Foundation',
@@ -28,7 +30,6 @@ const SERVICE_OPTIONS: QuoteService[] = [
   'Bespoke',
   'Custom Build / Platform',
   'Google Business Profile',
-  'B2B AI Platform',
   'Other',
 ]
 
@@ -37,7 +38,6 @@ const SERVICE_OPTIONS: QuoteService[] = [
 const ADDON_OPTIONS = [
   'SEO Blog Content',
   'Instagram & Social Growth Management',
-  'B2B Lead Generation',
 ] as const
 type AddonOption = (typeof ADDON_OPTIONS)[number]
 
@@ -57,7 +57,6 @@ const SERVICE_PRICE_LABEL: Record<QuoteService, string | null> = {
   Bespoke: '$6,999',
   'Custom Build / Platform': 'from $7,000',
   'Google Business Profile': 'from $299',
-  'B2B AI Platform': 'Custom pricing',
   Other: null,
 }
 
@@ -65,6 +64,7 @@ export default function QuotePopup() {
   const router = useRouter()
   const { isOpen, preselectedService, openPopup, closePopup } = useQuotePopup()
 
+  const [honeypot, setHoneypot] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -130,15 +130,19 @@ export default function QuotePopup() {
   // When the panel is closed, show a small launcher tab anchored to the bottom
   // edge. On mobile it sits above the pill nav so the two never overlap; on
   // desktop (where the pill nav is hidden) it drops back to the corner.
+  //
+  // Deliberately carries no aria-label: the visible text is the accessible
+  // name, so the two cannot disagree. An aria-label that reworded it
+  // ("Request a quote or call") broke WCAG 2.5.3, because voice control users
+  // speaking the label they can see could not activate the button.
   if (!render) {
     return (
       <button
         type="button"
         onClick={() => openPopup()}
-        aria-label="Request a quote or call"
         className="fixed z-[60] bottom-24 right-4 sm:bottom-5 sm:right-6 inline-flex items-center gap-2 rounded-full bg-[#1A1A1A] text-white pl-4 pr-5 py-3 text-sm font-semibold shadow-[0_8px_28px_rgba(0,0,0,0.28)] hover:bg-[#2D2D2D] hover:-translate-y-0.5 transition-all duration-200"
       >
-        <Send className="w-4 h-4" />
+        <Send className="w-4 h-4" aria-hidden="true" />
         Request Quote/Call
       </button>
     )
@@ -185,6 +189,7 @@ export default function QuotePopup() {
           message: message.trim(),
           addons: selectedAddons,
           blogTier: selectedAddons.includes('SEO Blog Content') ? blogTier || undefined : undefined,
+          [HONEYPOT_FIELD_NAME]: honeypot,
         }),
       })
       const result = await res.json()
@@ -196,6 +201,9 @@ export default function QuotePopup() {
         // callback, BEFORE any redirect, so it is never gated behind the
         // deposit step or a page navigation. The redirect to the deposit page
         // only runs once the conversion beacon has been sent (or times out).
+        if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead')
+        }
         const query = services.length ? `?service=${encodeURIComponent(services.join(', '))}` : ''
         trackConversion(CONVERSION_LEAD, () => {
           closePopup()
@@ -402,6 +410,7 @@ export default function QuotePopup() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-5 space-y-3.5">
+          <HoneypotField value={honeypot} onChange={setHoneypot} />
           {/* Name */}
           <div>
             <label htmlFor="qp-name" className="block text-sm font-semibold text-[#1A1A1A] mb-1.5">

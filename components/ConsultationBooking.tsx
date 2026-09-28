@@ -3,10 +3,11 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { CheckCircle, Send, CalendarDays, Clock, Check, ExternalLink } from 'lucide-react'
 import { format, addDays, isSunday, isSaturday, isToday, isBefore, startOfDay } from 'date-fns'
+import { HONEYPOT_FIELD_NAME } from '@/lib/honeypot'
+import HoneypotField from '@/components/HoneypotField'
 
 const SERVICE_OPTIONS = [
   { id: 'website-build', label: 'Website Build' },
-  { id: 'b2b-ai-platform', label: 'B2B AI Platform' },
   { id: 'google-profile-setup', label: 'Google Profile Setup' },
 ]
 
@@ -76,6 +77,7 @@ function isValidAustralianPhone(phone: string): boolean {
  */
 export default function ConsultationBooking({ showHeading = true }: { showHeading?: boolean }) {
   // Form state
+  const [honeypot, setHoneypot] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -191,6 +193,7 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
           date: format(selectedDate, 'yyyy-MM-dd'),
           time: selectedTime,
           services: serviceLabels,
+          [HONEYPOT_FIELD_NAME]: honeypot,
         }),
       })
 
@@ -202,6 +205,10 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
         // Fire Google Ads conversion tracking
         if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
           window.gtag('event', 'conversion', {'send_to': 'AW-17950129824/ZA2zCPTNlrkcEKD9pO9C'})
+        }
+        // Fire Meta Pixel Lead event
+        if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead')
         }
         // Clear form
         setName('')
@@ -278,6 +285,7 @@ export default function ConsultationBooking({ showHeading = true }: { showHeadin
 
   return (
     <form onSubmit={handleConsultSubmit} className="space-y-4">
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
       {showHeading && (
         <div>
           <p className="text-[#1A1A1A] font-bold text-lg mb-1">Book a Free Consultation</p>

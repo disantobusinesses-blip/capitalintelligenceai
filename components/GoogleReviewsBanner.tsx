@@ -73,7 +73,8 @@ export default function GoogleReviewsBanner() {
   return (
     <div
       aria-hidden={hidden}
-      className={`bg-white border-b border-[#E8E4DF] py-1 fixed top-[68px] left-0 right-0 z-40 overflow-hidden transition-transform duration-300 ease-out ${
+      // top-[104px] = 68px navbar + 36px PromoCountdownBar above it.
+      className={`bg-white border-b border-[#E8E4DF] py-1 fixed top-[104px] left-0 right-0 z-40 overflow-hidden transition-transform duration-300 ease-out ${
         hidden ? '-translate-y-full' : 'translate-y-0'
       }`}
     >

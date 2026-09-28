@@ -21,7 +21,7 @@ const projects = [
     industry: 'Trades',
     metric: 'Ranked page 1 Google',
     link: 'https://www.eayelectrical.com.au',
-    image: '/projects/eay-electrical.png',
+    image: '/projects/eay-electrical.jpg',
     imageAlt: 'EAY Electrical website screenshot',
     color: '#1A3A5C',
   },
