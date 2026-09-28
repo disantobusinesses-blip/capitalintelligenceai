@@ -61,6 +61,13 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://www.azzuraconsulting.com.au/',
   },
   {
+    order: 5,
+    title: 'Earthborne By Design',
+    result: 'Interior design studio website, cinematic scroll-driven build.',
+    image: '/projects/EarthborneCoverIAS.png',
+    url: 'https://earthbornebydesign.com.au',
+  },
+  {
     order: 6,
     title: 'Reborn Physiques',
     result: 'Fitness coaching site built to convert visitors into clients.',

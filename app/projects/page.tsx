@@ -121,6 +121,22 @@ const growthProjects: Project[] = [
     ],
   },
   {
+    id: 3,
+    title: 'Earthborne By Design',
+    industry: 'Interior Design',
+    description: 'An award-winning interior design practice led by Paul Coulson, serving the Gold Coast, Brisbane and Northern NSW. Built as a cinematic, scroll-driven site with Lenis smooth-scroll and motion-based reveals, a three-project portfolio with dedicated detail pages, and a multi-step enquiry form that qualifies each lead by project type before it reaches the studio.',
+    image: '/projects/EarthborneCoverIAS.png',
+    url: 'https://earthbornebydesign.com.au',
+    color: '#7C8B72',
+    features: [
+      'Cinematic, scroll-driven build: Lenis smooth-scroll and motion-powered reveals',
+      'Three-project portfolio with dedicated project detail pages',
+      'Multi-step enquiry form, qualifying by project type: renovation, new build, kitchen, bathroom and more',
+      'Dedicated Services page: Design, New Build Interiors, Decorate, Style, Small Commercial',
+      'HIA Gold Coast / Northern Rivers Bathroom Design of the Year, 2026 Finalist, credential surfaced on-site',
+    ],
+  },
+  {
     id: 2,
     title: 'Reborn Physiques',
     industry: 'Health & Fitness',
