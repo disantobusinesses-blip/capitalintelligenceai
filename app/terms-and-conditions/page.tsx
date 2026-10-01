@@ -20,7 +20,7 @@ export default function TermsAndConditions() {
             Terms &amp; Conditions
           </h1>
           <p className="text-[#6B6560] mt-2">
-            Last updated: February 17, 2026
+            Last updated: October 1, 2026
           </p>
         </div>
       </div>
@@ -108,6 +108,20 @@ export default function TermsAndConditions() {
           <p className="text-[#1A1A1A] leading-relaxed">
             At the end of the complimentary period, the Blog Content subscription will automatically continue at the standard monthly rate for the 4 Blogs/Month plan (currently $99 AUD per month) unless cancelled in accordance with Section 4.1. We will provide reasonable notice before the first paid charge is applied.
           </p>
+
+          <h3 id="promotional-pricing" className="text-xl font-semibold text-[#1A1A1A] mb-3 mt-6 scroll-mt-[132px]">
+            3.5 Promotional Pricing
+          </h3>
+          <p className="text-[#1A1A1A] leading-relaxed mb-4">
+            From time to time we offer discounted pricing on our Foundation and Growth website packages for a limited period. Our current promotion offers $139 AUD off the Foundation package (standard price $1,999 AUD, promotional price $1,860 AUD) and $239 AUD off the Growth package (standard price $2,999 AUD, promotional price $2,760 AUD), all exclusive of GST.
+          </p>
+          <ul className="list-disc pl-6 text-[#1A1A1A] space-y-2 mb-4">
+            <li>To qualify, a non-refundable deposit must be received on or before October 9, 2026 (11:59 PM, Australian Eastern Daylight Time).</li>
+            <li>A deposit received after this date will be charged at the standard package price then in effect.</li>
+            <li>The discount applies to new orders only and cannot be combined with any other offer, discount, or promotion.</li>
+            <li>All other terms in these Terms and Conditions, including Sections 3.2, 3.3 and 4, continue to apply to a package purchased under this promotion.</li>
+            <li>We may extend, modify, or withdraw this promotion at any time before a deposit is received, without notice.</li>
+          </ul>
         </section>
 
         <section>

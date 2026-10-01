@@ -3,12 +3,12 @@
 import { useEffect, useState } from 'react'
 import { MarqueeAnimation } from '@/components/ui/marquee-animation'
 
-// End of day, Melbourne time. Sept 30 is still AEST (DST starts the first
-// Sunday of October), so the offset is a fixed +10:00.
-const OFFER_END = new Date('2026-09-30T23:59:59+10:00')
+// End of day, Melbourne time. DST starts the first Sunday of October (Oct 4,
+// 2026), so by Oct 9 Melbourne is on AEDT, offset +11:00.
+const OFFER_END = new Date('2026-10-09T23:59:59+11:00')
 
 const PROMO_TEXT =
-  'FOUNDATION PACKAGE – $100 OFF   ·   GROWTH PACKAGE – $200 OFF   ·   OFFER ENDS SEPT 30   ·   '
+  'FOUNDATION PACKAGE – $139 OFF   ·   GROWTH PACKAGE – $239 OFF   ·   OFFER ENDS OCT 9   ·   T&CS APPLY, DEPOSIT REQUIRED BY OCT 9   ·   '
 
 interface TimeLeft {
   days: number

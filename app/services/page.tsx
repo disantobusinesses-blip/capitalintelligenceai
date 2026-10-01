@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Check, FileText, Shield } from 'lucide-react'
 import QuotePopupButton from '@/components/QuotePopupButton'
 import FeatureTable, { FeatureRow } from '@/components/FeatureTable'
@@ -64,7 +65,7 @@ const websitePackages = [
     key: 'foundation',
     icon: 'globe' as SquishyIcon,
     name: 'Foundation',
-    price: '$1,899',
+    price: '$1,860',
     originalPrice: '$1,999',
     period: 'one-off',
     badge: null,
@@ -81,7 +82,7 @@ const websitePackages = [
     key: 'growth',
     icon: 'zap' as SquishyIcon,
     name: 'Growth',
-    price: '$2,799',
+    price: '$2,760',
     originalPrice: '$2,999',
     period: 'one-off',
     badge: 'Most Popular',
@@ -182,6 +183,13 @@ export default function ServicesPage() {
           </div>
 
           <SquishyPricing plans={websitePackages} />
+
+          <p className="mt-4 text-center text-[#6B6560] text-xs">
+            *Promo pricing on Foundation and Growth requires a deposit paid on or before October 9, 2026. Standard pricing applies after the offer ends.{' '}
+            <Link href="/terms-and-conditions#promotional-pricing" className="underline underline-offset-2 hover:text-ias-brown-dark">
+              Terms and conditions apply
+            </Link>.
+          </p>
 
           {/* Feature comparison table */}
           <div className="mt-10">
