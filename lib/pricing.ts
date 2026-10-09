@@ -7,8 +7,8 @@ export interface FlowPricingTier {
 }
 
 export const FLOW_PRICING_TIERS: FlowPricingTier[] = [
-  { name: 'Foundation', range: '$1,999' },
-  { name: 'Growth', range: '$2,999' },
+  { name: 'Foundation', range: '$1,860' },
+  { name: 'Growth', range: '$2,760' },
   { name: 'Bespoke', range: '$6,999' },
 ]
 

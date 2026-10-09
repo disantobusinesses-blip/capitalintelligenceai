@@ -170,6 +170,17 @@ export default function GetStartedForm({
 
   const canSubmit = formData.name.trim() !== '' && formData.email.trim() !== '' && formData.businessName.trim() !== '' && formData.services.length > 0 && formData.hostingPlan !== '' && formData.budget !== ''
 
+  // Named so the disabled submit button can tell a visitor exactly what's
+  // missing, rather than just sitting greyed out with no explanation.
+  const missingFields = [
+    formData.name.trim() === '' && 'your name',
+    formData.businessName.trim() === '' && 'business name',
+    formData.email.trim() === '' && 'email',
+    formData.services.length === 0 && 'what you need',
+    formData.hostingPlan === '' && 'a hosting plan',
+    formData.budget === '' && 'a budget range',
+  ].filter((f): f is string => Boolean(f))
+
   if (!isOpen) return null
 
   if (submitted) {
@@ -482,9 +493,15 @@ export default function GetStartedForm({
             )}
           </button>
 
-          <p className="text-center text-xs text-ias-brown-muted">
-            We typically respond within 24 hours.
-          </p>
+          {!canSubmit && !submitting ? (
+            <p className="text-center text-xs text-amber-700">
+              Add {missingFields.join(', ')} to continue.
+            </p>
+          ) : (
+            <p className="text-center text-xs text-ias-brown-muted">
+              We typically respond within 24 hours.
+            </p>
+          )}
         </form>
       </div>
     </div>

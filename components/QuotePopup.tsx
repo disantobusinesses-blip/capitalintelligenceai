@@ -52,8 +52,8 @@ type BlogTier = (typeof BLOG_TIER_OPTIONS)[number]
 // the packages on /services, they do not affect the `value` sent on submit or
 // the preselection logic used elsewhere on the site.
 const SERVICE_PRICE_LABEL: Record<QuoteService, string | null> = {
-  Foundation: '$1,999',
-  Growth: '$2,999',
+  Foundation: '$1,860',
+  Growth: '$2,760',
   Bespoke: '$6,999',
   'Custom Build / Platform': 'from $7,000',
   'Google Business Profile': 'from $299',
@@ -152,6 +152,14 @@ export default function QuotePopup() {
   // optional so it never blocks a submission.
   const canSubmit =
     name.trim() !== '' && email.trim() !== '' && phone.trim() !== ''
+
+  // Named so the disabled submit button can tell a visitor exactly what's
+  // missing, rather than just sitting greyed out with no explanation.
+  const missingFields = [
+    name.trim() === '' && 'name',
+    email.trim() === '' && 'email',
+    phone.trim() === '' && 'phone',
+  ].filter((f): f is string => Boolean(f))
 
   const handleClose = () => {
     closePopup()
@@ -592,7 +600,13 @@ export default function QuotePopup() {
               </>
             )}
           </button>
-          <p className="text-center text-xs text-ias-brown-muted">We respond within 1 hour.</p>
+          {!canSubmit && !submitting ? (
+            <p className="text-center text-xs text-amber-700">
+              Add your {missingFields.join(', ')} to continue.
+            </p>
+          ) : (
+            <p className="text-center text-xs text-ias-brown-muted">We respond within 1 hour.</p>
+          )}
         </form>
       </div>
     </div>
