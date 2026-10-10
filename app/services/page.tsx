@@ -185,7 +185,7 @@ export default function ServicesPage() {
           <SquishyPricing plans={websitePackages} />
 
           <p className="mt-4 text-center text-[#6B6560] text-xs">
-            *Promo pricing on Foundation and Growth requires a deposit paid on or before October 9, 2026. Standard pricing applies after the offer ends.{' '}
+            *Extended! Promo pricing on Foundation and Growth now requires a deposit paid on or before October 15, 2026. Standard pricing applies after the offer ends.{' '}
             <Link href="/terms-and-conditions#promotional-pricing" className="underline underline-offset-2 hover:text-ias-brown-dark">
               Terms and conditions apply
             </Link>.
