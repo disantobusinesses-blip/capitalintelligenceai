@@ -5,11 +5,11 @@ import { MarqueeAnimation } from '@/components/ui/marquee-animation'
 
 // End of day, Melbourne time. DST starts the first Sunday of October (Oct 4,
 // 2026), so Melbourne is on AEDT (offset +11:00) for this whole promo.
-// Extended once already: was Oct 9, now Oct 15.
-const OFFER_END = new Date('2026-10-15T23:59:59+11:00')
+// Extended twice: was Oct 9, then Oct 15, now Nov 6.
+const OFFER_END = new Date('2026-11-06T23:59:59+11:00')
 
 const PROMO_TEXT =
-  'EXTENDED! FOUNDATION PACKAGE – $139 OFF   ·   GROWTH PACKAGE – $239 OFF   ·   NOW ENDS OCT 15   ·   T&CS APPLY, DEPOSIT REQUIRED BY OCT 15   ·   '
+  'EXTENDED! FOUNDATION PACKAGE – $139 OFF   ·   GROWTH PACKAGE – $239 OFF   ·   NOW ENDS NOV 6   ·   T&CS APPLY, DEPOSIT REQUIRED BY NOV 6   ·   '
 
 interface TimeLeft {
   days: number
