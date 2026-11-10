@@ -65,7 +65,7 @@ const websitePackages = [
     key: 'foundation',
     icon: 'globe' as SquishyIcon,
     name: 'Foundation',
-    price: '$1,860',
+    price: '$1,399',
     originalPrice: '$1,999',
     period: 'one-off',
     badge: null,
@@ -82,7 +82,7 @@ const websitePackages = [
     key: 'growth',
     icon: 'zap' as SquishyIcon,
     name: 'Growth',
-    price: '$2,760',
+    price: '$2,099',
     originalPrice: '$2,999',
     period: 'one-off',
     badge: 'Most Popular',
@@ -99,7 +99,8 @@ const websitePackages = [
     key: 'bespoke',
     icon: 'package' as SquishyIcon,
     name: 'Bespoke',
-    price: '$6,999',
+    price: '$4,899',
+    originalPrice: '$6,999',
     period: 'one-off',
     badge: null,
     description: 'A fully custom build with integrations and dedicated support through launch.',
@@ -185,7 +186,7 @@ export default function ServicesPage() {
           <SquishyPricing plans={websitePackages} />
 
           <p className="mt-4 text-center text-[#6B6560] text-xs">
-            *Extended! Promo pricing on Foundation and Growth now requires a deposit paid on or before November 6, 2026. Standard pricing applies after the offer ends.{' '}
+            *30% off all packages requires a deposit paid on or before November 29, 2026. Standard pricing applies after the offer ends.{' '}
             <Link href="/terms-and-conditions#promotional-pricing" className="underline underline-offset-2 hover:text-ias-brown-dark">
               Terms and conditions apply
             </Link>.

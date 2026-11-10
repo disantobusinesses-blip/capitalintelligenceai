@@ -52,9 +52,9 @@ type BlogTier = (typeof BLOG_TIER_OPTIONS)[number]
 // the packages on /services, they do not affect the `value` sent on submit or
 // the preselection logic used elsewhere on the site.
 const SERVICE_PRICE_LABEL: Record<QuoteService, string | null> = {
-  Foundation: '$1,860',
-  Growth: '$2,760',
-  Bespoke: '$6,999',
+  Foundation: '$1,399',
+  Growth: '$2,099',
+  Bespoke: '$4,899',
   'Custom Build / Platform': 'from $7,000',
   'Google Business Profile': 'from $299',
   Other: null,

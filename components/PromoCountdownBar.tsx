@@ -5,11 +5,10 @@ import { MarqueeAnimation } from '@/components/ui/marquee-animation'
 
 // End of day, Melbourne time. DST starts the first Sunday of October (Oct 4,
 // 2026), so Melbourne is on AEDT (offset +11:00) for this whole promo.
-// Extended twice: was Oct 9, then Oct 15, now Nov 6.
-const OFFER_END = new Date('2026-11-06T23:59:59+11:00')
+const OFFER_END = new Date('2026-11-29T23:59:59+11:00')
 
 const PROMO_TEXT =
-  'EXTENDED! FOUNDATION PACKAGE – $139 OFF   ·   GROWTH PACKAGE – $239 OFF   ·   NOW ENDS NOV 6   ·   T&CS APPLY, DEPOSIT REQUIRED BY NOV 6   ·   '
+  '30% OFF ALL PACKAGES   ·   FOUNDATION · GROWTH · BESPOKE   ·   OFFER ENDS NOV 29   ·   T&CS APPLY, DEPOSIT REQUIRED BY NOV 29   ·   '
 
 interface TimeLeft {
   days: number
@@ -58,7 +57,7 @@ export default function PromoCountdownBar() {
       </div>
       <div className="flex-shrink-0 flex items-center gap-1.5 h-full pl-3 pr-4 bg-black/15 border-l border-white/15 whitespace-nowrap">
         <span className="inline-flex items-center rounded-full bg-amber-400/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-300">
-          Extended
+          30% off
         </span>
         <span className="hidden sm:inline text-[10px] font-semibold uppercase tracking-wide text-white/70">
           Ends in
